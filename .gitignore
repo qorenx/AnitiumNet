@@ -130,3 +130,4 @@ nb-configuration.xml
 # Anitium Safe Code
 lic.anitium.net/
 /app/Controllers
+/app/Models
