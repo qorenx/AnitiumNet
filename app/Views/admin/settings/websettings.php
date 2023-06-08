@@ -144,9 +144,6 @@
                         </div></br>
                     </div>
 
-
-
-
                     <div class="tab-pane" id="settings">Settings Tab Content</div>
                 </div>
                 <footer class="fixed-bottom">
