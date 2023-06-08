@@ -1,0 +1,73 @@
+<?= $this->include('admin/extem/header') ?>
+
+<body>
+    <div id="wrapper" data-page="page_home">
+        <form action="<?php echo base_url('admin/episode/episode-sub-add'); ?>" method="post">
+            <div class="card-body" style="margin: 0 20%; border: 6px solid black; background-color: #120000; color: white; font-weight: bold;">
+                <div class="form-group row">
+                    <label for="uid" class="col-sm-4 col-form-label">Anime UID:</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="uid" id="uid" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="sub_id" class="col-sm-4 col-form-label">Episode ID(1, 1.5 etc):</label>
+                    <div class="col-sm-8">
+                        <input type="number" step="0.10" name="sub_id" id="sub_id" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ep_sub_webconverter" class="col-sm-4 col-form-label">Auto/Manuel Embed:</label>
+                    <div class="col-sm-8">
+                        <select name="ep_sub_webconverter" id="ep_sub_webconverter" class="form-control">
+                            <option value="1">Automatic Embed(Not for all sites)</option>
+                            <option value="0">Manuel Embed</option>
+                        </select>
+                    </div>
+                </div>
+                <template>
+                    <div class="form-group row">
+                        <label for="sub_name" class="col-sm-4 col-form-label">Short Name Provider:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="sub_name[]" id="sub_name" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="sub_frame" class="col-sm-4 col-form-label">Video URL:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="sub_frame[]" id="sub_frame" class="form-control" required>
+                        </div>
+                    </div>
+                </template>
+                <div id="inputs-extra"></div>
+                <button type="button" onclick="addMore()" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;">Add Embed</button>
+                <script>
+                    const template = document.querySelector('template');
+
+                    function addMore() {
+                        const clone = template.content.cloneNode(true);
+                        document.getElementById('inputs-extra').appendChild(clone);
+                    }
+                </script>
+                <div class="card-footer">
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div style="height:100px;"></div>
+    <div id="mask-overlay"></div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>files/js/app.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>files/js/comman.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>files/js/movie.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>files/css/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>files/js/function.js"></script>
+    </div>
+</body>
+
+</html>
