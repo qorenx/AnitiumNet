@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'codeigniter4/appstarter',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '7d9984344336b6a2fa57e493581751949aa7d673',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '4539ef3dacdfa8fd0151efae836e684e42f3f305',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'codeigniter4/appstarter' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '7d9984344336b6a2fa57e493581751949aa7d673',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '4539ef3dacdfa8fd0151efae836e684e42f3f305',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -44,9 +44,9 @@
             'dev_requirement' => false,
         ),
         'codeigniter4/settings' => array(
-            'pretty_version' => 'v2.1.1',
-            'version' => '2.1.1.0',
-            'reference' => '1fc133b0b2b853f0d6089108ed2793eaea933673',
+            'pretty_version' => 'v2.1.2',
+            'version' => '2.1.2.0',
+            'reference' => '854224baa190723f5f22d9dcc32cdb37aeaf79cd',
             'type' => 'library',
             'install_path' => __DIR__ . '/../codeigniter4/settings',
             'aliases' => array(),
@@ -380,9 +380,9 @@
             'dev_requirement' => true,
         ),
         'symfony/deprecation-contracts' => array(
-            'pretty_version' => 'v3.2.1',
-            'version' => '3.2.1.0',
-            'reference' => 'e2d1534420bd723d0ef5aec58a22c5fe60ce6f5e',
+            'pretty_version' => 'v3.3.0',
+            'version' => '3.3.0.0',
+            'reference' => '7c3aff79d10325257a001fcf92d991f24fc967cf',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/deprecation-contracts',
             'aliases' => array(),
