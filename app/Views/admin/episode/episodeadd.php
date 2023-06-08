@@ -3,7 +3,7 @@
 <body>
     <div id="wrapper" data-page="page_home">
         <form action="<?php echo base_url('admin/episode/episode-add'); ?>" method="post">
-            <div class="card-body" style="margin: 0 20%; border: 6px solid black; background-color: #120000; color: white; font-weight: bold;">
+            <div class="card-body" style="margin: 0% 10%;">
                 <div class="form-group row">
                     <label for="uid" class="col-sm-4 col-form-label">Anime UID</label>
                     <div class="col-sm-8">

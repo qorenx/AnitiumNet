@@ -2,8 +2,7 @@
 
 <body>
     <div id="wrapper" data-page="page_home">
-        <div class="card-body" style="margin: 0 30%; border: 6px solid black; background-color: #120000; color: white; font-weight: bold;">
-
+    <div class="card-body" style="margin: 0% 40%;">
 
             <form method="post" action="slider">
                 <table style="color:white" class="table">

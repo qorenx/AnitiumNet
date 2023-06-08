@@ -2,8 +2,8 @@
 
 <body>
     <div id="wrapper" data-page="page_home">
-        <div class="card-body" style="margin: 0 10%; border: 6px solid black; background-color: #120000; color: white; font-weight: bold;">
-            <form method="post" action="schedule/deleteall" onsubmit="return confirm('Are you sure you want to delete all schedules?');">
+    <div class="card-body" style="margin: 0% 10%;">
+                <form method="post" action="schedule/deleteall" onsubmit="return confirm('Are you sure you want to delete all schedules?');">
                 <button type="submit" class="btn btn-sm btn-danger">All Schedule Delete</button>
             </form>
             <button style="background-color: #008CBA; padding: 10px 20px; border: none; color: white; font-size: 16px; margin-bottom: 10px;" onclick="myFunction()">Add Schedule</button>

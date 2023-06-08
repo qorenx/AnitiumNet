@@ -2,8 +2,8 @@
 
 <body>
     <div id="wrapper" data-page="page_home">
-        <div class="card-body" style="margin: 0 10%; border: 6px solid black; background-color: #120000; color: white; font-weight: bold;">
-            <div class="row">
+    <div class="card-body" style="margin: 0% 10%;">
+                <div class="row">
                 <button onclick="if (confirm('Are you sure you want to remove all reports?')) { window.location.href = '<?php echo base_url('admin/anisettings/postreportview/tracert'); ?>'; }">Remove all reports.</button>
                 <div class="col-md-12">
                     <table class="table table-striped" style="color:white">
