@@ -3,15 +3,8 @@ AnimeWatchScript  - Our site is a zoro.to clone. Although the features are not t
 ---
 Preview: anitium.net
 Our preview site version: 0.8.9a
-Our current version: 0.9.2CEQ
-
-I'm waiting for discord to buy theme.
-
-Prices:
-->1 year support, $100 for 10 years
-->1 year support, $200 for 25 years
-->Subscription, recommended. 3-4$ per month, unlimited support and updates.
-
+Our current version: 0.9.3
+Available now. It can be purchased. The development process continues. You can donate. I'm waiting for Discord. Donors are given a role.
 ---I'll wait for more on discord.
 
 
@@ -46,26 +39,37 @@ Future Features:
 - Notification.
 - Member customizations. For now, only things like "calendar, and dub, sub, raw, turk" are closed. Advanced customization required.
 
-İMAGE
-![FireShot Capture 013 - Anitium-Free Watch Anime! - localhost](https://github.com/qorenx/AnimeWatchPHPScript/assets/101888025/6c54cc74-0b94-46a6-8712-ab4c24c5ffab)
-İMAGE
 
-![FireShot Capture 014 - Anitium-Kaminaki Sekai no Kamisama Katsudou - localhost](https://github.com/qorenx/AnimeWatchPHPScript/assets/101888025/785948e1-a665-4f39-b290-b6e7f31fb54a)
-İMAGE
 
-![FireShot Capture 015 - Anitium-Kaminaki Sekai no Kamisama Katsudou-Episode 1- - localhost](https://github.com/qorenx/AnimeWatchPHPScript/assets/101888025/8c58cacc-552e-42b3-9c2b-63a758063f8c)
-İMAGE
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/0613dfbd-9d5c-4705-9bbb-0b40fe0d706c)
 
-![FireShot Capture 016 - Anitium-Free Watch Anime! - localhost](https://github.com/qorenx/AnimeWatchPHPScript/assets/101888025/c53991c2-716d-453e-a334-ad51ae5bc5c0)
-İMAGE
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/57d5a27c-78ba-46d3-a969-66b4577cadd2)
 
-![FireShot Capture 019 - Anitium-Free Watch Anime! - localhost](https://github.com/qorenx/AnimeWatchPHPScript/assets/101888025/dbeec423-a5b3-4c42-b553-9b11de46115d)
-İMAGE
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/c163fafc-faa2-43a8-9700-9c490eeca79c)
 
-![FireShot Capture 021 - Anitium-Free Watch Anime! - localhost](https://github.com/qorenx/AnimeWatchPHPScript/assets/101888025/b0f19cf2-0afe-4a90-840d-2571fa5252a6)
-İMAGE
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/e5ce9bda-3024-4d13-b1d8-8f6a59f73e0f)
 
-![FireShot Capture 022 - Anitium-Free Watch Anime! - localhost](https://github.com/qorenx/AnimeWatchPHPScript/assets/101888025/df536791-9b76-4b35-90a8-d70f712998c0)
-İMAGE
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/58d39f4b-1634-4254-92cc-fc7337da1bad)
 
-![FireShot Capture 023 - Anitium-Free Watch Anime! - localhost](https://github.com/qorenx/AnimeWatchPHPScript/assets/101888025/7487bf76-2339-4710-bf6a-36d4185ea646)
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/d1ac3494-3220-463b-868c-81495346739f)
+
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/63bd25b0-295b-4dc7-955d-385761467ca0)
+
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/65cb9b42-047b-4695-88fc-12f868c02a24)
+
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/b9af0519-f62f-4aa0-9f34-6acc7a16dd06)
+
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/a363d4ea-7dee-44af-a894-3a2dfbf9a7c6)
+
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/20520a7b-f0e3-4336-969c-db997d6eb353)
+
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/a0966abb-bb84-4d53-97a7-019172a49995)
+
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/efaad8cd-a4db-4ac5-9e4d-05db20c242e3)
+
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/e849830f-2022-44a8-abbc-9f99610d6ce0)
+
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/7528cad6-d63e-40db-8b3a-59ccfdb82c01)
+
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/e7c6308d-bfd1-41bc-9d82-afc9312f4ee3)
+
