@@ -2,8 +2,8 @@
 
 <body>
     <div id="wrapper" data-page="page_home">
-<div class="container" style="margin: 0 10%; border: 6px solid black; background-color: #120000; color: white; font-weight: bold;">
-    <div class="row">
+    <div class="card-body" style="margin: 0% 10%;">
+        <div class="row">
         <div class="col-md-12">
             <table class="table table-striped" style="color:white">
                 <thead>
@@ -31,7 +31,6 @@
     </div>
 </div>
 <div style="height:100px;"></div>
-<?= $this->include('admin/extem/footer') ?>
         <div id="mask-overlay"></div>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js">

@@ -149,9 +149,11 @@
 
                     <div class="tab-pane" id="settings">Settings Tab Content</div>
                 </div>
+                <footer class="fixed-bottom">
                 <div class="card-footer">
                     <input class="btn btn-primary" type="submit" value="UPDATE">
                 </div>
+                </footer>
         </form>
     </div>
     </div>

@@ -307,10 +307,13 @@
                         </div><br>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <input class="btn btn-primary" type="submit" value="Add">
-                </div>
+                <footer class="fixed-bottom">
+                    <div class="card-footer">
+                        <input class="btn btn-primary" type="submit" value="Add">
+                    </div>
+                </footer>
             </div>
+
         </form>
         <style>
             .form-check-inline {

@@ -3,7 +3,7 @@
 <body>
     <div id="wrapper" data-page="page_home">
         <form action="<?php echo base_url('admin/episode/episode-edit'); ?>" method="post">
-            <div class="card-body" style="margin: 0 15%; border: 6px solid black; background-color: #120000; color: white; font-weight: bold;">
+            <div class="card-body" style="margin: 0% 10%;">
                 <input type="hidden" name="uid" id="uid" value="<?= $epeedit['uid'] ?>" readonly>
                 <input type="hidden" name="ep_id_name" id="ep_id_name" value="<?= $epeedit['ep_id_name'] ?>" readonly>
                 <div class="form-group row">
@@ -53,10 +53,12 @@
                             <option value="TURK" <?php if ($epeedit['ep_turk'] === 'TURK') echo 'selected'; ?>>TURK</option>
                         </select>
                     </div>
-                    <div class="card-footer">
-                        <input class="btn btn-primary" type="submit" value="UPDATE">
-                        <a class="btn btn-danger" href="<?php echo base_url('admin/episode/episode-delete/' . $epeedit['uid'] . '/' . $epeedit['id']); ?>" onclick="return confirm('Are you sure you want to delete?')">DELETE</a>
-                    </div>
+                    <footer class="fixed-bottom">
+                        <div class="card-footer">
+                            <input class="btn btn-primary" type="submit" value="UPDATE">
+                            <a class="btn btn-danger" href="<?php echo base_url('admin/episode/episode-delete/' . $epeedit['uid'] . '/' . $epeedit['id']); ?>" onclick="return confirm('Are you sure you want to delete?')">DELETE</a>
+                        </div>
+                    </footer>
                 </div><br>
 
         </form>

@@ -28,9 +28,11 @@
                         <input type="text" name="dw_link" id="dw_link" class="form-control">
                     </div>
                 </div></br>
+                <footer class="fixed-bottom">
                 <div class="card-footer">
                     <input class="btn btn-primary" type="submit" value="Add">
                 </div>
+                </footer>
             </div>
         </form>
     </div>

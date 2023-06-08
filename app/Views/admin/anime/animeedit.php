@@ -302,9 +302,11 @@
                         </div><br>
 
                     </div>
-                    <div class="card-footer">
-                        <input class="btn btn-primary" type="submit" value="UPDATE">
-                    </div>
+                    <footer class="fixed-bottom">
+                        <div class="card-footer">
+                            <input class="btn btn-primary" type="submit" value="Update">
+                        </div>
+                    </footer>
         </form>
         <style>
             .form-check-inline {

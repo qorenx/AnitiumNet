@@ -49,9 +49,11 @@
                         document.getElementById('inputs-extra').appendChild(clone);
                     }
                 </script>
+                <footer class="fixed-bottom">
                 <div class="card-footer">
                     <input class="btn btn-primary" type="submit" value="Submit">
                 </div>
+                </footer>
             </div>
         </form>
     </div>

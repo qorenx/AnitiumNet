@@ -2,8 +2,8 @@
 
 <body>
     <div id="wrapper" data-page="page_home">
-        <div class="card-body" style="margin: 0 10%; border: 6px solid black; background-color: #120000; color: white; font-weight: bold;">
-            <table style="color:white" class="table">
+    <div class="card-body" style="margin: 0% 10%;">
+                <table style="color:white" class="table">
                 <thead>
                     <tr>
                         <th>Download Name</th>
