@@ -37,14 +37,14 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-lg-12 col-md-12">
                                         <div class="form-group">
-                                            <label class="prelabel">Your name</label>
-                                            <input type="text" class="form-control" value="<?= auth()->user()->username ?>">
+                                            <label class="prelabel">Username</label>
+                                            <input type="text" class="form-control" value="<?= auth()->user()->username ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12">
                                         <div class="form-group">
                                             <label class="prelabel">Joined</label>
-                                            <input type="text" class="form-control" value="<?= auth()->user()->created_at ?>">
+                                            <input type="text" class="form-control" value="<?= auth()->user()->created_at ?>" readonly>
                                         </div>
                                     </div>
                                 </div>
