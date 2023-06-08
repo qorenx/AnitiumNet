@@ -170,5 +170,5 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>files/js/function.js"></script>
     </div>
 </body>
-            
+        
 </html>
