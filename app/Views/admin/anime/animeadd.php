@@ -18,7 +18,7 @@
                         <a class="nav-link" href="#typecountrystatus" data-toggle="tab">Anime TCS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#posterwallpaper" data-toggle="tab">PosterWallpaper</a>
+                        <a class="nav-link" href="#posterwallpaper" data-toggle="tab">Poster-Wallpaper</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#rawsubdubturk" data-toggle="tab">Raw-Sub-Dub-Turk</a>
