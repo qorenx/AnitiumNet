@@ -91,47 +91,52 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="maw-right">
                             <div class="wideview">
                                 <div class="wv wv-mine">
-                                    <div class="wv-list">
+                                <div class="wv-list" style="background-color:black;border-radius: 0px 5% 5% 0px;">
                                         <div class="wv-title d-flex align-items-center">
-                                            <div style="background-color: #00000094;" class="name mr-3">History</div>
+                                            <div class="name mr-3">Latest Activities</div>
                                         </div>
                                         <div id="im-latest" class="tab-pane">
-                                            <div class="wv-ul" style="background-color: #00000094;">
-                                                <div class="item d-flex justify-content-between">
-                                                    <div class="item-inner">
-                                                            <div class="subject">
-                                                            <?php foreach (array_slice($getybcomment, 0, 15) as $key => $value) : ?>
-                                                                <div>
-                                                                    <i class="fas fa-comment mr-2"></i>
-                                                                    <strong>
-                                                                        <?= strtoupper("<span style='color: #FFD700;'>{$value['username']}</span>") ?> opened a
-                                                                        '<a href="<?= base_url('community/post/' . $value['post_id'] . '/' . $value['post_head']) ?>"><?= "<span style='color:red'>" . $value['post_head'] . "</span>" ?></a>'
-                                                                        comment or topic in the
-                                                                        <span style="color:<?php
-                                                                                            $colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
-                                                                                            echo in_array($value['post_tag'], range(1, 6)) ? $colors[$value['post_tag'] - 1] : 'Unknown';
-                                                                                            ?>">
-                                                                            <?php
-                                                                            $tags = ['Updates', 'General', 'Suggestion', 'Question', 'Discussion', 'Feedback'];
-                                                                            echo in_array($value['post_tag'], range(1, 6)) ? $tags[$value['post_tag'] - 1] : 'Unknown';
-                                                                            ?>
-                                                                        </span>
-                                                                        category
-                                                                    </strong>
-                                                                </div>
-                                                                <?php endforeach; ?>
+                                            <div class="wv-ul">
+                                                <?php foreach (array_slice($getybcomment, 0, 15) as $key => $value) : ?>
+                                                    <div class="item d-flex justify-content-between">
+                                                        <div class="item-connect">
+                                                            <div class="connect-inner">
+                                                                <img style="border-radius: 50% 50% 50% 50%;"  src="<?= htmlspecialchars($value['avatar'], ENT_QUOTES, 'UTF-8') ?>" width="40" height="40">
                                                             </div>
+                                                        </div>
+                                                        <div class="item-inner">
+                                                            <div class="sts d-flex justify-content-between align-items-center">
+                                                                <div class="time">
+                                                                    <i class="fas fa-question-circle mr-2"></i><?= $value['created_at'] ?>
+                                                                </div>
+                                                            </div>
+                                                            <div class="subject">
+                                                                <div>
+                                                                    <strong> <?= strtoupper("<span style='color: #FFD700;'>{$value['username']}</span>") ?></strong> <?php 
+if ($value['from'] == 1) {
+  echo "created Post";
+}
+elseif ($value['from'] == 2) {
+  echo "commented on Post";
+}
+?>
+                                                                    <a href="<?= base_url('community/post/' . $value['post_id'] . '/' . $value['post_head']) ?>" class="highlight-text"><?= "<span style='color:red'>" . $value['post_head'] . "</span>" ?></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                <?php endforeach; ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
