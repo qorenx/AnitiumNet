@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3306
--- Üretim Zamanı: 31 May 2023, 10:34:57
+-- Üretim Zamanı: 11 Haz 2023, 14:25:30
 -- Sunucu sürümü: 8.0.31
 -- PHP Sürümü: 8.2.0
 
@@ -83,12 +83,12 @@ CREATE TABLE IF NOT EXISTS `anime` (
 INSERT INTO `anime` (`id`, `uid`, `ani_name`, `ani_jname`, `ani_synonyms`, `ani_genre`, `ani_type`, `ani_country`, `ani_stats`, `ani_source`, `ani_ep`, `ani_synopsis`, `ani_poster`, `ani_wallpaper`, `ani_release`, `ani_release_season`, `ani_rate`, `ani_score`, `ani_raw`, `ani_sub`, `ani_dub`, `ani_turk`, `ani_time`, `ani_pv`, `ani_aired`, `ani_aired_fin`, `ani_studio`, `ani_producers`, `ani_offical_site`, `ani_manga_url`, `view_count`, `view_count_month`, `view_count_years`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 2928, '.hack//G.U. Returner', '.HACK//G.U. RETURNER', '.hack//G.U. Returner', 'Adventure,Drama,Fantasy', 3, 1, 2, 3, '1', 'The characters from previous .hack//G.U. Games and .hack//Roots receive an email from Ovan. He is requesting them to go to Hidden Forbidden Festival where is set up a mysterious summer festival. There they find an AIDA Chim Chim who wishes to peacefully co-exist with the other players of The World. It then transforms into the word \"Returner\", so they assume it to mean that Ovan will return to The World.\r\n\r\n(Source: ANN)', '/uploads/1684676700_d5568af10b258f61d704.jpg', '/uploads/1684676700_d5568af10b258f61d704.jpg', '2007', 3, 3, '6.67', 0, 0, 0, 0, '', '', '0000-00-00', '0000-00-00', '', '', '', '', 15, 15, 15, '2023-05-20 10:40:46', '2023-05-20 13:59:28', NULL),
 (2, 5525, '07-Ghost', 'セブンゴースト ', '07 Ghost, Seven Ghost, 7 Ghosts, The Seven Ghosts ', 'Military,Mythology,Action,Fantasy', 1, 1, 2, 1, '25', 'Barsburg Empire\'s Military Academy is known for training elites who bring victory to the empire. Students of the academy freely utilize an ability called \"Zaiphon\" to fight, while the types of Zaiphon usable depends on the nature of the soldier.\r\n\r\nTeito Klein, a student at the academy, is one of the most promising soldiers produced. Although ridiculed by everyone for being a sklave (German for slave) with no memories of his past, he is befriended by a fellow student called Mikage. While preparing for the final exam, Teito uncovers a dark secret related to his past. When an attempt to assassinate Ayanami, a high-ranking official who killed his father, fails, Teito is locked away awaiting punishment.\r\n\r\nOnly wanting the best for Teito, Mikage helps him escape. Teito ends up at the 7th District Church where he is taken in by the bishops. It is here that Teito attempts to evade the grasp of Ayanami and the Military, so he can rediscover his memories and learn why he is the person that can change the fate of the world.', '/uploads/1684676934_79ca14950699155aa040.jpg', '/uploads/1684676934_79ca14950699155aa040.jpg', '2009', 2, 3, '7.20', 0, 0, 0, 0, '', '', '0000-00-00', '0000-00-00', '', '', '', '', 4, 4, 4, '2023-05-20 11:34:32', '2023-05-20 12:35:05', NULL),
-(3, 52830, 'Isekai de Cheat Skill wo Te ni Shita Ore wa, Genjitsu Sekai wo mo Musou Suru: Level Up wa Jinsei wo Kaeta', '異世界でチート能力を手にした俺は、現実世界をも無双する ～レベルアップは人生を変えた～ ', 'Iseleve', 'Action,Adventure,Fantasy,Isekai,School', 1, 1, 1, 1, '13', 'All his life, Yuuya Tenjou has been the subject of resentment and contempt from everyone around him, even from his parents. To make matters worse, his grandfather—the only person who ever showed him affection—suddenly dies, leaving Yuuya truly alone.\r\n\r\nDespite facing many adversities, Yuuya does what he can to offer kindness to those who need it—but even the most good-natured people can only tolerate so much abuse. Just when he reaches his breaking point, a flicker of hope appears in the form of a hidden door in his bathroom.\r\n\r\nThis door provides two-way access to an abandoned house in another world, where he instantly gains game-like stats and skills. Moreover, the house once belonged to a sage, which gives Yuuya access to remarkable weapons, equipment, and crops with extraordinary effects. With these newfound blessings, the once-undesirable Yuuya may just reach his true potential and become unstoppable.', '/uploads/1684676967_317a283b0b0251859311.jpg', '/uploads/1684676989_a7a9d00a5341b131612c.jpg', '2023', 2, 3, '6.85', 0, 1, 0, 0, '24m', 'https://www.youtube.com/watch?v=TGYsZ-qhXvE&', '2023-04-07', '2023-10-10', 'Millepensee', '', 'https://www.iseleve.com/', '', 19, 19, 19, '2023-05-20 12:41:59', '2023-05-24 15:01:43', NULL),
+(3, 52830, 'Isekai de Cheat Skill wo Te ni Shita Ore wa, Genjitsu Sekai wo mo Musou Suru: Level Up wa Jinsei wo Kaeta', '異世界でチート能力を手にした俺は、現実世界をも無双する ～レベルアップは人生を変えた～ ', 'Iseleve', 'Action,Adventure,Fantasy,Isekai,School', 1, 1, 1, 1, '13', 'All his life, Yuuya Tenjou has been the subject of resentment and contempt from everyone around him, even from his parents. To make matters worse, his grandfather—the only person who ever showed him affection—suddenly dies, leaving Yuuya truly alone.\r\n\r\nDespite facing many adversities, Yuuya does what he can to offer kindness to those who need it—but even the most good-natured people can only tolerate so much abuse. Just when he reaches his breaking point, a flicker of hope appears in the form of a hidden door in his bathroom.\r\n\r\nThis door provides two-way access to an abandoned house in another world, where he instantly gains game-like stats and skills. Moreover, the house once belonged to a sage, which gives Yuuya access to remarkable weapons, equipment, and crops with extraordinary effects. With these newfound blessings, the once-undesirable Yuuya may just reach his true potential and become unstoppable.', '/uploads/1684676967_317a283b0b0251859311.jpg', '/uploads/1684676989_a7a9d00a5341b131612c.jpg', '2023', 2, 3, '6.85', 0, 1, 0, 0, '24m', 'https://www.youtube.com/watch?v=TGYsZ-qhXvE&', '2023-04-07', '2023-10-10', 'Millepensee', 'TMS Entertainment,Tokyo MX,BS11,Kadokawa,CTW', 'https://www.iseleve.com/', '', 46, 46, 46, '2023-05-20 12:41:59', '2023-05-24 15:01:43', NULL),
 (4, 51693, 'Kaminaki Sekai no Kamisama Katsudou', '神無き世界のカミサマ活動 ', 'Kamikatsu, What God Does in a World Without Gods ', 'Action,Comedy,Fantasy,Isekai,Parody,Reincarnation,Seinen', 1, 1, 1, 1, '12', 'Under the belief that the omnipotent god Mitama will come to save him, Yukito Urabe participates in a ritual to become the new leader of his father\'s cult. But when the boy drowns during the ritual, he wishes to be reborn in a world without gods or religion.\r\n\r\nReawakening in a completely different world devoid of spirituality. He meets a deviant girl named Aruaru, who introduces him to her village. However, his idyllic image of this world\'s society is short-lived when he witnesses a public group suicide and learns of the country\'s end-of-life system: at any moment, the government may order any citizen to die.\r\n\r\nAruaru and her sister are forcibly taken for execution soon after, prompting Yukito to rush to their rescue—but to no avail. In a moment of desperation, Yukito recalls his father\'s teachings and utters a prayer for Mitama to save them. Seemingly answering his call, a little girl descends from the sky and annihilates everyone who harmed Yukito and his friends. To Yukito\'s surprise, the girl introduces herself as Mitama.', '/uploads/1684677013_dbac9b9447828112594a.jpg', '/uploads/1684677036_a25b88aa2367674f8a3e.jpg', '2023', 2, 4, '6.84', 0, 1, 0, 0, '23m', 'https://www.youtube.com/watch?v=2X1HKlgK3rU&', '2023-04-06', '2023-10-10', 'Studio Palette', '', 'https://kamikatsu-anime.jp/', '', 2, 2, 2, '2023-05-20 13:29:12', '2023-05-24 15:01:32', NULL),
 (5, 51009, 'Jujutsu Kaisen 2nd Season', '呪術廻戦', 'Sorcery Fight, JJK ', 'Action,Fantasy,School,Shounen', 1, 1, 3, 1, '24', 'Second season of Jujutsu Kaisen.', '/uploads/1684677055_74df4bc2694f11b56b0b.jpg', '/uploads/1684677055_74df4bc2694f11b56b0b.jpg', '2023', 3, 4, 'N/A', 0, 0, 0, 0, '', '', '0000-00-00', '0000-00-00', '', '', '', '', 1, 1, 1, '2023-05-20 18:21:34', '2023-05-20 18:26:12', NULL),
 (6, 51179, 'Mushoku Tensei II: Isekai Ittara Honki Dasu', '無職転生 II ～異世界行ったら本気だす～ ', 'Jobless Reincarnation: I Will Seriously Try If I Go To Another World, Mushoku Tensei: Isekai Ittara Honki Dasu 2nd Season ', 'Drama,Fantasy,Ecchi,Isekai,Reincarnation', 1, 1, 3, 2, '13', 'Second season of Mushoku Tensei: Isekai Ittara Honki Dasu.', '/uploads/1684677080_8e7fec3fe35c2c94ba6f.jpg', '/uploads/1684677080_8e7fec3fe35c2c94ba6f.jpg', '2023', 3, 4, 'N/A', 0, 0, 0, 0, '', '', '0000-00-00', '0000-00-00', '', '', '', '', 0, 0, 0, '2023-05-20 18:23:33', '2023-05-20 18:23:33', NULL),
 (7, 51498, 'Masamune-kun no Revenge R', '政宗くんのリベンジR ', 'Masamune-kun\'s Revenge R', 'Shounen,Harem,School,Comedy,Romance', 1, 1, 3, 1, '12', 'Second season of Masamune-kun no Revenge.', '/uploads/1684677105_3bfbb84f4ae450c9671c.jpg', '/uploads/1684677105_3bfbb84f4ae450c9671c.jpg', '2023', 3, 4, 'N/A', 0, 0, 0, 0, '', '', '0000-00-00', '0000-00-00', '', '', '', '', 0, 0, 0, '2023-05-20 18:25:39', '2023-05-20 18:25:39', NULL),
-(8, 53998, 'Bleach: Sennen Kessen-hen - Ketsubetsu-tan', 'BLEACH 千年血戦篇-訣別譚- ', 'Bleach: Thousand-Year Blood War Arc ', 'Action,Adventure,Fantasy,Shounen', 1, 1, 3, 1, '24', 'Second cour of Bleach: Sennen Kessen-hen.', '/uploads/1684677130_f28a949a276bdb3d973f.jpg', '/uploads/1684677130_f28a949a276bdb3d973f.jpg', '2023', 3, 3, 'N/A', 0, 0, 0, 0, '', '', '0000-00-00', '0000-00-00', '', '', '', '', 1, 1, 1, '2023-05-20 18:28:06', '2023-05-21 08:23:00', NULL),
+(8, 53998, 'Bleach: Sennen Kessen-hen - Ketsubetsu-tan', 'BLEACH 千年血戦篇-訣別譚- ', 'Bleach: Thousand-Year Blood War Arc ', 'Action,Adventure,Fantasy,Shounen', 1, 1, 3, 1, '24', 'Second cour of Bleach: Sennen Kessen-hen.', '/uploads/1684677130_f28a949a276bdb3d973f.jpg', '/uploads/1684677130_f28a949a276bdb3d973f.jpg', '2023', 3, 3, 'N/A', 0, 0, 0, 0, '', '', '0000-00-00', '0000-00-00', '', '', '', '', 2, 2, 2, '2023-05-20 18:28:06', '2023-05-21 08:23:00', NULL),
 (9, 53050, 'Kanojo, Okarishimasu 3rd Season', '彼女、お借りします ', 'Kanokari', 'Shounen,Comedy,Romance', 1, 1, 3, 1, '12', 'Third season of Kanojo, Okarishimasu.', '/uploads/1684677159_50c7cae52da9a08762c0.jpg', '/uploads/1684677159_50c7cae52da9a08762c0.jpg', '2023', 3, 1, 'N/A', 0, 0, 0, 0, '', '', '0000-00-00', '0000-00-00', '', '', '', '', 0, 0, 0, '2023-05-20 18:29:39', '2023-05-20 18:29:39', NULL),
 (10, 54856, 'Horimiya: Piece', 'ホリミヤ -piece- ', 'Horimiya: Piece', 'Shounen,School,Romance', 1, 1, 3, 1, '12', 'Featuring stories from the manga not adapted in the main anime.', '/uploads/1684677184_27e28d7cc5da3473d231.jpg', '/uploads/1684677184_27e28d7cc5da3473d231.jpg', '2023', 3, 2, 'N/A', 0, 0, 0, 0, '', '', '0000-00-00', '0000-00-00', '', '', '', '', 0, 0, 0, '2023-05-20 18:30:59', '2023-05-20 18:30:59', NULL),
 (11, 54898, 'Bungou Stray Dogs 5th Season', '文豪ストレイドッグス ', 'Bungou Stray Dogs 5th Season', 'Seinen,Action,Mystery,Supernatural', 1, 1, 3, 1, '24', 'Fifth Season of Bungou Stray Dogs', '/uploads/1684677202_00fb8ca8067f2d25ec81.jpg', '/uploads/1684677202_00fb8ca8067f2d25ec81.jpg', '2023', 3, 2, 'N/A', 0, 0, 0, 0, '', '', '0000-00-00', '0000-00-00', '', '', '', '', 0, 0, 0, '2023-05-20 18:33:26', '2023-05-20 18:33:26', NULL),
@@ -103,7 +103,7 @@ INSERT INTO `anime` (`id`, `uid`, `ani_name`, `ani_jname`, `ani_synonyms`, `ani_
 (20, 49894, 'Eiyuu Kyoushitsu', '英雄教室', 'Class Room✿For Heroes', 'Harem,School,Action,Fantasy,Ecchi', 1, 1, 3, 2, '12', 'A long time ago, there existed a Demon Lord who terrorized throughout the world until a Hero stepped up to the stage and challenged the Demon Lord, ultimately defeating him and ending his reign. The Hero then created Rosewood Academy, an academy made to help heroes-in-training achieve supremacy and help defend the world when needed that enrolls only the best of the best.\r\n\r\nEnter Arnest Flaming, a girl with a high sense of duty and the top student at the academy, hence receiving the alias \"Empress of Flames\" who one day encounters the lively, carefree new transfer student Blade, a boy who seems to equal her in power, something that she finds really irritating. Arnest was then personally requested by The King to supervise, and show Blade around the academy during his stay. The story follows the students\' struggles in their quest to become heroes. ', '/uploads/1684677401_bff094680ccad8131dea.jpg', '/uploads/1684677401_bff094680ccad8131dea.jpg', '2023', 3, 3, 'N/A', 0, 0, 0, 0, '', '', '0000-00-00', '0000-00-00', '', '', '', '', 5, 5, 5, '2023-05-20 18:52:32', '2023-05-24 15:00:49', NULL),
 (21, 50220, 'Isekai Shoukan wa Nidome desu', '異世界召喚は二度目です ', 'Isenido', 'Harem,Isekai,Adventure,Comedy,Fantasy,Romance', 1, 1, 1, 1, '12', 'There was once a man who was summoned to another world, and saved it. Of course, he became too popular there, and turned into an isekai-normie. However, that man fell into a \"trap\" and was forcibly returned to his original world. Moreover, he had to start over as a baby!\r\n\r\nThis is the story of the way-too-fantastic ex-hero who lived as a gloomy high-schooler, as he gets summoned once again to that same other world in a very unexpected development! ', '/uploads/1684677420_7a5cd8cf82265c756b88.jpg', '/uploads/1684677435_4b17904e0905ad3f3692.jpg', '2023', 2, 3, '6.28', 0, 1, 0, 0, '23m', 'https://www.youtube.com/watch?v=ruMkHYL9hsw&', '2023-04-09', '2023-10-10', 'Studio Elle', '', 'https://isenido.com/', '', 1, 1, 1, '2023-05-20 19:10:49', '2023-05-20 19:16:05', NULL),
 (22, 50307, 'Tonikaku Kawaii 2nd Season', 'トニカクカワイイ ', 'TONIKAWA: Over The Moon For You Season 2 ', 'Shounen,Comedy,Romance', 1, 1, 1, 1, '12', 'In the wake of their first home burning down, Nasa and Tsukasa Yuzaki are seeking temporary shelter at the Arisugawas\' bathhouse. Though they have only been married for a short time, their relationship has only become sweeter by the day. Nasa is determined to spend as much time with his wife as possible, basking in the happiness of their marriage.\r\n\r\nThe newlyweds find new ways to explore their relationship. From adopting a cat, going to an amusement park, and even watching an impromptu romantic comedy featuring Nasa\'s former teacher, every day is a new experience. But while Tsukasa continues to meet the people in Nasa\'s life, Nasa has yet to meet more of Tsukasa\'s family. Though they appear to be the picture-perfect couple to everyone around them, Nasa begins to wonder if he will ever learn more about his wife\'s mysterious past.', '/uploads/1684677453_f4dcab468060c09dc76b.jpg', '/uploads/1684677453_f4dcab468060c09dc76b.jpg', '2023', 2, 3, '7.91', 0, 1, 0, 0, '24m', 'https://www.youtube.com/watch?v=r0buvRyo_LE&', '2023-04-08', '2023-10-10', 'SevenArcs', 'Shogakukan-Shueisha Productions,Warner Bros. Japan,KlockWorx,Shogakukan,Crunchyroll', 'https://tonikawa.com/', '', 26, 26, 26, '2023-05-20 19:33:43', '2023-05-24 14:04:25', NULL),
-(23, 51706, 'Yuusha ga Shinda!', '勇者が死んだ！', 'The Hero Is Dead! ', 'Harem,Parody,Action,Comedy,Fantasy,Ecchi', 1, 1, 1, 1, '12', 'Far to the north of the world lies Hell\'s Gate, a portal formerly used by the Demon Lord to invade the human realm. Thanks to the legendary hero Shion Bladearts, wielder of Excalibur, and his loyal band of companions, the Gate was sealed off and the demonic threat was vanquished.\r\n\r\nUnfortunately, the seal was incomplete and has begun to weaken, allowing the demons to once again begin their attack. Worried about the safety of his village, selfish and perverted farmer Touka Scott dig pitfalls to defend against the demons. But fear not, for Shion is on his way to reseal Hell\'s Gate and save humanity!\r\n\r\nOr at least he was, because the legendary hero is dead, having fallen into one of the pitfalls Touka dug. Luckily, dealing with the dead is the specialty of necromancer Anri Haynesworth. While she can\'t revive him, Anri can at least salvage their quest by forcing Touka\'s soul into Shion\'s rotting body and dragging him along to Hell\'s Gate in Shion\'s place. Not wanting to be left behind, Touka\'s childhood friend Yuna Yunis tags along. Together, the three of them set out as what just might be the most unsuitable party to ever try to save the world!\r\n', '/uploads/1684677485_b3785ec5829143119afd.jpg', '/uploads/1684677504_6fc183d96c35ddc1c6f7.jpg', '2023', 2, 3, '6.31', 0, 1, 0, 0, '23m', 'https://www.youtube.com/watch?v=nXHdXB-u7r8&', '2023-04-07', '2023-10-10', 'LIDENFILMS', '', 'https://heroisdead.com/', '', 2, 2, 2, '2023-05-20 19:55:06', '2023-05-24 15:01:34', NULL),
+(23, 51706, 'Yuusha ga Shinda!', '勇者が死んだ！', 'The Hero Is Dead! ', 'Harem,Parody,Action,Comedy,Fantasy,Ecchi', 1, 1, 1, 1, '12', 'Far to the north of the world lies Hell\'s Gate, a portal formerly used by the Demon Lord to invade the human realm. Thanks to the legendary hero Shion Bladearts, wielder of Excalibur, and his loyal band of companions, the Gate was sealed off and the demonic threat was vanquished.\r\n\r\nUnfortunately, the seal was incomplete and has begun to weaken, allowing the demons to once again begin their attack. Worried about the safety of his village, selfish and perverted farmer Touka Scott dig pitfalls to defend against the demons. But fear not, for Shion is on his way to reseal Hell\'s Gate and save humanity!\r\n\r\nOr at least he was, because the legendary hero is dead, having fallen into one of the pitfalls Touka dug. Luckily, dealing with the dead is the specialty of necromancer Anri Haynesworth. While she can\'t revive him, Anri can at least salvage their quest by forcing Touka\'s soul into Shion\'s rotting body and dragging him along to Hell\'s Gate in Shion\'s place. Not wanting to be left behind, Touka\'s childhood friend Yuna Yunis tags along. Together, the three of them set out as what just might be the most unsuitable party to ever try to save the world!\r\n', '/uploads/1684677485_b3785ec5829143119afd.jpg', '/uploads/1684677504_6fc183d96c35ddc1c6f7.jpg', '2023', 2, 3, '6.31', 0, 1, 0, 0, '23m', 'https://www.youtube.com/watch?v=nXHdXB-u7r8&', '2023-04-07', '2023-10-10', 'LIDENFILMS', '', 'https://heroisdead.com/', '', 3, 3, 3, '2023-05-20 19:55:06', '2023-05-24 15:01:34', NULL),
 (24, 35507, 'Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e', 'ようこそ実力至上主義の教室へ', 'Welcome to the Classroom of the Elite, You-jitsu ', 'Psychological,School,Drama', 1, 1, 2, 2, '12', 'On the surface, Koudo Ikusei Senior High School is a utopia. The students enjoy an unparalleled amount of freedom, and it is ranked highly in Japan. However, the reality is less than ideal. Four classes, A through D, are ranked in order of merit, and only the top classes receive favorable treatment.\r\n\r\nKiyotaka Ayanokouji is a student of Class D, where the school dumps its worst. There he meets the unsociable Suzune Horikita, who believes she was placed in Class D by mistake and desires to climb all the way to Class A, and the seemingly amicable class idol Kikyou Kushida, whose aim is to make as many friends as possible.\r\n\r\nWhile class membership is permanent, class rankings are not; students in lower ranked classes can rise in rankings if they score better than those in the top ones. Additionally, in Class D, there are no bars on what methods can be used to get ahead. In this cutthroat school, can they prevail against the odds and reach the top?', '/uploads/1684677520_6a8b1beb1f104e13af80.jpg', '/uploads/1684677520_6a8b1beb1f104e13af80.jpg', '2017', 3, 3, '7.86', 0, 1, 0, 0, '23m', 'https://www.youtube.com/watch?v=Nd9vsmPKVq0&', '2017-07-12', '2017-09-27', 'Lerche', '', 'http://you-zitsu.com/', '', 10, 9, 9, '2023-05-20 20:26:14', '2023-05-24 15:13:13', NULL),
 (26, 51096, 'Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e 2nd Season', 'ようこそ実力至上主義の教室へ 2期 ', 'Classroom of the Elite 2nd Season, You-jitsu 2nd Season, You-zitsu 2nd Season ', 'Psychological,School,Drama,Suspense', 1, 1, 2, 2, '13', 'Life back on the cruise following the Island Special Examination is anything but smooth sailing. Almost immediately after their return, the first-year students of Tokyo Metropolitan Advanced Nurturing High School face yet another special exam, with both class and individual points on the line.\r\n\r\nIn addition to the complicated ruleset, more issues arise in the form of Kakeru Ryuuen and Kei Karuizawa. Angered by the previous test\'s outcome, Ryuuen is dead set on outdoing every class in the new challenge using any means necessary. Meanwhile, Karuizawa, a crucial pillar of Class D, is close to crumbling under the pressure of her past.\r\n\r\nThe stage is now set for Kiyotaka Ayanokouji to once again—using the full extent of his planning, foresight, and ruthless manipulation—steer Class D to victory as dangerously close enemy forces try to bring it down.', '/uploads/1684673543_c02d1e3694ad01ff0d54.jpg', '/uploads/1684674146_c5bd6c0aa1770acf5d2c.png', '2022', 3, 3, '8.14', 0, 1, 0, 0, '24m', 'https://www.youtube.com/watch?v=tn1lJvRqWtM&', '2022-07-04', '2022-09-26', 'Lerche', '', 'http://you-zitsu.com/', '', 53, 53, 53, '2023-05-21 13:05:34', '2023-05-24 15:02:38', NULL);
 
@@ -216,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `auth_groups_users` (
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `auth_groups_users_user_id_foreign` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Tablo döküm verisi `auth_groups_users`
@@ -224,7 +224,8 @@ CREATE TABLE IF NOT EXISTS `auth_groups_users` (
 
 INSERT INTO `auth_groups_users` (`id`, `user_id`, `group`, `created_at`) VALUES
 (1, 1, 'superadmin', '2023-05-12 19:52:20'),
-(2, 2, 'user', '2023-05-16 15:20:43');
+(2, 2, 'user', '2023-05-16 15:20:43'),
+(3, 3, 'user', '2023-06-11 08:09:00');
 
 -- --------------------------------------------------------
 
@@ -249,15 +250,16 @@ CREATE TABLE IF NOT EXISTS `auth_identities` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `type_secret` (`type`,`secret`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Tablo döküm verisi `auth_identities`
 --
 
 INSERT INTO `auth_identities` (`id`, `user_id`, `type`, `name`, `secret`, `secret2`, `expires`, `extra`, `force_reset`, `last_used_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 'email_password', NULL, 'akaisora09@gmail.com', '$2y$10$fNW/eSalcB5LeMBF152cCO1d66QFBnVDaPNO10.xpZ8PPyW6J4a/m', NULL, NULL, 0, '2023-05-31 06:52:46', '2023-05-12 19:52:20', '2023-05-31 06:52:46'),
-(2, 2, 'email_password', NULL, 'test123@gmail.com', '$2y$10$HIICb90g2f/6JJHXcXF5x.TSS.2YliEaC7WS444vS/8jocB9K6U5a', NULL, NULL, 0, NULL, '2023-05-16 15:20:43', '2023-05-16 15:20:43');
+(1, 1, 'email_password', NULL, 'akaisora09@gmail.com', '$2y$10$fNW/eSalcB5LeMBF152cCO1d66QFBnVDaPNO10.xpZ8PPyW6J4a/m', NULL, NULL, 0, '2023-06-11 13:35:28', '2023-05-12 19:52:20', '2023-06-11 13:35:28'),
+(2, 2, 'email_password', NULL, 'test123@gmail.com', '$2y$10$HIICb90g2f/6JJHXcXF5x.TSS.2YliEaC7WS444vS/8jocB9K6U5a', NULL, NULL, 0, NULL, '2023-05-16 15:20:43', '2023-05-16 15:20:43'),
+(3, 3, 'email_password', NULL, 'test@test.com', '$2y$10$AQO7pnXJp7ye96A.1q2BQOkWmj/yGeGPiMBc72SUx.iDfh99mBypC', NULL, NULL, 0, NULL, '2023-06-11 08:09:00', '2023-06-11 08:09:00');
 
 -- --------------------------------------------------------
 
@@ -278,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `auth_logins` (
   PRIMARY KEY (`id`),
   KEY `id_type_identifier` (`id_type`,`identifier`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Tablo döküm verisi `auth_logins`
@@ -323,7 +325,17 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `user_agent`, `id_type`, `identif
 (36, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-05-25 12:19:44', 1),
 (37, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-05-25 13:07:20', 1),
 (38, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-05-29 10:22:07', 1),
-(39, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-05-31 06:52:46', 1);
+(39, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-05-31 06:52:46', 1),
+(40, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-02 15:36:46', 1),
+(41, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-03 10:05:45', 1),
+(42, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-04 12:41:00', 1),
+(43, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-07 14:50:00', 1),
+(44, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-07 18:05:42', 1),
+(45, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-07 18:08:57', 1),
+(46, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-08 08:21:30', 1),
+(47, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-08 12:17:33', 1),
+(48, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-11 08:02:10', 1),
+(49, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-11 13:35:28', 1);
 
 -- --------------------------------------------------------
 
@@ -402,14 +414,16 @@ CREATE TABLE IF NOT EXISTS `community` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `community`
 --
 
 INSERT INTO `community` (`id`, `user_id`, `post_id`, `post_tag`, `post_head`, `post_content`, `post_rep`, `post_disrep`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 898656356, 2, 'Hello! ', 'Welcome Anitium!', 0, 0, '2023-05-24 14:09:22', '2023-05-24 14:09:22', NULL);
+(1, 1, 898656356, 2, 'Hello! ', 'Welcome Anitium!', 0, 0, '2023-05-24 14:09:22', '2023-05-24 14:09:22', NULL),
+(2, 3, 223413779, 2, 'Hello Word!', 'My DOc\r\n12143', 0, 0, '2023-06-11 09:56:15', '2023-06-11 09:56:15', NULL),
+(3, 3, 807017952, 4, 'where you where we boodddoo  rooo le loce ', '124125  v51221v51v51 51v215', 0, 0, '2023-06-11 13:34:53', '2023-06-11 13:34:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -429,7 +443,7 @@ CREATE TABLE IF NOT EXISTS `community_post` (
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `community_post`
@@ -437,7 +451,10 @@ CREATE TABLE IF NOT EXISTS `community_post` (
 
 INSERT INTO `community_post` (`id`, `user_id`, `post_id`, `post_content`, `post_rep`, `post_disrep`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 898656356, 'Good job.', 0, 0, '2023-05-24 14:29:19', '2023-05-24 14:29:19', NULL),
-(2, 1, 898656356, 'Bolos', 0, 0, '2023-05-24 14:40:26', '2023-05-24 14:40:26', NULL);
+(2, 1, 898656356, 'Bolos', 0, 0, '2023-05-24 14:40:26', '2023-05-24 14:40:26', NULL),
+(3, 3, 223413779, 'qwq', 0, 0, '2023-06-11 11:05:22', '2023-06-11 11:05:22', NULL),
+(4, 3, 807017952, '1525', 0, 0, '2023-06-11 13:35:09', '2023-06-11 13:35:09', NULL),
+(5, 1, 807017952, '12414', 0, 0, '2023-06-11 13:35:41', '2023-06-11 13:35:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -464,7 +481,7 @@ CREATE TABLE IF NOT EXISTS `episode` (
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `episode`
@@ -497,13 +514,12 @@ INSERT INTO `episode` (`id`, `uid`, `ep_raw`, `ep_sub`, `ep_dub`, `ep_turk`, `ep
 (24, 5525, '', 'SUB', '', '', '23', 'Before the Darkness of the Heart', '', 0, 0, 0, '2023-05-20 11:43:33', '2023-05-20 11:43:33', NULL),
 (25, 5525, '', 'SUB', '', '', '24', 'The Justice of Those Who Lack Love is... . Oh Heart That is Stolen by Darkness, Forever...', '', 1, 1, 1, '2023-05-20 11:43:50', '2023-05-20 12:35:01', NULL),
 (26, 5525, '', 'SUB', '', '', '25', 'The Heart Is Led by the Truth Repeated on the Other Side...', '', 0, 0, 0, '2023-05-20 11:44:10', '2023-05-20 11:44:10', NULL),
-(27, 52830, '', 'SUB', '', '', '1', 'To Another World', '', 36, 36, 36, '2023-05-20 12:52:04', '2023-05-20 13:24:45', NULL),
+(27, 52830, '', 'SUB', '', '', '1', 'To Another World', '', 40, 40, 40, '2023-05-20 12:52:04', '2023-05-20 13:24:45', NULL),
 (28, 52830, '', 'SUB', '', '', '2', 'Ousei Academy', '', 2, 2, 2, '2023-05-20 12:52:22', '2023-05-20 13:21:26', NULL),
 (29, 52830, '', 'SUB', '', '', '3', 'Life Changes', '', 0, 0, 0, '2023-05-20 12:52:37', '2023-05-20 12:52:37', NULL),
 (30, 52830, '', 'SUB', '', '', '4', 'A Step of Courage', '', 0, 0, 0, '2023-05-20 12:52:54', '2023-05-20 12:52:54', NULL),
 (31, 52830, '', 'SUB', '', '', '5', 'New Family', '', 0, 0, 0, '2023-05-20 12:53:05', '2023-05-20 12:53:05', NULL),
 (32, 52830, '', 'SUB', '', '', '6', '', '', 1, 1, 1, '2023-05-20 13:14:08', '2023-05-20 13:23:04', NULL),
-(33, 52830, '', 'SUB', '', '', '7', '', '', 2, 2, 2, '2023-05-20 13:14:24', '2023-05-20 13:51:58', NULL),
 (34, 51693, '', 'SUB', '', '', '1', '', '', 8, 8, 8, '2023-05-20 13:32:17', '2023-05-20 13:50:30', NULL),
 (35, 51693, '', 'SUB', '', '', '2', 'We know we are not worthy great Lord Mitama Beautiful is—', '', 2, 2, 2, '2023-05-20 13:32:32', '2023-05-20 13:50:18', NULL),
 (36, 51693, '', 'SUB', '', '', '3', '', '', 0, 0, 0, '2023-05-20 13:32:38', '2023-05-20 13:32:38', NULL),
@@ -518,7 +534,7 @@ INSERT INTO `episode` (`id`, `uid`, `ep_raw`, `ep_sub`, `ep_dub`, `ep_turk`, `ep
 (45, 50220, '', 'SUB', '', '', '5', '', '', 0, 0, 0, '2023-05-20 19:16:36', '2023-05-20 19:16:36', NULL),
 (46, 50220, '', 'SUB', '', '', '6', '', '', 0, 0, 0, '2023-05-20 19:16:43', '2023-05-20 19:16:43', NULL),
 (47, 50220, '', 'SUB', '', '', '7', '', '', 2, 2, 2, '2023-05-20 19:17:02', '2023-05-20 19:28:21', NULL),
-(48, 50307, '', 'SUB', '', '', '1', 'All because of you', '', 15, 15, 15, '2023-05-20 19:37:24', '2023-05-24 14:22:18', NULL),
+(48, 50307, '', 'SUB', '', '', '1', 'All because of you', '', 19, 19, 19, '2023-05-20 19:37:24', '2023-05-24 14:22:18', NULL),
 (49, 50307, '', 'SUB', '', '', '2', 'On the Subject of Happiness', '', 0, 0, 0, '2023-05-20 19:37:39', '2023-05-20 19:37:39', NULL),
 (50, 50307, '', 'SUB', '', '', '3', 'Before the Fireworks Go Out', '', 0, 0, 0, '2023-05-20 19:37:52', '2023-05-20 19:37:52', NULL),
 (51, 50307, '', 'SUB', '', '', '4', '', '', 0, 0, 0, '2023-05-20 19:38:01', '2023-05-20 19:38:01', NULL),
@@ -544,7 +560,7 @@ INSERT INTO `episode` (`id`, `uid`, `ep_raw`, `ep_sub`, `ep_dub`, `ep_turk`, `ep
 (71, 35507, '', 'SUB', '', '', '10', 'Every man has in himself the most dangerous traitor of all', '', 0, 0, 0, '2023-05-20 20:31:47', '2023-05-20 20:31:47', NULL),
 (72, 35507, '', 'SUB', '', '', '11', 'What people commonly call fate is mostly their own stupidity.', '', 0, 0, 0, '2023-05-20 20:32:02', '2023-05-20 20:32:02', NULL),
 (73, 35507, '', 'SUB', '', '', '12', 'Genius lives only one story above madness.', '', 10, 10, 10, '2023-05-20 20:32:15', '2023-05-21 08:36:01', NULL),
-(74, 51096, '', 'SUB', '', '', '1', 'Remember to Keep a Clear Head in Difficult Times', '', 15, 15, 15, '2023-05-21 13:20:34', '2023-05-23 13:16:38', NULL),
+(74, 51096, '', 'SUB', '', '', '1', 'Remember to Keep a Clear Head in Difficult Times', '', 27, 27, 27, '2023-05-21 13:20:34', '2023-05-23 13:16:38', NULL),
 (75, 51096, '', '', '', '', '2', 'There Are Two Main Human Sins from Which All the Others Derive: Impatience and Indolence.', '', 0, 0, 0, '2023-05-21 13:20:46', '2023-05-21 13:20:46', NULL),
 (76, 51096, '', 'SUB', '', '', '3', 'The Greatest Souls Are Capable of the Greatest Vices as Well as of the Greatest Virtues.', '', 3, 3, 3, '2023-05-21 13:20:58', '2023-05-21 13:21:24', NULL),
 (77, 51096, '', 'SUB', '', '', '4', 'The Material Has to Be Created.', '', 0, 0, 0, '2023-05-21 13:21:56', '2023-05-21 13:21:56', NULL),
@@ -556,7 +572,10 @@ INSERT INTO `episode` (`id`, `uid`, `ep_raw`, `ep_sub`, `ep_dub`, `ep_turk`, `ep
 (83, 51096, '', 'SUB', '', '', '10', 'People, Often Deceived by An Illusive Good, Desire Their Own Ruin.', '', 0, 0, 0, '2023-05-21 13:25:05', '2023-05-21 13:25:05', NULL),
 (84, 51096, '', 'SUB', '', '', '11', 'A Man Who Cannot Command Himself Will Always Be a Slave.', '', 0, 0, 0, '2023-05-21 13:25:15', '2023-05-21 13:25:15', NULL),
 (85, 51096, '', 'SUB', '', '', '12', 'Force Without Wisdom Falls of Its Own Weight.', '', 1, 1, 1, '2023-05-21 13:25:33', '2023-05-24 14:48:07', NULL),
-(86, 51096, '', 'SUB', '', '', '13', 'The Worst Enemy You Can Meet Will Always Be Yourself.', '', 9, 9, 9, '2023-05-21 13:25:48', '2023-05-24 14:48:21', NULL);
+(86, 51096, '', 'SUB', '', '', '13', 'The Worst Enemy You Can Meet Will Always Be Yourself.', '', 14, 14, 14, '2023-05-21 13:25:48', '2023-05-24 14:48:21', NULL),
+(88, 52830, '', 'SUB', '', '', '8', '', '', 4, 4, 4, '2023-05-31 12:08:24', '2023-05-31 12:08:24', NULL),
+(89, 52830, '', 'SUB', '', '', '7', '', '', 1, 1, 1, '2023-05-31 12:09:27', '2023-05-31 12:09:27', NULL),
+(91, 52830, '', 'SUB', '', '', '9', '', '', 53, 53, 53, '2023-05-31 12:16:58', '2023-05-31 12:16:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -653,7 +672,7 @@ CREATE TABLE IF NOT EXISTS `episode_sub` (
   `sub_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `sub_frame` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=422 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=432 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `episode_sub`
@@ -1020,7 +1039,6 @@ INSERT INTO `episode_sub` (`id`, `uid`, `ep_sub_webconverter`, `sub_id`, `sub_na
 (362, 51096, 1, '1', 'PlayTaku', 'https://playtaku.online/streaming.php?id=MTg4NzQ2&title=Youkoso+Jitsuryoku+Shijou+Shugi+no+Kyoushitsu+e+%28TV%29+2nd+Season+Episode+1'),
 (363, 51096, 1, '1', 'Vidcdn', 'https://playtaku.online/embedplus?id=MTg4NzQ2&token=fuVIkyalzveNbyXeYYog1A&expires=1684682915'),
 (364, 51096, 1, '1', 'Streamsb', 'https://sbani.pro/e/sveu8qhwx1ek'),
-(365, 51096, 1, '1', 'Vidcdn', 'https://www.mp4upload.com/embed-hp6aasvwm98h.html'),
 (366, 51096, 1, '1', 'Doodstream', 'https://dood.wf/e/ncxr1rf8n9oo'),
 (367, 51096, 1, '2', 'PlayTaku', 'https://playtaku.online/streaming.php?id=MTg5MDMy&title=Youkoso+Jitsuryoku+Shijou+Shugi+no+Kyoushitsu+e+%28TV%29+2nd+Season+Episode+2'),
 (368, 51096, 1, '2', 'Vidcdn', 'https://playtaku.online/embedplus?id=MTg5MDMy&token=U6Ugrfeu-EoHU5DBrjZcZA&expires=1684683082'),
@@ -1076,7 +1094,17 @@ INSERT INTO `episode_sub` (`id`, `uid`, `ep_sub_webconverter`, `sub_id`, `sub_na
 (418, 51096, 1, '13', 'Vidcdn', 'https://playtaku.online/embedplus?id=MTkyODM2&token=Q4q5ypkazWrOwq5t9zXb1g&expires=1684683801'),
 (419, 51096, 1, '13', 'Streamsb', 'https://sbani.pro/e/cbcdbkwvzfqu'),
 (420, 51096, 1, '13', 'Mp4Upload', 'https://www.mp4upload.com/embed-v4f1rgchv2ga.html'),
-(421, 51096, 1, '13', 'Doodstream', 'https://dood.wf/e/t9j27xo1wgse');
+(421, 51096, 1, '13', 'Doodstream', 'https://dood.wf/e/t9j27xo1wgse'),
+(422, 52830, 1, '8', 'PlayTaku', 'https://gotaku1.com/streaming.php?id=MjA0ODEx&title=Isekai+de+Cheat+Skill+wo+Te+ni+Shita+Ore+wa%2C+Genjitsu+Sekai+wo+mo+Musou+Suru%3A+Level+Up+wa+Jinsei+wo+Kaeta+Episode+8'),
+(423, 52830, 1, '8', 'Vidcdn', 'https://gotaku1.com/embedplus?id=MjA0ODEx&token=FgxPl9WcR5sb2BooS0YEUg&expires=1685542074'),
+(424, 52830, 1, '8', 'Streamsb', 'https://sbani.pro/e/1v0ivz9sy43j'),
+(425, 52830, 1, '8', 'Mp4Upload', 'https://www.mp4upload.com/embed-b1oodo4yicyr.html'),
+(426, 52830, 1, '8', 'Doodstream', 'https://dood.wf/e/f0fqcf08hiyz'),
+(427, 52830, 1, '9', 'PlayTaku', 'https://gotaku1.com/streaming.php?id=MjA1MTUw&title=Isekai+de+Cheat+Skill+wo+Te+ni+Shita+Ore+wa%2C+Genjitsu+Sekai+wo+mo+Musou+Suru%3A+Level+Up+wa+Jinsei+wo+Kaeta+Episode+9'),
+(428, 52830, 1, '9', 'Vidcdn', 'https://gotaku1.com/embedplus?id=MjA1MTUw&token=HIUjjvjme5UuoFG7kTsr8w&expires=1685542360'),
+(429, 52830, 1, '9', 'Streamsb', 'https://sbani.pro/e/8amcfv48wnnf'),
+(430, 52830, 1, '9', 'Mp4Upload', 'https://www.mp4upload.com/embed-gqgb00aa4v5f.html'),
+(431, 52830, 1, '9', 'Doodstream', 'https://dood.wf/e/455ey89lvvbh');
 
 -- --------------------------------------------------------
 
@@ -1242,7 +1270,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` varchar(30) DEFAULT NULL,
   `avatar` varchar(255) NOT NULL DEFAULT 'http://lic.anitium.net/img/no-avatar.png',
-  `profil_header` varchar(255) NOT NULL DEFAULT 'http://lic.anitium.net/img/no-bg.jpg',
   `schedule_status` int NOT NULL DEFAULT '1',
   `raw_status` int NOT NULL DEFAULT '1',
   `sub_status` int NOT NULL DEFAULT '1',
@@ -1257,15 +1284,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Tablo döküm verisi `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `avatar`, `profil_header`, `schedule_status`, `raw_status`, `sub_status`, `dub_status`, `turk_status`, `status`, `status_message`, `active`, `last_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'akaisora09', 'https://wallpaper.dog/large/17048961.jpg', 'https://wallpaper.dog/large/17048961.jpg', 1, 1, 1, 1, 1, NULL, NULL, 1, NULL, '2023-05-12 19:52:20', '2023-05-12 19:52:20', NULL),
-(2, 'test123', 'https://img5.goodfon.com/wallpaper/nbig/9/21/girl-anime-wallpapers-anime-girl.jpg', 'https://wallpapers.com/images/hd/anime-city-43g4mfdzm6c5jzb8.jpg', 0, 0, 0, 0, 0, NULL, NULL, 1, NULL, '2023-05-16 15:20:43', '2023-05-16 15:20:43', NULL);
+INSERT INTO `users` (`id`, `username`, `avatar`, `schedule_status`, `raw_status`, `sub_status`, `dub_status`, `turk_status`, `status`, `status_message`, `active`, `last_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'akaisora09', 'https://wallpaper.dog/large/17048961.jpg', 1, 1, 1, 1, 1, NULL, NULL, 1, NULL, '2023-05-12 19:52:20', '2023-05-12 19:52:20', NULL),
+(2, 'test123', 'https://img5.goodfon.com/wallpaper/nbig/9/21/girl-anime-wallpapers-anime-girl.jpg', 0, 0, 0, 0, 0, NULL, NULL, 1, NULL, '2023-05-16 15:20:43', '2023-05-16 15:20:43', NULL),
+(3, 'test555', 'http://lic.anitium.net/img/no-avatar.png', 1, 1, 1, 1, 1, NULL, NULL, 1, NULL, '2023-06-11 08:09:00', '2023-06-11 08:09:00', NULL);
 
 -- --------------------------------------------------------
 

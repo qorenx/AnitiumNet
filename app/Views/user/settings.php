@@ -1,6 +1,6 @@
 <?= $this->include('anime/templates/header') ?>
 
-<body data-page="page_home" style="background-image: url('<?= auth()->user()->profil_header ?>'); background-attachment: fixed;">
+<body data-page="page_home">
     <div id="sidebar_menu_bg"></div>
     <div id="wrapper" data-page="page_home">
         <?= $this->include('anime/templates/head') ?>
@@ -23,7 +23,7 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <div class="container" style="background: midnightblue;">
+            <div class="container">
                 <form class="preform" method="post" id="profile-form" action="<?= base_url('/profil/update') ?>">
                     <input type="hidden" name="id" value="<?= auth()->user()->id ?>" class="form-control" readonly>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -49,16 +49,6 @@
                                     <input type="text" value="<?= auth()->user()->avatar ?>" class="form-control" name="avatar" id="avatar">
                                 </div>
                                 <img src="<?= auth()->user()->avatar ?>" alt="Avatar Preview" style="width:100px; height:100px;" />
-                            </div>
-                            <div class="form-group">
-                                <label class="prelabel" for="profil_header">Profil Header</label>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="profil-header-addon"><i class="fa fa-fw fa-image"></i></span>
-                                    </div>
-                                    <input type="text" value="<?= auth()->user()->profil_header ?>" class="form-control" name="profil_header" id="profil_header">
-                                </div>
-                                <img src="<?= auth()->user()->profil_header ?>" alt="Profil Header Preview" style="width:100px; height:100px;" />
                             </div>
                         </div>
                         <div class="tab-pane fade" id="schedule" role="tabpanel" aria-labelledby="schedule-tab">

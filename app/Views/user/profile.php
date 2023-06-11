@@ -1,6 +1,6 @@
 <?= $this->include('anime/templates/header') ?>
 
-<body data-page="page_home" style="background-image: url('<?= auth()->user()->profil_header ?>'); background-attachment: fixed;">
+<body data-page="page_home">
     <div id="sidebar_menu_bg"></div>
     <div id="wrapper" data-page="page_home">
         <?= $this->include('anime/templates/head') ?>

@@ -1,6 +1,6 @@
 <?= $this->include('anime/templates/header') ?>
 
-<body data-page="page_home" style="background-image: url('<?= $getuserdata->profil_header ?>'); background-attachment: fixed;">
+<body data-page="page_home">
     <div id="sidebar_menu_bg"></div>
     <div id="wrapper" data-page="page_home">
         <?= $this->include('anime/templates/head') ?>
@@ -80,7 +80,7 @@
 
                         </div>
                         <div class="clearfix"></div>
-                        <div style="background-color: #00000094;" class="pre-pagination mt-5 mb-5">
+                        <div class="pre-pagination mt-5 mb-5">
                             <nav aria-label="Page navigation">
                                 <ul class="pagination pagination-lg justify-content-center">
                                     <ul class="ulclear az-list">
