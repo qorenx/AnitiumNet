@@ -68,11 +68,10 @@ $routes->post('episodepost/delete', 'Anime::episodecommentdelete');   //episodep
 
 ///üye kısmı
 $routes->get('user/register', 'Anime::userregister');   // userprofile
-
-
-
-$routes->get('user/(:any)/(:any)', 'Anime::userprofile/$1/$2');
-$routes->get('user/(:any)', 'Anime::userprofile/$1');
+$routes->group('user', ['filter' => 'group:user,admin,superadmin'], function ($routes) {
+$routes->get('(:any)/(:any)', 'Anime::userprofile/$1/$2');
+$routes->get('(:any)', 'Anime::userprofile/$1');
+});
 
 
 $routes->group('community', function ($routes) {
