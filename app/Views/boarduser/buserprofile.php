@@ -96,19 +96,34 @@
                                 <div class="wv wv-mine">
                                     <div class="wv-list">
                                         <div class="wv-title d-flex align-items-center">
-                                            <div style="background-color: #00000094;" class="name mr-3">Latest Comment</div>
+                                            <div style="background-color: #00000094;" class="name mr-3">History</div>
                                         </div>
                                         <div id="im-latest" class="tab-pane">
                                             <div class="wv-ul" style="background-color: #00000094;">
                                                 <div class="item d-flex justify-content-between">
                                                     <div class="item-inner">
-                                                        <?php foreach (array_slice($getcomment, 0, 15) as $key => $value) : ?>
                                                             <div class="subject">
+                                                            <?php foreach (array_slice($getybcomment, 0, 15) as $key => $value) : ?>
                                                                 <div>
-                                                                    <i class="fas fa-comment mr-2"></i><strong><?php echo $value['post_content']; ?></strong>
+                                                                    <i class="fas fa-comment mr-2"></i>
+                                                                    <strong>
+                                                                        <?= strtoupper("<span style='color: #FFD700;'>{$value['username']}</span>") ?> opened a
+                                                                        '<a href="<?= base_url('community/post/' . $value['post_id'] . '/' . $value['post_head']) ?>"><?= "<span style='color:red'>" . $value['post_head'] . "</span>" ?></a>'
+                                                                        comment or topic in the
+                                                                        <span style="color:<?php
+                                                                                            $colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+                                                                                            echo in_array($value['post_tag'], range(1, 6)) ? $colors[$value['post_tag'] - 1] : 'Unknown';
+                                                                                            ?>">
+                                                                            <?php
+                                                                            $tags = ['Updates', 'General', 'Suggestion', 'Question', 'Discussion', 'Feedback'];
+                                                                            echo in_array($value['post_tag'], range(1, 6)) ? $tags[$value['post_tag'] - 1] : 'Unknown';
+                                                                            ?>
+                                                                        </span>
+                                                                        category
+                                                                    </strong>
                                                                 </div>
+                                                                <?php endforeach; ?>
                                                             </div>
-                                                        <?php endforeach; ?>
                                                     </div>
                                                 </div>
                                             </div>
