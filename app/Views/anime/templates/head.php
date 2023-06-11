@@ -168,7 +168,7 @@
                                 </div>
                                 <?php $urls = [
                                     "Profile" => "/user/profile",
-                                    "Watch Status" => "/user/profile/status/watching",
+                                    "Watching Status" => "/user/profile/status/watching",
                                     "Settings" => "/user/profile/settings"
                                 ];
                                 ?>
@@ -179,11 +179,11 @@
                                                                                                     case 'Profile':
                                                                                                         echo 'fas fa-user mr-2';
                                                                                                         break;
-                                                                                                    case 'Watch Status':
-                                                                                                        echo 'fa-brands fa-pied-piper';
+                                                                                                    case 'Watching Status':
+                                                                                                        echo 'fas fa-eye';
                                                                                                         break;
                                                                                                     case 'Settings':
-                                                                                                        echo 'fa-solid fa-leaf';
+                                                                                                        echo 'fa-solid fa-cog';
                                                                                                         break;
                                                                                                 }
                                                                                                 ?> mr-2"></i><?= $name ?></a>

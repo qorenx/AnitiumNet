@@ -7,9 +7,11 @@
         <div class="clearfix"></div>
         <div id="main-wrapper" class="layout-page layout-award">
             <div class="container">
-
-
-
+            <div class="ai-control">
+                    <div class="aic-left">
+                        <a href="/community/user/<?= $getuserdata->username ?>"><i class="fas fa-angle-left mr-2"></i>Back</a>
+                    </div>
+                </div>
                 <div class="block_area my-watchlist-full">
                     <div class="block_area-header mb-4">
                         <div class="float-left bah-heading">
@@ -19,12 +21,12 @@
                     </div>
                     <div class="fav-tabs mb-4">
                         <ul class="nav nav-tabs pre-tabs pre-tabs-min">
-                            <li class="nav-item"> <a class="nav-link" id="all-btn" data-status="0" href="<?php echo base_url(); ?>community/user/<?= $getuserdata->username ?>/all">All</a></li>
-                            <li class="nav-item"> <a class="nav-link" id="watching-btn" data-status="1" href="<?php echo base_url(); ?>community/user/<?= $getuserdata->username ?>/watching">Watching</a></li>
-                            <li class="nav-item"> <a class="nav-link" id="onhold-btn" data-status="2" href="<?php echo base_url(); ?>community/user/<?= $getuserdata->username ?>/on-hold">On-Hold</a></li>
-                            <li class="nav-item"> <a class="nav-link" id="plan-to-watch-btn" data-status="3" href="<?php echo base_url(); ?>community/user/<?= $getuserdata->username ?>/plan-to-watch">Plan-to-Watch</a></li>
-                            <li class="nav-item"> <a class="nav-link" id="dropped-btn" data-status="4" href="<?php echo base_url(); ?>community/user/<?= $getuserdata->username ?>/dropped">Dropped</a></li>
-                            <li class="nav-item"> <a class="nav-link" id="completed-btn" data-status="5" href="<?php echo base_url(); ?>community/user/<?= $getuserdata->username ?>/completed">Completed</a></li>
+                            <li class="nav-item"> <a class="nav-link" id="all-btn" href="<?php echo base_url(); ?>community/user/<?= $getuserdata->username ?>/all">All</a></li>
+                            <li class="nav-item"> <a class="nav-link" id="watching-btn" href="<?php echo base_url(); ?>community/user/<?= $getuserdata->username ?>/watching">Watching</a></li>
+                            <li class="nav-item"> <a class="nav-link" id="onhold-btn" href="<?php echo base_url(); ?>community/user/<?= $getuserdata->username ?>/on-hold">On-Hold</a></li>
+                            <li class="nav-item"> <a class="nav-link" id="plan-to-watch-btn" href="<?php echo base_url(); ?>community/user/<?= $getuserdata->username ?>/plan-to-watch">Plan-to-Watch</a></li>
+                            <li class="nav-item"> <a class="nav-link" id="dropped-btn" href="<?php echo base_url(); ?>community/user/<?= $getuserdata->username ?>/dropped">Dropped</a></li>
+                            <li class="nav-item"> <a class="nav-link" id="completed-btn" href="<?php echo base_url(); ?>community/user/<?= $getuserdata->username ?>/completed">Completed</a></li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>

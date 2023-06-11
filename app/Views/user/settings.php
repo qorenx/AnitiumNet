@@ -28,7 +28,7 @@
                     <input type="hidden" name="id" value="<?= auth()->user()->id ?>" class="form-control" readonly>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="avatar-profil-tab" data-toggle="tab" href="#avatar-profil" role="tab" aria-controls="avatar-profil" aria-selected="true">Avatar &amp; Profile Header</a>
+                            <a class="nav-link active" id="avatar-profil-tab" data-toggle="tab" href="#avatar-profil" role="tab" aria-controls="avatar-profil" aria-selected="true">Avatar</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="schedule-tab" data-toggle="tab" href="#schedule" role="tab" aria-controls="schedule" aria-selected="false">Schedule</a>
@@ -40,15 +40,17 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="avatar-profil" role="tabpanel" aria-labelledby="avatar-profil-tab">
                             <br>
-                            <div class="form-group">
-                                <label class="prelabel" for="avatar">Avatar</label>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="avatar-addon"><i class="fa fa-fw fa-image"></i></span>
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <img src="<?= auth()->user()->avatar ?>" alt="Avatar Preview" style="width:250px; height:150px; border-radius: 10%; margin-bottom: 10px;">
+                                <div class="form-group" style="margin-top: 10px;">
+                                    <div class="input-group mb-3">
+                                        <select id="avatar" name="avatar" class=form-control>
+                                            <?php for ($i = 1; $i < 9; $i++) : ?>
+                                                <option value="/files/images/avatar<?= $i ?>.gif" <?php if (auth()->user()->avatar == 'avatar' . $i) echo 'selected'; ?>>Avatar <?= $i ?></option>
+                                            <?php endfor; ?>
+                                        </select>
                                     </div>
-                                    <input type="text" value="<?= auth()->user()->avatar ?>" class="form-control" name="avatar" id="avatar">
                                 </div>
-                                <img src="<?= auth()->user()->avatar ?>" alt="Avatar Preview" style="width:100px; height:100px;" />
                             </div>
                         </div>
                         <div class="tab-pane fade" id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
