@@ -145,16 +145,9 @@
 
             </div>
             <div class="clearfix"></div>
-            <div class="pre-pagination mt-5 mb-5">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination pagination-lg justify-content-center">
-                        <ul class="ulclear az-list">
-                            <?php if ($pager) : ?>
-                                <?= $pager->links() ?>
-                            <?php endif ?>
-                        </ul>
-                </nav>
-            </div>
+            <?php if ($pager) : ?>
+                <?= $pager->links() ?>
+            <?php endif ?>
 
         </div>
     </div>

@@ -2,8 +2,8 @@
 
 <body>
     <div id="wrapper" data-page="page_home">
-    <div class="card-body" style="margin: 0% 10%;">
-                <form method="post" action="schedule/deleteall" onsubmit="return confirm('Are you sure you want to delete all schedules?');">
+        <div class="card-body" style="margin: 0% 10%;">
+            <form method="post" action="schedule/deleteall" onsubmit="return confirm('Are you sure you want to delete all schedules?');">
                 <button type="submit" class="btn btn-sm btn-danger">All Schedule Delete</button>
             </form>
             <button style="background-color: #008CBA; padding: 10px 20px; border: none; color: white; font-size: 16px; margin-bottom: 10px;" onclick="myFunction()">Add Schedule</button>
@@ -83,17 +83,9 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="pre-pagination mt-5 mb-5">
-                                        <nav aria-label="Page navigation">
-                                            <ul class="pagination pagination-lg justify-content-center border">
-                                                <ul class="ulclear">
-                                                    <?php if ($pager) : ?>
-                                                        <?= $pager->links() ?>
-                                                    <?php endif ?>
-                                                </ul>
-                                            </ul>
-                                        </nav>
-                                    </div>
+                                    <?php if ($pager) : ?>
+                                        <?= $pager->links() ?>
+                                    <?php endif ?>
                                 </div>
                             </div>
                         </div>

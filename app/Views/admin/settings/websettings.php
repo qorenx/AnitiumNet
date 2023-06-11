@@ -28,20 +28,23 @@
                         <a class="nav-link" href="#donation" data-toggle="tab">Donation</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#indexpage" data-toggle="tab">İndexPage</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#settings" data-toggle="tab">Settings</a>
                     </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="lisans">
                         <br>
-                        <div class="form-group row">
-                            <label for="weburl" class="col-sm-4 col-form-label">Web Url:</label>
+                        <div class="form-group row border-bottom">
+                            <label for="weburl" class="col-sm-4 col-form-label">Site URL:</label>
                             <div class="col-sm-8">
                                 <input type="text" name="weburl" id="weburl" value="<?php echo $webdata['weburl']; ?>" class="form-control">
                             </div>
                         </div></br>
-                        <div class="form-group row">
-                            <label for="weblic" class="col-sm-4 col-form-label">Web lic:</label>
+                        <div class="form-group row border-bottom">
+                            <label for="weblic" class="col-sm-4 col-form-label">License:</label>
                             <div class="col-sm-8">
                                 <?php
                                 $lic_date = DateTime::createFromFormat('d.m.Y', substr($webdata['weblic'], 0, 10));
@@ -59,14 +62,14 @@
                     </div>
                     <div class="tab-pane" id="webinfo">
                         <br>
-                        <div class="form-group row">
-                            <label for="webname" class="col-sm-4 col-form-label">Web Name:</label>
+                        <div class="form-group row border-bottom">
+                            <label for="webname" class="col-sm-4 col-form-label">Site Name:</label>
                             <div class="col-sm-8">
                                 <input type="text" name="webname" id="webname" value="<?php echo $webdata['webname']; ?>" class="form-control">
                             </div>
                         </div></br>
-                        <div class="form-group row">
-                            <label for="webinfo" class="col-sm-4 col-form-label">Web İnfo:</label>
+                        <div class="form-group row border-bottom">
+                            <label for="webinfo" class="col-sm-4 col-form-label">Site İnfo:</label>
                             <div class="col-sm-8">
                                 <input type="text" name="webinfo" id="webinfo" value="<?php echo $webdata['webinfo']; ?>" class="form-control">
                             </div>
@@ -74,51 +77,56 @@
                     </div>
                     <div class="tab-pane" id="webimg">
                         <br>
-                        <div class="form-group row">
-                            <label for="weblogo" class="col-sm-4 col-form-label">Web Logo:</label>
+                        <div class="form-group row border-bottom">
+                            <div class="col-sm-4 d-flex align-items-center">
+                                <img src="<?php echo $webdata['weblogo']; ?>" alt="Site Logo" width="150" height="100">
+                                <label for="weblogo" class="ml-3 mb-0"><?php echo 'Site Logo:'; ?></label>
+                            </div>
                             <div class="col-sm-8">
                                 <input type="text" name="weblogo" id="weblogo" value="<?php echo $webdata['weblogo']; ?>" class="form-control">
                             </div>
-                        </div></br>
-                        <div class="form-group row">
-                            <label for="webicon" class="col-sm-4 col-form-label">Web İcon:</label>
+                        </div>
+                        </br>
+                        <div class="form-group row border-bottom">
+                            <div class="col-sm-4 d-flex align-items-center">
+                                <img src="<?php echo $webdata['webicon']; ?>" alt="Site Icon" width="150" height="100">
+                                <label for="webicon" class="ml-3 mb-0"><?php echo 'Site Icon:'; ?></label>
+                            </div>
                             <div class="col-sm-8">
                                 <input type="text" name="webicon" id="webicon" value="<?php echo $webdata['webicon']; ?>" class="form-control">
                             </div>
-                        </div></br>
-                        <div class="form-group row">
-                            <label for="webindexbg" class="col-sm-4 col-form-label">Web İndex BG:</label>
-                            <div class="col-sm-8">
-                                <input type="text" name="webindexbg" id="webindexbg" value="<?php echo $webdata['webindexbg']; ?>" class="form-control">
+                        </div>
+                        </br>
+                        <div class="form-group row border-bottom">
+                            <div class="col-sm-4 d-flex align-items-center">
+                                <img src="<?php echo $webdata['webfooter']; ?>" alt="Footer Background Image" width="150" height="100">
+                                <label for="webfooter" class="ml-3 mb-0"><?php echo 'Footer Background Image:'; ?></label>
                             </div>
-                        </div></br>
-                        <div class="form-group row">
-                            <label for="webaniscover" class="col-sm-4 col-form-label">Web Anis Cover:</label>
-                            <div class="col-sm-8">
-                                <input type="text" name="webaniscover" id="webaniscover" value="<?php echo $webdata['webaniscover']; ?>" class="form-control">
-                            </div>
-                        </div></br>
-                        <div class="form-group row">
-                            <label for="webfooter" class="col-sm-4 col-form-label">Web Footer BG:</label>
                             <div class="col-sm-8">
                                 <input type="text" name="webfooter" id="webfooter" value="<?php echo $webdata['webfooter']; ?>" class="form-control">
                             </div>
-                        </div></br>
+                        </div>
+                        </br>
                     </div>
                     <div class="tab-pane" id="videoconvert">
                         <br>
-                        <div class="form-group row">
-                            <label for="webconvert" class="col-sm-4 col-form-label">Web Converter:</label>
+                        <div class="form-group row border-bottom">
+                            <label for="webconvert" class="col-sm-4 col-form-label">Embed Converter-1:</label>
                             <div class="col-sm-8">
                                 <input type="text" name="webconvert" id="webconvert" value="<?php echo $webdata['webconvert']; ?>" class="form-control">
                             </div>
                         </div></br>
-
+                        <div class="form-group row border-bottom">
+                            <label for="webconvert" 2 class="col-sm-4 col-form-label">Embed Converter-2:</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="webconvert2" id="webconvert2" value="<?php echo $webdata['webconvert2']; ?>" class="form-control">
+                            </div>
+                        </div></br>
                     </div>
                     <div class="tab-pane" id="commendmodule">
                         <br>
-                        <div class="form-group row">
-                            <label for="webdisqus" class="col-sm-4 col-form-label">Web Disqus:</label>
+                        <div class="form-group row border-bottom">
+                            <label for="webdisqus" class="col-sm-4 col-form-label">Disqus Url:</label>
                             <div class="col-sm-8">
                                 <input type="text" name="webdisqus" id="webdisqus" value="<?php echo $webdata['webdisqus']; ?>" class="form-control">
                             </div>
@@ -126,30 +134,71 @@
                     </div>
                     <div class="tab-pane" id="social">
                         <br>
-                        <div class="form-group row">
-                            <label for="webdiscord" class="col-sm-4 col-form-label">Web Discord:</label>
+                        <div class="form-group row border-bottom">
+                            <label for="webdiscord" class="col-sm-4 col-form-label">Discord:</label>
                             <div class="col-sm-8">
                                 <input type="text" name="webdiscord" id="webdiscord" value="<?php echo $webdata['webdiscord']; ?>" class="form-control">
                             </div>
                         </div></br>
-
+                        <div class="form-group row border-bottom">
+                            <label for="webtwitter" class="col-sm-4 col-form-label">Twitter:</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="webtwitter" id="webtwitter" value="<?php echo $webdata['webtwitter']; ?>" class="form-control">
+                            </div>
+                        </div></br>
                     </div>
                     <div class="tab-pane" id="donation">
                         <br>
-                        <div class="form-group row">
-                            <label for="webdonation" class="col-sm-4 col-form-label">Web Donation:</label>
+                        <div class="form-group row border-bottom">
+                            <label for="webdonation" class="col-sm-4 col-form-label">Patreon:</label>
                             <div class="col-sm-8">
                                 <input type="text" name="webdonation" id="webdonation" value="<?php echo $webdata['webdonation']; ?>" class="form-control">
                             </div>
                         </div></br>
+                        <div class="form-group row border-bottom">
+                            <label for="webdonation2" class="col-sm-4 col-form-label">Bitcoin:</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="webdonation2" id="webdonation2" value="<?php echo $webdata['webdonation2']; ?>" class="form-control">
+                            </div>
+                        </div></br>
                     </div>
 
-                    <div class="tab-pane" id="settings">Settings Tab Content</div>
+                    <div class="tab-pane" id="indexpage">
+                        <br>
+                        <div class="form-group row border-bottom">
+                            <div class="col-sm-4 d-flex align-items-center">
+                                <img src="<?php echo $webdata['webaniscover']; ?>" alt="AnisCover" width="150" height="100">
+                                <label for="webaniscover" class="ml-3 mb-0"><?php echo 'AnisCover:'; ?></label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" name="webaniscover" id="webaniscover" value="<?php echo $webdata['webaniscover']; ?>" class="form-control">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row border-bottom">
+                            <div class="col-sm-4 d-flex align-items-center">
+                                <img src="<?php echo $webdata['webindexbg']; ?>" alt="IndexBG" width="150" height="100">
+                                <label for="webindexbg" class="ml-3 mb-0"><?php echo 'IndexBG:'; ?></label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" name="webindexbg" id="webindexbg" value="<?php echo $webdata['webindexbg']; ?>" class="form-control">
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="tab-pane" id="settings">Settings Tab Content
+
+                    </div>
                 </div>
+
+
+
+
                 <footer class="fixed-bottom">
-                <div class="card-footer">
-                    <input class="btn btn-primary" type="submit" value="UPDATE">
-                </div>
+                    <div class="card-footer">
+                        <input class="btn btn-primary" type="submit" value="UPDATE">
+                    </div>
                 </footer>
         </form>
     </div>
@@ -169,5 +218,5 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>files/js/function.js"></script>
     </div>
 </body>
-        
+
 </html>
