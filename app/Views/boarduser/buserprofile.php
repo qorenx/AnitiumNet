@@ -95,7 +95,7 @@
                         <div class="maw-right">
                             <div class="wideview">
                                 <div class="wv wv-mine">
-                                <div class="wv-list" style="background-color:black;border-radius: 0px 5% 5% 0px;">
+                                    <div class="wv-list" style="background-color:black;border-radius: 0px 5% 5% 0px;">
                                         <div class="wv-title d-flex align-items-center">
                                             <div class="name mr-3">Latest Activities</div>
                                         </div>
@@ -105,7 +105,7 @@
                                                     <div class="item d-flex justify-content-between">
                                                         <div class="item-connect">
                                                             <div class="connect-inner">
-                                                                <img style="border-radius: 50% 50% 50% 50%;"  src="<?= htmlspecialchars($value['avatar'], ENT_QUOTES, 'UTF-8') ?>" width="40" height="40">
+                                                                <img style="border-radius: 50% 50% 50% 50%;" src="<?= htmlspecialchars($value['avatar'], ENT_QUOTES, 'UTF-8') ?>" width="40" height="40">
                                                             </div>
                                                         </div>
                                                         <div class="item-inner">
@@ -116,15 +116,28 @@
                                                             </div>
                                                             <div class="subject">
                                                                 <div>
-                                                                    <strong> <?= strtoupper("<span style='color: #FFD700;'>{$value['username']}</span>") ?></strong> <?php 
-if ($value['from'] == 1) {
-  echo "created Post";
-}
-elseif ($value['from'] == 2) {
-  echo "commented on Post";
-}
-?>
-                                                                    <a href="<?= base_url('community/post/' . $value['post_id'] . '/' . $value['post_head']) ?>" class="highlight-text"><?= "<span style='color:red'>" . $value['post_head'] . "</span>" ?></a>
+                                                                    <strong> <?= ucfirst($value['username']) ?></strong>
+                                                                    <?php
+                                                                    if ($value['from'] == 1) {
+                                                                        echo "created Post ";
+                                                                    } elseif ($value['from'] == 2) {
+                                                                        echo "commented on Post ";
+                                                                    } elseif ($value['from'] == 3) {
+                                                                        echo "commented on ";
+                                                                    }
+                                                                    ?>
+                                                                    <?php
+                                                                    if ($value['from'] == 1 || $value['from'] == 2) {
+                                                                        $post = "<a href='" . base_url('community/post/' . $value['post_id'] . '/' . $value['post_head']) . "' class='highlight-text'><span style='color:red'>" . $value['post_head'] . "</span></a>  ";
+                                                                        echo $post;
+                                                                    } elseif ($value['from'] == 3) {
+                                                                        $post = "<a href='" . base_url('anime/' . $value['post_id'] . '/' . str_replace(" ", "-", $value['ani_name'])) . "' class='highlight-text'><span style='color:red'>" . $value['ani_name'] . "</span></a>";
+                                                                        $watch = "<a href='" . base_url('watch/' . $value['post_id'] . '/' . str_replace(" ", "-", $value['ani_name']) . '/' . $value['post_ep'])  . "'class='highlight-text'>on <span style='color:blue'>" . "Episode-" . $value['post_ep'] . "</span></a>";
+                                                                        echo $post . " " . $watch;
+                                                                    } else {
+                                                                        echo "";
+                                                                    }
+                                                                    ?>
                                                                 </div>
                                                             </div>
                                                         </div>
