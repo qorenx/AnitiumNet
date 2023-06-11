@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="clearfix"></div>
                                     <div class="py-3">
-                                        <a href="/community/u/<?= $getuserdata->username ?>/type=0" class="btn sbtn btn-block btn-secondary">View more</a>
+                                        <a href="/community/user/<?= $getuserdata->username ?>/all" class="btn sbtn btn-block btn-secondary">View more</a>
                                     </div>
                                 </div>
                             </div>

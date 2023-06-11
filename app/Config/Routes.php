@@ -76,9 +76,8 @@ $routes->get('(:any)', 'Anime::userprofile/$1');
 
 $routes->group('community', function ($routes) {
 
-
+    $routes->get('user/(:any)/(:any)', 'Anime::boarduser/$1/$2');
     $routes->get('user/(:any)', 'Anime::boarduser/$1');
-    $routes->get('u/(:any)/(:any)', 'Anime::bwatchlist/$1/$2');
 
     $routes->post('boardpost/delete', 'Anime::boardPostDelete');   //boardpost delete
     $routes->post('boardrepypost/delete', 'Anime::boardrepyPostDelete');   //boardpost delete
