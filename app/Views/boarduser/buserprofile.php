@@ -1,6 +1,6 @@
 <?= $this->include('anime/templates/header') ?>
 
-<body data-page="page_home" style="background-image: url('<?= $getuserdata->profil_header ?>'); background-attachment: fixed;">
+<body data-page="page_home">
     <div id="sidebar_menu_bg"></div>
     <div id="wrapper" data-page="page_home">
         <?= $this->include('anime/templates/head') ?>
@@ -21,14 +21,14 @@
                                 </div>
                                 <div class="aa-item">
                                     <div class="aa-title ">
-                                        <a href="" target="_blank" style="background-color: #00000094;" class="user-name"><?= $getuserdata->username ?></a>
+                                        <a href="" target="_blank" class="user-name"><?= $getuserdata->username ?></a>
                                     </div>
                                     <div class="aa-result">
                                         <div class="user-name is-level-x">
-                                            <span style="background-color: #00000094;"><?php echo $getgroup[0]->group; ?></span>
+                                            <span><?php echo $getgroup[0]->group; ?></span>
                                         </div>
                                     </div>
-                                    <small style="background-color: #00000094;">Joined: <?= $getuserdata->created_at ?></small>
+                                    <small>Joined: <?= $getuserdata->created_at ?></small>
                                 </div>
                             </div>
                             <div class="block_area block_area_home my-watchlist">
@@ -95,7 +95,7 @@
                         <div class="maw-right">
                             <div class="wideview">
                                 <div class="wv wv-mine">
-                                    <div class="wv-list" style="background-color:black;border-radius: 0px 5% 5% 0px;">
+                                    <div class="wv-list">
                                         <div class="wv-title d-flex align-items-center">
                                             <div class="name mr-3">Latest Activities</div>
                                         </div>
