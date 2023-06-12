@@ -106,6 +106,28 @@
                 <div class="zrg-list">
                     <div class="item"><a target="_blank" href="<?php echo $webdata['webdonation']; ?>" class="zr-social-button tl-btn"><i class="fas fa-donate"></i></a></div>
                     <div class="item"><a href="<?php echo $webdata['webdiscord']; ?>" target="_blank" class="zr-social-button dc-btn"><i class="fab fa-discord"></i></a></div>
+                    <div class="item"><a href="<?php echo $webdata['webtwitter']; ?>" target="_blank" class="zr-social-button tw-btn"><i class="fab fa-twitter"></i></a></div>
+                    <div class="item">
+                        <a target="_blank" class="zr-social-button tl-btn" onclick="toggleDonationText()">
+                            <i class="fab fa-bitcoin"></i>
+                        </a>
+                    </div>
+
+                    <div id="donation-text" style="display: none;">
+                        Tether(USDT)/Tron(TRC20): <br />
+                        <?php echo $webdata['webdonation2']; ?>
+                    </div>
+
+                    <script>
+                        function toggleDonationText() {
+                            var elem = document.getElementById('donation-text');
+                            if (elem.style.display === 'none') {
+                                elem.style.display = 'block';
+                            } else {
+                                elem.style.display = 'none';
+                            }
+                        }
+                    </script>
                 </div>
                 <div class="clearfix"></div>
             </div>

@@ -128,7 +128,7 @@
                                                                     ?>
                                                                     <?php
                                                                     if ($value['from'] == 1 || $value['from'] == 2) {
-                                                                        $post = "<a href='" . base_url('community/post/' . $value['post_id'] . '/' . $value['post_head']) . "' class='highlight-text'><span style='color:red'>" . $value['post_head'] . "</span></a>  ";
+                                                                        $post = "<a href='" . base_url('community/post/' . $value['post_id'] . '/' . str_replace(" ", "-", $value['post_head'])) . "' class='highlight-text'><span style='color:red'>" . $value['post_head'] . "</span></a>  ";
                                                                         echo $post;
                                                                     } elseif ($value['from'] == 3) {
                                                                         $post = "<a href='" . base_url('anime/' . $value['post_id'] . '/' . str_replace(" ", "-", $value['ani_name'])) . "' class='highlight-text'><span style='color:red'>" . $value['ani_name'] . "</span></a>";

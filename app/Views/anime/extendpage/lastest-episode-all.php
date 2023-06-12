@@ -25,7 +25,7 @@
                                                             echo "Special";
                                                         }
                                                         ?></div>
-                            <div style="left: 0px;top: 70%;" class="tick ltr">
+                            <div class="tick ltr">
                                 <div class="tick-item"><?php
                                                         $ratings = [
                                                             1 => 'G',
