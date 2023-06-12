@@ -5,19 +5,11 @@
     <div id="wrapper" data-page="page_home">
         <div class="clearfix"></div>
         <?= $this->include('anime/templates/head') ?>
-
-
-
-
-
-
-
-
         <div class="clearfix"></div>
         <div id="main-wrapper" class="layout-page layout-award">
-            <div class="award-bg">
-                <div class="award-bg-img" style="background-image: url(/images/community/cover.jpg);"></div>
-            </div>
+        <div class="award-bg">
+            <div class="award-bg-img" style="background-image: url(/files/images/cover.png);"></div>
+        </div>
             <!--Begin: award-->
             <div class="container">
                 <div class="award-inner">
@@ -301,8 +293,16 @@
                                             <?php endif; ?>
                                             <?php $count++; ?>
                                         <?php endforeach; ?>
-                                        <div class="loading-relative" id="loading-data"><button class="btn-primary loading" onclick="pagination()"><span>View More</span></button></div>
-                                        <script>
+
+                                        <?php if (count($boardmypost) > 10) : ?>
+                                            <div class="loading-relative" id="loading-data">
+                                                <button class="btn-primary loading" onclick="pagination()">
+                                                    <span>View More</span>
+                                                </button>
+                                            </div>
+                                        <?php endif; ?>
+
+                                       <script>
                                             function pagination() {
                                                 jQuery(".more-posts.d-none").slice(0, 10).removeClass("d-none");
                                                 jQuery(".more-posts:not(.d-none)").slice(0, 10).fadeOut(0);

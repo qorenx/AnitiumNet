@@ -6,6 +6,9 @@
         <?= $this->include('anime/templates/head') ?>
         <div class="clearfix"></div>
         <div id="main-wrapper" class="layout-page layout-award">
+        <div class="award-bg">
+            <div class="award-bg-img" style="background-image: url(/files/images/cover.png);"></div>
+        </div>
             <div class="container">
             <div class="ai-control">
                     <div class="aic-left">

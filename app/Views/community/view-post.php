@@ -5,6 +5,9 @@
     <div id="wrapper" data-page="page_home">
         <div class="clearfix"></div>
         <?= $this->include('anime/templates/head') ?>
+        <div class="award-bg">
+            <div class="award-bg-img" style="background-image: url(/files/images/cover.png);"></div>
+        </div>
         <div class="container">
             <div class="award-inner">
                 <div class="wideview">

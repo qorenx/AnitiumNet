@@ -5,7 +5,6 @@
     <div id="wrapper" data-page="page_home">
         <?= $this->include('anime/templates/head') ?>
         <div class="clearfix"></div>
-
         <div id="main-wrapper" class="layout-page layout-profile">
             <div class="profile-header">
                 <div class="profile-header-cover"></div>

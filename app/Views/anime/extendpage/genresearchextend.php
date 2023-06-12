@@ -34,7 +34,6 @@
                                 <?= $anime['ani_synopsis'] ?>
                             </div>
                             <div class="fd-infor">
-                                <span class="dot"></span>
                                 <span class="fdi-item"><?php
                                                         if ($anime['ani_type'] == 1) {
                                                             echo "TV";
@@ -101,7 +100,6 @@
                                 <?= $anime['ani_synopsis'] ?>
                             </div>
                             <div class="fd-infor">
-                                <span class="dot"></span>
                                 <span class="fdi-item"><?php
                                                         if ($anime['ani_type'] == 1) {
                                                             echo "TV";

@@ -5,12 +5,6 @@
     <div id="wrapper" data-page="page_home">
         <div class="clearfix"></div>
         <?= $this->include('anime/templates/head') ?>
-
-
-
-
-
-
         <div class="container">
             <div class="award-inner">
                 <div class="wideview">

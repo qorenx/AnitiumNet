@@ -6,18 +6,11 @@
         <div class="clearfix"></div>
         <?= $this->include('anime/templates/head') ?>
 
-
-
-
-
-
-
-
         <div class="clearfix"></div>
         <div id="main-wrapper" class="layout-page layout-award">
-            <div class="award-bg">
-                <div class="award-bg-img" style="background-image: url(/images/community/cover.jpg);"></div>
-            </div>
+        <div class="award-bg">
+            <div class="award-bg-img" style="background-image: url(/files/images/cover.png);"></div>
+        </div>
             <!--Begin: award-->
             <div class="container">
                 <div class="award-inner">
@@ -96,16 +89,18 @@
                                 </div>
                                 <div class="nc-head">
                                     <div class="is-right">
+                                    <?php if (auth()->loggedIn()) : ?>
                                         <div class="is-create">
                                             <a href="/community/new-post" class="item-link active">
                                                 <i class="fas fa-plus"></i><span class="ml-2">Create</span>
                                             </a>
                                         </div>
-                                        <div class="is-manager ml-2" style="display:none;">
+                                        <div class="is-manager ml-2">
                                             <a href="/community/my-post" class="item-link">
                                                 <i class="fas fa-list"></i><span class="ml-2">My Posts</span>
                                             </a>
                                         </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="nc-list">
@@ -242,7 +237,15 @@
                                             <?php endif; ?>
                                             <?php $count++; ?>
                                         <?php endforeach; ?>
-                                        <div class="show-more" id="show-more"><button class="btn-primary" onclick="pagination()"><span>View More</span></button></div>
+
+                                        <?php if (count($boardlastpost) > 10) : ?>
+                                            <div class="loading-relative" id="loading-data">
+                                                <button class="btn-primary loading" onclick="pagination()">
+                                                    <span>View More</span>
+                                                </button>
+                                            </div>
+                                        <?php endif; ?>
+
                                         <script>
                                             function pagination() {
                                                 jQuery(".more-posts.d-none").slice(0, 10).removeClass("d-none");
