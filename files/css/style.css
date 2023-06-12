@@ -9601,7 +9601,8 @@ span#AddMalDiv #AddMal {
     left: 0;
     right: 0;
     top: 0;
-    overflow: hidden
+    overflow: hidden;
+    z-index: -1
 }
 
 .award-bg .award-bg-img {
