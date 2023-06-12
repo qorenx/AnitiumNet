@@ -313,8 +313,6 @@
                     </div>
                 </footer>
             </div>
-
-        </form>
         <style>
             .form-check-inline {
                 display: inline-block;
@@ -456,6 +454,7 @@
                 });
             }
         </script>
+        </form>
         <div id="mask-overlay"></div>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js">
