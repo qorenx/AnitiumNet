@@ -13,7 +13,7 @@
                 <div class="form-group row">
                     <label for="ep_id_name" class="col-sm-4 col-form-label">Anime EpisodeID(1, 1.5, etc):</label>
                     <div class="col-sm-8">
-                        <input type="number" step="0.10" name="ep_id_name" id="ep_id_name" class="form-control" required>
+                        <input type="number" name="ep_id_name" id="ep_id_name" class="form-control" required>
                     </div>
                 </div></br>
                 <div class="form-group row">

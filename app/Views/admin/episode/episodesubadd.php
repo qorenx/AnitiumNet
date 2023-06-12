@@ -20,7 +20,8 @@
                     <label for="ep_sub_webconverter" class="col-sm-4 col-form-label">Auto/Manuel Embed:</label>
                     <div class="col-sm-8">
                         <select name="ep_sub_webconverter" id="ep_sub_webconverter" class="form-control">
-                            <option value="1">Automatic Embed(Not for all sites)</option>
+                            <option value="2">GogoAnime AutoEmbed(gogoanime.hu work)</option>
+                            <option value="1">Automatic Embed(YT,Sbani,Dodo,PlayTaku,mp4upload, vimeo and etc)</option>
                             <option value="0">Manuel Embed</option>
                         </select>
                     </div>
