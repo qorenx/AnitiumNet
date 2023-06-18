@@ -35,6 +35,8 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+
 $routes->get('/', 'Anime::index');
 $routes->get('/home', 'Anime::home');
 $routes->get('type/(:any)', 'Anime::type_series/$1/');
@@ -148,6 +150,8 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('episode-download-add', 'Anime::episodedownloadsave');
         $routes->get('episode-edit/(:any)/(:any)', 'Anime::episodeedit/$1/$2');
         $routes->post('episode-edit', 'Anime::episodeeditsave');
+
+        
         $routes->get('episode-delete/(:any)/(:any)', 'Anime::episodeeditdelete/$1/$2');
         $routes->get('download-edit/(:any)/(:any)', 'Anime::downloadedit/$1/$2');
         $routes->get('download-delete/(:any)', 'Anime::downloaddelete/$1');

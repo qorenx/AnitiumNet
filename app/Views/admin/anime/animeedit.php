@@ -302,7 +302,7 @@
                         </div><br>
 
                     </div>
-                    <footer class="fixed-bottom">
+                    <footer style="position:fixed;right:auto;bottom:0;left:0;z-index:1030;" class="fixed-bottom">
                         <div class="card-footer">
                             <input class="btn btn-primary" type="submit" value="Update">
                         </div>

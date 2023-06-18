@@ -13,14 +13,13 @@
                 <div class="form-group row">
                     <label for="turk_id" class="col-sm-4 col-form-label">Episode ID(1, 1.5 etc):</label>
                     <div class="col-sm-8">
-                        <input type="number" step="0.10" name="turk_id" id="turk_id" class="form-control" required>
+                        <input type="number" name="turk_id" id="turk_id" class="form-control" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="ep_tr_webconverter" class="col-sm-4 col-form-label">Auto/Manuel Embed:</label>
                     <div class="col-sm-8">
                         <select name="ep_tr_webconverter" id="ep_tr_webconverter" class="form-control">
-                            <option value="2">GogoAnime AutoEmbed(gogoanime.hu work)</option>
                             <option value="1">Automatic Embed(YT,Sbani,Dodo,PlayTaku,mp4upload, vimeo and etc)</option>
                             <option value="0">Manuel Embed</option>
                         </select>
@@ -50,7 +49,7 @@
                         document.getElementById('inputs-extra').appendChild(clone);
                     }
                 </script>
-                <footer class="fixed-bottom">
+                <footer style="position:fixed;right:auto;bottom:0;left:0;z-index:1030;" class="fixed-bottom">
                     <div class="card-footer">
                         <input class="btn btn-primary" type="submit" value="Submit">
                     </div>

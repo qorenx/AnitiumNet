@@ -53,7 +53,7 @@
                             <option value="TURK" <?php if ($epeedit['ep_turk'] === 'TURK') echo 'selected'; ?>>TURK</option>
                         </select>
                     </div>
-                    <footer class="fixed-bottom">
+                    <footer style="position:fixed;right:auto;bottom:0;left:0;z-index:1030;" class="fixed-bottom">
                         <div class="card-footer">
                             <input class="btn btn-primary" type="submit" value="UPDATE">
                             <a class="btn btn-danger" href="<?php echo base_url('admin/episode/episode-delete/' . $epeedit['uid'] . '/' . $epeedit['id']); ?>" onclick="return confirm('Are you sure you want to delete?')">DELETE</a>

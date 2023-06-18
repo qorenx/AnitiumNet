@@ -13,7 +13,7 @@
                 <div class="form-group row">
                     <label for="sub_id" class="col-sm-4 col-form-label">Episode ID(1, 1.5 etc):</label>
                     <div class="col-sm-8">
-                        <input type="number" step="0.10" name="sub_id" id="sub_id" class="form-control" required>
+                        <input type="number" name="sub_id" id="sub_id" class="form-control" required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -50,7 +50,7 @@
                         document.getElementById('inputs-extra').appendChild(clone);
                     }
                 </script>
-                <footer class="fixed-bottom">
+                <footer style="position:fixed;right:auto;bottom:0;left:0;z-index:1030;" class="fixed-bottom">
                 <div class="card-footer">
                     <input class="btn btn-primary" type="submit" value="Submit">
                 </div>
