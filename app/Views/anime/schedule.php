@@ -11,27 +11,9 @@
                     <span id="clock"></span>
                 </span>
             </div>
-
-            <script>
-                setInterval(() => {
-                    const date = new Date();
-                    const currentDateTime = date.toLocaleString('en-US', {
-                        timeZone: 'Europe/Istanbul'
-                    });
-                    const [currentDate, currentTime] = currentDateTime.split(',');
-
-                    const currentDateElement = document.getElementById('current-date');
-                    currentDateElement.textContent = currentDate;
-
-                    const clockElement = document.getElementById('clock');
-                    clockElement.textContent = currentTime;
-                }, 1000)
-            </script>
             <div class="clearfix"></div>
         </div>
         <div class="block_area-content">
-
-
             <div class="table_schedule">
                 <div class="table_schedule-date">
                     <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
@@ -43,18 +25,27 @@
                             $month = date('m');
                             $year = date('Y');
                             $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);
-                            $days = isset($_GET['days']) ? $_GET['days'] : date('d');
+                            $days = $_GET['days'] ?? date('d');
+                            $dayItem = '';
 
                             for ($i = 1; $i <= $days_in_month; ++$i) {
-                                echo '<div class="swiper-slide day-item" onclick="location.href=\'?days=' . $i . '\'" style="width: 141.714px; margin-right: 13px;">
-              <div class="tsd-item' . ($days == $i ? ' active' : '') . '">
-              <span>' . date('D', strtotime($year . '-' . $month . '-' . $i)) . '</span>
-              <div class="date">' . $i . '</div>
-              </div>
-              </div>';
+                                $isActive = $days == $i ? ' active' : '';
+                                $dayItem .= sprintf(
+                                    '<div class="swiper-slide day-item" onclick="location.href=\'?days=%d\'" style="width: 141.714px; margin-right: 13px;">
+          <div class="tsd-item%s">
+            <span>%s</span>
+            <div class="date">%d</div>
+          </div>
+        </div>',
+                                    $i,
+                                    $isActive,
+                                    date('D', strtotime($year . '-' . $month . '-' . $i)),
+                                    $i
+                                );
                             }
-                            ?>
 
+                            echo $dayItem;
+                            ?>
                         </div>
                         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                     </div>
@@ -72,21 +63,23 @@
                 <ul class="ulclear table_schedule-list limit-8">
                     <?php
                     $days = $_GET['days'] ?? date('d');
-                    $sortedSchedule = array_reduce($schedule, function ($acc, $item) {
+                    $sortedSchedule = [];
+                    foreach ($schedule as $item) {
                         $time = substr($item['sc_time'], 0, 5);
-                        $acc[$time][] = $item;
-                        return $acc;
-                    }, []);
+                        if (!isset($sortedSchedule[$time])) {
+                            $sortedSchedule[$time] = [$item];
+                        } else {
+                            array_push($sortedSchedule[$time], $item);
+                        }
+                    }
                     ksort($sortedSchedule);
+                    foreach ($sortedSchedule as $time => $scheduleItems) {
+                        foreach ($scheduleItems as $item) {
+                            if ($item['sc_days'] == $days) {
+                                $base_url = empty($item['sc_ep']) ? 'anime/' : 'watch/';
+                                $link = base_url($base_url . $item['sc_id'] . '/' . str_replace(' ', '-', $item['sc_name']) . '/' . $item['sc_ep']);
                     ?>
-                    <?php foreach ($sortedSchedule as $time => $scheduleItems) : ?>
-                        <?php foreach ($scheduleItems as $item) : ?>
-                            <?php if ($item['sc_days'] == $days) : ?>
                                 <li>
-                                    <?php
-                                    $base_url = empty($item['sc_ep']) ? 'anime/' : 'watch/';
-                                    $link = base_url($base_url . $item['sc_id'] . '/' . str_replace(' ', '-', $item['sc_name']) . '/' . $item['sc_ep']);
-                                    ?>
                                     <a href="<?= $link ?>" class="tsl-link">
                                         <div class="time"><?= substr($item['sc_time'], 0, 5); ?></div>
                                         <div class="film-detail">
@@ -100,13 +93,13 @@
                                         </div>
                                     </a>
                                 </li>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    <?php endforeach; ?>
+                    <?php
+                            }
+                        }
+                    }
+                    ?>
                 </ul>
             </div>
-
-
             <script>
                 const swiperWrapper = document.querySelector('.schedule');
                 const nextBtn = document.querySelector('.tsn-next');
@@ -128,6 +121,21 @@
                     swiperWrapper.style.transform = `translate3d(${currentPosition}px, 0px, 0px)`;
                     swiperWrapper.style.transitionDuration = '300ms';
                 });
+            </script>
+            <script>
+                setInterval(() => {
+                    const date = new Date();
+                    const currentDateTime = date.toLocaleString('en-US', {
+                        timeZone: 'Europe/Istanbul'
+                    });
+                    const [currentDate, currentTime] = currentDateTime.split(',');
+
+                    const currentDateElement = document.getElementById('current-date');
+                    currentDateElement.textContent = currentDate;
+
+                    const clockElement = document.getElementById('clock');
+                    clockElement.textContent = currentTime;
+                }, 1000)
             </script>
         </div>
     </section>
