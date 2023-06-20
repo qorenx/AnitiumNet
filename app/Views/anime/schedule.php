@@ -5,45 +5,70 @@
                 <h2 class="cat-heading">Estimated Schedule</h2>
             </div>
             <div class="float-left bah-time">
-                <span class="current-time"><span id="timezone">(GMT+03:00)</span> <span id="current-date"></span> <span id="clock"></span></span>
+                <span class="current-time">
+                    <span id="timezone">(GMT+03:00)</span>
+                    <span id="current-date"></span>
+                    <span id="clock"></span>
+                </span>
             </div>
+
+            <script>
+                setInterval(() => {
+                    const date = new Date();
+                    const currentDateTime = date.toLocaleString('en-US', {
+                        timeZone: 'Europe/Istanbul'
+                    });
+                    const [currentDate, currentTime] = currentDateTime.split(',');
+
+                    const currentDateElement = document.getElementById('current-date');
+                    currentDateElement.textContent = currentDate;
+
+                    const clockElement = document.getElementById('clock');
+                    clockElement.textContent = currentTime;
+                }, 1000)
+            </script>
             <div class="clearfix"></div>
         </div>
-        <script>
-            const currentDate = new Date();
-            document.getElementById("current-date").textContent = currentDate.toLocaleDateString();
-            setInterval(() => {
-                const currentTime = new Date();
-                document.getElementById("clock").textContent = currentTime.toLocaleTimeString();
-            }, 1000);
-        </script>
         <div class="block_area-content">
+
+
             <div class="table_schedule">
                 <div class="table_schedule-date">
                     <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
-                        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper schedule" style="transform: translate3d(<?php
+                                                                                            $days = isset($_GET['days']) ? $_GET['days'] : date('d');
+                                                                                            echo ($days * -141.714) . 'px,'
+                                                                                            ?> 0px, 0px);">
                             <?php
-                            $unique_days = array();
-                            for ($i = 0; $i <= 8; $i++) {
-                                if (date('m', strtotime("+$i days")) == date('m')) {
-                                    array_push($unique_days, date('d', strtotime("+$i days")));
-                                }
+                            $month = date('m');
+                            $year = date('Y');
+                            $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+                            $days = isset($_GET['days']) ? $_GET['days'] : date('d');
+
+                            for ($i = 1; $i <= $days_in_month; ++$i) {
+                                echo '<div class="swiper-slide day-item" onclick="location.href=\'?days=' . $i . '\'" style="width: 141.714px; margin-right: 13px;">
+              <div class="tsd-item' . ($days == $i ? ' active' : '') . '">
+              <span>' . date('D', strtotime($year . '-' . $month . '-' . $i)) . '</span>
+              <div class="date">' . $i . '</div>
+              </div>
+              </div>';
                             }
-                            foreach ($unique_days as $day) : ?>
-                                <div class="swiper-container">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide day-item">
-                                            <button type="button" onclick="location.href='?days=<?= $day; ?>'" class="tsd-item" style="font-size:larger;color:white;<?= date('d') == $day ? 'color:red' : ''; ?>">
-                                                <?= $day; ?>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
+                            ?>
+
                         </div>
+                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                    </div>
+                    <div class="ts-navigation">
+                        <button class="btn tsn-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false">
+                            <i class="fas fa-angle-right"></i>
+                        </button>
+                        <button class="btn tsn-prev" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="false">
+                            <i class="fas fa-angle-left"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="clearfix"></div>
+
                 <ul class="ulclear table_schedule-list limit-8">
                     <?php
                     $days = $_GET['days'] ?? date('d');
@@ -80,7 +105,30 @@
                     <?php endforeach; ?>
                 </ul>
             </div>
-        </div>
 
+
+            <script>
+                const swiperWrapper = document.querySelector('.schedule');
+                const nextBtn = document.querySelector('.tsn-next');
+                const prevBtn = document.querySelector('.tsn-prev');
+                const slideWidth = 141.714;
+                let currentPosition = <?php
+                                        $days = isset($_GET['days']) ? $_GET['days'] : date('d');
+                                        echo ($days * -141.714) . ''
+                                        ?>;
+
+                nextBtn.addEventListener('click', () => {
+                    currentPosition -= slideWidth + 13;
+                    swiperWrapper.style.transform = `translate3d(${currentPosition}px, 0px, 0px)`;
+                    swiperWrapper.style.transitionDuration = '300ms';
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    currentPosition += slideWidth + 13;
+                    swiperWrapper.style.transform = `translate3d(${currentPosition}px, 0px, 0px)`;
+                    swiperWrapper.style.transitionDuration = '300ms';
+                });
+            </script>
+        </div>
     </section>
 </div>
