@@ -113,54 +113,6 @@
                 </div>
             </li>
 
-            <div class="modal fade" id="getanime-modal" tabindex="-1" role="dialog" aria-labelledby="getanime-modalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <form action="<?= base_url('/admin/anime/getanime/'); ?>" method="get">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="getanime-modalLabel">Enter Anime ID</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <input type="text" name="uid" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Get Anime</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="getanimeupdate-modal" tabindex="-1" role="dialog" aria-labelledby="getanimeupdate-modalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <form action="<?= base_url('/admin/anime/getanimeupdate/'); ?>" method="get">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="getanimeupdate-modalLabel">Enter Anime ID</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <input type="text" name="uid" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Get Anime Update</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
             <?php
             $episodes = [
                 'episode-add' => ['fas fa-video', 'Episode Add'],
@@ -318,3 +270,51 @@
                 <div class="clearfix"></div>
             </div>
         </div>
+
+        <div class="modal fade" id="getanime-modal" tabindex="-1" role="dialog" aria-labelledby="getanime-modalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <form action="<?= base_url('/admin/anime/getanime/'); ?>" method="get">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="getanime-modalLabel">Enter Anime ID</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <input type="text" name="uid" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Get Anime</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="getanimeupdate-modal" tabindex="-1" role="dialog" aria-labelledby="getanimeupdate-modalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <form action="<?= base_url('/admin/anime/getanimeupdate/'); ?>" method="get">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="getanimeupdate-modalLabel">Enter Anime ID</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <input type="text" name="uid" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Get Anime Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
