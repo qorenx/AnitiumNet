@@ -3,7 +3,7 @@
         <i class="fa-solid fa-wrench"></i>Admin Control
     </a>
     <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
-        <a class="wl-item dropdown-item" href="<?= base_url('admin/anime/anime-edit') ?>/<?= $animetv['uid'] ?>">Anime Edit
+        <a class="wl-item dropdown-item" href="<?= base_url('/admin/anime/getanimeupdate?uid=') ?><?= $animetv['uid'] ?>">Anime Edit
         </a>
         <a class="wl-item dropdown-item" href="<?= base_url('admin/anime/season-edit') ?>/<?= $animetv['uid'] ?>">Anime Season Edit
         </a>

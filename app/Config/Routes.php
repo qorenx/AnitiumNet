@@ -119,16 +119,16 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
     $routes->group('anime', function ($routes) {
         $routes->get('uploadfile', 'Anime::uploadFile');
         $routes->post('uploadfile', 'Anime::uploadFile');
-        $routes->get('anime-add', 'Anime::animeadd');
-        $routes->post('anime-add', 'Anime::animeaddsave');
+    // $routes->get('anime-add', 'Anime::animeadd');
+    // $routes->post('anime-add', 'Anime::animeaddsave');
 
         $routes->get('getanime', 'Anime::getAnime');
         $routes->post('getanimeadd', 'Anime::getAnimesave');
         $routes->get('getanimeupdate', 'Anime::getAnimeupdate');
         $routes->post('getanimeupp', 'Anime::getAnimeupdatesave');
 
-        $routes->get('anime-edit/(:any)', 'Anime::animeedit/$1');
-        $routes->post('anime-edit', 'Anime::animeeditupdate');
+    // $routes->get('anime-edit/(:any)', 'Anime::animeedit/$1');
+    // $routes->post('anime-edit', 'Anime::animeeditupdate');
         $routes->get('season-add', 'Anime::seasonadd');
         $routes->post('season-add', 'Anime::seasonaddsave');
         $routes->get('season-edit/(:any)', 'Anime::seasonedit/$1');

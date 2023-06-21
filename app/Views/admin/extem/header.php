@@ -75,7 +75,7 @@
 
             <?php
             $menuItems = array(
-                array('anime-add', 'fas fa-film', 'Anime Add'),
+                //array('anime-add', 'fas fa-film', 'Anime Add'),
                 array('getanime/$uid', 'fas fa-film', 'Get Anime Add'),
                 array('getanimeupdate/$uid', 'fas fa-film', 'Get Anime Update'),
                 array('season-add', 'fas fa-calendar', 'Season Add'),
