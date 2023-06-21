@@ -19,7 +19,7 @@
                             <input class="form-control" type="text" id="sc_id" name="sc_id" required><br>
                         </div>
                         <div class="form-group">
-                            <label style="color:black" for="sc_ep">Anime Episode(If you add multiple, leave the episode blank. Watch text will appear instead of Episode-1 or Episode-2.):</label>
+                            <label style="color:black" for="sc_ep">Anime Episode(If you add multiple, leave the episode blank. Watch text will appear instead of 1 or 2 etc):</label>
                             <input class="form-control" type="text" id="sc_ep" name="sc_ep"><br>
                         </div>
                         <div class="form-group">

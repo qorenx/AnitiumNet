@@ -36,7 +36,7 @@
                             <?php if (!empty($slider_data['ani_raw'])) : ?>
                                 <div class="scd-item mr-1">
                                     <span class="tick-item tick-raw">
-                                        Raw
+                                        RAW
                                     </span>
                                 </div>
                             <?php endif; ?>
@@ -45,7 +45,7 @@
                             <?php if (!empty($slider_data['ani_sub'])) : ?>
                                 <div class="scd-item mr-1">
                                     <span class="tick-item tick-sub">
-                                        Sub
+                                        SUB
                                     </span>
                                 </div>
                             <?php endif; ?>
@@ -54,7 +54,7 @@
                             <?php if (!empty($slider_data['ani_dub'])) : ?>
                                 <div class="scd-item mr-1">
                                     <span class="tick-item tick-dub">
-                                        Dub
+                                        DUB
                                     </span>
                                 </div>
                             <?php endif; ?>
@@ -63,7 +63,7 @@
                             <?php if (!empty($slider_data['ani_turk'])) : ?>
                                 <div class="scd-item mr-1">
                                     <span class="tick-item tick-turk">
-                                        Turk
+                                        TURK
                                     </span>
                                 </div>
                             <?php endif; ?>
