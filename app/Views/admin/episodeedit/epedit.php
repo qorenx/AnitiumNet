@@ -19,47 +19,36 @@
                     </div>
                 </div></br>
                 <div class="form-group row">
-                    <label for="ep_raw" class="col-sm-4 col-form-label">Ani Raw:</label>
+                    <label for="ep_jname" class="col-sm-4 col-form-label">Episode JName:</label>
                     <div class="col-sm-8">
-                        <select name="ep_raw" id="ep_raw" class="form-control">
-                            <option value="">NO</option>
-                            <option value="RAW" <?php if ($epeedit['ep_raw'] === 'RAW') echo 'selected'; ?>>RAW</option>
-                        </select>
+                        <input type="text" name="ep_jname" id="ep_jname" value="<?php echo $epeedit['ep_jname']; ?>" class="form-control">
                     </div>
                 </div><br>
                 <div class="form-group row">
-                    <label for="ep_sub" class="col-sm-4 col-form-label">Ani Sub:</label>
+                    <label for="ep_romaji" class="col-sm-4 col-form-label">Episode Romaji:</label>
                     <div class="col-sm-8">
-                        <select name="ep_sub" id="ep_sub" class="form-control">
-                            <option value="">NO</option>
-                            <option value="SUB" <?php if ($epeedit['ep_sub'] === 'SUB') echo 'selected'; ?>>SUB</option>
-                        </select>
+                        <input type="text" name="ep_romaji" id="ep_romaji" value="<?php echo $epeedit['ep_romaji']; ?>" class="form-control">
                     </div>
                 </div><br>
                 <div class="form-group row">
-                    <label for="ep_dub" class="col-sm-4 col-form-label">Ani Dub:</label>
+                    <label for="ep_aired" class="col-sm-4 col-form-label">Episode Aired:</label>
                     <div class="col-sm-8">
-                        <select name="ep_dub" id="ep_dub" class="form-control">
-                            <option value="">NO</option>
-                            <option value="DUB" <?php if ($epeedit['ep_dub'] === 'DUB') echo 'selected'; ?>>DUB</option>
-                        </select>
+                        <input type="text" name="ep_aired" id="ep_aired" value="<?php echo $epeedit['ep_aired']; ?>" class="form-control">
                     </div>
                 </div><br>
                 <div class="form-group row">
-                    <label for="ep_turk" class="col-sm-4 col-form-label">Ani Turk:</label>
+                    <label for="ep_score" class="col-sm-4 col-form-label">Episode Score:</label>
                     <div class="col-sm-8">
-                        <select name="ep_turk" id="ep_turk" class="form-control">
-                            <option value="">NO</option>
-                            <option value="TURK" <?php if ($epeedit['ep_turk'] === 'TURK') echo 'selected'; ?>>TURK</option>
-                        </select>
+                        <input type="text" name="ep_score" id="ep_score" value="<?php echo $epeedit['ep_score']; ?>" class="form-control">
                     </div>
-                    <footer style="position:fixed;right:auto;bottom:0;left:0;z-index:1030;" class="fixed-bottom">
-                        <div class="card-footer">
-                            <input class="btn btn-primary" type="submit" value="UPDATE">
-                            <a class="btn btn-danger" href="<?php echo base_url('admin/episode/episode-delete/' . $epeedit['uid'] . '/' . $epeedit['id']); ?>" onclick="return confirm('Are you sure you want to delete?')">DELETE</a>
-                        </div>
-                    </footer>
                 </div><br>
+                <footer style="position:fixed;right:auto;bottom:0;left:0;z-index:1030;" class="fixed-bottom">
+                    <div class="card-footer">
+                        <input class="btn btn-primary" type="submit" value="UPDATE">
+                        <a class="btn btn-danger" href="<?php echo base_url('admin/episode/episode-delete/' . $epeedit['uid'] . '/' . $epeedit['id']); ?>" onclick="return confirm('Are you sure you want to delete?')">DELETE</a>
+                    </div>
+                </footer>
+            </div><br>
 
         </form>
     </div>

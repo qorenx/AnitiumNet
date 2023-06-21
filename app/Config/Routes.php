@@ -144,8 +144,8 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
     $routes->group('episode', function ($routes) {
         $routes->get('episode-add', 'Anime::episodeadd');
         $routes->post('episode-add', 'Anime::episodeaddsave');
-
-
+        $routes->get('episode-edit/(:any)/(:any)', 'Anime::episodeedit/$1/$2');
+        $routes->post('episode-edit', 'Anime::episodeeditsave');
         $routes->get('getepisode', 'Anime::getEpisode');
         $routes->post('getepisode', 'Anime::getEpisodesave');
 
@@ -160,8 +160,7 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('episode-raw-add', 'Anime::episoderawaddsave');
         $routes->get('episode-download-add', 'Anime::episodedownloadadd');
         $routes->post('episode-download-add', 'Anime::episodedownloadsave');
-        $routes->get('episode-edit/(:any)/(:any)', 'Anime::episodeedit/$1/$2');
-        $routes->post('episode-edit', 'Anime::episodeeditsave');
+
 
         
         $routes->get('episode-delete/(:any)/(:any)', 'Anime::episodeeditdelete/$1/$2');
