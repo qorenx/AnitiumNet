@@ -120,7 +120,7 @@
                             <div class="form-group row">
                                 <label for="ani_aired_fin" class="col-sm-4 col-form-label">Anime Aired Fin:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="ani_aired_fin" id="ani_aired_fin" value="<?= substr($item['aired']['to'], 0, 10); ?>" class="form-control">
+                                    <input type="text" name="ani_aired_fin" id="ani_aired_fin" value="<?= !empty($item['aired']['to']) ? substr($item['aired']['to'], 0, 10) : '?' ?>" class="form-control">
                                 </div>
                             </div><br>
                             <div class="form-group row">

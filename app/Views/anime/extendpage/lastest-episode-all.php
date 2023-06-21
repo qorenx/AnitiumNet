@@ -11,7 +11,7 @@
                 <?php foreach (array_slice($lastep, 0, 36) as $ani_data) : ?>
                     <div class="flw-item">
                         <div class="film-poster">
-                            <div class="tick tick-episode"><?php echo $ani_data['ep_id_name'] ?>/<?php echo ($ani_data['ani_ep'] > 0) ? $ani_data['ani_ep'] : "?" ?></div>
+                            <div class="tick tick-episode"><?php echo $ani_data['ep_id_name'] ?>/<?php echo $ani_data['ani_ep'] ?></div>
                             <div class="tick tick-type"><?php
                                                         if ($ani_data['ani_type'] == 1) {
                                                             echo "TV";

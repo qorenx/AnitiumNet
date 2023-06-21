@@ -14,7 +14,7 @@
                 <?php foreach (array_slice($lastep, 0, 12) as $ani_data) : ?>
                     <div class="flw-item">
                         <div class="film-poster">
-                            <div class="tick tick-episode"><?php echo $ani_data['ep_id_name'] ?>/<?php echo ($ani_data['ani_ep'] > 0) ? $ani_data['ani_ep'] : "?" ?></div>
+                            <div class="tick tick-episode"><?php echo $ani_data['ep_id_name'] ?>/<?php echo $ani_data['ani_ep'] ?></div>
                             <div class="tick tick-type"><?php
                                                         $aniType = [
                                                             1 => 'TV',
@@ -41,30 +41,38 @@
                             </div>
                             <div class="tick rtl">
                                 <?php if (auth()->user()->raw_status ?? 1 == 1) : ?>
-                                    <?php if (!empty($ani_data['ep_raw'])) : ?>
+                                    <?php if (!empty($ani_data['ani_raw'])) : ?>
                                         <div class="tick-item tick-raw">
-                                            <?= '<span style="font-size: 0.4rem;">' . $ani_data['ep_raw'] . '</span>' ?>
+                                            <?php if ($ani_data['ani_raw'] == 1) { ?>
+                                                <span style="font-size: 0.6rem;">RAW</span>
+                                            <?php } ?>
                                         </div>
                                     <?php endif; ?>
                                 <?php endif; ?>
                                 <?php if (auth()->user()->sub_status ?? 1 == 1) : ?>
-                                    <?php if (!empty($ani_data['ep_sub'])) : ?>
+                                    <?php if (!empty($ani_data['ani_sub'])) : ?>
                                         <div class="tick-item tick-sub">
-                                            <?= '<span style="font-size: 0.4rem;">' . $ani_data['ep_sub'] . '</span>' ?>
+                                            <?php if ($ani_data['ani_sub'] == 1) { ?>
+                                                <span style="font-size: 0.6rem;">SUB</span>
+                                            <?php } ?>
                                         </div>
                                     <?php endif; ?>
                                 <?php endif; ?>
                                 <?php if (auth()->user()->dub_status ?? 1 == 1) : ?>
-                                    <?php if (!empty($ani_data['ep_dub'])) : ?>
+                                    <?php if (!empty($ani_data['ani_dub'])) : ?>
                                         <div class="tick-item tick-dub">
-                                            <?= '<span style="font-size: 0.4rem;">' . $ani_data['ep_dub'] . '</span>' ?>
+                                            <?php if ($ani_data['ani_dub'] == 1) { ?>
+                                                <span style="font-size: 0.6rem;">DUB</span>
+                                            <?php } ?>
                                         </div>
                                     <?php endif; ?>
                                 <?php endif; ?>
                                 <?php if (auth()->user()->turk_status ?? 1 == 1) : ?>
-                                    <?php if (!empty($ani_data['ep_turk'])) : ?>
+                                    <?php if (!empty($ani_data['ani_turk'])) : ?>
                                         <div class="tick-item tick-turk">
-                                            <?= '<span style="font-size: 0.4rem;">' . $ani_data['ep_turk'] . '</span>' ?>
+                                            <?php if ($ani_data['ani_turk'] == 1) { ?>
+                                                <span style="font-size: 0.6rem;">TURK</span>
+                                            <?php } ?>
                                         </div>
                                     <?php endif; ?>
                                 <?php endif; ?>

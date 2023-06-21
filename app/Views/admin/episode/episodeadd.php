@@ -2,6 +2,36 @@
 
 <body>
     <div id="wrapper" data-page="page_home">
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#getepisode-modal">
+            Get All Episode Modal
+        </button>
+        <div class="modal fade" id="getepisode-modal" tabindex="-1" role="dialog" aria-labelledby="getepisode-modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form action="<?= base_url('/admin/episode/getepisode/'); ?>" method="get">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="getepisode-modalLabel">Enter Anime ID</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="text" name="uid" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Get All Episode</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
         <form action="<?php echo base_url('admin/episode/episode-add'); ?>" method="post">
             <div class="card-body" style="margin: 0% 10%;">
                 <div class="form-group row">
@@ -28,49 +58,15 @@
                         <input type="text" name="ep_pv" id="ep_pv" class="form-control">
                     </div>
                 </div></br>
-                <div class="form-group row">
-                    <label for="ep_raw" class="col-sm-4 col-form-label">Ani Raw:</label>
-                    <div class="col-sm-8">
-                        <select name="ep_raw" id="ep_raw" class="form-control">
-                            <option value="">NO</option>
-                            <option value="RAW">RAW</option>
-                        </select>
-                    </div>
-                </div><br>
-                <div class="form-group row">
-                    <label for="ep_sub" class="col-sm-4 col-form-label">Ani Sub:</label>
-                    <div class="col-sm-8">
-                        <select name="ep_sub" id="ep_sub" class="form-control">
-                            <option value="">NO</option>
-                            <option value="SUB">SUB</option>
-                        </select>
-                    </div>
-                </div><br>
-                <div class="form-group row">
-                    <label for="ep_dub" class="col-sm-4 col-form-label">Ani Dub:</label>
-                    <div class="col-sm-8">
-                        <select name="ep_dub" id="ep_dub" class="form-control">
-                            <option value="">NO</option>
-                            <option value="DUB">DUB</option>
-                        </select>
-                    </div>
-                </div><br>
-                <div class="form-group row">
-                    <label for="ep_turk" class="col-sm-4 col-form-label">Ani Turk:</label>
-                    <div class="col-sm-8">
-                        <select name="ep_turk" id="ep_turk" class="form-control">
-                            <option value="">NO</option>
-                            <option value="TURK">TURK</option>
-                        </select>
-                    </div>
-                </div><br>
                 <footer style="position:fixed;right:auto;bottom:0;left:0;z-index:1030;" class="fixed-bottom">
-                <div class="card-footer">
-                    <input class="btn btn-primary" type="submit" value="Add">
-                </div>
+                    <div class="card-footer">
+                        <input class="btn btn-primary" type="submit" value="Add">
+                    </div>
                 </footer>
             </div>
         </form>
+
+
     </div>
     <div style="height:100px;"></div>
     <div id="mask-overlay"></div>

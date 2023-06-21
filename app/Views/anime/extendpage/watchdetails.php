@@ -59,5 +59,25 @@
         </a>
     </div>
 </div>
+
+<div id="vote-info"><div class="block-rating ">
+    <div class="rating-result">
+        <div class="rr-mark float-left"><strong><i class="fas fa-star text-warning mr-2"></i><?= $currentData->ep_score ?>
+            </strong><small>( x voted )</small></div>
+        <div class="rr-title float-right">Vote now</div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="description">What do you think about this anime?</div>
+    <div class="button-rate">
+        <button type="button" class="btn btn-emo rate-bad btn-vote">😩<span class="ml-2">Boring</span>
+        </button>
+        <button type="button" class="btn btn-emo rate-normal btn-vote">😃<span class="ml-2">Great</span></button>
+        <button type="button" class="btn btn-emo rate-good btn-vote">🤩<span class="ml-2">Amazing</span></button>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</div></div>
+
+
 </div>
 </div>

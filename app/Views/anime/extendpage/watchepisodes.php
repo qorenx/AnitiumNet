@@ -28,7 +28,10 @@
                         <a title="<?= $episode->ep_name ?>" class="ssl-item ep-item<?= ($_SERVER['REQUEST_URI'] == "/watch/{$episode->uid}/" . preg_replace('/[\s\/]+/', '-', $animeData['ani_name']) . "/{$episode->ep_id_name}") ? ' active' : ''; ?>" href="/watch/<?= $episode->uid ?>/<?= preg_replace('/[\s\/]+/', '-', $animeData['ani_name']) ?>/<?= ($episode->ep_id_name) ?>" onclick="event.preventDefault(); this.classList.add('active'); window.location.href=this.href;">
                             <div class="ssli-order"><?= extractEpisodeNumber($episode->ep_id_name) ?></div>
                             <div class="ssli-detail">
-                                <div class="ep-name" title="<?= $episode->ep_name ?>"><?= isset($episode->ep_name) && !empty($episode->ep_name) ? $episode->ep_name : "Unknown" ?></div>
+                                <div class="ep-name" data-jname="<?= $episode->ep_jname ?>" title="<?= $episode->ep_romaji ?>"><?= isset($episode->ep_name) && !empty($episode->ep_name) ? $episode->ep_name : "Episode-$episode->ep_id_name" ?></div>
+                            </div>
+                            <div class="ssli-btn">
+                            <div class="btn btn-circle"><i class="fas fa-play"></i></div>
                             </div>
                             <div class="clearfix"></div>
                         </a>
