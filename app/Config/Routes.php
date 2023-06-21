@@ -122,8 +122,10 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->get('anime-add', 'Anime::animeadd');
         $routes->post('anime-add', 'Anime::animeaddsave');
 
-        $routes->get('getanime/(:any)', 'Anime::getAnime/$1');
-        $routes->post('getanime', 'Anime::getAnimesave');
+        $routes->get('getanime', 'Anime::getAnime');
+        $routes->post('getanimeadd', 'Anime::getAnimesave');
+        $routes->get('getanimeupdate', 'Anime::getAnimeupdate');
+        $routes->post('getanimeupp', 'Anime::getAnimeupdatesave');
 
         $routes->get('anime-edit/(:any)', 'Anime::animeedit/$1');
         $routes->post('anime-edit', 'Anime::animeeditupdate');

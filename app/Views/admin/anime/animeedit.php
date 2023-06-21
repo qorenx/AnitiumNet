@@ -82,12 +82,6 @@
                                 <div id="producers-list" class="mt-3"></div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="ani_offical_site" class="col-sm-4 col-form-label">Offical WebSite:</label>
-                            <div class="col-sm-8">
-                                <input type="text" name="ani_offical_site" id="ani_offical_site" value="<?php echo $animeedit['ani_offical_site']; ?>" class="form-control">
-                            </div>
-                        </div><br>
                     </div>
                     <div class="tab-pane fade" id="animedetails">
                         <br>

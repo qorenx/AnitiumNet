@@ -228,12 +228,19 @@
                                     ?>
                                 </div>
                             <?php endif; ?>
-                            <?php if (!empty($animetv['ani_offical_site'])) : ?>
-                                <div class="item item-title">
-                                    <a href="<?= $animetv['ani_offical_site'] ?>" class="name">
-                                        <span class="item-head">Offical WebSite</span></a>
-                                </div>
-                            <?php endif; ?>
+                            <div class="item">
+                                    <span class="item-head">Resources:</span>
+                            <?php
+                            $sites = json_decode($animetv['ani_offical_site']);
+                            foreach ($sites as $site) {
+                            ?>
+                                    <a href='<?php echo $site->url; ?>' class='name'>
+                                        <span><?php echo $site->name; ?></span>
+                                    </a>
+                            <?php
+                            }
+                            ?>
+                            </div>
                         </div>
                         <div class="clearfix"></div>
                     </div>

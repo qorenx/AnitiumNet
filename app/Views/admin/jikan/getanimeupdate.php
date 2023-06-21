@@ -3,7 +3,7 @@
 <body>
     <div id="wrapper" data-page="page_home">
 
-        <form action="<?php echo base_url('admin/anime/getanimeadd'); ?>" method="post">
+        <form action="<?php echo base_url('admin/anime/getanimeupp'); ?>" method="post">
             <?php
             foreach ($data as $item) { ?>
                 <div class="card-body" style="margin: 0% 10%;">
@@ -305,7 +305,7 @@
 
                         <footer style="position:fixed;right:auto;bottom:0;left:0;z-index:1030;" class="fixed-bottom">
                             <div class="card-footer">
-                                <input class="btn btn-primary" type="submit" value="GetAnimeAdd">
+                                <input class="btn btn-primary" type="submit" value="GetAnimeUpdate">
                             </div>
                         </footer>
                     <?php } ?>
