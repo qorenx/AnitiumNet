@@ -3,15 +3,15 @@
 <body>
     <div id="wrapper" data-page="page_home">
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#getepisode-modal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#getallepisode-modal">
             Get All Episode Modal
         </button>
-        <div class="modal fade" id="getepisode-modal" tabindex="-1" role="dialog" aria-labelledby="getepisode-modalLabel" aria-hidden="true">
+        <div class="modal fade" id="getallepisode-modal" tabindex="-1" role="dialog" aria-labelledby="getallepisode-modalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <form action="<?= base_url('/admin/episode/getepisode/'); ?>" method="get">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="getepisode-modalLabel">Enter Anime ID</h5>
+                            <h5 class="modal-title" id="getallepisode-modalLabel">Enter Anime ID</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -30,6 +30,33 @@
             </div>
         </div>
 
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#getepisode-modal">
+            Get Episode Modal
+        </button>
+        <div class="modal fade" id="getepisode-modal" tabindex="-1" role="dialog" aria-labelledby="getepisode-modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form action="<?= base_url('/admin/episode/getoneepisode/'); ?>" method="get">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="getepisode-modalLabel">Enter Anime ID</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="text" name="uid" class="form-control" required>
+                                <input type="text" name="eps" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Get All Episode</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 
         <form action="<?php echo base_url('admin/episode/episode-add'); ?>" method="post">
@@ -61,7 +88,7 @@
                 <div class="form-group row">
                     <label for="ep_jname" class="col-sm-4 col-form-label">Episode JName:</label>
                     <div class="col-sm-8">
-                        <input type="text" name="ep_jname" id="ep_jname" value="<?php echo $epeedit['ep_jname']; ?>" class="form-control">
+                        <input type="text" name="ep_jname" id="ep_jname" value="" class="form-control">
                     </div>
                 </div><br>
                 <div class="form-group row">
@@ -84,7 +111,7 @@
                 </div><br>
                 <footer style="position:fixed;right:auto;bottom:0;left:0;z-index:1030;" class="fixed-bottom">
                     <div class="card-footer">
-                        <input class="btn btn-primary" type="submit" value="Add">
+                        <input class="btn btn-primary" type="submit" value="Episode Add">
                     </div>
                 </footer>
             </div>

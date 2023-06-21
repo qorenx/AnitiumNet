@@ -148,7 +148,8 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('episode-edit', 'Anime::episodeeditsave');
         $routes->get('getepisode', 'Anime::getEpisode');
         $routes->post('getepisode', 'Anime::getEpisodesave');
-
+        $routes->get('getoneepisode', 'Anime::getoneEpisode');
+        $routes->post('getoneepisode', 'Anime::getoneEpisodesave');
 
         $routes->get('episode-sub-add', 'Anime::episodesubadd');
         $routes->post('episode-sub-add', 'Anime::episodesubaddsave');
