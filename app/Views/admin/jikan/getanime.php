@@ -1,0 +1,345 @@
+<?= $this->include('admin/extem/header') ?>
+
+<body>
+    <div id="wrapper" data-page="page_home">
+
+        <form action="<?php echo base_url('admin/anime/getanime'); ?>" method="post">
+            <?php
+            foreach ($data as $item) { ?>
+                <div class="card-body" style="margin: 0% 10%;">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#myanimelist" data-toggle="tab">MyAnimeList</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#animedetails" data-toggle="tab">Anime Details</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#genre" data-toggle="tab">Genre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#typecountrystatus" data-toggle="tab">Anime TCS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#posterwallpaper" data-toggle="tab">Poster-Wallpaper</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#rawsubdubturk" data-toggle="tab">Raw-Sub-Dub-Turk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#youtubemangaurl" data-toggle="tab">Youtube</a>
+                        </li>
+                    </ul>
+
+
+                    <div class="tab-content mt-3">
+                        <div class="tab-pane fade show active" id="myanimelist">
+                            <div class="form-group row">
+                                <label for="uid" class="col-sm-4 col-form-label">UID:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="uid" id="uid" value="<?= $item['mal_id']; ?>" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label for="ani_score" class="col-sm-4 col-form-label">Anime Score:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ani_score" id="ani_score" value="<?= $item['score']; ?>" class="form-control">
+                                </div>
+                            </div></br>
+                            <div class="form-group row">
+                                <label for="ani_time" class="col-sm-4 col-form-label">Episode Time:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ani_time" id="ani_time" value="<?= $item['duration']; ?>" class="form-control">
+                                </div>
+                            </div><br>
+                            <div class="form-group row">
+                                <label for="ani_aired" class="col-sm-4 col-form-label">Anime Aired:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ani_aired" id="ani_aired" value="<?= substr($item['aired']['from'], 0, 10); ?>" class="form-control">
+                                </div>
+                            </div><br>
+                            <div class="form-group row">
+                                <label for="ani_aired_fin" class="col-sm-4 col-form-label">Anime Aired Fin:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ani_aired_fin" id="ani_aired_fin" value="<?= substr($item['aired']['to'], 0, 10); ?>" class="form-control">
+                                </div>
+                            </div><br>
+                            <div class="form-group row">
+                                <label for="ani_studio" class="col-sm-4 col-form-label">Anime Studio:</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <input type="text" name="ani_studio" id="ani_studio" value="<?php
+                                                                                    $studios = array();
+                                                                                    foreach ($item['studios'] as $studio) {
+                                                                                        array_push($studios, $studio['name']);
+                                                                                    }
+                                                                                    $result = implode(",", array_merge($studios));
+                                                                                    echo $result;
+                                                                                    ?>" class="form-control">
+                                    </div><br>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="ani_producers" class="col-sm-4 col-form-label">Anime Producers:</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <input type="text" name="ani_producers" id="ani_producers" value="<?php
+                                                                                        $producers = array();
+                                                                                        foreach ($item['producers'] as $producer) {
+                                                                                            array_push($producers, $producer['name']);
+                                                                                        }
+                                                                                        $result = implode(",", array_merge($producers));
+                                                                                        echo $result;
+                                                                                        ?>" class="form-control">
+                                    </div><br>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="ani_offical_site" class="col-sm-4 col-form-label">Offical WebSite[Default MyanimeList Url]:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ani_offical_site" id="ani_offical_site" value="<?= $item['url']; ?>" class="form-control">
+                                </div>
+                            </div><br>
+                        </div>
+                        <div class="tab-pane fade" id="animedetails">
+                            <br>
+                            <div class="form-group row">
+                                <label for="ani_name" class="col-sm-4 col-form-label">Anime Name:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ani_name" id="ani_name" value="<?= $item['title']; ?>" class="form-control">
+                                </div>
+                            </div><br>
+                            <div class="form-group row">
+                                <label for="ani_jname" class="col-sm-4 col-form-label">Anime Japanese Name:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ani_jname" id="ani_jname" value="<?= $item['title_japanese']; ?>" class="form-control">
+                                </div>
+                            </div></br>
+                            <div class="form-group row">
+                                <label for="ani_ep" class="col-sm-4 col-form-label">Episode:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ani_ep" id="ani_ep" value="<?= $item['episodes']; ?>" class="form-control">
+                                </div>
+                            </div></br>
+                            <div class="form-group row">
+                                <label for="ani_release" class="col-sm-4 col-form-label">Anime Release Years:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ani_release" id="ani_release" value="<?= $item['year']; ?>" class="form-control">
+                                </div>
+                            </div></br>
+                            <div class="form-group row">
+                                <label for="ani_synonyms" class="col-sm-4 col-form-label">Anime Synonyms:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ani_synonyms" id="ani_synonyms" value="<?php
+                                                                                                    $last_key = count($item['title_synonyms']) - 1;
+
+                                                                                                    foreach ($item['title_synonyms'] as $key => $synonym) {
+                                                                                                        echo $synonym;
+                                                                                                        if ($key != $last_key) {
+                                                                                                            echo ", ";
+                                                                                                        }
+                                                                                                    }
+                                                                                                    ?>" class="form-control">
+                                </div>
+                            </div><br>
+                            <div class="form-group row">
+                                <label for="ani_synopsis" class="col-sm-4 col-form-label">Synopsis:</label>
+                                <div class="col-sm-8">
+                                    <div class="card">
+                                        <div class="card-body p-0">
+                                            <textarea class="form-control border-0" id="ani_synopsis" name="ani_synopsis" rows="6"><?= $item['synopsis']; ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div></br>
+                        </div>
+                        <div class="tab-pane fade" id="typecountrystatus">
+                            <br>
+                            <div class="form-group row">
+                                <label for="ani_source" class="col-sm-4 col-form-label">Anime Source:</label>
+                                <div class="col-sm-8">
+                                    <select name="ani_source" id="ani_source" class="form-control">
+                                        <option value="1" <?php if ($item['source'] === 'Manga') echo 'selected'; ?>>Manga</option>
+                                        <option value="2" <?php if ($item['source'] === 'Light novel') echo 'selected'; ?>>LightNovel</option>
+                                        <option value="3" <?php if ($item['source'] === 'Original') echo 'selected'; ?>>Original-Other</option>
+                                    </select>
+                                </div>
+                            </div></br>
+                            <div class="form-group row">
+                                <label for="ani_type" class="col-sm-4 col-form-label">Anime Type: </label>
+                                <div class="col-sm-8">
+                                    <select name="ani_type" id="ani_type" class="form-control">
+                                        <option value="1" <?php if ($item['type'] === 'TV') echo 'selected'; ?>>TV</option>
+                                        <option value="2" <?php if ($item['type'] === 'Movie') echo 'selected'; ?>>Movies</option>
+                                        <option value="3" <?php if ($item['type'] === 'OVA') echo 'selected'; ?>>Ova</option>
+                                        <option value="4" <?php if ($item['type'] === 'ONA') echo 'selected'; ?>>Ona</option>
+                                        <option value="5" <?php if ($item['type'] === 'Special') echo 'selected'; ?>>Special</option>
+                                    </select>
+                                </div>
+                            </div><br>
+                            <div class="form-group row">
+                                <label for="ani_country" class="col-sm-4 col-form-label">Anime Country: </label>
+                                <div class="col-sm-8">
+                                    <select name="ani_country" id="ani_country" class="form-control">
+                                        <option value="1">Japanese</option>
+                                        <option value="2">Chinese</option>
+                                    </select>
+                                </div>
+                            </div><br>
+                            <div class="form-group row">
+                                <label for="ani_stats" class="col-sm-4 col-form-label">Anime Status: </label>
+                                <div class="col-sm-8">
+                                    <select name="ani_stats" id="ani_stats" class="form-control">
+                                        <option value="1" <?php if ($item['status'] === 'Currently Airing') echo 'selected'; ?>>Currently Airing</option>
+                                        <option value="2" <?php if ($item['status'] === 'Finished Airing') echo 'selected'; ?>>Finished</option>
+                                        <option value="3" <?php if ($item['status'] === 'Not yet aired') echo 'selected'; ?>>Not yet Aired</option>
+                                    </select>
+                                </div>
+                            </div></br>
+                            <div class="form-group row">
+                                <label for="ani_release_season" class="col-sm-4 col-form-label">Anime Release Season:</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <select name="ani_release_season" id="ani_release_season" class="form-control">
+                                            <option value="1" <?php if ($item['season'] === 'winter') echo 'selected'; ?>>Winter</option>
+                                            <option value="2" <?php if ($item['season'] === 'spring') echo 'selected'; ?>>Spring</option>
+                                            <option value="3" <?php if ($item['season'] === 'summer') echo 'selected'; ?>>Summer</option>
+                                            <option value="4" <?php if ($item['season'] === 'fall') echo 'selected'; ?>>Fall</option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2">Season</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div></br>
+                            <div class="form-group row">
+                                <label for="ani_rate" class="col-sm-4 col-form-label">Anime Rate: </label>
+                                <div class="col-sm-8">
+                                    <select name="ani_rate" id="ani_rate" class="form-control">
+                                        <option value="1" <?php if ($item['rating'] === 'G - All Ages') echo 'selected'; ?>>G</option>
+                                        <option value="2" <?php if ($item['rating'] === 'PG - Children') echo 'selected'; ?>>PG</option>
+                                        <option value="3" <?php if ($item['rating'] === 'PG-13 - Teens 13 or older') echo 'selected'; ?>>PG-13</option>
+                                        <option value="4" <?php if ($item['rating'] === 'R - 17+ (violence & profanity)') echo 'selected'; ?>>R</option>
+                                        <option value="5" <?php if ($item['rating'] === 'R+ - Mild Nudity') echo 'selected'; ?>>Rx</option>
+                                    </select>
+                                </div>
+                            </div></br>
+                        </div>
+                        <div class="tab-pane fade" id="posterwallpaper">
+                            <br>
+                            <div class="form-group row">
+                                <label for="ani_poster" class="col-sm-4 col-form-label">Poster İMG:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ani_poster" id="ani_poster" value="<?= isset($item['images']['jpg']['large_image_url']) ? $item['images']['jpg']['large_image_url'] : $item['images']['jpg']['image_url']; ?>" class="form-control">
+                                </div>
+                            </div></br>
+                            <div class="form-group row">
+                                <label for="ani_wallpaper" class="col-sm-4 col-form-label">Wallpape İMG:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ani_wallpaper" id="ani_wallpaper" value="<?= isset($item['images']['jpg']['large_image_url']) ? $item['images']['jpg']['large_image_url'] : $item['images']['jpg']['image_url']; ?>" class="form-control">
+                                </div>
+                            </div></br>
+                        </div>
+                        <div class="tab-pane fade" id="rawsubdubturk">
+                            <br>
+                            <div class="form-group row">
+                                <label for="ani_raw" class="col-sm-4 col-form-label">Ani Raw:</label>
+                                <div class="col-sm-8">
+                                    <select name="ani_raw" id="ani_raw" class="form-control">
+                                        <option value="">NO</option>
+                                        <option value="1">RAW</option>
+                                    </select>
+                                </div>
+                            </div><br>
+                            <div class="form-group row">
+                                <label for="ani_sub" class="col-sm-4 col-form-label">Ani Sub:</label>
+                                <div class="col-sm-8">
+                                    <select name="ani_sub" id="ani_sub" class="form-control">
+                                        <option value="">NO</option>
+                                        <option value="1">SUB</option>
+                                    </select>
+                                </div>
+                            </div><br>
+                            <div class="form-group row">
+                                <label for="ani_dub" class="col-sm-4 col-form-label">Ani Dub:</label>
+                                <div class="col-sm-8">
+                                    <select name="ani_dub" id="ani_dub" class="form-control">
+                                        <option value="">NO</option>
+                                        <option value="1">DUB</option>
+                                    </select>
+                                </div>
+                            </div><br>
+                            <div class="form-group row">
+                                <label for="ani_turk" class="col-sm-4 col-form-label">Ani Turk:</label>
+                                <div class="col-sm-8">
+                                    <select name="ani_turk" id="ani_turk" class="form-control">
+                                        <option value="">NO</option>
+                                        <option value="1">TURK</option>
+                                    </select>
+                                </div>
+                            </div><br>
+                        </div>
+                        <div class="tab-pane fade" id="youtubemangaurl">
+                            <br>
+                            <div class="form-group row">
+                                <label for="ani_pv" class="col-sm-4 col-form-label">Youtube PV:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ani_pv" id="ani_pv" value="<?= $item['trailer']['url']; ?>" class="form-control">
+                                </div>
+                            </div><br>
+                        </div>
+                        <div class="tab-pane fade" id="genre">
+                            <br>
+                            <div class="form-group row">
+                                <label for="ani_genre" class="col-sm-4 col-form-label">Genre: </label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <input type="text" name="ani_genre" id="ani_genre" value="<?php
+                                                                                    $genres = array();
+                                                                                    foreach ($item['genres'] as $genre) {
+                                                                                        array_push($genres, $genre['name']);
+                                                                                    }
+                                                                                    $themes = array();
+                                                                                    foreach ($item['themes'] as $theme) {
+                                                                                        array_push($themes, $theme['name']);
+                                                                                    }
+                                                                                    $demographics = array();
+                                                                                    foreach ($item['demographics'] as $demographic) {
+                                                                                        array_push($demographics, $demographic['name']);
+                                                                                    }
+
+                                                                                    $result = implode(",", array_merge($genres, $themes, $demographics));
+                                                                                    echo $result;
+                                                                                    ?>" class="form-control">
+
+                                    </div>
+                                    <div id="genre-list" class="mt-3"></div>
+                                </div>
+                            </div><br>
+
+                        </div>
+                        <footer style="position:fixed;right:auto;bottom:0;left:0;z-index:1030;" class="fixed-bottom">
+                            <div class="card-footer">
+                                <input class="btn btn-primary" type="submit" value="GetAnimeAdd">
+                            </div>
+                        </footer>
+                    <?php } ?>
+        </form>
+
+    </div>
+    <div id="mask-overlay"></div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>files/js/app.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>files/js/comman.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>files/js/movie.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>files/css/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>files/js/function.js"></script>
+    </div>
+</body>
+
+</html>

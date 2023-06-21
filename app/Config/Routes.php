@@ -121,6 +121,10 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('uploadfile', 'Anime::uploadFile');
         $routes->get('anime-add', 'Anime::animeadd');
         $routes->post('anime-add', 'Anime::animeaddsave');
+
+        $routes->get('getanime/(:any)', 'Anime::getAnime/$1');
+        $routes->post('getanime', 'Anime::getAnimesave');
+
         $routes->get('anime-edit/(:any)', 'Anime::animeedit/$1');
         $routes->post('anime-edit', 'Anime::animeeditupdate');
         $routes->get('season-add', 'Anime::seasonadd');
@@ -181,3 +185,10 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('schedule/deleteall', 'Anime::scheduledeleteall');
     });
 });
+
+
+
+
+
+
+
