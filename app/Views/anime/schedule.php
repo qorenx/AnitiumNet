@@ -77,7 +77,7 @@
                         foreach ($scheduleItems as $item) {
                             if ($item['sc_days'] == $days) {
                                 $base_url = empty($item['sc_ep']) ? 'anime/' : 'watch/';
-                                $link = base_url($base_url . $item['sc_id'] . '/' . str_replace(' ', '-', $item['sc_name']) . '/' . $item['sc_ep']);
+                                $link = base_url('/watch?anime=' . urlencode($item['sc_name']) . '&uid=' . $item['sc_id'] . '&eps=' . $item['sc_ep']);
                     ?>
                                 <li>
                                     <a href="<?= $link ?>" class="tsl-link">

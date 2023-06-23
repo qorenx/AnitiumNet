@@ -135,7 +135,7 @@
                                                                         echo $post;
                                                                     } elseif ($value['from'] == 3) {
                                                                         $post = "<a href='" . base_url('anime/' . $value['post_id'] . '/' . str_replace(" ", "-", $value['ani_name'])) . "' class='highlight-text'><span style='color:red'>" . $value['ani_name'] . "</span></a>";
-                                                                        $watch = "<a href='" . base_url('watch/' . $value['post_id'] . '/' . str_replace(" ", "-", $value['ani_name']) . '/' . $value['post_ep'])  . "'class='highlight-text'>on <span style='color:blue'>" . "Episode-" . $value['post_ep'] . "</span></a>";
+                                                                        $watch = "<a href='" . base_url('/watch?anime=' . urlencode($value['ani_name']) . '&uid=' . $value['post_id'] . '&eps=' . $value['post_ep'])  . "'class='highlight-text'>on <span style='color:blue'>" . "Episode-" . $value['post_ep'] . "</span></a>";
                                                                         echo $post . " " . $watch;
                                                                     } else {
                                                                         echo "";
