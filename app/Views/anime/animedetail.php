@@ -29,7 +29,7 @@
                     </div>
                     <?php if (!empty($animetv['ani_pv'])) : ?>
                         <div class="d-flex align-items-center">
-                            <?= $this->include('anime/extendpage/animepromevideo') ?>
+                            <?= $this->include('anime/animedetails/animepromevideo') ?>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -104,10 +104,10 @@
                             <a  href="/watch?anime=<?= urlencode($animetv['ani_name']) ?>&uid=<?= $animetv['uid'] ?>&eps=<?= $episodesData['ep_id_name'] ?>" class="btn btn-radius btn-primary btn-play"><i class="fas fa-play mr-2"></i>Watch now</a>
                         <?php endif; ?>
                         <?php if (auth()->loggedIn()) : ?>
-                            <?= $this->include('user/animeaddlist') ?>
+                            <?= $this->include('anime/animedetails/animeaddlist') ?>
                         <?php endif; ?>
                         <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
-                            <?= $this->include('user/animeadmincontrol') ?>
+                            <?= $this->include('anime/animedetails/animeadmincontrol') ?>
                         <?php endif; ?>
                     </div>
                     <div class="film-description m-hide">

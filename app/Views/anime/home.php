@@ -19,22 +19,22 @@
                 </div>
             </div>
         </div>
-        <?= $this->include('anime/extendpage/trending') ?>
+        <?= $this->include('anime/homepage/trending') ?>
         <div id="anime-featured">
         </div>
         <div id="main-wrapper">
             <div class="container" style="max-width:100%!important;width:100%!important;">
                 <div id="main-content">
-                    <?= $this->include('anime/extendpage/lastest-episode') ?>
+                    <?= $this->include('anime/homepage/lastest-episode') ?>
                     <?php if (auth()->user()->schedule_status ?? 1 == 1) : ?>
-                        <?= $this->include('anime/schedule') ?>
+                        <?= $this->include('anime/homepage/schedule') ?>
                     <?php endif; ?>
-                    <?= $this->include('anime/extendpage/topupcoming') ?>
+                    <?= $this->include('anime/homepage/topupcoming') ?>
                     <div class="clearfix"></div>
-                    <?= $this->include('anime/extendpage/randomanime') ?>
+                    <?= $this->include('anime/homepage/randomanime') ?>
                     <div class="clearfix"></div>
                 </div>
-                <?= $this->include('anime/extendpage/sidenavhome') ?>
+                <?= $this->include('anime/homepage/sidenavhome') ?>
                 <div class="clearfix"></div>
             </div>
         </div>

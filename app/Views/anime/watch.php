@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="pc-right">
                                             <?php if (!empty($episodedownload)) : ?>
-                                                <?= $this->include('anime/extendpage/server/epdownload') ?>
+                                                <?= $this->include('anime/animeepisode/server/epdownload') ?>
                                             <?php endif; ?>
                                             <div class="pc-item pc-control block-report">
                                                 <a href="<?= base_url('report') ?>" onclick="return confirm('I think there is a problem with the partition. I want to report!')" class="btn btn-primary"><i class="fa-solid fa-bug"></i></a>
@@ -89,9 +89,9 @@
                                 </div>
                                 <div class="player-servers">
                                     <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
-                                        <?= $this->include('user/episodeadmincontrol') ?>
+                                        <?= $this->include('anime/animeepisode/episodeadmincontrol') ?>
                                     <?php endif; ?>
-                                    <?= $this->include('anime/extendpage/watchserver') ?>
+                                    <?= $this->include('anime/animeepisode/watchserver') ?>
                                 </div>
                                 <?php if (empty($nextData->ep_id_name)) : ?>
                                     <?php if (!empty($schedulenext[0]['sc_days'])) : ?>
@@ -104,11 +104,11 @@
                                         </div>
                                     <?php endif; ?>
                                 <?php endif; ?>
-                                <?= $this->include('anime/extendpage/watchepisodes') ?>
+                                <?= $this->include('anime/animeepisode/watchepisodes') ?>
                             </div>
                             <div class="anis-watch-detail">
                                 <div class="anis-content">
-                                    <?= $this->include('anime/extendpage/watchdetails') ?>
+                                    <?= $this->include('anime/animeepisode/watchdetails') ?>
                                 </div>
                             </div>
                         </div>
@@ -144,17 +144,17 @@
                                     </ul>
                                     <?php if (auth()->loggedIn()) : ?>
                                         <div class="tab-content chat" id="tab1">
-                                            <?= $this->include('anime/extendpage/comment') ?>
+                                            <?= $this->include('anime/animeepisode/commentsystem/comment') ?>
                                         </div>
                                         <div class="tab-content chat" id="tab2" style="display:none;">
-                                            <?= $this->include('anime/extendpage/disqus') ?>
+                                            <?= $this->include('anime/animeepisode/commentsystem/disqus') ?>
                                         </div>
                                     <?php else : ?>
                                         <div class="tab-content chat" id="tab1">
-                                            <?= $this->include('anime/extendpage/disqus') ?>
+                                            <?= $this->include('anime/animeepisode/commentsystem/disqus') ?>
                                         </div>
                                         <div class="tab-content chat" id="tab2" style="display:none;">
-                                            <?= $this->include('anime/extendpage/comment') ?>
+                                            <?= $this->include('anime/animeepisode/commentsystem/comment') ?>
                                         </div>
                                     <?php endif; ?>
                                 </div>

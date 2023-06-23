@@ -6,7 +6,7 @@
             <div class="rr-title float-right">Vote now</div>
             <div class="clearfix"></div>
         </div>
-        <div class="description">What do you think about this anime?</div>
+        <div class="description">What do you think about this episode?</div>
         <div class="button-rate">
             <button type="button" class="btn btn-emo rate-bad btn-vote" onclick="postVote(0)">😩<span class="ml-2">Boring</span></button>
             <button type="button" class="btn btn-emo rate-normal btn-vote" onclick="postVote(5)">😃<span class="ml-2">Great</span></button>

@@ -59,6 +59,6 @@
         </a>
     </div>
 </div>
-<?= $this->include('anime/extendpage/episodevote') ?>
+<?= $this->include('anime/animeepisode/episodevote') ?>
 </div>
 </div>
