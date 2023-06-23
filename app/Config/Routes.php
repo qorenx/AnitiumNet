@@ -47,7 +47,7 @@ $routes->get('recent-releases', 'Anime::recent_releases');
 $routes->get('anime/(:any)', 'Anime::anime_details/$1/');
 $routes->get('search', 'Anime::search');
 $routes->get('search/suggestions', 'Anime::suggestions');
-$routes->get('watch/(:any)/(:any)/(:any)', 'Anime::ani_watch/$1/$3/$4/');
+$routes->get('watch', 'Anime::ani_watch');
 $routes->post('/watch/epcommentinsert', 'Anime::episodecommentinsert');   ///episodecomment
 $routes->post('repsystem/episoderep/(:any)', 'Anime::episodecommentrepMethod/$1/');  //episode rep
 $routes->post('repsystem/episodedisrep/(:any)', 'Anime::episodecommentdisrepMethod/$1/'); //episode disrep

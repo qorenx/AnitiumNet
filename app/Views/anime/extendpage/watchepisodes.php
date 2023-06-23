@@ -25,7 +25,7 @@
                         return extractEpisodeNumber($a->ep_id_name) <=> extractEpisodeNumber($b->ep_id_name);
                     });
                     foreach ($allEpisodesData as $episode) : ?>
-                        <a title="<?= $episode->ep_name ?>" class="ssl-item ep-item<?= ($_SERVER['REQUEST_URI'] == "/watch/{$episode->uid}/" . preg_replace('/[\s\/]+/', '-', $animeData['ani_name']) . "/{$episode->ep_id_name}") ? ' active' : ''; ?>" href="/watch/<?= $episode->uid ?>/<?= preg_replace('/[\s\/]+/', '-', $animeData['ani_name']) ?>/<?= ($episode->ep_id_name) ?>" onclick="event.preventDefault(); this.classList.add('active'); window.location.href=this.href;">
+                        <a title="<?= $episode->ep_name ?>" class="ssl-item ep-item<?= ($_SERVER['REQUEST_URI'] == "/watch?anime=" . urlencode($animeData['ani_name']) . "&uid={$episode->uid}&eps={$episode->ep_id_name}") ? ' active' : ''; ?>" href="/watch?anime=<?= urlencode($animeData['ani_name']) ?>&uid=<?= $episode->uid ?>&eps=<?= $episode->ep_id_name ?>" onclick="event.preventDefault(); this.classList.add('active'); window.location.href=this.href;">
                             <div class="ssli-order"><?= extractEpisodeNumber($episode->ep_id_name) ?></div>
                             <div class="ssli-detail">
                                 <div class="ep-name" data-jname="<?= $episode->ep_jname ?>" title="<?= $episode->ep_romaji ?>"><?= isset($episode->ep_name) && !empty($episode->ep_name) ? $episode->ep_name : "Episode-$episode->ep_id_name" ?></div>
