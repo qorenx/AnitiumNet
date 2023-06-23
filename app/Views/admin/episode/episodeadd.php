@@ -103,12 +103,6 @@
                         <input type="text" name="ep_aired" id="ep_aired" class="form-control">
                     </div>
                 </div><br>
-                <div class="form-group row">
-                    <label for="ep_score" class="col-sm-4 col-form-label">Episode Score:</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="ep_score" id="ep_score" class="form-control">
-                    </div>
-                </div><br>
                 <footer style="position:fixed;right:auto;bottom:0;left:0;z-index:1030;" class="fixed-bottom">
                     <div class="card-footer">
                         <input class="btn btn-primary" type="submit" value="Episode Add">

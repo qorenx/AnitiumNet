@@ -31,12 +31,6 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="ep_score" class="col-sm-4 col-form-label">Episode Score[Random]:</label>
-                        <div class="col-sm-8">
-                            <input type="text" name="ep_score[]" id="ep_score" value="<?= $value = rand(1, 10); ?>" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group row">
                         <label for="ep_aired" class="col-sm-4 col-form-label">Episode Aired:</label>
                         <div class="col-sm-8">
                             <input type="text" name="ep_aired[]" id="ep_aired" value="<?= substr($data['aired'], 0, 10); ?>" class="form-control">

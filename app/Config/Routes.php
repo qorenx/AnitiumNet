@@ -4,6 +4,7 @@ namespace Config;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
+service('auth')->routes($routes);
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
@@ -55,6 +56,13 @@ $routes->get('watch', 'Anime::ani_watch');
 
 
 
+//epvote vote  0/5/10 vote post yeridir.
+$routes->post('epvote/uservote0', 'Anime::episodevote0');  
+$routes->post('epvote/uservote5', 'Anime::episodevote5'); 
+$routes->post('epvote/uservote10', 'Anime::episodevote10');  
+
+
+
 
 $routes->post('/watch/epcommentinsert', 'Anime::episodecommentinsert');   ///episodecomment
 $routes->post('repsystem/episoderep/(:any)', 'Anime::episodecommentrepMethod/$1/');  //episode rep
@@ -98,7 +106,6 @@ $routes->get('status/(:any)/(:any)/(:any)', 'Anime::statusupdate/$1/$2/$3/');   
 $routes->add('report', 'Anime::storeUrlToDatabase', ['post', 'get']);
 $routes->add('reportpost/(:any)/(:any)/(:any)', 'Anime::reportpost/$1/$2/$3', ['post', 'get']);
 
-service('auth')->routes($routes);
 
 
 
