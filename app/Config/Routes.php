@@ -80,21 +80,45 @@ $routes->get('(:any)', 'Anime::userprofile/$1');
 
 
 $routes->group('community', function ($routes) {
+
     $routes->get('user/(:any)/(:any)', 'Anime::boarduser/$1/$2');
     $routes->get('user/(:any)', 'Anime::boarduser/$1');
+
     $routes->post('boardpost/delete', 'Anime::boardPostDelete');   //boardpost delete
     $routes->post('boardrepypost/delete', 'Anime::boardrepyPostDelete');   //boardpost delete
+
+
+
+    ///  post?   pid=  &   pcon=   olarak community/board ve community/my-post olarak veri alıyor.
     $routes->get('board', 'Anime::board');
     $routes->get('my-post', 'Anime::boardmypost');
+
+
+
+    // board/tag    burada taglar alıp kullanıyor. Ve boardtag function birleştiriyor. Gösteriyor.
     $routes->get('board/tag/(:any)', 'Anime::boardtag/$1');
-    $routes->get('new-post', 'Anime::boardnewpost');  //poset inser
-    $routes->post('new-post', 'Anime::boardnewpostinsert'); //poset inser
-    $routes->get('post/(:any)/(:any)', 'Anime::boardviewpost/$1/$2'); //postinsertt
-    $routes->post('post/viewpost/(:any)', 'Anime::boardviewpostinsert/$1/'); //postinsertt
-    $routes->post('repsystem/postrep/(:any)', 'Anime::postrep/$1');  //board konular için
-    $routes->post('repsystem/postdisrep/(:any)', 'Anime::postdisrep/$1');
-    $routes->post('repsystem/postviewrep/(:any)', 'Anime::postviewrep/$1');  //board konulara yorumlar için
-    $routes->post('repsystem/postviewdisrep/(:any)', 'Anime::postviewdisrep/$1');
+
+
+    //board/new-post sayfası gösterme ve ekleme yeridir.
+    $routes->get('new-post', 'Anime::boardnewpost');
+    $routes->post('new-post', 'Anime::boardnewpostinsert');
+
+
+
+    //board gösterilen post tek gösterildiğii sayfa ve yorumların insert edildiği yer.
+    $routes->get('post', 'Anime::boardviewpost');
+    $routes->post('post/viewpost', 'Anime::boardviewpostinsert'); 
+    $routes->post('post/viewrepypost', 'Anime::boardviewrepypostinsert'); 
+
+
+    $routes->post('post/repyajax', 'Anime::repyajax'); 
+    $routes->get('post/repyajax', 'Anime::repyajax'); 
+
+
+   // $routes->post('repsystem/postrep/(:any)', 'Anime::postrep/$1');  //board konular için
+   // $routes->post('repsystem/postdisrep/(:any)', 'Anime::postdisrep/$1');
+   // $routes->post('repsystem/postviewrep/(:any)', 'Anime::postviewrep/$1');  //board konulara yorumlar için
+   // $routes->post('repsystem/postviewdisrep/(:any)', 'Anime::postviewdisrep/$1');
 });
 
 

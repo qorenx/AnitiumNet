@@ -159,7 +159,7 @@
                                                         <div class="is-time"><?= $post['created_at'] ?></div>
                                                     </div>
                                                     <div class="is-body">
-                                                        <h4 class="item-name"><a href="post/<?= $post['post_id'] ?>/<?= str_replace(' ', '-', $post['post_head']) ?>"><?= $post['post_head'] ?></a></h4>
+                                                        <h4 class="item-name"><a href="<?= base_url('community/')?>post?pid=<?= $post['post_id'] ?>&pcon=<?= urlencode($post['post_head']) ?>"><?= $post['post_head'] ?></a></h4>
                                                         <p><?= $post['post_content'] ?></p>
                                                     </div>
                                                     <div class="is-bottom">
@@ -216,7 +216,7 @@
                                                         <div class="is-time"><?= $post['created_at'] ?></div>
                                                     </div>
                                                     <div class="is-body">
-                                                        <h4 class="item-name"><a href="post/<?= $post['post_id'] ?>/<?= str_replace(' ', '-', $post['post_head']) ?>"><?= $post['post_head'] ?></a></h4>
+                                                        <h4 class="item-name"><a href="<?= base_url('community/')?>post?pid=<?= $post['post_id'] ?>&pcon=<?= urlencode($post['post_head']) ?>"><?= $post['post_head'] ?></a></h4>
                                                         <p><?= $post['post_content'] ?></p>
                                                     </div>
                                                     <div class="is-bottom">

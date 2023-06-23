@@ -8,7 +8,7 @@
         <div class="deslide-wrap">
             <div class="container" style="max-width:100%!important;width:100%!important;">
                 <div id="slider" class="swiper-container-initialized swiper-container-horizontal">
-                    <?= $this->include('anime/extendpage/slidebar') ?>
+                    <?= $this->include('anime/homepage/slidebar') ?>
                     <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
                     <div class="swiper-navigation">
                         <div class="swiper-button swiper-button-next" tabindex="0" role="button" aria-label="Next slide"><i class="fas fa-angle-right"></i></div>

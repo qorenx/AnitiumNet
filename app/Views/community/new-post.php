@@ -21,7 +21,7 @@
                                 <div class="alert alert-danger mb-3" id="post-error" style="display: none;"></div>
                                 <form class="preform" method="post" id="post-form">
                                     <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
-                                    <input type="hidden" name="post_id" value="<?php echo rand(); ?>">
+                                    <input type="hidden" name="post_id" value="<?php echo rand(000000, 99999999); ?>">
                                     <div class="form-group">
                                         <label for="dropdown-select">Select Tags</label>
                                         <div class="connect-tag-choose">

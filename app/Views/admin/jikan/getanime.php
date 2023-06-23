@@ -51,7 +51,7 @@
                             <div class="form-group row">
                                 <label for="ani_ep" class="col-sm-4 col-form-label">Episode:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="ani_ep" id="ani_ep" value="<?= $item['episodes']; ?>" class="form-control">
+                                    <input type="text" name="ani_ep" id="ani_ep" value="<?= empty($item['episodes']) ? '?' : $item['episodes']; ?>" class="form-control">
                                 </div>
                             </div></br>
                             <br>
