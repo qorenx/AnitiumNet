@@ -2,8 +2,8 @@
 
 <body>
     <div id="wrapper" data-page="page_home">
-    <div class="card-body" style="margin: 0% 10%;">
-                <table style="color:white" class="table">
+        <div class="card-body" style="margin: 0% 10%;">
+            <table style="color:white" class="table">
                 <thead>
                     <tr>
                         <th>Download Name</th>
@@ -16,7 +16,12 @@
                         <tr>
                             <td><?php echo $downloadedit['dw_name']; ?></td>
                             <td><?php echo $downloadedit['dw_link']; ?></td>
-                            <td><a href="<?php echo base_url('admin/episode/download-delete/' . $downloadedit['id']); ?>" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a></td>
+                            <td>
+                                <form action="<?php echo base_url('admin/episode/download-delete'); ?>" method="post" onsubmit="return confirm('Are you sure you want to delete?')">
+                                    <input type="hidden" name="dwid" value="<?php echo $downloadedit['id']; ?>">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>

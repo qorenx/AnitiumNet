@@ -21,36 +21,56 @@
                         <tr>
                             <td><?php echo $episodeRaw['uid']; ?></td>
                             <td>RAW</td>
-                            <td><?php echo $episodeRaw['raw_id']; ?></td>
+                            <td>Episode-<?php echo $episodeRaw['raw_id']; ?></td>
                             <td><?php echo $episodeRaw['raw_name']; ?></td>
-                            <td><a href="<?php echo base_url('admin/episode/embed-deleteraw/' . $episodeRaw['id']); ?>" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a></td>
+                            <td>
+                                <form action="<?php echo base_url('admin/episode/embed-deleteraw'); ?>" method="post" onsubmit="return confirm('Are you sure you want to delete?')">
+                                    <input type="hidden" name="id" value="<?php echo $episodeRaw['id']; ?>">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php } ?>
                     <?php foreach ($embededit['episodesub'] as $episodeSub) { ?>
                         <tr>
                             <td><?php echo $episodeSub['uid']; ?></td>
                             <td>SUB</td>
-                            <td><?php echo $episodeSub['sub_id']; ?></td>
+                            <td>Episode-<?php echo $episodeSub['sub_id']; ?></td>
                             <td><?php echo $episodeSub['sub_name']; ?></td>
-                            <td><a href="<?php echo base_url('admin/episode/embed-deletesub/' . $episodeSub['id']); ?>" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a></td>
+                            <td>
+                                <form action="<?php echo base_url('admin/episode/embed-deletesub'); ?>" method="post" onsubmit="return confirm('Are you sure you want to delete?')">
+                                    <input type="hidden" name="id" value="<?php echo $episodeSub['id']; ?>">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php } ?>
                     <?php foreach ($embededit['episodedub'] as $episodeDub) { ?>
                         <tr>
                             <td><?php echo $episodeDub['uid']; ?></td>
                             <td>DUB</td>
-                            <td><?php echo $episodeDub['dub_id']; ?></td>
+                            <td>Episode-<?php echo $episodeDub['dub_id']; ?></td>
                             <td><?php echo $episodeDub['dub_name']; ?></td>
-                            <td><a href="<?php echo base_url('admin/episode/embed-deletedub/' . $episodeDub['id']); ?>" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a></td>
+                            <td>
+                                <form action="<?php echo base_url('admin/episode/embed-deletedub'); ?>" method="post" onsubmit="return confirm('Are you sure you want to delete?')">
+                                    <input type="hidden" name="id" value="<?php echo $episodeDub['id']; ?>">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php } ?>
                     <?php foreach ($embededit['episodeturk'] as $episodeTurk) { ?>
                         <tr>
                             <td><?php echo $episodeTurk['uid']; ?></td>
                             <td>TURK</td>
-                            <td><?php echo $episodeTurk['turk_id']; ?></td>
+                            <td>Episode-<?php echo $episodeTurk['turk_id']; ?></td>
                             <td><?php echo $episodeTurk['turk_name']; ?></td>
-                            <td><a href="<?php echo base_url('admin/episode/embed-deleteturk/' . $episodeTurk['id']); ?>" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a></td>
+                            <td>
+                                <form action="<?php echo base_url('admin/episode/embed-deleteturk'); ?>" method="post" onsubmit="return confirm('Are you sure you want to delete?')">
+                                    <input type="hidden" name="id" value="<?php echo $episodeTurk['id']; ?>">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>

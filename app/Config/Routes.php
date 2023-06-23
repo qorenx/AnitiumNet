@@ -47,7 +47,15 @@ $routes->get('recent-releases', 'Anime::recent_releases');
 $routes->get('anime/(:any)', 'Anime::anime_details/$1/');
 $routes->get('search', 'Anime::search');
 $routes->get('search/suggestions', 'Anime::suggestions');
+
+
+
+//Anime İzleme. " ?anime= / uid=  / eps= " gibi ayrım yapılmaktadır.
 $routes->get('watch', 'Anime::ani_watch');
+
+
+
+
 $routes->post('/watch/epcommentinsert', 'Anime::episodecommentinsert');   ///episodecomment
 $routes->post('repsystem/episoderep/(:any)', 'Anime::episodecommentrepMethod/$1/');  //episode rep
 $routes->post('repsystem/episodedisrep/(:any)', 'Anime::episodecommentdisrepMethod/$1/'); //episode disrep
@@ -122,13 +130,22 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
     // $routes->get('anime-add', 'Anime::animeadd');
     // $routes->post('anime-add', 'Anime::animeaddsave');
 
+
+
+        // anime getanime yapılarak myanimelist veri çeker ve kaydeder.
         $routes->get('getanime', 'Anime::getAnime');
         $routes->post('getanimeadd', 'Anime::getAnimesave');
+
+        // anime getanimeupdate komutu ile myanimelist olan animeyi günceller.
         $routes->get('getanimeupdate', 'Anime::getAnimeupdate');
         $routes->post('getanimeupp', 'Anime::getAnimeupdatesave');
 
+
+
     // $routes->get('anime-edit/(:any)', 'Anime::animeedit/$1');
     // $routes->post('anime-edit', 'Anime::animeeditupdate');
+
+
         $routes->get('season-add', 'Anime::seasonadd');
         $routes->post('season-add', 'Anime::seasonaddsave');
         $routes->get('season-edit/(:any)', 'Anime::seasonedit/$1');
@@ -142,36 +159,60 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
 
     $routes->group('episode', function ($routes) {
+
+        //Episode Ekleme ve DateBase Kayıt yeri
         $routes->get('episode-add', 'Anime::episodeadd');
         $routes->post('episode-add', 'Anime::episodeaddsave');
-        $routes->get('episode-edit/(:any)/(:any)', 'Anime::episodeedit/$1/$2');
+
+
+        //Episode Sayfasından girilen Episode edit/kayıt ve silme yeri
+        $routes->get('episode-edit', 'Anime::episodeedit');
         $routes->post('episode-edit', 'Anime::episodeeditsave');
+        $routes->get('episode-delete', 'Anime::episodeeditdelete');
+
+
+        //Episode Download edit ve delete yapıldığı yer
+        $routes->get('download-edit', 'Anime::downloadedit');
+        $routes->post('download-delete', 'Anime::downloaddelete');
+
+
+        //Çoklu episode myanimelist veri olarak çekiyor.
         $routes->get('getepisode', 'Anime::getEpisode');
         $routes->post('getepisode', 'Anime::getEpisodesave');
+
+        //Tek bir episode için myanimelist veri çekiyor.
         $routes->get('getoneepisode', 'Anime::getoneEpisode');
         $routes->post('getoneepisode', 'Anime::getoneEpisodesave');
 
+
+        //episode sub ekleme kısmıdır.
         $routes->get('episode-sub-add', 'Anime::episodesubadd');
         $routes->post('episode-sub-add', 'Anime::episodesubaddsave');
+
+        //episode dub ekleme kısmıdır.
         $routes->get('episode-dub-add', 'Anime::episodedubadd');
         $routes->post('episode-dub-add', 'Anime::episodedubaddsave');
+
+        //episode turk ekleme kısmıdır.
         $routes->get('episode-turk-add', 'Anime::episodeturkadd');
         $routes->post('episode-turk-add', 'Anime::episodeturkaddsave');
+
+        // episode raw ekleme kısmıdır.
         $routes->get('episode-raw-add', 'Anime::episoderawadd');
         $routes->post('episode-raw-add', 'Anime::episoderawaddsave');
+
+        //episode download ekleme kısmıdır.
         $routes->get('episode-download-add', 'Anime::episodedownloadadd');
         $routes->post('episode-download-add', 'Anime::episodedownloadsave');
 
 
-        
-        $routes->get('episode-delete/(:any)/(:any)', 'Anime::episodeeditdelete/$1/$2');
-        $routes->get('download-edit/(:any)/(:any)', 'Anime::downloadedit/$1/$2');
-        $routes->get('download-delete/(:any)', 'Anime::downloaddelete/$1');
-        $routes->get('embed-edit/(:any)/(:any)', 'Anime::embededit/$1/$2');
-        $routes->get('embed-deletedub/(:any)', 'Anime::embeddeletedub/$1');
-        $routes->get('embed-deletesub/(:any)', 'Anime::embeddeletesub/$1');
-        $routes->get('embed-deleteraw/(:any)', 'Anime::embeddeleteraw/$1');
-        $routes->get('embed-deleteturk/(:any)', 'Anime::embeddeleteturk/$1');
+
+        //Embedleri sileceğiniz sayfaya gider.
+        $routes->get('embed-edit', 'Anime::embededit');
+        $routes->post('embed-deletedub', 'Anime::embeddeletedub');
+        $routes->post('embed-deletesub', 'Anime::embeddeletesub');
+        $routes->post('embed-deleteraw', 'Anime::embeddeleteraw');
+        $routes->post('embed-deleteturk', 'Anime::embeddeleteturk');
     });
 });
 

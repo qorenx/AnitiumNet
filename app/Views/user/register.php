@@ -12,34 +12,33 @@
                     <div class="container d-flex justify-content-center p-5">
                         <div class="card col-12 col-md-5 shadow-sm">
                             <div class="card-body">
-                            <h5 class="card-title mb-5" style="color:black"><?= lang('Auth.register') ?></h5>
+                                <h5 class="card-title mb-5" style="color:black"><?= lang('Auth.register') ?></h5>
                                 <?php if (session('error') !== null) : ?>
                                     <div class="alert alert-danger" role="alert"><?= session('error') ?></div>
                                 <?php elseif (session('errors') !== null) : ?>
                                     <div class="alert alert-danger" role="alert">
-                                        <?php if (is_array(session('errors'))) : ?>
-                                            <?php foreach (session('errors') as $error) : ?>
-                                                <?= $error ?>
-                                                <br>
-                                            <?php endforeach ?>
-                                        <?php else : ?>
-                                            <?= session('errors') ?>
-                                        <?php endif ?>
+                                        <?php if (is_array(session('errors'))) :
+                                            foreach (session('errors') as $error) :
+                                                echo $error . "<br>";
+                                            endforeach;
+                                        else :
+                                            echo session('errors');
+                                        endif; ?>
                                     </div>
-                                <?php endif ?>
+                                <?php endif; ?>
                                 <form action="<?= url_to('register') ?>" method="post">
                                     <?= csrf_field() ?>
                                     <div class="mb-2">
-                                        <input type="email" class="form-control" name="email" inputmode="email" autocomplete="email" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>" required />
+                                        <input type="email" class="form-control" name="email" inputmode="email" autocomplete="email" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>" required>
                                     </div>
                                     <div class="mb-4">
-                                        <input type="text" class="form-control" name="username" inputmode="text" autocomplete="username" placeholder="<?= lang('Auth.username') ?>" value="<?= old('username') ?>" required />
+                                        <input type="text" class="form-control" name="username" inputmode="text" autocomplete="username" placeholder="<?= lang('Auth.username') ?>" value="<?= old('username') ?>" required>
                                     </div>
                                     <div class="mb-2">
-                                        <input type="password" class="form-control" name="password" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.password') ?>" required />
-                                    </div>>
+                                        <input type="password" class="form-control" name="password" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.password') ?>" required>
+                                    </div>
                                     <div class="mb-5">
-                                        <input type="password" class="form-control" name="password_confirm" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.passwordConfirm') ?>" required />
+                                        <input type="password" class="form-control" name="password_confirm" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.passwordConfirm') ?>" required>
                                     </div>
                                     <div class="d-grid col-12 col-md-8 mx-auto m-3">
                                         <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.register') ?></button>

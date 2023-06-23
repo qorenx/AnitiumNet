@@ -89,12 +89,7 @@
                                 </div>
                                 <div class="player-servers">
                                     <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
-                                        UID:<b><a href="#" onclick="navigator.clipboard.writeText('<?= $episodesData[0]['uid'] ?>')"><?= $episodesData[0]['uid'] ?></a></b><br>
-                                        EPID:<b><a href="#" onclick="navigator.clipboard.writeText('<?= $episodesData[0]['ep_id_name'] ?>')"><?= $episodesData[0]['ep_id_name'] ?></a></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;<a href="<?= base_url('admin/episode/episode-edit/' . $currentData->uid . '/' . $currentData->ep_id_name) ?>" class="btn btn-primary"><i class="fa-solid fa-gear"></i>Episode</a>
-                                        &nbsp;&nbsp;<a href="<?= base_url('admin/episode/embed-edit/' . $currentData->uid . '/' . $currentData->ep_id_name) ?>" class="btn btn-primary"><i class="fa-solid fa-gear"></i>Embed</a>
-                                        &nbsp;&nbsp;<a href="<?= base_url('admin/episode/download-edit/' . $currentData->uid . '/' . $currentData->ep_id_name) ?>" class="btn btn-primary"><i class="fa-solid fa-gear"></i>Download</a>
-                                        &nbsp;&nbsp;<a href="" class="btn btn-primary"><i class="fa-solid fa-gear"></i>OTHER</a>
+                                        <?= $this->include('user/episodeadmincontrol') ?>
                                     <?php endif; ?>
                                     <?= $this->include('anime/extendpage/watchserver') ?>
                                 </div>
