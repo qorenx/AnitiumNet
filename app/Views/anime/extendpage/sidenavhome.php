@@ -215,7 +215,7 @@
                     <div class="item">
                         <div class="gi-top d-flex justify-content-between align-items-center">
                             <div class="ztag">
-                                <a class="zt-blue mr-2" href="watch/<?= $lastcom['post_ani'] ?>/<?= preg_replace("/[\s\/]+/", "-", $lastcom['ani_name']) ?>/<?= $lastcom['post_ep'] ?>">Episode-<?= $lastcom['post_ep'] ?></a>
+                                <a class="zt-blue mr-2" href="/watch?anime=<?= urlencode($lastcom['ani_name']) ?>&uid=<?= $lastcom['post_ani'] ?>&eps=<?= $lastcom['post_ep'] ?>">Episode-<?= $lastcom['post_ep'] ?></a>
                                 <div class="time d-inline"><span><i class="dot mr-2"></i><?= $lastcom['created_at'] ?></span></div>
                             </div>
                             <div class="gi-stats d-flex align-items-center">

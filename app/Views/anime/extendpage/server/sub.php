@@ -1,7 +1,6 @@
-<?php if (auth()->user()->sub_status ?? 1 == 1) :?>
 <?php if (!empty($episodeSubData)) : ?>
     <div class="ps_-block ps_-block-sub servers-sub">
-        <div class="ps__-title"><i class="fas fa-closed-captioning mr-2"></i><?= $currentData->ep_sub ?>:</div>
+        <div class="ps__-title"><i class="fas fa-closed-captioning mr-2"></i>SUB:</div>
         <div class="ps__-list">
             <?php foreach ($episodeSubData as $subData) : ?>
                 <div class="item server-item">
@@ -17,5 +16,4 @@
         </div>
         <div class="clearfix"></div>
     </div>
-<?php endif; ?>
 <?php endif; ?>

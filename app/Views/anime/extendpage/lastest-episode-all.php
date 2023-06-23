@@ -69,7 +69,7 @@
                                 <?php endif; ?>
                             </div>
                             <img class="film-poster-img lazyload" src="<?php echo $ani_data['ani_poster'] ?>" alt="">
-                            <a class="film-poster-ahref" href="/watch/<?php echo $ani_data['uid'] ?>/<?php echo str_replace(' ', '-', $ani_data['ani_name']) ?>/<?php echo $ani_data['ep_id_name'] ?>" title="<?php echo $ani_data['ani_name'] ?>"><i class="fas fa-play"></i></a>
+                            <a class="film-poster-ahref" href="/watch?anime=<?= urlencode($ani_data['ani_name']) ?>&uid=<?= $ani_data['uid'] ?>&eps=<?= $ani_data['ep_id_name'] ?>" title="<?php echo $ani_data['ani_name'] ?>"><i class="fas fa-play"></i></a>
                         </div>
                         <div class="film-detail">
                             <h3 class="film-name">

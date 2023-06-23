@@ -101,7 +101,7 @@
                     </div>
                     <div class="film-buttons">
                         <?php if (!empty($episodesData['ep_id_name'])) : ?>
-                            <a href="/watch/<?= $animetv['uid'] ?>/<?= preg_replace('/[\s\/]+/', '-', $animetv['ani_name']) ?>/<?= $episodesData['ep_id_name'] ?>" class="btn btn-radius btn-primary btn-play"><i class="fas fa-play mr-2"></i>Watch now</a>
+                            <a  href="/watch?anime=<?= urlencode($animetv['ani_name']) ?>&uid=<?= $animetv['uid'] ?>&eps=<?= $episodesData['ep_id_name'] ?>" class="btn btn-radius btn-primary btn-play"><i class="fas fa-play mr-2"></i>Watch now</a>
                         <?php endif; ?>
                         <?php if (auth()->loggedIn()) : ?>
                             <?= $this->include('user/animeaddlist') ?>

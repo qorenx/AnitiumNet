@@ -1,7 +1,6 @@
-<?php if (auth()->user()->turk_status ?? 1 == 1) :?>
 <?php if (!empty($episodeTurkData)) : ?>
     <div class="ps_-block ps_-block-turk servers-turk">
-        <div class="ps__-title"><i class="fas fa-closed-captioning mr-2"></i><?= $currentData->ep_turk ?>:</div>
+        <div class="ps__-title"><i class="fas fa-closed-captioning mr-2"></i>TURK:</div>
         <div class="ps__-list">
             <?php foreach ($episodeTurkData as $turkData) : ?>
                 <div class="item server-item">
@@ -15,5 +14,4 @@
         </div>
         <div class="clearfix"></div>
     </div>
-<?php endif; ?>
 <?php endif; ?>

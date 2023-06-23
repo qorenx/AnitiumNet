@@ -1,7 +1,6 @@
-<?php if (auth()->user()->raw_status ?? 1 == 1) :?>
 <?php if (!empty($episodeRawData)) : ?>
     <div class="ps_-block ps_-block-raw servers-raw">
-        <div class="ps__-title"><i class="fas fa-file mr-2"></i><?= $currentData->ep_raw ?>:</div>
+        <div class="ps__-title"><i class="fas fa-file mr-2"></i>RAW:</div>
         <div class="ps__-list">
             <?php foreach ($episodeRawData as $rawData) : ?>
                 <div class="item server-item">
@@ -15,5 +14,4 @@
         </div>
         <div class="clearfix"></div>
     </div>
-<?php endif; ?>
 <?php endif; ?>

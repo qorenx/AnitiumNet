@@ -72,7 +72,7 @@
                     </div>
                     <div class="desi-description"></div>
                     <div class="desi-buttons">
-                        <a href="watch/<?= $slider_data['uid'] ?>/<?= str_replace(' ', '-', $slider_data['ani_name']) ?>/1" class="btn btn-primary btn-radius mr-2">
+                        <a href="/watch?anime=<?= urlencode($slider_data['ani_name']) ?>&uid=<?= $slider_data['uid'] ?>&eps=1" class="btn btn-primary btn-radius mr-2">
                             <i class="fas fa-play-circle mr-2"></i>Watch Now</a>
                         <a class="btn btn-secondary btn-radius" href="/anime/<?= $slider_data['uid'] ?>/<?= str_replace(' ', '-', $slider_data['ani_name']) ?>"><i class="fas fa-info-circle mr-2"></i> Detail<i class="fas fa-angle-right ml-2"></i></a>
                     </div>
