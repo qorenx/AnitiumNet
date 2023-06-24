@@ -265,98 +265,6 @@
                                                         }
                                                     </script>
                                                     <div class="replies-wrap" id="replies-<?= $post['post_c_id'] ?>" style="display:none;">
-
-
-                                                    <?php 
-foreach (array_slice($post['replies'], 0, 5) as $reply) { ?>
-    <div class="cw_l-line">
-        <a href="<?= base_url('/community/user/') . $reply['username'] ?>" class="user-avatar">
-            <img class="user-avatar-img" src="<?= $reply['avatar'] ?>">
-        </a>
-        <div class="info">
-            <div class="ihead">
-                <a href="" target="_blank" class="user-name is-level-x">
-                    <?= $reply['username'] ?>
-                    <span><?= $reply['group'] ?></span>
-                </a>
-                <div class="time"><?= $reply['created_at'] ?></div>
-            </div>
-            <div class="ibody">
-                <p>
-                    <?= $reply['post_content'] ?>
-                </p>
-            </div>
-            <div class="ibottom">
-                <div class="ib-li ib-reply">
-                    <a class="btn" onclick="document.getElementById('replies-<?= $post['post_c_id'] ?>').querySelector('textarea').value = ''; document.getElementById('replyp-<?= $post['id'] ?>').style.display = (document.getElementById('replyp-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'; document.getElementById('replies-<?= $post['post_c_id'] ?>').querySelector('textarea').value += '<a class=&quot;tag-name&quot;>@<?= $reply['username'] ?></a>';"><i class="fas fa-reply mr-1"></i>Reply</a>
-                </div>
-                <div class="ib-li">
-                    <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
-                    <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
-                        <a class="dropdown-item cm-report">Report
-                            Spam</a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-<?php 
-} ?>
-
-<div id="replies-container"></div>
-<button class="btn btn-more" id="show-more">Daha Fazla Göster</button>
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-var repliesCount = 5;
-$('#show-more').on('click', function () {
-    repliesCount += 5;
-    $.ajax({
-        url: 'post/repyajax?postid=<?= $post['post_c_id'] ?>&postcid=<?= $post['post_id'] ?>',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var html = '';
-            $.each(data, function(index, value){
-                html += `
-                    <div class="cw_l-line">
-                        <a href="<?= base_url('/community/user/') ?>${value.username}" class="user-avatar">
-                            <img class="user-avatar-img" src="${value.avatar}">
-                        </a>
-                        <div class="info">
-                            <div class="ihead">
-                                <a href="" target="_blank" class="user-name is-level-x">${value.username}
-                                    <span>${value.group}</span>
-                                </a>
-                                <div class="time">${value.created_at}</div>
-                            </div>
-                            <div class="ibody"><p>${value.post_content}</p></div>
-                            <div class="ibottom">
-                                <div class="ib-li ib-reply">
-                                    <a class="btn" onclick="document.getElementById('replies-${value.post_c_id}').querySelector('textarea').value = ''; 
-                                                        document.getElementById('replyp-${value.id}').style.display = (document.getElementById('replyp-${value.id}').style.display === 'none') ? 'block' : 'none'; 
-                                                        document.getElementById('replies-${value.post_c_id}').querySelector('textarea').value += '<a class=&quot;tag-name&quot;>@${value.username}</a>';">
-                                        <i class="fas fa-reply mr-1"></i>Reply</a>
-                                </div>
-                                <div class="ib-li">
-                                    <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-h mr-1"></i>More</a>
-                                    <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
-                                        <a class="dropdown-item cm-report">Report Spam</a>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>`;
-            });
-            $('#replies-container').append(html);
-        }
-    });
-});
-</script>
-
                                                         <?php if (isset(auth()->user()->username)) { ?>
                                                             <div id="replyp-<?= $post['id'] ?>" class="comment-input is-reply" style="display:none;">
                                                                 <div class="user-avatar">
@@ -383,14 +291,109 @@ $('#show-more').on('click', function () {
                                                             </div>
                                                         <?php } else {
                                                         } ?>
+
+
+                                                        <?php
+                                                        foreach (array_slice($post['replies'], 0, 5) as $reply) { ?>
+                                                            <div class="cw_l-line">
+                                                                <a href="<?= base_url('/community/user/') . $reply['username'] ?>" class="user-avatar">
+                                                                    <img class="user-avatar-img" src="<?= $reply['avatar'] ?>">
+                                                                </a>
+                                                                <div class="info">
+                                                                    <div class="ihead">
+                                                                        <a href="" target="_blank" class="user-name is-level-x">
+                                                                            <?= $reply['username'] ?>
+                                                                            <span><?= $reply['group'] ?></span>
+                                                                        </a>
+                                                                        <div class="time"><?= $reply['created_at'] ?></div>
+                                                                    </div>
+                                                                    <div class="ibody">
+                                                                        <p>
+                                                                            <?= $reply['post_content'] ?>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="ibottom">
+                                                                        <div class="ib-li">
+                                                                            <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
+                                                                            <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
+                                                                                <a class="dropdown-item cm-report">Report
+                                                                                    Spam</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <?php
+                                                        } ?>
+
+                                                        <div id="replies-container"></div>
+                                                        <button style="background-color:#4CAF50;color:white;padding:2px 5px;border:none;text-align:center;text-decoration:none;display:inline-block;font-size:16px;margin:4px 2px;cursor:pointer;" class="btn" id="show-more">View All</button>
+
+                                                        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                                                        <script>
+                                                            var repliesCount = 5;
+                                                            $('#show-more').on('click', function() {
+                                                                repliesCount += 5;
+                                                                $.ajax({
+                                                                    url: 'post/repyajax?postcid=<?= $post['post_c_id'] ?>',
+                                                                    type: 'POST',
+                                                                    dataType: 'json',
+                                                                    success: function(data) {
+                                                                        var html = '';
+                                                                        $.each(data.slice(5), function(index, value) {
+                                                                            if (value.username != null && value.avatar != null && value.group != null && value.created_at != null && value.post_content != null) {
+                                                                                html += `
+                        <div class="cw_l-line">
+                            <a href="<?= base_url('/community/user/') ?>${value.username}" class="user-avatar">
+                                <img class="user-avatar-img" src="${value.avatar}">
+                            </a>
+                            <div class="info">
+                                <div class="ihead">
+                                    <a href="" target="_blank" class="user-name is-level-x">${value.username}
+                                        <span>${value.group}</span>
+                                    </a>
+                                    <div class="time">${value.created_at}</div>
+                                </div>
+                                <div class="ibody"><p><?= htmlentities('${value.post_content}') ?></p></div>
+                                <div class="ibottom">
+                                    <div class="ib-li">
+                                        <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-h mr-1"></i>More</a>
+                                        <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
+                                            <a class="dropdown-item cm-report">Report Spam</a>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>`;
+
+                                                                            }
+                                                                        });
+                                                                        $('#replies-container').append(html);
+                                                                    }
+                                                                });
+                                                            });
+                                                        </script>
+
+
+
+
                                                     </div>
                                                 </div>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
                                     </div>
-                                <?php else : ?>
 
+
+
+
+
+
+
+                                <?php else : ?>
                                     <div class="cw_l-line more-posts d-none">
                                         <a href="/community/user/<?= $post['username'] ?>" class="user-avatar">
                                             <img class="user-avatar-img" src="<?= $post['avatar'] ?>">
