@@ -171,7 +171,7 @@
                             <?php $count = 0; ?>
                             <?php foreach ($boardviewpostlist as $post) : ?>
                                 <?php if ($count < 10) : ?>
-                                    <div class="cw_l-line" id="cm-">
+                                    <div class="cw_l-line">
                                         <a href="/community/user/<?= $post['username'] ?>" class="user-avatar">
                                             <img class="user-avatar-img" src="<?= $post['avatar'] ?>">
                                         </a>
@@ -215,34 +215,29 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <?php if (isset(auth()->user()->username)) { ?>
-                                                    <div id="reply-<?= $post['id'] ?>" class="comment-input is-reply" style="display:none;">
-                                                        <div class="user-avatar">
-                                                            <img class="user-avatar-img" src="<?= auth()->user()->avatar ?>">
-                                                        </div>
-                                                        <div class="ci-form">
-                                                            <form method="post" action="/community/post/viewrepypost" class="preform preform-dark comment-form">
-                                                                <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
-                                                                <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
-                                                                <input type="hidden" name="post_c_id" value="<?= $post['post_c_id'] ?>">
-                                                                <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
-                                                                <div class="ci-buttons">
-                                                                    <div class="ci-b-right">
-                                                                        <div class="cb-li">
-                                                                            <a class="btn btn-sm btn-secondary btn-close-reply" onclick="document.getElementById('reply-<?= $post['id'] ?>').style.display = (document.getElementById('reply-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'">Close</a>
-                                                                        </div>
-                                                                        <div class="cb-li">
-                                                                            <button class="btn btn-sm btn-primary ml-2">Reply</button>
-                                                                        </div>
+                                                <div id="reply-<?= $post['id'] ?>" class="comment-input is-reply" style="display:none;">
+                                                    <div class="user-avatar">
+                                                        <img class="user-avatar-img" src="<?= auth()->user()->avatar ?>">
+                                                    </div>
+                                                    <div class="ci-form">
+                                                        <form method="post" action="/community/post/viewrepypost" class="preform preform-dark comment-form">
+                                                            <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
+                                                            <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
+                                                            <input type="hidden" name="post_c_id" value="<?= $post['post_c_id'] ?>">
+                                                            <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
+                                                            <div class="ci-buttons">
+                                                                <div class="ci-b-right">
+                                                                    <div class="cb-li">
+                                                                        <a class="btn btn-sm btn-secondary btn-close-reply" onclick="document.getElementById('reply-<?= $post['id'] ?>').style.display = (document.getElementById('reply-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'">Close</a>
+                                                                    </div>
+                                                                    <div class="cb-li">
+                                                                        <button class="btn btn-sm btn-primary ml-2">Reply</button>
                                                                     </div>
                                                                 </div>
-                                                            </form>
-                                                        </div>
+                                                            </div>
+                                                        </form>
                                                     </div>
-                                                <?php } else {
-                                                } ?>
-
+                                                </div>
                                                 <div class="replies" id="block-reply-<?= $post['post_c_id'] ?>">
                                                     <div class="rep-more rep-in">
                                                         <?php
@@ -265,36 +260,32 @@
                                                         }
                                                     </script>
                                                     <div class="replies-wrap" id="replies-<?= $post['post_c_id'] ?>" style="display:none;">
-                                                        <?php if (isset(auth()->user()->username)) { ?>
-                                                            <div id="replyp-<?= $post['id'] ?>" class="comment-input is-reply" style="display:none;">
-                                                                <div class="user-avatar">
-                                                                    <img class="user-avatar-img" src="<?= auth()->user()->avatar ?>">
-                                                                </div>
-                                                                <div class="ci-form">
-                                                                    <form method="post" action="/community/post/viewrepypost" class="preform preform-dark comment-form">
-                                                                        <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
-                                                                        <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
-                                                                        <input type="hidden" name="post_c_id" value="<?= $post['post_c_id'] ?>">
-                                                                        <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
-                                                                        <div class="ci-buttons">
-                                                                            <div class="ci-b-right">
-                                                                                <div class="cb-li">
-                                                                                    <a class="btn btn-sm btn-secondary btn-close-reply" onclick="document.getElementById('replyp-<?= $post['id'] ?>').style.display = (document.getElementById('replyp-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'">Close</a>
-                                                                                </div>
-                                                                                <div class="cb-li">
-                                                                                    <button class="btn btn-sm btn-primary ml-2">Reply</button>
-                                                                                </div>
+                                                        <div id="replyp-<?= $post['id'] ?>" class="comment-input is-reply" style="display:none;">
+                                                            <div class="user-avatar">
+                                                                <img class="user-avatar-img" src="<?= auth()->user()->avatar ?>">
+                                                            </div>
+                                                            <div class="ci-form">
+                                                                <form method="post" action="/community/post/viewrepypost" class="preform preform-dark comment-form">
+                                                                    <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
+                                                                    <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
+                                                                    <input type="hidden" name="post_c_id" value="<?= $post['post_c_id'] ?>">
+                                                                    <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
+                                                                    <div class="ci-buttons">
+                                                                        <div class="ci-b-right">
+                                                                            <div class="cb-li">
+                                                                                <a class="btn btn-sm btn-secondary btn-close-reply" onclick="document.getElementById('replyp-<?= $post['id'] ?>').style.display = (document.getElementById('replyp-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'">Close</a>
+                                                                            </div>
+                                                                            <div class="cb-li">
+                                                                                <button class="btn btn-sm btn-primary ml-2">Reply</button>
                                                                             </div>
                                                                         </div>
-                                                                    </form>
-                                                                </div>
+                                                                    </div>
+                                                                </form>
                                                             </div>
-                                                        <?php } else {
-                                                        } ?>
-
+                                                        </div>
 
                                                         <?php
-                                                        foreach (array_slice($post['replies'], 0, 5) as $reply) { ?>
+                                                        foreach ($post['replies'] as $reply) { ?>
                                                             <div class="cw_l-line">
                                                                 <a href="<?= base_url('/community/user/') . $reply['username'] ?>" class="user-avatar">
                                                                     <img class="user-avatar-img" src="<?= $reply['avatar'] ?>">
@@ -313,6 +304,16 @@
                                                                         </p>
                                                                     </div>
                                                                     <div class="ibottom">
+                                                                        <div class="ib-li ib-reply">
+                                                                            <a class="btn" onclick="
+                                                                            document.getElementById('block-reply-<?= $post['post_c_id'] ?>').scrollIntoView(); 
+                                                                            var textarea = document.getElementById('replies-<?= $post['post_c_id'] ?>').querySelector('textarea');
+                                                                            textarea.value = ''; 
+                                                                            textarea.focus();
+                                                                            document.getElementById('replyp-<?= $post['id'] ?>').style.display = (document.getElementById('replyp-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'; 
+                                                                            textarea.value += '<a class=&quot;tag-name&quot;>@<?= $reply['username'] ?></a>';
+                                                                            "><i class="fas fa-reply mr-1"></i>Reply</a>
+                                                                        </div>
                                                                         <div class="ib-li">
                                                                             <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
                                                                             <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
@@ -327,71 +328,12 @@
                                                         <?php
                                                         } ?>
 
-                                                        <div id="replies-container"></div>
-                                                        <button style="background-color:#4CAF50;color:white;padding:2px 5px;border:none;text-align:center;text-decoration:none;display:inline-block;font-size:16px;margin:4px 2px;cursor:pointer;" class="btn" id="show-more">View All</button>
-
-                                                        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-                                                        <script>
-                                                            var repliesCount = 5;
-                                                            $('#show-more').on('click', function() {
-                                                                repliesCount += 5;
-                                                                $.ajax({
-                                                                    url: 'post/repyajax?postcid=<?= $post['post_c_id'] ?>',
-                                                                    type: 'POST',
-                                                                    dataType: 'json',
-                                                                    success: function(data) {
-                                                                        var html = '';
-                                                                        $.each(data.slice(5), function(index, value) {
-                                                                            if (value.username != null && value.avatar != null && value.group != null && value.created_at != null && value.post_content != null) {
-                                                                                html += `
-                        <div class="cw_l-line">
-                            <a href="<?= base_url('/community/user/') ?>${value.username}" class="user-avatar">
-                                <img class="user-avatar-img" src="${value.avatar}">
-                            </a>
-                            <div class="info">
-                                <div class="ihead">
-                                    <a href="" target="_blank" class="user-name is-level-x">${value.username}
-                                        <span>${value.group}</span>
-                                    </a>
-                                    <div class="time">${value.created_at}</div>
-                                </div>
-                                <div class="ibody"><p><?= htmlentities('${value.post_content}') ?></p></div>
-                                <div class="ibottom">
-                                    <div class="ib-li">
-                                        <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-h mr-1"></i>More</a>
-                                        <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
-                                            <a class="dropdown-item cm-report">Report Spam</a>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>`;
-
-                                                                            }
-                                                                        });
-                                                                        $('#replies-container').append(html);
-                                                                    }
-                                                                });
-                                                            });
-                                                        </script>
-
-
-
-
                                                     </div>
                                                 </div>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
-
-
 
                                 <?php else : ?>
                                     <div class="cw_l-line more-posts d-none">
@@ -491,7 +433,7 @@
                                                     </script>
                                                     <div class="replies-wrap" id="replies-<?= $post['post_c_id'] ?>" style="display:none;">
                                                         <?php foreach ($post['replies'] as $reply) : ?>
-                                                            <div class="cw_l-line" id="cm-">
+                                                            <div class="cw_l-line">
                                                                 <a href="" class="user-avatar">
                                                                     <img class="user-avatar-img" src="<?= $reply['avatar'] ?>">
                                                                 </a>
@@ -524,32 +466,71 @@
                                                                 </div>
                                                             </div>
                                                         <?php endforeach; ?>
-
-                                                        <?php if (isset(auth()->user()->username)) { ?>
-                                                            <div id="replyp-<?= $post['id'] ?>" class="comment-input is-reply" style="display:none;">
-                                                                <div class="user-avatar">
-                                                                    <img class="user-avatar-img" src="<?= auth()->user()->avatar ?>">
-                                                                </div>
-                                                                <div class="ci-form">
-                                                                    <form method="post" action="/community/post/viewrepypost" class="preform preform-dark comment-form">
-                                                                        <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
-                                                                        <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
-                                                                        <input type="hidden" name="post_c_id" value="<?= $post['post_c_id'] ?>">
-                                                                        <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
-                                                                        <div class="ci-buttons">
-                                                                            <div class="ci-b-right">
-                                                                                <div class="cb-li">
-                                                                                    <a class="btn btn-sm btn-secondary btn-close-reply" onclick="document.getElementById('replyp-<?= $post['id'] ?>').style.display = (document.getElementById('replyp-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'">Close</a>
-                                                                                </div>
-                                                                                <div class="cb-li">
-                                                                                    <button class="btn btn-sm btn-primary ml-2">Reply</button>
-                                                                                </div>
+                                                        <div id="replyp-<?= $post['id'] ?>" class="comment-input is-reply" style="display:none;">
+                                                            <div class="user-avatar">
+                                                                <img class="user-avatar-img" src="<?= auth()->user()->avatar ?>">
+                                                            </div>
+                                                            <div class="ci-form">
+                                                                <form method="post" action="/community/post/viewrepypost" class="preform preform-dark comment-form">
+                                                                    <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
+                                                                    <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
+                                                                    <input type="hidden" name="post_c_id" value="<?= $post['post_c_id'] ?>">
+                                                                    <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
+                                                                    <div class="ci-buttons">
+                                                                        <div class="ci-b-right">
+                                                                            <div class="cb-li">
+                                                                                <a class="btn btn-sm btn-secondary btn-close-reply" onclick="document.getElementById('replyp-<?= $post['id'] ?>').style.display = (document.getElementById('replyp-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'">Close</a>
+                                                                            </div>
+                                                                            <div class="cb-li">
+                                                                                <button class="btn btn-sm btn-primary ml-2">Reply</button>
                                                                             </div>
                                                                         </div>
-                                                                    </form>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <?php
+                                                        foreach ($post['replies'] as $reply) { ?>
+                                                            <div class="cw_l-line">
+                                                                <a href="<?= base_url('/community/user/') . $reply['username'] ?>" class="user-avatar">
+                                                                    <img class="user-avatar-img" src="<?= $reply['avatar'] ?>">
+                                                                </a>
+                                                                <div class="info">
+                                                                    <div class="ihead">
+                                                                        <a href="" target="_blank" class="user-name is-level-x">
+                                                                            <?= $reply['username'] ?>
+                                                                            <span><?= $reply['group'] ?></span>
+                                                                        </a>
+                                                                        <div class="time"><?= $reply['created_at'] ?></div>
+                                                                    </div>
+                                                                    <div class="ibody">
+                                                                        <p>
+                                                                            <?= $reply['post_content'] ?>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="ibottom">
+                                                                        <div class="ib-li ib-reply">
+                                                                            <a class="btn" onclick="
+                                                                            document.getElementById('block-reply-<?= $post['post_c_id'] ?>').scrollIntoView(); 
+                                                                            var textarea = document.getElementById('replies-<?= $post['post_c_id'] ?>').querySelector('textarea');
+                                                                            textarea.value = ''; 
+                                                                            textarea.focus();
+                                                                            document.getElementById('replyp-<?= $post['id'] ?>').style.display = (document.getElementById('replyp-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'; 
+                                                                            textarea.value += '<a class=&quot;tag-name&quot;>@<?= $reply['username'] ?></a>';
+                                                                            "><i class="fas fa-reply mr-1"></i>Reply</a>
+                                                                        </div>
+                                                                        <div class="ib-li">
+                                                                            <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
+                                                                            <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
+                                                                                <a class="dropdown-item cm-report">Report
+                                                                                    Spam</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        <?php } else {
+                                                        <?php
                                                         } ?>
                                                     </div>
                                                 </div>
