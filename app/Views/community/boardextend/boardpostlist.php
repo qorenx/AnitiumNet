@@ -1,4 +1,3 @@
-
 <div class="list-comment">
     <div class="cw_list">
         <?php foreach ($boardviewpostlist as $post) : ?>
@@ -44,29 +43,36 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="reply-<?= $post['id'] ?>" class="comment-input is-reply" style="display:none;">
-                            <div class="user-avatar">
-                                <img class="user-avatar-img" src="<?= auth()->user()->avatar ?>">
-                            </div>
-                            <div class="ci-form">
-                                <form method="post" action="/community/post/viewrepypost" class="preform preform-dark comment-form">
-                                    <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
-                                    <input type="hidden" name="post_u_id" value="<?php echo rand(000000, 9999999); ?>">
-                                    <input type="hidden" name="post_c_id" value="<?= $post['post_c_id'] ?>">
-                                    <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
-                                    <div class="ci-buttons">
-                                        <div class="ci-b-right">
-                                            <div class="cb-li">
-                                                <a class="btn btn-sm btn-secondary btn-close-reply" onclick="document.getElementById('reply-<?= $post['id'] ?>').style.display = (document.getElementById('reply-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'">Close</a>
-                                            </div>
-                                            <div class="cb-li">
-                                                <button class="btn btn-sm btn-primary ml-2">Reply</button>
+                        <?php
+                        if (isset(auth()->user()->username)) {
+                        ?>
+                            <div id="reply-<?= $post['id'] ?>" class="comment-input is-reply" style="display:none;">
+                                <div class="user-avatar">
+                                    <img class="user-avatar-img" src="<?= auth()->user()->avatar ?>">
+                                </div>
+                                <div class="ci-form">
+                                    <form method="post" action="/community/post/viewrepypost" class="preform preform-dark comment-form">
+                                        <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
+                                        <input type="hidden" name="post_u_id" value="<?php echo rand(000000, 9999999); ?>">
+                                        <input type="hidden" name="post_c_id" value="<?= $post['post_c_id'] ?>">
+                                        <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
+                                        <div class="ci-buttons">
+                                            <div class="ci-b-right">
+                                                <div class="cb-li">
+                                                    <a class="btn btn-sm btn-secondary btn-close-reply" onclick="document.getElementById('reply-<?= $post['id'] ?>').style.display = (document.getElementById('reply-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'">Close</a>
+                                                </div>
+                                                <div class="cb-li">
+                                                    <button class="btn btn-sm btn-primary ml-2">Reply</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
+                        <?php
+                        } else {
+                        }
+                        ?>
                         <div class="replies">
                             <div class="rep-more rep-in">
                                 <?php
@@ -125,29 +131,36 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="replyp-<?= $reply['post_u_id'] ?>" class="comment-input is-reply" style="display:none;">
-                                        <div class="user-avatar">
-                                            <img class="user-avatar-img" src="<?= auth()->user()->avatar ?>">
-                                        </div>
-                                        <div class="ci-form">
-                                            <form method="post" action="/community/post/viewrepypost" class="preform preform-dark comment-form">
-                                                <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
-                                                <input type="hidden" name="post_u_id" value="<?php echo rand(000000, 9999999); ?>">
-                                                <input type="hidden" name="post_c_id" value="<?= $post['post_c_id'] ?>">
-                                                <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
-                                                <div class="ci-buttons">
-                                                    <div class="ci-b-right">
-                                                        <div class="cb-li">
-                                                            <a class="btn btn-sm btn-secondary btn-close-reply" onclick="document.getElementById('replyp-<?= $reply['id'] ?>').style.display = (document.getElementById('replyp-<?= $reply['id'] ?>').style.display === 'none') ? 'block' : 'none'">Close</a>
-                                                        </div>
-                                                        <div class="cb-li">
-                                                            <button class="btn btn-sm btn-primary ml-2">Reply</button>
+                                    <?php
+                                    if (isset(auth()->user()->username)) {
+                                    ?>
+                                        <div id="replyp-<?= $reply['post_u_id'] ?>" class="comment-input is-reply" style="display:none;">
+                                            <div class="user-avatar">
+                                                <img class="user-avatar-img" src="<?= auth()->user()->avatar ?>">
+                                            </div>
+                                            <div class="ci-form">
+                                                <form method="post" action="/community/post/viewrepypost" class="preform preform-dark comment-form">
+                                                    <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
+                                                    <input type="hidden" name="post_u_id" value="<?php echo rand(000000, 9999999); ?>">
+                                                    <input type="hidden" name="post_c_id" value="<?= $post['post_c_id'] ?>">
+                                                    <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
+                                                    <div class="ci-buttons">
+                                                        <div class="ci-b-right">
+                                                            <div class="cb-li">
+                                                                <a class="btn btn-sm btn-secondary btn-close-reply" onclick="document.getElementById('replyp-<?= $reply['id'] ?>').style.display = (document.getElementById('replyp-<?= $reply['id'] ?>').style.display === 'none') ? 'block' : 'none'">Close</a>
+                                                            </div>
+                                                            <div class="cb-li">
+                                                                <button class="btn btn-sm btn-primary ml-2">Reply</button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </form>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php
+                                    } else {
+                                    }
+                                    ?>
                                 <?php
                                 } ?>
                             </div>
