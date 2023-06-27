@@ -133,42 +133,6 @@
 
 
 
-                <div id="content-comments" class="comments-wrap p-0" style="margin-bottom: 30px; margin-top: 20px;">
-                    <div class="sc-header">
-                        <div class="sc-h-title"><i class="far fa-comment-alt mr-2"></i><?php echo $boardviewpostcount; ?><span> Comments</span></div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <?php
-                    if (isset(auth()->user()->username)) {
-                    ?>
-                        <div class="comment-input">
-                            <div class="user-avatar">
-                                <img class="user-avatar-img" src="<?= auth()->user()->avatar ?>">
-                            </div>
-                            <div class="ci-form">
-                                <div class="user-name">
-                                    Comment as <span class="link-highlight ml-1"><?= auth()->user()->username ?></span>
-                                </div>
-                                <form method="post" action="/community/post/viewpost" class="preform preform-dark comment-form">
-                                    <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
-                                    <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
-                                    <input type="hidden" name="post_c_id" value="<?php echo rand(00000000, 999999999); ?>">
-                                    <textarea class="form-control form-control-textarea comment-subject emo-on cm-input-base" id="df-cm-content" name="post_content" maxlength="3000" placeholder="Leave a comment" required=""></textarea>
-                                    <div class="ci-buttons" id="df-cm-buttons">
-                                        <div class="ci-b-right" style="display: none;">
-                                            <div class="cb-li">
-                                                <a class="btn btn-sm btn-secondary" id="df-cm-close">Close</a>
-                                                <button class="btn btn-sm btn-primary ml-2">Comment</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    <?php
-                    } else {
-                    }
-                    ?>
 
 
 
@@ -571,17 +535,5 @@
             </div>
         </div>
     </div>
-    <script>
-        const textarea = document.getElementById('df-cm-content');
-        const buttonClose = document.getElementById('df-cm-close');
-        const divCiRight = document.querySelector('.ci-b-right');
 
-        textarea.addEventListener('click', () => {
-            divCiRight.style.display = 'block';
-        });
-
-        buttonClose.addEventListener('click', () => {
-            divCiRight.style.display = 'none';
-        });
-    </script>
     <?= $this->include('community/boardextend/boardfooter') ?>
