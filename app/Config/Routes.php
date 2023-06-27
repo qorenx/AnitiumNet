@@ -120,9 +120,6 @@ $routes->group('community', function ($routes) {
     $routes->post('boardrepydispost/(:any)', 'Anime::boardrepydisrepMethod/$1/'); //board post 1. post cevap
 
 
-    $routes->post('post/repyajax', 'Anime::repyajax'); 
-    $routes->get('post/repyajax', 'Anime::repyajax'); 
-
 
    // $routes->post('repsystem/postrep/(:any)', 'Anime::postrep/$1');  //board konular için
    // $routes->post('repsystem/postdisrep/(:any)', 'Anime::postdisrep/$1');
