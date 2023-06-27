@@ -11,14 +11,17 @@
                 <div class="modal-content">
                     <form action="<?= base_url('/admin/episode/getepisode/'); ?>" method="get">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="getallepisode-modalLabel">Enter Anime ID</h5>
+                        <h5 class="modal-title" id="getallepisode-modalLabel" style="color:black">Get All Episode</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
+                                <h5 class="modal-title" id="getallepisode-modalLabel" style="color:black">MyAnimeList Anime  ID</h5>
                                 <input type="text" name="uid" class="form-control" required>
+                                <h5 class="modal-title" id="getallepisode-modalLabel" style="color:black">Enter Page ID(1-100=1, 101-200=2, etc)</h5>
+                                <input type="text" name="page" class="form-control" required>
                             </div>
                         </div>
                         <div class="modal-footer">
