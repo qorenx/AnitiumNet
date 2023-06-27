@@ -111,6 +111,13 @@ $routes->group('community', function ($routes) {
     $routes->post('post/viewrepypost', 'Anime::boardviewrepypostinsert'); 
 
 
+    $routes->post('boardreppost/(:any)', 'Anime::boardpostrepMethod/$1/');  //board rep
+    $routes->post('boarddispost/(:any)', 'Anime::boardpostdisrepMethod/$1/'); //board disrep
+
+
+
+
+
     $routes->post('post/repyajax', 'Anime::repyajax'); 
     $routes->get('post/repyajax', 'Anime::repyajax'); 
 

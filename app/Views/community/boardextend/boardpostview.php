@@ -92,16 +92,52 @@
     </div>
     <div class="cda-bottom">
         <div class="d-flex justify-content-between align-itmes-center">
-            <div class="float-left">
-                <a class="btn btn-upvote p-btn-vote" id="postlink">
-                    <i class="far fa-thumbs-up mr-2"></i>
-                    <span class="value" id="postlinkview">
-                    </span></a>
-                <a class="btn btn-downvote p-btn-vote" id="postlink">
-                    <i class="far fa-thumbs-down mr-2"></i>
-                    <span class="value" id="postdislinkview">
-                    </span></a>
-            </div>
+
+
+        
+        <div class="float-left">
+    <a class="btn btn-upvote p-btn-vote" id="postlink<?= $post['post_id'] ?>" onclick="addPostLike(<?= $post['id'] ?>)" data-liked="0">
+        <i class="far fa-thumbs-up mr-2"></i>
+        <span class="value" id="boardlikepost-<?= $post['id'] ?>"><?= $post['post_rep'] ?></span>
+    </a>
+    <a class="btn btn-downvote p-btn-vote" id="postdislink<?= $post['post_id'] ?>" onclick="addPostDislike(<?= $post['id'] ?>)" data-disliked="0">
+        <i class="far fa-thumbs-down mr-2"></i>
+        <span class="value" id="boarddislikepost-<?= $post['id'] ?>"><?= $post['post_disrep'] ?></span>
+    </a>
+</div>
+<script>
+    function addPostLike(postId) {
+        var post = $("#postlink" + postId);
+        var liked = post.data("liked");
+        if (!liked) {
+            $.ajax({
+                url: '/community/boardreppost/' + postId,
+                type: 'POST',
+                success: function(result) {
+                    $('#boardlikepost-' + postId).text(parseInt($('#boardlikepost-' + postId).text()) + 1);
+                    post.data("liked", 1);
+                }
+            });
+        }
+    }
+
+    function addPostDislike(postId) {
+        var post = $("#postdislink" + postId);
+        var disliked = post.data("disliked");
+        if (!disliked) {
+            $.ajax({
+                url: '/community/boarddispost/' + postId,
+                type: 'POST',
+                success: function(result) {
+                    $('#boarddislikepost-' + postId).text(parseInt($('#boarddislikepost-' + postId).text()) + 1);
+                    post.data("disliked", 1);
+                }
+            });
+        }
+    }
+</script>
+
+
             <div class="ib-li show">
                 <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
                 <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 20px, 0px);">
@@ -172,3 +208,5 @@
             divCiRight.style.display = 'none';
         });
     </script>
+
+
