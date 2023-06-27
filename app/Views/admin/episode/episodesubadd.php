@@ -42,18 +42,24 @@
                 </template>
                 <div id="inputs-extra"></div>
                 <button type="button" onclick="addMore()" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;">Add Embed</button>
+                <button type="button" onclick="removeLast()" style="background-color: #9AAF90; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;">Remove</button>
                 <script>
                     const template = document.querySelector('template');
 
+                    function removeLast() {
+                        const inputsExtra = document.getElementById('inputs-extra');
+                        inputsExtra.removeChild(inputsExtra.lastElementChild);
+                    }
+                    
                     function addMore() {
                         const clone = template.content.cloneNode(true);
                         document.getElementById('inputs-extra').appendChild(clone);
                     }
                 </script>
                 <footer style="position:fixed;right:auto;bottom:0;left:0;z-index:1030;" class="fixed-bottom">
-                <div class="card-footer">
-                    <input class="btn btn-primary" type="submit" value="Submit">
-                </div>
+                    <div class="card-footer">
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                    </div>
                 </footer>
             </div>
         </form>
