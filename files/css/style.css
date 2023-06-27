@@ -3362,10 +3362,11 @@ ul.color-list li:nth-of-type(7n+6) a {
     right: 0;
     bottom: 0;
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     filter: blur(0px);
     opacity: .45;
-    transform: scale(1)
+    transform: scale(1);
+    background-attachment: fixed;
 }
 
 .w-hide {

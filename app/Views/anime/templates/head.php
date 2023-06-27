@@ -223,8 +223,8 @@
                 <div id="user-slot">
                     <div class="header_right-user logged">
                         <div class="dropdown">
-                            <div class="btn-user-avatar" data-toggle="dropdown" aria-expanded="false" aria-controls="user_menu">
-                                <p align="center"><i class="fa-solid fa-user"></i><br>Login</p>
+                            <div data-toggle="dropdown" class="header_right-user">
+                                <a class="btn-user btn btn-sm btn-primary btn-login"><i class="fa-solid fa-user-astronaut fa-beat"></i></a>
                             </div>
                             <div id="user_menu" class="dropdown-menu dropdown-menu-right">
                                 <div class="dropdown-item dropdown-item-user">

@@ -107,6 +107,7 @@ $routes->group('community', function ($routes) {
 
     //board gösterilen post tek gösterildiğii sayfa ve yorumların insert edildiği yer.
     $routes->get('post', 'Anime::boardviewpost');
+
     $routes->post('post/viewpost', 'Anime::boardviewpostinsert'); 
     $routes->post('post/viewrepypost', 'Anime::boardviewrepypostinsert'); 
 

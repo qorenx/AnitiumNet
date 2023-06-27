@@ -101,7 +101,7 @@
                     </div>
                     <div class="film-buttons">
                         <?php if (!empty($episodesData['ep_id_name'])) : ?>
-                            <a  href="/watch?anime=<?= urlencode($animetv['ani_name']) ?>&uid=<?= $animetv['uid'] ?>&eps=<?= $episodesData['ep_id_name'] ?>" class="btn btn-radius btn-primary btn-play"><i class="fas fa-play mr-2"></i>Watch now</a>
+                            <a href="/watch?anime=<?= urlencode($animetv['ani_name']) ?>&uid=<?= $animetv['uid'] ?>&eps=<?= $episodesData['ep_id_name'] ?>" class="btn btn-radius btn-primary btn-play"><i class="fas fa-play mr-2"></i>Watch now</a>
                         <?php endif; ?>
                         <?php if (auth()->loggedIn()) : ?>
                             <?= $this->include('anime/animedetails/animeaddlist') ?>
@@ -122,6 +122,17 @@
                                 <img style="width: 728px; height: auto; max-width: 100%;" src="" alt=""></a>
                         </div>
                     </div>
+                    <div class="share-buttons share-buttons-min mt-3">
+                                <div class="share-buttons-block" style="padding-bottom: 0 !important;">
+                                    <div class="share-icon"></div>
+                                    <div class="sbb-title">
+                                        <span>Share Anime</span>
+                                        <p class="mb-0">to your friends</p>
+                                    </div>
+                                    <div class="addthis_inline_share_toolbox"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
                     <div class="anisc-info-wrap">
                         <div class="anisc-info">
                             <?php if (!empty($animetv['ani_jname'])) : ?>
@@ -229,17 +240,17 @@
                                 </div>
                             <?php endif; ?>
                             <div class="item">
-                                    <span class="item-head">Resources:</span>
-                            <?php
-                            $sites = json_decode($animetv['ani_offical_site']);
-                            foreach ($sites as $site) {
-                            ?>
+                                <span class="item-head">Resources:</span>
+                                <?php
+                                $sites = json_decode($animetv['ani_offical_site']);
+                                foreach ($sites as $site) {
+                                ?>
                                     <a href='<?php echo $site->url; ?>' class='name'>
                                         <span><?php echo $site->name; ?></span>
                                     </a>
-                            <?php
-                            }
-                            ?>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="clearfix"></div>
