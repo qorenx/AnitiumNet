@@ -96,11 +96,11 @@
 
         
         <div class="float-left">
-    <a class="btn btn-upvote p-btn-vote" id="postlink<?= $post['post_id'] ?>" onclick="addPostLike(<?= $post['id'] ?>)" data-liked="0">
+    <a class="btn btn-upvote p-btn-vote" id="postlink<?= $post['post_id'] ?>" onclick="addPostLike(<?= $post['id'] ?>)">
         <i class="far fa-thumbs-up mr-2"></i>
         <span class="value" id="boardlikepost-<?= $post['id'] ?>"><?= $post['post_rep'] ?></span>
     </a>
-    <a class="btn btn-downvote p-btn-vote" id="postdislink<?= $post['post_id'] ?>" onclick="addPostDislike(<?= $post['id'] ?>)" data-disliked="0">
+    <a class="btn btn-downvote p-btn-vote" id="postdislink<?= $post['post_id'] ?>" onclick="addPostDislike(<?= $post['id'] ?>)">
         <i class="far fa-thumbs-down mr-2"></i>
         <span class="value" id="boarddislikepost-<?= $post['id'] ?>"><?= $post['post_disrep'] ?></span>
     </a>

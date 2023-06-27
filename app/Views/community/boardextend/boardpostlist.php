@@ -18,14 +18,14 @@
                             <a class="btn" onclick="document.getElementById('reply-<?= $post['id'] ?>').style.display = (document.getElementById('reply-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'"><i class="fas fa-reply mr-1"></i>Reply</a>
                         </div>
                         <div class="ib-li ib-like">
-                            <a style="color:white;" id="postlink" class="btn cm-btn-vote">
-                                <i class="far fa-thumbs-up mr-1"></i><span id="postlinkview" class="value">
+                            <a style="color:white;" id="postrepylikelink<?= $post['post_c_id'] ?>" onclick="addRepyLike(<?= $post['post_c_id'] ?>)" class="btn cm-btn-vote">
+                                <i class="far fa-thumbs-up mr-1"></i><span id="boardrepylikepost-<?= $post['post_c_id'] ?>" class="value"><?= $post['post_rep'] ?>
                                 </span>
                             </a>
                         </div>
                         <div class="ib-li ib-dislike">
-                            <a style="color:white;" id="postlink" class="btn cm-btn-vote">
-                                <i class="far fa-thumbs-down mr-1"></i><span id="postdislinkview" class="value">
+                            <a style="color:white;" id="postrepydislink<?= $post['post_c_id'] ?>" onclick="addRepyDislike(<?= $post['post_c_id'] ?>)" class="btn cm-btn-vote">
+                                <i class="far fa-thumbs-down mr-1"></i><span id="boardrepydislikepost-<?= $post['post_c_id'] ?>" class="value"><?= $post['post_disrep'] ?>
                                 </span>
                             </a>
                         </div>
@@ -170,3 +170,37 @@
                 </div>
             </div>
         <?php endforeach; ?>
+
+
+
+        <script>
+    function addRepyLike(postId) {
+        var post = $("#postrepylikelink" + postId);
+        var liked = post.data("liked");
+        if (!liked) {
+            $.ajax({
+                url: '/community/boardrepyreppost/' + postId,
+                type: 'POST',
+                success: function(result) {
+                    $('#boardrepylikepost-' + postId).text(parseInt($('#boardrepylikepost-' + postId).text()) + 1);
+                    post.data("liked", 1);
+                }
+            });
+        }
+    }
+
+    function addRepyDislike(postId) {
+        var post = $("#postrepydislink" + postId);
+        var disliked = post.data("disliked");
+        if (!disliked) {
+            $.ajax({
+                url: '/community/boardrepydispost/' + postId,
+                type: 'POST',
+                success: function(result) {
+                    $('#boardrepydislikepost-' + postId).text(parseInt($('#boardrepydislikepost-' + postId).text()) + 1);
+                    post.data("disliked", 1);
+                }
+            });
+        }
+    }
+</script>
