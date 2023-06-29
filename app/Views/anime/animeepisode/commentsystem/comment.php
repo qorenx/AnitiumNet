@@ -117,6 +117,35 @@
                             });
                         }
                     }
+                    function addRepycLike(postId) {
+                        var post = $("#postrepyclikelink" + postId);
+                        var liked = post.data("liked");
+                        if (!liked) {
+                            $.ajax({
+                                url: '/watch/episoderepycreppost/' + postId,
+                                type: 'POST',
+                                success: function(result) {
+                                    $('#boardrepyclikepost-' + postId).text(parseInt($('#boardrepyclikepost-' + postId).text()) + 1);
+                                    post.data("liked", 1);
+                                }
+                            });
+                        }
+                    }
+
+                    function addRepycDislike(postId) {
+                        var post = $("#postrepycdislink" + postId);
+                        var disliked = post.data("disliked");
+                        if (!disliked) {
+                            $.ajax({
+                                url: '/watch/episoderepycdispost/' + postId,
+                                type: 'POST',
+                                success: function(result) {
+                                    $('#boardrepycdislikepost-' + postId).text(parseInt($('#boardrepycdislikepost-' + postId).text()) + 1);
+                                    post.data("disliked", 1);
+                                }
+                            });
+                        }
+                    }
                 </script>
             </div>
         </div>

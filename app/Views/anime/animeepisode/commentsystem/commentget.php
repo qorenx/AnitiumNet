@@ -104,10 +104,20 @@
                                     </div>
                                     <div class="ibottom">
                                         <div class="ib-li ib-reply">
-                                            <a class="btn" onclick="
-                                                                            document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display = (document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display === 'none') ? 'block' : 'none'; 
-                                                                            "><i class="fas fa-reply mr-1"></i>Reply</a>
+                                            <a class="btn" onclick="document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display = (document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display === 'none') ? 'block' : 'none'; "><i class="fas fa-reply mr-1"></i>Reply</a>
                                         </div>
+                                        <div class="ib-li ib-like">
+                    <a style="color:white;" id="postrepyclikelink-<?= $reply['post_u_id'] ?>" onclick="addRepycLike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
+                        <i class="far fa-thumbs-up mr-1"></i><span id="boardrepyclikepost-<?= $reply['post_u_id'] ?>" class="value"><?= $reply['post_rep'] ?>
+                        </span>
+                    </a>
+                </div>
+                <div class="ib-li ib-dislike">
+                    <a style="color:white;" id="postrepycdislink-<?= $reply['post_u_id'] ?>" onclick="addRepycDislike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
+                        <i class="far fa-thumbs-down mr-1"></i><span id="boardrepycdislikepost-<?= $reply['post_u_id'] ?>" class="value"><?= $reply['post_disrep'] ?>
+                        </span>
+                    </a>
+                </div>
                                         <div class="ib-li">
                                             <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
                                             <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
