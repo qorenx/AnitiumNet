@@ -45,15 +45,17 @@
                 </div>
             <?php endif; ?>
             <div class="list-comment">
-                <div id="result" class="cw_list">
-                </div>
+                <div id="result" class="cw_list"></div>
                 <button style="margin: 0 auto; display: block; font-size: 16px; padding: 10px 20px; background-color: #353b4d; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="runCommand()" id="viewpostbutton">Show Post</button>
                 <script>
                     var nextPage = 1;
+                    var xhr = new XMLHttpRequest();
+                    var uid = "<?php echo $_GET['uid']; ?>";
+                    var eps = "<?php echo $_GET['eps']; ?>";
 
                     function runCommand() {
-                        var xhr = new XMLHttpRequest();
-                        xhr.open("GET", "/watch/epcommentmoreview?uid=<?php $uid = $_GET['uid']; echo $uid; ?>&eps=<?php $eps = $_GET['eps'];echo $eps; ?>&page=" + nextPage, true);
+                        var url = "/watch/epcommentmoreview?uid=" + uid + "&eps=" + eps + "&page=" + nextPage;
+                        xhr.open("GET", url, true);
                         xhr.onreadystatechange = function() {
                             if (xhr.readyState === 4 && xhr.status === 200) {
                                 var data = JSON.parse(xhr.responseText);
@@ -72,6 +74,8 @@
                         };
                         xhr.send();
                     }
+
+                    document.addEventListener("DOMContentLoaded", runCommand);
                 </script>
                 <script>
                     function toggleReplies(postId) {
