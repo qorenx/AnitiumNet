@@ -64,11 +64,14 @@ $routes->post('epvote/uservote10', 'Anime::episodevote10');
 
 
 
-$routes->post('/watch/epcommentinsert', 'Anime::episodecommentinsert');   ///episodecomment
-$routes->post('repsystem/episoderep/(:any)', 'Anime::episodecommentrepMethod/$1/');  //episode rep
-$routes->post('repsystem/episodedisrep/(:any)', 'Anime::episodecommentdisrepMethod/$1/'); //episode disrep
-$routes->post('episodepost/delete', 'Anime::episodecommentdelete');   //episodepost delete
+$routes->post('/watch/epcommentinsert', 'Anime::episodecommentinsert');   ///episodecomment main insert
+$routes->post('/watch/epcommentrepyinsert', 'Anime::episodecommentrepyinsert');   ///episodecomment repy insert
 
+$routes->get('/watch/epcommentmoreview', 'Anime::epcommentmore');  //episode commentmore post
+
+
+$routes->post('/watch/episoderepyreppost/(:any)', 'Anime::episoderepypostrepMethod/$1/');  //episode rep post 1. post
+$routes->post('/watch/episoderepydispost/(:any)', 'Anime::episoderepypostdisrepMethod/$1/'); //repisode disrep post  1. post
 
 
 ///üye kısmı

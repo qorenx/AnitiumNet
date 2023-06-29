@@ -45,147 +45,79 @@
                 </div>
             <?php endif; ?>
             <div class="list-comment">
-                <div class="cw_list">
-                    <?php $count = 0; ?>
-                    <?php foreach ($epcommentlist as $post) : ?>
-                        <?php if ($count < 10) : ?>
-                            <div class="cw_l-line">
-                                <a href="/community/user/<?= $post['username'] ?>" class="user-avatar">
-                                    <img class="user-avatar-img" src="<?= $post['avatar'] ?>">
-                                </a>
-                                <div class="info">
-                                    <div class="ihead">
-                                        <a href="/community/user/<?= $post['username'] ?>" target="_blank" class="user-name"><?= $post['username'] ?></a>
-                                        <div class="time"><?= $post['created_at'] ?></div>
-                                    </div>
-
-                                    <?php if ($post['post_spo'] == 1) : ?>
-                                        <div class="ibody" id="spoiler_<?= $post['post_id'] ?>">
-                                            <button onclick="document.getElementById('spoiler_content_<?= $post['post_id'] ?>').style.display='block'; this.style.display='none'">Spoiler</button>
-                                            <div id="spoiler_content_<?= $post['post_id'] ?>" style="display:none;"><?= $post['post_content'] ?></div>
-                                        </div>
-                                    <?php else : ?>
-                                        <div class="ibody">
-                                            <p><?= $post['post_content'] ?></p>
-                                        </div>
-                                    <?php endif; ?>
-                                    <div class="ibottom">
-                                        <div class="ib-li ib-like">
-                                            <button style="color: blue;" type="button" class="btn cm-btn-vote" id="postlink<?= $post['post_id'] ?>" onclick="addLike(<?= $post['post_id'] ?>)">
-                                                <i class="far fa-thumbs-up mr-1"></i><span id="postlinkview<?= $post['post_id'] ?>"><?= $post['post_rep'] ?></span>
-                                            </button>
-                                        </div>
-                                        <div class="ib-li ib-dislike">
-                                            <button style="color: red;" type="button" class="btn cm-btn-vote" id="postlink<?= $post['post_id'] ?>" onclick="adddisLike(<?= $post['post_id'] ?>)">
-                                                <i class="far fa-thumbs-down mr-1"></i><span id="postdislinkview<?= $post['post_id'] ?>"><?= $post['post_disrep'] ?></span>
-                                            </button>
-                                        </div>
-                                        <div class="ib-li">
-                                            <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
-                                            <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
-                                            <a href="<?= base_url('reportpost/' . $post['username'] . '/' . $post['post_id'] . '/' . $post['id']) ?>" onclick="return confirm('I think there is a problem with the partition. I want to report!')" class="dropdown-item cm-report">Report</a>                                                <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
-                                                    <form method="post" action="/episodepost/delete">
-                                                        <input type="hidden" name="id" value="<?= $post['id'] ?>">
-                                                        <button type="submit" class="dropdown-item cm-delete" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                                                    </form>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php else : ?>
-                            <div class="cw_l-line item more-posts d-none">
-                                <a href="/community/user/<?= $post['username'] ?>" class="user-avatar">
-                                    <img class="user-avatar-img" src="<?= $post['avatar'] ?>">
-                                </a>
-                                <div class="info">
-                                    <div class="ihead">
-                                        <a href="/community/user/<?= $post['username'] ?>" target="_blank" class="user-name"><?= $post['username'] ?></a>
-                                        <div class="time"><?= $post['created_at'] ?></div>
-                                    </div>
-
-                                    <?php if ($post['post_spo'] == 1) : ?>
-                                        <div class="ibody" id="spoiler_<?= $post['post_id'] ?>">
-                                            <button onclick="document.getElementById('spoiler_content_<?= $post['post_id'] ?>').style.display='block'; this.style.display='none'">Spoiler</button>
-                                            <div id="spoiler_content_<?= $post['post_id'] ?>" style="display:none;"><?= $post['post_content'] ?></div>
-                                        </div>
-                                    <?php else : ?>
-                                        <div class="ibody">
-                                            <p><?= $post['post_content'] ?></p>
-                                        </div>
-                                    <?php endif; ?>
-                                    <div class="ibottom">
-                                        <div class="ib-li ib-like">
-                                            <button style="color: blue;" type="button" class="btn cm-btn-vote" id="postlink<?= $post['post_id'] ?>" onclick="addLike(<?= $post['post_id'] ?>)">
-                                                <i class="far fa-thumbs-up mr-1"></i><span id="postlinkview<?= $post['post_id'] ?>"><?= $post['post_rep'] ?></span>
-                                            </button>
-                                        </div>
-                                        <div class="ib-li ib-dislike">
-                                            <button style="color: red;" type="button" class="btn cm-btn-vote" id="postlink<?= $post['post_id'] ?>" onclick="adddisLike(<?= $post['post_id'] ?>)">
-                                                <i class="far fa-thumbs-down mr-1"></i><span id="postdislinkview<?= $post['post_id'] ?>"><?= $post['post_disrep'] ?></span>
-                                            </button>
-                                        </div>
-                                        <div class="ib-li">
-                                            <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
-                                            <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
-                                                <a href="<?= base_url('report') ?>" onclick="return confirm('I think there is a problem with the partition. I want to report!')" class="dropdown-item cm-report">Report</a>
-                                                <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
-                                                    <form method="post" action="/episodepost/delete">
-                                                        <input type="hidden" name="id" value="<?= $post['id'] ?>">
-                                                        <button type="submit" class="dropdown-item cm-delete" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                                                    </form>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endif; ?>
-                        <?php $count++; ?>
-                    <?php endforeach; ?>
-                    <?php if (count($epcommentlist) > 10) : ?>
-                        <div class="loading-relative" id="loading-data">
-                            <button class="btn-primary loading" onclick="pagination()">
-                                <span>View More</span>
-                            </button>
-                        </div>
-                    <?php endif; ?> <script>
-                        function pagination() {
-                            jQuery(".more-posts.d-none").slice(0, 10).removeClass("d-none");
-                            jQuery(".more-posts:not(.d-none)").slice(0, 10).fadeOut(0);
-                            jQuery(".more-posts:not(.d-none)").slice(0, 10).fadeIn(400);
-                            if (jQuery(".more-posts.d-none").length == 0) {
-                                jQuery(".show-more").remove();
-                            }
-                        }
-                    </script>
+                <div id="result" class="cw_list">
                 </div>
+                <button style="margin: 0 auto; display: block; font-size: 16px; padding: 10px 20px; background-color: #353b4d; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="runCommand()" id="viewpostbutton">Show Post</button>
+                <script>
+                    var nextPage = 1;
+
+                    function runCommand() {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("GET", "/watch/epcommentmoreview?uid=<?php $uid = $_GET['uid']; echo $uid; ?>&eps=<?php $eps = $_GET['eps'];echo $eps; ?>&page=" + nextPage, true);
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4 && xhr.status === 200) {
+                                var data = JSON.parse(xhr.responseText);
+                                var htmlData = data['html'];
+                                var htmlData2 = data['page']['status'];
+                                var resultElement = document.getElementById("result");
+                                resultElement.innerHTML += htmlData;
+
+                                nextPage++;
+
+                                if (htmlData2 === false) {
+                                    var buttonElement = document.getElementById("viewpostbutton");
+                                    buttonElement.style.display = "none";
+                                }
+                            }
+                        };
+                        xhr.send();
+                    }
+                </script>
+                <script>
+                    function toggleReplies(postId) {
+                        var replies = document.getElementById("replies-" + postId);
+                        if (replies.style.display === "none") {
+                            replies.style.display = "block";
+                        } else {
+                            replies.style.display = "none";
+                        }
+                    }
+                </script>
+                <script>
+                    function addRepyLike(postId) {
+                        var post = $("#postrepylikelink" + postId);
+                        var liked = post.data("liked");
+                        if (!liked) {
+                            $.ajax({
+                                url: '/watch/episoderepyreppost/' + postId,
+                                type: 'POST',
+                                success: function(result) {
+                                    $('#boardrepylikepost-' + postId).text(parseInt($('#boardrepylikepost-' + postId).text()) + 1);
+                                    post.data("liked", 1);
+                                }
+                            });
+                        }
+                    }
+
+                    function addRepyDislike(postId) {
+                        var post = $("#postrepydislink" + postId);
+                        var disliked = post.data("disliked");
+                        if (!disliked) {
+                            $.ajax({
+                                url: '/watch/episoderepydispost/' + postId,
+                                type: 'POST',
+                                success: function(result) {
+                                    $('#boardrepydislikepost-' + postId).text(parseInt($('#boardrepydislikepost-' + postId).text()) + 1);
+                                    post.data("disliked", 1);
+                                }
+                            });
+                        }
+                    }
+                </script>
             </div>
         </div>
     </div>
-    <script>
-        function addLike(postId) {
-            $.ajax({
-                url: '/repsystem/episoderep/' + postId,
-                type: 'POST',
-                success: function(result) {
-                    $('#postlinkview' + postId).text(parseInt($('#postlinkview' + postId).text()) + 1);
-                }
-            });
-        }
-        function adddisLike(postId) {
-            $.ajax({
-                url: '/repsystem/episodedisrep/' + postId,
-                type: 'POST',
-                success: function(result) {
-                    $('#postdislinkview' + postId).text(parseInt($('#postdislinkview' + postId).text()) + 1);
-                }
-            });
-        }
-    </script>
+
     <script>
         const textarea = document.getElementById('df-cm-content');
         const buttonClose = document.getElementById('df-cm-close');
