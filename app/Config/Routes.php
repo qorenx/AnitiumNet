@@ -42,7 +42,7 @@ $routes->get('/', 'Anime::index');
 $routes->get('/home', 'Anime::home');
 $routes->get('type/(:any)', 'Anime::type_series/$1/');
 $routes->get('az-list/(:any)', 'Anime::azsearch/$1/');
-$routes->get('genre/(:any)', 'Anime::ani_genre/$1/'); 
+$routes->get('genre/(:any)', 'Anime::ani_genre/$1/');
 $routes->get('latest-episode', 'Anime::latest_episode');
 $routes->get('recent-releases', 'Anime::recent_releases');
 $routes->get('anime/(:any)', 'Anime::anime_details/$1/');
@@ -56,18 +56,18 @@ $routes->get('watch', 'Anime::ani_watch');
 
 
 //Episode Altındaki kısıma yorum çağırır.
-$routes->get('/watch/epcommentmoreview', 'Anime::epcommentmore');  
+$routes->get('/watch/epcommentmoreview', 'Anime::epcommentmore');
 //Episode Vote 0,5,10 verildiği kısımdır.
-$routes->post('epvote/uservote0', 'CommentSystem::episodevote0');  
-$routes->post('epvote/uservote5', 'CommentSystem::episodevote5'); 
-$routes->post('epvote/uservote10', 'CommentSystem::episodevote10');  
+$routes->post('epvote/uservote0', 'CommentSystem::episodevote0');
+$routes->post('epvote/uservote5', 'CommentSystem::episodevote5');
+$routes->post('epvote/uservote10', 'CommentSystem::episodevote10');
 //Episode altındaki yorum ve yoruma yapılan cevap gönderen kısım.
-$routes->post('/watch/epcommentinsert', 'CommentSystem::episodecommentinsert'); 
-$routes->post('/watch/epcommentrepyinsert', 'CommentSystem::episodecommentrepyinsert');  
+$routes->post('/watch/epcommentinsert', 'CommentSystem::episodecommentinsert');
+$routes->post('/watch/epcommentrepyinsert', 'CommentSystem::episodecommentrepyinsert');
 //Episode Altındaki Yorumların Beğeni Post URL'ları.
-$routes->post('/watch/episoderepyreppost/(:any)', 'CommentSystem::episoderepypostrepMethod/$1/');  
+$routes->post('/watch/episoderepyreppost/(:any)', 'CommentSystem::episoderepypostrepMethod/$1/');
 $routes->post('/watch/episoderepydispost/(:any)', 'CommentSystem::episoderepypostdisrepMethod/$1/');
-$routes->post('/watch/episoderepycreppost/(:any)', 'CommentSystem::episoderepycpostrepMethod/$1/'); 
+$routes->post('/watch/episoderepycreppost/(:any)', 'CommentSystem::episoderepycpostrepMethod/$1/');
 $routes->post('/watch/episoderepycdispost/(:any)', 'CommentSystem::episoderepycpostdisrepMethod/$1/');
 
 
@@ -75,8 +75,8 @@ $routes->post('/watch/episoderepycdispost/(:any)', 'CommentSystem::episoderepycp
 ///üye kısmı
 $routes->get('user/register', 'Anime::userregister');   // userprofile
 $routes->group('user', ['filter' => 'group:user,admin,superadmin'], function ($routes) {
-$routes->get('(:any)/(:any)', 'Anime::userprofile/$1/$2');
-$routes->get('(:any)', 'Anime::userprofile/$1');
+    $routes->get('(:any)/(:any)', 'Anime::userprofile/$1/$2');
+    $routes->get('(:any)', 'Anime::userprofile/$1');
 });
 
 
@@ -104,14 +104,17 @@ $routes->group('community', function ($routes) {
     //Board konulara yazılan yorumlar için daha fazla post göster kısmı
     $routes->get('bpviewlist', 'Anime::boardviewpostmore');
     //Board konulara yazılan yorumlar ve yorumlara yazılan cevapların mysql eklendiği kısım.
-    $routes->post('post/viewpost', 'CommentSystem::boardviewpostinsert'); 
-    $routes->post('post/viewrepypost', 'CommentSystem::boardviewrepypostinsert'); 
+    $routes->post('post/viewpost', 'CommentSystem::boardviewpostinsert');
+    $routes->post('post/viewrepypost', 'CommentSystem::boardviewrepypostinsert');
     //Board konular için beğeni ve dislike kısmı.
-    $routes->post('boardreppost/(:any)', 'CommentSystem::boardpostrepMethod/$1/'); 
-    $routes->post('boarddispost/(:any)', 'CommentSystem::boardpostdisrepMethod/$1/'); 
+    $routes->post('boardreppost/(:any)', 'CommentSystem::boardpostrepMethod/$1/');
+    $routes->post('boarddispost/(:any)', 'CommentSystem::boardpostdisrepMethod/$1/');
     //Board konular için yazılan cevapların beğeni ve dislike kısmı.
-    $routes->post('boardrepyreppost/(:any)', 'CommentSystem::boardrepyrepMethod/$1/'); 
+    $routes->post('boardrepyreppost/(:any)', 'CommentSystem::boardrepyrepMethod/$1/');
     $routes->post('boardrepydispost/(:any)', 'CommentSystem::boardrepydisrepMethod/$1/');
+    //Board konular için yazılan cevapların cevabına beğeni ve dislike kısmı.
+    $routes->post('boardrepycreppost/(:any)', 'CommentSystem::boardrepycrepMethod/$1/');
+    $routes->post('boardrepycdispost/(:any)', 'CommentSystem::boardrepycdisrepMethod/$1/');
 });
 
 
@@ -148,7 +151,7 @@ $routes->group('cron', function ($routes) {
 
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
     $routes->get('', 'Anime::admin');
-   // $routes->get('datebasesıfırla', 'Anime::datebasesıfırla');
+    // $routes->get('datebasesıfırla', 'Anime::datebasesıfırla');
 });
 
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
@@ -173,7 +176,6 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('season-add', 'Anime::seasonaddsave');
         $routes->get('season-edit/(:any)', 'Anime::seasonedit/$1');
         $routes->get('season-editdelete/(:any)', 'Anime::seasondelete/$1');
-
     });
 });
 
@@ -239,10 +241,3 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('schedule/deleteall', 'Anime::scheduledeleteall');
     });
 });
-
-
-
-
-
-
-
