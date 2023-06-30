@@ -17,7 +17,7 @@
                     var nextPage = 1;
                     var xhr = new XMLHttpRequest();
                     var pid = "<?php echo $_GET['pid']; ?>";
-                    
+
                     function runCommand() {
                         var url = "/community/bpviewlist?pid=" + pid + "&page=" + nextPage;
                         xhr.open("GET", url, true);
@@ -42,6 +42,16 @@
 
                     document.addEventListener("DOMContentLoaded", runCommand);
                 </script>
+                                   <script>
+                        function toggleReplies(postId) {
+                            var replies = document.getElementById("replies-" + postId);
+                            if (replies.style.display === "none") {
+                                replies.style.display = "block";
+                            } else {
+                                replies.style.display = "none";
+                            }
+                        }
+                    </script>
                 </div>
             </div>
         </div>

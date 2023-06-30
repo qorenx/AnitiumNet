@@ -82,16 +82,6 @@
                             </button>
                         <?php } ?>
                     </div>
-                    <script>
-                        function toggleReplies(postId) {
-                            var replies = document.getElementById("replies-" + postId);
-                            if (replies.style.display === "none") {
-                                replies.style.display = "block";
-                            } else {
-                                replies.style.display = "none";
-                            }
-                        }
-                    </script>
                     <div class="replies-wrap" id="replies-<?= $post['post_c_id'] ?>" style="display:none;">
                         <?php foreach ($post['replies'] as $reply) { ?>
 
