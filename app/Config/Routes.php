@@ -123,7 +123,20 @@ $routes->get('users/logout', 'Anime::userlogout');
 
 
 $routes->get('status/(:any)/(:any)/(:any)', 'Anime::statusupdate/$1/$2/$3/');   // user anime statüs ekliyor.
-$routes->add('report', 'Anime::storeUrlToDatabase', ['post', 'get']);
+
+
+
+$routes->group('report', function ($routes) {
+    $routes->post('episode-report', 'Report::episodereport');
+
+    $routes->get('clearAnimeViewCount', 'Cron::clearAnimeViewCount');
+
+});
+
+
+
+
+
 $routes->add('reportpost/(:any)/(:any)/(:any)', 'Anime::reportpost/$1/$2/$3', ['post', 'get']);
 
 
