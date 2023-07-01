@@ -139,13 +139,21 @@ $routes->group('report', ['filter' => 'group:admin,superadmin'], function ($rout
 
 
     //Board Comment Report Main ve Repy kısmıdır. 
-    $routes->post('board-comment-main', 'Report::boardcommentmain');  //çalışmıyor
-    $routes->post('board-comment-repy', 'Report::boardcommentrepy');  //çalışmıyor
+    $routes->post('board-comment-main', 'Report::boardcommentmain'); 
+    $routes->post('board-comment-repy', 'Report::boardcommentrepy'); 
 
 
     //Board Comment Silme Kısmıdır.
     $routes->post('board-comment-main-delete', 'Report::boardcommentmaindelete');
     $routes->post('board-comment-repy-delete', 'Report::boardcommentrepydelete');
+
+
+    //Board Main Report ve Delete
+    $routes->post('board-main', 'Report::boardmain'); 
+    $routes->post('board-delete', 'Report::boarddelete');
+    //$routes->get('board-delete/(:any)', 'Report::boarddelete/$1');
+
+
 
 
 });

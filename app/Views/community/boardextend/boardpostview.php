@@ -141,10 +141,15 @@
             <div class="ib-li show">
                 <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
                 <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 20px, 0px);">
-                    <a class="dropdown-item cm-report">Report</a>
+                <form method="post" action="/report/board-main">
+                                <input type="hidden" name="report_main_id" value="<?= $post['post_id'] ?>">
+                                <button type="submit" class="dropdown-item cm-report" onclick="return confirm('Are you sure you want to report?')">Report Spam</button>
+                            </form>
                     <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
-                        <form method="post" action="/community/boardpost/delete">
+                        <form method="post" action="/report/board-delete">
                             <input type="hidden" name="post_delete_id" value="<?= $post['id'] ?>">
+                            <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
+
                             <button type="submit" class="dropdown-item cm-delete" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                         </form>
                     <?php endif; ?>
