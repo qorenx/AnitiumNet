@@ -31,7 +31,10 @@
                     <div class="ib-li show">
                         <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
                         <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 20px, 0px);">
-                            <a class="dropdown-item cm-report">Report</a>
+                            <form method="post" action="/report/board-comment-main">
+                                <input type="hidden" name="report_main_id" value="<?= $post['post_c_id'] ?>">
+                                <button type="submit" class="dropdown-item cm-report" onclick="return confirm('Are you sure you want to report?')">Report Spam</button>
+                            </form>
                             <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
                                 <form method="post" action="/report/board-comment-main-delete">
                                     <input type="hidden" name="post_delete_id" value="<?= $post['id'] ?>">
@@ -121,7 +124,10 @@
                                         <div class="ib-li">
                                             <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
                                             <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
-                                                <a class="dropdown-item cm-report">Report Spam</a>
+                                                <form method="post" action="/report/board-comment-repy">
+                                                    <input type="hidden" name="report_repy_id" value="<?= $reply['post_u_id'] ?>">
+                                                    <button type="submit" class="dropdown-item cm-report" onclick="return confirm('Are you sure you want to report?')">Report Spam</button>
+                                                </form>
                                                 <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
                                                     <form method="post" action="/report/board-comment-repy-delete">
                                                         <input type="hidden" name="post_delete_id" value="<?= $reply['id'] ?>">
