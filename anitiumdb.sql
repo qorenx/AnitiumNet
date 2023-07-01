@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3306
--- Üretim Zamanı: 30 Haz 2023, 09:07:08
+-- Üretim Zamanı: 01 Tem 2023, 20:18:25
 -- Sunucu sürümü: 8.0.31
 -- PHP Sürümü: 8.2.0
 
@@ -83,8 +83,8 @@ CREATE TABLE IF NOT EXISTS `anime` (
 INSERT INTO `anime` (`id`, `uid`, `ani_name`, `ani_jname`, `ani_synonyms`, `ani_genre`, `ani_type`, `ani_country`, `ani_stats`, `ani_source`, `ani_ep`, `ani_synopsis`, `ani_poster`, `ani_wallpaper`, `ani_release`, `ani_release_season`, `ani_rate`, `ani_score`, `ani_raw`, `ani_sub`, `ani_dub`, `ani_turk`, `ani_time`, `ani_pv`, `ani_aired`, `ani_aired_fin`, `ani_studio`, `ani_producers`, `ani_offical_site`, `ani_manga_url`, `view_count`, `view_count_month`, `view_count_years`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (2, 51096, 'Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e 2nd Season', 'ようこそ実力至上主義の教室へ 2期', 'Classroom of the Elite 2nd Season, You-jitsu 2nd Season, You-zitsu 2nd Season', 'Drama,Suspense,Psychological,School', 1, 1, 2, 2, '13', 'Life back on the cruise following the Island Special Examination is anything but smooth sailing. Almost immediately after their return, the first-year students of Tokyo Metropolitan Advanced Nurturing High School face yet another special exam, with both class and individual points on the line.\r\n\r\nIn addition to the complicated ruleset, more issues arise in the form of Kakeru Ryuuen and Kei Karuizawa. Angered by the previous test\'s outcome, Ryuuen is dead set on outdoing every class in the new challenge using any means necessary. Meanwhile, Karuizawa, a crucial pillar of Class D, is close to crumbling under the pressure of her past.\r\n\r\nThe stage is now set for Kiyotaka Ayanokouji to once again—using the full extent of his planning, foresight, and ruthless manipulation—steer Class D to victory as dangerously close enemy forces try to bring it down.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1010/124180l.jpg', '/uploads/1687360287_7ef96876914eb93812cc.png', '2022', 3, 3, '8.13', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=0mM3lQytac4', '2022-07-04', '2022-09-26', 'Lerche', 'Studio Hibari,Movic,AT-X,Sammy,Crunchyroll,Kadokawa Media House,Kadokawa,Bandai Namco Music Live', '[{\"url\": \"http://you-zitsu.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/youkosozitsu\", \"name\": \"@youkosozitsu\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=17208\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=25370\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/Classroom_of_the_Elite\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%E5%AE%9F%E5%8A%9B%E8%87%B3%E4%B8%8A%E4%B8%BB%E7%BE%A9%E3%81%AE%E6%95%99%E5%AE%A4%E3%81%B8_(%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1)\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6369\", \"name\": \"Syoboi\"}, {\"url\": \"https://bangumi.tv/subject/371546\", \"name\": \"Bangumi\"}, {\"url\": \"https://movie.douban.com/subject/35778747/\", \"name\": \"Douban\"}]', 'https://classroomofelite.online/', 34, 34, 34, '2023-06-21 12:49:42', '2023-06-21 12:49:42', NULL),
 (5, 35507, 'Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e', 'ようこそ実力至上主義の教室へ', 'Welcome to the Classroom of the Elite, You-jitsu', 'Drama,Psychological,School', 1, 1, 2, 2, '12', 'On the surface, Koudo Ikusei Senior High School is a utopia. The students enjoy an unparalleled amount of freedom, and it is ranked highly in Japan. However, the reality is less than ideal. Four classes, A through D, are ranked in order of merit, and only the top classes receive favorable treatment.\r\n\r\nKiyotaka Ayanokouji is a student of Class D, where the school dumps its worst. There he meets the unsociable Suzune Horikita, who believes she was placed in Class D by mistake and desires to climb all the way to Class A, and the seemingly amicable class idol Kikyou Kushida, whose aim is to make as many friends as possible.\r\n\r\nWhile class membership is permanent, class rankings are not; students in lower ranked classes can rise in rankings if they score better than those in the top ones. Additionally, in Class D, there are no bars on what methods can be used to get ahead. In this cutthroat school, can they prevail against the odds and reach the top?\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/5/86830l.jpg', 'https://cdn.myanimelist.net/images/anime/5/86830l.jpg', '2017', 3, 3, '7.86', 0, 0, 0, 0, '24 min per ep', 'https://www.youtube.com/watch?v=iYsx6w5PNno', '2017-07-12', '2017-09-27', 'Lerche', 'Studio Hibari,Lantis,AT-X,Sony Music Communications,Toranoana,Crunchyroll,Kadokawa Media House,Kadokawa,AKABEiSOFT2', '[{\"url\": \"http://you-zitsu.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=13153\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=19544\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/Classroom_of_the_Elite\", \"name\": \"Wikipedia\"}]', '', 11, 11, 11, '2023-06-21 14:03:06', '2023-06-21 14:03:06', NULL),
-(6, 21, 'One Piece', 'ONE PIECE', 'OP', 'Action,Adventure,Fantasy,Shounen', 1, 1, 1, 1, '?', 'Gol D. Roger was known as the \"Pirate King,\" the strongest and most infamous being to have sailed the Grand Line. The capture and execution of Roger by the World Government brought a change throughout the world. His last words before his death revealed the existence of the greatest treasure in the world, One Piece. It was this revelation that brought about the Grand Age of Pirates, men who dreamed of finding One Piece—which promises an unlimited amount of riches and fame—and quite possibly the pinnacle of glory and the title of the Pirate King.\r\n\r\nEnter Monkey D. Luffy, a 17-year-old boy who defies your standard definition of a pirate. Rather than the popular persona of a wicked, hardened, toothless pirate ransacking villages for fun, Luffy\'s reason for being a pirate is one of pure wonder: the thought of an exciting adventure that leads him to intriguing people and ultimately, the promised treasure. Following in the footsteps of his childhood hero, Luffy and his crew travel across the Grand Line, experiencing crazy adventures, unveiling dark mysteries and battling strong enemies, all in order to reach the most coveted of all fortunes—One Piece.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/6/73245l.jpg', 'https://cdn.myanimelist.net/images/anime/6/73245l.jpg', '1999', 4, 3, '8.69', 0, 1, 0, 0, '24 min', 'https://www.youtube.com/watch?v=fX9NK-_YqlI', '1999-10-20', '?', 'Toei Animation', 'Fuji TV,TAP,Shueisha', '[{\"url\": \"http://www.toei-anim.co.jp/tv/onep/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/OnePieceAnime\", \"name\": \"@OnePieceAnime\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=69\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=836\", \"name\": \"ANN\"}, {\"url\": \"http://en.wikipedia.org/wiki/One_Piece\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/ONE_PIECE_%28%E3%82%A2%E3%83%8B%E3%83%A1%29\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/350\", \"name\": \"Syoboi\"}]', '', 24, 24, 24, '2023-06-21 14:50:51', '2023-06-21 14:50:51', NULL),
-(7, 52830, 'Isekai de Cheat Skill wo Te ni Shita Ore wa, Genjitsu Sekai wo mo Musou Suru: Level Up wa Jinsei wo Kaeta', '異世界でチート能力を手にした俺は、現実世界をも無双する ～レベルアップは人生を変えた～', 'Iseleve', 'Action,Adventure,Fantasy,Isekai,School', 1, 1, 1, 2, '13', 'All his life, Yuuya Tenjou has been the subject of resentment and contempt from everyone around him, even from his parents. To make matters worse, his grandfather—the only person who ever showed him affection—suddenly dies, leaving Yuuya truly alone.\r\n\r\nDespite facing many adversities, Yuuya does what he can to offer kindness to those who need it—but even the most good-natured people can only tolerate so much abuse. Just when he reaches his breaking point, a flicker of hope appears in the form of a hidden door in his bathroom.\r\n\r\nThis door provides two-way access to an abandoned house in another world, where he instantly gains game-like stats and skills. Moreover, the house once belonged to a sage, which gives Yuuya access to remarkable weapons, equipment, and crops with extraordinary effects. With these newfound blessings, the once-undesirable Yuuya may just reach his true potential and become unstoppable.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1316/134327l.jpg', 'https://cdn.myanimelist.net/images/anime/1316/134327l.jpg', '2023', 2, 3, '6.56', 0, 1, 0, 0, '24 min per ep', 'https://www.youtube.com/watch?v=u7YOzGniO5g', '2023-04-07', '2023-06-30', 'Millepensee', 'TMS Entertainment,Tokyo MX,BS11,Kadokawa,CTW', '[{\"url\": \"https://www.iseleve.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/iseleve_anime\", \"name\": \"@iseleve_anime\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=17580\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=26234\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/I_Got_a_Cheat_Skill_in_Another_World_and_Became_Unrivaled_in_the_Real_World,_Too\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E7%95%B0%E4%B8%96%E7%95%8C%E3%81%A7%E3%83%81%E3%83%BC%E3%83%88%E8%83%BD%E5%8A%9B%E3%82%92%E6%89%8B%E3%81%AB%E3%81%97%E3%81%9F%E4%BF%BA%E3%81%AF%E3%80%81%E7%8F%BE%E5%AE%9F%E4%B8%96%E7%95%8C%E3%82%92%E3%82%82%E7%84%A1%E5%8F%8C%E3%81%99%E3%82%8B%E3%80%9C%E3%83%AC%E3%83%99%E3%83%AB%E3%82%A2%E3%83%83%E3%83%97%E3%81%AF%E4%BA%BA%E7%94%9F%E3%82%92%E5%A4%89%E3%81%88%E3%81%9F%E3%80%9C#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6662\", \"name\": \"Syoboi\"}, {\"url\": \"https://bangumi.tv/subject/397025\", \"name\": \"Bangumi\"}, {\"url\": \"https://baike.baidu.com/item/%E5%9C%A8%E5%BC%82%E4%B8%96%E7%95%8C%E8%8E%B7%E5%BE%97%E8%B6%85%E5%BC%BA%E8%83%BD%E5%8A%9B%E7%9A%84%E6%88%91%EF%BC%8C%E5%9C%A8%E7%8E%B0%E5%AE%9E%E4%B8%96%E7%95%8C%E7%85%A7%E6%A0%B7%E6%97%A0%E6%95%8C%EF%BD%9E%E7%AD%89%E7%BA%A7%E6%8F%90%E5%8D%87%E6%94%B9%E5%8F%98%E4%BA%BA%E7%94%9F%E5%91%BD%E8%BF%90%EF%BD%9E/61904008?fromModule=lemma-qiyi_sense-lemma\", \"name\": \"Baidu Baike\"}, {\"url\": \"https://movie.douban.com/subject/36066424/\", \"name\": \"Douban\"}]', '', 8, 8, 8, '2023-06-21 15:08:58', '2023-06-21 15:08:58', NULL),
+(6, 21, 'One Piece', 'ONE PIECE', 'OP', 'Action,Adventure,Fantasy,Shounen', 1, 1, 1, 1, '?', 'Gol D. Roger was known as the \"Pirate King,\" the strongest and most infamous being to have sailed the Grand Line. The capture and execution of Roger by the World Government brought a change throughout the world. His last words before his death revealed the existence of the greatest treasure in the world, One Piece. It was this revelation that brought about the Grand Age of Pirates, men who dreamed of finding One Piece—which promises an unlimited amount of riches and fame—and quite possibly the pinnacle of glory and the title of the Pirate King.\r\n\r\nEnter Monkey D. Luffy, a 17-year-old boy who defies your standard definition of a pirate. Rather than the popular persona of a wicked, hardened, toothless pirate ransacking villages for fun, Luffy\'s reason for being a pirate is one of pure wonder: the thought of an exciting adventure that leads him to intriguing people and ultimately, the promised treasure. Following in the footsteps of his childhood hero, Luffy and his crew travel across the Grand Line, experiencing crazy adventures, unveiling dark mysteries and battling strong enemies, all in order to reach the most coveted of all fortunes—One Piece.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/6/73245l.jpg', 'https://cdn.myanimelist.net/images/anime/6/73245l.jpg', '1999', 4, 3, '8.69', 0, 1, 0, 0, '24 min', 'https://www.youtube.com/watch?v=fX9NK-_YqlI', '1999-10-20', '?', 'Toei Animation', 'Fuji TV,TAP,Shueisha', '[{\"url\": \"http://www.toei-anim.co.jp/tv/onep/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/OnePieceAnime\", \"name\": \"@OnePieceAnime\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=69\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=836\", \"name\": \"ANN\"}, {\"url\": \"http://en.wikipedia.org/wiki/One_Piece\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/ONE_PIECE_%28%E3%82%A2%E3%83%8B%E3%83%A1%29\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/350\", \"name\": \"Syoboi\"}]', '', 25, 25, 25, '2023-06-21 14:50:51', '2023-06-21 14:50:51', NULL),
+(7, 52830, 'Isekai de Cheat Skill wo Te ni Shita Ore wa, Genjitsu Sekai wo mo Musou Suru: Level Up wa Jinsei wo Kaeta', '異世界でチート能力を手にした俺は、現実世界をも無双する ～レベルアップは人生を変えた～', 'Iseleve', 'Action,Adventure,Fantasy,Isekai,School', 1, 1, 1, 2, '13', 'All his life, Yuuya Tenjou has been the subject of resentment and contempt from everyone around him, even from his parents. To make matters worse, his grandfather—the only person who ever showed him affection—suddenly dies, leaving Yuuya truly alone.\r\n\r\nDespite facing many adversities, Yuuya does what he can to offer kindness to those who need it—but even the most good-natured people can only tolerate so much abuse. Just when he reaches his breaking point, a flicker of hope appears in the form of a hidden door in his bathroom.\r\n\r\nThis door provides two-way access to an abandoned house in another world, where he instantly gains game-like stats and skills. Moreover, the house once belonged to a sage, which gives Yuuya access to remarkable weapons, equipment, and crops with extraordinary effects. With these newfound blessings, the once-undesirable Yuuya may just reach his true potential and become unstoppable.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1316/134327l.jpg', 'https://cdn.myanimelist.net/images/anime/1316/134327l.jpg', '2023', 2, 3, '6.56', 0, 1, 0, 0, '24 min per ep', 'https://www.youtube.com/watch?v=u7YOzGniO5g', '2023-04-07', '2023-06-30', 'Millepensee', 'TMS Entertainment,Tokyo MX,BS11,Kadokawa,CTW', '[{\"url\": \"https://www.iseleve.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/iseleve_anime\", \"name\": \"@iseleve_anime\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=17580\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=26234\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/I_Got_a_Cheat_Skill_in_Another_World_and_Became_Unrivaled_in_the_Real_World,_Too\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E7%95%B0%E4%B8%96%E7%95%8C%E3%81%A7%E3%83%81%E3%83%BC%E3%83%88%E8%83%BD%E5%8A%9B%E3%82%92%E6%89%8B%E3%81%AB%E3%81%97%E3%81%9F%E4%BF%BA%E3%81%AF%E3%80%81%E7%8F%BE%E5%AE%9F%E4%B8%96%E7%95%8C%E3%82%92%E3%82%82%E7%84%A1%E5%8F%8C%E3%81%99%E3%82%8B%E3%80%9C%E3%83%AC%E3%83%99%E3%83%AB%E3%82%A2%E3%83%83%E3%83%97%E3%81%AF%E4%BA%BA%E7%94%9F%E3%82%92%E5%A4%89%E3%81%88%E3%81%9F%E3%80%9C#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6662\", \"name\": \"Syoboi\"}, {\"url\": \"https://bangumi.tv/subject/397025\", \"name\": \"Bangumi\"}, {\"url\": \"https://baike.baidu.com/item/%E5%9C%A8%E5%BC%82%E4%B8%96%E7%95%8C%E8%8E%B7%E5%BE%97%E8%B6%85%E5%BC%BA%E8%83%BD%E5%8A%9B%E7%9A%84%E6%88%91%EF%BC%8C%E5%9C%A8%E7%8E%B0%E5%AE%9E%E4%B8%96%E7%95%8C%E7%85%A7%E6%A0%B7%E6%97%A0%E6%95%8C%EF%BD%9E%E7%AD%89%E7%BA%A7%E6%8F%90%E5%8D%87%E6%94%B9%E5%8F%98%E4%BA%BA%E7%94%9F%E5%91%BD%E8%BF%90%EF%BD%9E/61904008?fromModule=lemma-qiyi_sense-lemma\", \"name\": \"Baidu Baike\"}, {\"url\": \"https://movie.douban.com/subject/36066424/\", \"name\": \"Douban\"}]', '', 9, 9, 9, '2023-06-21 15:08:58', '2023-06-21 15:08:58', NULL),
 (8, 51706, 'Yuusha ga Shinda!', '勇者が死んだ！', 'The Hero Is Dead!', 'Action,Comedy,Fantasy,Ecchi,Harem,Parody', 1, 1, 1, 1, '12', 'Far to the north of the world lies Hell\'s Gate, a portal formerly used by the Demon Lord to invade the human realm. Thanks to the legendary hero Shion Bladearts, wielder of Excalibur, and his loyal band of companions, the Gate was sealed off and the demonic threat was vanquished.\r\n\r\nUnfortunately, the seal was incomplete and has begun to weaken, allowing the demons to once again begin their attack. Worried about the safety of his village, selfish and perverted farmer Touka Scott dig pitfalls to defend against the demons. But fear not, for Shion is on his way to reseal Hell\'s Gate and save humanity!\r\n\r\nOr at least he was, because the legendary hero is dead, having fallen into one of the pitfalls Touka dug. Luckily, dealing with the dead is the specialty of necromancer Anri Haynesworth. While she can\'t revive him, Anri can at least salvage their quest by forcing Touka\'s soul into Shion\'s rotting body and dragging him along to Hell\'s Gate in Shion\'s place. Not wanting to be left behind, Touka\'s childhood friend Yuna Yunis tags along. Together, the three of them set out as what just might be the most unsuitable party to ever try to save the world!\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1868/133866l.jpg', 'https://cdn.myanimelist.net/images/anime/1868/133866l.jpg', '2023', 2, 3, '6.27', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=0ApTw19ZTQg', '2023-04-07', '2023-06-23', 'LIDENFILMS', 'Pony Canyon,Tohokushinsha Film Corporation,Shogakukan,Crunchyroll,WOWMAX', '[{\"url\": \"https://heroisdead.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/yuusyagasinda\", \"name\": \"@yuusyagasinda\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=17340\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=25602\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/The_Legendary_Hero_Is_Dead!\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E5%8B%87%E8%80%85%E3%81%8C%E6%AD%BB%E3%82%93%E3%81%A0!#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6661\", \"name\": \"Syoboi\"}, {\"url\": \"https://bangumi.tv/subject/379639\", \"name\": \"Bangumi\"}, {\"url\": \"https://baike.baidu.com/item/%E5%8B%87%E8%80%85%E6%AD%BB%E4%BA%86%EF%BC%81/60939827?fromModule=lemma-qiyi_sense-lemma\", \"name\": \"Baidu Baike\"}, {\"url\": \"https://movie.douban.com/subject/35885091/\", \"name\": \"Douban\"}]', '', 1, 1, 1, '2023-06-21 15:16:36', '2023-06-21 15:16:36', NULL),
 (9, 50307, 'Tonikaku Kawaii 2nd Season', 'トニカクカワイイ', '', 'Comedy,Romance,Shounen', 1, 1, 1, 1, '12', 'In the wake of their first home burning down, Nasa and Tsukasa Yuzaki are seeking temporary shelter at the Arisugawas\' bathhouse. Though they have only been married for a short time, their relationship has only become sweeter by the day. Nasa is determined to spend as much time with his wife as possible, basking in the happiness of their marriage.\r\n\r\nThe newlyweds find new ways to explore their relationship. From adopting a cat, going to an amusement park, and even watching an impromptu romantic comedy featuring Nasa\'s former teacher, every day is a new experience. But while Tsukasa continues to meet the people in Nasa\'s life, Nasa has yet to meet more of Tsukasa\'s family. Though they appear to be the picture-perfect couple to everyone around them, Nasa begins to wonder if he will ever learn more about his wife\'s mysterious past.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1996/133361l.jpg', 'https://cdn.myanimelist.net/images/anime/1996/133361l.jpg', '2023', 2, 3, '7.81', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=cksQYKGvr6U', '2023-04-08', '2023-06-24', 'Seven Arcs', 'Shogakukan-Shueisha Productions,Warner Bros. Japan,KlockWorx,Shogakukan,Crunchyroll', '[{\"url\": \"http://tonikawa.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/tonikawa_anime\", \"name\": \"@tonikawa_anime\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=16961\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=24951\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/Fly_Me_to_the_Moon_(manga)#Anime\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%8B%E3%82%AB%E3%82%AF%E3%82%AB%E3%83%AF%E3%82%A4%E3%82%A4#%E3%82%A2%E3%83%8B%E3%83%A1\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6669\", \"name\": \"Syoboi\"}]', '', 1, 1, 1, '2023-06-21 15:16:49', '2023-06-21 15:16:49', NULL),
 (10, 2928, '.hack//G.U. Returner', '.HACK//G.U. RETURNER', '', 'Adventure,Drama,Fantasy,Video Game', 3, 1, 2, 1, '1', 'The characters from previous .hack//G.U. Games and .hack//Roots receive an email from Ovan. He is requesting them to go to Hidden Forbidden Festival where is set up a mysterious summer festival. There they find an AIDA Chim Chim who wishes to peacefully co-exist with the other players of The World. It then transforms into the word \"Returner\", so they assume it to mean that Ovan will return to The World.\r\n\r\n(Source: ANN)', 'https://cdn.myanimelist.net/images/anime/1798/115989l.jpg', 'https://cdn.myanimelist.net/images/anime/1798/115989l.jpg', '2007', 1, 3, '6.67', 0, 1, 0, 0, '24 min', '', '2007-01-18', '', 'Bee Train', 'Bandai Visual,CyberConnect2', '[{\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=5391\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=9179\", \"name\": \"ANN\"}]', '', 2, 2, 2, '2023-06-21 15:17:05', '2023-06-21 15:17:05', NULL),
@@ -257,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `auth_identities` (
 --
 
 INSERT INTO `auth_identities` (`id`, `user_id`, `type`, `name`, `secret`, `secret2`, `expires`, `extra`, `force_reset`, `last_used_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 'email_password', NULL, 'akaisora09@gmail.com', '$2y$10$fNW/eSalcB5LeMBF152cCO1d66QFBnVDaPNO10.xpZ8PPyW6J4a/m', NULL, NULL, 0, '2023-06-30 08:09:04', '2023-05-12 19:52:20', '2023-06-30 08:09:04'),
+(1, 1, 'email_password', NULL, 'akaisora09@gmail.com', '$2y$10$fNW/eSalcB5LeMBF152cCO1d66QFBnVDaPNO10.xpZ8PPyW6J4a/m', NULL, NULL, 0, '2023-07-01 17:15:43', '2023-05-12 19:52:20', '2023-07-01 17:15:43'),
 (2, 2, 'email_password', NULL, 'test123@gmail.com', '$2y$10$HIICb90g2f/6JJHXcXF5x.TSS.2YliEaC7WS444vS/8jocB9K6U5a', NULL, NULL, 0, NULL, '2023-05-16 15:20:43', '2023-05-16 15:20:43'),
 (3, 3, 'email_password', NULL, 'test@test.com', '$2y$10$AQO7pnXJp7ye96A.1q2BQOkWmj/yGeGPiMBc72SUx.iDfh99mBypC', NULL, NULL, 0, NULL, '2023-06-11 08:09:00', '2023-06-11 08:09:00');
 
@@ -280,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `auth_logins` (
   PRIMARY KEY (`id`),
   KEY `id_type_identifier` (`id_type`,`identifier`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Tablo döküm verisi `auth_logins`
@@ -361,7 +361,9 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `user_agent`, `id_type`, `identif
 (72, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-27 13:15:48', 1),
 (73, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-29 07:05:49', 1),
 (74, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-29 15:38:20', 1),
-(75, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-30 08:09:04', 1);
+(75, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-30 08:09:04', 1),
+(76, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-07-01 13:51:30', 1),
+(77, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-07-01 17:15:43', 1);
 
 -- --------------------------------------------------------
 
@@ -441,14 +443,7 @@ CREATE TABLE IF NOT EXISTS `community` (
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `post_id` (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Tablo döküm verisi `community`
---
-
-INSERT INTO `community` (`id`, `user_id`, `post_id`, `post_tag`, `post_head`, `post_content`, `post_rep`, `post_disrep`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(12, 1, 77175120, 1, 'Welcome Dunya', 'Welcome Dunya 2', 6, 4, '2023-06-27 12:31:42', '2023-06-27 13:02:35', NULL);
+) ENGINE=InnoDB AUTO_INCREMENT=12515 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -469,19 +464,7 @@ CREATE TABLE IF NOT EXISTS `community_post` (
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Tablo döküm verisi `community_post`
---
-
-INSERT INTO `community_post` (`id`, `user_id`, `post_id`, `post_c_id`, `post_content`, `post_rep`, `post_disrep`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(116, 1, 77175120, 956000505, 'test', 1, 0, '2023-06-27 13:16:05', '2023-06-27 13:35:56', NULL),
-(117, 1, 77175120, 15474307, 'test3', 1, 1, '2023-06-27 13:27:48', '2023-06-27 13:35:33', NULL),
-(118, 1, 77175120, 787428245, 'test6', 1, 0, '2023-06-29 07:06:01', '2023-06-29 08:58:22', NULL),
-(119, 1, 77175120, 761362370, 'test7', 1, 1, '2023-06-29 07:06:07', '2023-06-30 09:04:04', NULL),
-(120, 1, 77175120, 707018146, 'test8', 0, 1, '2023-06-29 07:06:13', '2023-06-30 08:52:39', NULL),
-(121, 1, 77175120, 448052585, 'test11', 1, 0, '2023-06-29 10:46:31', '2023-06-30 09:04:02', NULL);
+) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -502,18 +485,7 @@ CREATE TABLE IF NOT EXISTS `community_repy_post` (
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Tablo döküm verisi `community_repy_post`
---
-
-INSERT INTO `community_repy_post` (`id`, `user_id`, `post_u_id`, `post_c_id`, `post_content`, `post_rep`, `post_disrep`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(64, 1, 1155094, 707018146, 'test10\r\n', 1, 1, '2023-06-29 07:06:39', '2023-06-30 09:03:55', NULL),
-(63, 1, 9589521, 707018146, 'test9', 1, 1, '2023-06-29 07:06:23', '2023-06-30 09:03:54', NULL),
-(62, 1, 9232019, 15474307, 'test5', 0, 0, '2023-06-27 13:38:00', '2023-06-27 13:38:00', NULL),
-(61, 1, 3187321, 15474307, 'test4', 0, 0, '2023-06-27 13:27:56', '2023-06-27 13:27:56', NULL),
-(60, 1, 6759060, 956000505, 'test2', 0, 0, '2023-06-27 13:16:11', '2023-06-27 13:16:11', NULL);
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -546,7 +518,7 @@ CREATE TABLE IF NOT EXISTS `episode` (
 --
 
 INSERT INTO `episode` (`id`, `uid`, `ep_id_name`, `ep_name`, `ep_jname`, `ep_romaji`, `ep_aired`, `ep_pv`, `ep_view`, `ep_view_month`, `ep_view_years`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(152, 21, '1', 'I\'m Luffy! The Man Who\'s Gonna Be King of the Pirates!', '俺はルフィ!海賊王になる男だ!', 'Ore wa Luffy! Kaizoku Ou ni Naru Otoko Da! ', '1999-10-20', '', 7, 7, 7, '2023-06-27 16:25:04', '2023-06-27 16:25:04', NULL),
+(152, 21, '1', 'I\'m Luffy! The Man Who\'s Gonna Be King of the Pirates!', '俺はルフィ!海賊王になる男だ!', 'Ore wa Luffy! Kaizoku Ou ni Naru Otoko Da! ', '1999-10-20', '', 53, 53, 53, '2023-06-27 16:25:04', '2023-06-27 16:25:04', NULL),
 (153, 21, '2', 'Enter the Great Swordsman! Pirate Hunter Roronoa Zoro!', '大剣豪現る!海賊狩りロロノア·ゾロ', 'Daikengou Arawaru! Kaizokugari Roronoa Zoro ', '1999-11-17', '', 0, 0, 0, '2023-06-27 16:25:04', '2023-06-27 16:25:04', NULL),
 (154, 21, '3', 'Morgan versus Luffy! Who\'s the Mysterious Pretty Girl?', 'モーガンVSルフィ!謎の美少女は誰?', 'Morgan vs. Luffy! Nazo no Bishoujo wa Dare? ', '1999-11-24', '', 0, 0, 0, '2023-06-27 16:25:04', '2023-06-27 16:25:04', NULL),
 (155, 21, '4', 'Luffy\'s Past! Enter Red-Haired Shanks!', 'ルフィの過去!赤髪のシャンクス登場', 'Luffy no Kako! Akagami no Shanks Toujou ', '1999-12-08', '', 0, 0, 0, '2023-06-27 16:25:04', '2023-06-27 16:25:04', NULL),
@@ -1552,7 +1524,7 @@ INSERT INTO `episode` (`id`, `uid`, `ep_id_name`, `ep_name`, `ep_jname`, `ep_rom
 (1151, 21, '1000', 'Overwhelming Strength! The Straw Hats Come Together!', '圧倒的戦力！麦わらの一味集結', 'Attoteki Senryoku! Mugiwara no Ichimi Shuuketsu ', '2021-11-21', '', 0, 0, 0, '2023-06-27 16:27:25', '2023-06-27 16:27:25', NULL),
 (1152, 21, '1001', 'A Risky Invitation! A Plot to Eliminate Queen!', '危険な誘い！クイーン抹殺計画', 'Kiken na Sasoi! Queen Massatsu Keikaku ', '2021-11-28', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1153, 21, '1002', 'A New Rivalry! Nami and Ulti!', '新たな因縁！ナミとうるティ！', 'Arata na Innen! Nami to Ulti! ', '2021-12-05', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
-(1154, 21, '1003', 'A Heroic Blade! Akazaya vs. Kaido, Again Once More!', '悲壮の刃! 赤鞘VSカイドウ再び', 'Hisou no Yaiba! Akazaya vs Kaidou Futatabi ', '2021-12-12', '', 98, 98, 98, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
+(1154, 21, '1003', 'A Heroic Blade! Akazaya vs. Kaido, Again Once More!', '悲壮の刃! 赤鞘VSカイドウ再び', 'Hisou no Yaiba! Akazaya vs Kaidou Futatabi ', '2021-12-12', '', 166, 166, 166, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1155, 21, '1004', 'An Inherited Technique! Unleashing Oden\'s Secret Swordplay!', '受け継ぎし技 炸裂おでんの秘剣', 'Uketsugishi Waza: Sakuretsu Oden no Hiken ', '2021-12-19', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1156, 21, '1005', 'The Power of Ice Oni! A New Version of the Plague Rounds!', '「氷鬼」の威力! 新たな疫災[エキサイト]弾', '', '2022-01-09', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1157, 21, '1006', 'I Won\'t Forgive Him! Chopper\'s Determination!', '許さねェ！チョッパーの決意！', 'Yurusanee! Chopper no Ketsui! ', '2022-01-16', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
@@ -1574,7 +1546,7 @@ INSERT INTO `episode` (`id`, `uid`, `ep_id_name`, `ep_name`, `ep_jname`, `ep_rom
 (1173, 21, '1022', 'No Regrets! Luffy and Boss, a Master-Disciple Bond!', '悔いなし ルフィと親分師弟の絆', 'Kui Nashi: Luffy to Oyabun Shitei no Kizuna ', '2022-06-19', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1174, 21, '1023', 'All Set! Chopperphage Nebulizer!', '準備OK! チョパファージ霧砲[ネブライザー]', 'Junbi OK! Chopperphage Nebulizer ', '2022-07-03', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1175, 21, '1024', 'Oden Appears! The Confused Hearts of the Akazaya Members!', 'おでん現る! 揺れる赤鞘の心!', 'Oden Arawaru! Yureru Akazaya no Kokoro! ', '2022-07-10', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
-(1176, 21, '1025', 'The Worst Generation Gets Wiped Out?! The Emperors’ Deadly Attack!', '最悪の世代全滅！？四皇の大技', 'Saiaku no Sedai Zenmetsu!? Yonkou no Oowaza! ', '2022-07-17', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
+(1176, 21, '1025', 'The Worst Generation Gets Wiped Out?! The Emperors’ Deadly Attack!', '最悪の世代全滅！？四皇の大技', 'Saiaku no Sedai Zenmetsu!? Yonkou no Oowaza! ', '2022-07-17', '', 4, 4, 4, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1177, 21, '1026', 'The Supernovas Strike Back! The Mission to Tear Apart the Emperors!', '超新星反撃！四皇分解作戦', 'Choushinsei Hangeki! Yonkou Bunkai Sakusen ', '2022-07-24', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1178, 21, '1027', 'Defend Luffy! Zoro and Law’s Sword Technique!', 'ルフィを守れ！ゾロとローの剣技', 'Luffy wo Mamore! Zoro to Law no Kengi ', '2022-07-31', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1179, 21, '1028', 'Surpass the Emperor of the Sea! Luffy Strikes Back with an Iron Fist', '四皇を超えろ ルフィ反撃の鉄拳', 'Yonkou wo Koero: Luffy Hangeki no Tekken ', '2022-08-07', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
@@ -1637,7 +1609,7 @@ CREATE TABLE IF NOT EXISTS `episode_comment` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `episode_comment`
@@ -1649,7 +1621,7 @@ INSERT INTO `episode_comment` (`id`, `user_id`, `post_id`, `post_ani`, `post_ep`
 (11, 1, 1090130901, 21, '1003', 0, 'test3', 1, 0, '2023-06-29 17:16:42', '2023-06-29 19:19:14', NULL),
 (13, 1, 537627415, 21, '1003', 0, 'test4', 0, 0, '2023-06-29 19:40:09', '2023-06-29 19:40:09', NULL),
 (14, 1, 636411874, 21, '1003', 0, 'test5', 0, 0, '2023-06-29 19:48:33', '2023-06-29 19:48:33', NULL),
-(15, 1, 858748072, 21, '1003', 0, 'test6', 0, 0, '2023-06-29 19:48:43', '2023-06-29 19:48:43', NULL);
+(16, 1, 61195407, 21, '1025', 0, 'tag', 1, 1, '2023-06-30 09:51:00', '2023-06-30 09:51:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -1670,7 +1642,7 @@ CREATE TABLE IF NOT EXISTS `episode_comment_repy` (
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Tablo döküm verisi `episode_comment_repy`
@@ -1679,9 +1651,9 @@ CREATE TABLE IF NOT EXISTS `episode_comment_repy` (
 INSERT INTO `episode_comment_repy` (`id`, `user_id`, `post_id`, `post_u_id`, `post_content`, `post_rep`, `post_disrep`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 1090130901, 5213125, 'wqgqwgqwgq', 0, 0, '2023-06-29 18:02:11', '2023-06-29 18:02:11', NULL),
 (2, 1, 1090130901, 1612621, 'wh1wh21h', 0, 0, '2023-06-29 18:02:11', '2023-06-29 18:02:11', NULL),
-(3, 1, 1476358318, 2962865, 'hey12', 0, 0, '2023-06-29 19:26:26', '2023-06-29 19:26:26', NULL),
 (4, 1, 1090130901, 4035450, 'wcez', 0, 0, '2023-06-29 19:36:35', '2023-06-29 19:36:35', NULL),
-(5, 1, 537627415, 87583, 'qgqg', 1, 0, '2023-06-29 19:40:24', '2023-06-29 20:26:56', NULL);
+(5, 1, 537627415, 87583, 'qgqg', 1, 0, '2023-06-29 19:40:24', '2023-06-29 20:26:56', NULL),
+(6, 1, 61195407, 5143316, 'tag2', 1, 1, '2023-06-30 09:51:15', '2023-06-30 09:51:23', NULL);
 
 -- --------------------------------------------------------
 
@@ -1781,7 +1753,7 @@ CREATE TABLE IF NOT EXISTS `episode_vote` (
   `anime_ep_id` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `anime_ep_score` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Tablo döküm verisi `episode_vote`
@@ -1845,38 +1817,59 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `reportpost`
+-- Tablo için tablo yapısı `report_board`
 --
 
-DROP TABLE IF EXISTS `reportpost`;
-CREATE TABLE IF NOT EXISTS `reportpost` (
+DROP TABLE IF EXISTS `report_board`;
+CREATE TABLE IF NOT EXISTS `report_board` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `postid` int NOT NULL,
-  `ids` int NOT NULL,
+  `report_main_id` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `reports`
+-- Tablo için tablo yapısı `report_board_comment`
 --
 
-DROP TABLE IF EXISTS `reports`;
-CREATE TABLE IF NOT EXISTS `reports` (
+DROP TABLE IF EXISTS `report_board_comment`;
+CREATE TABLE IF NOT EXISTS `report_board_comment` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `url` varchar(355) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` datetime NOT NULL,
+  `report_main_id` int NOT NULL,
+  `report_repy_id` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
 
 --
--- Tablo döküm verisi `reports`
+-- Tablo için tablo yapısı `report_episode`
 --
 
-INSERT INTO `reports` (`id`, `url`, `created_at`) VALUES
-(3, 'http://localhost/watch/21/One-Piece/4', '2023-06-21 16:02:42');
+DROP TABLE IF EXISTS `report_episode`;
+CREATE TABLE IF NOT EXISTS `report_episode` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `report_url` varchar(255) NOT NULL,
+  `report_type` int NOT NULL,
+  `report_head` varchar(250) NOT NULL,
+  `report_content` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `report_episode_comment`
+--
+
+DROP TABLE IF EXISTS `report_episode_comment`;
+CREATE TABLE IF NOT EXISTS `report_episode_comment` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `report_main_id` int NOT NULL,
+  `report_repy_id` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 

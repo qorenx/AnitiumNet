@@ -124,8 +124,26 @@ $routes->get('users/logout', 'Anime::userlogout');
 $routes->get('status/(:any)/(:any)/(:any)', 'Anime::statusupdate/$1/$2/$3/');   // user anime statüs ekliyor.
 
 
-
+//Sadece Admin ve SuperAdmin Erişebilir.
 $routes->group('report', ['filter' => 'group:admin,superadmin'], function ($routes) {
+
+    //Episode Comment Silme Kısmıdır.
+    $routes->post('episode-comment-main-delete', 'Report::episodecommentmaindelete');
+    $routes->post('episode-comment-repy-delete', 'Report::episodecommentrepydelete');
+
+    //Board Comment Silme Kısmıdır.
+    $routes->post('board-comment-main-delete', 'Report::boardcommentmaindelete');
+    $routes->post('board-comment-repy-delete', 'Report::boardcommentrepydelete');
+
+    //Board Main Report ve Delete(yorumlar ve cevaplarıda siler.)
+    $routes->post('board-delete', 'Report::boarddelete');
+
+});
+
+
+//Herkes Erişebilir Report Kısmıdır.
+$routes->group('report', function ($routes) {
+
     //Episode Report Yapıp MYSQL kaydeden kısımdır.
     $routes->post('episode-report', 'Report::episodereport');
 
@@ -133,36 +151,13 @@ $routes->group('report', ['filter' => 'group:admin,superadmin'], function ($rout
     $routes->post('episode-comment-main', 'Report::episodecommentmain');
     $routes->post('episode-comment-repy', 'Report::episodecommentrepy');
 
-    //Episode Comment Silme Kısmıdır.
-    $routes->post('episode-comment-main-delete', 'Report::episodecommentmaindelete');
-    $routes->post('episode-comment-repy-delete', 'Report::episodecommentrepydelete');
-
-
     //Board Comment Report Main ve Repy kısmıdır. 
     $routes->post('board-comment-main', 'Report::boardcommentmain'); 
     $routes->post('board-comment-repy', 'Report::boardcommentrepy'); 
-
-
-    //Board Comment Silme Kısmıdır.
-    $routes->post('board-comment-main-delete', 'Report::boardcommentmaindelete');
-    $routes->post('board-comment-repy-delete', 'Report::boardcommentrepydelete');
-
-
-    //Board Main Report ve Delete
+    
+    //Board Main Report ve Delete(yorumlar ve cevaplarıda siler.)
     $routes->post('board-main', 'Report::boardmain'); 
-    $routes->post('board-delete', 'Report::boarddelete');
-    //$routes->get('board-delete/(:any)', 'Report::boarddelete/$1');
-
-
-
-
 });
-
-
-
-
-
-$routes->add('reportpost/(:any)/(:any)/(:any)', 'Anime::reportpost/$1/$2/$3', ['post', 'get']);
 
 
 
@@ -189,7 +184,6 @@ $routes->group('cron', function ($routes) {
 
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
     $routes->get('', 'Anime::admin');
-    // $routes->get('datebasesıfırla', 'Anime::datebasesıfırla');
 });
 
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
