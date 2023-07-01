@@ -33,7 +33,7 @@
                         <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 20px, 0px);">
                             <a class="dropdown-item cm-report">Report</a>
                             <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
-                                <form method="post" action="/community/boardrepypost/delete">
+                                <form method="post" action="/report/board-comment-main-delete">
                                     <input type="hidden" name="post_delete_id" value="<?= $post['id'] ?>">
                                     <button type="submit" class="dropdown-item cm-delete" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                                 </form>
@@ -121,8 +121,13 @@
                                         <div class="ib-li">
                                             <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
                                             <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
-                                                <a class="dropdown-item cm-report">Report
-                                                    Spam</a>
+                                                <a class="dropdown-item cm-report">Report Spam</a>
+                                                <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
+                                                    <form method="post" action="/report/board-comment-repy-delete">
+                                                        <input type="hidden" name="post_delete_id" value="<?= $reply['id'] ?>">
+                                                        <button type="submit" class="dropdown-item cm-delete" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+                                                    </form>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>

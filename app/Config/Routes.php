@@ -125,7 +125,7 @@ $routes->get('status/(:any)/(:any)/(:any)', 'Anime::statusupdate/$1/$2/$3/');   
 
 
 
-$routes->group('report', function ($routes) {
+$routes->group('report', ['filter' => 'group:admin,superadmin'], function ($routes) {
     //Episode Report Yapıp MYSQL kaydeden kısımdır.
     $routes->post('episode-report', 'Report::episodereport');
 
@@ -134,10 +134,18 @@ $routes->group('report', function ($routes) {
     $routes->post('episode-comment-repy', 'Report::episodecommentrepy');
 
     //Episode Comment Silme Kısmıdır.
-    $routes->post('episode-comment-main-delete', 'Report::episodecommentmaindelete');  
-    $routes->post('episode-comment-repy-delete', 'Report::episodecommentrepydelete'); 
+    $routes->post('episode-comment-main-delete', 'Report::episodecommentmaindelete');
+    $routes->post('episode-comment-repy-delete', 'Report::episodecommentrepydelete');
 
 
+    //Board Comment Report Main ve Repy kısmıdır. 
+    $routes->post('board-comment-main', 'Report::boardcommentmain');  //çalışmıyor
+    $routes->post('board-comment-repy', 'Report::boardcommentrepy');  //çalışmıyor
+
+
+    //Board Comment Silme Kısmıdır.
+    $routes->post('board-comment-main-delete', 'Report::boardcommentmaindelete');
+    $routes->post('board-comment-repy-delete', 'Report::boardcommentrepydelete');
 
 
 });
