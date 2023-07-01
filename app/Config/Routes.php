@@ -86,7 +86,6 @@ $routes->group('community', function ($routes) {
     $routes->get('user/(:any)', 'Anime::boarduser/$1');
 
     $routes->post('boardpost/delete', 'Anime::boardPostDelete');   //boardpost delete
-    $routes->post('boardrepypost/delete', 'Anime::boardrepyPostDelete');   //boardpost delete
 
 
 
@@ -127,9 +126,19 @@ $routes->get('status/(:any)/(:any)/(:any)', 'Anime::statusupdate/$1/$2/$3/');   
 
 
 $routes->group('report', function ($routes) {
+    //Episode Report Yapıp MYSQL kaydeden kısımdır.
     $routes->post('episode-report', 'Report::episodereport');
 
-    $routes->get('clearAnimeViewCount', 'Cron::clearAnimeViewCount');
+    //Episode Comment Report Main ve Repy kısmıdır.
+    $routes->post('episode-comment-main', 'Report::episodecommentmain');
+    $routes->post('episode-comment-repy', 'Report::episodecommentrepy');
+
+    //Episode Comment Silme Kısmıdır.
+    $routes->post('episode-comment-main-delete', 'Report::episodecommentmaindelete');  
+    $routes->post('episode-comment-repy-delete', 'Report::episodecommentrepydelete'); 
+
+
+
 
 });
 

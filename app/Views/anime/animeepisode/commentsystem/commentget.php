@@ -5,7 +5,9 @@
         </a>
         <div class="info">
             <div class="ihead">
-                <a href="/community/user/<?= $post['username'] ?>" target="_blank" class="user-name is-level-x"><?= $post['username'] ?></a>
+                <a href="/community/user/<?= $post['username'] ?>" target="_blank" class="user-name is-level-x">
+                    <?= $post['username'] ?><span>
+                        <?= $post['group'] ?></span></a>
                 <div class="time"><?= $post['created_at'] ?></div>
             </div>
             <div class="ibody">
@@ -31,9 +33,12 @@
                     <div class="ib-li show">
                         <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
                         <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 20px, 0px);">
-                            <a class="dropdown-item cm-report">Report</a>
+                            <form method="post" action="/report/episode-comment-main">
+                                <input type="hidden" name="report_main_id" value="<?= $post['post_id'] ?>">
+                                <button type="submit" class="dropdown-item cm-report" onclick="return confirm('Are you sure you want to report?')">Report Spam</button>
+                            </form>
                             <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
-                                <form method="post" action="/community/boardrepypost/delete">
+                                <form method="post" action="/report/episode-comment-main-delete">
                                     <input type="hidden" name="post_delete_id" value="<?= $post['id'] ?>">
                                     <button type="submit" class="dropdown-item cm-delete" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                                 </form>
@@ -91,7 +96,7 @@
                                 </a>
                                 <div class="info">
                                     <div class="ihead">
-                                        <a href="" target="_blank" class="user-name is-level-x">
+                                        <a href="/community/user/<?= $reply['username'] ?>" target="_blank" class="user-name is-level-x">
                                             <?= $reply['username'] ?>
                                             <span><?= $reply['group'] ?></span>
                                         </a>
@@ -107,22 +112,30 @@
                                             <a class="btn" onclick="document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display = (document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display === 'none') ? 'block' : 'none'; "><i class="fas fa-reply mr-1"></i>Reply</a>
                                         </div>
                                         <div class="ib-li ib-like">
-                    <a style="color:white;" id="postrepyclikelink-<?= $reply['post_u_id'] ?>" onclick="addRepycLike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
-                        <i class="far fa-thumbs-up mr-1"></i><span id="boardrepyclikepost-<?= $reply['post_u_id'] ?>" class="value"><?= $reply['post_rep'] ?>
-                        </span>
-                    </a>
-                </div>
-                <div class="ib-li ib-dislike">
-                    <a style="color:white;" id="postrepycdislink-<?= $reply['post_u_id'] ?>" onclick="addRepycDislike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
-                        <i class="far fa-thumbs-down mr-1"></i><span id="boardrepycdislikepost-<?= $reply['post_u_id'] ?>" class="value"><?= $reply['post_disrep'] ?>
-                        </span>
-                    </a>
-                </div>
+                                            <a style="color:white;" id="postrepyclikelink-<?= $reply['post_u_id'] ?>" onclick="addRepycLike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
+                                                <i class="far fa-thumbs-up mr-1"></i><span id="boardrepyclikepost-<?= $reply['post_u_id'] ?>" class="value"><?= $reply['post_rep'] ?>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="ib-li ib-dislike">
+                                            <a style="color:white;" id="postrepycdislink-<?= $reply['post_u_id'] ?>" onclick="addRepycDislike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
+                                                <i class="far fa-thumbs-down mr-1"></i><span id="boardrepycdislikepost-<?= $reply['post_u_id'] ?>" class="value"><?= $reply['post_disrep'] ?>
+                                                </span>
+                                            </a>
+                                        </div>
                                         <div class="ib-li">
                                             <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
                                             <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
-                                                <a class="dropdown-item cm-report">Report
-                                                    Spam</a>
+                                                <form method="post" action="/report/episode-comment-repy">
+                                                    <input type="hidden" name="report_repy_id" value="<?= $reply['post_u_id'] ?>">
+                                                    <button type="submit" class="dropdown-item cm-report" onclick="return confirm('Are you sure you want to report?')">Report Spam</button>
+                                                </form>
+                                                <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
+                                                    <form method="post" action="/report/episode-comment-repy-delete">
+                                                        <input type="hidden" name="post_delete_id" value="<?= $reply['id'] ?>">
+                                                        <button type="submit" class="dropdown-item cm-delete" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+                                                    </form>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>

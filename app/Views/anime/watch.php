@@ -70,7 +70,7 @@
                                             <?php if (!empty($episodedownload)) : ?>
                                                 <?= $this->include('anime/animeepisode/server/epdownload') ?>
                                             <?php endif; ?>
-                                            <?= $this->include('anime/report/episodereports') ?>
+                                            <?php echo $this->include('anime/report/episodereports'); ?>
                                             <div class="pc-item pc-control block-prev">
                                                 <?php if (!empty($previousData)) : ?>
                                                     <a class="btn btn-sm btn-prev" href="<?= base_url('watch') ?>?anime=<?= urlencode($animeData['ani_name']) ?>&uid=<?= $episodesData[0]['uid'] ?>&eps=<?= $previousData->ep_id_name ?>" onclick="prevEpisode()"><i class="fas fa-backward mr-2"></i>Prev</a>
