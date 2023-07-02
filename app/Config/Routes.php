@@ -255,14 +255,23 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
     });
 });
 
+$routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
+    $routes->group('report', function ($routes) {
+
+        $routes->get('episode', 'Report::getepisodereport');
+        $routes->post('episodedelete', 'Report::episodereportdelete');
+
+
+
+
+    });
+});
+
+
 
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
     $routes->group('anisettings', function ($routes) {
-        $routes->get('reports', 'Anime::anireports');
-        $routes->post('reports/delete', 'Anime::deleteReport');
-        $routes->get('postreport', 'Anime::postreport');
-        $routes->post('postreportview/delete', 'Anime::postreportviewdelete');
-        $routes->get('postreportview/tracert', 'Anime::postreportracert');
+
         $routes->get('slider', 'Anime::anislider');
         $routes->post('slider', 'Anime::anislidersave');
         $routes->get('websettings', 'Anime::websettings');
@@ -273,3 +282,5 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('schedule/deleteall', 'Anime::scheduledeleteall');
     });
 });
+
+

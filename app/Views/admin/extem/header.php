@@ -145,6 +145,36 @@
             </li>
 
             <?php
+            $reportsystem = [
+                ['episode', 'fas fa-chart-bar', 'Episode'],
+                ['epmaincomment', 'fas fa-chart-bar', 'Episode Main Comment'],
+                ['eprepycomment', 'fas fa-chart-bar', 'Episode Repy Comment'],
+
+                ['board', 'fas fa-chart-bar', 'Board'],
+                ['bmaincomment', 'fas fa-chart-bar', 'Board Main Comment'],
+                ['brepycomment', 'fas fa-chart-bar', 'Board Repy Comment'],
+            ];
+            ?>
+
+            <li class="nav-item">
+                <a data-toggle="collapse" href="#reportsystem" role="button" aria-expanded="false" aria-controls="reportsystem">
+                    <h6><i class="fas fa-cog"></i> Report</h6>
+                </a>
+                <div class="collapse" id="reportsystem">
+                    <ul class="nav flex-column pl-3">
+                        <?php foreach ($reportsystem as $link) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= base_url('/admin/report/' . $link[0]); ?>">
+                                    <i class="<?= $link[1] ?>"></i> <?= ucwords(str_replace('-', ' ', $link[2])); ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </li>
+
+
+            <?php
             $anisettings = [
                 ['reports', 'fas fa-chart-bar', 'Episode Report List'],
                 ['postreport', 'fas fa-chart-bar', 'Comment Report List'],
@@ -170,6 +200,7 @@
                     </ul>
                 </div>
             </li>
+
 
 
             <div class="clearfix"></div>
