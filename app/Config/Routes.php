@@ -270,6 +270,12 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('commentreportdelete', 'Report::commentreportdelete');
         $routes->post('commentandreportdelete', 'Report::commentandreportdelete');
 
+        // episode repy report listelendiği yer
+        $routes->get('eprepycomment', 'Report::getcommentrepyreport');
+
+        //episode repy report delete ve main delete olduğu yer.
+        $routes->post('commentrepyreportdelete', 'Report::commentrepyreportdelete');
+        $routes->post('commentrepyandreportdelete', 'Report::commentrepyandreportdelete');
 
 
 
