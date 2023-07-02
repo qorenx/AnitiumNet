@@ -258,8 +258,17 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
     $routes->group('report', function ($routes) {
 
+
+        //Report episode ile alakalıdır.
         $routes->get('episode', 'Report::getepisodereport');
         $routes->post('episodedelete', 'Report::episodereportdelete');
+
+        // episode main report listelendiği yer
+        $routes->get('epmaincomment', 'Report::getcommentmainreport');
+
+        //episode main report delete ve main delete olduğu yer.
+        $routes->post('commentreportdelete', 'Report::commentreportdelete');
+        $routes->post('commentandreportdelete', 'Report::commentandreportdelete');
 
 
 
