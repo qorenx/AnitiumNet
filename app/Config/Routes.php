@@ -182,7 +182,7 @@ $routes->group('cron', function ($routes) {
 
 
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
-    $routes->get('', 'Anime::admin');
+    $routes->get('', 'Admin::admin');
 });
 
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
@@ -194,19 +194,19 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
 
 
         // anime getanime yapılarak myanimelist veri çeker ve kaydeder.
-        $routes->get('getanime', 'Anime::getAnime');
-        $routes->post('getanimeadd', 'Anime::getAnimesave');
+        $routes->get('getanime', 'Admin::getAnime');
+        $routes->post('getanimeadd', 'Admin::getAnimesave');
         // anime getanimeupdate komutu ile myanimelist olan animeyi günceller.
-        $routes->get('getanimeupdate', 'Anime::getAnimeupdate');
-        $routes->post('getanimeupp', 'Anime::getAnimeupdatesave');
+        $routes->get('getanimeupdate', 'Admin::getAnimeupdate');
+        $routes->post('getanimeupp', 'Admin::getAnimeupdatesave');
 
         // $routes->get('anime-edit/(:any)', 'Anime::animeedit/$1');
         // $routes->post('anime-edit', 'Anime::animeeditupdate');
 
-        $routes->get('season-add', 'Anime::seasonadd');
-        $routes->post('season-add', 'Anime::seasonaddsave');
-        $routes->get('season-edit/(:any)', 'Anime::seasonedit/$1');
-        $routes->get('season-editdelete/(:any)', 'Anime::seasondelete/$1');
+        $routes->get('season-add', 'Admin::seasonadd');
+        $routes->post('season-add', 'Admin::seasonaddsave');
+        $routes->get('season-edit/(:any)', 'Admin::seasonedit/$1');
+        $routes->get('season-editdelete/(:any)', 'Admin::seasondelete/$1');
     });
 });
 
@@ -215,42 +215,54 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
     $routes->group('episode', function ($routes) {
         //Episode Ekleme ve DateBase Kayıt yeri
-        $routes->get('episode-add', 'Anime::episodeadd');
-        $routes->post('episode-add', 'Anime::episodeaddsave');
+        $routes->get('episode-add', 'Admin::episodeadd');
+        $routes->post('episode-add', 'Admin::episodeaddsave');
+
         //Episode Sayfasından girilen Episode edit/kayıt ve silme yeri
-        $routes->get('episode-edit', 'Anime::episodeedit');
-        $routes->post('episode-edit', 'Anime::episodeeditsave');
-        $routes->get('episode-delete', 'Anime::episodeeditdelete');
+        $routes->get('episode-edit', 'Admin::episodeedit');
+        $routes->post('episode-edit', 'Admin::episodeeditsave');
+        $routes->get('episode-delete', 'Admin::episodeeditdelete');
+
         //Episode Download edit ve delete yapıldığı yer
-        $routes->get('download-edit', 'Anime::downloadedit');
-        $routes->post('download-delete', 'Anime::downloaddelete');
+        $routes->get('download-edit', 'Admin::downloadedit');
+        $routes->post('download-delete', 'Admin::downloaddelete');
+
         //Çoklu episode myanimelist veri olarak çekiyor.
-        $routes->get('getepisode', 'Anime::getEpisode');
-        $routes->post('getepisode', 'Anime::getEpisodesave');
+        $routes->get('getepisode', 'Admin::getEpisode');
+        $routes->post('getepisode', 'Admin::getEpisodesave');
+
         //Tek bir episode için myanimelist veri çekiyor.
-        $routes->get('getoneepisode', 'Anime::getoneEpisode');
-        $routes->post('getoneepisode', 'Anime::getoneEpisodesave');
+        $routes->get('getoneepisode', 'Admin::getoneEpisode');
+        $routes->post('getoneepisode', 'Admin::getoneEpisodesave');
+
         //episode sub ekleme kısmıdır.
-        $routes->get('episode-sub-add', 'Anime::episodesubadd');
-        $routes->post('episode-sub-add', 'Anime::episodesubaddsave');
+        $routes->get('episode-sub-add', 'Admin::episodesubadd');
+        $routes->post('episode-sub-add', 'Admin::episodesubaddsave');
+
         //episode dub ekleme kısmıdır.
-        $routes->get('episode-dub-add', 'Anime::episodedubadd');
-        $routes->post('episode-dub-add', 'Anime::episodedubaddsave');
+        $routes->get('episode-dub-add', 'Admin::episodedubadd');
+        $routes->post('episode-dub-add', 'Admin::episodedubaddsave');
+
         //episode turk ekleme kısmıdır.
-        $routes->get('episode-turk-add', 'Anime::episodeturkadd');
-        $routes->post('episode-turk-add', 'Anime::episodeturkaddsave');
+        $routes->get('episode-turk-add', 'Admin::episodeturkadd');
+        $routes->post('episode-turk-add', 'Admin::episodeturkaddsave');
+
         // episode raw ekleme kısmıdır.
-        $routes->get('episode-raw-add', 'Anime::episoderawadd');
-        $routes->post('episode-raw-add', 'Anime::episoderawaddsave');
+        $routes->get('episode-raw-add', 'Admin::episoderawadd');
+        $routes->post('episode-raw-add', 'Admin::episoderawaddsave');
+
+
         //episode download ekleme kısmıdır.
-        $routes->get('episode-download-add', 'Anime::episodedownloadadd');
-        $routes->post('episode-download-add', 'Anime::episodedownloadsave');
+        $routes->get('episode-download-add', 'Admin::episodedownloadadd');
+        $routes->post('episode-download-add', 'Admin::episodedownloadsave');
+
+
         //Embedleri sileceğiniz sayfaya gider.
-        $routes->get('embed-edit', 'Anime::embededit');
-        $routes->post('embed-deletedub', 'Anime::embeddeletedub');
-        $routes->post('embed-deletesub', 'Anime::embeddeletesub');
-        $routes->post('embed-deleteraw', 'Anime::embeddeleteraw');
-        $routes->post('embed-deleteturk', 'Anime::embeddeleteturk');
+        $routes->get('embed-edit', 'Admin::embededit');
+        $routes->post('embed-deletedub', 'Admin::embeddeletedub');
+        $routes->post('embed-deletesub', 'Admin::embeddeletesub');
+        $routes->post('embed-deleteraw', 'Admin::embeddeleteraw');
+        $routes->post('embed-deleteturk', 'Admin::embeddeleteturk');
     });
 });
 
@@ -302,13 +314,15 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
     $routes->group('anisettings', function ($routes) {
 
-        $routes->get('slider', 'Anime::anislider');
-        $routes->post('slider', 'Anime::anislidersave');
-        $routes->get('websettings', 'Anime::websettings');
-        $routes->post('websettings', 'Anime::websettingssave');
-        $routes->get('schedule', 'Anime::schedule');
-        $routes->post('schedule/add', 'Anime::scheduleadd');
-        $routes->post('schedule/delete', 'Anime::scheduledelete');
-        $routes->post('schedule/deleteall', 'Anime::scheduledeleteall');
+        $routes->get('slider', 'Admin::anislider');
+        $routes->post('slider', 'Admin::anislidersave');
+        $routes->get('websettings', 'Admin::websettings');
+        $routes->post('websettings', 'Admin::websettingssave');
+
+
+        $routes->get('schedule', 'Admin::schedule');
+        $routes->post('schedule/add', 'Admin::scheduleadd');
+        $routes->post('schedule/delete', 'Admin::scheduledelete');
+        $routes->post('schedule/deleteall', 'Admin::scheduledeleteall');
     });
 });

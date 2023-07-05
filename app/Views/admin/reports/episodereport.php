@@ -8,6 +8,7 @@
                     <table class="table table-striped" style="color:white">
                         <thead>
                             <tr>
+                                <th>Report</th>
                                 <th>Type</th>
                                 <th>Head</th>
                                 <th>Content</th>
@@ -20,6 +21,7 @@
                             $counter = 1;
                             foreach ($episodereport as $report) : ?>
                                 <tr>
+                                    <td><?= $counter ?></td>
                                     <td><?php
                                         if ($report['report_type'] == 1) {
                                             echo "Broken Episode";
@@ -31,7 +33,7 @@
                                         ?></td>
                                     <td><?= $report['report_head'] ?></td>
                                     <td><?= $report['report_content'] ?></td>
-                                    <td><a href="<?= $report['report_url'] ?>" target="_blank">URL-<?= $counter ?></a></td>
+                                    <td><a href="<?= $report['report_url'] ?>" target="_blank">URL</a></td>
                                     <td>
                                         <form method="post" action="/admin/report/episodedelete">
                                             <input type="hidden" name="post_delete_id" value="<?= $report['id'] ?>" />
