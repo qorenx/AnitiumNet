@@ -85,10 +85,6 @@ $routes->group('community', function ($routes) {
     $routes->get('user/(:any)/(:any)', 'Anime::boarduser/$1/$2');
     $routes->get('user/(:any)', 'Anime::boarduser/$1');
 
-    $routes->post('boardpost/delete', 'Anime::boardPostDelete');   //boardpost delete
-
-
-
 
     ///  post?   pid=  &   pcon=   olarak community/board ve community/my-post olarak veri alıyor.
     $routes->get('board', 'Anime::board');
