@@ -146,19 +146,18 @@
 
             <?php
             $reportsystem = [
-                ['episode', 'fas fa-chart-bar', 'Episode'],
-                ['epmaincomment', 'fas fa-chart-bar', 'Episode Main Comment'],
-                ['eprepycomment', 'fas fa-chart-bar', 'Episode Repy Comment'],
-
-                ['board', 'fas fa-chart-bar', 'Board'],
-                ['bmaincomment', 'fas fa-chart-bar', 'Board Main Comment'],
-                ['brepycomment', 'fas fa-chart-bar', 'Board Repy Comment'],
+                ['episode', 'fas fa-file-alt', 'Episode'],
+                ['epmaincomment', 'fas fa-file-alt', 'Episode Main Comment'],
+                ['eprepycomment', 'fas fa-file-alt', 'Episode Repy Comment'],
+                ['board', 'fas fa-file-alt', 'Board'],
+                ['bmaincomment', 'fas fa-file-alt', 'Board Main Comment'],
+                ['brepycomment', 'fas fa-file-alt', 'Board Repy Comment'],
             ];
             ?>
 
             <li class="nav-item">
                 <a data-toggle="collapse" href="#reportsystem" role="button" aria-expanded="false" aria-controls="reportsystem">
-                    <h6><i class="fas fa-cog"></i> Report</h6>
+                    <h6><i class="fas fa-file-alt"></i>Report</h6>
                 </a>
                 <div class="collapse" id="reportsystem">
                     <ul class="nav flex-column pl-3">
@@ -176,8 +175,6 @@
 
             <?php
             $anisettings = [
-                ['reports', 'fas fa-chart-bar', 'Episode Report List'],
-                ['postreport', 'fas fa-chart-bar', 'Comment Report List'],
                 ['slider', 'fas fa-sliders-h', 'Sliders'],
                 ['schedule', 'far fa-calendar-alt', 'Schedule'],
                 ['websettings', 'fas fa-cog', 'WebSettings']
