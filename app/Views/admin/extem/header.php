@@ -75,10 +75,9 @@
 
             <?php
             $menuItems = array(
-                //array('anime-add', 'fas fa-film', 'Anime Add'),
-                array('getanime/$uid', 'fas fa-film', 'Get Anime Add'),
+                array('getanime/$uid', 'fas fa-film', 'Get Anime'),
                 array('getanimeupdate/$uid', 'fas fa-film', 'Get Anime Update'),
-                array('season-add', 'fas fa-calendar', 'Season Add'),
+                array('season-add', 'fas fa-calendar', 'Season'),
                 array('uploadfile', 'fas fa-file', 'UploadFile')
             );
             ?>
@@ -115,12 +114,12 @@
 
             <?php
             $episodes = [
-                'episode-add' => ['fas fa-video', 'Episode Add'],
-                'episode-raw-add' => ['fas fa-file-video', 'Raw Add'],
-                'episode-sub-add' => ['fas fa-closed-captioning', 'Subtitle Add'],
-                'episode-dub-add' => ['fas fa-volume-up', 'Dub Add'],
-                'episode-turk-add' => ['fas fa-file-video', 'Turkish Add'],
-                'episode-download-add' => ['fas fa-file', 'Download Add']
+                'episode-add' => ['fas fa-video', 'Episode'],
+                'episode-raw-add' => ['fas fa-file-video', 'RAW'],
+                'episode-sub-add' => ['fas fa-closed-captioning', 'SUB'],
+                'episode-dub-add' => ['fas fa-volume-up', 'DUB'],
+                'episode-turk-add' => ['fas fa-file-video', 'TURK'],
+                'episode-download-add' => ['fas fa-file', 'DOWNLOAD']
             ];
             ?>
 
@@ -300,49 +299,49 @@
         </div>
 
         <div class="modal fade" id="getanime-modal" tabindex="-1" role="dialog" aria-labelledby="getanime-modalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <form action="<?= base_url('/admin/anime/getanime/'); ?>" method="get">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="getanime-modalLabel">Enter Anime ID</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form action="<?= base_url('/admin/anime/getanime/'); ?>" method="get">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="getanime-modalLabel" style="color:black">Enter Anime ID</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="text" name="uid" class="form-control" required>
                             </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <input type="text" name="uid" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Get Anime</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Get Anime</button>
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>
 
-            <div class="modal fade" id="getanimeupdate-modal" tabindex="-1" role="dialog" aria-labelledby="getanimeupdate-modalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <form action="<?= base_url('/admin/anime/getanimeupdate/'); ?>" method="get">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="getanimeupdate-modalLabel">Enter Anime ID</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+        <div class="modal fade" id="getanimeupdate-modal" tabindex="-1" role="dialog" aria-labelledby="getanimeupdate-modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form action="<?= base_url('/admin/anime/getanimeupdate/'); ?>" method="get">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="getanimeupdate-modalLabel" style="color:black">Enter Anime ID</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="text" name="uid" class="form-control" required>
                             </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <input type="text" name="uid" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Get Anime Update</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Get Anime Update</button>
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>

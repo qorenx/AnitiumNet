@@ -187,22 +187,23 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
 
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
     $routes->group('anime', function ($routes) {
+        //Wallpaper ve Poster update yeridir. Basit ve site üzeridir.
         $routes->get('uploadfile', 'Anime::uploadFile');
         $routes->post('uploadfile', 'Anime::uploadFile');
-        // $routes->get('anime-add', 'Anime::animeadd');
-        // $routes->post('anime-add', 'Anime::animeaddsave');
+
 
 
         // anime getanime yapılarak myanimelist veri çeker ve kaydeder.
         $routes->get('getanime', 'Admin::getAnime');
         $routes->post('getanimeadd', 'Admin::getAnimesave');
+
+
         // anime getanimeupdate komutu ile myanimelist olan animeyi günceller.
         $routes->get('getanimeupdate', 'Admin::getAnimeupdate');
         $routes->post('getanimeupp', 'Admin::getAnimeupdatesave');
 
-        // $routes->get('anime-edit/(:any)', 'Anime::animeedit/$1');
-        // $routes->post('anime-edit', 'Anime::animeeditupdate');
 
+        //anime sezon ekleme ve silme ve edit kısmıdır
         $routes->get('season-add', 'Admin::seasonadd');
         $routes->post('season-add', 'Admin::seasonaddsave');
         $routes->get('season-edit/(:any)', 'Admin::seasonedit/$1');
@@ -314,12 +315,15 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
     $routes->group('anisettings', function ($routes) {
 
+        //Anime slider günceller
         $routes->get('slider', 'Admin::anislider');
         $routes->post('slider', 'Admin::anislidersave');
+
+        //Websettings gösterir ve kaydeder
         $routes->get('websettings', 'Admin::websettings');
         $routes->post('websettings', 'Admin::websettingssave');
 
-
+        //Anime Takvim Ekleme silme alanı.
         $routes->get('schedule', 'Admin::schedule');
         $routes->post('schedule/add', 'Admin::scheduleadd');
         $routes->post('schedule/delete', 'Admin::scheduledelete');
