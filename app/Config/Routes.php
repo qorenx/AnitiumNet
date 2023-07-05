@@ -137,7 +137,6 @@ $routes->group('report', ['filter' => 'group:admin,superadmin'], function ($rout
 
     //Board Main Report ve Delete(yorumlar ve cevaplarıda siler.)
     $routes->post('board-delete', 'Report::boarddelete');
-
 });
 
 
@@ -152,11 +151,11 @@ $routes->group('report', function ($routes) {
     $routes->post('episode-comment-repy', 'Report::episodecommentrepy');
 
     //Board Comment Report Main ve Repy kısmıdır. 
-    $routes->post('board-comment-main', 'Report::boardcommentmain'); 
-    $routes->post('board-comment-repy', 'Report::boardcommentrepy'); 
-    
+    $routes->post('board-comment-main', 'Report::boardcommentmain');
+    $routes->post('board-comment-repy', 'Report::boardcommentrepy');
+
     //Board Main Report ve Delete(yorumlar ve cevaplarıda siler.)
-    $routes->post('board-main', 'Report::boardmain'); 
+    $routes->post('board-main', 'Report::boardmain');
 });
 
 
@@ -255,6 +254,7 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
     });
 });
 
+
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
     $routes->group('report', function ($routes) {
 
@@ -278,7 +278,22 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('commentrepyandreportdelete', 'Report::commentrepyandreportdelete');
 
 
+        //Report board ile alakalıdır. Repor sil veya report ile board yazıyı sil.
+        $routes->get('board', 'Report::getboardreport');
+        $routes->post('boardreportdelete', 'Report::boardreportdelete');
+        $routes->post('boardandreportdelete', 'Report::boardandreportdelete');
 
+
+        // board main report listelendiği yer
+        $routes->get('bmaincomment', 'Report::getboardmainreport');
+        $routes->post('boardmreportdelete', 'Report::boardmreportdelete');
+        $routes->post('boardmandreportdelete', 'Report::boardmandreportdelete');
+
+
+        // board repy report listelendiği yer
+        $routes->get('brepycomment', 'Report::getboardrepyreport');
+        $routes->post('boardrreportdelete', 'Report::boardrreportdelete');
+        $routes->post('boardrandreportdelete', 'Report::boardrandreportdelete');
     });
 });
 
@@ -297,5 +312,3 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('schedule/deleteall', 'Anime::scheduledeleteall');
     });
 });
-
-
