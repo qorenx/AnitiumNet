@@ -111,15 +111,27 @@
                     <div class="tab-pane" id="videoconvert">
                         <br>
                         <div class="form-group row border-bottom">
-                            <label for="webconvert" class="col-sm-4 col-form-label">Embed Converter-1:</label>
+                            <label for="webconvert" class="col-sm-4 col-form-label">Automatic Embed(YT,Sbani,Dodo,PlayTaku,mp4upload, vimeo and etc)-1:</label>
                             <div class="col-sm-8">
                                 <input type="text" name="webconvert" id="webconvert" value="<?php echo $webdata['webconvert']; ?>" class="form-control">
                             </div>
                         </div></br>
                         <div class="form-group row border-bottom">
-                            <label for="webconvert" 2 class="col-sm-4 col-form-label">Embed Converter-2:</label>
+                            <label for="webconvert2" 2 class="col-sm-4 col-form-label">GogoAnime AutoEmbed-2:</label>
                             <div class="col-sm-8">
                                 <input type="text" name="webconvert2" id="webconvert2" value="<?php echo $webdata['webconvert2']; ?>" class="form-control">
+                            </div>
+                        </div></br>
+                        <div class="form-group row border-bottom">
+                            <label for="webconvert3" 2 class="col-sm-4 col-form-label">Custom AutoEmbed-3:</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="webconvert3" id="webconvert3" value="<?php echo $webdata['webconvert2']; ?>" class="form-control">
+                            </div>
+                        </div></br>
+                        <div class="form-group row border-bottom">
+                            <label for="webconvert4" 2 class="col-sm-4 col-form-label">Custom AutoEmbed-4:</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="webconvert4" id="webconvert4" value="<?php echo $webdata['webconvert2']; ?>" class="form-control">
                             </div>
                         </div></br>
                     </div>

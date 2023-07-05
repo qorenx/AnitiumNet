@@ -22,6 +22,8 @@
                         <select name="ep_raw_webconverter" id="ep_raw_webconverter" class="form-control">
                             <option value="1">Automatic Embed(YT,Sbani,Dodo,PlayTaku,mp4upload, vimeo and etc)</option>
                             <option value="0">Manuel Embed</option>
+                            <option value="3">Custom AutoEmbed 3</option>
+                            <option value="4">Custom AutoEmbed 4</option>
                         </select>
                     </div>
                 </div>
