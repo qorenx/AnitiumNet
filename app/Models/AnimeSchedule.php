@@ -24,11 +24,12 @@ class AnimeSchedule extends Model
             ->getResultArray();
     }
     
-    public function schedule() {
+    public function schedule($days) {
         return  $this->db
           ->table('ani_schedule')
+          ->where('sc_days', $days)
           ->select('sc_days, sc_ep, sc_time, sc_name, sc_id')
-          ->orderBy('sc_days')
+          ->orderBy('sc_time')
           ->get()
           ->getResultArray();
       

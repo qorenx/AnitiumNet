@@ -28,6 +28,29 @@
                     <?= $this->include('anime/homepage/lastest-episode') ?>
                     <?php if (auth()->user()->schedule_status ?? 1 == 1) : ?>
                         <?= $this->include('anime/homepage/schedule') ?>
+                        <script>
+                            var xhr = new XMLHttpRequest();
+
+                            function rundaysCommand($days) {
+                                var url = "/getdaysschedule" + '/' + $days;
+                                xhr.open("GET", url, true);
+                                xhr.onreadystatechange = function() {
+                                    if (xhr.readyState === 4 && xhr.status === 200) {
+                                        var data = JSON.parse(xhr.responseText);
+                                        var htmlData = data['html'];
+                                        var resultElement = document.getElementById("getdaysschedule");
+                                        resultElement.innerHTML = htmlData;
+                                    }
+                                };
+                                xhr.send();
+                            }
+                            // Get the current date
+                            var days = new Date().getDate();
+                            // Call the function when the document is loaded
+                            document.addEventListener("DOMContentLoaded", function() {
+                                rundaysCommand(days);
+                            });
+                        </script>
                     <?php endif; ?>
                     <?= $this->include('anime/homepage/topupcoming') ?>
                     <div class="clearfix"></div>

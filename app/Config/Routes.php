@@ -117,6 +117,7 @@ $routes->post('profil/update', 'Anime::settingsupdate');
 $routes->get('users/logout', 'Anime::userlogout');
 
 
+
 $routes->get('status/(:any)/(:any)/(:any)', 'Anime::statusupdate/$1/$2/$3/');   // user anime statüs ekliyor.
 
 
@@ -326,3 +327,6 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('schedule/deleteall', 'Admin::scheduledeleteall');
     });
 });
+
+
+$routes->get('getdaysschedule/(:any)', 'Anime::getdaysschedule/$1');
