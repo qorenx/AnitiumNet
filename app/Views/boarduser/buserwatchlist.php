@@ -6,7 +6,7 @@
         <?= $this->include('anime/templates/head') ?>
         <div class="clearfix"></div>
         <div id="main-wrapper" class="layout-page layout-award">
-        <div class="award-bg">
+        <div class="award-bg" style="z-index: -9999;">
             <div class="award-bg-img" style="background-image: url(/files/images/cover.png);"></div>
         </div>
             <div class="container">
@@ -97,7 +97,7 @@
 
             </div>
         </div>
-
+        <?= $this->include('anime/templates/footer') ?>
         <div id="mask-overlay"></div>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js">

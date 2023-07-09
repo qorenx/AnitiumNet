@@ -8161,8 +8161,6 @@ span#AddMalDiv #AddMal {
  left:0;
  right:0;
  bottom:0;
- filter:blur(10px);
- opacity:.3
 }
 .award-bg:before {
  content:"";

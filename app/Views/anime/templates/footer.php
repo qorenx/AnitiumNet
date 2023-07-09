@@ -1,4 +1,4 @@
-<div id="footer" style="background-image: url('<?php echo $webdata['webfooter']; ?>');">
+<div id="footer" style="background-image: url('<?php echo $webdata['webfooter']; ?>');background-attachment: inherit;background-repeat: round;"">
     <?php if (session()->getFlashdata('success')) : ?>
         <div id="toast-container" class="toast-bottom-right">
             <div class="toast toast-success" aria-live="polite">
