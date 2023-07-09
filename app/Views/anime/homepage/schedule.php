@@ -17,26 +17,23 @@
             <div class="table_schedule">
                 <div class="table_schedule-date">
                     <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
-                        <div class="swiper-wrapper schedule" style="transform: translate3d(<?php
-                                                                                            $days = isset($_GET['days']) ? $_GET['days'] : date('d');
-                                                                                            echo ($days * -101.714) . 'px,'
-                                                                                            ?> 0px, 0px);">
+                        <div class="swiper-wrapper schedule" id="scheduleDiv" style="transform: translate3d(0px,0px,0px);">
                             <?php
                             $month = date('m');
                             $year = date('Y');
                             $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);
-                            $days = $_GET['days'] ?? date('d');
+                            $days = date('d');
                             $dayItem = '';
 
                             for ($i = 1; $i <= $days_in_month; ++$i) {
                                 $isActive = $days == $i ? ' active' : '';
                                 $dayItem .= sprintf(
-                                    '<div class="swiper-slide day-item" onclick="rundaysCommand(\'%d\')" style="width: 101.714px; margin-right: 13px;">
-          <div class="tsd-item%s">
+                                    '<div class="swiper-slide day-item" onclick="rundaysCommand(%d)" style="width: 101.714px; margin-right: 13px;">
+        <div class="tsd-item%s">
             <span>%s</span>
             <div class="date">%d</div>
-          </div>
-        </div>',
+        </div>
+    </div>',
                                     $i,
                                     $isActive,
                                     date('D', strtotime($year . '-' . $month . '-' . $i)),
@@ -47,6 +44,12 @@
                             echo $dayItem;
                             ?>
                         </div>
+                        <script>
+                            function rundaysCommand(days) {
+                                var scheduleDiv = document.getElementById('scheduleDiv');
+                                scheduleDiv.style.transform = "translate3d(" + (days * -101.714) + "px, 0px, 0px)";
+                            }
+                        </script>
                         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                     </div>
                     <div class="ts-navigation">
