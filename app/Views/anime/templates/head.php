@@ -99,10 +99,7 @@
             }
         </script>
         <div class="header-group">
-            <div class="zoro-group">
-                <div class="zrg-title"><span class="top">Join now</span><span class="bottom">
-                        Groups
-                    </span></div>
+            <div class="anw-group">
                 <div class="zrg-list">
                     <div class="item"><a target="_blank" href="<?php echo $webdata['webdonation']; ?>" class="zr-social-button tl-btn"><i class="fas fa-donate"></i></a></div>
                     <div class="item"><a href="<?php echo $webdata['webdiscord']; ?>" target="_blank" class="zr-social-button dc-btn"><i class="fab fa-discord"></i></a></div>

@@ -8,73 +8,63 @@
     <div class="tab-content">
         <div class="block_area-content block_area-list film_list film_list-grid">
             <div class="film_list-wrap">
-                <?php foreach (array_slice($lastep, 0, 36) as $ani_data) : ?>
+                <?php foreach (array_slice($lastep, 0, 56) as $ani_data) : ?>
                     <div class="flw-item">
                         <div class="film-poster">
-                            <div class="tick tick-episode"><?php echo $ani_data['ep_id_name'] ?>/<?php echo $ani_data['ani_ep'] ?></div>
-                            <div class="tick tick-type"><?php
-                                                        if ($ani_data['ani_type'] == 1) {
-                                                            echo "TV";
-                                                        } elseif ($ani_data['ani_type'] == 2) {
-                                                            echo "Movie";
-                                                        } elseif ($ani_data['ani_type'] == 3) {
-                                                            echo "Ova";
-                                                        } elseif ($ani_data['ani_type'] == 4) {
-                                                            echo "Ona";
-                                                        } elseif ($ani_data['ani_type'] == 5) {
-                                                            echo "Special";
-                                                        }
-                                                        ?></div>
+                            <div class="tick tick-rate"><?php $ratings = [1 => 'G', 2 => 'PG', 3 => 'PG-13', 4 => 'R', 5 => 'Rx'];
+                                                        echo $ratings[$ani_data['ani_rate']] ?? ''; ?></div>
                             <div class="tick ltr">
-                                <div class="tick-item"><?php
-                                                        $ratings = [
-                                                            1 => 'G',
-                                                            2 => 'PG',
-                                                            3 => 'PG-13',
-                                                            4 => 'R',
-                                                            5 => 'Rx'
-                                                        ];
-
-                                                        echo $ratings[$ani_data['ani_rate']] ?? '';
-                                                        ?></div>
+                                <div class="tick-item tick-eps"><?php echo $ani_data['ep_id_name'] ?>/<?php echo $ani_data['ani_ep'] ?></div>
                             </div>
                             <div class="tick rtl">
                                 <?php if (auth()->user()->raw_status ?? 1 == 1) : ?>
-                                    <?php if (!empty($ani_data['ep_raw'])) : ?>
+                                    <?php if (!empty($ani_data['ani_raw'])) : ?>
                                         <div class="tick-item tick-raw">
-                                            <?= '<span style="font-size: 0.4rem;">' . $ani_data['ep_raw'] . '</span>' ?>
+                                            <?php if ($ani_data['ani_raw'] == 1) { ?>
+                                                <span style="font-size: 0.6rem;">RAW</span>
+                                            <?php } ?>
                                         </div>
                                     <?php endif; ?>
                                 <?php endif; ?>
                                 <?php if (auth()->user()->sub_status ?? 1 == 1) : ?>
-                                    <?php if (!empty($ani_data['ep_sub'])) : ?>
+                                    <?php if (!empty($ani_data['ani_sub'])) : ?>
                                         <div class="tick-item tick-sub">
-                                            <?= '<span style="font-size: 0.4rem;">' . $ani_data['ep_sub'] . '</span>' ?>
+                                            <?php if ($ani_data['ani_sub'] == 1) { ?>
+                                                <span style="font-size: 0.6rem;">SUB</span>
+                                            <?php } ?>
                                         </div>
                                     <?php endif; ?>
                                 <?php endif; ?>
                                 <?php if (auth()->user()->dub_status ?? 1 == 1) : ?>
-                                    <?php if (!empty($ani_data['ep_dub'])) : ?>
+                                    <?php if (!empty($ani_data['ani_dub'])) : ?>
                                         <div class="tick-item tick-dub">
-                                            <?= '<span style="font-size: 0.4rem;">' . $ani_data['ep_dub'] . '</span>' ?>
+                                            <?php if ($ani_data['ani_dub'] == 1) { ?>
+                                                <span style="font-size: 0.6rem;">DUB</span>
+                                            <?php } ?>
                                         </div>
                                     <?php endif; ?>
                                 <?php endif; ?>
                                 <?php if (auth()->user()->turk_status ?? 1 == 1) : ?>
-                                    <?php if (!empty($ani_data['ep_turk'])) : ?>
+                                    <?php if (!empty($ani_data['ani_turk'])) : ?>
                                         <div class="tick-item tick-turk">
-                                            <?= '<span style="font-size: 0.4rem;">' . $ani_data['ep_turk'] . '</span>' ?>
+                                            <?php if ($ani_data['ani_turk'] == 1) { ?>
+                                                <span style="font-size: 0.6rem;">TURK</span>
+                                            <?php } ?>
                                         </div>
                                     <?php endif; ?>
                                 <?php endif; ?>
                             </div>
-                            <img class="film-poster-img lazyload" src="<?php echo $ani_data['ani_poster'] ?>" alt="">
-                            <a class="film-poster-ahref" href="/watch?anime=<?= urlencode($ani_data['ani_name']) ?>&uid=<?= $ani_data['uid'] ?>&eps=<?= $ani_data['ep_id_name'] ?>" title="<?php echo $ani_data['ani_name'] ?>"><i class="fas fa-play"></i></a>
+                            <img data-src="<?php echo $ani_data['ani_poster'] ?>" class="film-poster-img ls-is-cached lazyloaded" alt="<?php echo $ani_data['ani_name'] ?>" src="<?php echo $ani_data['ani_poster'] ?>">
+                            <a href="/watch?anime=<?= urlencode($ani_data['ani_name']) ?>&uid=<?= $ani_data['uid'] ?>&eps=<?= $ani_data['ep_id_name'] ?>" class="film-poster-ahref item-qtip loaded" data-id="18332" data-hasqtip="?" title="" aria-describedby="qtip-?"><i class="fas fa-play"></i></a>
                         </div>
                         <div class="film-detail">
-                            <h3 class="film-name">
-                                <a href="/anime/<?php echo $ani_data['uid'] ?>/<?php echo str_replace(' ', '-', $ani_data['ani_name']) ?>" title="<?php echo $ani_data['ani_name'] ?>"><?php echo $ani_data['ani_name'] ?></a>
-                            </h3>
+                            <h3 class="film-name"><a href="/anime/<?php echo $ani_data['uid'] ?>/<?php echo str_replace(' ', '-', $ani_data['ani_name']) ?>" class="dynamic-name"><?php echo $ani_data['ani_name'] ?></a></h3>
+                            <div class="fd-infor">
+                                <span class="fdi-item"><?php $aniType = [1 => 'TV', 2 => 'Movie', 3 => 'Ova', 4 => 'Ona', 5 => 'Special'];
+                                                        echo $aniType[$ani_data['ani_type']] ?? ''; ?></span>
+                                <span class="dot"></span>
+                                <span class="fdi-item fdi-duration"><?php echo $ani_data['ani_time'] ?></span>
+                            </div>
                         </div>
                         <div class="clearfix"></div>
                     </div>

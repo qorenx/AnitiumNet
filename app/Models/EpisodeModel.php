@@ -36,10 +36,10 @@ class EpisodeModel extends Model
         $db = \Config\Database::connect();
         $query = $db
             ->table('episode')
-            ->select('episode.uid, episode.ep_name, anime.ani_name, anime.ani_score, anime.ani_type, anime.ani_rate, anime.ani_poster, anime.ani_ep, episode.ep_id_name, anime.ani_raw, anime.ani_sub, anime.ani_dub, anime.ani_turk')
+            ->select('episode.uid, episode.ep_name, anime.ani_name, anime.ani_score, anime.ani_type, anime.ani_rate, anime.ani_poster, anime.ani_ep, episode.ep_id_name, anime.ani_time, anime.ani_raw, anime.ani_sub, anime.ani_dub, anime.ani_turk')
             ->join('anime', 'episode.uid = anime.uid', 'left')
             ->orderBy('episode.created_at', 'DESC')
-            ->limit(36)
+            ->limit(54)
             ->get()
             ->getResultArray();
         $db->close();
