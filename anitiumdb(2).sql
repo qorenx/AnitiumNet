@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3306
--- Üretim Zamanı: 01 Tem 2023, 20:18:25
+-- Üretim Zamanı: 09 Tem 2023, 15:14:12
 -- Sunucu sürümü: 8.0.31
 -- PHP Sürümü: 8.2.0
 
@@ -52,13 +52,13 @@ CREATE TABLE IF NOT EXISTS `anime` (
   `ani_dub` int NOT NULL,
   `ani_turk` int NOT NULL,
   `ani_time` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `ani_pv` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `ani_pv` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ani_aired` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ani_aired_fin` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `ani_studio` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `ani_producers` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `ani_studio` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `ani_producers` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ani_offical_site` json DEFAULT NULL,
-  `ani_manga_url` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `ani_manga_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `view_count` int NOT NULL,
   `view_count_month` int NOT NULL,
   `view_count_years` int NOT NULL,
@@ -81,19 +81,19 @@ CREATE TABLE IF NOT EXISTS `anime` (
 --
 
 INSERT INTO `anime` (`id`, `uid`, `ani_name`, `ani_jname`, `ani_synonyms`, `ani_genre`, `ani_type`, `ani_country`, `ani_stats`, `ani_source`, `ani_ep`, `ani_synopsis`, `ani_poster`, `ani_wallpaper`, `ani_release`, `ani_release_season`, `ani_rate`, `ani_score`, `ani_raw`, `ani_sub`, `ani_dub`, `ani_turk`, `ani_time`, `ani_pv`, `ani_aired`, `ani_aired_fin`, `ani_studio`, `ani_producers`, `ani_offical_site`, `ani_manga_url`, `view_count`, `view_count_month`, `view_count_years`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, 51096, 'Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e 2nd Season', 'ようこそ実力至上主義の教室へ 2期', 'Classroom of the Elite 2nd Season, You-jitsu 2nd Season, You-zitsu 2nd Season', 'Drama,Suspense,Psychological,School', 1, 1, 2, 2, '13', 'Life back on the cruise following the Island Special Examination is anything but smooth sailing. Almost immediately after their return, the first-year students of Tokyo Metropolitan Advanced Nurturing High School face yet another special exam, with both class and individual points on the line.\r\n\r\nIn addition to the complicated ruleset, more issues arise in the form of Kakeru Ryuuen and Kei Karuizawa. Angered by the previous test\'s outcome, Ryuuen is dead set on outdoing every class in the new challenge using any means necessary. Meanwhile, Karuizawa, a crucial pillar of Class D, is close to crumbling under the pressure of her past.\r\n\r\nThe stage is now set for Kiyotaka Ayanokouji to once again—using the full extent of his planning, foresight, and ruthless manipulation—steer Class D to victory as dangerously close enemy forces try to bring it down.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1010/124180l.jpg', '/uploads/1687360287_7ef96876914eb93812cc.png', '2022', 3, 3, '8.13', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=0mM3lQytac4', '2022-07-04', '2022-09-26', 'Lerche', 'Studio Hibari,Movic,AT-X,Sammy,Crunchyroll,Kadokawa Media House,Kadokawa,Bandai Namco Music Live', '[{\"url\": \"http://you-zitsu.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/youkosozitsu\", \"name\": \"@youkosozitsu\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=17208\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=25370\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/Classroom_of_the_Elite\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%E5%AE%9F%E5%8A%9B%E8%87%B3%E4%B8%8A%E4%B8%BB%E7%BE%A9%E3%81%AE%E6%95%99%E5%AE%A4%E3%81%B8_(%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1)\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6369\", \"name\": \"Syoboi\"}, {\"url\": \"https://bangumi.tv/subject/371546\", \"name\": \"Bangumi\"}, {\"url\": \"https://movie.douban.com/subject/35778747/\", \"name\": \"Douban\"}]', 'https://classroomofelite.online/', 34, 34, 34, '2023-06-21 12:49:42', '2023-06-21 12:49:42', NULL),
-(5, 35507, 'Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e', 'ようこそ実力至上主義の教室へ', 'Welcome to the Classroom of the Elite, You-jitsu', 'Drama,Psychological,School', 1, 1, 2, 2, '12', 'On the surface, Koudo Ikusei Senior High School is a utopia. The students enjoy an unparalleled amount of freedom, and it is ranked highly in Japan. However, the reality is less than ideal. Four classes, A through D, are ranked in order of merit, and only the top classes receive favorable treatment.\r\n\r\nKiyotaka Ayanokouji is a student of Class D, where the school dumps its worst. There he meets the unsociable Suzune Horikita, who believes she was placed in Class D by mistake and desires to climb all the way to Class A, and the seemingly amicable class idol Kikyou Kushida, whose aim is to make as many friends as possible.\r\n\r\nWhile class membership is permanent, class rankings are not; students in lower ranked classes can rise in rankings if they score better than those in the top ones. Additionally, in Class D, there are no bars on what methods can be used to get ahead. In this cutthroat school, can they prevail against the odds and reach the top?\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/5/86830l.jpg', 'https://cdn.myanimelist.net/images/anime/5/86830l.jpg', '2017', 3, 3, '7.86', 0, 0, 0, 0, '24 min per ep', 'https://www.youtube.com/watch?v=iYsx6w5PNno', '2017-07-12', '2017-09-27', 'Lerche', 'Studio Hibari,Lantis,AT-X,Sony Music Communications,Toranoana,Crunchyroll,Kadokawa Media House,Kadokawa,AKABEiSOFT2', '[{\"url\": \"http://you-zitsu.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=13153\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=19544\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/Classroom_of_the_Elite\", \"name\": \"Wikipedia\"}]', '', 11, 11, 11, '2023-06-21 14:03:06', '2023-06-21 14:03:06', NULL),
+(2, 51096, 'Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e 2nd Season', 'ようこそ実力至上主義の教室へ 2期', 'Classroom of the Elite 2nd Season, You-jitsu 2nd Season, You-zitsu 2nd Season', 'Drama,Suspense,Psychological,School', 1, 1, 2, 2, '13', 'Life back on the cruise following the Island Special Examination is anything but smooth sailing. Almost immediately after their return, the first-year students of Tokyo Metropolitan Advanced Nurturing High School face yet another special exam, with both class and individual points on the line.\r\n\r\nIn addition to the complicated ruleset, more issues arise in the form of Kakeru Ryuuen and Kei Karuizawa. Angered by the previous test\'s outcome, Ryuuen is dead set on outdoing every class in the new challenge using any means necessary. Meanwhile, Karuizawa, a crucial pillar of Class D, is close to crumbling under the pressure of her past.\r\n\r\nThe stage is now set for Kiyotaka Ayanokouji to once again—using the full extent of his planning, foresight, and ruthless manipulation—steer Class D to victory as dangerously close enemy forces try to bring it down.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1010/124180l.jpg', '/uploads/1687360287_7ef96876914eb93812cc.png', '2022', 3, 3, '8.13', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=0mM3lQytac4', '2022-07-04', '2022-09-26', 'Lerche', 'Studio Hibari,Movic,AT-X,Sammy,Crunchyroll,Kadokawa Media House,Kadokawa,Bandai Namco Music Live', '[{\"url\": \"http://you-zitsu.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/youkosozitsu\", \"name\": \"@youkosozitsu\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=17208\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=25370\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/Classroom_of_the_Elite\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%E5%AE%9F%E5%8A%9B%E8%87%B3%E4%B8%8A%E4%B8%BB%E7%BE%A9%E3%81%AE%E6%95%99%E5%AE%A4%E3%81%B8_(%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1)\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6369\", \"name\": \"Syoboi\"}, {\"url\": \"https://bangumi.tv/subject/371546\", \"name\": \"Bangumi\"}, {\"url\": \"https://movie.douban.com/subject/35778747/\", \"name\": \"Douban\"}]', 'https://classroomofelite.online/', 36, 36, 36, '2023-06-21 12:49:42', '2023-06-21 12:49:42', NULL),
+(5, 35507, 'Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e', 'ようこそ実力至上主義の教室へ', 'Welcome to the Classroom of the Elite, You-jitsu', 'Drama,Psychological,School', 1, 1, 2, 2, '12', 'On the surface, Koudo Ikusei Senior High School is a utopia. The students enjoy an unparalleled amount of freedom, and it is ranked highly in Japan. However, the reality is less than ideal. Four classes, A through D, are ranked in order of merit, and only the top classes receive favorable treatment.\r\n\r\nKiyotaka Ayanokouji is a student of Class D, where the school dumps its worst. There he meets the unsociable Suzune Horikita, who believes she was placed in Class D by mistake and desires to climb all the way to Class A, and the seemingly amicable class idol Kikyou Kushida, whose aim is to make as many friends as possible.\r\n\r\nWhile class membership is permanent, class rankings are not; students in lower ranked classes can rise in rankings if they score better than those in the top ones. Additionally, in Class D, there are no bars on what methods can be used to get ahead. In this cutthroat school, can they prevail against the odds and reach the top?\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/5/86830l.jpg', 'https://cdn.myanimelist.net/images/anime/5/86830l.jpg', '2017', 3, 3, '7.86', 0, 0, 0, 0, '24 min per ep', 'https://www.youtube.com/watch?v=iYsx6w5PNno', '2017-07-12', '2017-09-27', 'Lerche', 'Studio Hibari,Lantis,AT-X,Sony Music Communications,Toranoana,Crunchyroll,Kadokawa Media House,Kadokawa,AKABEiSOFT2', '[{\"url\": \"http://you-zitsu.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=13153\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=19544\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/Classroom_of_the_Elite\", \"name\": \"Wikipedia\"}]', '', 12, 12, 12, '2023-06-21 14:03:06', '2023-06-21 14:03:06', NULL),
 (6, 21, 'One Piece', 'ONE PIECE', 'OP', 'Action,Adventure,Fantasy,Shounen', 1, 1, 1, 1, '?', 'Gol D. Roger was known as the \"Pirate King,\" the strongest and most infamous being to have sailed the Grand Line. The capture and execution of Roger by the World Government brought a change throughout the world. His last words before his death revealed the existence of the greatest treasure in the world, One Piece. It was this revelation that brought about the Grand Age of Pirates, men who dreamed of finding One Piece—which promises an unlimited amount of riches and fame—and quite possibly the pinnacle of glory and the title of the Pirate King.\r\n\r\nEnter Monkey D. Luffy, a 17-year-old boy who defies your standard definition of a pirate. Rather than the popular persona of a wicked, hardened, toothless pirate ransacking villages for fun, Luffy\'s reason for being a pirate is one of pure wonder: the thought of an exciting adventure that leads him to intriguing people and ultimately, the promised treasure. Following in the footsteps of his childhood hero, Luffy and his crew travel across the Grand Line, experiencing crazy adventures, unveiling dark mysteries and battling strong enemies, all in order to reach the most coveted of all fortunes—One Piece.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/6/73245l.jpg', 'https://cdn.myanimelist.net/images/anime/6/73245l.jpg', '1999', 4, 3, '8.69', 0, 1, 0, 0, '24 min', 'https://www.youtube.com/watch?v=fX9NK-_YqlI', '1999-10-20', '?', 'Toei Animation', 'Fuji TV,TAP,Shueisha', '[{\"url\": \"http://www.toei-anim.co.jp/tv/onep/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/OnePieceAnime\", \"name\": \"@OnePieceAnime\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=69\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=836\", \"name\": \"ANN\"}, {\"url\": \"http://en.wikipedia.org/wiki/One_Piece\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/ONE_PIECE_%28%E3%82%A2%E3%83%8B%E3%83%A1%29\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/350\", \"name\": \"Syoboi\"}]', '', 25, 25, 25, '2023-06-21 14:50:51', '2023-06-21 14:50:51', NULL),
-(7, 52830, 'Isekai de Cheat Skill wo Te ni Shita Ore wa, Genjitsu Sekai wo mo Musou Suru: Level Up wa Jinsei wo Kaeta', '異世界でチート能力を手にした俺は、現実世界をも無双する ～レベルアップは人生を変えた～', 'Iseleve', 'Action,Adventure,Fantasy,Isekai,School', 1, 1, 1, 2, '13', 'All his life, Yuuya Tenjou has been the subject of resentment and contempt from everyone around him, even from his parents. To make matters worse, his grandfather—the only person who ever showed him affection—suddenly dies, leaving Yuuya truly alone.\r\n\r\nDespite facing many adversities, Yuuya does what he can to offer kindness to those who need it—but even the most good-natured people can only tolerate so much abuse. Just when he reaches his breaking point, a flicker of hope appears in the form of a hidden door in his bathroom.\r\n\r\nThis door provides two-way access to an abandoned house in another world, where he instantly gains game-like stats and skills. Moreover, the house once belonged to a sage, which gives Yuuya access to remarkable weapons, equipment, and crops with extraordinary effects. With these newfound blessings, the once-undesirable Yuuya may just reach his true potential and become unstoppable.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1316/134327l.jpg', 'https://cdn.myanimelist.net/images/anime/1316/134327l.jpg', '2023', 2, 3, '6.56', 0, 1, 0, 0, '24 min per ep', 'https://www.youtube.com/watch?v=u7YOzGniO5g', '2023-04-07', '2023-06-30', 'Millepensee', 'TMS Entertainment,Tokyo MX,BS11,Kadokawa,CTW', '[{\"url\": \"https://www.iseleve.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/iseleve_anime\", \"name\": \"@iseleve_anime\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=17580\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=26234\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/I_Got_a_Cheat_Skill_in_Another_World_and_Became_Unrivaled_in_the_Real_World,_Too\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E7%95%B0%E4%B8%96%E7%95%8C%E3%81%A7%E3%83%81%E3%83%BC%E3%83%88%E8%83%BD%E5%8A%9B%E3%82%92%E6%89%8B%E3%81%AB%E3%81%97%E3%81%9F%E4%BF%BA%E3%81%AF%E3%80%81%E7%8F%BE%E5%AE%9F%E4%B8%96%E7%95%8C%E3%82%92%E3%82%82%E7%84%A1%E5%8F%8C%E3%81%99%E3%82%8B%E3%80%9C%E3%83%AC%E3%83%99%E3%83%AB%E3%82%A2%E3%83%83%E3%83%97%E3%81%AF%E4%BA%BA%E7%94%9F%E3%82%92%E5%A4%89%E3%81%88%E3%81%9F%E3%80%9C#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6662\", \"name\": \"Syoboi\"}, {\"url\": \"https://bangumi.tv/subject/397025\", \"name\": \"Bangumi\"}, {\"url\": \"https://baike.baidu.com/item/%E5%9C%A8%E5%BC%82%E4%B8%96%E7%95%8C%E8%8E%B7%E5%BE%97%E8%B6%85%E5%BC%BA%E8%83%BD%E5%8A%9B%E7%9A%84%E6%88%91%EF%BC%8C%E5%9C%A8%E7%8E%B0%E5%AE%9E%E4%B8%96%E7%95%8C%E7%85%A7%E6%A0%B7%E6%97%A0%E6%95%8C%EF%BD%9E%E7%AD%89%E7%BA%A7%E6%8F%90%E5%8D%87%E6%94%B9%E5%8F%98%E4%BA%BA%E7%94%9F%E5%91%BD%E8%BF%90%EF%BD%9E/61904008?fromModule=lemma-qiyi_sense-lemma\", \"name\": \"Baidu Baike\"}, {\"url\": \"https://movie.douban.com/subject/36066424/\", \"name\": \"Douban\"}]', '', 9, 9, 9, '2023-06-21 15:08:58', '2023-06-21 15:08:58', NULL),
-(8, 51706, 'Yuusha ga Shinda!', '勇者が死んだ！', 'The Hero Is Dead!', 'Action,Comedy,Fantasy,Ecchi,Harem,Parody', 1, 1, 1, 1, '12', 'Far to the north of the world lies Hell\'s Gate, a portal formerly used by the Demon Lord to invade the human realm. Thanks to the legendary hero Shion Bladearts, wielder of Excalibur, and his loyal band of companions, the Gate was sealed off and the demonic threat was vanquished.\r\n\r\nUnfortunately, the seal was incomplete and has begun to weaken, allowing the demons to once again begin their attack. Worried about the safety of his village, selfish and perverted farmer Touka Scott dig pitfalls to defend against the demons. But fear not, for Shion is on his way to reseal Hell\'s Gate and save humanity!\r\n\r\nOr at least he was, because the legendary hero is dead, having fallen into one of the pitfalls Touka dug. Luckily, dealing with the dead is the specialty of necromancer Anri Haynesworth. While she can\'t revive him, Anri can at least salvage their quest by forcing Touka\'s soul into Shion\'s rotting body and dragging him along to Hell\'s Gate in Shion\'s place. Not wanting to be left behind, Touka\'s childhood friend Yuna Yunis tags along. Together, the three of them set out as what just might be the most unsuitable party to ever try to save the world!\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1868/133866l.jpg', 'https://cdn.myanimelist.net/images/anime/1868/133866l.jpg', '2023', 2, 3, '6.27', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=0ApTw19ZTQg', '2023-04-07', '2023-06-23', 'LIDENFILMS', 'Pony Canyon,Tohokushinsha Film Corporation,Shogakukan,Crunchyroll,WOWMAX', '[{\"url\": \"https://heroisdead.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/yuusyagasinda\", \"name\": \"@yuusyagasinda\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=17340\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=25602\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/The_Legendary_Hero_Is_Dead!\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E5%8B%87%E8%80%85%E3%81%8C%E6%AD%BB%E3%82%93%E3%81%A0!#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6661\", \"name\": \"Syoboi\"}, {\"url\": \"https://bangumi.tv/subject/379639\", \"name\": \"Bangumi\"}, {\"url\": \"https://baike.baidu.com/item/%E5%8B%87%E8%80%85%E6%AD%BB%E4%BA%86%EF%BC%81/60939827?fromModule=lemma-qiyi_sense-lemma\", \"name\": \"Baidu Baike\"}, {\"url\": \"https://movie.douban.com/subject/35885091/\", \"name\": \"Douban\"}]', '', 1, 1, 1, '2023-06-21 15:16:36', '2023-06-21 15:16:36', NULL),
-(9, 50307, 'Tonikaku Kawaii 2nd Season', 'トニカクカワイイ', '', 'Comedy,Romance,Shounen', 1, 1, 1, 1, '12', 'In the wake of their first home burning down, Nasa and Tsukasa Yuzaki are seeking temporary shelter at the Arisugawas\' bathhouse. Though they have only been married for a short time, their relationship has only become sweeter by the day. Nasa is determined to spend as much time with his wife as possible, basking in the happiness of their marriage.\r\n\r\nThe newlyweds find new ways to explore their relationship. From adopting a cat, going to an amusement park, and even watching an impromptu romantic comedy featuring Nasa\'s former teacher, every day is a new experience. But while Tsukasa continues to meet the people in Nasa\'s life, Nasa has yet to meet more of Tsukasa\'s family. Though they appear to be the picture-perfect couple to everyone around them, Nasa begins to wonder if he will ever learn more about his wife\'s mysterious past.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1996/133361l.jpg', 'https://cdn.myanimelist.net/images/anime/1996/133361l.jpg', '2023', 2, 3, '7.81', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=cksQYKGvr6U', '2023-04-08', '2023-06-24', 'Seven Arcs', 'Shogakukan-Shueisha Productions,Warner Bros. Japan,KlockWorx,Shogakukan,Crunchyroll', '[{\"url\": \"http://tonikawa.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/tonikawa_anime\", \"name\": \"@tonikawa_anime\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=16961\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=24951\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/Fly_Me_to_the_Moon_(manga)#Anime\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%8B%E3%82%AB%E3%82%AF%E3%82%AB%E3%83%AF%E3%82%A4%E3%82%A4#%E3%82%A2%E3%83%8B%E3%83%A1\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6669\", \"name\": \"Syoboi\"}]', '', 1, 1, 1, '2023-06-21 15:16:49', '2023-06-21 15:16:49', NULL),
+(7, 52830, 'Isekai de Cheat Skill wo Te ni Shita Ore wa, Genjitsu Sekai wo mo Musou Suru: Level Up wa Jinsei wo Kaeta', '異世界でチート能力を手にした俺は、現実世界をも無双する ～レベルアップは人生を変えた～', 'Iseleve', 'Action,Adventure,Fantasy,Isekai,School', 1, 1, 1, 2, '13', 'All his life, Yuuya Tenjou has been the subject of resentment and contempt from everyone around him, even from his parents. To make matters worse, his grandfather—the only person who ever showed him affection—suddenly dies, leaving Yuuya truly alone.\r\n\r\nDespite facing many adversities, Yuuya does what he can to offer kindness to those who need it—but even the most good-natured people can only tolerate so much abuse. Just when he reaches his breaking point, a flicker of hope appears in the form of a hidden door in his bathroom.\r\n\r\nThis door provides two-way access to an abandoned house in another world, where he instantly gains game-like stats and skills. Moreover, the house once belonged to a sage, which gives Yuuya access to remarkable weapons, equipment, and crops with extraordinary effects. With these newfound blessings, the once-undesirable Yuuya may just reach his true potential and become unstoppable.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1316/134327l.jpg', 'https://cdn.myanimelist.net/images/anime/1316/134327l.jpg', '2023', 2, 3, '6.56', 0, 1, 0, 0, '24 min per ep', 'https://www.youtube.com/watch?v=u7YOzGniO5g', '2023-04-07', '2023-06-30', 'Millepensee', 'TMS Entertainment,Tokyo MX,BS11,Kadokawa,CTW', '[{\"url\": \"https://www.iseleve.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/iseleve_anime\", \"name\": \"@iseleve_anime\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=17580\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=26234\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/I_Got_a_Cheat_Skill_in_Another_World_and_Became_Unrivaled_in_the_Real_World,_Too\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E7%95%B0%E4%B8%96%E7%95%8C%E3%81%A7%E3%83%81%E3%83%BC%E3%83%88%E8%83%BD%E5%8A%9B%E3%82%92%E6%89%8B%E3%81%AB%E3%81%97%E3%81%9F%E4%BF%BA%E3%81%AF%E3%80%81%E7%8F%BE%E5%AE%9F%E4%B8%96%E7%95%8C%E3%82%92%E3%82%82%E7%84%A1%E5%8F%8C%E3%81%99%E3%82%8B%E3%80%9C%E3%83%AC%E3%83%99%E3%83%AB%E3%82%A2%E3%83%83%E3%83%97%E3%81%AF%E4%BA%BA%E7%94%9F%E3%82%92%E5%A4%89%E3%81%88%E3%81%9F%E3%80%9C#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6662\", \"name\": \"Syoboi\"}, {\"url\": \"https://bangumi.tv/subject/397025\", \"name\": \"Bangumi\"}, {\"url\": \"https://baike.baidu.com/item/%E5%9C%A8%E5%BC%82%E4%B8%96%E7%95%8C%E8%8E%B7%E5%BE%97%E8%B6%85%E5%BC%BA%E8%83%BD%E5%8A%9B%E7%9A%84%E6%88%91%EF%BC%8C%E5%9C%A8%E7%8E%B0%E5%AE%9E%E4%B8%96%E7%95%8C%E7%85%A7%E6%A0%B7%E6%97%A0%E6%95%8C%EF%BD%9E%E7%AD%89%E7%BA%A7%E6%8F%90%E5%8D%87%E6%94%B9%E5%8F%98%E4%BA%BA%E7%94%9F%E5%91%BD%E8%BF%90%EF%BD%9E/61904008?fromModule=lemma-qiyi_sense-lemma\", \"name\": \"Baidu Baike\"}, {\"url\": \"https://movie.douban.com/subject/36066424/\", \"name\": \"Douban\"}]', '', 19, 19, 19, '2023-06-21 15:08:58', '2023-06-21 15:08:58', NULL),
+(8, 51706, 'Yuusha ga Shinda!', '勇者が死んだ！', 'The Hero Is Dead!', 'Action,Comedy,Fantasy,Ecchi,Harem,Parody', 1, 1, 1, 1, '12', 'Far to the north of the world lies Hell\'s Gate, a portal formerly used by the Demon Lord to invade the human realm. Thanks to the legendary hero Shion Bladearts, wielder of Excalibur, and his loyal band of companions, the Gate was sealed off and the demonic threat was vanquished.\r\n\r\nUnfortunately, the seal was incomplete and has begun to weaken, allowing the demons to once again begin their attack. Worried about the safety of his village, selfish and perverted farmer Touka Scott dig pitfalls to defend against the demons. But fear not, for Shion is on his way to reseal Hell\'s Gate and save humanity!\r\n\r\nOr at least he was, because the legendary hero is dead, having fallen into one of the pitfalls Touka dug. Luckily, dealing with the dead is the specialty of necromancer Anri Haynesworth. While she can\'t revive him, Anri can at least salvage their quest by forcing Touka\'s soul into Shion\'s rotting body and dragging him along to Hell\'s Gate in Shion\'s place. Not wanting to be left behind, Touka\'s childhood friend Yuna Yunis tags along. Together, the three of them set out as what just might be the most unsuitable party to ever try to save the world!\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1868/133866l.jpg', 'https://cdn.myanimelist.net/images/anime/1868/133866l.jpg', '2023', 2, 3, '6.27', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=0ApTw19ZTQg', '2023-04-07', '2023-06-23', 'LIDENFILMS', 'Pony Canyon,Tohokushinsha Film Corporation,Shogakukan,Crunchyroll,WOWMAX', '[{\"url\": \"https://heroisdead.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/yuusyagasinda\", \"name\": \"@yuusyagasinda\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=17340\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=25602\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/The_Legendary_Hero_Is_Dead!\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E5%8B%87%E8%80%85%E3%81%8C%E6%AD%BB%E3%82%93%E3%81%A0!#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6661\", \"name\": \"Syoboi\"}, {\"url\": \"https://bangumi.tv/subject/379639\", \"name\": \"Bangumi\"}, {\"url\": \"https://baike.baidu.com/item/%E5%8B%87%E8%80%85%E6%AD%BB%E4%BA%86%EF%BC%81/60939827?fromModule=lemma-qiyi_sense-lemma\", \"name\": \"Baidu Baike\"}, {\"url\": \"https://movie.douban.com/subject/35885091/\", \"name\": \"Douban\"}]', '', 3, 3, 3, '2023-06-21 15:16:36', '2023-06-21 15:16:36', NULL),
+(9, 50307, 'Tonikaku Kawaii 2nd Season', 'トニカクカワイイ', '', 'Comedy,Romance,Shounen', 1, 1, 1, 1, '12', 'In the wake of their first home burning down, Nasa and Tsukasa Yuzaki are seeking temporary shelter at the Arisugawas\' bathhouse. Though they have only been married for a short time, their relationship has only become sweeter by the day. Nasa is determined to spend as much time with his wife as possible, basking in the happiness of their marriage.\r\n\r\nThe newlyweds find new ways to explore their relationship. From adopting a cat, going to an amusement park, and even watching an impromptu romantic comedy featuring Nasa\'s former teacher, every day is a new experience. But while Tsukasa continues to meet the people in Nasa\'s life, Nasa has yet to meet more of Tsukasa\'s family. Though they appear to be the picture-perfect couple to everyone around them, Nasa begins to wonder if he will ever learn more about his wife\'s mysterious past.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1996/133361l.jpg', 'https://cdn.myanimelist.net/images/anime/1996/133361l.jpg', '2023', 2, 3, '7.81', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=cksQYKGvr6U', '2023-04-08', '2023-06-24', 'Seven Arcs', 'Shogakukan-Shueisha Productions,Warner Bros. Japan,KlockWorx,Shogakukan,Crunchyroll', '[{\"url\": \"http://tonikawa.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/tonikawa_anime\", \"name\": \"@tonikawa_anime\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=16961\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=24951\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/Fly_Me_to_the_Moon_(manga)#Anime\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%8B%E3%82%AB%E3%82%AF%E3%82%AB%E3%83%AF%E3%82%A4%E3%82%A4#%E3%82%A2%E3%83%8B%E3%83%A1\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6669\", \"name\": \"Syoboi\"}]', '', 4, 4, 4, '2023-06-21 15:16:49', '2023-06-21 15:16:49', NULL),
 (10, 2928, '.hack//G.U. Returner', '.HACK//G.U. RETURNER', '', 'Adventure,Drama,Fantasy,Video Game', 3, 1, 2, 1, '1', 'The characters from previous .hack//G.U. Games and .hack//Roots receive an email from Ovan. He is requesting them to go to Hidden Forbidden Festival where is set up a mysterious summer festival. There they find an AIDA Chim Chim who wishes to peacefully co-exist with the other players of The World. It then transforms into the word \"Returner\", so they assume it to mean that Ovan will return to The World.\r\n\r\n(Source: ANN)', 'https://cdn.myanimelist.net/images/anime/1798/115989l.jpg', 'https://cdn.myanimelist.net/images/anime/1798/115989l.jpg', '2007', 1, 3, '6.67', 0, 1, 0, 0, '24 min', '', '2007-01-18', '', 'Bee Train', 'Bandai Visual,CyberConnect2', '[{\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=5391\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=9179\", \"name\": \"ANN\"}]', '', 2, 2, 2, '2023-06-21 15:17:05', '2023-06-21 15:17:05', NULL),
-(11, 51693, 'Kaminaki Sekai no Kamisama Katsudou', '神無き世界のカミサマ活動', 'Kamikatsu, What God Does in a World Without Gods', 'Action,Comedy,Fantasy,Isekai,Parody,Reincarnation,Seinen', 1, 1, 1, 1, '12', 'Under the belief that the omnipotent god Mitama will come to save him, Yukito Urabe participates in a ritual to become the new leader of his father\'s cult. But when the boy drowns during the ritual, he wishes to be reborn in a world without gods or religion.\r\n\r\nReawakening in a completely different world devoid of spirituality. He meets a deviant girl named Aruaru, who introduces him to her village. However, his idyllic image of this world\'s society is short-lived when he witnesses a public group suicide and learns of the country\'s end-of-life system: at any moment, the government may order any citizen to die.\r\n\r\nAruaru and her sister are forcibly taken for execution soon after, prompting Yukito to rush to their rescue—but to no avail. In a moment of desperation, Yukito recalls his father\'s teachings and utters a prayer for Mitama to save them. Seemingly answering his call, a little girl descends from the sky and annihilates everyone who harmed Yukito and his friends. To Yukito\'s surprise, the girl introduces herself as Mitama.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1794/135148l.jpg', 'https://cdn.myanimelist.net/images/anime/1794/135148l.jpg', '2023', 2, 4, '6.79', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=MD_q7xYb-Xs', '2023-04-06', '2023-07-06', 'Studio Palette', 'Lantis,DAX Production,Kansai Telecasting,BS NTV,Kadokawa,MAGNET,Bandai Namco Music Live', '[{\"url\": \"https://kamikatsu-anime.jp/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/kamikatsu_anime\", \"name\": \"@kamikatsu_anime\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=17337\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=25576\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/Kaminaki_Sekai_no_Kamisama_Katsud%C5%8D#Anime\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E7%A5%9E%E7%84%A1%E3%81%8D%E4%B8%96%E7%95%8C%E3%81%AE%E3%82%AB%E3%83%9F%E3%82%B5%E3%83%9E%E6%B4%BB%E5%8B%95\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6659\", \"name\": \"Syoboi\"}]', '', 19, 19, 19, '2023-06-21 15:17:21', '2023-06-21 15:17:21', NULL),
+(11, 51693, 'Kaminaki Sekai no Kamisama Katsudou', '神無き世界のカミサマ活動', 'Kamikatsu, What God Does in a World Without Gods', 'Action,Comedy,Fantasy,Isekai,Parody,Reincarnation,Seinen', 1, 1, 1, 1, '12', 'Under the belief that the omnipotent god Mitama will come to save him, Yukito Urabe participates in a ritual to become the new leader of his father\'s cult. But when the boy drowns during the ritual, he wishes to be reborn in a world without gods or religion.\r\n\r\nReawakening in a completely different world devoid of spirituality. He meets a deviant girl named Aruaru, who introduces him to her village. However, his idyllic image of this world\'s society is short-lived when he witnesses a public group suicide and learns of the country\'s end-of-life system: at any moment, the government may order any citizen to die.\r\n\r\nAruaru and her sister are forcibly taken for execution soon after, prompting Yukito to rush to their rescue—but to no avail. In a moment of desperation, Yukito recalls his father\'s teachings and utters a prayer for Mitama to save them. Seemingly answering his call, a little girl descends from the sky and annihilates everyone who harmed Yukito and his friends. To Yukito\'s surprise, the girl introduces herself as Mitama.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1794/135148l.jpg', 'https://cdn.myanimelist.net/images/anime/1794/135148l.jpg', '2023', 2, 4, '6.79', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=MD_q7xYb-Xs', '2023-04-06', '2023-07-06', 'Studio Palette', 'Lantis,DAX Production,Kansai Telecasting,BS NTV,Kadokawa,MAGNET,Bandai Namco Music Live', '[{\"url\": \"https://kamikatsu-anime.jp/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/kamikatsu_anime\", \"name\": \"@kamikatsu_anime\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=17337\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=25576\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/Kaminaki_Sekai_no_Kamisama_Katsud%C5%8D#Anime\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E7%A5%9E%E7%84%A1%E3%81%8D%E4%B8%96%E7%95%8C%E3%81%AE%E3%82%AB%E3%83%9F%E3%82%B5%E3%83%9E%E6%B4%BB%E5%8B%95\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6659\", \"name\": \"Syoboi\"}]', '', 20, 20, 20, '2023-06-21 15:17:21', '2023-06-21 15:17:21', NULL),
 (12, 5525, '07-Ghost', 'セブンゴースト', '07 Ghost, Seven Ghost, 7 Ghosts, The Seven Ghosts', 'Action,Fantasy,Military,Mythology,Josei', 1, 1, 2, 1, '25', 'Barsburg Empire\'s Military Academy is known for training elites who bring victory to the empire. Students of the academy freely utilize an ability called \"Zaiphon\" to fight, while the types of Zaiphon usable depends on the nature of the soldier.\r\n\r\nTeito Klein, a student at the academy, is one of the most promising soldiers produced. Although ridiculed by everyone for being a sklave (German for slave) with no memories of his past, he is befriended by a fellow student called Mikage. While preparing for the final exam, Teito uncovers a dark secret related to his past. When an attempt to assassinate Ayanami, a high-ranking official who killed his father, fails, Teito is locked away awaiting punishment.\r\n\r\nOnly wanting the best for Teito, Mikage helps him escape. Teito ends up at the 7th District Church where he is taken in by the bishops. It is here that Teito attempts to evade the grasp of Ayanami and the Military, so he can rediscover his memories and learn why he is the person that can change the fate of the world.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/3/22605l.jpg', 'https://cdn.myanimelist.net/images/anime/3/22605l.jpg', '2009', 2, 3, '7.19', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=vRjlJDDfhJI', '2009-04-07', '2009-09-22', 'Studio Deen', 'Ichijinsha', '[{\"url\": \"http://07-ghost.net/\", \"name\": \"Official Site\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=6239\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=10468\", \"name\": \"ANN\"}, {\"url\": \"http://en.wikipedia.org/wiki/07_Ghost\", \"name\": \"Wikipedia\"}]', '', 0, 0, 0, '2023-06-21 15:17:36', '2023-06-21 15:17:36', NULL),
 (13, 50220, 'Isekai Shoukan wa Nidome desu', '異世界召喚は二度目です', 'Isenido', 'Adventure,Comedy,Fantasy,Romance,Harem,Isekai', 1, 1, 1, 2, '12', 'There was once a man who was summoned to another world, and saved it. Of course, he became too popular there, and turned into an isekai-normie. However, that man fell into a \"trap\" and was forcibly returned to his original world. Moreover, he had to start over as a baby!\r\n\r\nThis is the story of the way-too-fantastic ex-hero who lived as a gloomy high-schooler, as he gets summoned once again to that same other world in a very unexpected development! \r\n\r\n(Source: Coolmic, edited)', 'https://cdn.myanimelist.net/images/anime/1387/134151l.jpg', 'https://cdn.myanimelist.net/images/anime/1387/134151l.jpg', '2023', 2, 3, '6', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=FNoriLaH0IM', '2023-04-09', '2023-06-25', 'Studio Elle', 'Futabasha,BS11,ABC Animation,Jinnan Studio,Bushiroad Move,Crest', '[{\"url\": \"https://isenido.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/isenido_anime\", \"name\": \"@isenido_anime\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=16936\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=24905\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/Isekai_Sh%C5%8Dkan_wa_Nidome_Desu\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E7%95%B0%E4%B8%96%E7%95%8C%E5%8F%AC%E5%96%9A%E3%81%AF%E4%BA%8C%E5%BA%A6%E7%9B%AE%E3%81%A7%E3%81%99#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6630\", \"name\": \"Syoboi\"}, {\"url\": \"https://bangumi.tv/subject/354421\", \"name\": \"Bangumi\"}, {\"url\": \"https://baike.baidu.com/item/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%A2%AB%E5%BC%82%E4%B8%96%E7%95%8C%E5%8F%AC%E5%94%A4/61838780?fromModule=lemma-qiyi_sense-lemma\", \"name\": \"Baidu Baike\"}, {\"url\": \"https://movie.douban.com/subject/35639789/\", \"name\": \"Douban\"}]', '', 4, 4, 4, '2023-06-21 15:17:53', '2023-06-21 15:17:53', NULL),
 (19, 49470, 'Mamahaha no Tsurego ga Motokano datta', '継母の連れ子が元カノだった', 'My Stepsister is My Ex-Girlfriend, Tsurekano', 'Comedy,Romance', 1, 1, 2, 2, '12', 'Listless geek Mizuto Irido and introverted nerd Yume Ayai seemed like a match made in heaven, connected by their mutual love for literature. Unfortunately, their differences gradually grew, and they separated just after their middle school graduation. But, as if by divine comedy, the two find themselves reunited as step-siblings.\r\n\r\nA rivalry begins to brew between the former couple, both unwilling to acknowledge the other as the older sibling. In an attempt to \"solve\" this issue, Mizuto and Yume agree upon a rule: whoever crosses the boundaries of siblinghood norms loses, and the winner will not only be called the older sibling, but also get to make a request. However, now that they live under the same roof, the lingering memories they share start to influence their actions—possibly rekindling the feelings that may not have been fully extinguished in the first place.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1708/123281l.jpg', 'https://cdn.myanimelist.net/images/anime/1708/123281l.jpg', '2022', 3, 3, '6.77', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=QHTffxJep_E', '2022-07-06', '2022-09-21', 'Project No.9', 'Sotsu,Pony Canyon,Movic,AT-X,KlockWorx,Asmik Ace,BS Fuji,DMM pictures,BS NTV,Kadokawa,Yomiuri Shimbun,APDREAM,Bit grooove promotion,Happinet Phantom Studios,Bergamo', '[{\"url\": \"https://tsurekano-anime.com/\", \"name\": \"Official Site\"}, {\"url\": \"https://twitter.com/tsurekano\", \"name\": \"@tsurekano\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=16457\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=24548\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/My_Stepmom\'s_Daughter_Is_My_Ex#Anime\", \"name\": \"Wikipedia\"}, {\"url\": \"https://ja.wikipedia.org/wiki/%E7%B6%99%E6%AF%8D%E3%81%AE%E9%80%A3%E3%82%8C%E5%AD%90%E3%81%8C%E5%85%83%E3%82%AB%E3%83%8E%E3%81%A0%E3%81%A3%E3%81%9F\", \"name\": \"Wikipedia\"}, {\"url\": \"https://cal.syoboi.jp/tid/6367\", \"name\": \"Syoboi\"}, {\"url\": \"https://bangumi.tv/subject/343106\", \"name\": \"Bangumi\"}, {\"url\": \"https://movie.douban.com/subject/35539827/\", \"name\": \"Douban\"}]', '', 22, 22, 22, '2023-06-21 19:29:03', '2023-06-21 19:29:03', NULL),
 (20, 20785, 'Mahouka Koukou no Rettousei', '魔法科高校の劣等生', '', 'Action,Fantasy,Romance,Sci-Fi,School', 1, 1, 2, 2, '26', 'In the dawn of the 21st century, magic, long thought to be folklore and fairy tales, has become a systematized technology and is taught as a technical skill. In First High School, the institution for magicians, students are segregated into two groups based on their entrance exam scores: \"Blooms,\" those who receive high scores, are assigned to the First Course, while \"Weeds\" are reserve students assigned to the Second Course.\r\n\r\nMahouka Koukou no Rettousei follows the siblings, Tatsuya and Miyuki Shiba, who are enrolled in First High School. Upon taking the exam, the prodigious Miyuki is placed in the First Course, while Tatsuya is relegated to the Second Course. Though his practical test scores and status as a \"Weed\" show him to be magically inept, he possesses extraordinary technical knowledge, physical combat capabilities, and unique magic techniques—making Tatsuya the irregular at a magical high school.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/11/61039l.jpg', 'https://cdn.myanimelist.net/images/anime/11/61039l.jpg', '2014', 2, 3, '7.41', 0, 1, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=v5AOTuxt2XY', '2014-04-06', '2014-09-28', 'Madhouse', 'Aniplex,Square Enix,Movic,ASCII Media Works', '[{\"url\": \"http://mahouka.jp/tv/\", \"name\": \"Official Site\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=10182\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=15763\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/The_Irregular_at_Magic_High_School\", \"name\": \"Wikipedia\"}]', '', 40, 40, 40, '2023-06-21 21:27:02', '2023-06-21 21:27:02', NULL),
-(21, 40496, 'Maou Gakuin no Futekigousha: Shijou Saikyou no Maou no Shiso, Tensei shite Shison-tachi no Gakkou e Kayou', '魔王学院の不適合者 ～史上最強の魔王の始祖、転生して子孫たちの学校へ通う～', 'The Misfit of Demon King Academy: History\'s Strongest Demon King Reincarnates and Goes to School with His Descendants', 'Action,Fantasy,Mythology,Reincarnation,School', 1, 1, 2, 2, '13', 'In the distant past, a war between humans and demons brought about widespread chaos and bloodshed. To put an end to this seemingly endless conflict, Demon King Anos Voldigoad willingly sacrificed his life, hoping to be reborn in a peaceful future.\r\n\r\nIn preparation for their king\'s return, the demon race created the Demon King Academy, an elite institution tasked with determining Anos\' identity when he reawakens. He reincarnates two millennia later, but to his surprise, he soon learns that the level of magic in the world has drastically waned during his absence. Moreover, when he enrolls at the academy to reclaim his rightful title, he finds out that demonkind remembers him differently. His personality, his deeds, and even his legacy are all falsified—masked beneath the name of an impostor. This \"lack\" of common knowledge renders him the academy\'s outlier—a misfit never before seen in history.\r\n\r\nDespite these drawbacks, Anos remains unfazed. As he sets out to uncover those altering his glorious past, he takes it upon himself to make his descendants recognize that their ruler has finally returned.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1126/108573l.jpg', 'https://cdn.myanimelist.net/images/anime/1126/108573l.jpg', '2020', 3, 4, '7.38', 0, 0, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=1xmzzF0XQEY', '2020-07-04', '2020-09-26', 'SILVER LINK.', 'Aniplex,Movic,AT-X,Studio Mausu,Tokyo MX,Q-Tec,Docomo Anime Store,Medicos Entertainment,BS11,Contents Seed,Kadokawa,ADK Marketing Solutions', '[{\"url\": \"https://maohgakuin.com/1st/\", \"name\": \"Official Site\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=15131\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=22555\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/The_Misfit_of_Demon_King_Academy#Anime\", \"name\": \"Wikipedia\"}]', '', 1, 1, 1, '2023-06-27 15:34:03', '2023-06-27 15:34:03', NULL);
+(21, 40496, 'Maou Gakuin no Futekigousha: Shijou Saikyou no Maou no Shiso, Tensei shite Shison-tachi no Gakkou e Kayou', '魔王学院の不適合者 ～史上最強の魔王の始祖、転生して子孫たちの学校へ通う～', 'The Misfit of Demon King Academy: History\'s Strongest Demon King Reincarnates and Goes to School with His Descendants', 'Action,Fantasy,Mythology,Reincarnation,School', 1, 1, 2, 2, '13', 'In the distant past, a war between humans and demons brought about widespread chaos and bloodshed. To put an end to this seemingly endless conflict, Demon King Anos Voldigoad willingly sacrificed his life, hoping to be reborn in a peaceful future.\r\n\r\nIn preparation for their king\'s return, the demon race created the Demon King Academy, an elite institution tasked with determining Anos\' identity when he reawakens. He reincarnates two millennia later, but to his surprise, he soon learns that the level of magic in the world has drastically waned during his absence. Moreover, when he enrolls at the academy to reclaim his rightful title, he finds out that demonkind remembers him differently. His personality, his deeds, and even his legacy are all falsified—masked beneath the name of an impostor. This \"lack\" of common knowledge renders him the academy\'s outlier—a misfit never before seen in history.\r\n\r\nDespite these drawbacks, Anos remains unfazed. As he sets out to uncover those altering his glorious past, he takes it upon himself to make his descendants recognize that their ruler has finally returned.\r\n\r\n[Written by MAL Rewrite]', 'https://cdn.myanimelist.net/images/anime/1126/108573l.jpg', 'https://cdn.myanimelist.net/images/anime/1126/108573l.jpg', '2020', 3, 4, '7.38', 0, 0, 0, 0, '23 min per ep', 'https://www.youtube.com/watch?v=1xmzzF0XQEY', '2020-07-04', '2020-09-26', 'SILVER LINK.', 'Aniplex,Movic,AT-X,Studio Mausu,Tokyo MX,Q-Tec,Docomo Anime Store,Medicos Entertainment,BS11,Contents Seed,Kadokawa,ADK Marketing Solutions', '[{\"url\": \"https://maohgakuin.com/1st/\", \"name\": \"Official Site\"}, {\"url\": \"https://anidb.net/perl-bin/animedb.pl?show=anime&aid=15131\", \"name\": \"AniDB\"}, {\"url\": \"https://www.animenewsnetwork.com/encyclopedia/anime.php?id=22555\", \"name\": \"ANN\"}, {\"url\": \"https://en.wikipedia.org/wiki/The_Misfit_of_Demon_King_Academy#Anime\", \"name\": \"Wikipedia\"}]', '', 2, 2, 2, '2023-06-27 15:34:03', '2023-06-27 15:34:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -139,15 +139,7 @@ CREATE TABLE IF NOT EXISTS `animestatus` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Tablo döküm verisi `animestatus`
---
-
-INSERT INTO `animestatus` (`id`, `userid`, `uid`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(8, '1', '52830', '1', '2023-06-21 15:22:03', '2023-06-21 15:22:03', NULL),
-(9, '1', '50220', '3', '2023-06-21 15:22:11', '2023-06-21 15:22:11', NULL);
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -193,14 +185,76 @@ CREATE TABLE IF NOT EXISTS `ani_schedule` (
   `sc_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `sc_time` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `ani_schedule`
 --
 
 INSERT INTO `ani_schedule` (`id`, `sc_days`, `sc_id`, `sc_ep`, `sc_name`, `sc_time`) VALUES
-(1, 23, 20785, '27', 'Mahouka Koukou no Rettousei', '11:20');
+(2, 1, 51693, '', 'Kami-sama', '10:00'),
+(3, 2, 51693, '', 'Kami-sama', '10:00'),
+(4, 3, 51693, '', 'Kami-sama', '10:00'),
+(5, 4, 51693, '', 'Kami-sama', '10:00'),
+(6, 5, 51693, '', 'Kami-sama', '10:00'),
+(7, 6, 51693, '', 'Kami-sama', '10:00'),
+(8, 7, 51693, '', 'Kami-sama', '10:00'),
+(9, 8, 51693, '', 'Kami-sama', '10:00'),
+(10, 9, 51693, '', 'Kami-sama', '10:00'),
+(11, 10, 51693, '', 'Kami-sama', '10:00'),
+(12, 11, 51693, '', 'Kami-sama', '10:00'),
+(13, 12, 51693, '', 'Kami-sama', '10:00'),
+(14, 13, 51693, '', 'Kami-sama', '10:00'),
+(15, 14, 51693, '', 'Kami-sama', '10:00'),
+(16, 15, 51693, '', 'Kami-sama', '10:00'),
+(17, 16, 51693, '', 'Kami-sama', '10:00'),
+(18, 17, 51693, '', 'Kami-sama', '10:00'),
+(19, 18, 51693, '', 'Kami-sama', '10:00'),
+(20, 19, 51693, '', 'Kami-sama', '10:00'),
+(21, 20, 51693, '', 'Kami-sama', '10:00'),
+(22, 21, 51693, '', 'Kami-sama', '10:00'),
+(23, 22, 51693, '', 'Kami-sama', '10:00'),
+(24, 23, 51693, '', 'Kami-sama', '10:00'),
+(25, 24, 51693, '', 'Kami-sama', '10:00'),
+(26, 25, 51693, '', 'Kami-sama', '10:00'),
+(27, 26, 51693, '', 'Kami-sama', '10:00'),
+(28, 27, 51693, '', 'Kami-sama', '10:00'),
+(29, 28, 51693, '', 'Kami-sama', '10:00'),
+(30, 29, 51693, '', 'Kami-sama', '10:00'),
+(31, 30, 51693, '', 'Kami-sama', '10:00'),
+(32, 31, 51693, '', 'Kami-sama', '10:00'),
+(33, 1, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(34, 2, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(35, 3, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(36, 4, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(37, 5, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(38, 6, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(39, 7, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(40, 8, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(41, 9, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(42, 10, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(43, 11, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(44, 12, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(45, 13, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(46, 14, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(47, 15, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(48, 16, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(49, 17, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(50, 18, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(51, 19, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(52, 20, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(53, 21, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(54, 22, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(55, 23, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(56, 24, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(57, 25, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(58, 26, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(59, 27, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(60, 28, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(61, 29, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(62, 30, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(63, 31, 51706, '', 'Yuusha ga Shinda!', '20:00'),
+(64, 11, 50307, '1', 'Tonikaku', '11:20');
 
 -- --------------------------------------------------------
 
@@ -257,7 +311,7 @@ CREATE TABLE IF NOT EXISTS `auth_identities` (
 --
 
 INSERT INTO `auth_identities` (`id`, `user_id`, `type`, `name`, `secret`, `secret2`, `expires`, `extra`, `force_reset`, `last_used_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 'email_password', NULL, 'akaisora09@gmail.com', '$2y$10$fNW/eSalcB5LeMBF152cCO1d66QFBnVDaPNO10.xpZ8PPyW6J4a/m', NULL, NULL, 0, '2023-07-01 17:15:43', '2023-05-12 19:52:20', '2023-07-01 17:15:43'),
+(1, 1, 'email_password', NULL, 'akaisora09@gmail.com', '$2y$10$fNW/eSalcB5LeMBF152cCO1d66QFBnVDaPNO10.xpZ8PPyW6J4a/m', NULL, NULL, 0, '2023-07-09 09:05:20', '2023-05-12 19:52:20', '2023-07-09 09:05:20'),
 (2, 2, 'email_password', NULL, 'test123@gmail.com', '$2y$10$HIICb90g2f/6JJHXcXF5x.TSS.2YliEaC7WS444vS/8jocB9K6U5a', NULL, NULL, 0, NULL, '2023-05-16 15:20:43', '2023-05-16 15:20:43'),
 (3, 3, 'email_password', NULL, 'test@test.com', '$2y$10$AQO7pnXJp7ye96A.1q2BQOkWmj/yGeGPiMBc72SUx.iDfh99mBypC', NULL, NULL, 0, NULL, '2023-06-11 08:09:00', '2023-06-11 08:09:00');
 
@@ -280,7 +334,7 @@ CREATE TABLE IF NOT EXISTS `auth_logins` (
   PRIMARY KEY (`id`),
   KEY `id_type_identifier` (`id_type`,`identifier`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Tablo döküm verisi `auth_logins`
@@ -363,7 +417,13 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `user_agent`, `id_type`, `identif
 (74, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-29 15:38:20', 1),
 (75, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-06-30 08:09:04', 1),
 (76, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-07-01 13:51:30', 1),
-(77, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-07-01 17:15:43', 1);
+(77, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-07-01 17:15:43', 1),
+(78, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-07-02 09:36:56', 1),
+(79, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-07-05 10:38:23', 1),
+(80, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-07-05 12:05:47', 1),
+(81, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-07-05 15:29:19', 1),
+(82, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-07-05 19:45:11', 1),
+(83, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0', 'email_password', 'akaisora09@gmail.com', 1, '2023-07-09 09:05:20', 1);
 
 -- --------------------------------------------------------
 
@@ -443,7 +503,14 @@ CREATE TABLE IF NOT EXISTS `community` (
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `post_id` (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12515 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `community`
+--
+
+INSERT INTO `community` (`id`, `user_id`, `post_id`, `post_tag`, `post_head`, `post_content`, `post_rep`, `post_disrep`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 43719630, 2, 'qwhqwhqwh', '123', 1, 1, '2023-07-09 09:06:28', '2023-07-09 09:39:23', NULL);
 
 -- --------------------------------------------------------
 
@@ -464,7 +531,14 @@ CREATE TABLE IF NOT EXISTS `community_post` (
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `community_post`
+--
+
+INSERT INTO `community_post` (`id`, `user_id`, `post_id`, `post_c_id`, `post_content`, `post_rep`, `post_disrep`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, 1, 43719630, 98741221, '123', 0, 0, '2023-07-09 09:06:34', '2023-07-09 09:06:34', NULL);
 
 -- --------------------------------------------------------
 
@@ -485,7 +559,15 @@ CREATE TABLE IF NOT EXISTS `community_repy_post` (
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `community_repy_post`
+--
+
+INSERT INTO `community_repy_post` (`id`, `user_id`, `post_u_id`, `post_c_id`, `post_content`, `post_rep`, `post_disrep`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(5, 1, 6365162, 98741221, '1', 0, 0, '2023-07-09 09:27:42', '2023-07-09 09:27:42', NULL),
+(7, 1, 4272322, 98741221, '2', 0, 0, '2023-07-09 09:35:43', '2023-07-09 09:35:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -499,9 +581,9 @@ CREATE TABLE IF NOT EXISTS `episode` (
   `uid` int NOT NULL,
   `ep_id_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ep_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `ep_jname` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `ep_romaji` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `ep_aired` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `ep_jname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `ep_romaji` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `ep_aired` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ep_pv` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `ep_view` int NOT NULL,
   `ep_view_month` int NOT NULL,
@@ -1524,7 +1606,7 @@ INSERT INTO `episode` (`id`, `uid`, `ep_id_name`, `ep_name`, `ep_jname`, `ep_rom
 (1151, 21, '1000', 'Overwhelming Strength! The Straw Hats Come Together!', '圧倒的戦力！麦わらの一味集結', 'Attoteki Senryoku! Mugiwara no Ichimi Shuuketsu ', '2021-11-21', '', 0, 0, 0, '2023-06-27 16:27:25', '2023-06-27 16:27:25', NULL),
 (1152, 21, '1001', 'A Risky Invitation! A Plot to Eliminate Queen!', '危険な誘い！クイーン抹殺計画', 'Kiken na Sasoi! Queen Massatsu Keikaku ', '2021-11-28', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1153, 21, '1002', 'A New Rivalry! Nami and Ulti!', '新たな因縁！ナミとうるティ！', 'Arata na Innen! Nami to Ulti! ', '2021-12-05', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
-(1154, 21, '1003', 'A Heroic Blade! Akazaya vs. Kaido, Again Once More!', '悲壮の刃! 赤鞘VSカイドウ再び', 'Hisou no Yaiba! Akazaya vs Kaidou Futatabi ', '2021-12-12', '', 166, 166, 166, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
+(1154, 21, '1003', 'A Heroic Blade! Akazaya vs. Kaido, Again Once More!', '悲壮の刃! 赤鞘VSカイドウ再び', 'Hisou no Yaiba! Akazaya vs Kaidou Futatabi ', '2021-12-12', '', 217, 217, 217, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1155, 21, '1004', 'An Inherited Technique! Unleashing Oden\'s Secret Swordplay!', '受け継ぎし技 炸裂おでんの秘剣', 'Uketsugishi Waza: Sakuretsu Oden no Hiken ', '2021-12-19', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1156, 21, '1005', 'The Power of Ice Oni! A New Version of the Plague Rounds!', '「氷鬼」の威力! 新たな疫災[エキサイト]弾', '', '2022-01-09', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1157, 21, '1006', 'I Won\'t Forgive Him! Chopper\'s Determination!', '許さねェ！チョッパーの決意！', 'Yurusanee! Chopper no Ketsui! ', '2022-01-16', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
@@ -1557,7 +1639,7 @@ INSERT INTO `episode` (`id`, `uid`, `ep_id_name`, `ep_name`, `ep_jname`, `ep_rom
 (1184, 21, '1033', 'The Conclusion! Luffy, Accelerating Fist of the Supreme King', '決着！ルフィ加速する覇王の拳', 'Kecchaku! Luffy Kasoku Suru Haou no Kobushi ', '2022-09-18', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1185, 21, '1034', 'Luffy Defeated! The Straw Hats in Jeopardy?!', 'ルフィ敗北！麦わらの一味窮地!?', 'Luffy Haiboku! Mugiwara no Ichimi Kyuuchi!? ', '2022-09-25', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1186, 21, '1035', 'The Animal Kingdom Pirates Trample Down! The End of the Kozuki Clan!', '百獣蹂躙！光月家の終焉！', 'Hyakujuu Juurin! Kouzuki-ke no Shuuen! ', '2022-10-02', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
-(1187, 21, '1036', 'Fight Against the Dark Night - The Commander-in-Chief of the Land of Wano Sounds Off', '闇夜に抗え ワノ国総大将吠える', 'Yamiyo ni Aragae: Wano Kuni Soudaishou Hoeru ', '2022-10-16', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
+(1187, 21, '1036', 'Fight Against the Dark Night - The Commander-in-Chief of the Land of Wano Sounds Off', '闇夜に抗え ワノ国総大将吠える', 'Yamiyo ni Aragae: Wano Kuni Soudaishou Hoeru ', '2022-10-16', '', 1, 1, 1, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1188, 21, '1037', 'Believe in Luffy! The Alliance\'s Counterattack Begins!', 'ルフィを信じろ！同盟反撃開始！', 'Luffy wo Shinjiro! Doumei Hangeki Kaishi! ', '2022-10-23', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1189, 21, '1038', 'Nami\'s Lethal Attack! O-Tama\'s Desperate Challenge!', 'ナミ必殺！お玉決死の大一番', 'Nami Hissatsu! Otama Kesshi no Ooichiban! ', '2022-10-30', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
 (1190, 21, '1039', 'A Dramatic Increase of Allies! Straw Hats Fight Back!', '味方激増！麦わらの一味逆襲！', 'Mikata Gekizou! Mugiwara no Ichimi Gyakushuu! ', '2022-11-06', '', 0, 0, 0, '2023-06-27 16:27:34', '2023-06-27 16:27:34', NULL),
@@ -1609,19 +1691,16 @@ CREATE TABLE IF NOT EXISTS `episode_comment` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `episode_comment`
 --
 
 INSERT INTO `episode_comment` (`id`, `user_id`, `post_id`, `post_ani`, `post_ep`, `post_spo`, `post_content`, `post_rep`, `post_disrep`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(9, 1, 2006727143, 21, '1003', 0, 'test1', 1, 0, '2023-06-29 17:16:21', '2023-06-29 19:12:30', NULL),
-(10, 1, 1476358318, 21, '1003', 0, 'test2', 0, 1, '2023-06-29 17:16:34', '2023-06-29 19:19:16', NULL),
-(11, 1, 1090130901, 21, '1003', 0, 'test3', 1, 0, '2023-06-29 17:16:42', '2023-06-29 19:19:14', NULL),
-(13, 1, 537627415, 21, '1003', 0, 'test4', 0, 0, '2023-06-29 19:40:09', '2023-06-29 19:40:09', NULL),
-(14, 1, 636411874, 21, '1003', 0, 'test5', 0, 0, '2023-06-29 19:48:33', '2023-06-29 19:48:33', NULL),
-(16, 1, 61195407, 21, '1025', 0, 'tag', 1, 1, '2023-06-30 09:51:00', '2023-06-30 09:51:11', NULL);
+(3, 1, 1889023641, 21, '1003', 0, '1', 0, 0, '2023-07-09 14:44:01', '2023-07-09 14:44:01', NULL),
+(4, 1, 257895376, 21, '1003', 0, '2', 0, 0, '2023-07-09 14:44:07', '2023-07-09 14:44:07', NULL),
+(5, 1, 844860957, 21, '1003', 0, '3', 0, 0, '2023-07-09 14:44:13', '2023-07-09 14:44:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -1642,18 +1721,7 @@ CREATE TABLE IF NOT EXISTS `episode_comment_repy` (
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Tablo döküm verisi `episode_comment_repy`
---
-
-INSERT INTO `episode_comment_repy` (`id`, `user_id`, `post_id`, `post_u_id`, `post_content`, `post_rep`, `post_disrep`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1090130901, 5213125, 'wqgqwgqwgq', 0, 0, '2023-06-29 18:02:11', '2023-06-29 18:02:11', NULL),
-(2, 1, 1090130901, 1612621, 'wh1wh21h', 0, 0, '2023-06-29 18:02:11', '2023-06-29 18:02:11', NULL),
-(4, 1, 1090130901, 4035450, 'wcez', 0, 0, '2023-06-29 19:36:35', '2023-06-29 19:36:35', NULL),
-(5, 1, 537627415, 87583, 'qgqg', 1, 0, '2023-06-29 19:40:24', '2023-06-29 20:26:56', NULL),
-(6, 1, 61195407, 5143316, 'tag2', 1, 1, '2023-06-30 09:51:15', '2023-06-30 09:51:23', NULL);
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1750,10 +1818,10 @@ CREATE TABLE IF NOT EXISTS `episode_vote` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` varchar(25) NOT NULL,
   `anime_id` varchar(25) NOT NULL,
-  `anime_ep_id` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `anime_ep_id` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `anime_ep_score` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `episode_vote`
@@ -1771,10 +1839,10 @@ INSERT INTO `episode_vote` (`id`, `user_id`, `anime_id`, `anime_ep_id`, `anime_e
 DROP TABLE IF EXISTS `files`;
 CREATE TABLE IF NOT EXISTS `files` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `type` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `size` int NOT NULL,
-  `path` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -1825,7 +1893,7 @@ CREATE TABLE IF NOT EXISTS `report_board` (
   `id` int NOT NULL AUTO_INCREMENT,
   `report_main_id` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1839,7 +1907,7 @@ CREATE TABLE IF NOT EXISTS `report_board_comment` (
   `report_main_id` int NOT NULL,
   `report_repy_id` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1855,7 +1923,7 @@ CREATE TABLE IF NOT EXISTS `report_episode` (
   `report_head` varchar(250) NOT NULL,
   `report_content` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1869,7 +1937,7 @@ CREATE TABLE IF NOT EXISTS `report_episode_comment` (
   `report_main_id` int NOT NULL,
   `report_repy_id` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1939,12 +2007,12 @@ CREATE TABLE IF NOT EXISTS `websettings` (
   `weburl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `weblic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `webconvert` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `webconvert2` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `webconvert2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `webdisqus` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `webdiscord` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `webtwitter` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `webtwitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `webdonation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `webdonation2` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `webdonation2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `weblogo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `webicon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `webindexbg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
