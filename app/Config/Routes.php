@@ -50,6 +50,10 @@ $routes->get('search', 'Anime::search');
 $routes->get('search/suggestions', 'Anime::suggestions');
 
 
+//Anime Takvim Verileri Çeker.
+$routes->get('getdaysschedule/(:any)', 'Anime::getdaysschedule/$1');
+
+
 
 //Anime İzleme. " ?anime= / uid=  / eps= " gibi ayrım yapılmaktadır.
 $routes->get('watch', 'Anime::ani_watch');
@@ -328,5 +332,3 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
     });
 });
 
-
-$routes->get('getdaysschedule/(:any)', 'Anime::getdaysschedule/$1');
