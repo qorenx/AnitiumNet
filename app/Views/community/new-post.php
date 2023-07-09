@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="connect-title">Title</label>
-                                        <input type="text" class="form-control" name="post_head"  maxlength="255" placeholder="Title of post" required="">
+                                        <input type="text" class="form-control" name="post_head" maxlength="255" placeholder="Title of post" required="">
                                     </div>
                                     <div class="form-group">
                                         <label for="contact-textarea">Content</label>
@@ -55,16 +55,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
 
         <div id="mask-overlay"></div>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

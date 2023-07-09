@@ -27,27 +27,6 @@
                             <?php endif; ?>
                         </div>
                     </div>
-                    <script>
-                        function addLike(postId) {
-                            $.ajax({
-                                url: '/community/repsystem/postrep/' + postId,
-                                type: 'POST',
-                                success: function(result) {
-                                    $('#postlinkview' + postId).text(parseInt($('#postlinkview' + postId).text()) + 1);
-                                }
-                            });
-                        }
-
-                        function adddisLike(postId) {
-                            $.ajax({
-                                url: '/community/repsystem/postdisrep/' + postId,
-                                type: 'POST',
-                                success: function(result) {
-                                    $('#postdislinkview' + postId).text(parseInt($('#postdislinkview' + postId).text()) + 1);
-                                }
-                            });
-                        }
-                    </script>
                     <div class="nc-list">
                         <div class="post-list">
                             <?php $count = 0; ?>
@@ -56,11 +35,10 @@
 
                                     <div class="item" id="post-<?= $post['post_id'] ?>">
                                         <div class="is-vote is-vote-new">
-                                            <a class="is-up lp-btn-vote" id="postlink<?= $post['id'] ?>" onclick="addLike(<?= $post['id'] ?>)"><i class="far fa-thumbs-up"></i></a>
-                                            <div class="is-point like-value" id="postlinkview<?= $post['id'] ?>"><?= $post['post_rep'] ?></div>
-                                            <a class="is-down lp-btn-vote" id="postlink<?= $post['id'] ?>" onclick="adddisLike(<?= $post['id'] ?>)"><i class="far fa-thumbs-down"></i></a>
-                                            <div class="is-point like-value" id="postdislinkview<?= $post['id'] ?>"><?= $post['post_disrep'] ?></div>
-
+                                            <a class="is-up lp-btn-vote"><i class="far fa-thumbs-up"></i></a>
+                                            <div class="is-point like-value"><?= $post['post_rep'] ?></div>
+                                            <a class="is-down lp-btn-vote"><i class="far fa-thumbs-down"></i></a>
+                                            <div class="is-point like-value"><?= $post['post_disrep'] ?></div>
                                         </div>
                                         <div class="is-head">
                                             <div class="ztag"><span class="zt-<?php
@@ -87,29 +65,29 @@
                                                                                         echo 'Unknown';
                                                                                 }
                                                                                 ?>"><?php
-                                                                                                switch ($post['post_tag']) {
-                                                                                                    case 1:
-                                                                                                        echo 'Updates';
-                                                                                                        break;
-                                                                                                    case 2:
-                                                                                                        echo 'General';
-                                                                                                        break;
-                                                                                                    case 3:
-                                                                                                        echo 'Suggestion';
-                                                                                                        break;
-                                                                                                    case 4:
-                                                                                                        echo 'Question';
-                                                                                                        break;
-                                                                                                    case 5:
-                                                                                                        echo 'Discussion';
-                                                                                                        break;
-                                                                                                    case 6:
-                                                                                                        echo 'Feedback';
-                                                                                                        break;
-                                                                                                    default:
-                                                                                                        echo 'Unknown';
-                                                                                                }
-                                                                                                ?></span></div>
+                                                                                    switch ($post['post_tag']) {
+                                                                                        case 1:
+                                                                                            echo 'Updates';
+                                                                                            break;
+                                                                                        case 2:
+                                                                                            echo 'General';
+                                                                                            break;
+                                                                                        case 3:
+                                                                                            echo 'Suggestion';
+                                                                                            break;
+                                                                                        case 4:
+                                                                                            echo 'Question';
+                                                                                            break;
+                                                                                        case 5:
+                                                                                            echo 'Discussion';
+                                                                                            break;
+                                                                                        case 6:
+                                                                                            echo 'Feedback';
+                                                                                            break;
+                                                                                        default:
+                                                                                            echo 'Unknown';
+                                                                                    }
+                                                                                    ?></span></div>
                                             <div class="is-dot mx-2"><i class="dot"></i></div>
                                             <div class="is-time"><?= $post['created_at'] ?></div>
                                         </div>
@@ -138,10 +116,10 @@
 
                                     <div class="item more-posts d-none" id="post-<?= $post['post_id'] ?>">
                                         <div class="is-vote is-vote-new">
-                                            <a class="is-up lp-btn-vote" id="postlink<?= $post['id'] ?>" onclick="addLike(<?= $post['id'] ?>)"><i class="far fa-thumbs-up"></i></a>
-                                            <div class="is-point like-value" id="postlinkview<?= $post['id'] ?>"><?= $post['post_rep'] ?></div>
-                                            <a class="is-down lp-btn-vote" id="postlink<?= $post['id'] ?>" onclick="adddisLike(<?= $post['id'] ?>)"><i class="far fa-thumbs-down"></i></a>
-                                            <div class="is-point like-value" id="postdislinkview<?= $post['id'] ?>"><?= $post['post_disrep'] ?></div>
+                                            <a class="is-up lp-btn-vote"><i class="far fa-thumbs-up"></i></a>
+                                            <div class="is-point like-value"><?= $post['post_rep'] ?></div>
+                                            <a class="is-down lp-btn-vote"><i class="far fa-thumbs-down"></i></a>
+                                            <div class="is-point like-value"><?= $post['post_disrep'] ?></div>
                                         </div>
                                         <div class="is-head">
 
@@ -169,29 +147,29 @@
                                                                                         echo 'Unknown';
                                                                                 }
                                                                                 ?>"><?php
-                                                                                                switch ($post['post_tag']) {
-                                                                                                    case 1:
-                                                                                                        echo 'Updates';
-                                                                                                        break;
-                                                                                                    case 2:
-                                                                                                        echo 'General';
-                                                                                                        break;
-                                                                                                    case 3:
-                                                                                                        echo 'Suggestion';
-                                                                                                        break;
-                                                                                                    case 4:
-                                                                                                        echo 'Question';
-                                                                                                        break;
-                                                                                                    case 5:
-                                                                                                        echo 'Discussion';
-                                                                                                        break;
-                                                                                                    case 6:
-                                                                                                        echo 'Feedback';
-                                                                                                        break;
-                                                                                                    default:
-                                                                                                        echo 'Unknown';
-                                                                                                }
-                                                                                                ?></span></div>
+                                                                                    switch ($post['post_tag']) {
+                                                                                        case 1:
+                                                                                            echo 'Updates';
+                                                                                            break;
+                                                                                        case 2:
+                                                                                            echo 'General';
+                                                                                            break;
+                                                                                        case 3:
+                                                                                            echo 'Suggestion';
+                                                                                            break;
+                                                                                        case 4:
+                                                                                            echo 'Question';
+                                                                                            break;
+                                                                                        case 5:
+                                                                                            echo 'Discussion';
+                                                                                            break;
+                                                                                        case 6:
+                                                                                            echo 'Feedback';
+                                                                                            break;
+                                                                                        default:
+                                                                                            echo 'Unknown';
+                                                                                    }
+                                                                                    ?></span></div>
                                             <div class="is-dot mx-2"><i class="dot"></i></div>
                                             <div class="is-time"><?= $post['created_at'] ?></div>
                                         </div>

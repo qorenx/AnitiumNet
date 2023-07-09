@@ -31,6 +31,7 @@
                                         <form method="post" action="/admin/report/boardmandreportdelete">
                                             <input type="hidden" name="comment_id" value="<?= $report['comment_id'] ?>" />
                                             <input type="hidden" name="report_id" value="<?= $report['report_id'] ?>" />
+                                            <input type="hidden" name="repy_id" value="<?= $report['repy_id'] ?>" />
                                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                                         </form>
                                     </td>

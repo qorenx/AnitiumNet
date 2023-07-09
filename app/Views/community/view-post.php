@@ -43,65 +43,66 @@
                         document.addEventListener("DOMContentLoaded", runCommand);
                     </script>
                     <script>
-    function addRepyLike(postId) {
-        var post = $("#postrepylikelink" + postId);
-        var liked = post.data("liked");
-        if (!liked) {
-            $.ajax({
-                url: '/community/boardrepyreppost/' + postId,
-                type: 'POST',
-                success: function(result) {
-                    $('#boardrepylikepost-' + postId).text(parseInt($('#boardrepylikepost-' + postId).text()) + 1);
-                    post.data("liked", 1);
-                }
-            });
-        }
-    }
+                        function addRepyLike(postId) {
+                            var post = $("#postrepylikelink" + postId);
+                            var liked = post.data("liked");
+                            if (!liked) {
+                                $.ajax({
+                                    url: '/community/boardrepyreppost/' + postId,
+                                    type: 'POST',
+                                    success: function(result) {
+                                        $('#boardrepylikepost-' + postId).text(parseInt($('#boardrepylikepost-' + postId).text()) + 1);
+                                        post.data("liked", 1);
+                                    }
+                                });
+                            }
+                        }
 
-    function addRepyDislike(postId) {
-        var post = $("#postrepydislink" + postId);
-        var disliked = post.data("disliked");
-        if (!disliked) {
-            $.ajax({
-                url: '/community/boardrepydispost/' + postId,
-                type: 'POST',
-                success: function(result) {
-                    $('#boardrepydislikepost-' + postId).text(parseInt($('#boardrepydislikepost-' + postId).text()) + 1);
-                    post.data("disliked", 1);
-                }
-            });
-        }
-    }
-    function addRepycLike(postId) {
-        var post = $("#postrepyclikelink" + postId);
-        var liked = post.data("liked");
-        if (!liked) {
-            $.ajax({
-                url: '/community/boardrepycreppost/' + postId,
-                type: 'POST',
-                success: function(result) {
-                    $('#boardrepyclikepost-' + postId).text(parseInt($('#boardrepyclikepost-' + postId).text()) + 1);
-                    post.data("liked", 1);
-                }
-            });
-        }
-    }
+                        function addRepyDislike(postId) {
+                            var post = $("#postrepydislink" + postId);
+                            var disliked = post.data("disliked");
+                            if (!disliked) {
+                                $.ajax({
+                                    url: '/community/boardrepydispost/' + postId,
+                                    type: 'POST',
+                                    success: function(result) {
+                                        $('#boardrepydislikepost-' + postId).text(parseInt($('#boardrepydislikepost-' + postId).text()) + 1);
+                                        post.data("disliked", 1);
+                                    }
+                                });
+                            }
+                        }
 
-    function addRepycDislike(postId) {
-        var post = $("#postrepycdislink" + postId);
-        var disliked = post.data("disliked");
-        if (!disliked) {
-            $.ajax({
-                url: '/community/boardrepycdispost/' + postId,
-                type: 'POST',
-                success: function(result) {
-                    $('#boardrepycdislikepost-' + postId).text(parseInt($('#boardrepycdislikepost-' + postId).text()) + 1);
-                    post.data("disliked", 1);
-                }
-            });
-        }
-    }
-</script>
+                        function addRepycLike(postId) {
+                            var post = $("#postrepyclikelink" + postId);
+                            var liked = post.data("liked");
+                            if (!liked) {
+                                $.ajax({
+                                    url: '/community/boardrepycreppost/' + postId,
+                                    type: 'POST',
+                                    success: function(result) {
+                                        $('#boardrepyclikepost-' + postId).text(parseInt($('#boardrepyclikepost-' + postId).text()) + 1);
+                                        post.data("liked", 1);
+                                    }
+                                });
+                            }
+                        }
+
+                        function addRepycDislike(postId) {
+                            var post = $("#postrepycdislink" + postId);
+                            var disliked = post.data("disliked");
+                            if (!disliked) {
+                                $.ajax({
+                                    url: '/community/boardrepycdispost/' + postId,
+                                    type: 'POST',
+                                    success: function(result) {
+                                        $('#boardrepycdislikepost-' + postId).text(parseInt($('#boardrepycdislikepost-' + postId).text()) + 1);
+                                        post.data("disliked", 1);
+                                    }
+                                });
+                            }
+                        }
+                    </script>
                     <script>
                         function toggleReplies(postId) {
                             var replies = document.getElementById("replies-" + postId);
