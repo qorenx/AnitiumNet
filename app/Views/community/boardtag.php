@@ -8,9 +8,9 @@
 
         <div class="clearfix"></div>
         <div id="main-wrapper" class="layout-page layout-award">
-        <div class="award-bg">
-            <div class="award-bg-img" style="background-image: url(/files/images/cover.png);"></div>
-        </div>
+            <div class="award-bg">
+                <div class="award-bg-img" style="background-image: url(/files/images/cover.png);"></div>
+            </div>
             <!--Begin: award-->
             <div class="container">
                 <div class="award-inner">
@@ -89,17 +89,17 @@
                                 </div>
                                 <div class="nc-head">
                                     <div class="is-right">
-                                    <?php if (auth()->loggedIn()) : ?>
-                                        <div class="is-create">
-                                            <a href="/community/new-post" class="item-link active">
-                                                <i class="fas fa-plus"></i><span class="ml-2">Create</span>
-                                            </a>
-                                        </div>
-                                        <div class="is-manager ml-2">
-                                            <a href="/community/my-post" class="item-link">
-                                                <i class="fas fa-list"></i><span class="ml-2">My Posts</span>
-                                            </a>
-                                        </div>
+                                        <?php if (auth()->loggedIn()) : ?>
+                                            <div class="is-create">
+                                                <a href="/community/new-post" class="item-link active">
+                                                    <i class="fas fa-plus"></i><span class="ml-2">Create</span>
+                                                </a>
+                                            </div>
+                                            <div class="is-manager ml-2">
+                                                <a href="/community/my-post" class="item-link">
+                                                    <i class="fas fa-list"></i><span class="ml-2">My Posts</span>
+                                                </a>
+                                            </div>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -123,11 +123,14 @@
 
                                                 <div class="item " id="post-<?= $post['post_id'] ?>">
                                                     <div class="is-vote is-vote-new">
-                                                        <a class="is-up lp-btn-vote" id="postlink" href="javascript:void(0);" onclick="backgroundAction('<?= base_url('community/repsystem/postrep/' . $post['id']) ?>')"><i class="far fa-thumbs-up"></i></a>
-                                                        <div class="is-point like-value"><?= $post['post_rep'] ?></div>
-
-                                                        <a class="is-up lp-btn-vote" id="postlink" href="javascript:void(0);" onclick="backgroundAction('<?= base_url('community/repsystem/postdisrep/' . $post['id']) ?>')"><i class="far fa-thumbs-up"></i></a>
-                                                        <div class="is-point dislike-value"><?= $post['post_disrep'] ?></div>
+                                                        <a class="is-up lp-btn-vote" id="postlink"><i class="far fa-thumbs-up"></i></a>
+                                                        <div class="is-point like-value" id="postlinkview">
+                                                            <?= $post['post_rep'] ?>
+                                                        </div>
+                                                        <a class="is-down lp-btn-vote" id="postlink"><i class="far fa-thumbs-down"></i></a>
+                                                        <div class="is-point like-value" id="postdislinkview">
+                                                            <?= $post['post_disrep'] ?>
+                                                        </div>
                                                     </div>
                                                     <div class="is-head">
 
@@ -159,7 +162,7 @@
                                                         <div class="is-time"><?= $post['created_at'] ?></div>
                                                     </div>
                                                     <div class="is-body">
-                                                        <h4 class="item-name"><a href="<?= base_url('community/')?>post?pid=<?= $post['post_id'] ?>&pcon=<?= urlencode($post['post_head']) ?>"><?= $post['post_head'] ?></a></h4>
+                                                        <h4 class="item-name"><a href="<?= base_url('community/') ?>post?pid=<?= $post['post_id'] ?>&pcon=<?= urlencode($post['post_head']) ?>"><?= $post['post_head'] ?></a></h4>
                                                         <p><?= $post['post_content'] ?></p>
                                                     </div>
                                                     <div class="is-bottom">
@@ -167,9 +170,10 @@
                                                             <div class="profile-avatar">
                                                                 <img src="<?= $post['avatar'] ?>">
                                                             </div>
-                                                            <a href="/user/<?= $post['username'] ?>" target="_blank" class="user-name is-level-x is-level-a">
-                                                                <i class="badg-level level-a up-4"></i>
+                                                            <a href="/community/user/<?= $post['username'] ?>" target="_blank" class="user-name is-level-x">
+                                                                <i class="badg-level"></i>
                                                                 <?= $post['username'] ?>
+                                                                <span><?= $post['group'] ?></span>
                                                             </a>
                                                         </div>
                                                         <div class="is-stats">
@@ -180,11 +184,14 @@
                                             <?php else : ?>
                                                 <div class="item more-posts d-none" id="post-<?= $post['post_id'] ?>">
                                                     <div class="is-vote is-vote-new">
-                                                        <a class="is-up lp-btn-vote" id="postlink" href="javascript:void(0);" onclick="backgroundAction('<?= base_url('community/repsystem/postrep/' . $post['id']) ?>')"><i class="far fa-thumbs-up"></i></a>
-                                                        <div class="is-point like-value"><?= $post['post_rep'] ?></div>
-
-                                                        <a class="is-up lp-btn-vote" id="postlink" href="javascript:void(0);" onclick="backgroundAction('<?= base_url('community/repsystem/postdisrep/' . $post['id']) ?>')"><i class="far fa-thumbs-up"></i></a>
-                                                        <div class="is-point dislike-value"><?= $post['post_disrep'] ?></div>
+                                                        <a class="is-up lp-btn-vote" id="postlink"><i class="far fa-thumbs-up"></i></a>
+                                                        <div class="is-point like-value" id="postlinkview">
+                                                            <?= $post['post_rep'] ?>
+                                                        </div>
+                                                        <a class="is-down lp-btn-vote" id="postlink"><i class="far fa-thumbs-down"></i></a>
+                                                        <div class="is-point like-value" id="postdislinkview">
+                                                            <?= $post['post_disrep'] ?>
+                                                        </div>
                                                     </div>
                                                     <div class="is-head">
 
@@ -216,7 +223,7 @@
                                                         <div class="is-time"><?= $post['created_at'] ?></div>
                                                     </div>
                                                     <div class="is-body">
-                                                        <h4 class="item-name"><a href="<?= base_url('community/')?>post?pid=<?= $post['post_id'] ?>&pcon=<?= urlencode($post['post_head']) ?>"><?= $post['post_head'] ?></a></h4>
+                                                        <h4 class="item-name"><a href="<?= base_url('community/') ?>post?pid=<?= $post['post_id'] ?>&pcon=<?= urlencode($post['post_head']) ?>"><?= $post['post_head'] ?></a></h4>
                                                         <p><?= $post['post_content'] ?></p>
                                                     </div>
                                                     <div class="is-bottom">
@@ -224,9 +231,10 @@
                                                             <div class="profile-avatar">
                                                                 <img src="<?= $post['avatar'] ?>">
                                                             </div>
-                                                            <a href="/user/<?= $post['username'] ?>" target="_blank" class="user-name is-level-x is-level-a">
-                                                                <i class="badg-level level-a up-4"></i>
+                                                            <a href="/community/user/<?= $post['username'] ?>" target="_blank" class="user-name is-level-x">
+                                                                <i class="badg-level"></i>
                                                                 <?= $post['username'] ?>
+                                                                <span><?= $post['group'] ?></span>
                                                             </a>
                                                         </div>
                                                         <div class="is-stats">
@@ -268,17 +276,6 @@
             </div>
             <!--/End: award-->
         </div>
-
-
-
-
-
-
-
-
-
-
-
 
         <div id="mask-overlay"></div>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

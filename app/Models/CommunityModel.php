@@ -64,10 +64,11 @@ class CommunityModel extends Model
         return $this->db
             ->table('community')
             ->where('post_tag', $tagValue)
-            ->select('community.user_id, community.id, community.post_id, community.post_tag, community.post_head, community.post_content, community.created_at, users.username, users.avatar')
+            ->select('community.user_id, community.id, community.post_rep, community.post_disrep, community.post_id, community.post_tag, community.post_head, community.post_content, community.created_at, users.username, users.avatar, auth_groups_users.group')
             ->select('COUNT(community_post.post_id) AS post_id_count', false)
             ->join('community_post', 'community.post_id = community_post.post_id', 'left outer')
             ->join('users', 'users.id = community.user_id', 'left outer')
+            ->join('auth_groups_users', 'auth_groups_users.id = community.user_id', 'left outer')
             ->groupBy('community.post_id')
             ->orderBy('created_at', 'DESC')
             ->get()
@@ -124,17 +125,16 @@ class CommunityModel extends Model
     }
 
 
-    public function boardusercomment($userid){
+    public function boardusercomment($userid)
+    {
         return $this->db
-        ->table('community')
-        ->where('community.user_id', $userid)
-        ->select('users.avatar, users.username, community.post_id, community.created_at, community.post_head, 1 as from')
-        ->join('users', 'users.id = community.user_id')
-        ->orderBy('community.created_at', 'DESC')
-        ->limit(5)
-        ->get()
-        ->getResultArray();
+            ->table('community')
+            ->where('community.user_id', $userid)
+            ->select('users.avatar, users.username, community.post_id, community.created_at, community.post_head, 1 as from')
+            ->join('users', 'users.id = community.user_id')
+            ->orderBy('community.created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->getResultArray();
     }
 }
-
-
