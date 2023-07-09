@@ -1,4 +1,3 @@
-![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/7be2ce2d-0a6e-45d3-a854-6b3cc84453a2)# AnimeWatchPHPScript
 AnimeWatchScript  - Our site is a zoro.to clone. Although the features are not the same, it is better than many sites that allow you to watch anime. Only interface is clone. The system is completely different.
 ---
 Preview: anitium.net
@@ -33,7 +32,7 @@ Discord: https://discord.com/invite/YmDHnQGxCn
 
 
 New İMAGE
-
+![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/7be2ce2d-0a6e-45d3-a854-6b3cc84453a2)# AnimeWatchPHPScript
 ![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/9723a305-f4b1-4fd0-af61-f9cccf2defe4)
 ![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/14f4bcb5-477f-4d0f-8454-d72208126c41)
 ![resim](https://github.com/qorenx/AnitiumNet/assets/101888025/8a6647c5-d8f0-4962-a057-dfb0ca56b49d)
