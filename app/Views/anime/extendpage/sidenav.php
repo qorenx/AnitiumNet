@@ -60,7 +60,7 @@
     <section class="block_area block_area_sidebar block_area-realtime">
         <div class="block_area-header">
             <div class="float-left bah-heading mr-2">
-                <h2 class="cat-heading">Most Viewed Anime</h2>
+                <h2 class="cat-heading">Top Anime</h2>
             </div>
             <div class="float-right bah-tab-min">
                 <ul class="nav nav-pills nav-fill nav-tabs anw-tabs">

@@ -60,7 +60,8 @@
     <section class="block_area block_area_sidebar block_area-realtime">
         <div class="block_area-header">
             <div class="float-left bah-heading mr-2">
-                <h2 class="cat-heading">Most Viewed Episode</h2>
+                <h2 class="cat-heading">Top Episode
+                </h2>
             </div>
             <div class="float-right bah-tab-min">
                 <ul class="nav nav-pills nav-fill nav-tabs anw-tabs">
@@ -91,18 +92,18 @@
                                             <div class="fd-infor">
                                                 <div class="tick">
                                                     <div class="tick-item tick-type"><?php
-                                                        if ($todayview['ani_type'] == 1) {
-                                                            echo "TV";
-                                                        } elseif ($todayview['ani_type'] == 2) {
-                                                            echo "Movie";
-                                                        } elseif ($todayview['ani_type'] == 3) {
-                                                            echo "Ova";
-                                                        } elseif ($todayview['ani_type'] == 4) {
-                                                            echo "Ona";
-                                                        } elseif ($todayview['ani_type'] == 5) {
-                                                            echo "Special";
-                                                        }
-                                                        ?></div>
+                                                                                        if ($todayview['ani_type'] == 1) {
+                                                                                            echo "TV";
+                                                                                        } elseif ($todayview['ani_type'] == 2) {
+                                                                                            echo "Movie";
+                                                                                        } elseif ($todayview['ani_type'] == 3) {
+                                                                                            echo "Ova";
+                                                                                        } elseif ($todayview['ani_type'] == 4) {
+                                                                                            echo "Ona";
+                                                                                        } elseif ($todayview['ani_type'] == 5) {
+                                                                                            echo "Special";
+                                                                                        }
+                                                                                        ?></div>
                                                     <div class="tick-item tick-score"><?= $todayview['ani_score'] ?></div>
                                                     <span class="fdi-item ml-2"><i class="fas fa-eye mr-2"></i><?= $todayview['ep_view'] ?></span>
                                                 </div>
@@ -130,18 +131,18 @@
                                             <div class="fd-infor">
                                                 <div class="tick">
                                                     <div class="tick-item tick-type"><?php
-                                                        if ($weekview['ani_type'] == 1) {
-                                                            echo "TV";
-                                                        } elseif ($weekview['ani_type'] == 2) {
-                                                            echo "Movie";
-                                                        } elseif ($weekview['ani_type'] == 3) {
-                                                            echo "Ova";
-                                                        } elseif ($weekview['ani_type'] == 4) {
-                                                            echo "Ona";
-                                                        } elseif ($weekview['ani_type'] == 5) {
-                                                            echo "Special";
-                                                        }
-                                                        ?></div>
+                                                                                        if ($weekview['ani_type'] == 1) {
+                                                                                            echo "TV";
+                                                                                        } elseif ($weekview['ani_type'] == 2) {
+                                                                                            echo "Movie";
+                                                                                        } elseif ($weekview['ani_type'] == 3) {
+                                                                                            echo "Ova";
+                                                                                        } elseif ($weekview['ani_type'] == 4) {
+                                                                                            echo "Ona";
+                                                                                        } elseif ($weekview['ani_type'] == 5) {
+                                                                                            echo "Special";
+                                                                                        }
+                                                                                        ?></div>
                                                     <div class="tick-item tick-score"><?= $weekview['ani_score'] ?></div>
                                                     <span class="fdi-item ml-2"><i class="fas fa-eye mr-2"></i><?= $weekview['ep_view_month'] ?></span>
                                                 </div>
@@ -169,18 +170,18 @@
                                             <div class="fd-infor">
                                                 <div class="tick">
                                                     <div class="tick-item tick-type"><?php
-                                                        if ($yearsview['ani_type'] == 1) {
-                                                            echo "TV";
-                                                        } elseif ($yearsview['ani_type'] == 2) {
-                                                            echo "Movie";
-                                                        } elseif ($yearsview['ani_type'] == 3) {
-                                                            echo "Ova";
-                                                        } elseif ($yearsview['ani_type'] == 4) {
-                                                            echo "Ona";
-                                                        } elseif ($yearsview['ani_type'] == 5) {
-                                                            echo "Special";
-                                                        }
-                                                        ?></div>
+                                                                                        if ($yearsview['ani_type'] == 1) {
+                                                                                            echo "TV";
+                                                                                        } elseif ($yearsview['ani_type'] == 2) {
+                                                                                            echo "Movie";
+                                                                                        } elseif ($yearsview['ani_type'] == 3) {
+                                                                                            echo "Ova";
+                                                                                        } elseif ($yearsview['ani_type'] == 4) {
+                                                                                            echo "Ona";
+                                                                                        } elseif ($yearsview['ani_type'] == 5) {
+                                                                                            echo "Special";
+                                                                                        }
+                                                                                        ?></div>
                                                     <div class="tick-item tick-score"><?= $yearsview['ani_score'] ?></div>
                                                     <span class="fdi-item ml-2"><i class="fas fa-eye mr-2"></i><?= $yearsview['ep_view_years'] ?></span>
                                                 </div>
@@ -211,36 +212,36 @@
         <div class="block_area-content">
             <div class="zr-connect zr-connect-list">
                 <div class="connecting-list">
-                <?php  foreach ($lastcomment as $lastcom) : ?>
-                    <div class="item">
-                        <div class="gi-top d-flex justify-content-between align-items-center">
-                            <div class="ztag">
-                                <a class="zt-blue mr-2" href="/watch?anime=<?= urlencode($lastcom['ani_name']) ?>&uid=<?= $lastcom['post_ani'] ?>&eps=<?= $lastcom['post_ep'] ?>">Episode-<?= $lastcom['post_ep'] ?></a>
-                                <div class="time d-inline"><span><i class="dot mr-2"></i><?= $lastcom['created_at'] ?></span></div>
-                            </div>
-                            <div class="gi-stats d-flex align-items-center">
-                                <div class="ml-4">
-                                <i class="fas fa-thumbs-up mr-1"></i><?= $lastcom['post_rep'] ?>
+                    <?php foreach ($lastcomment as $lastcom) : ?>
+                        <div class="item">
+                            <div class="gi-top d-flex justify-content-between align-items-center">
+                                <div class="ztag">
+                                    <a class="zt-blue mr-2" href="/watch?anime=<?= urlencode($lastcom['ani_name']) ?>&uid=<?= $lastcom['post_ani'] ?>&eps=<?= $lastcom['post_ep'] ?>">Episode-<?= $lastcom['post_ep'] ?></a>
+                                    <div class="time d-inline"><span><i class="dot mr-2"></i><?= $lastcom['created_at'] ?></span></div>
                                 </div>
-                                <div class="ml-4">
-                                <i class="fas fa-thumbs-down mr-1"></i><?= $lastcom['post_disrep'] ?>
+                                <div class="gi-stats d-flex align-items-center">
+                                    <div class="ml-4">
+                                        <i class="fas fa-thumbs-up mr-1"></i><?= $lastcom['post_rep'] ?>
+                                    </div>
+                                    <div class="ml-4">
+                                        <i class="fas fa-thumbs-down mr-1"></i><?= $lastcom['post_disrep'] ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <h4 class="item-name"><a href="anime/<?= $lastcom['post_ani'] ?>/<?= preg_replace("/[\s\/]+/", "-", $lastcom['ani_name']) ?>"><?= strlen($lastcom['ani_name']) > 65 ? substr($lastcom['ani_name'], 0, 65) . "..." : $lastcom['ani_name'] ?></a></h4>
-                        <div class="subject">
-                            <div><?= strlen($lastcom['post_content']) > 200 ? substr($lastcom['post_content'], 0, 200) . "..." : $lastcom['post_content'] ?></div>
-                        </div>
-                        <div class="cn-owner">
-                            <div class="profile-avatar">
-                                <img src="<?= $lastcom['avatar'] ?>" alt="Obanai">
+                            <h4 class="item-name"><a href="anime/<?= $lastcom['post_ani'] ?>/<?= preg_replace("/[\s\/]+/", "-", $lastcom['ani_name']) ?>"><?= strlen($lastcom['ani_name']) > 65 ? substr($lastcom['ani_name'], 0, 65) . "..." : $lastcom['ani_name'] ?></a></h4>
+                            <div class="subject">
+                                <div><?= strlen($lastcom['post_content']) > 200 ? substr($lastcom['post_content'], 0, 200) . "..." : $lastcom['post_content'] ?></div>
                             </div>
-                            <a href="/community/user/<?= $lastcom['username'] ?>" target="_blank" class="user-name is-level-x">
-                                <?= $lastcom['username'] ?>
-                                <span><?= $lastcom['group'] ?></span>
-                            </a>
+                            <div class="cn-owner">
+                                <div class="profile-avatar">
+                                    <img src="<?= $lastcom['avatar'] ?>" alt="Obanai">
+                                </div>
+                                <a href="/community/user/<?= $lastcom['username'] ?>" target="_blank" class="user-name is-level-x">
+                                    <?= $lastcom['username'] ?>
+                                    <span><?= $lastcom['group'] ?></span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
                     <?php endforeach; ?>
                 </div>
             </div>
