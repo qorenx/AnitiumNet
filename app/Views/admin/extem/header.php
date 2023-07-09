@@ -65,14 +65,6 @@
     <div id="wrapper" data-page="page_home">
         <div id="sidebar_menu">
             <button class="btn btn-radius btn-sm btn-secondary toggle-sidebar"><i class="fas fa-angle-left mr-2"></i>Close menu</button>
-
-
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('/admin'); ?>">
-                    <h4><i class="fas fa-user-shield"></i> Admin</h4>
-                </a>
-            </li>
-
             <?php
             $menuItems = array(
                 array('getanime/$uid', 'fas fa-film', 'Get Anime'),
@@ -204,8 +196,12 @@
         <div id="header" class="header-home ">
             <div class="container" style="max-width:100%!important;width:100%!important;">
                 <div id="mobile_menu"><i class="fa fa-bars"></i></div>
-                <a href="/home" id="logo" title="">
-                    <img src="https://anitium.net/files/images/logo.png" width="100%" height="auto" alt="">
+                <a href="/home" id="logo">
+                    <img src="https://anitium.net/files/images/logo.png" width="100%" height="auto">
+                    <div class="clearfix"></div>
+                </a>
+                <a href="<?= base_url('/admin'); ?>" id="logo">
+                    <h4><i class="fas fa-user-shield" width="100%" height="auto"></i>Admin</h4>
                     <div class="clearfix"></div>
                 </a>
                 <?php if (auth()->user()) : ?>

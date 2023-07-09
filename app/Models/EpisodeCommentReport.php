@@ -18,7 +18,7 @@ class EpisodeCommentReport extends Model
     {
         return $this->db
             ->table('report_episode_comment')
-            ->select('report_episode_comment.report_main_id as id, episode_comment.id as comment_id, report_episode_comment.id as report_id, episode_comment.post_id as id, episode_comment.post_content, episode_comment.post_spo')
+            ->select('report_episode_comment.report_main_id as id, episode_comment.post_id as repy_id, episode_comment.id as comment_id, report_episode_comment.id as report_id, episode_comment.post_id as id, episode_comment.post_content, episode_comment.post_spo')
             ->join('episode_comment', 'episode_comment.post_id = report_episode_comment.report_main_id')
             ->get()
             ->getResultArray();
