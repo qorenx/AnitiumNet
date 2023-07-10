@@ -2,7 +2,7 @@ AnimeWatchScript  - Our site is a zoro.to clone. Although the features are not t
 ---
 Preview: anitium.net
 Our preview site version:  0.9.7 
-Our current version:  0.9.7 
+Our current version:  0.9.7.1
 Available now. It can be purchased. The development process continues. You can donate. I'm waiting for Discord. Donors are given a role.
 ---I'll wait for more on discord.
 
