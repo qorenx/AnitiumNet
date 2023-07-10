@@ -19,24 +19,26 @@
                     <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
                         <div class="swiper-wrapper schedule" id="scheduleDiv" style="transform: translate3d(0px,0px,0px);">
                             <?php
-                            $month = date('m');
-                            $year = date('Y');
+                            $date = new DateTime();
+                            $month = $date->format('m');
+                            $year = $date->format('Y');
                             $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);
-                            $days = date('d');
+                            $days = $date->format('d');
                             $dayItem = '';
 
                             for ($i = 1; $i <= $days_in_month; ++$i) {
                                 $isActive = $days == $i ? ' active' : '';
+                                $day = new DateTime($year . '-' . $month . '-' . $i);
                                 $dayItem .= sprintf(
-                                    '<div class="swiper-slide day-item" onclick="rundaysCommand(%d)" style="width: 101.714px; margin-right: 13px;">
-        <div class="tsd-item%s">
-            <span>%s</span>
-            <div class="date">%d</div>
-        </div>
-    </div>',
+                                    '<div class="swiper-slide day-item" onclick="rundaysCommand(%d)" style="width: 60.714px; margin-right: 13px;">
+                                        <div class="tsd-item%s">
+                                            <span>%s</span>
+                                            <div class="date">%d</div>
+                                        </div>
+                                    </div>',
                                     $i,
                                     $isActive,
-                                    date('D', strtotime($year . '-' . $month . '-' . $i)),
+                                    $day->format('D'),
                                     $i
                                 );
                             }
@@ -47,7 +49,7 @@
                         <script>
                             function rundaysCommand(days) {
                                 var scheduleDiv = document.getElementById('scheduleDiv');
-                                scheduleDiv.style.transform = "translate3d(" + (days * -101.714) + "px, 0px, 0px)";
+                                scheduleDiv.style.transform = `translate3d(${days * -60.714}px, 0px, 0px)`;
                             }
                         </script>
                         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
@@ -71,10 +73,10 @@
                 const swiperWrapper = document.querySelector('.schedule');
                 const nextBtn = document.querySelector('.tsn-next');
                 const prevBtn = document.querySelector('.tsn-prev');
-                const slideWidth = 101.714;
+                const slideWidth = 60.714;
                 let currentPosition = <?php
-                                        $days = isset($_GET['days']) ? $_GET['days'] : date('d');
-                                        echo ($days * -101.714) . ''
+                                        $days = isset($_GET['days']) ? $_GET['days'] : $date->format('d');
+                                        echo ($days * -60.714) . ''
                                         ?>;
 
                 nextBtn.addEventListener('click', () => {
