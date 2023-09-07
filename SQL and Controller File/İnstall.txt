@@ -1,0 +1,27 @@
+1;
+
+The folder in Controller.zip should be extracted into "*\www\app\".
+
+2; 
+
+Open "*\www\app\Config\App.php" inside app.php and public string $baseURL = 'http://localhost:8080/'; make it according to your own site. Example 'https://anitium.net/' delete the trailing "/" if problems occur. Or turn https => http. These are variables that depend on your server.
+
+
+3: 
+
+Open "*\www\app\Config\Database.php" and in "public array $default "
+         'hostname' => 'localhost',
+         'username' => '',
+         'password' => '',
+         'database' => '',
+Set them again according to the sql you installed.
+
+4:
+Go to https://lic.anitium.net/buy.php.
+Type License and Site Name and Click "Start License"!!!
+
+Free License: RE592-SE150-BE480
+Site name: yoursite.com
+
+Don't use it like "https:// or /". Write your pure site.
+For example "expe.in.cv"..

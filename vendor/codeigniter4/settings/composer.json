@@ -1,0 +1,74 @@
+{
+    "name": "codeigniter4/settings",
+    "description": "Settings library for CodeIgniter 4",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "codeigniter",
+        "codeigniter4",
+        "settings"
+    ],
+    "authors": [
+        {
+            "name": "Lonnie Ezell",
+            "email": "lonnieje@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/codeigniter4/settings",
+    "require": {
+        "php": "^7.4 || ^8.0"
+    },
+    "require-dev": {
+        "codeigniter4/devkit": "^1.0",
+        "codeigniter4/framework": "^4.2.3",
+        "rector/rector": "0.16.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "CodeIgniter\\Settings\\": "src"
+        },
+        "exclude-from-classmap": [
+            "**/Database/Migrations/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests",
+            "Tests\\Support\\": "tests/_support"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "bash -c \"if [ -f admin/setup.sh ]; then bash admin/setup.sh; fi\""
+        ],
+        "analyze": [
+            "phpstan analyze",
+            "psalm",
+            "rector process --dry-run"
+        ],
+        "sa": "@analyze",
+        "ci": [
+            "Composer\\Config::disableProcessTimeout",
+            "@cs",
+            "@deduplicate",
+            "@analyze",
+            "@inspect",
+            "@test"
+        ],
+        "cs": "php-cs-fixer fix --ansi --verbose --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix --ansi --verbose --diff --using-cache=yes",
+        "style": "@cs-fix",
+        "deduplicate": "phpcpd app/ src/",
+        "inspect": "deptrac analyze --cache-file=build/deptrac.cache",
+        "mutate": "infection --threads=2 --skip-initial-tests --coverage=build/phpunit",
+        "test": "phpunit"
+    }
+}
