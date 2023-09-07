@@ -299,7 +299,6 @@ $routes->group('cron', function ($routes) {
 
 
 //Bu sadece anitium.net çalışıyor.  Ek kodlar ve yazılım var. 
-$routes->get('getLicense/(:any)/(:any)', 'License::getLicense/$1/$2');
-//$routes->get('getLicense/(:any)/(:any)/(:any)', 'License::getLicense/$1/$2/$3');
+$routes->get('getLicense/(:any)/(:any)/(:any)', 'License::getLicense/$1/$2/$3');
 $routes->get('getLicenseFile/(:any)', 'License::getLicenseFile/$1'); 
 
