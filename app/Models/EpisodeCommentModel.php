@@ -47,7 +47,7 @@ class EpisodeCommentModel extends Model
         ')
             ->join('users', 'users.id = episode_comment.user_id')
             ->join('auth_groups_users', 'auth_groups_users.user_id = episode_comment.user_id', 'left outer')
-    
+
             ->orderBy('episode_comment.created_at', 'DESC')
             ->get()
             ->getResultArray();
@@ -72,7 +72,7 @@ class EpisodeCommentModel extends Model
             ')
                 ->join('users', 'users.id = episode_comment_repy.user_id')
                 ->join('auth_groups_users', 'auth_groups_users.user_id = episode_comment_repy.user_id', 'left outer')
-    
+
                 ->orderBy('episode_comment_repy.created_at', 'DESC')
                 ->get()
                 ->getResultArray();
@@ -113,19 +113,19 @@ class EpisodeCommentModel extends Model
     public function episoderrepcount($postid)
     {
         $results = $this->db->table('episode_repy_rep')
-        ->where('post_id', $postid)
-        ->select('post_id, post_rep, post_disrep')
-        ->get()
-        ->getResultArray();
-    
-        $total_post_rep = array_reduce($results, function($carry, $item){
+            ->where('post_id', $postid)
+            ->select('post_id, post_rep, post_disrep')
+            ->get()
+            ->getResultArray();
+
+        $total_post_rep = array_reduce($results, function ($carry, $item) {
             return $carry + $item['post_rep'];
         }, 0);
-    
-        $total_post_disrep = array_reduce($results, function($carry, $item){
+
+        $total_post_disrep = array_reduce($results, function ($carry, $item) {
             return $carry + $item['post_disrep'];
         }, 0);
-    
+
         return [
             'post_id' => $postid,
             'total_post_rep' => $total_post_rep,
@@ -158,7 +158,7 @@ class EpisodeCommentModel extends Model
             ->getResultArray();
     }
 
-    public function lastepisodecomment()
+    public function commenttoplast($gets)
     {
         $db = \Config\Database::connect();
         $query = $db
@@ -167,12 +167,20 @@ class EpisodeCommentModel extends Model
             ->join('anime', 'anime.uid = episode_comment.post_ani', 'left outer')
             ->join('users', 'users.id = episode_comment.user_id', 'left outer')
             ->join('auth_groups_users', 'auth_groups_users.id = episode_comment.user_id', 'left outer')
-            ->orderBy('created_at', 'DESC')
-            ->limit(15)
-            ->get()
-            ->getResultArray();
+            ->orderBy('created_at', 'DESC');
+
+        if ($gets == 2) {
+            $query = $query->limit(50);
+            $data = $query->get()->getResultArray();
+            shuffle($data);
+            $data = array_slice($data, 0, 15);
+        } else {
+            $query = $query->limit(15);
+            $data = $query->get()->getResultArray();
+        }
+
         $db->close();
-        return $query;
+        return $data;
     }
 
     public function boardusercomment($userid)

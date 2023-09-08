@@ -11,25 +11,22 @@
                 <?php foreach (array_slice($topupcoming, 0, 12) as $topcoming) : ?>
                     <div class="flw-item">
                         <div class="film-poster">
-                            <div class="tick tick-rate"><?php
-                                                        $ratings = [
-                                                            1 => 'G',
-                                                            2 => 'PG',
-                                                            3 => 'PG-13',
-                                                            4 => 'R',
-                                                            5 => 'Rx'
-                                                        ];
+                            <?php
+                            $ratings = [
+                                3 => 'PG-13',
+                                4 => 'R-16',
+                                5 => 'Rx-18'
+                            ];
 
-                                                        echo $ratings[$topcoming['ani_rate']] ?? '';
-                                                        ?></div>
-                            <div class="tick tick-eps"><?php echo $topcoming['ani_ep'] ?></div>
-                            <div class="tick ltr">
-                            </div>
-                            <div class="tick rtl">
-                                <div class="tick-item">
-                                    <span><?php echo $topcoming['ani_aired'] ?></span>
+                            if (isset($ratings[$topcoming['ani_rate']])) {
+                            ?>
+                                <div class="tick tick-rate">
+                                    <?php echo $ratings[$topcoming['ani_rate']]; ?>
                                 </div>
-                            </div>
+                            <?php
+                            }
+                            ?>
+                            <div class="tick tick-eps">(<?php echo $topcoming['ani_ep'] ?> EPS)</div>
                             <img class="film-poster-img ls-is-cached lazyloaded" src="<?php echo $topcoming['ani_poster'] ?>">
                             <a href="/anime/<?php echo $topcoming['uid'] ?>/<?php echo str_replace(' ', '-', $topcoming['ani_name']); ?>" class="film-poster-ahref" data-id="<?php echo $topcoming['uid'] ?>"><i class="fas fa-play"></i></a>
                         </div>
@@ -53,18 +50,12 @@
                                     }
                                     ?>
                                 </span>
+                                <?php
+                                $date = DateTime::createFromFormat("Y-m-d", $topcoming['ani_aired']);
+                                $formattedDate = $date->format("M j, Y");
+                                ?>
                                 <span class="dot"></span>
-                                <span class="fdi-item fdi-duration">
-                                    <?php
-                                    $seasons = [
-                                        1 => 'Winter',
-                                        2 => 'Spring',
-                                        3 => 'Summer',
-                                        4 => 'Fall'
-                                    ];
-                                    echo $seasons[$topcoming['ani_release_season']] ?? 'Unknown';
-                                    ?> <?php echo $topcoming['ani_release'] ?>
-                                </span>
+                                <span class="fdi-item fdi-duration"><?php echo $formattedDate ?></span>
                             </div>
                         </div>
                         <div class="clearfix"></div>

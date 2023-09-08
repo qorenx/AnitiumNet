@@ -32,10 +32,7 @@ class AnimeModel extends Model
         'ani_release_season',
         'ani_rate',
         'ani_score',
-        'ani_raw',
-        'ani_sub',
-        'ani_dub',
-        'ani_turk',
+        'ani_quality',
         'ani_pv',
         'ani_release',
         'ani_release_season',
@@ -53,9 +50,38 @@ class AnimeModel extends Model
 
     public function getAnimeByUid($uid)
     {
-        return $this->where('uid', $uid)->first();
+        $typedefault = [1, 2, 3, 4];
+        $types = $typedefault;
+        $db = \Config\Database::connect();
+        $toBeCheckedTypes = ['RAW', 'SUB', 'DUB', 'TURK'];
+        $foundTypes = [];
+        $animeData = null;
+    
+        foreach ($types as $type) {
+            $query = $db
+                ->table('anime')
+                ->select('anime.*, GROUP_CONCAT(episode_embed.embed_type) as embed_types')
+                ->where('anime.uid', $uid)
+                ->join('episode_embed', 'anime.uid = episode_embed.embed_uid', 'left')
+                ->groupBy('anime.uid')
+                ->get()
+                ->getResultArray();
+    
+            if (!empty($query[0])) {
+                if (strpos($query[0]['embed_types'], (string) $type) !== false) {
+                    $foundTypes[$toBeCheckedTypes[$type - 1]] = 1;
+                } else {
+                    $foundTypes[$toBeCheckedTypes[$type - 1]] = 0;
+                }
+    
+                $animeData = $query[0];
+            }
+        }
+    
+        $db->close();
+    
+        return array_merge($animeData, ['type' => $foundTypes]);
     }
-
     public function search($data)
     {
         $query = $this->db->table('anime');
@@ -108,7 +134,7 @@ class AnimeModel extends Model
                     break;
             }
         }
-    
+
         if (isset($data['aired'])) {
             if (strlen($data['aired']) === 4) {
                 $data['aired'] = $data['aired'] . '%';
@@ -118,10 +144,10 @@ class AnimeModel extends Model
                 $data['aired'] = null;
             }
             if ($data['aired'] !== null) {
-               $query->where('ani_aired LIKE', $data['aired']);
+                $query->where('ani_aired LIKE', $data['aired']);
             }
         }
-    
+
         if (isset($data['genres'])) {
             $genreArray = explode(",", $data['genres']);
             $whereCondition = "";
@@ -133,7 +159,7 @@ class AnimeModel extends Model
             }
             $query->where($whereCondition);
         }
-    
+
         if (isset($data['sort'])) {
             switch ($data['sort']) {
                 case 'recently_added':
@@ -158,9 +184,9 @@ class AnimeModel extends Model
                     break;
             }
         }
-    
+
         $result = $query->get()->getResultArray();
-    
+
         return $result;
     }
 
@@ -182,7 +208,7 @@ class AnimeModel extends Model
     {
         return $this->db
             ->table('anime')
-            ->select('uid, ani_poster, ani_name, ani_type, ani_ep, ani_release, ani_release_season, ani_rate, ani_aired')
+            ->select('uid, ani_poster, ani_name, ani_type, ani_ep, ani_rate, ani_aired')
             ->where('ani_stats', '3')
             ->orderBy('RAND()')
             ->limit(12)
@@ -194,7 +220,7 @@ class AnimeModel extends Model
     {
         $query = $this->db->table('anime')
             ->whereIn('ani_stats', [1, 2])
-            ->select('uid, ani_poster, ani_name, ani_type, ani_ep, ani_release, ani_release_season, ani_rate, ani_aired')
+            ->select('uid, ani_poster, ani_name, ani_type, ani_ep, ani_rate, ani_aired')
             ->orderBy('RAND()')
             ->limit(24);
         return $query->get()->getResultArray();
@@ -289,10 +315,8 @@ class AnimeModel extends Model
     public function getqtip($uid)
     {
         $result = $this->where('uid', $uid)
-        ->get()
-        ->getResultArray();
+            ->get()
+            ->getResultArray();
         return $result[0];
     }
 }
-
-

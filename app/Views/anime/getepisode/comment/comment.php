@@ -62,8 +62,12 @@
                 </div>
             <?php endif; ?>
             <div class="list-comment">
-                <div id="result" class="cw_list"></div>
-                <button style="margin: 0 auto; display: block; font-size: 16px; padding: 10px 20px; background-color: #353b4d; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="episodemorecomment()" id="viewpostbutton">Show Post</button>
+                <div class="cw_list"></div>
+                <div class="rep-more mt-3">
+                    <button type="button" class="btn btn-sm" onclick="episodemorecomment()" id="cm-view-more">
+                        <i class="fas fa-caret-down mr-2"></i><span>View more</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

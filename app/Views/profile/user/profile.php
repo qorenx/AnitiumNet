@@ -1,8 +1,9 @@
 <?= $this->include('profile/extend/header') ?>
+
 <body data-page="page_home">
     <div id="sidebar_menu_bg"></div>
     <div id="wrapper" data-page="page_home">
-        <?= $this->include('profile/extend/head') ?>
+        <?= $this->include('anime/extend/templates/head') ?>
         <div class="clearfix"></div>
         <div id="main-wrapper" class="layout-page layout-profile">
             <div class="profile-header">

@@ -1425,6 +1425,24 @@ div.detail .is-info>div {
     font-size: 12px
 }
 
+.tick.tick-eps {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    line-height: 1.1;
+    bottom: auto;
+    background: #0d1c409e;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 4px 6px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .3);
+    min-width: 36px;
+    text-align: center;
+    font-size: 12px;
+}
+
+
 .flv-list .flw-item {
     width: 100% !important;
     margin: 0 0 5px !important

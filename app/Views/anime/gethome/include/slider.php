@@ -30,44 +30,33 @@
                         </div>
                         <div class="scd-item m-hide">
                             <i class="fas fa-calendar mr-1"></i>
-                            <?= $slider_data['ani_aired'] ?>
+                            <?php
+                            $date = DateTime::createFromFormat("Y-m-d", $slider_data['ani_aired']);
+                            $formattedDate = $date->format("M j, Y");
+                            ?>
+                            <?php echo $formattedDate ?>
                         </div>
-                        <?php if (auth()->user()->raw_status ?? 1 == 1) : ?>
-                            <?php if (!empty($slider_data['ani_raw'])) : ?>
+                        <?php
+                        $quality = $slider_data['ani_quality'];
+                        if ($quality != 0) {
+                        ?>
+                            <div class="scd-item mr-1"><span class="quality"><?= $quality == 1 ? 'HD' : ($quality == 2 ? 'SD' : ($quality == 3 ? 'BD' : 'BD')) ?></span>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                        <?php
+                        $types = ['raw' => 'RAW', 'sub' => 'SUB', 'dub' => 'DUB', 'turk' => 'TURK'];
+                        foreach ($types as $type => $display) :
+                            if ((auth()->user()->{$type . '_status'} ?? 1) == 1 && !empty($slider_data['type'][$display])) : ?>
                                 <div class="scd-item mr-1">
-                                    <span class="tick-item tick-raw">
-                                        RAW
+                                    <span class="tick-item tick-<?php echo $type; ?>"><?php echo $display; ?>
                                     </span>
                                 </div>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                        <?php if (auth()->user()->sub_status ?? 1 == 1) : ?>
-                            <?php if (!empty($slider_data['ani_sub'])) : ?>
-                                <div class="scd-item mr-1">
-                                    <span class="tick-item tick-sub">
-                                        SUB
-                                    </span>
-                                </div>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                        <?php if (auth()->user()->dub_status ?? 1 == 1) : ?>
-                            <?php if (!empty($slider_data['ani_dub'])) : ?>
-                                <div class="scd-item mr-1">
-                                    <span class="tick-item tick-dub">
-                                        DUB
-                                    </span>
-                                </div>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                        <?php if (auth()->user()->turk_status ?? 1 == 1) : ?>
-                            <?php if (!empty($slider_data['ani_turk'])) : ?>
-                                <div class="scd-item mr-1">
-                                    <span class="tick-item tick-turk">
-                                        TURK
-                                    </span>
-                                </div>
-                            <?php endif; ?>
-                        <?php endif; ?>
+                        <?php
+                            endif;
+                        endforeach;
+                        ?>
                         <div class="desi-description"><?= $slider_data['ani_synopsis'] ?></div>
                     </div>
                     <div class="desi-description"></div>

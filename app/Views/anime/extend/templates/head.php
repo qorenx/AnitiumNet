@@ -24,7 +24,7 @@
     </ul>
     <div class="clearfix"></div>
 </div>
-<div id="header" class="header-home ">
+<div id="header" class="header-home" style="z-index:50;">
     <div class="container" style="max-width:100%!important;width:100%!important;">
         <div id="mobile_menu"><i class="fa fa-bars"></i></div>
         <a href="/home" id="logo" title="">
@@ -183,4 +183,5 @@
         <div class="clearfix"></div>
     </div>
 </div>
+<?= $this->include('profile/user/loginnotconfig') ?>
 <?= $this->include('anime/extend/templates/qtip') ?>

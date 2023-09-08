@@ -1,7 +1,9 @@
 <div id="ani_detail">
     <div class="ani_detail-stage">
         <div class="container" style="max-width:100%!important;width:100%!important;">
-            <div class="anis-cover-wrap"><div class="anis-cover" style="background-image: url(<?= $AnimeData['ani_poster'] ?>)"></div></div>
+            <div class="anis-cover-wrap">
+                <div class="anis-cover" style="background-image: url(<?= $AnimeData['ani_poster'] ?>)"></div>
+            </div>
             <div class="anis-content">
                 <div class="anisc-poster">
                     <div class="film-poster">
@@ -40,41 +42,41 @@
                     <h2 class="film-name dynamic-name"><?= $AnimeData['ani_name'] ?></h2>
                     <div class="tick">
                         <div class="film-stats">
-                            <?php if (!empty($AnimeData['ani_type'])) : ?>
-                                <div class="tick-item tick-type"><?php
-                                                                    if ($AnimeData['ani_type'] == 1) {
-                                                                        echo "TV";
-                                                                    } elseif ($AnimeData['ani_type'] == 2) {
-                                                                        echo "Movie";
-                                                                    } elseif ($AnimeData['ani_type'] == 3) {
-                                                                        echo "Ova";
-                                                                    } elseif ($AnimeData['ani_type'] == 4) {
-                                                                        echo "Ona";
-                                                                    } elseif ($AnimeData['ani_type'] == 5) {
-                                                                        echo "Special";
-                                                                    }
-                                                                    ?></div>
-                            <?php endif; ?>
-                            <?php if (auth()->user()->raw_status ?? 1 == 1) : ?>
-                                <?php if (!empty($AnimeData['ani_raw'])) : ?>
-                                    <div class="tick-item tick-raw">RAW</div>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                            <?php if (auth()->user()->sub_status ?? 1 == 1) : ?>
-                                <?php if (!empty($AnimeData['ani_sub'])) : ?>
-                                    <div class="tick-item tick-sub">SUB</div>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                            <?php if (auth()->user()->dub_status ?? 1 == 1) : ?>
-                                <?php if (!empty($AnimeData['ani_dub'])) : ?>
-                                    <div class="tick-item tick-dub">DUB</div>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                            <?php if (auth()->user()->turk_status ?? 1 == 1) : ?>
-                                <?php if (!empty($AnimeData['ani_turk'])) : ?>
-                                    <div class="tick-item tick-turk">TURK</div>
-                                <?php endif; ?>
-                            <?php endif; ?>
+                            <?php
+                            $quality = $AnimeData['ani_quality'];
+                            if ($quality != 0) {
+                            ?>
+                                <div class="tick-item tick-quality">
+                                    <?= $quality == 1 ? 'HD' : ($quality == 2 ? 'SD' : ($quality == 3 ? 'BD' : 'BD')) ?>
+                                    <div></div>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            <div class="tick-item tick-type"><?php
+                                                                if ($AnimeData['ani_type'] == 1) {
+                                                                    echo "TV";
+                                                                } elseif ($AnimeData['ani_type'] == 2) {
+                                                                    echo "Movie";
+                                                                } elseif ($AnimeData['ani_type'] == 3) {
+                                                                    echo "Ova";
+                                                                } elseif ($AnimeData['ani_type'] == 4) {
+                                                                    echo "Ona";
+                                                                } elseif ($AnimeData['ani_type'] == 5) {
+                                                                    echo "Special";
+                                                                }
+                                                                ?></div>
+
+                            <?php
+                            $types = ['raw' => 'RAW', 'sub' => 'SUB', 'dub' => 'DUB', 'turk' => 'TURK'];
+                            foreach ($types as $type => $display) :
+                                if ((auth()->user()->{$type . '_status'} ?? 1) == 1 && !empty($AnimeData['type'][$display])) : ?>
+                                    <div class="tick-item tick-<?php echo $type; ?>"><?php echo $display; ?></div>
+                            <?php
+                                endif;
+                            endforeach;
+                            ?>
+
                             <?php if (!empty($AnimeData['ani_source'])) : ?>
                                 <div class="tick-item tick-source"><?= ($AnimeData['ani_source'] == 1) ? "Manga" : (($AnimeData['ani_source'] == 2) ? "LightNovel" : "Other") ?></div>
                             <?php endif; ?>

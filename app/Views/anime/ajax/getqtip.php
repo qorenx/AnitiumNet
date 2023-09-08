@@ -4,13 +4,21 @@
                 <div class="pre-qtip-title"><?php echo $data['ani_name'] ?></div>
             <?php endif; ?>
             <div class="pre-qtip-detail">
-                <?php if (!empty($data['ani_score'])) : ?>
-                    <span class="pqd-li mr-3"><i class="fas fa-star mr-1 text-warning"></i><?php echo $data['ani_score'] ?></span>
-                <?php endif; ?>
-
+                <span class="pqd-li mr-3"><i class="fas fa-star mr-1 text-warning"></i><?php echo isset($data['ani_score']) && $data['ani_score'] ? $data['ani_score'] : 'N/A'; ?></span>
                 <span class="pqd-li">
                     <div class="tick">
-                        <div class="tick-item tick-quality">HD</div>
+                        <?php
+                        $quality = $data['ani_quality'];
+                        if ($quality != 0) {
+                        ?>
+                            <div class="tick-item tick-quality"><?= $quality == 1 ? 'HD' : ($quality == 2 ? 'SD' : ($quality == 3 ? 'BD' : 'BD')) ?></div>
+                        <?php
+                        } else {
+                        ?>
+                            <div class="tick-item tick-quality">?</div>
+                        <?php
+                        }
+                        ?>
                         <?php if (!empty($data['ani_ep'])) : ?>
                             <div class="tick-item tick-eps"><?php echo $data['ani_ep'] ?></div>
                         <?php endif; ?>
@@ -20,7 +28,6 @@
                     <span class="pqd-li badge badge-quality float-right ml-2"><?php $aniType = [1 => 'TV', 2 => 'Movie', 3 => 'Ova', 4 => 'Ona', 5 => 'Special'];
                                                                                 echo $aniType[$data['ani_type']] ?? ''; ?></span>
                 <?php endif; ?>
-
                 <div class="clearfix"></div>
             </div>
             <div class="pre-qtip-description"><?php echo substr($data['ani_synopsis'], 0, 150) . '...'; ?></div>

@@ -20,8 +20,21 @@
                                     <?php foreach (array_slice($lastep, 0, 56) as $ani_data) : ?>
                                         <div class="flw-item">
                                             <div class="film-poster">
-                                                <div class="tick tick-rate"><?php $ratings = [1 => 'G', 2 => 'PG', 3 => 'PG-13', 4 => 'R', 5 => 'Rx'];
-                                                                            echo $ratings[$ani_data['ani_rate']] ?? ''; ?></div>
+                                                <?php
+                                                $ratings = [
+                                                    3 => 'PG-13',
+                                                    4 => 'R-16',
+                                                    5 => 'Rx-18'
+                                                ];
+
+                                                if (isset($ratings[$ani_data['ani_rate']])) {
+                                                ?>
+                                                    <div class="tick tick-rate">
+                                                        <?php echo $ratings[$ani_data['ani_rate']]; ?>
+                                                    </div>
+                                                <?php
+                                                }
+                                                ?>
                                                 <div class="tick tick-eps"><?php echo $ani_data['ep_id_name'] ?>/<?php echo $ani_data['ani_ep'] ?></div>
 
                                                 <div class="tick ltr">

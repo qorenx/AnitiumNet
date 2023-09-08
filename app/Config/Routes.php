@@ -79,6 +79,7 @@ $routes->get('ajax/episodegetvote/(:any)/(:any)', 'Anime::episodegetvote/$1/$2')
 $routes->get('ajax/getboardlastpost', 'Anime::getboardlastpost'); //board.php içindeki ajax çalıştırıyor.
 $routes->get('ajax/getboardmypost', 'Anime::getboardmypost'); //mypost.php içindeki ajax çalıştırıyor.
 $routes->get('ajax/getboardtagpost', 'Anime::getboardtagpost'); //boardtag.php içindeki ajax çalıştıyor.
+$routes->get('ajax/getcommentlasttop/(:any)', 'Anime::getcommentlasttop/$1'); //boardtag.php içindeki ajax çalıştıyor.
 
 
 
@@ -107,7 +108,6 @@ $routes->post('post/eprepydislike/(:any)', 'Anime::episoderepydislike/$1/');
 
 
 ///ÜYELERLE ALAKALI BİRKAÇ AYAR
-$routes->get('user/register', 'Anime::userregister');   // userprofile
 $routes->group('user', ['filter' => 'group:user,admin,superadmin'], function ($routes) {
     $routes->get('(:any)/(:any)', 'Anime::userprofile/$1/$2');
     $routes->get('(:any)', 'Anime::userprofile/$1');

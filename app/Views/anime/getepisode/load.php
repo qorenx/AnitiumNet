@@ -11,9 +11,7 @@
     }
     document.addEventListener('DOMContentLoaded', () => getEmbed(<?php echo $episodeFirstEmbed; ?>));
 </script>
-
 <script>
-    //Episode Vote Verir ve getVote alır.
     function postVote(voteValue) {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", '/ajax/episodevote/' + voteValue + '/<?php echo urlencode($_GET['uid']); ?>/<?php echo urlencode($_GET['eps']); ?>/', true);
@@ -65,13 +63,15 @@
                 var data = JSON.parse(xhr.responseText);
                 var htmlData = data['html'];
                 var htmlData2 = data['page']['status'];
-                var resultElement = document.getElementById("result");
-                resultElement.innerHTML += htmlData;
+                var resultElements = document.getElementsByClassName("cw_list");
+                for(let element of resultElements) { 
+                  element.innerHTML += htmlData; 
+                }
 
                 nextPage++;
 
                 if (htmlData2 === false) {
-                    var buttonElement = document.getElementById("viewpostbutton");
+                    var buttonElement = document.getElementById("cm-view-more");
                     buttonElement.style.display = "none";
                 }
             }
@@ -94,7 +94,6 @@
 </script>
 
 <script>
-    //Episode Main Comment Like/Dislike Vote System
     function sendRequest(postid, url, callback) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", url + postid, true);
@@ -153,7 +152,6 @@
         fetchData(postid, "/ajax/geteprepylike/");
     }
 </script>
-
 <script>
     const textarea = document.getElementById('df-cm-content');
     const buttonClose = document.getElementById('df-cm-close');

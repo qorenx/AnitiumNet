@@ -52,11 +52,11 @@
                                 </div>
                                 <div class="tab-container">
                                     <ul class="nav nav-tabs">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" onclick="changeTab(event, 'tab1'); return false;" href="#"><?php echo $settings['Advanced'][0]['value']; ?></a>
+                                        <li class="nav-item" data-tab="tab1">
+                                            <a class="nav-link active" href="#"><?php echo $settings['Advanced'][0]['value']; ?></a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" onclick="changeTab(event, 'tab2'); return false;" href="#">Disqus</a>
+                                        <li class="nav-item" data-tab="tab2">
+                                            <a class="nav-link" href="#">Disqus</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content chat" id="tab1">
@@ -66,20 +66,6 @@
                                         <?= $this->include('anime/getepisode/comment/disqus') ?>
                                     </div>
                                 </div>
-                                <script>
-                                    function changeTab(evt, tabId) {
-                                        var tabContent = document.querySelectorAll('.tab-content.chat');
-                                        for (var i = 0; i < tabContent.length; i++) {
-                                            tabContent[i].style.display = "none";
-                                        }
-                                        var tabLinks = document.querySelector('.nav-tabs').getElementsByTagName("li");
-                                        for (var i = 0; i < tabLinks.length; i++) {
-                                            tabLinks[i].classList.remove('active');
-                                        }
-                                        evt.currentTarget.parentElement.classList.add("active");
-                                        document.getElementById(tabId).style.display = "block";
-                                    }
-                                </script>
                             </section>
                             <?= $this->include('anime/getepisode/include/recommended') ?>
                             <div class="clearfix"></div>
@@ -92,12 +78,6 @@
                 <div id="mask-overlay"></div>
                 <?= $this->include('anime/loadscript') ?>
                 <?= $this->include('anime/getepisode/load') ?>
-                <script type="text/javascript">
-                    $(".btn-server").click(function() {
-                        $(".btn-server").removeClass("active");
-                        $(this).closest(".btn-server").addClass("active");
-                    });
-                </script>
             </div>
 </body>
 

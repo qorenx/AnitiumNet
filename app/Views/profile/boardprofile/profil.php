@@ -3,7 +3,7 @@
 <body data-page="page_home">
     <div id="sidebar_menu_bg"></div>
     <div id="wrapper" data-page="page_home">
-        <?= $this->include('profile/extend/head') ?>
+        <?= $this->include('anime/extend/templates/head') ?>
         <div class="clearfix"></div>
         <div id="main-wrapper" class="layout-page layout-award">
             <div class="award-bg">
@@ -138,27 +138,27 @@
                                                                                         break;
                                                                                 }
                                                                                 ?>"></i><?php
-                                                    $datetime1 = new DateTime(); // current datetime
-                                                    $datetime2 = new DateTime($value['created_at']);
-                                                    $interval = $datetime1->diff($datetime2);
+                                                                                        $datetime1 = new DateTime(); // current datetime
+                                                                                        $datetime2 = new DateTime($value['created_at']);
+                                                                                        $interval = $datetime1->diff($datetime2);
 
-                                                    $year = $interval->format('%y');
-                                                    $month = $interval->format('%m');
-                                                    $day = $interval->format('%d');
-                                                    $hour = $interval->format('%h');
-                                                    $minute = $interval->format('%i');
+                                                                                        $year = $interval->format('%y');
+                                                                                        $month = $interval->format('%m');
+                                                                                        $day = $interval->format('%d');
+                                                                                        $hour = $interval->format('%h');
+                                                                                        $minute = $interval->format('%i');
 
-                                                    if ($year >= 1)
-                                                        echo $year . " year(s) ago";
-                                                    else if ($month >= 1)
-                                                        echo $month . " month(s) ago";
-                                                    else if ($day >= 1)
-                                                        echo $day . " day(s) ago";
-                                                    else if ($hour >= 1)
-                                                        echo $hour . " hour(s) ago";
-                                                    else
-                                                        echo $minute . " minute(s) ago";
-        ?>
+                                                                                        if ($year >= 1)
+                                                                                            echo $year . " year(s) ago";
+                                                                                        else if ($month >= 1)
+                                                                                            echo $month . " month(s) ago";
+                                                                                        else if ($day >= 1)
+                                                                                            echo $day . " day(s) ago";
+                                                                                        else if ($hour >= 1)
+                                                                                            echo $hour . " hour(s) ago";
+                                                                                        else
+                                                                                            echo $minute . " minute(s) ago";
+                                                                                        ?>
                                                                 </div>
                                                             </div>
                                                             <div class="subject">

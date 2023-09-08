@@ -270,43 +270,15 @@
                                                 </div>
                                             </div><br>
                                             <div class="form-group row">
-                                                <label for="ani_raw" class="col-sm-4 col-form-label">Ani Raw:</label>
+                                                <label for="ani_quality" class="col-sm-4 col-form-label">Anime Quality:</label>
                                                 <div class="col-sm-8">
-                                                    <select name="ani_raw" id="ani_raw" class="form-control">
-                                                        <option value="">NO</option>
-                                                        <option value="1">RAW</option>
-                                                    </select>
-                                                </div>
-                                            </div><br>
-                                            <div class="form-group row">
-                                                <label for="ani_sub" class="col-sm-4 col-form-label">Ani Sub:</label>
-                                                <div class="col-sm-8">
-                                                    <select name="ani_sub" id="ani_sub" class="form-control">
-                                                        <option value="">NO</option>
-                                                        <option value="1">SUB</option>
-                                                    </select>
-                                                </div>
-                                            </div><br>
-                                            <div class="form-group row">
-                                                <label for="ani_dub" class="col-sm-4 col-form-label">Ani Dub:</label>
-                                                <div class="col-sm-8">
-                                                    <select name="ani_dub" id="ani_dub" class="form-control">
-                                                        <option value="">NO</option>
-                                                        <option value="1">DUB</option>
-                                                    </select>
-                                                </div>
-                                            </div><br>
-                                            <div class="form-group row">
-                                                <label for="ani_turk" class="col-sm-4 col-form-label">Ani Turk:</label>
-                                                <div class="col-sm-8">
-                                                    <select name="ani_turk" id="ani_turk" class="form-control">
-                                                        <option value="">NO</option>
-                                                        <option value="1">TURK</option>
+                                                    <select name="ani_quality" id="ani_quality" class="form-control">
+                                                        <option value="1">HD</option>
+                                                        <option value="2">SD</option>
                                                     </select>
                                                 </div>
                                             </div><br>
                                         </div>
-
                                         <div class="tab-pane fade" id="poster">
                                             <br>
                                             <div class="form-group row">
