@@ -1,4 +1,3 @@
-<?php if (empty($nextData->ep_id_name)) : ?>
     <?php if (!empty($schedulenext[0]['sc_days'])) : ?>
         <div class="schedule-alert">
             <div class="alert small">
@@ -8,4 +7,3 @@
             </div>
         </div>
     <?php endif; ?>
-<?php endif; ?>

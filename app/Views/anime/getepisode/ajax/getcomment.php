@@ -18,7 +18,7 @@
                 <a href="/community/user/<?= $post['username'] ?>" target="_blank" class="<?= $postclass ?>">
                     <?= $post['username'] ?><span><?= $post['group'] ?></span></a>
                 <div class="time"> <?php
-                                    $datetime1 = new DateTime(); // current datetime
+                                    $datetime1 = new DateTime(); 
                                     $datetime2 = new DateTime($post['created_at']);
                                     $interval = $datetime1->diff($datetime2);
 

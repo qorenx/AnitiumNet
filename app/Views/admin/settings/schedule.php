@@ -48,10 +48,6 @@
                                         <label for="sc_time">Episode Time:</label>
                                         <input class="form-control" type="text" id="sc_time" name="sc_time" required><br>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="sc_name">Anime Name:</label>
-                                        <input class="form-control" type="text" id="sc_name" name="sc_name" required><br>
-                                    </div>
                                     <button class="btn btn-info" type="submit" name="submit">Submit</button>
                                 </div>
                             </div>
@@ -74,7 +70,7 @@
                                         return $result;
                                     }, []);
                                     foreach ($groupedScheduleList as $sc_id => $animeGroup) : ?>
-                                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#animeGroup<?= $sc_id ?>" aria-expanded="false" aria-controls="animeGroup<?= $sc_id ?>" title="<?= $animeGroup[0]['sc_name'] ?>">
+                                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#animeGroup<?= $sc_id ?>" aria-expanded="false" aria-controls="animeGroup<?= $sc_id ?>">
                                             <?= $sc_id ?>
                                         </button>
                                     <?php endforeach; ?>

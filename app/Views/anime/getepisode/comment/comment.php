@@ -49,12 +49,12 @@
                         <div class="user-name">
                             Login to leave a <span class="link-highlight ml-1">comment</span>
                         </div>
-                        <textarea id="df-cm-content" class="form-control form-control-textarea comment-subject" name="post_content" maxlength="3000" placeholder="You must be logged in to post a comment. If you do not have a membership, register." readonly></textarea>
+                        <textarea data-toggle="modallogin" data-target="#modallogin" data-tab-show="#modal-tab-login" id="df-cm-content" class="form-control form-control-textarea comment-subject" name="post_content" maxlength="3000" placeholder="You must be logged in to post a comment. If you do not have a membership, register." readonly></textarea>
                         <div class="ci-buttons" id="df-cm-buttons">
                             <div class="ci-b-right">
                                 <div class="cb-li"><a class="btn btn-sm btn-secondary" id="df-cm-close">Close</a></div>
                                 <div class="cb-li">
-                                    <button class="btn btn-sm btn-primary ml-2">Comment</button>
+                                    <button class="btn btn-sm btn-primary ml-2" data-toggle="modallogin" data-target="#modallogin" data-tab-show="#modal-tab-login">Comment</button>
                                 </div>
                             </div>
                         </div>
@@ -72,3 +72,7 @@
         </div>
     </div>
 </section>
+
+
+
+

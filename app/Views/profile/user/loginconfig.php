@@ -87,7 +87,7 @@
         <div id="user-slot">
             <div class="header_right-user logged">
                 <div class="dropdown">
-                    <a class="btn-user btn btn-sm btn-primary btn-login" data-toggle="modal" data-target="#modallogin" data-tab-show="#modal-tab-login"><i style="color:red;" class="fa-solid fa-user-astronaut fa-beat"></i></a>
+                    <a class="btn-user btn btn-sm btn-primary btn-login" data-toggle="modallogin" data-target="#modallogin" data-tab-show="#modal-tab-login"><i style="color:red;" class="fa-solid fa-user-astronaut fa-beat"></i></a>
                 </div>
             </div>
         </div>

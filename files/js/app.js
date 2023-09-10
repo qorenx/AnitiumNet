@@ -5079,13 +5079,13 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-	$('[data-toggle="modal"]').click(function () {
+	$('[data-toggle="modallogin"]').click(function () {
 		var targetModal = $(this).data('target');
 		var targetTab = $(this).data('tab-show');
-		$('.tab-pane').removeClass('active show');
-		$(targetTab).addClass('active show');
+		$(targetModal).find('.tab-pane').removeClass('active show');
+		$(targetModal).find(targetTab).addClass('active show');
 		$(targetModal).modal('show');
-	});
+	 });
 	$('#modallogin').on('show.bs.modal', function (event) {
 		var button = $(event.relatedTarget);
 		var loginOrRegister = button.data('tab-show');

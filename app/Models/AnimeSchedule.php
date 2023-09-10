@@ -9,7 +9,7 @@ class AnimeSchedule extends Model
     protected $table = 'ani_schedule'; 
     protected $primaryKey = 'id';  
 
-    protected $allowedFields = ['id', 'sc_days', 'sc_id', 'sc_ep', 'sc_name', 'sc_time'];
+    protected $allowedFields = ['id', 'sc_days', 'sc_id', 'sc_ep', 'sc_time'];
 
 
     public function schedulenext($uid){
@@ -26,13 +26,14 @@ class AnimeSchedule extends Model
     
     public function schedule($days) {
         return  $this->db
-          ->table('ani_schedule')
-          ->where('sc_days', $days)
-          ->select('sc_days, sc_ep, sc_time, sc_name, sc_id')
-          ->orderBy('sc_time')
-          ->get()
-          ->getResultArray();
-      
-      }
+              ->table('ani_schedule')
+              ->join('anime', 'ani_schedule.sc_id = anime.uid')
+              ->where('sc_days', $days)
+              ->select('sc_days, sc_ep, sc_time, ani_schedule.sc_id, anime.ani_name')
+              ->orderBy('sc_time')
+              ->get()
+              ->getResultArray();
+          
+    }
 
 }
