@@ -14,7 +14,6 @@
     <link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>files/css/home.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>files/css/style.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>files/css/min.css">
     <link rel="manifest" href="./manifest.json">
