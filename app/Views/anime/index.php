@@ -40,7 +40,30 @@
             </div>
         </div>
         <div id="xmain-wrapper">
-            <div id="mw-top" style="background-image: url('<?php echo $settings['İndex'][1]['value']; ?>');background-attachment: fixed;">
+        <?php 
+        $randomTime = mt_rand(1, 10);
+    ?>
+
+    <style>
+        #mw-top {
+            background-image: url('<?php echo $settings['İndex'][1]['value']; ?>');
+            background-repeat: no-repeat;
+            background-size: cover;
+            animation: updown <?php echo $randomTime; ?>s ease-in-out infinite;
+            background-position: center bottom;
+        }
+
+        @keyframes updown {
+            0%, 100% {
+                background-position: center bottom;
+            }
+
+            50% {
+                background-position: center top;
+            }
+        }
+    </style>
+            <div id="mw-top">
                 <div class="container">
                     <div class="mwt-content">
                         <div class="mwt-icon"><img src="<?php echo $settings['İndex'][0]['value']; ?>">

@@ -170,7 +170,7 @@ class EpisodeCommentModel extends Model
             ->orderBy('created_at', 'DESC');
 
         if ($gets == 2) {
-            $query = $query->limit(50);
+            $query = $query->limit(100);
             $data = $query->get()->getResultArray();
             shuffle($data);
             $data = array_slice($data, 0, 15);

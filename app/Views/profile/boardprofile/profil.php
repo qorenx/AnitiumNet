@@ -7,7 +7,7 @@
         <div class="clearfix"></div>
         <div id="main-wrapper" class="layout-page layout-award">
             <div class="award-bg">
-                <div class="award-bg-img" style="background-image: url(/files/images/cover.png);"></div>
+                <div class="award-bg-img" style="background-image: url(/assest/images/cover.png);"></div>
             </div>
             <div class="container">
                 <div class="award-inner">
@@ -56,7 +56,7 @@
                                 <div class="block_area-content block_area-list film_list film_list-grid">
                                     <div class="film_list-wrap">
 
-                                        <?php foreach (array_slice($animelist, 0, 5) as $key => $value) : ?>
+                                        <?php foreach (array_slice($animelist, 0, 10) as $key => $value) : ?>
                                             <div class="flw-item">
                                                 <div class="film-poster">
                                                     <div class="tick ltr">
@@ -87,7 +87,7 @@
                                                                                     ?></div>
                                                     </div>
                                                     <img class="film-poster-img lazyloaded" src="<?php echo $value['ani_poster']; ?>">
-                                                    <a href="<?php echo base_url('anime/' . $value['uid'] . '/' . $value['ani_name']); ?>" class="film-poster-ahref item-qtip loaded"><i class="fas fa-play"></i></a>
+                                                    <a class="film-poster-ahref" data-id="<?php echo $value['uid'] ?>" href="<?php echo base_url('anime/' . $value['uid'] . '/' . $value['ani_name']); ?>"><i class="fas fa-play"></i></a>
                                                 </div>
                                                 <div class="film-detail">
                                                     <h3 class="film-name"><a href="<?php echo base_url('anime/' . $value['uid'] . '/' . $value['ani_name']); ?>"><?= $value['ani_name'] ?></a></h3>
@@ -102,7 +102,7 @@
                                     </div>
                                     <div class="clearfix"></div>
                                     <div class="py-3">
-                                        <a href="/community/user/<?= $getuserdata->username ?>/all" class="btn sbtn btn-block btn-secondary">View more</a>
+                                        <a href="/community/user/<?= $getuserdata->username ?>/all?sort=" class="btn sbtn btn-block btn-secondary">View more</a>
                                     </div>
                                 </div>
                             </div>

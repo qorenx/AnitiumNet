@@ -41,6 +41,13 @@ $routes->set404Override();
 $routes->get('/', 'Anime::index'); 
 // localhost/home sayfası oluşturan kısım.
 $routes->get('/home', 'Anime::home');
+// localhost/dmca page / contact
+$routes->get('dmca', 'Anime::dmca');
+$routes->get('contact', 'Anime::contact');
+$routes->get('tos', function() {
+    return redirect('/');
+});
+
 // localhost/type/ (TV/OVA,Movie etc)
 $routes->get('type/(:any)', 'Anime::anime_type/$1/');
 // localhost/az-list/  (ABCD etc)

@@ -12,10 +12,10 @@
                     <div class="ph-title">Hi, <?= auth()->user()->username ?></div>
                     <div class="ph-tabs">
                         <div class="bah-tabs">
-                            <ul class="nav nav-tabs pre-tabs">
-                                <li class="nav-item"><a class="nav-link" href="/user/profile"><i class="fas fa-user mr-2"></i>Profile</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/user/profile/status/favorite"><i class="fas fa-heart mr-2"></i>Watch List</a></li>
-                                <li class="nav-item"><a class="nav-link active" href="/user/profile/settings"><i class="fas fa-cog mr-2"></i>Settings</a></li>
+                            <ul class="nav nav-tabs pre-tabs" style="display: flex;">
+                                <li><a style="cursor: pointer;" class="nav-link" onclick="window.location.href='/user/profile'"><i class="fas fa-user mr-2"></i>Profile</a></li>
+                                <li><a style="cursor: pointer;" class="nav-link" onclick="window.location.href='/user/profile/status/favorite'"><i class="fas fa-heart mr-2"></i>Watch List</a></li>
+                                <li><a style="cursor: pointer;" class="nav-link active" onclick="window.location.href='/user/profile/settings'"><i class="fas fa-cog mr-2"></i>Settings</a></li>
                             </ul>
                         </div>
                     </div>
@@ -63,14 +63,7 @@
 
                     <!-- Avatar section -->
                     <div class="mb-4 avatar-upload" onclick="document.getElementById('avatar').click()" style="min-width:150px; position:relative;">
-                        <?php
-                        $avatar = auth()->user()->avatar;
-                        $username = auth()->user()->username;
-                        $defaultImage = "https://ui-avatars.com/api/?name=" . urlencode($username) . "&color=7F9CF5&background=EBF4FF";
-                        ?>
-
-                        <img src="<?= empty($avatar) ? $defaultImage : $avatar; ?>" class="avatar-image img-thumbnail mb-2">
-
+                        <img src="<?= $avatar = auth()->user()->avatar; ?>" class="avatar-image img-thumbnail mb-2">
                         <input type="file" id="avatar" value="<?= auth()->user()->avatar ?>" name="avatar" class="form-control-file" hidden>
                         <div class="vertical-line"></div> <!-- vertical Line added -->
                     </div>
@@ -84,28 +77,34 @@
 
                     <!-- Schedule section -->
                     <div class="mb-4" style="min-width:200px; position:relative;">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="schedule_status" name="schedule_status" <?= (auth()->user()->schedule_status == 1) ? 'checked' : '' ?> onchange="toggleValue(this)">
-                            <input type="hidden" id="schedule_status_hidden" name="schedule_status" value="<?= auth()->user()->schedule_status ?>">
-                            <label for="schedule_status" class="form-check-label">Schedule</label>
-                        </div>
+                        <select id="schedule_status" name="schedule_status" onchange="toggleValue(this)">
+                            <option value="0" <?= (auth()->user()->schedule_status == 0) ? 'selected' : '' ?>>Inactive</option>
+                            <option value="1" <?= (auth()->user()->schedule_status == 1) ? 'selected' : '' ?>>Active</option>
+                        </select>
+                        <label for="schedule_status">Schedule</label>
                         <div class="vertical-line"></div> <!-- vertical Line added -->
                     </div>
 
                     <!-- Status section -->
                     <div class="mb-4" style="min-width:200px;">
-                        <label class="form-label">Status</label>
                         <div class="d-flex flex-column">
                             <?php foreach (['raw', 'sub', 'dub', 'turk'] as $status) : ?>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="<?= $status ?>_status" name="<?= $status ?>_status" <?= (auth()->user()->{$status . '_status'} == 1) ? 'checked' : '' ?> onchange="toggleValue(this)">
-                                    <input type="hidden" id="<?= $status ?>_status_hidden" name="<?= $status ?>_status" value="<?= auth()->user()->{$status . '_status'} ?>">
-                                    <label class="form-check-label" for="<?= $status ?>_status"><?= ucfirst($status) ?></label>
+                                <div class="d-flex align-items-start">
+                                    <select id="<?= $status ?>_status" name="<?= $status ?>_status" onchange="toggleValue(this)">
+                                        <option value="0" <?= (auth()->user()->{$status . '_status'} == 0) ? 'selected' : '' ?>>Inactive</option>
+                                        <option value="1" <?= (auth()->user()->{$status . '_status'} == 1) ? 'selected' : '' ?>>Active</option>
+                                    </select>
+                                    <label for="<?= $status ?>_status" class="me-2"><?= ucfirst($status) ?></label>
                                 </div>
                             <?php endforeach; ?>
                         </div>
                     </div>
-
+                    <script type="module">
+                        function toggleValue(select) {
+                            const hiddenInput = document.querySelector(`input[id="${select.id}_status_hidden"]`);
+                            hiddenInput.value = select.value;
+                        }
+                    </script>
                     <!-- Submit button -->
                     <div class="d-grid gap-2" style="min-width:100px;">
                         <button type="submit" class="btn btn-dark">Save</button>
@@ -122,12 +121,6 @@
                         content: "";
                     }
                 </style>
-                <script type="module">
-                    function toggleValue(checkbox) {
-                        const hiddenInput = document.querySelector(`input[id=${checkbox.id}_hidden]`);
-                        hiddenInput.value = checkbox.checked ? 1 : 0;
-                    }
-                </script>
             </div>
 
 

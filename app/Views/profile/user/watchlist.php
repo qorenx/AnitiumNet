@@ -12,10 +12,10 @@
                     <div class="ph-title">Hi, <?= auth()->user()->username ?></div>
                     <div class="ph-tabs">
                         <div class="bah-tabs">
-                            <ul class="nav nav-tabs pre-tabs">
-                                <li class="nav-item"><a class="nav-link" href="/user/profile"><i class="fas fa-user mr-2"></i>Profile</a></li>
-                                <li class="nav-item"><a class="nav-link active" href="/user/profile/status/favorite"><i class="fas fa-heart mr-2"></i>Watch List</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/user/profile/settings"><i class="fas fa-cog mr-2"></i>Settings</a></li>
+                            <ul class="nav nav-tabs pre-tabs" style="display: flex;">
+                                <li><a style="cursor: pointer;" class="nav-link" onclick="window.location.href='/user/profile'"><i class="fas fa-user mr-2"></i>Profile</a></li>
+                                <li><a style="cursor: pointer;" class="nav-link active" onclick="window.location.href='/user/profile/status/favorite'"><i class="fas fa-heart mr-2"></i>Watch List</a></li>
+                                <li><a style="cursor: pointer;" class="nav-link" onclick="window.location.href='/user/profile/settings'"><i class="fas fa-cog mr-2"></i>Settings</a></li>
                             </ul>
                         </div>
                     </div>
