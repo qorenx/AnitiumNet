@@ -67,12 +67,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/shield.git",
-                "reference": "306616cb8486f8715f40d633d9089abe6f6dd7b7"
+                "reference": "a44a98580dfe9af1895fd79a045504ef668e5ec8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/shield/zipball/306616cb8486f8715f40d633d9089abe6f6dd7b7",
-                "reference": "306616cb8486f8715f40d633d9089abe6f6dd7b7",
+                "url": "https://api.github.com/repos/codeigniter4/shield/zipball/a44a98580dfe9af1895fd79a045504ef668e5ec8",
+                "reference": "a44a98580dfe9af1895fd79a045504ef668e5ec8",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,8 @@
                 "codeigniter4/framework": "^4.2.7",
                 "firebase/php-jwt": "^6.4",
                 "mikey179/vfsstream": "^1.6.7",
-                "mockery/mockery": "^1.0"
+                "mockery/mockery": "^1.0",
+                "rector/rector": "0.18.2"
             },
             "suggest": {
                 "ext-curl": "Required to use the password validation rule via PwnedValidator class.",
@@ -133,7 +134,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "source": "https://github.com/codeigniter4/shield"
             },
-            "time": "2023-09-05T19:49:38+00:00"
+            "time": "2023-09-11T04:08:50+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -800,16 +801,16 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.23.0",
+            "version": "1.23.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "e3daa170d00fde61ea7719ef47bb09bb8f1d9b01"
+                "reference": "2040bda6540c29e8989bce4729d05bdaffb4c729"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/e3daa170d00fde61ea7719ef47bb09bb8f1d9b01",
-                "reference": "e3daa170d00fde61ea7719ef47bb09bb8f1d9b01",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/2040bda6540c29e8989bce4729d05bdaffb4c729",
+                "reference": "2040bda6540c29e8989bce4729d05bdaffb4c729",
                 "shasum": ""
             },
             "require": {
@@ -862,9 +863,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.23.0"
+                "source": "https://github.com/FakerPHP/Faker/tree/main"
             },
-            "time": "2023-06-12T08:44:38+00:00"
+            "time": "2023-09-07T12:17:07+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -1381,12 +1382,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "55a161bb93e6a22a21c529515f7ddbb4d489b460"
+                "reference": "78ba57219cc90cab324a5bf049d8c220d39ab828"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/55a161bb93e6a22a21c529515f7ddbb4d489b460",
-                "reference": "55a161bb93e6a22a21c529515f7ddbb4d489b460",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/78ba57219cc90cab324a5bf049d8c220d39ab828",
+                "reference": "78ba57219cc90cab324a5bf049d8c220d39ab828",
                 "shasum": ""
             },
             "require": {
@@ -1451,7 +1452,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-09-04T05:23:23+00:00"
+            "time": "2023-09-10T06:24:32+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1700,12 +1701,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "bf8634b3ba03f344dd84c1a1107d57a96d5e6440"
+                "reference": "63d13467248f9c0d99243694a7796b5aafefa79f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/bf8634b3ba03f344dd84c1a1107d57a96d5e6440",
-                "reference": "bf8634b3ba03f344dd84c1a1107d57a96d5e6440",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/63d13467248f9c0d99243694a7796b5aafefa79f",
+                "reference": "63d13467248f9c0d99243694a7796b5aafefa79f",
                 "shasum": ""
             },
             "require": {
@@ -1795,7 +1796,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-09-04T11:57:30+00:00"
+            "time": "2023-09-10T06:22:24+00:00"
         },
         {
             "name": "predis/predis",
@@ -2989,12 +2990,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "934459feb26b3ddfa49ab61efe26292a8dd47ca6"
+                "reference": "f542ffc1dc4b42eb57b67f07d31b91ae9d501419"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/934459feb26b3ddfa49ab61efe26292a8dd47ca6",
-                "reference": "934459feb26b3ddfa49ab61efe26292a8dd47ca6",
+                "url": "https://api.github.com/repos/symfony/console/zipball/f542ffc1dc4b42eb57b67f07d31b91ae9d501419",
+                "reference": "f542ffc1dc4b42eb57b67f07d31b91ae9d501419",
                 "shasum": ""
             },
             "require": {
@@ -3072,7 +3073,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-25T16:27:31+00:00"
+            "time": "2023-09-10T14:56:30+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",

@@ -3,7 +3,7 @@
         'name' => 'codeigniter4/framework',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '4a6d778e9156aceb0f48a14bc422fccee61998bd',
+        'reference' => '0196f64c02416633f333d45ae3f442196fb0ba52',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -28,7 +28,7 @@
         'codeigniter4/framework' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '4a6d778e9156aceb0f48a14bc422fccee61998bd',
+            'reference' => '0196f64c02416633f333d45ae3f442196fb0ba52',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -46,7 +46,7 @@
         'codeigniter4/shield' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '306616cb8486f8715f40d633d9089abe6f6dd7b7',
+            'reference' => 'a44a98580dfe9af1895fd79a045504ef668e5ec8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../codeigniter4/shield',
             'aliases' => array(
@@ -122,9 +122,9 @@
             'dev_requirement' => true,
         ),
         'fakerphp/faker' => array(
-            'pretty_version' => 'v1.23.0',
-            'version' => '1.23.0.0',
-            'reference' => 'e3daa170d00fde61ea7719ef47bb09bb8f1d9b01',
+            'pretty_version' => '1.23.x-dev',
+            'version' => '1.23.9999999.9999999-dev',
+            'reference' => '2040bda6540c29e8989bce4729d05bdaffb4c729',
             'type' => 'library',
             'install_path' => __DIR__ . '/../fakerphp/faker',
             'aliases' => array(),
@@ -216,7 +216,7 @@
         'phpunit/php-code-coverage' => array(
             'pretty_version' => '9.2.x-dev',
             'version' => '9.2.9999999.9999999-dev',
-            'reference' => '55a161bb93e6a22a21c529515f7ddbb4d489b460',
+            'reference' => '78ba57219cc90cab324a5bf049d8c220d39ab828',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/php-code-coverage',
             'aliases' => array(),
@@ -261,7 +261,7 @@
         'phpunit/phpunit' => array(
             'pretty_version' => '9.6.x-dev',
             'version' => '9.6.9999999.9999999-dev',
-            'reference' => 'bf8634b3ba03f344dd84c1a1107d57a96d5e6440',
+            'reference' => '63d13467248f9c0d99243694a7796b5aafefa79f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
@@ -479,7 +479,7 @@
         'symfony/console' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '934459feb26b3ddfa49ab61efe26292a8dd47ca6',
+            'reference' => 'f542ffc1dc4b42eb57b67f07d31b91ae9d501419',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/console',
             'aliases' => array(),
