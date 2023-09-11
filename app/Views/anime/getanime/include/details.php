@@ -1,3 +1,4 @@
+<div id="vote-info"></div>
 <div id="ani_detail">
     <div class="ani_detail-stage">
         <div class="container" style="max-width:100%!important;width:100%!important;">

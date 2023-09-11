@@ -25,8 +25,6 @@
         </a>
     </h2>
 
-
-
     <div class="film-stats">
         <div class="tick">
             <div class="tick-item tick-pg">PG-13</div>
@@ -41,7 +39,7 @@
             <?php
             }
             ?>
-            <?php 
+            <?php
             $user = auth()->user();
             $animeEmbedCounts = $animeEpisodeData['embed_type_counts'];
             $statusToEmbedMap = [
@@ -50,11 +48,11 @@
                 "dub_status" => ["tick-dub", "fa-microphone", "3"],
                 "turk_status" => ["tick-turk", "fa-globe-asia", "4"]
             ];
-            
+
             foreach ($statusToEmbedMap as $status => $embed) {
-                if (($user->$status ?? 1) == 1 && !empty($animeEmbedCounts[$embed[2]])) { 
+                if (($user->$status ?? 1) == 1 && !empty($animeEmbedCounts[$embed[2]])) {
                     echo "<div class='tick-item {$embed[0]}'><i class='fas {$embed[1]} mr-1'></i>{$animeEmbedCounts[$embed[2]]}</div>";
-                }   
+                }
             }
             ?>
             <div class="tick-item tick-eps"><?= $animeEpisodeData['episode_count'] ?></div>
@@ -78,14 +76,6 @@
         </div>
     </div>
 
-
-
-
-
-
-
-
-
     <div class="clearfix"></div>
     <div class="film-description m-hide">
         <div class="text">
@@ -98,6 +88,8 @@
         </a>
     </div>
 </div>
-<div id="vote-info"></div>
+<div class="dt-rate">
+    <div id="vote-info"></div>
+</div>
 </div>
 </div>
