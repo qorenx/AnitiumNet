@@ -31,12 +31,12 @@
                         </div>
                         <div class="fav-tabs mb-4">
                             <ul class="nav nav-tabs pre-tabs pre-tabs-min">
-                                <li class="nav-item"> <a class="nav-link" id="favorite-btn" data-status="1" href="<?php echo base_url(); ?>user/profile/status/favorite"><i class="fas fa-heart"></i> Favorite</a></li>
-                                <li class="nav-item"> <a class="nav-link" id="watching-btn" data-status="2" href="<?php echo base_url(); ?>user/profile/status/watching"><i class="fas fa-eye"></i> Watching</a></li>
-                                <li class="nav-item"> <a class="nav-link" id="onhold-btn" data-status="3" href="<?php echo base_url(); ?>user/profile/status/on-hold"><i class="fas fa-pause"></i> On-Hold</a></li>
-                                <li class="nav-item"> <a class="nav-link" id="plan-to-watch-btn" data-status="4" href="<?php echo base_url(); ?>user/profile/status/plan-to-watch"><i class="fas fa-clock"></i> Plan-to-Watch</a></li>
-                                <li class="nav-item"> <a class="nav-link" id="dropped-btn" data-status="5" href="<?php echo base_url(); ?>user/profile/status/dropped"><i class="fas fa-times"></i> Dropped</a></li>
-                                <li class="nav-item"> <a class="nav-link" id="completed-btn" data-status="6" href="<?php echo base_url(); ?>user/profile/status/completed"><i class="fas fa-check"></i> Completed</a></li>
+                                <li class="nav-item"> <a style="cursor: pointer;" class="nav-link" id="favorite-btn" data-status="1" onclick="location.href='<?php echo base_url(); ?>user/profile/status/favorite'"><i class="fas fa-heart"></i> Favorite</a></li>
+                                <li class="nav-item"> <a style="cursor: pointer;" class="nav-link" id="watching-btn" data-status="2" onclick="location.href='<?php echo base_url(); ?>user/profile/status/watching'"><i class="fas fa-eye"></i> Watching</a></li>
+                                <li class="nav-item"> <a style="cursor: pointer;" class="nav-link" id="onhold-btn" data-status="3" onclick="location.href='<?php echo base_url(); ?>user/profile/status/on-hold'"><i class="fas fa-pause"></i> On-Hold</a></li>
+                                <li class="nav-item"> <a style="cursor: pointer;" class="nav-link" id="plan-to-watch-btn" data-status="4" onclick="location.href='<?php echo base_url(); ?>user/profile/status/plan-to-watch'"><i class="fas fa-clock"></i> Plan-to-Watch</a></li>
+                                <li class="nav-item"> <a style="cursor: pointer;" class="nav-link" id="dropped-btn" data-status="5" onclick="location.href='<?php echo base_url(); ?>user/profile/status/dropped'"><i class="fas fa-times"></i> Dropped</a></li>
+                                <li class="nav-item"> <a style="cursor: pointer;" class="nav-link" id="completed-btn" data-status="6" onclick="location.href='<?php echo base_url(); ?>user/profile/status/completed'"><i class="fas fa-check"></i> Completed</a></li>
                             </ul>
                             <div class="clearfix"></div>
                         </div>
@@ -62,17 +62,8 @@
                                                     <div class="tick-item tick-eps"><?= $value['ani_ep'] ?></div>
                                                 </div>
                                                 <img class="film-poster-img lazyloaded" src="<?= $value['ani_poster'] ?>">
-                                                <a href="<?= base_url('anime/' . $value['uid'] . '/' . str_replace(' ', '-', $value['ani_name'])) ?>" class="film-poster-ahref"><i class="fas fa-play"></i></a>
+                                                <a class="film-poster-ahref" data-id="<?php echo $value['uid'] ?>" href="<?= base_url('anime/' . $value['uid'] . '/' . str_replace(' ', '-', $value['ani_name'])) ?>"><i class="fas fa-play"></i></a>
                                             </div>
-                                            <!--
-                                        <div class="dr-fav">
-                                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-circle btn-light btn-fav">
-                                                <i class="fas fa-ellipsis-v"></i></a>
-                                            <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
-                                                <a class="wl-item dropdown-item text-danger" href="javascript:;">Remove</a>
-                                            </div>
-                                        </div>
-                                            -->
                                             <div class="film-detail">
                                                 <h3 class="film-name"><a href="<?= base_url('anime/' . $value['uid'] . '/' . str_replace(' ', '-', $value['ani_name'])) ?>" class="dynamic-name"><?= $value['ani_name'] ?></a></h3>
                                                 <div class="fd-infor">
@@ -103,9 +94,10 @@
                                 <nav aria-label="Page navigation">
                                     <ul class="pagination pagination-lg justify-content-center">
                                         <ul class="ulclear az-list">
-                                            <?php if ($pager) : ?>
-                                                <?= $pager->links() ?>
-                                            <?php endif ?>
+                                            <?php
+                                            $pagerLinks = service('pager');
+                                            echo $pagerLinks->makeLinks($pager['currentPage'], $pager['itemsPerPage'], $pager['totalItems']);
+                                            ?>
                                         </ul>
                                     </ul>
                                 </nav>
