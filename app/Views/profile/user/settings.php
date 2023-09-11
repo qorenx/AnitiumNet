@@ -24,9 +24,29 @@
             </div>
 
 
-            <div id="profilecontainer" class="profilecontainer" style="display: flex; justify-content: center; align-items: center; padding: 20px;">
+            <div id="profilecontainer" class="profilecontainer">
                 <style>
+                    @media only screen and (max-width: 600px) {
+                        .profilecontainer {
+                            width: 100%;
+                        }
+
+                        #profile-form {
+                            flex-direction: column;
+                            padding: 10px;
+                        }
+
+                        .avatar-upload,
+                        .mb-4 {
+                            min-width: auto;
+                        }
+                    }
+
                     .profilecontainer {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 20px;
                         background-color: whitesmoke;
                         width: 80%;
                         margin: auto;
@@ -34,14 +54,17 @@
 
                     #profile-form {
                         color: black;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: start;
+                        gap: 1em;
+                        padding: 20px;
                     }
 
                     .form-control,
-                    .form-control-file {
-                        border: 1px solid #ced4da;
-                    }
-
+                    .form-control-file,
                     .avatar-upload {
+                        border: 1px solid #ced4da;
                         position: relative;
                         display: inline-block;
                         cursor: pointer;
@@ -51,42 +74,37 @@
                         content: '';
                     }
 
-                    .avatar-image {
+                    .avatar-image,
+                    .mb-4 {
                         max-width: 150px;
                         max-height: 150px;
                         object-fit: cover;
+                        min-width: 200px;
+                        position: relative;
                     }
                 </style>
-                <form method="post" id="profile-form" action="<?= base_url('/profil/update') ?>" enctype="multipart/form-data" class="needs-validation bg-light p-4 rounded shadow-lg" style="display: flex; justify-content: space-between; align-items: start; gap:1em; padding:20px;" novalidate>
-
+                <form method="post" id="profile-form" action="<?= base_url('/profil/update') ?>" enctype="multipart/form-data" class="needs-validation bg-light p-4 rounded shadow-lg" novalidate>
                     <input type="hidden" name="id" value="<?= auth()->user()->id ?>">
-
-                    <!-- Avatar section -->
-                    <div class="mb-4 avatar-upload" onclick="document.getElementById('avatar').click()" style="min-width:150px; position:relative;">
+                    <div class="mb-4 avatar-upload" onclick="document.getElementById('avatar').click()">
                         <img src="<?= $avatar = auth()->user()->avatar; ?>" class="avatar-image img-thumbnail mb-2">
                         <input type="file" id="avatar" value="<?= auth()->user()->avatar ?>" name="avatar" class="form-control-file" hidden>
-                        <div class="vertical-line"></div> <!-- vertical Line added -->
+                        <div class="vertical-line"></div>
                     </div>
-
-                    <!-- Username section -->
-                    <div class="mb-4" style="min-width:200px; position:relative;">
+                    <div class="mb-4">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" id="username" name="username" class="form-control" value="<?= auth()->user()->username ?>">
-                        <div class="vertical-line"></div> <!-- vertical Line added -->
+                        <div class="vertical-line"></div>
                     </div>
-
-                    <!-- Schedule section -->
-                    <div class="mb-4" style="min-width:200px; position:relative;">
+                    <div class="mb-4">
                         <select id="schedule_status" name="schedule_status" onchange="toggleValue(this)">
                             <option value="0" <?= (auth()->user()->schedule_status == 0) ? 'selected' : '' ?>>Inactive</option>
                             <option value="1" <?= (auth()->user()->schedule_status == 1) ? 'selected' : '' ?>>Active</option>
                         </select>
                         <label for="schedule_status">Schedule</label>
-                        <div class="vertical-line"></div> <!-- vertical Line added -->
+                        <div class="vertical-line"></div>
                     </div>
 
-                    <!-- Status section -->
-                    <div class="mb-4" style="min-width:200px;">
+                    <div class="mb-4">
                         <div class="d-flex flex-column">
                             <?php foreach (['raw', 'sub', 'dub', 'turk'] as $status) : ?>
                                 <div class="d-flex align-items-start">
@@ -99,19 +117,29 @@
                             <?php endforeach; ?>
                         </div>
                     </div>
+
                     <script type="module">
                         function toggleValue(select) {
                             const hiddenInput = document.querySelector(`input[id="${select.id}_status_hidden"]`);
                             hiddenInput.value = select.value;
                         }
                     </script>
-                    <!-- Submit button -->
-                    <div class="d-grid gap-2" style="min-width:100px;">
+
+                    <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-dark">Save</button>
                     </div>
                 </form>
 
                 <style>
+                    @media only screen and (max-width: 600px) {
+                        .vertical-line {
+                            border-right: 0;
+                            border-bottom: 1px solid grey;
+                            bottom: -10px;
+                            right: auto;
+                        }
+                    }
+
                     .vertical-line {
                         position: absolute;
                         top: 0;
