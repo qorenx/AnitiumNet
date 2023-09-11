@@ -25,6 +25,9 @@
                                 <div class="aa-item">
                                     <div class="aa-title ">
                                         <?php
+
+                                        use CodeIgniter\Shield\Auth;
+
                                         $role = $getgroup[0]->group;;
                                         $roleToClass = [
                                             'superadmin' => 'user-name is-level-x is-level-b',
@@ -51,59 +54,61 @@
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-
-
                                 <div class="block_area-content block_area-list film_list film_list-grid">
-                                    <div class="film_list-wrap">
-
-                                        <?php foreach (array_slice($animelist, 0, 10) as $key => $value) : ?>
-                                            <div class="flw-item">
-                                                <div class="film-poster">
-                                                    <div class="tick ltr">
-                                                        <div class="tick-item tick"><?php
-                                                                                    switch ($value['status']) {
-                                                                                        case 1:
-                                                                                            echo "Favorite";
-                                                                                            break;
-                                                                                        case 2:
-                                                                                            echo "Watching";
-                                                                                            break;
-                                                                                        case 3:
-                                                                                            echo "On-Hold";
-                                                                                            break;
-                                                                                        case 4:
-                                                                                            echo "PlantoWatch";
-                                                                                            break;
-                                                                                        case 5:
-                                                                                            echo "Dropped";
-                                                                                            break;
-                                                                                        case 6:
-                                                                                            echo "Completed";
-                                                                                            break;
-                                                                                        default:
-                                                                                            echo "Unknown";
-                                                                                            break;
-                                                                                    }
-                                                                                    ?></div>
+                                    <?php if ($getuserdata->watchlist_status == 0) : ?>
+                                        <div class="d-block p-5 text-center notpublic">
+                                            Watch List is not public.
+                                        </div>
+                                    <?php else : ?>
+                                        <div class="film_list-wrap">
+                                            <?php foreach (array_slice($animelist, 0, 10) as $key => $value) : ?>
+                                                <div class="flw-item">
+                                                    <div class="film-poster">
+                                                        <div class="tick ltr">
+                                                            <div class="tick-item tick"><?php
+                                                                                        switch ($value['status']) {
+                                                                                            case 1:
+                                                                                                echo "Favorite";
+                                                                                                break;
+                                                                                            case 2:
+                                                                                                echo "Watching";
+                                                                                                break;
+                                                                                            case 3:
+                                                                                                echo "On-Hold";
+                                                                                                break;
+                                                                                            case 4:
+                                                                                                echo "PlantoWatch";
+                                                                                                break;
+                                                                                            case 5:
+                                                                                                echo "Dropped";
+                                                                                                break;
+                                                                                            case 6:
+                                                                                                echo "Completed";
+                                                                                                break;
+                                                                                            default:
+                                                                                                echo "Unknown";
+                                                                                                break;
+                                                                                        }
+                                                                                        ?></div>
+                                                        </div>
+                                                        <img class="film-poster-img lazyloaded" src="<?php echo $value['ani_poster']; ?>">
+                                                        <a class="film-poster-ahref" data-id="<?php echo $value['uid'] ?>" href="<?php echo base_url('anime/' . $value['uid'] . '/' . $value['ani_name']); ?>"><i class="fas fa-play"></i></a>
                                                     </div>
-                                                    <img class="film-poster-img lazyloaded" src="<?php echo $value['ani_poster']; ?>">
-                                                    <a class="film-poster-ahref" data-id="<?php echo $value['uid'] ?>" href="<?php echo base_url('anime/' . $value['uid'] . '/' . $value['ani_name']); ?>"><i class="fas fa-play"></i></a>
-                                                </div>
-                                                <div class="film-detail">
-                                                    <h3 class="film-name"><a href="<?php echo base_url('anime/' . $value['uid'] . '/' . $value['ani_name']); ?>"><?= $value['ani_name'] ?></a></h3>
-                                                    <div class="fd-infor">
-                                                        <span class="fdi-item"><?php echo substr($value['created_at'], 0, 10); ?></span>
+                                                    <div class="film-detail">
+                                                        <h3 class="film-name"><a href="<?php echo base_url('anime/' . $value['uid'] . '/' . $value['ani_name']); ?>"><?= $value['ani_name'] ?></a></h3>
+                                                        <div class="fd-infor">
+                                                            <span class="fdi-item"><?php echo substr($value['created_at'], 0, 10); ?></span>
+                                                        </div>
                                                     </div>
+                                                    <div class="clearfix"></div>
                                                 </div>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        <?php endforeach; ?>
-
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="py-3">
-                                        <a href="/community/user/<?= $getuserdata->username ?>/all?sort=" class="btn sbtn btn-block btn-secondary">View more</a>
-                                    </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="py-3">
+                                            <a href="/community/user/<?= $getuserdata->username ?>/all?sort=" class="btn sbtn btn-block btn-secondary">View more</a>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

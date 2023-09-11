@@ -132,3 +132,4 @@ nb-configuration.xml
 /app/Models/LicenseModel.php
 /lisans/*.json
 anitium
+/app/Views/license

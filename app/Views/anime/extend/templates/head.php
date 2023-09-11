@@ -150,6 +150,10 @@
                     <div class="hst-icon"><i class="fas fa-film"></i></div>
                     <div class="name"><span>Movie</span></div>
                 </a>
+                <a href="/random" class="hst-item">
+                    <div class="hst-icon"><i class="fas fa-random"></i></div>
+                    <div class="name"><span>Random</span></div>
+                </a>
                 <a href="/community/board" class="hst-item">
                     <div class="hst-icon"><i class="fas fa-comments"></i></div>
                     <div class="name"><span>Community</span></div>

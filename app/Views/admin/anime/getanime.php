@@ -23,7 +23,7 @@
                     <div class="col-12 col-lg-12">
                         <div class="card-header">GetAnime</div>
 
-                        <form action="<?php echo base_url('admin/anime/getanime'); ?>" method="post">
+                        <form action="<?php echo base_url('admin/anime/getanime'); ?>" method="post" enctype="multipart/form-data">
                             <?php
                             foreach ($data as $item) { ?>
                                 <div class="card-body">
@@ -288,13 +288,77 @@
 
                                         </div>
                                         <div class="tab-pane fade" id="posterwallpaper">
-                                            <br>
+
+
+                                            <style>
+                                                .form-group {
+                                                    display: flex;
+                                                    align-items: center;
+                                                    width: 100%;
+                                                }
+
+                                                #preview-container {
+                                                    flex-grow: 1;
+                                                    width: 20%;
+                                                    border-right: 1px solid;
+                                                    padding: 5px;
+                                                }
+
+                                                #preview {
+                                                    display: block;
+                                                    width: 100%;
+                                                    height: auto;
+                                                }
+
+                                                #file-input-container {
+                                                    flex-grow: 2;
+                                                    width: 80%;
+                                                    padding: 5px;
+                                                }
+                                            </style>
                                             <div class="form-group row">
-                                                <label for="ani_poster" class="col-sm-4 col-form-label">Poster İMG:</label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="ani_poster" id="ani_poster" value="<?= isset($item['images']['jpg']['large_image_url']) ? $item['images']['jpg']['large_image_url'] : $item['images']['jpg']['image_url']; ?>" class="form-control">
+                                                <div id="preview-container">
+                                                    <img id="preview" src="<?php echo isset($item['images']['jpg']['large_image_url']) ? $item['images']['jpg']['large_image_url'] : $item['images']['jpg']['image_url']; ?>" />
                                                 </div>
-                                            </div></br>
+                                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                                <script>
+                                                    $(document).ready(function() {
+                                                        $("#copyButton").click(function(event) {
+                                                            event.preventDefault(); // prevent form submission
+                                                            var $temp = $("<input>");
+                                                            $("body").append($temp);
+                                                            $temp.val($('#preview').attr('src')).select();
+                                                            document.execCommand("copy");
+                                                            $temp.remove();
+                                                        });
+                                                    });
+                                                </script>
+                                                <div id="file-input-container">
+                                                    <label for="ani_poster" class="col-form-label">Poster İMG:</label>
+                                                    <input type="file" name="ani_poster" id="ani_poster" class="form-control" required>
+                                                    <button id="copyButton" type="button">Copy İmage Link</button>
+                                                </div>
+                                            </div>
+                                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                            <script type="text/javascript">
+                                                function readURL(input) {
+                                                    if (input.files && input.files[0]) {
+                                                        var reader = new FileReader();
+
+                                                        reader.onload = function(e) {
+                                                            $('#preview').attr('src', e.target.result);
+                                                        }
+
+                                                        reader.readAsDataURL(input.files[0]);
+                                                    }
+                                                }
+                                                setInterval(function() {
+                                                    var fileInputValue = $('#ani_poster').val();
+                                                    if (fileInputValue) {
+                                                        readURL(document.getElementById('ani_poster'));
+                                                    }
+                                                });
+                                            </script>
                                         </div>
 
                                         <div class="card-footer">

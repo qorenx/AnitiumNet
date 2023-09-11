@@ -101,9 +101,13 @@
                             <option value="1" <?= (auth()->user()->schedule_status == 1) ? 'selected' : '' ?>>Active</option>
                         </select>
                         <label for="schedule_status">Schedule</label>
+                        <select id="watchlist_status" name="watchlist_status" onchange="toggleValue(this)">
+                            <option value="0" <?= (auth()->user()->watchlist_status == 0) ? 'selected' : '' ?>>Inactive</option>
+                            <option value="1" <?= (auth()->user()->watchlist_status == 1) ? 'selected' : '' ?>>Active</option>
+                        </select>
+                        <label for="watchlist_status">WatchList</label>
                         <div class="vertical-line"></div>
                     </div>
-
                     <div class="mb-4">
                         <div class="d-flex flex-column">
                             <?php foreach (['raw', 'sub', 'dub', 'turk'] as $status) : ?>

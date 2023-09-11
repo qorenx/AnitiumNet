@@ -20,6 +20,7 @@ class UserModelUP extends Model
         'username',
         'avatar',
         'schedule_status',
+        'watchlist_status',
         'raw_status',
         'sub_status',
         'dub_status',

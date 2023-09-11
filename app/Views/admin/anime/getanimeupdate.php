@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-12 col-lg-12">
                         <div class="card-header">GetAnimeUpdate</div>
-                        <form action="<?php echo base_url('admin/anime/getanimeupdate'); ?>" method="post">
+                        <form action="<?php echo base_url('admin/anime/getanimeupdate'); ?>" method="post" enctype="multipart/form-data">
                             <?php
                             foreach ($data as $item) { ?>
                                 <div class="card-body">
@@ -243,12 +243,17 @@
                                                 <label for="ani_country" class="col-sm-4 col-form-label">Anime Country: </label>
                                                 <div class="col-sm-8">
                                                     <select name="ani_country" id="ani_country" class="form-control">
-                                                        <option value="1">Japanese</option>
-                                                        <option value="2">Chinese</option>
+                                                        <option value="1" <?= $manuel[0]['ani_country'] == 1 ? 'selected' : ''; ?>>Japanese</option>
+                                                        <option value="2" <?= $manuel[0]['ani_country'] == 2 ? 'selected' : ''; ?>>Chinese</option>
                                                     </select>
                                                 </div>
                                             </div><br>
-                                            <br>
+                                            <div class="form-group row">
+                                                <label for="sid" class="col-sm-4 col-form-label">Season Pack ID:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="sid" id="sid" value="<?= $manuel[0]['sid'] ?>" class="form-control">
+                                                </div>
+                                            </div><br>
                                             <div class="form-group row">
                                                 <label for="ani_pv" class="col-sm-4 col-form-label">Youtube PV:</label>
                                                 <div class="col-sm-8">
@@ -266,33 +271,99 @@
                                             <div class="form-group row">
                                                 <label for="ani_manga_url" class="col-sm-4 col-form-label">Manga URL:</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="ani_manga_url" id="ani_manga_url" value="" class="form-control">
+                                                    <input type="text" name="ani_manga_url" id="ani_manga_url" value="<?= $manuel[0]['ani_manga_url'] ?>" class="form-control">
                                                 </div>
                                             </div><br>
                                             <div class="form-group row">
                                                 <label for="ani_quality" class="col-sm-4 col-form-label">Anime Quality:</label>
                                                 <div class="col-sm-8">
                                                     <select name="ani_quality" id="ani_quality" class="form-control">
-                                                        <option value="1">HD</option>
-                                                        <option value="2">SD</option>
+                                                        <option value="1" <?= $manuel[0]['ani_quality'] == 1 ? 'selected' : ''; ?>>HD</option>
+                                                        <option value="2" <?= $manuel[0]['ani_quality'] == 2 ? 'selected' : ''; ?>>SD</option>
+                                                        <option value="3" <?= $manuel[0]['ani_quality'] == 3 ? 'selected' : ''; ?>>BD</option>
                                                     </select>
                                                 </div>
                                             </div><br>
                                         </div>
                                         <div class="tab-pane fade" id="poster">
-                                            <br>
-                                            <div class="form-group row">
-                                                <label for="ani_poster" class="col-sm-4 col-form-label">Poster İMG:</label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="ani_poster" id="ani_poster" value="<?= isset($item['images']['jpg']['large_image_url']) ? $item['images']['jpg']['large_image_url'] : $item['images']['jpg']['image_url']; ?>" class="form-control">
-                                                </div>
-                                            </div></br>
-                                        </div>
 
-                                        <div class="card-footer">
-                                            <input class="btn btn-primary" type="submit" value="Get Anime Update">
+
+                                            <style>
+                                                .form-group {
+                                                    display: flex;
+                                                    align-items: center;
+                                                    width: 100%;
+                                                }
+
+                                                #preview-container {
+                                                    flex-grow: 1;
+                                                    width: 20%;
+                                                    border-right: 1px solid;
+                                                    padding: 5px;
+                                                }
+
+                                                #preview {
+                                                    display: block;
+                                                    width: 100%;
+                                                    height: auto;
+                                                }
+
+                                                #file-input-container {
+                                                    flex-grow: 2;
+                                                    width: 80%;
+                                                    padding: 5px;
+                                                }
+                                            </style>
+                                            <div class="form-group row">
+                                                <div id="preview-container">
+                                                    <img id="preview" src="<?php echo isset($item['images']['jpg']['large_image_url']) ? $item['images']['jpg']['large_image_url'] : $item['images']['jpg']['image_url']; ?>" />
+                                                </div>
+                                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                                <script>
+                                                    $(document).ready(function() {
+                                                        $("#copyButton").click(function(event) {
+                                                            event.preventDefault(); // prevent form submission
+                                                            var $temp = $("<input>");
+                                                            $("body").append($temp);
+                                                            $temp.val($('#preview').attr('src')).select();
+                                                            document.execCommand("copy");
+                                                            $temp.remove();
+                                                        });
+                                                    });
+                                                </script>
+                                                <div id="file-input-container">
+                                                    <label for="ani_poster" class="col-form-label">Poster İMG:</label>
+                                                    <input type="file" name="ani_poster" id="ani_poster" class="form-control" required>
+                                                    <button id="copyButton" type="button">Copy İmage Link</button>
+                                                </div>
+                                            </div>
+                                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                            <script type="text/javascript">
+                                                function readURL(input) {
+                                                    if (input.files && input.files[0]) {
+                                                        var reader = new FileReader();
+
+                                                        reader.onload = function(e) {
+                                                            $('#preview').attr('src', e.target.result);
+                                                        }
+
+                                                        reader.readAsDataURL(input.files[0]);
+                                                    }
+                                                }
+                                                setInterval(function() {
+                                                    var fileInputValue = $('#ani_poster').val();
+                                                    if (fileInputValue) {
+                                                        readURL(document.getElementById('ani_poster'));
+                                                    }
+                                                });
+                                            </script>
                                         </div>
-                                    <?php } ?>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <input class="btn btn-primary" type="submit" value="Get Anime Update">
+                                    </div>
+                                <?php } ?>
                         </form>
                     </div>
                 </div>

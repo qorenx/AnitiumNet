@@ -62,6 +62,8 @@ $routes->get('producers/(:any)', 'Anime::producers_search/$1/');
 $routes->get('latest-episode', 'Anime::latest_episode');
 //Anime Sayfasındaki Animeleri Çeker
 $routes->get('anime/(:any)', 'Anime::anime_details/$1/');
+//anime random
+$routes->get('random', 'Anime::random');
 //Anime Search ve Filter kısmıdır.
 $routes->get('search', 'Anime::search');
 $routes->get('filter', 'Anime::filter');
@@ -301,6 +303,3 @@ $routes->group('cron', function ($routes) {
 
 
 
-//Bu sadece anitium.net çalışıyor.  Ek kodlar ve yazılım var. 
-$routes->get('getLicense/(:any)/(:any)/(:any)', 'License::getLicense/$1/$2/$3');
-$routes->get('getLicenseFile/(:any)', 'License::getLicenseFile/$1'); 
