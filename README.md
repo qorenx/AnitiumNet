@@ -1,11 +1,12 @@
 Anime Watching Site Project
 ---
 Preview: [anitium.net](https://anitium.net)
-Our preview site version: 0.9.9.6.5
 
-Our current version:  0.9.9.6.5
+Our preview site version: 1.0
 
-The development process continues. You can donate.
+Our current version:  1.0
+
+The first version has been published. It is ready to use. Good uses.
 
 ---I'll wait for more on discord.
 
