@@ -12,6 +12,20 @@
                             </button>
                         </div>
                         <div class="modal-body">
+                            <?php if (session('error') !== null) : ?>
+                                <div class="alert alert-danger" role="alert"><?= session('error') ?></div>
+                            <?php elseif (session('errors') !== null) : ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <?php if (is_array(session('errors'))) : ?>
+                                        <?php foreach (session('errors') as $error) : ?>
+                                            <?= $error ?>
+                                            <br>
+                                        <?php endforeach ?>
+                                    <?php else : ?>
+                                        <?= session('errors') ?>
+                                    <?php endif ?>
+                                </div>
+                            <?php endif ?>
                             <form class="preform" action="<?= url_to('login') ?>" method="post">
                                 <?= csrf_field() ?>
                                 <div class="mb-2">
@@ -45,26 +59,24 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="preform" action="<?= url_to('register') ?>" method="post">
-                                <div class="form-group">
-                                    <label class="prelabel" for="re-username">Your name</label>
-                                    <input type="text" class="form-control" id="re-username" placeholder="Name" name="name" required="">
+                            <form action="<?= url_to('register') ?>" method="post">
+                                <?= csrf_field() ?>
+                                <div class="form-floating mb-2">
+                                    <input type="email" class="form-control" id="floatingEmailInput" name="email" inputmode="email" autocomplete="email" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>" required />
                                 </div>
-                                <div class="form-group">
-                                    <label class="prelabel" for="re-email">Email address</label>
-                                    <input type="email" class="form-control" id="re-email" placeholder="name@email.com" name="email" required="">
+                                <div class="form-floating mb-4">
+                                    <input type="text" class="form-control" id="floatingUsernameInput" name="username" inputmode="text" autocomplete="username" placeholder="<?= lang('Auth.username') ?>" value="<?= old('username') ?>" required />
                                 </div>
-                                <div class="form-group">
-                                    <label class="prelabel" for="re-password">Password</label>
-                                    <input type="password" class="form-control" id="re-password" placeholder="Password" name="password" required="">
+                                <div class="form-floating mb-2">
+                                    <input type="password" class="form-control" id="floatingPasswordInput" name="password" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.password') ?>" required />
                                 </div>
-                                <div class="form-group">
-                                    <label class="prelabel" for="re-confirmpassword">Confirm Password</label>
-                                    <input type="password" class="form-control" id="re-confirmpassword" placeholder="Confirm Password" name="password_confirm" required="">
+                                <div class="form-floating mb-5">
+                                    <input type="password" class="form-control" id="floatingPasswordConfirmInput" name="password_confirm" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.passwordConfirm') ?>" required />
                                 </div>
-                                <div class="form-group login-btn mb-0">
-                                    <button id="btn-register" class="btn btn-primary btn-block">Register</button>
+                                <div class="d-grid col-12 col-md-8 mx-auto m-3">
+                                    <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.register') ?></button>
                                 </div>
+                                <p class="text-center"><?= lang('Auth.haveAccount') ?> <a href="<?= url_to('login') ?>"><?= lang('Auth.login') ?></a></p>
                             </form>
                         </div>
                         <div class="modal-footer text-center">

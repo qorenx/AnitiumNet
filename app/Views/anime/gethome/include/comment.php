@@ -1,6 +1,6 @@
 <div class="dis-wrap dis-model">
     <div class="d_w-icon" style="z-index: 2;background: #2f2f33;">
-        <img src="/files/images/lastcomment.png">
+        <img src="/assest/images/lastcomment.png">
     </div>
     <div class="d_w-list">
         <ul class="nav nav-tabs pre-tabs pre-tabs-min">

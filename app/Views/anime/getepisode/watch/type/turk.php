@@ -6,7 +6,7 @@
             $dataArray = json_decode(json_encode($episodeEmbedData[4]), false);
             foreach ($dataArray as $Data) : ?>
                 <div class="item server-item">
-                    <a href="#" class="btn" onclick="getEmbed('<?= $Data->id ?>')"> <?= $Data->embed_name ?></a>
+                    <a href="#" id="embed-<?= $Data->id ?>" class="btn" onclick="getEmbed('<?= $Data->id ?>')"> <?= $Data->embed_name ?></a>
                 </div>
             <?php endforeach; ?>
         </div>

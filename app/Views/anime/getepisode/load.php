@@ -1,16 +1,32 @@
 <script>
+    let activeBtn;
+
     const getEmbed = async (embedId) => {
         try {
-            const response = await fetch(`/embed/<?= $animeData['uid'] ?>/<?= $episodesData[0]['ep_id_name'] ?>/${embedId}`);
+            if (activeBtn) {
+                activeBtn.className = activeBtn.className.replace(' active', '');
+            }
 
+            activeBtn = document.getElementById('embed-' + embedId);
+
+            if (activeBtn) {
+                activeBtn.className += ' active';
+            }
+
+            const response = await fetch(`/embed/<?= $animeData['uid'] ?>/<?= $episodesData[0]['ep_id_name'] ?>/${embedId}`);
             const videoUrl = await response.json();
+
             document.getElementById('iframe-embed').innerHTML = videoUrl;
         } catch (error) {
             console.error('Error:', error);
         }
     }
+
     document.addEventListener('DOMContentLoaded', () => getEmbed(<?php echo $episodeFirstEmbed; ?>));
 </script>
+
+
+
 <script>
     function postVote(voteValue) {
         var xhr = new XMLHttpRequest();
@@ -64,8 +80,8 @@
                 var htmlData = data['html'];
                 var htmlData2 = data['page']['status'];
                 var resultElements = document.getElementsByClassName("cw_list");
-                for(let element of resultElements) { 
-                  element.innerHTML += htmlData; 
+                for (let element of resultElements) {
+                    element.innerHTML += htmlData;
                 }
 
                 nextPage++;

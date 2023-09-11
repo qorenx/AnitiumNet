@@ -240,7 +240,6 @@
                                                     <input type="text" name="uid" id="uid" value="<?= $item['mal_id']; ?>" class="form-control" readonly>
                                                 </div>
                                             </div>
-
                                             <div class="form-group row">
                                                 <label for="ani_country" class="col-sm-4 col-form-label">Anime Country: </label>
                                                 <div class="col-sm-8">
@@ -250,7 +249,22 @@
                                                     </select>
                                                 </div>
                                             </div><br>
-                                            <br>
+                                            <div class="form-group row">
+                                                <label for="ani_quality" class="col-sm-4 col-form-label">Anime Quality:</label>
+                                                <div class="col-sm-8">
+                                                    <select name="ani_quality" id="ani_quality" class="form-control">
+                                                        <option value="1">HD</option>
+                                                        <option value="2">SD</option>
+                                                        <option value="3">BD</option>
+                                                    </select>
+                                                </div>
+                                            </div><br>
+                                            <div class="form-group row">
+                                                <label for="sid" class="col-sm-4 col-form-label">Season Pack ID:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="sid" id="sid" value="" class="form-control">
+                                                </div>
+                                            </div><br>
                                             <div class="form-group row">
                                                 <label for="ani_pv" class="col-sm-4 col-form-label">Youtube PV:</label>
                                                 <div class="col-sm-8">
@@ -271,15 +285,7 @@
                                                     <input type="text" name="ani_manga_url" id="ani_manga_url" value="" class="form-control">
                                                 </div>
                                             </div><br>
-                                            <div class="form-group row">
-                                                <label for="ani_quality" class="col-sm-4 col-form-label">Anime Quality:</label>
-                                                <div class="col-sm-8">
-                                                    <select name="ani_quality" id="ani_quality" class="form-control">
-                                                        <option value="1">HD</option>
-                                                        <option value="2">SD</option>
-                                                    </select>
-                                                </div>
-                                            </div><br>
+
                                         </div>
                                         <div class="tab-pane fade" id="posterwallpaper">
                                             <br>

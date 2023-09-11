@@ -1,15 +1,14 @@
 <?= $this->include('anime/getepisode/header') ?>
-<?= $this->include('anime/extend/templates/head') ?>
 
-
-<body data-page="movie_watch">
+<body>
     <div id="sidebar_menu_bg"></div>
-    <div id="wrapper" data-page="movie_watch">
+    <div id="wrapper">
+        <?= $this->include('anime/extend/templates/head') ?>
         <div class="clearfix"></div>
-        <div id="main-wrapper" date-page="movie_watch" data-id="">
+        <div id="main-wrapper" class="layout-page layout-page-detail layout-page-watchtv">
             <div id="ani_detail">
                 <div class="ani_detail-stage">
-                    <div class="container" style="max-width:100%!important;width:100%!important;">
+                    <div class="container">
                         <div class="anis-cover-wrap">
                             <div class="anis-cover" style="background-image: url(<?= $animeData['ani_poster'] ?>)">
                             </div>
@@ -39,46 +38,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container" style="max-width:100%!important;width:100%!important;">
-                        <div id="main-content">
-                            <section class="block_area block_area-comment">
-                                <div class="block_area-header block_area-header-tabs">
-                                    <div class="float-left bah-heading mr-4">
-                                        <h2 class="cat-heading">Comments</h2>
-                                    </div>
-                                    <div class="float-left bah-setting">
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="tab-container">
-                                    <ul class="nav nav-tabs">
-                                        <li class="nav-item" data-tab="tab1">
-                                            <a class="nav-link active" href="#"><?php echo $settings['Advanced'][0]['value']; ?></a>
-                                        </li>
-                                        <li class="nav-item" data-tab="tab2">
-                                            <a class="nav-link" href="#">Disqus</a>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content chat" id="tab1">
-                                        <?= $this->include('anime/getepisode/comment/comment') ?>
-                                    </div>
-                                    <div class="tab-content chat" id="tab2" style="display:none;">
-                                        <?= $this->include('anime/getepisode/comment/disqus') ?>
-                                    </div>
-                                </div>
-                            </section>
-                            <?= $this->include('anime/getepisode/include/recommended') ?>
-                            <div class="clearfix"></div>
-                        </div>
-                        <?= $this->include('anime/getepisode/sidenav') ?>
-                        <div class="clearfix"></div>
-                    </div>
                 </div>
-                <?= $this->include('anime/getepisode/footer') ?>
-                <div id="mask-overlay"></div>
-                <?= $this->include('anime/loadscript') ?>
-                <?= $this->include('anime/getepisode/load') ?>
             </div>
+            <div class="container">
+                <div id="main-content">
+                    <?= $this->include('anime/getepisode/comment/loadtabs') ?>
+                    <?= $this->include('anime/getepisode/include/recommended') ?>
+                    <div class="clearfix"></div>
+                </div>
+                <?= $this->include('anime/getepisode/sidenav') ?>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <?= $this->include('anime/loadscript') ?>
+        <?= $this->include('anime/getepisode/load') ?>
+        <?= $this->include('anime/extend/templates/footer') ?>
+    </div>
+    <div id="mask-overlay"></div>
 </body>
-
-</html>

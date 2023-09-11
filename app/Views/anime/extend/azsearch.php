@@ -38,7 +38,7 @@
                                                     </div>
                                                 <?php endif; ?>
                                                 <img class="film-poster-img lazyload" src="<?= $anime['ani_poster'] ?>">
-                                                <a class="film-poster-ahref item-qtip loaded" href="/anime/<?= $anime['uid'] ?>/<?= str_replace(' ', '-', $anime['ani_name']) ?>"><i class="fas fa-play"></i></a>
+                                                <a class="film-poster-ahref" data-id="<?php echo $anime['uid'] ?>" href="/anime/<?= $anime['uid'] ?>/<?= str_replace(' ', '-', $anime['ani_name']) ?>"><i class="fas fa-play"></i></a>
                                             </div>
                                             <div class="film-detail">
                                                 <h3 class="film-name"><a href="/anime/<?= $anime['uid'] ?>/<?= str_replace(' ', '-', $anime['ani_name']) ?>" class="dynamic-name"><?= $anime['ani_name'] ?></a></h3>

@@ -43,32 +43,6 @@
             </div>
         </li>
 
-
-
-        <?php
-        $menuItems = array(
-            array('adding', 'fas fa-calendar', 'Season Adding'),
-        );
-        ?>
-        <li class="nav-item">
-            <a data-toggle="collapse" href="#season" role="button" aria-expanded="false" aria-controls="anime">
-                <h6><i class="fas fa-book"></i>Season</h6>
-            </a>
-            <div class="collapse" id="season">
-                <ul class="nav flex-column pl-3">
-                    <?php foreach ($menuItems as $item) : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('/admin/season/' . $item[0]); ?>">
-                                <i class="<?= $item[1] ?>"></i> <?= ucfirst(str_replace('-', ' ', $item[2])); ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </li>
-
-
-
         <?php
         $episodes = [
             'adding' => ['fas fa-video', 'Episode Adding'],

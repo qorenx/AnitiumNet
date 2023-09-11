@@ -3,7 +3,7 @@
         <div id="user-slot">
             <div class="header_right-user logged">
                 <div class="dropdown">
-                    <div class="btn-user-avatar" data-toggle="dropdown" aria-expanded="false" aria-controls="user_menu">
+                    <div class="btn-user-avatar" data-toggle="dropdown">
                         <div class="profile-avatar">
                             <img src="<?= auth()->user()->avatar ?>">
                         </div>
@@ -20,16 +20,11 @@
                             "Profile" => "/user/profile",
                             "Watching" => "/user/profile/status/favorite",
                             "Settings" => "/user/profile/settings",
-                            "Themes" => "javascript:void(0);",
                         ];
                         ?>
                         <div class="grid-menu">
                             <?php foreach ($urls as $name => $url) { ?>
-                                <a class="dropdown-item <?= $name == 'Themes' ? 'theme-selector' : '' ?>" href="<?= $url ?>" <?php
-                                                                                                                                if ($name == 'Themes') {
-                                                                                                                                    echo 'onclick="openThemeSelection()"';
-                                                                                                                                }
-                                                                                                                                ?>>
+                                <a class="dropdown-item" href="<?= $url ?>">
                                     <i class="<?php
                                                 switch ($name) {
                                                     case 'Profile':
@@ -40,9 +35,6 @@
                                                         break;
                                                     case 'Settings':
                                                         echo 'fa-solid fa-cog';
-                                                        break;
-                                                    case 'Themes':
-                                                        echo 'fas fa-paint-brush';
                                                         break;
                                                 }
                                                 ?> mr-2"></i><?= $name ?></a>
@@ -55,31 +47,6 @@
             </div>
         </div>
     </div>
-    <?php
-    if (isset($_COOKIE['bg-user'])) {
-        echo $_COOKIE['bg-user'];
-    }
-    ?>
-    <div style="display: none;" id="theme-selection-div">
-        <button onclick="selectTheme('red')">Theme 1</button>
-        <button onclick="selectTheme('blue')">Theme 2</button>
-        <button onclick="selectTheme('orange')">Theme 3</button>
-        <button onclick="selectTheme('white')">Theme 4</button>
-        <button onclick="selectTheme('yellow')">Theme 5</button>
-    </div>
-
-    <script>
-        function openThemeSelection() {
-            document.getElementById('theme-selection-div').style.display = 'block';
-        }
-
-        function selectTheme(theme) {
-            var expires = new Date();
-            expires.setHours(expires.getHours() + 1);
-            document.cookie = "bg-user=" + theme + ";expires=" + expires.toUTCString();
-            document.getElementById('theme-selection-div').style.display = 'none';
-        }
-    </script>
 
 <?php else : ?>
 

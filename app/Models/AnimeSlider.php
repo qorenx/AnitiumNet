@@ -41,13 +41,12 @@ class AnimeSlider extends Model
                     ->getResultArray();
     
                 if (!empty($query[0])) {
-                    if (strpos($query[0]['embed_types'], (string)$type) !== false) {
+                    if ($query[0]['embed_types'] !== null && strpos($query[0]['embed_types'], (string)$type) !== false) {
                         $foundTypes[$toBeCheckedTypes[$type - 1]] = 1;
                     } else {
                         $foundTypes[$toBeCheckedTypes[$type - 1]] = 0;
                     }
                 }
-    
                 $anime = array_merge($anime, ['type' => $foundTypes]);
             }
         }

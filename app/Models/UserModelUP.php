@@ -17,6 +17,7 @@ class UserModelUP extends Model
 
     protected $allowedFields = [  // the fields that can be modified by the model
         'id',
+        'username',
         'avatar',
         'schedule_status',
         'raw_status',

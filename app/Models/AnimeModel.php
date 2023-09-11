@@ -17,6 +17,7 @@ class AnimeModel extends Model
     protected $allowedFields = [
         'id',
         'uid',
+        'sid',
         'ani_name',
         'ani_jname',
         'ani_synonyms',
@@ -50,38 +51,39 @@ class AnimeModel extends Model
 
     public function getAnimeByUid($uid)
     {
-        $typedefault = [1, 2, 3, 4];
-        $types = $typedefault;
-        $db = \Config\Database::connect();
-        $toBeCheckedTypes = ['RAW', 'SUB', 'DUB', 'TURK'];
-        $foundTypes = [];
-        $animeData = null;
-    
-        foreach ($types as $type) {
-            $query = $db
-                ->table('anime')
-                ->select('anime.*, GROUP_CONCAT(episode_embed.embed_type) as embed_types')
-                ->where('anime.uid', $uid)
-                ->join('episode_embed', 'anime.uid = episode_embed.embed_uid', 'left')
-                ->groupBy('anime.uid')
-                ->get()
-                ->getResultArray();
-    
-            if (!empty($query[0])) {
-                if (strpos($query[0]['embed_types'], (string) $type) !== false) {
-                    $foundTypes[$toBeCheckedTypes[$type - 1]] = 1;
-                } else {
-                    $foundTypes[$toBeCheckedTypes[$type - 1]] = 0;
-                }
-    
-                $animeData = $query[0];
-            }
-        }
-    
-        $db->close();
-    
-        return array_merge($animeData, ['type' => $foundTypes]);
+        return $this->db
+            ->table('anime')
+            ->select('anime.*')
+            ->where('anime.uid', $uid)
+            ->get()
+            ->getRowArray();
     }
+
+
+    public function getEpisodeAndEmbedData($uid)
+    {
+        $db = \Config\Database::connect();
+        $episodeCountQuery = $db->table('episode')
+            ->where('uid', $uid)
+            ->countAllResults();
+        $embedDataQuery = $db->table('episode_embed')
+            ->where('embed_uid', $uid)
+            ->get()
+            ->getResultArray();
+        $embedTypeCounts = ['1' => 0, '2' => 0, '3' => 0, '4' => 0];
+        foreach ($embedDataQuery as $data) {
+            $embedTypeCounts[$data['embed_type']]++;
+        }
+
+        $db->close();
+
+        return [
+            'episode_count' => $episodeCountQuery,
+            'embed_type_counts' => $embedTypeCounts
+        ];
+    }
+
+
     public function search($data)
     {
         $query = $this->db->table('anime');
@@ -318,5 +320,35 @@ class AnimeModel extends Model
             ->get()
             ->getResultArray();
         return $result[0];
+    }
+
+
+    public function animeseason($uid, $sid)
+    {
+        $result = $this
+            ->select('uid, ani_name, ani_poster, ani_aired')
+            ->where('sid', $sid)
+            ->orderBy('ani_aired', 'ASC')
+            ->get()
+            ->getResultArray();
+
+        foreach ($result as &$value) {
+            if ($value['uid'] == $uid) {
+                $value['active'] = 1;
+            }
+        }
+        return $result;
+    }
+    public function genreget($genre)
+    {
+        return $this->like('ani_genre', $genre);
+    }
+    public function studioget($studio)
+    {
+        return $this->like('ani_studio', $studio);
+    }
+    public function producersget($producers)
+    {
+        return $this->like('ani_producers', $producers);
     }
 }

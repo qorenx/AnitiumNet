@@ -67,14 +67,22 @@
                                                                 }
                                                                 ?></div>
 
+
                             <?php
-                            $types = ['raw' => 'RAW', 'sub' => 'SUB', 'dub' => 'DUB', 'turk' => 'TURK'];
-                            foreach ($types as $type => $display) :
-                                if ((auth()->user()->{$type . '_status'} ?? 1) == 1 && !empty($AnimeData['type'][$display])) : ?>
-                                    <div class="tick-item tick-<?php echo $type; ?>"><?php echo $display; ?></div>
-                            <?php
-                                endif;
-                            endforeach;
+                            $user = auth()->user();
+                            $animeEmbedCounts = $animeEpisodeData['embed_type_counts'];
+                            $statusToEmbedMap = [
+                                "raw_status" => ["tick-raw", "fa-language", "1"],
+                                "sub_status" => ["tick-sub", "fa-closed-captioning", "2"],
+                                "dub_status" => ["tick-dub", "fa-microphone", "3"],
+                                "turk_status" => ["tick-turk", "fa-globe-asia", "4"]
+                            ];
+
+                            foreach ($statusToEmbedMap as $status => $embed) {
+                                if (($user->$status ?? 1) == 1 && !empty($animeEmbedCounts[$embed[2]])) {
+                                    echo "<div class='tick-item {$embed[0]}'><i class='fas {$embed[1]} mr-1'></i>{$animeEmbedCounts[$embed[2]]}</div>";
+                                }
+                            }
                             ?>
 
                             <?php if (!empty($AnimeData['ani_source'])) : ?>

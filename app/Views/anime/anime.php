@@ -9,25 +9,9 @@
             <?= $this->include('anime/getanime/include/details') ?>
             <div class="container" style="max-width:100%!important;width:100%!important;">
                 <div id="main-content">
-                    <section id="block_area-seasons" class="block_area block_area-seasons">
-                        <script>
-                            document.addEventListener("DOMContentLoaded", function() {
-                                fetch(`/ajax/getanimeseason/<?= $AnimeData['uid'] ?>`, {
-                                        method: "GET"
-                                    })
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data['status'] == 0) {
-                                            var elem = document.getElementById("block_area-seasons");
-                                            elem.parentNode.removeChild(elem);
-                                        } else {
-                                            document.getElementById("block_area-seasons").innerHTML = data['html'];
-                                        }
-                                    })
-                                    .catch(error => console.error('Error:', error));
-                            });
-                        </script>
-                    </section>
+                    <?php if ($AnimeData['sid'] != 0 && !empty($AnimeData['sid'])) {
+                        echo $this->include('anime/getanime/include/season');
+                    } ?>
                     <?= $this->include('anime/getanime/include/recommended') ?>
                     <div class="clearfix"></div>
                 </div>
@@ -35,7 +19,7 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-        <?= $this->include('anime/getanime/footer') ?>
+        <?= $this->include('anime/extend/templates/footer') ?>
         <div id="mask-overlay"></div>
         <?= $this->include('anime/loadscript') ?>
     </div>

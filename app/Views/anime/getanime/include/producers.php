@@ -4,7 +4,7 @@
     $producers = explode(',', $AnimeData['ani_producers']);
     foreach ($producers as $producer) {
         $producer = trim($producer);
-        $studio_url = "https://myanimelist.net/company?q=" . urlencode($producer);
+        $studio_url = "/producers/" . urlencode($producer);
         echo "<a href='$studio_url'>$producer</a>";
         if ($producer != end($producers)) {
             echo " ";

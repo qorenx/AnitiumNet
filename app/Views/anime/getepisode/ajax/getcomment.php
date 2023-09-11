@@ -18,7 +18,7 @@
                 <a href="/community/user/<?= $post['username'] ?>" target="_blank" class="<?= $postclass ?>">
                     <?= $post['username'] ?><span><?= $post['group'] ?></span></a>
                 <div class="time"> <?php
-                                    $datetime1 = new DateTime(); 
+                                    $datetime1 = new DateTime();
                                     $datetime2 = new DateTime($post['created_at']);
                                     $interval = $datetime1->diff($datetime2);
 
@@ -49,17 +49,17 @@
             </div>
             <div class="ibottom">
                 <div class="ib-li ib-reply" data-id="<?= $post['post_id'] ?>">
-                    <a class="btn" onclick="document.getElementById('reply-<?= $post['id'] ?>').style.display = (document.getElementById('reply-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'"><i class="fas fa-reply mr-1"></i>Reply</a>
+                    <a class="btn" <?php if (!auth()->loggedIn()) {echo 'onclick="loginmodal()"';}?> onclick="document.getElementById('reply-<?= $post['id'] ?>').style.display = (document.getElementById('reply-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'"><i class="fas fa-reply mr-1"></i>Reply</a>
                 </div>
                 <div class="ib-li" id="<?= $post['post_id'] ?>">
                     <div class="ib-li ib-like">
-                        <a style="color:white;" onclick="addRepyLike(<?= $post['post_id'] ?>)" class="btn cm-btn-vote">
+                        <a style="color:white;" <?php if (!auth()->loggedIn()) {echo 'onclick="loginmodal()"';}?> onclick="addRepyLike(<?= $post['post_id'] ?>)" class="btn cm-btn-vote">
                             <i class="far fa-thumbs-up mr-1"></i>
                             <span class="value"><?= $post['main_like']['total_post_rep'] ?></span>
                         </a>
                     </div>
                     <div class="ib-li ib-dislike">
-                        <a style="color:white;" onclick="addRepyDislike(<?= $post['post_id'] ?>)" class="btn cm-btn-vote">
+                        <a style="color:white;" <?php if (!auth()->loggedIn()) {echo 'onclick="loginmodal()"';}?> onclick="addRepyDislike(<?= $post['post_id'] ?>)" class="btn cm-btn-vote">
                             <i class="far fa-thumbs-down mr-1"></i>
                             <span class="value"><?= $post['main_like']['total_post_disrep'] ?></span>
                         </a>
@@ -177,18 +177,18 @@
                                     </div>
                                     <div class="ibottom">
                                         <div class="ib-li ib-reply">
-                                            <a class="btn" onclick="document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display = (document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display === 'none') ? 'block' : 'none'; "><i class="fas fa-reply mr-1"></i>Reply</a>
+                                            <a class="btn" <?php if (!auth()->loggedIn()) {echo 'onclick="loginmodal()"';}?> onclick="document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display = (document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display === 'none') ? 'block' : 'none'; "><i class="fas fa-reply mr-1"></i>Reply</a>
                                         </div>
                                         <div class="ib-li" id="<?= $reply['post_u_id'] ?>">
                                             <div class="ib-li ib-like">
-                                                <a style="color:white;" onclick="addRepycLike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
+                                                <a style="color:white;" <?php if (!auth()->loggedIn()) {echo 'onclick="loginmodal()"';}?> onclick="addRepycLike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
                                                     <i class="far fa-thumbs-up mr-1"></i><span class="value">
                                                         <?= $reply['repy_like']['total_post_rep'] ?>
                                                     </span>
                                                 </a>
                                             </div>
                                             <div class="ib-li ib-dislike">
-                                                <a style="color:white;" onclick="addRepycDislike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
+                                                <a style="color:white;" <?php if (!auth()->loggedIn()) {echo 'onclick="loginmodal()"';}?> onclick="addRepycDislike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
                                                     <i class="far fa-thumbs-down mr-1"></i><span class="value">
                                                         <?= $reply['repy_like']['total_post_disrep'] ?>
                                                     </span>

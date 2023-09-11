@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <?= $this->include('anime/gethome/footer') ?>
+        <?= $this->include('anime/extend/templates/footer') ?>
         <div id="mask-overlay"></div>
         <?= $this->include('anime/loadscript') ?>
     </div>

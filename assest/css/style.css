@@ -1403,6 +1403,15 @@ div.detail .is-info>div {
     color: #111
 }
 
+.tick-item.tick-raw {
+    background: #eaaadb;
+    color: #702a43
+}
+
+.tick-item.tick-turk {
+    background: #f8a6a3;
+    color: #111
+}
 .tick-item i {
     font-size: 1em !important;
     top: auto !important
@@ -1420,7 +1429,6 @@ div.detail .is-info>div {
     border-radius: 5px;
     padding: 4px 6px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, .3);
-    min-width: 36px;
     text-align: center;
     font-size: 12px
 }
@@ -1437,7 +1445,6 @@ div.detail .is-info>div {
     border-radius: 5px;
     padding: 4px 6px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, .3);
-    min-width: 36px;
     text-align: center;
     font-size: 12px;
 }
@@ -5330,7 +5337,7 @@ ul.color-list li:nth-of-type(7n+6) a {
     content: "";
     width: 70px;
     height: 70px;
-    background-image: url("../images/talk.png");
+    background-image: url("../assest/images/talk.png");
     background-size: cover;
     position: absolute;
     right: 30px;
@@ -5584,35 +5591,35 @@ ul.color-list li:nth-of-type(7n+6) a {
 }
 
 .badg-level.level-a {
-    background-image: url(../images/level-a.png)
+    background-image: url(../assest/images/level-a.png)
 }
 
 .badg-level.level-a.up-2 {
-    background-image: url(../images/level-a-2.png)
+    background-image: url(../assest/images/level-a-2.png)
 }
 
 .badg-level.level-a.up-3 {
-    background-image: url(../images/level-a-3.png)
+    background-image: url(../assest/images/level-a-3.png)
 }
 
 .badg-level.level-a.up-4 {
-    background-image: url(../images/level-a-4.png)
+    background-image: url(../assest/images/level-a-4.png)
 }
 
 .badg-level.level-b {
-    background-image: url(../images/level-b.png)
+    background-image: url(../assest/images/level-b.png)
 }
 
 .badg-level.level-c {
-    background-image: url(../images/level-c.png)
+    background-image: url(../assest/images/level-c.png)
 }
 
 .badg-level.level-d {
-    background-image: url(../images/level-d.png)
+    background-image: url(../assest/images/level-d.png)
 }
 
 .badg-level.level-mute {
-    background-image: url(../images/level-muted.png)
+    background-image: url(../assest/images/level-muted.png)
 }
 
 .show-spoil .btn {
@@ -7000,7 +7007,7 @@ ul.color-list li:nth-of-type(7n+6) a {
 }
 
 .dub-icon {
-    background-image: url("../images/dub-icon.png");
+    background-image: url("../assest/images/dub-icon.png");
     background-size: cover;
     background-position: center center;
     width: 80px;
@@ -7011,7 +7018,7 @@ ul.color-list li:nth-of-type(7n+6) a {
 }
 
 .share-icon {
-    background-image: url("../images/share-icon.gif");
+    background-image: url("../assest/images/share-icon.gif");
     background-size: cover;
     background-position: center center;
     width: 60px;
@@ -7021,7 +7028,7 @@ ul.color-list li:nth-of-type(7n+6) a {
 }
 
 .dub-icon.dub-icon-02 {
-    background-image: url("../images/dub-icon-02.png");
+    background-image: url("../assest/images/dub-icon-02.png");
     width: 100px;
     height: 100px
 }
@@ -7048,7 +7055,7 @@ ul.color-list li:nth-of-type(7n+6) a {
 }
 
 .livestream_body {
-    background: #0f1631 url("../images/live-bg.jpg") bottom center repeat-x
+    background: #0f1631 url("../assest/images/live-bg.jpg") bottom center repeat-x
 }
 
 .livestream_body #header {
@@ -9048,7 +9055,7 @@ span#AddMalDiv #AddMal {
     right: 0;
     width: 100%;
     height: 100%;
-    background: url("../images/live-thumb.png") repeat;
+    background: url("../assest/images/live-thumb.png") repeat;
     z-index: 2
 }
 
@@ -9740,7 +9747,7 @@ span#AddMalDiv #AddMal {
 
 .award-bg:before {
     content: "";
-    background: url(../images/live-thumb.png) repeat;
+    background: url(../assest/images/live-thumb.png) repeat;
     position: absolute;
     top: 0;
     left: 0;
@@ -10933,7 +10940,7 @@ span#AddMalDiv #AddMal {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url(../images/live-thumb.png) repeat
+    background: url(../assest/images/live-thumb.png) repeat
 }
 
 .os-list .os-item.active {

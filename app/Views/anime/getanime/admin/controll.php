@@ -5,8 +5,6 @@
     <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
         <a class="wl-item dropdown-item" href="<?= base_url('admin/anime/getanimeupdate?uid=') ?><?= $AnimeData['uid'] ?>">Anime Edit
         </a>
-        <a class="wl-item dropdown-item" href="<?= base_url('admin/season/editing?uid=') ?><?= $AnimeData['uid'] ?>">Anime Season Edit
-        </a>
         <a class="wl-item dropdown-item" href="javascript:;">Anime Delete
         </a>
     </div>

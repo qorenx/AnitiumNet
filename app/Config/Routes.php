@@ -47,6 +47,10 @@ $routes->get('type/(:any)', 'Anime::anime_type/$1/');
 $routes->get('az-list/(:any)', 'Anime::az_search/$1/');
 // localhost/genre/  (Anime türleri oluşur.)
 $routes->get('genre/(:any)', 'Anime::genre_search/$1/');
+// localhost/studio/  (Anime türleri oluşur.)
+$routes->get('studio/(:any)', 'Anime::studio_search/$1/');
+// localhost/producers/  (Anime türleri oluşur.)
+$routes->get('producers/(:any)', 'Anime::producers_search/$1/');
 // localhost/latest-episode  son eklenen animeler daha fazla.
 $routes->get('latest-episode', 'Anime::latest_episode');
 //Anime Sayfasındaki Animeleri Çeker
@@ -70,7 +74,7 @@ $routes->get('ajax/qtip/(:any)', 'Anime::qtip/$1/');
 
 // AJAX BULUNDUĞU KISIM
 $routes->get('search/suggestions', 'Anime::suggestions');  // Bu kısım ajax çevirilecek. Düzeltilecektir.
-$routes->get('ajax/getanimeseason/(:any)', 'Anime::getAnimeSeason/$1');  //Anime Sezon Verisini Çeker.
+$routes->get('ajax/getanimeseason/(:any)/(:any)', 'Anime::getAnimeSeason/$1/$2');  //Anime Sezon Verisini Çeker.
 $routes->get('ajax/getfilter', 'Anime::getfilter');  // Anime Filter göre veri alır.
 $routes->get('ajax/getdaysschedule/(:any)', 'Anime::getdaysschedule/$1');  //ajax ile anime gün verisi çeker.
 $routes->get('ajax/episodemorecomment', 'Anime::episodemorecomment'); //ajax ile episode altındaki yorumları çeker.
@@ -203,14 +207,6 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
             $routes->post('schedule', 'Admin::scheduleadd');
             $routes->post('schedule-delete', 'Admin::scheduledelete');
             $routes->post('schedule-delete-all', 'Admin::scheduledeleteall');
-    });
-    $routes->group('season', function ($routes) {
-        // anime sezon eklendiği kısım
-        $routes->get('adding', 'Admin::seasonadd');
-        $routes->post('adding', 'Admin::seasonaddsave');
-        //anime season edit ve delete
-        $routes->get('editing', 'Admin::seasonedit');
-        $routes->post('delete', 'Admin::seasondelete');
     });
     $routes->group('episode', function ($routes) {
         //Episode Ekleme ve DateBase Kayıt yeri
