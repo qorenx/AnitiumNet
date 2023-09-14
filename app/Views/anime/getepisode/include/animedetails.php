@@ -1,6 +1,6 @@
 <div class="anisc-poster">
     <div class="film-poster" style="position: relative;">
-        <img src="<?= $animeData['ani_poster'] ?>" data-src="" class="film-poster-img ls-is-cached lazyloaded" alt="">
+        <img src="<?= $animeData['ani_poster'] ?>" class="film-poster-img ls-is-cached lazyloaded">
     </div>
     <?php if (!empty($animeData['ani_manga_url'])) { ?>
         <a class="add-manga mb-0 get-mangas" href="<?= $animeData['ani_manga_url'] ?>" target="_blank">
@@ -90,6 +90,4 @@
 </div>
 <div class="dt-rate">
     <div id="vote-info"></div>
-</div>
-</div>
 </div>
