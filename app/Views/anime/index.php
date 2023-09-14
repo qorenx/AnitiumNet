@@ -41,7 +41,7 @@
         </div>
         <div id="xmain-wrapper">
         <?php 
-        $randomTime = mt_rand(1, 10);
+        $randomTime = mt_rand(10, 25);
     ?>
 
     <style>
@@ -303,7 +303,7 @@
     <div id="xfooter-about">
         <div class="container">
             <p class="copyright">©
-                <?php echo date("Y"); ?> <a href="<?php echo base_url(); ?>">Anitium</a>. All rights reserved.
+                <?php echo date("Y"); ?> <a href="<?php echo base_url(); ?>"><?php echo $settings['Advanced'][0]['value']; ?></a>. All rights reserved.
             </p>
         </div>
     </div>

@@ -5043,25 +5043,6 @@ $(document).ready(function () {
 		$lightButton.removeClass("off");
 	});
 });
-var navItems = document.querySelectorAll('.nav-item');
-navItems.forEach(function (navItem) {
-	navItem.addEventListener('click', function (event) {
-		event.preventDefault();
-		changeTab(event, navItem.getAttribute('data-tab'));
-	});
-});
-function changeTab(evt, tabId) {
-	var tabContent = document.querySelectorAll('.tab-content.chat');
-	for (var i = 0; i < tabContent.length; i++) {
-		tabContent[i].style.display = "none";
-	}
-	var tabLinks = document.querySelector('.nav-tabs').getElementsByTagName("li");
-	for (var i = 0; i < tabLinks.length; i++) {
-		tabLinks[i].classList.remove('active');
-	}
-	evt.currentTarget.classList.add("active");
-	document.getElementById(tabId).style.display = "block";
-}
 $(".btn-server").click(function () {
 	$(".btn-server").removeClass("active");
 	$(this).closest(".btn-server").addClass("active");
