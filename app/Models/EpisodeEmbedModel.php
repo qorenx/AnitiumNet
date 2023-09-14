@@ -36,45 +36,57 @@ class EpisodeEmbedModel extends Model
     }
     public function getByEmbedFirst($uid, $ep_id_name)
     {
+        $typeraw = 1;
+        $typesub = 1;
+        $typedub = 1;
+        $typeturk = 1;
+
+        if (auth()->user()) {
+            $typeraw = auth()->user()->raw_status;
+            $typesub = auth()->user()->sub_status;
+            $typedub = auth()->user()->dub_status;
+            $typeturk = auth()->user()->turk_status;
+        }
+
         $episodeEmbedModel = new self();
-    
-        // Check embed type 2
-        $embedData = $episodeEmbedModel->where([
-            'embed_uid' => $uid,
-            'embed_id' => $ep_id_name,
-            'embed_type' => 2
-        ])->orderBy('embed_order', 'ASC')->first();
-    
-        if (!$embedData) {
-            // Check embed_type 1
+
+        $embedData = null;
+        if ($typeraw) {
             $embedData = $episodeEmbedModel->where([
                 'embed_uid' => $uid,
                 'embed_id' => $ep_id_name,
                 'embed_type' => 1
             ])->orderBy('embed_order', 'ASC')->first();
-    
-            if (!$embedData) {
-                // Check embed_type 3
-                $embedData = $episodeEmbedModel->where([
-                    'embed_uid' => $uid,
-                    'embed_id' => $ep_id_name,
-                    'embed_type' => 3
-                ])->orderBy('embed_order', 'ASC')->first();
-    
-                if (!$embedData) {
-                    // Check embed_type 4
-                    $embedData = $episodeEmbedModel->where([
-                        'embed_uid' => $uid,
-                        'embed_id' => $ep_id_name,
-                        'embed_type' => 4
-                    ])->orderBy('embed_order', 'ASC')->first();
-    
-                    if (!$embedData) {
-                        return 0;
-                    }   
-                }
-            }
         }
+
+        if (!$embedData && $typesub) {
+            $embedData = $episodeEmbedModel->where([
+                'embed_uid' => $uid,
+                'embed_id' => $ep_id_name,
+                'embed_type' => 2
+            ])->orderBy('embed_order', 'ASC')->first();
+        }
+
+        if (!$embedData && $typedub) {
+            $embedData = $episodeEmbedModel->where([
+                'embed_uid' => $uid,
+                'embed_id' => $ep_id_name,
+                'embed_type' => 3
+            ])->orderBy('embed_order', 'ASC')->first();
+        }
+
+        if (!$embedData && $typeturk) {
+            $embedData = $episodeEmbedModel->where([
+                'embed_uid' => $uid,
+                'embed_id' => $ep_id_name,
+                'embed_type' => 4
+            ])->orderBy('embed_order', 'ASC')->first();
+        }
+
+        if (!$embedData) {
+            return 0;
+        }
+
         return $embedData['id'];
     }
 
@@ -100,7 +112,8 @@ class EpisodeEmbedModel extends Model
         return [$embed_frame];
     }
 
-    public function getEmbedCount() {
+    public function getEmbedCount()
+    {
         $query = $this->db->query('SELECT COUNT(*) as count FROM episode_embed');
         $result = $query->getRow();
         return $result->count;
