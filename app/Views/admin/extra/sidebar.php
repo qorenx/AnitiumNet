@@ -47,7 +47,6 @@
         $episodes = [
             'adding' => ['fas fa-video', 'Episode Adding'],
             'embed' => ['fas fa-file-video', 'Embed Adding'],
-            'download' => ['fas fa-file', 'Download Adding']
         ];
         ?>
 

@@ -59,7 +59,7 @@ class Converter extends BaseController
     public function get_embed_youtube($uid, $eps, $url)
     {
         $video_id = preg_replace('/^.+v=([\w-]{11}).*/', '$1', $url);
-        $embed_code = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' . $video_id . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        $embed_code = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' . $video_id . '" frameborder="0"  allowfullscreen></iframe>';
 
         $json = json_encode($embed_code);
 

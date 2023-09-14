@@ -49,17 +49,23 @@
             </div>
             <div class="ibottom">
                 <div class="ib-li ib-reply" data-id="<?= $post['post_id'] ?>">
-                    <a class="btn" <?php if (!auth()->loggedIn()) {echo 'onclick="loginmodal()"';}?> onclick="document.getElementById('reply-<?= $post['id'] ?>').style.display = (document.getElementById('reply-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'"><i class="fas fa-reply mr-1"></i>Reply</a>
+                    <a class="btn" <?php if (!auth()->loggedIn()) {
+                                        echo 'onclick="loginmodal()"';
+                                    } ?> onclick="document.getElementById('reply-<?= $post['id'] ?>').style.display = (document.getElementById('reply-<?= $post['id'] ?>').style.display === 'none') ? 'block' : 'none'"><i class="fas fa-reply mr-1"></i>Reply</a>
                 </div>
                 <div class="ib-li" id="<?= $post['post_id'] ?>">
                     <div class="ib-li ib-like">
-                        <a style="color:white;" <?php if (!auth()->loggedIn()) {echo 'onclick="loginmodal()"';}?> onclick="addRepyLike(<?= $post['post_id'] ?>)" class="btn cm-btn-vote">
+                        <a style="color:white;" <?php if (!auth()->loggedIn()) {
+                                                    echo 'onclick="loginmodal()"';
+                                                } ?> onclick="addRepyLike(<?= $post['post_id'] ?>)" class="btn cm-btn-vote">
                             <i class="far fa-thumbs-up mr-1"></i>
                             <span class="value"><?= $post['main_like']['total_post_rep'] ?></span>
                         </a>
                     </div>
                     <div class="ib-li ib-dislike">
-                        <a style="color:white;" <?php if (!auth()->loggedIn()) {echo 'onclick="loginmodal()"';}?> onclick="addRepyDislike(<?= $post['post_id'] ?>)" class="btn cm-btn-vote">
+                        <a style="color:white;" <?php if (!auth()->loggedIn()) {
+                                                    echo 'onclick="loginmodal()"';
+                                                } ?> onclick="addRepyDislike(<?= $post['post_id'] ?>)" class="btn cm-btn-vote">
                             <i class="far fa-thumbs-down mr-1"></i>
                             <span class="value"><?= $post['main_like']['total_post_disrep'] ?></span>
                         </a>
@@ -91,9 +97,11 @@
                         </div>
                         <div class="ci-form">
                             <form method="post" action="/watch/epcommentrepyinsert" class="preform preform-dark comment-form">
-                                <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
                                 <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
-                                <input type="hidden" name="post_u_id" value="<?php echo rand(000000, 9999999); ?>">
+                                <?php $animeUID = $_GET['uid'];
+                                $animeEPID = $_GET['eps']; ?>
+                                <input type="hidden" name="uid" value="<?php echo $animeUID; ?>">
+                                <input type="hidden" name="eps" value="<?php echo $animeEPID; ?>">
                                 <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
                                 <div class="ci-buttons">
                                     <div class="ci-b-right">
@@ -177,18 +185,24 @@
                                     </div>
                                     <div class="ibottom">
                                         <div class="ib-li ib-reply">
-                                            <a class="btn" <?php if (!auth()->loggedIn()) {echo 'onclick="loginmodal()"';}?> onclick="document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display = (document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display === 'none') ? 'block' : 'none'; "><i class="fas fa-reply mr-1"></i>Reply</a>
+                                            <a class="btn" <?php if (!auth()->loggedIn()) {
+                                                                echo 'onclick="loginmodal()"';
+                                                            } ?> onclick="document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display = (document.getElementById('replyp-<?= $reply['post_u_id'] ?>').style.display === 'none') ? 'block' : 'none'; "><i class="fas fa-reply mr-1"></i>Reply</a>
                                         </div>
                                         <div class="ib-li" id="<?= $reply['post_u_id'] ?>">
                                             <div class="ib-li ib-like">
-                                                <a style="color:white;" <?php if (!auth()->loggedIn()) {echo 'onclick="loginmodal()"';}?> onclick="addRepycLike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
+                                                <a style="color:white;" <?php if (!auth()->loggedIn()) {
+                                                                            echo 'onclick="loginmodal()"';
+                                                                        } ?> onclick="addRepycLike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
                                                     <i class="far fa-thumbs-up mr-1"></i><span class="value">
                                                         <?= $reply['repy_like']['total_post_rep'] ?>
                                                     </span>
                                                 </a>
                                             </div>
                                             <div class="ib-li ib-dislike">
-                                                <a style="color:white;" <?php if (!auth()->loggedIn()) {echo 'onclick="loginmodal()"';}?> onclick="addRepycDislike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
+                                                <a style="color:white;" <?php if (!auth()->loggedIn()) {
+                                                                            echo 'onclick="loginmodal()"';
+                                                                        } ?> onclick="addRepycDislike(<?= $reply['post_u_id'] ?>)" class="btn cm-btn-vote">
                                                     <i class="far fa-thumbs-down mr-1"></i><span class="value">
                                                         <?= $reply['repy_like']['total_post_disrep'] ?>
                                                     </span>
@@ -223,9 +237,11 @@
                                     </div>
                                     <div class="ci-form">
                                         <form method="post" action="/watch/epcommentrepyinsert" class="preform preform-dark comment-form">
-                                            <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
                                             <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
-                                            <input type="hidden" name="post_u_id" value="<?php echo rand(000000, 9999999); ?>">
+                                            <?php $animeUID = $_GET['uid'];
+                                            $animeEPID = $_GET['eps']; ?>
+                                            <input type="hidden" name="uid" value="<?php echo $animeUID; ?>">
+                                            <input type="hidden" name="eps" value="<?php echo $animeEPID; ?>">
                                             <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
                                             <div class="ci-buttons">
                                                 <div class="ci-b-right">

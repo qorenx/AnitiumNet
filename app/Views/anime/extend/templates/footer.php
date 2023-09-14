@@ -1,16 +1,3 @@
-<?php if (session()->getFlashdata('success')) : ?>
-    <div id=" toast-container" class="toast-bottom-right">
-        <div class="toast toast-success" aria-live="polite">
-            <div class="toast-message"><?= session()->getFlashdata('success') ?></div>
-        </div>
-    </div>
-    <script>
-        setTimeout(function() {
-            document.getElementById("toast-container").style.display = "none";
-        }, 5000);
-    </script>
-<?php endif; ?>
-
 <div id="footer" style="background: linear-gradient(to right, rgba(36, 36, 40) 30%, rgba(0,0,0,0) 80%), url('<?php echo $settings['Advanced'][4]['value']; ?>'); background-attachment: inherit; background-repeat: round;">
     <div id="footer-about">
         <div class="container">

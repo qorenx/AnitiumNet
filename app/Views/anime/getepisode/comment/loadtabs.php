@@ -7,20 +7,32 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    <div class="tab-container">
-        <ul class="nav nav-tabs">
-            <li class="nav-item" data-tab="tab1">
-                <a class="nav-link active" href="#"><?php echo $settings['Advanced'][0]['value']; ?></a>
-            </li>
-            <li class="nav-item" data-tab="tab2">
-                <a class="nav-link" href="#">Disqus</a>
-            </li>
-        </ul>
-        <div class="tab-content chat" id="tab1">
-            <?= $this->include('anime/getepisode/comment/comment') ?>
+    <div class="container">
+        <div class="nav-button-container">
+            <button class="nav-button active" data-content="#content1">
+                <?php echo $settings['Advanced'][0]['value']; ?>
+            </button>
+            <button class="nav-button" data-content="#content2">Disqus</button>
         </div>
-        <div class="tab-content chat" id="tab2" style="display:none;">
-            <?= $this->include('anime/getepisode/comment/disqus') ?>
+        <div class="content-container">
+            <div class="content" id="content1">
+                <?= $this->include('anime/getepisode/comment/comment') ?>
+            </div>
+            <div class="content" id="content2" style="display:none;">
+                <?= $this->include('anime/getepisode/comment/disqus') ?>
+            </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.nav-button').click(function(){
+                $('.nav-button.active').removeClass('active');
+                $(this).addClass('active');
+                $('.content').hide();
+                $($(this).data('content')).show();
+            });
+        });
+    </script>
 </section>

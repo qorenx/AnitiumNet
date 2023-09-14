@@ -287,9 +287,12 @@
                                             </div><br>
 
                                         </div>
+
+
+
+
+
                                         <div class="tab-pane fade" id="posterwallpaper">
-
-
                                             <style>
                                                 .form-group {
                                                     display: flex;
@@ -315,6 +318,15 @@
                                                     width: 80%;
                                                     padding: 5px;
                                                 }
+
+                                                .file-button-wrapper {
+                                                    display: flex;
+                                                    gap: 20px;
+                                                }
+
+                                                .form-control {
+                                                    flex-grow: 1;
+                                                }
                                             </style>
                                             <div class="form-group row">
                                                 <div id="preview-container">
@@ -333,10 +345,13 @@
                                                         });
                                                     });
                                                 </script>
+                                                <input type="hidden" value="<?php echo isset($item['images']['jpg']['large_image_url']) ? $item['images']['jpg']['large_image_url'] : $item['images']['jpg']['image_url']; ?>" name="ani_poster" id="ani_poster" class="form-control">
                                                 <div id="file-input-container">
                                                     <label for="ani_poster" class="col-form-label">Poster İMG:</label>
-                                                    <input type="file" name="ani_poster" id="ani_poster" class="form-control" required>
-                                                    <button id="copyButton" type="button">Copy İmage Link</button>
+                                                    <div class="file-button-wrapper">
+                                                        <input type="file" name="ani_poster" id="ani_poster" class="form-control">
+                                                        <button id="copyButton" type="button">Copy</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -360,6 +375,10 @@
                                                 });
                                             </script>
                                         </div>
+
+
+
+
 
                                         <div class="card-footer">
                                             <input class="btn btn-primary" type="submit" value="Get Anime Adding">

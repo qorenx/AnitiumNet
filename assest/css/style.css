@@ -1002,7 +1002,6 @@ div.detail .is-info>div {
 }
 
 #main-wrapper {
-    margin-bottom: 70px;
     min-height: calc(100vh - 350px)
 }
 

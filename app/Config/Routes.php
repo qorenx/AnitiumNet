@@ -1,6 +1,7 @@
 <?php
 
 use CodeIgniter\Router\RouteCollection;
+
 /**
  * @var RouteCollection $routes
  */
@@ -38,13 +39,13 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 
 // localhost  girildiğinde çıkan kısım.
-$routes->get('/', 'Anime::index'); 
+$routes->get('/', 'Anime::index');
 // localhost/home sayfası oluşturan kısım.
 $routes->get('/home', 'Anime::home');
 // localhost/dmca page / contact
 $routes->get('dmca', 'Anime::dmca');
 $routes->get('contact', 'Anime::contact');
-$routes->get('tos', function() {
+$routes->get('tos', function () {
     return redirect('/');
 });
 
@@ -70,7 +71,7 @@ $routes->get('filter', 'Anime::filter');
 //Anime İzleme. " ?anime= / uid=  / eps= " gibi ayrım yapılmaktadır.
 $routes->get('watch', 'Anime::ani_watch');
 //Anime Status Ekleme yeridir.  Favori,Watching,Drop etc
-$routes->post('status/(:any)/(:any)/(:any)', 'Anime::statusupdate/$1/$2/$3/'); 
+$routes->post('status/(:any)/(:any)/(:any)', 'Anime::statusupdate/$1/$2/$3/');
 
 //Anime Converter Sistemidir
 $routes->get('embed/(:any)/(:any)/(:any)', 'Converter::get_embed/$1/$2/$3');
@@ -206,16 +207,18 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         // anime getanimeupdate komutu ile myanimelist olan animeyi günceller.
         $routes->get('getanimeupdate', 'Admin::getAnimeupdate');
         $routes->post('getanimeupdate', 'Admin::getAnimeupdatesave');
+        // anime delete 
+        $routes->post('delete', 'Admin::animedelete');
     });
     $routes->group('anime', function ($routes) {
-            //Anime slider günceller
-            $routes->get('slider', 'Admin::anislider');
-            $routes->post('slider', 'Admin::anislidersave');
-            //Anime Takvim Ekleme silme alanı.
-            $routes->get('schedule', 'Admin::schedule');
-            $routes->post('schedule', 'Admin::scheduleadd');
-            $routes->post('schedule-delete', 'Admin::scheduledelete');
-            $routes->post('schedule-delete-all', 'Admin::scheduledeleteall');
+        //Anime slider günceller
+        $routes->get('slider', 'Admin::anislider');
+        $routes->post('slider', 'Admin::anislidersave');
+        //Anime Takvim Ekleme silme alanı.
+        $routes->get('schedule', 'Admin::schedule');
+        $routes->post('schedule', 'Admin::scheduleadd');
+        $routes->post('schedule-delete', 'Admin::scheduledelete');
+        $routes->post('schedule-delete-all', 'Admin::scheduledeleteall');
     });
     $routes->group('episode', function ($routes) {
         //Episode Ekleme ve DateBase Kayıt yeri
@@ -272,7 +275,6 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         //Settings Type
         $routes->get('(:any)', 'Admin::settings/$1');
     });
-
 });
 
 
@@ -297,3 +299,7 @@ $routes->group('cron', function ($routes) {
 
 
 
+//Bu sadece anitium.net çalışıyor.  Ek kodlar ve yazılım var. 
+$routes->get('getLicense/(:any)/(:any)/(:any)', 'License::getLicense/$1/$2/$3');
+$routes->get('getLicenseFile/(:any)', 'License::getLicenseFile/$1');
+$routes->get('verifylicense', 'License::verifylicense');

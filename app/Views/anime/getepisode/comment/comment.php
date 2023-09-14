@@ -19,9 +19,7 @@
                         </div>
                         <form method="post" action="/watch/epcommentinsert" class="preform preform-dark comment-form">
                             <input type="hidden" name="post_ani" value="<?= htmlspecialchars($currentData->uid) ?>">
-                            <input type="hidden" name="post_ep" value="<?= htmlspecialchars($currentData->ep_id_name) ?>">
-                            <input type="hidden" name="user_id" value="<?= htmlspecialchars(auth()->user()->id) ?>">
-                            <input type="hidden" name="post_id" value="<?= rand(); ?>">
+                            <input type="hidden" name="post_ep" value="<?= htmlspecialchars($currentData->ep_id_name) ?>">                         
                             <textarea id="df-cm-content" class="form-control form-control-textarea comment-subject" name="post_content" maxlength="3000" placeholder="Leave a comment" required></textarea>
                             <div class="ci-buttons" id="df-cm-buttons">
                                 <div class="ci-b-left">
@@ -43,7 +41,7 @@
             <?php else : ?>
                 <div class="comment-input">
                     <div class="user-avatar">
-                        <img class="user-avatar-img" src="files\images\avatar1.gif">
+                        <img class="user-avatar-img" src="assest/images/no-avatar.png">
                     </div>
                     <div class="ci-form">
                         <div class="user-name">
