@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3306
--- Üretim Zamanı: 11 Eyl 2023, 20:36:14
+-- Üretim Zamanı: 14 Eyl 2023, 09:26:36
 -- Sunucu sürümü: 8.0.31
 -- PHP Sürümü: 8.2.0
 
@@ -118,20 +118,7 @@ CREATE TABLE IF NOT EXISTS `anime_status` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Tablo döküm verisi `anime_status`
---
-
-INSERT INTO `anime_status` (`id`, `user_id`, `anime_uid`, `user_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 20785, 1, '2023-09-06 18:29:47', '2023-09-06 18:29:47', NULL),
-(2, 1, 55644, 1, '2023-09-11 13:55:59', '2023-09-11 13:55:59', NULL),
-(4, 1, 53040, 1, '2023-09-11 13:56:17', '2023-09-11 13:56:17', NULL),
-(7, 1, 52990, 1, '2023-09-11 13:56:38', '2023-09-11 13:56:38', NULL),
-(9, 1, 52741, 1, '2023-09-11 13:56:59', '2023-09-11 13:56:59', NULL),
-(10, 1, 54112, 1, '2023-09-11 13:57:42', '2023-09-11 13:57:42', NULL),
-(15, 1, 54492, 3, '2023-09-11 16:57:10', '2023-09-11 16:57:10', NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -202,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `auth_identities` (
 --
 
 INSERT INTO `auth_identities` (`id`, `user_id`, `type`, `name`, `secret`, `secret2`, `expires`, `extra`, `force_reset`, `last_used_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 'email_password', NULL, 'admin@gmail.com', '$2y$10$fNW/eSalcB5LeMBF152cCO1d66QFBnVDaPNO10.xpZ8PPyW6J4a/m', NULL, NULL, 0, '2023-09-11 20:06:51', '2023-05-12 19:52:20', '2023-09-11 20:06:51');
+(1, 1, 'email_password', NULL, 'admin@gmail.com', '$2y$10$fNW/eSalcB5LeMBF152cCO1d66QFBnVDaPNO10.xpZ8PPyW6J4a/m', NULL, NULL, 0, '2023-09-14 08:42:44', '2023-05-12 19:52:20', '2023-09-14 08:42:44');
 
 -- --------------------------------------------------------
 
@@ -223,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `auth_logins` (
   PRIMARY KEY (`id`),
   KEY `id_type_identifier` (`id_type`,`identifier`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=189 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=190 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Tablo döküm verisi `auth_logins`
@@ -233,7 +220,8 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `user_agent`, `id_type`, `identif
 (185, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0', 'email_password', 'admin@gmail.com', 1, '2023-09-11 13:30:15', 1),
 (186, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0', 'email_password', 'admin@gmail.com', 1, '2023-09-11 13:39:43', 1),
 (187, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0', 'email_password', 'admin@gmail.com', 1, '2023-09-11 13:42:12', 1),
-(188, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0', 'email_password', 'admin@gmail.com', 1, '2023-09-11 20:06:51', 1);
+(188, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0', 'email_password', 'admin@gmail.com', 1, '2023-09-11 20:06:51', 1),
+(189, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0', 'email_password', 'admin@gmail.com', 1, '2023-09-14 08:42:44', 1);
 
 -- --------------------------------------------------------
 
