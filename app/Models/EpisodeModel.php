@@ -32,22 +32,22 @@ class EpisodeModel extends Model
 
     public function lastestepisode()
     {
-        $typedefault = [1,2,3,4];
-        if (auth()->user()) {  
+        $typedefault = [1, 2, 3, 4];
+        if (auth()->user()) {
             $typeraw = auth()->user()->raw_status ? 1 : 0;
             $typesub = auth()->user()->sub_status ? 2 : 0;
             $typedub = auth()->user()->dub_status ? 3 : 0;
             $typeturk = auth()->user()->turk_status ? 4 : 0;
-    
-            $types = array_filter([$typeraw, $typesub, $typedub, $typeturk]);  
+
+            $types = array_filter([$typeraw, $typesub, $typedub, $typeturk]);
         } else {
             $types = $typedefault;
         }
-        
-        if(empty($types)){
+
+        if (empty($types)) {
             $types = [0];
         }
-        
+
         $db = \Config\Database::connect();
         $query = $db
             ->table('episode')
@@ -62,20 +62,20 @@ class EpisodeModel extends Model
             ->limit(54)
             ->get()
             ->getResultArray();
-        
-        if(empty($query)){
-           return [];
+
+        if (empty($query)) {
+            return [];
         }
-    
-        foreach($query as $key => $episode){
+
+        foreach ($query as $key => $episode) {
             $embeds = explode(',', $episode['embed_types']);
-    
+
             $query[$key]['RAW'] = in_array(1, $embeds) ? 1 : 0;
             $query[$key]['SUB'] = in_array(2, $embeds) ? 1 : 0;
             $query[$key]['DUB'] = in_array(3, $embeds) ? 1 : 0;
             $query[$key]['TURK'] = in_array(4, $embeds) ? 1 : 0;
         }
-    
+
         $db->close();
         return $query;
     }
@@ -138,7 +138,7 @@ class EpisodeModel extends Model
         $builder->where('uid', $uid)->where('id', $epuid)->delete();
     }
 
-    
+
 
     public function episodeviewupdate($uid, $ep_id_name)
     {
@@ -151,23 +151,29 @@ class EpisodeModel extends Model
             ->update();
     }
 
-    public function episodedata($uid) {
+    public function episodedata($uid)
+    {
         $defaultTypes = [1, 2, 3, 4];
         $user = auth()->user();
-    
+
         $types = $user ? array_filter([
             $user->raw_status ? 1 : 0,
             $user->sub_status ? 2 : 0,
             $user->dub_status ? 3 : 0,
             $user->turk_status ? 4 : 0,
         ]) : $defaultTypes;
-    
+
+        if (empty($types)) {
+            $types = [1, 2, 3, 4];
+        }
+
         $episodes = $this->db->table('episode')->where('uid', $uid)->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')->get()->getResult();
-    
+
+
         $filteredEpisodes = [];
         foreach ($episodes as $episode) {
             $embedData = $this->db->table('episode_embed')->where('embed_uid', $episode->uid)->where('embed_id', $episode->ep_id_name)->whereIn('embed_type', $types)->get()->getResult();
-            
+
             if ($embedData) {
                 $embedTypesAvailable = array_fill_keys($defaultTypes, 0);
                 foreach ($embedData as $embed) {
@@ -177,27 +183,29 @@ class EpisodeModel extends Model
                 $filteredEpisodes[] = $episode;
             }
         }
+
         return $filteredEpisodes;
     }
 
 
-    public function episodefirstdata($uid) {
+    public function episodefirstdata($uid)
+    {
         $defaultTypes = [1, 2, 3, 4];
         $user = auth()->user();
-    
+
         $types = $user ? array_filter([
             $user->raw_status ? 1 : 0,
             $user->sub_status ? 2 : 0,
             $user->dub_status ? 3 : 0,
             $user->turk_status ? 4 : 0,
         ]) : $defaultTypes;
-    
+
         $episodes = $this->db->table('episode')->where('uid', $uid)->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')->get()->getResult();
-    
+
         $filteredEpisodes = [];
         foreach ($episodes as $episode) {
             $embedData = $this->db->table('episode_embed')->where('embed_uid', $episode->uid)->where('embed_id', $episode->ep_id_name)->whereIn('embed_type', $types)->get()->getResult();
-            
+
             if ($embedData) {
                 $embedTypesAvailable = array_fill_keys($defaultTypes, 0);
                 foreach ($embedData as $embed) {
@@ -212,27 +220,29 @@ class EpisodeModel extends Model
     }
 
 
-    public function getEpisodeCount() {
+    public function getEpisodeCount()
+    {
         $query = $this->db->query('SELECT COUNT(*) as count FROM episode');
         $result = $query->getRow();
         return $result->count;
     }
 
-    public function getTodayViewCount() {
+    public function getTodayViewCount()
+    {
         $query = $this->db->query('SELECT SUM(ep_view) as total FROM episode');
         $result = $query->getRow();
         return $result->total;
     }
-    public function getMonthViewCount() {
+    public function getMonthViewCount()
+    {
         $query = $this->db->query('SELECT SUM(ep_view_month) as total FROM episode');
         $result = $query->getRow();
         return $result->total;
     }
-    public function getYearsViewCount() {
+    public function getYearsViewCount()
+    {
         $query = $this->db->query('SELECT SUM(ep_view_years) as total FROM episode');
         $result = $query->getRow();
         return $result->total;
     }
-
-
 }

@@ -17,25 +17,48 @@
                 </div>
                 <div id="episodes-load" class="ss-list" style="display:block;">
                     <?php
-                    function extractEpisodeNumber($episodeIdName)
-                    {
-                        return (float)preg_replace('/[^0-9\.]/', '', $episodeIdName);
+                    $typeraw = 1;
+                    $typesub = 1;
+                    $typedub = 1;
+                    $typeturk = 1;
+                    if (auth()->user()) {
+                        $typeraw = auth()->user()->raw_status;
+                        $typesub = auth()->user()->sub_status;
+                        $typedub = auth()->user()->dub_status;
+                        $typeturk = auth()->user()->turk_status;
                     }
-                    usort($allEpisodesData, function ($a, $b) {
-                        return extractEpisodeNumber($a->ep_id_name) <=> extractEpisodeNumber($b->ep_id_name);
+                    ?>
+                    <?php
+                    $extractEpisodeNumber = function ($episodeIdName) {
+                        return (float)preg_replace('/[^0-9\.]/', '', $episodeIdName);
+                    };
+                    usort($allEpisodesData, function ($a, $b) use ($extractEpisodeNumber) {
+                        return $extractEpisodeNumber($a->ep_id_name) <=> $extractEpisodeNumber($b->ep_id_name);
                     });
-                    foreach ($allEpisodesData as $episode) : ?>
-                        <a title="<?= $episode->ep_name ?>" class="ssl-item ep-item<?= ($_SERVER['REQUEST_URI'] == "/watch?anime=" . urlencode($animeData['ani_name']) . "&uid={$episode->uid}&eps={$episode->ep_id_name}") ? ' active' : ''; ?>" href="/watch?anime=<?= urlencode($animeData['ani_name']) ?>&uid=<?= $episode->uid ?>&eps=<?= $episode->ep_id_name ?>" onclick="event.preventDefault(); this.classList.add('active'); window.location.href=this.href;">
-                            <div class="ssli-order"><?= extractEpisodeNumber($episode->ep_id_name) ?></div>
+                    $requestURL = "/watch?anime=" . urlencode($animeData['ani_name']);
+                    foreach ($allEpisodesData as $episode) :
+                        $isActive = $_SERVER['REQUEST_URI'] == "{$requestURL}&uid={$episode->uid}&eps={$episode->ep_id_name}" ? ' active' : '';
+                        $epname = isset($episode->ep_name) && !empty($episode->ep_name) ? $episode->ep_name : "Episode-$episode->ep_id_name";
+
+                        if (($typeraw == 0 && $episode->type[1])
+                            || ($typesub == 0 && $episode->type[2])
+                            || ($typedub == 0 && $episode->type[3])
+                            || ($typeturk == 0 && $episode->type[4])
+                        ) continue;
+
+                    ?>
+                        <a title="<?= $episode->ep_name ?>" class="ssl-item ep-item<?= $isActive ?>" href="/watch?anime=<?= urlencode($animeData['ani_name']) ?>&uid=<?= $episode->uid ?>&eps=<?= $episode->ep_id_name ?>" onclick="event.preventDefault(); this.classList.add('active'); window.location.href=this.href;">
+                            <div class="ssli-order"><?= $extractEpisodeNumber($episode->ep_id_name) ?></div>
                             <div class="ssli-detail">
-                                <div class="ep-name" data-jname="<?= $episode->ep_jname ?>" title="<?= $episode->ep_romaji ?>"><?= isset($episode->ep_name) && !empty($episode->ep_name) ? $episode->ep_name : "Episode-$episode->ep_id_name" ?></div>
+                                <div class="ep-name" data-jname="<?= $episode->ep_jname ?>" title="<?= $episode->ep_romaji ?>"><?= $epname ?></div>
                             </div>
                             <div class="ssli-btn">
-                            <div class="btn btn-circle"><i class="fas fa-play"></i></div>
+                                <div class="btn btn-circle"><i class="fas fa-play"></i></div>
                             </div>
                             <div class="clearfix"></div>
                         </a>
                     <?php endforeach; ?>
+
                 </div>
                 <script type="text/javascript">
                     let activeItem = null;

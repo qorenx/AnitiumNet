@@ -26,8 +26,8 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $('.nav-button').click(function(){
+        $(document).ready(function() {
+            $('.nav-button').click(function() {
                 $('.nav-button.active').removeClass('active');
                 $(this).addClass('active');
                 $('.content').hide();
