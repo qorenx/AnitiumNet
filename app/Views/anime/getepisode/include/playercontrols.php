@@ -8,9 +8,6 @@
             <span class="tb-result"></span>
         </div>
     </div>
-    <?php if (!empty($episodedownload)) : ?>
-        <?= $this->include('anime/getepisode/watch/type/download') ?>
-    <?php endif; ?>
     <div class="pc-right">
         <?php echo $this->include('anime/getepisode/include/reports'); ?>
         <div class="pc-item pc-control block-prev">

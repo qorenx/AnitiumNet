@@ -230,9 +230,6 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         //episode embed ekleme kısmıdır.
         $routes->get('embed', 'Admin::episodeembedadd');
         $routes->post('embed', 'Admin::episodeembedaddsave');
-        //episode download ekleme kısmıdır.
-        $routes->get('download', 'Admin::episodedownloadadd');
-        $routes->post('download', 'Admin::episodedownloadsave');
         //Episode Sayfasından girilen Episode edit/kayıt ve silme yeri
         $routes->get('editing', 'Admin::episodeedit');
         $routes->post('editing', 'Admin::episodeeditsave');
@@ -240,9 +237,6 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         //Embedleri sileceğiniz sayfaya gider.
         $routes->get('embed-editing', 'Admin::embededit');
         $routes->post('embed-delete', 'Admin::embeddelete');
-        //Episode Download edit ve delete yapıldığı yer
-        $routes->get('download-editing', 'Admin::downloadedit');
-        $routes->post('download-delete', 'Admin::downloaddelete');
     });
     $routes->group('report', function ($routes) {
         //Report episode ile alakalıdır.
