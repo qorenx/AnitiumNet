@@ -38,13 +38,16 @@ class EpisodeModel extends Model
             $typesub = auth()->user()->sub_status ? 2 : 0;
             $typedub = auth()->user()->dub_status ? 3 : 0;
             $typeturk = auth()->user()->turk_status ? 4 : 0;
-
+    
             $types = array_filter([$typeraw, $typesub, $typedub, $typeturk]);  
         } else {
             $types = $typedefault;
         }
-    
-    
+        
+        if(empty($types)){
+            $types = [0];
+        }
+        
         $db = \Config\Database::connect();
         $query = $db
             ->table('episode')
@@ -59,6 +62,10 @@ class EpisodeModel extends Model
             ->limit(54)
             ->get()
             ->getResultArray();
+        
+        if(empty($query)){
+           return [];
+        }
     
         foreach($query as $key => $episode){
             $embeds = explode(',', $episode['embed_types']);
@@ -155,8 +162,9 @@ class EpisodeModel extends Model
             $user->turk_status ? 4 : 0,
         ]) : $defaultTypes;
     
-        $episodes = $this->db->table('episode')->where('uid', $uid)->orderBy('CAST(ep_id_name AS UNSIGNED)', 'desc')->get()->getResult();
-        
+        $episodes = $this->db->table('episode')->where('uid', $uid)->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')->get()->getResult();
+    
+        $filteredEpisodes = [];
         foreach ($episodes as $episode) {
             $embedData = $this->db->table('episode_embed')->where('embed_uid', $episode->uid)->where('embed_id', $episode->ep_id_name)->whereIn('embed_type', $types)->get()->getResult();
             
@@ -166,10 +174,43 @@ class EpisodeModel extends Model
                     $embedTypesAvailable[$embed->embed_type] = 1;
                 }
                 $episode->type = $embedTypesAvailable;
+                $filteredEpisodes[] = $episode;
             }
         }
-        return $episodes;
+        return $filteredEpisodes;
     }
+
+
+    public function episodefirstdata($uid) {
+        $defaultTypes = [1, 2, 3, 4];
+        $user = auth()->user();
+    
+        $types = $user ? array_filter([
+            $user->raw_status ? 1 : 0,
+            $user->sub_status ? 2 : 0,
+            $user->dub_status ? 3 : 0,
+            $user->turk_status ? 4 : 0,
+        ]) : $defaultTypes;
+    
+        $episodes = $this->db->table('episode')->where('uid', $uid)->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')->get()->getResult();
+    
+        $filteredEpisodes = [];
+        foreach ($episodes as $episode) {
+            $embedData = $this->db->table('episode_embed')->where('embed_uid', $episode->uid)->where('embed_id', $episode->ep_id_name)->whereIn('embed_type', $types)->get()->getResult();
+            
+            if ($embedData) {
+                $embedTypesAvailable = array_fill_keys($defaultTypes, 0);
+                foreach ($embedData as $embed) {
+                    $embedTypesAvailable[$embed->embed_type] = 1;
+                }
+                $episode->type = $embedTypesAvailable;
+                $filteredEpisodes[] = $episode;
+                break; // Break after the first successful match
+            }
+        }
+        return isset($filteredEpisodes[0]) ? $filteredEpisodes[0]->ep_id_name : 0;
+    }
+
 
     public function getEpisodeCount() {
         $query = $this->db->query('SELECT COUNT(*) as count FROM episode');

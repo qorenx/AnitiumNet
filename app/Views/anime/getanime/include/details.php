@@ -92,8 +92,8 @@
                         </div>
                     </div>
                     <div class="film-buttons">
-                        <?php if (!empty($episodesData['ep_id_name'])) : ?>
-                            <a href="/watch?anime=<?= urlencode($AnimeData['ani_name']) ?>&uid=<?= $AnimeData['uid'] ?>&eps=<?= $episodesData['ep_id_name'] ?>" class="btn btn-radius btn-primary btn-play"><i class="fas fa-play mr-2"></i>Watch now</a>
+                        <?php if (!empty($episodesData)) : ?>
+                            <a href="/watch?anime=<?= urlencode($AnimeData['ani_name']) ?>&uid=<?= $AnimeData['uid'] ?>&eps=<?= $episodesData ?>" class="btn btn-radius btn-primary btn-play"><i class="fas fa-play mr-2"></i>Watch now</a>
                         <?php endif; ?>
                         <?php if (auth()->loggedIn()) : ?>
                             <?= $this->include('anime/getanime/admin/watchadd') ?>
