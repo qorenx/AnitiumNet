@@ -110,11 +110,12 @@
                                                 <label for="ani_rate" class="col-sm-4 col-form-label">Anime Rate: </label>
                                                 <div class="col-sm-8">
                                                     <select name="ani_rate" id="ani_rate" class="form-control">
-                                                        <option value="1" <?php if ($item['rating'] === 'G - All Ages') echo 'selected'; ?>>G</option>
+                                                    <option value="1" <?php if ($item['rating'] === 'G - All Ages') echo 'selected'; ?>>G</option>
                                                         <option value="2" <?php if ($item['rating'] === 'PG - Children') echo 'selected'; ?>>PG</option>
                                                         <option value="3" <?php if ($item['rating'] === 'PG-13 - Teens 13 or older') echo 'selected'; ?>>PG-13</option>
                                                         <option value="4" <?php if ($item['rating'] === 'R - 17+ (violence & profanity)') echo 'selected'; ?>>R</option>
                                                         <option value="5" <?php if ($item['rating'] === 'R+ - Mild Nudity') echo 'selected'; ?>>Rx</option>
+                                                        <option value="6" <?php if ($item['rating'] === 'Rx - Hentai') echo 'selected'; ?>>H</option>
                                                     </select>
                                                 </div>
                                             </div></br>
@@ -206,7 +207,7 @@
                                                     <select name="ani_source" id="ani_source" class="form-control">
                                                         <option value="1" <?php if ($item['source'] === 'Manga') echo 'selected'; ?>>Manga</option>
                                                         <option value="2" <?php if ($item['source'] === 'Light novel') echo 'selected'; ?>>LightNovel</option>
-                                                        <option value="3" <?php if ($item['source'] === 'Original') echo 'selected'; ?>>Original-Other</option>
+                                                        <option value="3" <?php if ($item['source'] === 'Original') echo 'selected'; ?>>Original</option>
                                                     </select>
                                                 </div>
                                             </div></br>

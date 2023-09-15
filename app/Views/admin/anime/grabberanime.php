@@ -2,18 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title><?php echo $getAdminSettings['Advanced'][0]['value']; ?> Admin Panel</title>
     <?= $this->include('admin/assets/css') ?>
 </head>
 
 <body class="bg-theme bg-theme1">
     <div id="wrapper">
-        <?= $this->include('admin/extra/sidebar') ?>
         <?= $this->include('admin/extra/header') ?>
         <div class="clearfix"></div>
         <div class="content-wrapper">
@@ -21,8 +14,9 @@
                 <!--Start Dashboard Content-->
                 <div class="row">
                     <div class="col-12 col-lg-12">
-                        <div class="card-header">GetAnimeUpdate</div>
-                        <form action="<?php echo base_url('admin/anime/getanimeupdate'); ?>" method="post" enctype="multipart/form-data">
+                        <div class="card-header">GetAnime</div>
+
+                        <form action="<?php echo base_url('admin/anime/getanime'); ?>" method="post" enctype="multipart/form-data">
                             <?php
                             foreach ($data as $item) { ?>
                                 <div class="card-body">
@@ -31,7 +25,7 @@
                                             <a class="nav-link active" href="#manuel" data-toggle="tab">Manuel</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#poster" data-toggle="tab">Anime Poster</a>
+                                            <a class="nav-link" href="#posterwallpaper" data-toggle="tab">Anime Poster</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="#myanimelistgrabber" data-toggle="tab">Anime Details</a>
@@ -70,7 +64,7 @@
                                             <div class="form-group row">
                                                 <label for="ani_ep" class="col-sm-4 col-form-label">Episode:</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="ani_ep" id="ani_ep" value="<?= $item['episodes'] ?? '?' ?>" class="form-control">
+                                                    <input type="text" name="ani_ep" id="ani_ep" value="<?= empty($item['episodes']) ? '?' : $item['episodes']; ?>" class="form-control">
                                                 </div>
                                             </div></br>
                                             <br>
@@ -109,7 +103,7 @@
                                                 <label for="ani_rate" class="col-sm-4 col-form-label">Anime Rate: </label>
                                                 <div class="col-sm-8">
                                                     <select name="ani_rate" id="ani_rate" class="form-control">
-                                                    <option value="1" <?php if ($item['rating'] === 'G - All Ages') echo 'selected'; ?>>G</option>
+                                                        <option value="1" <?php if ($item['rating'] === 'G - All Ages') echo 'selected'; ?>>G</option>
                                                         <option value="2" <?php if ($item['rating'] === 'PG - Children') echo 'selected'; ?>>PG</option>
                                                         <option value="3" <?php if ($item['rating'] === 'PG-13 - Teens 13 or older') echo 'selected'; ?>>PG-13</option>
                                                         <option value="4" <?php if ($item['rating'] === 'R - 17+ (violence & profanity)') echo 'selected'; ?>>R</option>
@@ -244,15 +238,25 @@
                                                 <label for="ani_country" class="col-sm-4 col-form-label">Anime Country: </label>
                                                 <div class="col-sm-8">
                                                     <select name="ani_country" id="ani_country" class="form-control">
-                                                        <option value="1" <?= $manuel[0]['ani_country'] == 1 ? 'selected' : ''; ?>>Japanese</option>
-                                                        <option value="2" <?= $manuel[0]['ani_country'] == 2 ? 'selected' : ''; ?>>Chinese</option>
+                                                        <option value="1">Japanese</option>
+                                                        <option value="2">Chinese</option>
+                                                    </select>
+                                                </div>
+                                            </div><br>
+                                            <div class="form-group row">
+                                                <label for="ani_quality" class="col-sm-4 col-form-label">Anime Quality:</label>
+                                                <div class="col-sm-8">
+                                                    <select name="ani_quality" id="ani_quality" class="form-control">
+                                                        <option value="1">HD</option>
+                                                        <option value="2">SD</option>
+                                                        <option value="3">BD</option>
                                                     </select>
                                                 </div>
                                             </div><br>
                                             <div class="form-group row">
                                                 <label for="sid" class="col-sm-4 col-form-label">Season Pack ID:</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="sid" id="sid" value="<?= $manuel[0]['sid'] ?>" class="form-control">
+                                                    <input type="text" name="sid" id="sid" value="" class="form-control">
                                                 </div>
                                             </div><br>
                                             <div class="form-group row">
@@ -272,23 +276,17 @@
                                             <div class="form-group row">
                                                 <label for="ani_manga_url" class="col-sm-4 col-form-label">Manga URL:</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="ani_manga_url" id="ani_manga_url" value="<?= $manuel[0]['ani_manga_url'] ?>" class="form-control">
+                                                    <input type="text" name="ani_manga_url" id="ani_manga_url" value="" class="form-control">
                                                 </div>
                                             </div><br>
-                                            <div class="form-group row">
-                                                <label for="ani_quality" class="col-sm-4 col-form-label">Anime Quality:</label>
-                                                <div class="col-sm-8">
-                                                    <select name="ani_quality" id="ani_quality" class="form-control">
-                                                        <option value="1" <?= $manuel[0]['ani_quality'] == 1 ? 'selected' : ''; ?>>HD</option>
-                                                        <option value="2" <?= $manuel[0]['ani_quality'] == 2 ? 'selected' : ''; ?>>SD</option>
-                                                        <option value="3" <?= $manuel[0]['ani_quality'] == 3 ? 'selected' : ''; ?>>BD</option>
-                                                    </select>
-                                                </div>
-                                            </div><br>
+
                                         </div>
-                                        <div class="tab-pane fade" id="poster">
 
 
+
+
+
+                                        <div class="tab-pane fade" id="posterwallpaper">
                                             <style>
                                                 .form-group {
                                                     display: flex;
@@ -341,13 +339,7 @@
                                                         });
                                                     });
                                                 </script>
-                                                <input type="hidden" value="<?php
-                                                                            if (isset($manuel[0]['ani_manga_url']) && !empty($manuel[0]['ani_manga_url'])) {
-                                                                                echo $manuel[0]['ani_manga_url'];
-                                                                            } else {
-                                                                                echo isset($item['images']['jpg']['large_image_url']) ? $item['images']['jpg']['large_image_url'] : $item['images']['jpg']['image_url'];
-                                                                            }
-                                                                            ?>" name="ani_poster" id="ani_poster" class="form-control">
+                                                <input type="hidden" value="<?php echo isset($item['images']['jpg']['large_image_url']) ? $item['images']['jpg']['large_image_url'] : $item['images']['jpg']['image_url']; ?>" name="ani_poster" id="ani_poster" class="form-control">
                                                 <div id="file-input-container">
                                                     <label for="ani_poster" class="col-form-label">Poster İMG:</label>
                                                     <div class="file-button-wrapper">
@@ -377,13 +369,17 @@
                                                 });
                                             </script>
                                         </div>
-                                    </div>
 
-                                    <div class="card-footer">
-                                        <input class="btn btn-primary" type="submit" value="Get Anime Update">
-                                    </div>
-                                <?php } ?>
+
+
+
+
+                                        <div class="card-footer">
+                                            <input class="btn btn-primary" type="submit" value="Get Anime Adding">
+                                        </div>
+                                    <?php } ?>
                         </form>
+
                     </div>
                 </div>
                 <!--End Dashboard Content-->
