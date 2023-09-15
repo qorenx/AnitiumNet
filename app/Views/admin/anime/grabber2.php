@@ -9,7 +9,7 @@
 <body>
     <iframe id="animeIframe" src="http://localhost/admin/anime/getanime?uid=1" width="100%" height="450"></iframe>
     <script>
-        var uid = 3200;
+        var uid = 3500;
         var postAttempts = 0;
         var getAttempts = 0;
         var anotherTaskCallStart = false;
