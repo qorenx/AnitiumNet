@@ -9,7 +9,7 @@
 <body>
     <iframe id="animeIframe" src="" width="100%" height="450"></iframe>
     <script>
-        var uid = 0;
+        var uid = 400;
         var getAttempts = 0;
         var anotherTaskCallStart = false;
         var formNotFound = false;
