@@ -52,10 +52,14 @@
                                 </span>
                                 <?php
                                 $date = DateTime::createFromFormat("Y-m-d", $topcoming['ani_aired']);
-                                $formattedDate = $date->format("M j, Y");
+                                if (!empty($date)) {
+                                    $formattedDate = $date->format("M j, Y");
                                 ?>
-                                <span class="dot"></span>
-                                <span class="fdi-item fdi-duration"><?php echo $formattedDate ?></span>
+                                    <span class="dot"></span>
+                                    <span class="fdi-item fdi-duration"><?php echo $formattedDate ?></span>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="clearfix"></div>

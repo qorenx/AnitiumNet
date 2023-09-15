@@ -9,59 +9,86 @@
 <body>
     <iframe id="animeIframe" src="http://localhost/admin/anime/getanime?uid=1" width="100%" height="450"></iframe>
     <script>
-        var uid = 2800;
-        var postAttempts = 0;
+        var uid = 40159;
         var getAttempts = 0;
         var anotherTaskCallStart = false;
-        const RETRY_LIMIT = 1; // setting retry limit
+        var formNotFound = false;
+        const RETRY_LIMIT = 1;
 
         var submitForm = function() {
             var targetUrl = "http://localhost/admin/anime/getanime?uid=" + uid;
 
-            if (getAttempts < RETRY_LIMIT) {
-                $.ajax({
-                    type: 'GET',
-                    url: targetUrl,
-                    success: function(data, textStatus, xhr) {
-                        getAttempts = 0;
+            console.log("submitForm() called with uid=" + uid);
 
-                        if (xhr.status == 200) {
-                            var iframe = $('#animeIframe');
-
-                            iframe.off('load').on('load', function() {
-                                try {
-                                    var iframeBody = iframe.contents().find('body');
-                                    var form = iframeBody.find('form');
-
-                                    if (form.length > 0) {
-                                        form.submit();
-                                    } else {
-                                        console.log("Form Not Found, Moving to the next URL");
-                                        anotherTaskCallStart = true;
+            fetch(`https://api.jikan.moe/v4/anime/${uid}/full`)
+                .then(function(response) {
+                    console.log("fetch() response status: " + response.status);
+                    if (response.status == 200) {
+                        fetch(`http://localhost/checkanime/${uid}`)
+                            .then(function(response) {
+                                console.log("fetch() response status for checkanime: " + response.status);
+                                if (response.status == 200) {
+                                    anotherTaskCallStart = true;
+                                } else {
+                                    if (getAttempts < RETRY_LIMIT && !formNotFound) {
+                                        ajaxCall(targetUrl);
                                     }
-                                } catch (err) {
-                                    console.log('Error: ' + err.message);
-                                    getAttempts++;
-                                    submitForm();
                                 }
+                            }).catch(function(error) {
+                                console.log('There was an error!', error);
                             });
-                            iframe.attr('src', targetUrl);
-                        } else {
-                            console.log("GET Failed due to " + xhr.status + " status, Moving to the next URL");
-                            anotherTaskCallStart = true;
-                        }
-                    },
-                    error: function() {
-                        console.log("GET Failed, Retrying");
-                        getAttempts++;
-                        submitForm();
+                    } else {
+                        console.log('Status is ' + response.status + ', moving to next uid');
+                        anotherTaskCallStart = true;
                     }
+                })
+                .catch(function(error) {
+                    console.log('There was an error!', error);
                 });
-            } else {
-                console.log("GET Failed and Not retrying");
-                getAttempts = 0;
-                anotherTaskCallStart = true;
-            }
+        }
+
+        function ajaxCall(targetUrl) {
+            $.ajax({
+                type: 'GET',
+                url: targetUrl,
+                success: function(data, textStatus, xhr) {
+                    console.log("$.ajax success, status: " + xhr.status);
+                    getAttempts = 0;
+
+                    if (xhr.status == 200) {
+                        var iframe = $('#animeIframe');
+
+                        iframe.off('load').on('load', function() {
+                            try {
+                                var iframeBody = iframe.contents().find('body');
+                                var form = iframeBody.find('form');
+
+                                if (form.length > 0) {
+                                    console.log("Form found, submitting the form");
+                                    form.submit();
+                                    formNotFound = false;
+                                } else {
+                                    console.log("Form Not Found, Moving to the next URL");
+                                    formNotFound = true;
+                                }
+                            } catch (err) {
+                                console.log('Error: ' + err.message);
+                                getAttempts++;
+                                submitForm();
+                            }
+                        });
+                        iframe.attr('src', targetUrl);
+                    } else {
+                        console.log("GET Failed due to " + xhr.status + " status, Moving to the next URL");
+                        anotherTaskCallStart = true;
+                    }
+                },
+                error: function() {
+                    console.log("GET Failed, Retrying");
+                    getAttempts++;
+                    submitForm();
+                }
+            });
         }
 
         var anotherTask = function() {
@@ -69,12 +96,17 @@
         }
 
         setInterval(function() {
+            console.log("setInterval() called");
             if (anotherTaskCallStart) {
-                // This will start the other task
-                anotherTaskCallStart = false; // Stop recursive calls until next 500 error
+                console.log("Starting another task...");
+                anotherTaskCallStart = false;
                 anotherTask();
             } else {
-                uid++;
+                if (!formNotFound) {
+                    console.log("Incrementing uid");
+                    uid++;
+                }
+                formNotFound = false;
                 submitForm();
             }
         }, 2000);
