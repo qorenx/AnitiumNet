@@ -106,7 +106,7 @@
                 formNotFound = false;
                 submitForm();
             }
-        }, 2000);
+        }, 3000);
     </script>
 </body>
 
