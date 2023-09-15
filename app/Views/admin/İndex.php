@@ -13,7 +13,6 @@
 
 <body class="bg-theme1">
   <div id="wrapper">
-    <?= $this->include('admin/extra/sidebar') ?>
     <?= $this->include('admin/extra/header') ?>
 
     <div class="clearfix"></div>
