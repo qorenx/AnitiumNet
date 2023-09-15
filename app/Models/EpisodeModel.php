@@ -167,7 +167,11 @@ class EpisodeModel extends Model
             $types = [1, 2, 3, 4];
         }
 
-        $episodes = $this->db->table('episode')->where('uid', $uid)->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')->get()->getResult();
+        $episodes = $this->db->table('episode')
+        ->where('uid', $uid)
+        ->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')
+        ->get()
+        ->getResult();
 
 
         $filteredEpisodes = [];
