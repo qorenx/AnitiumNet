@@ -133,3 +133,4 @@ nb-configuration.xml
 /lisans/*.json
 anitium
 /app/Views/license
+/app/Views/admin/anime/grabber.php
