@@ -192,7 +192,6 @@ class Converter extends BaseController
 
     public function get_embed_gogoanime($uid, $eps, $url)
     {
-
         $ch = curl_init($url . $eps);
         curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => true,
@@ -210,12 +209,22 @@ class Converter extends BaseController
         libxml_clear_errors();
         
         $xpath = new \DOMXPath($doc);
-        
-        $datasrc = $xpath->query('//div[contains(@class, "anime_muti_link")]//a/@data-video');
 
+        $allAds = $xpath->query('//iframe');
+        foreach ($allAds as $ad) {
+            $ad->parentNode->removeChild($ad);
+        }
+        
+        $allScripts = $xpath->query('//script');
+        foreach ($allScripts as $script) {
+            $script->parentNode->removeChild($script);
+        }
+    
+        $datasrc = $xpath->query('//div[contains(@class, "anime_muti_link")]//a/@data-video');
+        
         $width = "100%";
         $height = "100%";
-
+        
         $embed_codes = [];
         
         foreach ($datasrc as $datasrcdoc) {
@@ -228,6 +237,7 @@ class Converter extends BaseController
             $element->setAttribute('style', 'border:0px solid black; overflow: hidden;');
             $embed_codes[] = $doc->saveHTML($element);
         }
+        
         $json = json_encode($embed_codes);
         return $this->response->setJSON($json);
     }
