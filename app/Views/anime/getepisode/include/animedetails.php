@@ -17,7 +17,7 @@
 </div>
 <div class="anisc-detail">
     <h2 class="film-name">
-        <a href="/anime/<?= $animeData['uid'] ?>/<?= str_replace(' ', '_', $animeData['ani_name']) ?>" class="text-white dynamic-name" title="" style="opacity: 1;">
+        <a href="/anime/<?= $animeData['uid'] ?>/<?= urlencode($animeData['ani_name']) ?>" class="text-white dynamic-name" title="" style="opacity: 1;">
             <?= $animeData['ani_name'] ?>
         </a><br />
         <a href="/anime/<?= $animeData['uid'] ?>/<?= str_replace(' ', '_', $animeData['ani_jname']) ?>" class="text-white dynamic-name" title="" style="opacity: 1; font-size: 0.6em;">
@@ -83,7 +83,7 @@
         </div>
     </div>
     <div class="block">
-        <a href="/anime/<?= $animeData['uid'] ?>/<?= preg_replace('/[\s\/]+/', '-', $animeData['ani_name']) ?>" class="btn btn-xs btn-light">
+        <a href="/anime/<?= $animeData['uid'] ?>/<?= urlencode($animeData['ani_name']) ?>" class="btn btn-xs btn-light">
             <i class="fas fa-book-open mr-2"></i> View Details
         </a>
     </div>

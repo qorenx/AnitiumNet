@@ -9,7 +9,10 @@
                 </div>
                 <div class="deslide-item-content">
                     <div class="desi-sub-text" style="font-size: 0.8rem"><?= $slider_data['ani_jname'] ?></div>
-                    <div class="desi-head-title dynamic-name"><?= $slider_data['ani_name'] ?></div>
+                    <div class="desi-head-title dynamic-name"><?php
+                                                                $ani_name = $slider_data['ani_name'];
+                                                                echo htmlspecialchars($ani_name, ENT_QUOTES, 'UTF-8');
+                                                                ?></div>
                     <div class="sc-detail">
                         <div class="scd-item">
                             <i class="fas fa-play-circle mr-1"></i><?php
@@ -61,9 +64,9 @@
                     </div>
                     <div class="desi-description"></div>
                     <div class="desi-buttons">
-                        <a href="/watch?anime=<?= urlencode($slider_data['ani_name']) ?>&uid=<?= $slider_data['uid'] ?>&eps=1" class="btn btn-primary btn-radius mr-2">
+                        <a href="/watch?anime=<?= urlencode($slider_data['ani_name']) ?>&eps=1" class="btn btn-primary btn-radius mr-2">
                             <i class="fas fa-play-circle mr-2"></i>Watch Now</a>
-                        <a class="btn btn-secondary btn-radius" href="/anime/<?= $slider_data['uid'] ?>/<?= str_replace(' ', '-', $slider_data['ani_name']) ?>"><i class="fas fa-info-circle mr-2"></i> Detail<i class="fas fa-angle-right ml-2"></i></a>
+                        <a class="btn btn-secondary btn-radius" href="/anime/<?= $slider_data['uid'] ?>/<?= urlencode($slider_data['ani_name']) ?>"><i class="fas fa-info-circle mr-2"></i> Detail<i class="fas fa-angle-right ml-2"></i></a>
                     </div>
                 </div>
                 <div class="clearfix"></div>

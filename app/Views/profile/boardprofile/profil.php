@@ -92,10 +92,10 @@
                                                                                         ?></div>
                                                         </div>
                                                         <img class="film-poster-img lazyloaded" src="<?php echo $value['ani_poster']; ?>">
-                                                        <a class="film-poster-ahref" data-id="<?php echo $value['uid'] ?>" href="<?php echo base_url('anime/' . $value['uid'] . '/' . $value['ani_name']); ?>"><i class="fas fa-play"></i></a>
+                                                        <a class="film-poster-ahref" data-id="<?php echo $value['uid'] ?>" href="<?php echo base_url('anime/' . $value['uid'] . '/' . urlencode($value['ani_name'])); ?>"><i class="fas fa-play"></i></a>
                                                     </div>
                                                     <div class="film-detail">
-                                                        <h3 class="film-name"><a href="<?php echo base_url('anime/' . $value['uid'] . '/' . $value['ani_name']); ?>"><?= $value['ani_name'] ?></a></h3>
+                                                        <h3 class="film-name"><a href="<?php echo base_url('anime/' . $value['uid'] . '/' . urlencode($value['ani_name'])); ?>"><?= $value['ani_name'] ?></a></h3>
                                                         <div class="fd-infor">
                                                             <span class="fdi-item"><?php echo substr($value['created_at'], 0, 10); ?></span>
                                                         </div>
@@ -183,7 +183,7 @@
                                                                         $post = "<a href='" . base_url('community/post?pid=' . $value['post_id'] . '&pcon=' . str_replace(" ", "-", $value['post_head'])) . "' class='highlight-text'><span style='color:clay'>" . $value['post_head'] . "</span></a>  ";
                                                                         echo $post;
                                                                     } elseif ($value['from'] == 3) {
-                                                                        $post = "<a href='" . base_url('anime/' . $value['post_id'] . '/' . str_replace(" ", "-", $value['ani_name'])) . "' class='highlight-text'><span style='color:clay'>" . $value['ani_name'] . "</span></a>";
+                                                                        $post = "<a href='" . base_url('anime/' . $value['post_id'] . '/' . urlencode($value['ani_name'])) . "' class='highlight-text'><span style='color:clay'>" . $value['ani_name'] . "</span></a>";
                                                                         $watch = "<a href='" . base_url('/watch?anime=' . urlencode($value['ani_name']) . '&uid=' . $value['post_id'] . '&eps=' . $value['post_ep'])  . "'class='highlight-text'>on <span style='color:clay'>" . "Episode-" . $value['post_ep'] . "</span></a>";
                                                                         echo $post . " " . $watch;
                                                                     } else {

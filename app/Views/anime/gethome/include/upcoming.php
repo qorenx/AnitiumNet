@@ -31,7 +31,7 @@
                             <a href="/anime/<?php echo $topcoming['uid'] ?>/<?php echo str_replace(' ', '-', $topcoming['ani_name']); ?>" class="film-poster-ahref" data-id="<?php echo $topcoming['uid'] ?>"><i class="fas fa-play"></i></a>
                         </div>
                         <div class="film-detail">
-                            <h3 class="film-name"><a href="/anime/<?php echo $topcoming['uid'] ?>/<?php echo str_replace(' ', '-', $topcoming['ani_name']); ?>" class="dynamic-name">
+                            <h3 class="film-name"><a href="/anime/<?php echo $topcoming['uid'] ?>/<?= urlencode($topcoming['ani_name']) ?>" class="dynamic-name">
                                     <?php echo $topcoming['ani_name'] ?>
                                 </a></h3>
                             <div class="fd-infor">

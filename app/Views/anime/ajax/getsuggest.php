@@ -1,7 +1,7 @@
 <?php $count = 0; ?>
 <?php foreach ($data as $anime) : ?>
     <?php if ($count++ === 5) break; ?>
-    <a href="/anime/<?php echo $anime['uid'] ?>/<?php echo str_replace(' ', '-', $anime['ani_name']); ?>" class="nav-item">
+    <a href="/anime/<?php echo $anime['uid'] ?>/<?= urlencode($anime['ani_name']) ?>" class="nav-item">
         <div class="film-poster">
             <img class="film-poster-img ls-is-cached lazyloaded" src="<?php echo $anime['ani_poster'] ?>">
         </div>

@@ -88,12 +88,12 @@
                                         <div class="film-detail">
                                             <div class="film-name">
                                                 <h5>
-                                                    <a href="anime/<?= $todayview['uid'] ?>/<?= preg_replace("/[\s\/]+/", "+", $todayview['ani_name']) ?>" class="dynamic-name"><?= $todayview['ani_name'] ?></a>
+                                                    <a href="anime/<?= $todayview['uid'] ?>/<?= urlencode($todayview['ani_name']) ?>" class="dynamic-name"><?= $todayview['ani_name'] ?></a>
                                                 </h5>
                                             </div>
                                             <div class="film-name">
                                                 <h8>
-                                                    <a href="watch?anime=<?= preg_replace("/[\s\/]+/", "+", $todayview['ani_name']) ?>&uid=<?= $todayview['uid'] ?>&eps=<?= $todayview['ep_id_name'] ?>" class="dynamic-name">Episode-<?= $todayview['ep_id_name'] ?></a>
+                                                    <a href="watch?anime=<?= urlencode($todayview['ani_name']) ?>&uid=<?= $todayview['uid'] ?>&eps=<?= $todayview['ep_id_name'] ?>" class="dynamic-name">Episode-<?= $todayview['ep_id_name'] ?></a>
                                                 </h8>
                                             </div>
                                             <div class="fd-infor">
@@ -134,12 +134,12 @@
                                         <div class="film-detail">
                                             <div class="film-name">
                                                 <h5>
-                                                    <a href="anime/<?= $weekview['uid'] ?>/<?= preg_replace("/[\s\/]+/", "+", $weekview['ani_name']) ?>" class="dynamic-name"><?= $weekview['ani_name'] ?></a>
+                                                    <a href="anime/<?= $weekview['uid'] ?>/<?= urlencode($weekview['ani_name']) ?>" class="dynamic-name"><?= $weekview['ani_name'] ?></a>
                                                 </h5>
                                             </div>
                                             <div class="film-name">
                                                 <h8>
-                                                    <a href="watch?anime=<?= preg_replace("/[\s\/]+/", "+", $weekview['ani_name']) ?>&uid=<?= $weekview['uid'] ?>&eps=<?= $weekview['ep_id_name'] ?>" class="dynamic-name">Episode-<?= $weekview['ep_id_name'] ?></a>
+                                                    <a href="watch?anime=<?= urlencode($weekview['ani_name']) ?>&uid=<?= $weekview['uid'] ?>&eps=<?= $weekview['ep_id_name'] ?>" class="dynamic-name">Episode-<?= $weekview['ep_id_name'] ?></a>
                                                 </h8>
                                             </div>
                                             <div class="fd-infor">
@@ -180,12 +180,12 @@
                                         <div class="film-detail">
                                             <div class="film-name">
                                                 <h5>
-                                                    <a href="anime/<?= $yearsview['uid'] ?>/<?= preg_replace("/[\s\/]+/", "+", $yearsview['ani_name']) ?>" class="dynamic-name"><?= $yearsview['ani_name'] ?></a>
+                                                    <a href="anime/<?= $yearsview['uid'] ?>/<?= urlencode($yearsview['ani_name']) ?>" class="dynamic-name"><?= $yearsview['ani_name'] ?></a>
                                                 </h5>
                                             </div>
                                             <div class="film-name">
                                                 <h8>
-                                                    <a href="watch?anime=<?= preg_replace("/[\s\/]+/", "+", $yearsview['ani_name']) ?>&uid=<?= $yearsview['uid'] ?>&eps=<?= $yearsview['ep_id_name'] ?>" class="dynamic-name">Episode-<?= $yearsview['ep_id_name'] ?></a>
+                                                    <a href="watch?anime=<?= urlencode($yearsview['ani_name']) ?>&uid=<?= $yearsview['uid'] ?>&eps=<?= $yearsview['ep_id_name'] ?>" class="dynamic-name">Episode-<?= $yearsview['ep_id_name'] ?></a>
                                                 </h8>
                                             </div>
                                             <div class="fd-infor">

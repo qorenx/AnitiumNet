@@ -63,7 +63,7 @@
                 </div>
             <?php endif; ?>
             <div class="pre-qtip-button">
-                <a href="/anime/<?php echo $data['uid'] ?>/<?php echo str_replace(' ', '-', $data['ani_name']); ?>" class="btn btn-block btn-play"><i class="fa fa-play mr-2"></i>Watch
+                <a href="/anime/<?php echo $data['uid'] ?>/<?= urlencode($data['ani_name']) ?>" class="btn btn-block btn-play"><i class="fa fa-play mr-2"></i>Watch
                     now</a>
                 <?php if (auth()->loggedIn()) : ?>
                     <?= $this->include('anime/extend/templates/qtipwatchadd') ?>

@@ -29,7 +29,7 @@
                                         </div>
                                         <div class="film-detail">
                                             <h3 class="film-name">
-                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/' . preg_replace("/[\s\/]+/", "-", $topani['ani_name'])) ?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
+                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/' . urlencode($topani['ani_name'])) ?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
                                             </h3>
                                             <div class="fd-infor">
                                                 <div class="tick">
@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="film-detail">
                                             <h3 class="film-name">
-                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/' . preg_replace("/[\s\/]+/", "-", $topani['ani_name'])) ?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
+                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/' . urlencode($topani['ani_name'])) ?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
                                             </h3>
                                             <div class="fd-infor">
                                                 <div class="tick">
@@ -107,7 +107,7 @@
                                         </div>
                                         <div class="film-detail">
                                             <h3 class="film-name">
-                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/' . preg_replace("/[\s\/]+/", "-", $topani['ani_name'])) ?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
+                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/' . urlencode($topani['ani_name'])) ?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
                                             </h3>
                                             <div class="fd-infor">
                                                 <div class="tick">

@@ -18,7 +18,7 @@
                                     <div class="film-title dynamic-name"><?= $anitrend['ani_name'] ?>
                                     </div>
                                 </div>
-                                <a href="/anime/<?= $anitrend['uid'] ?>/<?= str_replace(' ', '-', $anitrend['ani_name']) ?>" class="film-poster">
+                                <a href="/anime/<?= $anitrend['uid'] ?>/<?= urlencode($anitrend['ani_name']) ?>" class="film-poster">
                                     <img class="film-poster-ahref" data-id="<?php echo $anitrend['uid'] ?>" src="<?= $anitrend['ani_poster'] ?>" class="film-poster-img lazyload">
                                 </a>
                                 <div class="clearfix"></div>

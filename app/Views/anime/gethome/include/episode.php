@@ -70,11 +70,11 @@
                                     <?php endif; ?>
                                 <?php endif; ?>
                             </div>
-                            <img data-src="<?php echo $anime['ani_poster'] ?>" class="film-poster-img ls-is-cached lazyloaded" alt="<?php echo $anime['ani_name'] ?>" src="<?php echo $anime['ani_poster'] ?>">
-                            <a href="/watch?anime=<?php echo str_replace(' ', '-', $anime['ani_name']) ?>&uid=<?= $anime['uid'] ?>&eps=<?= $anime['ep_id_name'] ?>" class="film-poster-ahref" data-id="<?php echo $anime['uid'] ?>"><i class="fas fa-play"></i></a>
+                            <img data-src="<?php echo $anime['ani_poster'] ?>" class="film-poster-img ls-is-cached lazyloaded" src="<?php echo $anime['ani_poster'] ?>">
+                            <a href="/watch?anime=<?= urlencode($anime['ani_name']) ?>&uid=<?= $anime['uid'] ?>&eps=<?= $anime['ep_id_name'] ?>" class="film-poster-ahref" data-id="<?php echo $anime['uid'] ?>"><i class="fas fa-play"></i></a>
                         </div>
                         <div class="film-detail">
-                            <h3 class="film-name"><a href="/anime/<?php echo $anime['uid'] ?>/<?php echo str_replace(' ', '-', $anime['ani_name']) ?>" class="dynamic-name"><?php echo $anime['ani_name'] ?></a></h3>
+                            <h3 class="film-name"><a href="/anime/<?php echo $anime['uid'] ?>/<?= urlencode($anime['ani_name']) ?>" class="dynamic-name"><?php echo $anime['ani_name'] ?></a></h3>
                             <div class="fd-infor">
                                 <span class="fdi-item"><?php $aniType = [1 => 'TV', 2 => 'Movie', 3 => 'Ova', 4 => 'Ona', 5 => 'Special'];
                                                         echo $aniType[$anime['ani_type']] ?? ''; ?></span>
