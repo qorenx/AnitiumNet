@@ -114,28 +114,7 @@
                     <div class="item"><a href="<?php echo $settings['Social'][1]['value']; ?>" target="_blank" class="zr-social-button tw-btn"><i class="fab fa-twitter"></i></a></div>
                     <div class="item"><a href="<?php echo $settings['Social'][2]['value']; ?>" target="_blank" class="zr-social-button yt-btn"><i class="fab fa-youtube"></i></a></div>
                     <div class="item"><a href="<?php echo $settings['Social'][3]['value']; ?>" target="_blank" class="zr-social-button fb-btn"><i class="fab fa-facebook"></i></a></div>
-
-                    <div class="item">
-                        <a target="_blank" class="zr-social-button tl-btn" onclick="toggleDonationText()">
-                            <i class="fab fa-bitcoin"></i>
-                        </a>
-                    </div>
-
-                    <div id="donation-text" style="display: none;">
-                        Tether(USDT)/Tron(TRC20): <br />
-                        <?php echo $settings['Donation'][1]['value']; ?>
-                    </div>
-
-                    <script>
-                        function toggleDonationText() {
-                            var elem = document.getElementById('donation-text');
-                            if (elem.style.display === 'none') {
-                                elem.style.display = 'block';
-                            } else {
-                                elem.style.display = 'none';
-                            }
-                        }
-                    </script>
+                    <div class="item"><a target="_blank" href="<?php echo $settings['Donation'][1]['value']; ?>" class="zr-social-button tl-btn"><i class="fab fa-bitcoin"></i></a></div>
                 </div>
                 <div class="clearfix"></div>
             </div>

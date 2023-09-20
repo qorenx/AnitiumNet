@@ -44,7 +44,9 @@ class Converter extends BaseController
             'gogoanimehd.io'            => 'get_embed_gogoanime',
             'gogoanime.gr'              => 'get_embed_gogoanime',
             'gogoanime.ee'              => 'get_embed_gogoanime',
-            'gogoanime.hu'              => 'get_embed_gogoanime'
+            'gogoanime.hu'              => 'get_embed_gogoanime',
+            'gogoanime.me'              => 'get_embed_gogoanime'
+
         ];
 
         foreach ($embedProviders as $domain => $providerMethod) {
@@ -199,27 +201,34 @@ class Converter extends BaseController
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_SSL_VERIFYPEER => false,
         ]);
-
         $html = curl_exec($ch);
         curl_close($ch);
-
+        
         libxml_use_internal_errors(true);
         $doc = new \DOMDocument();
         @$doc->loadHTML($html);
         libxml_clear_errors();
-
+        
         $xpath = new \DOMXPath($doc);
+        
+        $datasrc = $xpath->query('//div[contains(@class, "anime_muti_link")]//a/@data-video');
+
         $width = "100%";
         $height = "100%";
-        $embed_code = '';
-        foreach ($xpath->query("/html/body/div[2]/div/div/section/section[1]/div[1]/div[2]/div[3]/div/div/div/iframe") as $element) {
+
+        $embed_codes = [];
+        
+        foreach ($datasrc as $datasrcdoc) {
+            $element = $doc->createElement('iframe');
+            $element->setAttribute('src', $datasrcdoc->nodeValue);
             $element->setAttribute('width', $width);
             $element->setAttribute('height', $height);
             $element->setAttribute('marginwidth', $width);
             $element->setAttribute('marginheight', $height);
-            $embed_code = $doc->saveHTML($element);
+            $element->setAttribute('style', 'border:0px solid black; overflow: hidden;');
+            $embed_codes[] = $doc->saveHTML($element);
         }
-        $json = json_encode($embed_code);
+        $json = json_encode($embed_codes);
         return $this->response->setJSON($json);
     }
 
