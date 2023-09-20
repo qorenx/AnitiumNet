@@ -234,10 +234,10 @@ class Converter extends BaseController
             $element->setAttribute('height', $height);
             $element->setAttribute('marginwidth', $width);
             $element->setAttribute('marginheight', $height);
-            $element->setAttribute('style', 'border:0px solid black; overflow: hidden;');
+            $element->setAttribute('style', 'box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;');
             $embed_codes[] = $doc->saveHTML($element);
         }
-        
+
         $json = json_encode($embed_codes);
         return $this->response->setJSON($json);
     }
