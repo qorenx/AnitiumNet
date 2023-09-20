@@ -43,7 +43,7 @@
                                             <div class="form-group row">
                                                 <label for="ani_name" class="col-sm-4 col-form-label">Anime Name:</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="ani_name" id="ani_name" value="<?= str_replace('//', '-', htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8')); ?>" class="form-control">
+                                                    <input type="text" name="ani_name" id="ani_name" value="<?= str_replace('/', '-', htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8')); ?>" class="form-control">
                                                 </div>
                                             </div><br>
                                             <div class="form-group row">
