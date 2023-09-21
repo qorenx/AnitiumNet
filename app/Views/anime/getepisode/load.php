@@ -15,7 +15,7 @@
 
             const response = await fetch(`/embed/<?= $animeData['uid'] ?>/<?= $episodesData[0]['ep_id_name'] ?>/${embedId}`);
             const data = await response.json();
-            const videoUrl = data[0];
+            const videoUrl = data.length ? data : data[0];
 
             document.getElementById('iframe-embed').innerHTML = videoUrl;
 
@@ -23,37 +23,40 @@
             while (ulContainer.firstChild) {
                 ulContainer.removeChild(ulContainer.firstChild);
             }
-            data.slice(0).forEach((url, index) => {
-                const li = document.createElement("span");
-                li.className = "toggle-basic";
-                li.style.margin = '10px';
-                li.style.border = '1px solid #000';
 
-                const icon = document.createElement("i");
-                icon.className = "fa-solid fa-circle-play";
-                icon.style.color = "lightgrey";
+            if (Array.isArray(data)) {
+                data.slice(0).forEach((url, index) => {
+                    const li = document.createElement("span");
+                    li.className = "toggle-basic";
+                    li.style.margin = '10px';
+                    li.style.border = '1px solid #000';
 
-                const link = document.createElement("a");
-                link.href = "#";
+                    const icon = document.createElement("i");
+                    icon.className = "fa-solid fa-circle-play";
+                    icon.style.color = "lightgrey";
 
-                let iframeSrcRegExp = /<iframe[^>]*src="([^"]*)"[^>]*><\/iframe>/i;
-                let iframeMatch = url.match(iframeSrcRegExp);
-                let url_src = '';
-                if (iframeMatch) {
-                    url_src = new URL(iframeMatch[1]).hostname.split('.')[0];
-                }
-                url_src = url_src.charAt(0).toUpperCase() + url_src.slice(1);
-                link.innerText = url_src;
-                link.onclick = function(e) {
-                    e.preventDefault();
-                    document.getElementById('iframe-embed').innerHTML = url;
-                };
+                    const link = document.createElement("a");
+                    link.href = "#";
 
-                link.appendChild(icon);
-                li.appendChild(link);
+                    let iframeSrcRegExp = /<iframe[^>]*src="([^"]*)"[^>]*><\/iframe>/i;
+                    let iframeMatch = url.match(iframeSrcRegExp);
+                    let url_src = '';
+                    if (iframeMatch) {
+                        url_src = new URL(iframeMatch[1]).hostname.split('.')[0];
+                    }
+                    url_src = url_src.charAt(0).toUpperCase() + url_src.slice(1);
+                    link.innerText = url_src;
+                    link.onclick = function(e) {
+                        e.preventDefault();
+                        document.getElementById('iframe-embed').innerHTML = url;
+                    };
 
-                ulContainer.appendChild(li);
-            });
+                    link.appendChild(icon);
+                    li.appendChild(link);
+
+                    ulContainer.appendChild(li);
+                });
+            }
 
         } catch (error) {
             console.error('Error:', error);
