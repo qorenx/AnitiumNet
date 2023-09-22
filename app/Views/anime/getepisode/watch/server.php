@@ -8,6 +8,7 @@
         </div>
     </div>
     <div id="embed-list"></div>
+
     <?php if (auth()->user()->raw_status ?? 1 == 1) : ?>
         <?= $this->include('anime/getepisode/watch/type/raw') ?>
     <?php endif; ?>

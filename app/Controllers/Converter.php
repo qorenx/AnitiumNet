@@ -63,7 +63,8 @@ class Converter extends BaseController
         $video_id = preg_replace('/^.+v=([\w-]{11}).*/', '$1', $url);
         $embed_code = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' . $video_id . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 
-        $json = json_encode($embed_code);
+        $json = [$embed_code];
+        $json = json_encode($json);
 
         return $this->response->setJSON($json);
     }
@@ -74,7 +75,8 @@ class Converter extends BaseController
         $video_id = end($path_components);
         $embed_code = '<iframe frameborder="0" width="100%" height="100%" src="//www.dailymotion.com/embed/video/' . $video_id . '" allowfullscreen></iframe>';
 
-        $json = json_encode($embed_code);
+        $json = [$embed_code];
+        $json = json_encode($json);
 
         return $this->response->setJSON($json);
     }
@@ -85,7 +87,8 @@ class Converter extends BaseController
         $video_id = end($path_components);
         $embed_code = '<iframe src="https://player.vimeo.com/video/' . $video_id . '" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
 
-        $json = json_encode($embed_code);
+        $json = [$embed_code];
+        $json = json_encode($json);
 
         return $this->response->setJSON($json);
     }
@@ -96,7 +99,8 @@ class Converter extends BaseController
         $video_id = end($path_components);
         $embed_code = '<iframe frameborder="0" width="100%" height="100%" src="https://doodstream.com/embed/' . $video_id . '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
 
-        $json = json_encode($embed_code);
+        $json = [$embed_code];
+        $json = json_encode($json);
 
         return $this->response->setJSON($json);
     }
@@ -107,7 +111,8 @@ class Converter extends BaseController
         $video_id = end($path_components);
         $embed_code = '<iframe frameborder="0" width="100%" height="100%" src="https://awish.pro/e/' . $video_id . '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
 
-        $json = json_encode($embed_code);
+        $json = [$embed_code];
+        $json = json_encode($json);
 
         return $this->response->setJSON($json);
     }
@@ -118,7 +123,8 @@ class Converter extends BaseController
         $video_id = end($path_components);
         $embed_code = '<iframe frameborder="0" width="100%" height="100%" src="https://sbani.pro/e/' . $video_id . '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
 
-        $json = json_encode($embed_code);
+        $json = [$embed_code];
+        $json = json_encode($json);
 
         return $this->response->setJSON($json);
     }
@@ -129,7 +135,8 @@ class Converter extends BaseController
         $video_id = end($path_components);
         $embed_code = '<iframe frameborder="0" width="100%" height="100%" src="https://dood.wf/e/' . $video_id . '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
 
-        $json = json_encode($embed_code);
+        $json = [$embed_code];
+        $json = json_encode($json);
 
         return $this->response->setJSON($json);
     }
@@ -140,7 +147,8 @@ class Converter extends BaseController
         $video_id = end($path_components);
         $embed_code = '<iframe frameborder="0" width="100%" height="100%" src="https://sbone.pro/e/' . $video_id . '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
 
-        $json = json_encode($embed_code);
+        $json = [$embed_code];
+        $json = json_encode($json);
 
         return $this->response->setJSON($json);
     }
@@ -151,16 +159,19 @@ class Converter extends BaseController
         $video_id = end($path_components);
         $embed_code = '<iframe frameborder="0" width="100%" height="100%" src="https://www.mp4upload.com/' . $video_id . '" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
 
-        $json = json_encode($embed_code);
+        $json = [$embed_code];
+        $json = json_encode($json);
 
         return $this->response->setJSON($json);
     }
 
     public function get_embed_animein($uid, $eps, $url)
     {
-
         $embed_code = '<iframe width="100%" height="100%" src="https://animein.fun/player2/v9.php/?uid=' . $uid . '&eps=' . $eps . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-        $json = json_encode($embed_code);
+
+        $json = [$embed_code];
+        $json = json_encode($json);
+
         return $this->response->setJSON($json);
     }
 
@@ -170,7 +181,8 @@ class Converter extends BaseController
         $video_id = end($path_components);
         $embed_code = '<iframe frameborder="0" width="100%" height="100%" src="https://oneupload.to/embed-' . $video_id . '.html" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
 
-        $json = json_encode($embed_code);
+        $json = [$embed_code];
+        $json = json_encode($json);
 
         return $this->response->setJSON($json);
     }
@@ -202,31 +214,21 @@ class Converter extends BaseController
         ]);
         $html = curl_exec($ch);
         curl_close($ch);
-        
+
         libxml_use_internal_errors(true);
         $doc = new \DOMDocument();
         @$doc->loadHTML($html);
         libxml_clear_errors();
-        
+
         $xpath = new \DOMXPath($doc);
 
-        $allAds = $xpath->query('//iframe');
-        foreach ($allAds as $ad) {
-            $ad->parentNode->removeChild($ad);
-        }
-        
-        $allScripts = $xpath->query('//script');
-        foreach ($allScripts as $script) {
-            $script->parentNode->removeChild($script);
-        }
-    
         $datasrc = $xpath->query('//div[contains(@class, "anime_muti_link")]//a/@data-video');
-        
+
         $width = "100%";
         $height = "100%";
-        
+
         $embed_codes = [];
-        
+
         foreach ($datasrc as $datasrcdoc) {
             $element = $doc->createElement('iframe');
             $element->setAttribute('src', $datasrcdoc->nodeValue);

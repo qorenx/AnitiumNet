@@ -15,10 +15,10 @@
 
             const response = await fetch(`/embed/<?= $animeData['uid'] ?>/<?= $episodesData[0]['ep_id_name'] ?>/${embedId}`);
             const data = await response.json();
-            const videoUrl = data.length ? data : data[0];
+            const videoUrl = data[0];
 
             document.getElementById('iframe-embed').innerHTML = videoUrl;
-
+            
             const ulContainer = document.getElementById("embed-list");
             while (ulContainer.firstChild) {
                 ulContainer.removeChild(ulContainer.firstChild);
@@ -42,7 +42,12 @@
                     let iframeMatch = url.match(iframeSrcRegExp);
                     let url_src = '';
                     if (iframeMatch) {
-                        url_src = new URL(iframeMatch[1]).hostname.split('.')[0];
+                        let hostname_parts = new URL(iframeMatch[1]).hostname.split('.');
+                        if (hostname_parts.length >= 2) {
+                            url_src = hostname_parts[hostname_parts.length - 2];
+                        } else {
+                            url_src = hostname_parts[0];
+                        }
                     }
                     url_src = url_src.charAt(0).toUpperCase() + url_src.slice(1);
                     link.innerText = url_src;
