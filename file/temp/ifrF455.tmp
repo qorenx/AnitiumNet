@@ -1,0 +1,167 @@
+<!-- DEBUG-VIEW START 1 APPPATH\Views\anime\getepisode\player\video.php -->
+
+<head>
+<!-- JS Files -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://localhost/assest/player/hls.light.min.js"></script>
+<script type="text/javascript" src="http://localhost/assest/player/provider.hlsjs.js"></script>
+<script src="https://ssl.p.jwpcdn.com/player/v/8.23.1/jwplayer.js"></script>
+<link rel="stylesheet" type="text/css" href="http://localhost/assest/player/anitium_skin.css">
+<script type="text/javascript">jwplayer.key="64HPbvSQorQcd52B8XFuhMtEoitbvY/EXJmMBfKcXZQU2Rnn";</script>
+
+</head>
+
+
+
+<!--  Fullscreen Video CSS -->
+<style>
+  #player {
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+  }
+</style>
+<!-- Player -->
+<div id="player"></div>
+
+
+
+<script>
+const playerInstance = jwplayer("player").setup({
+  controls: true,
+  sharing: false,
+  displaytitle: true,
+  displaydescription: true,
+  abouttext: "Anitium",
+  aboutlink: "https://localhost/",
+
+  skin: {
+    name: "netflix"
+  },
+
+  logo: {
+    file:
+      "/assest/images/logo.png",
+    link: "https://www.patreon.com/anitium"
+  },
+
+  captions: {
+    color: "#FFF",
+    fontSize: 14,
+    backgroundOpacity: 0,
+    edgeStyle: "raised"
+  },
+  
+  playlist: [
+    {
+      title: "Third Option",
+      description: "&quot;Oshi no Ko&quot;",
+      image: "https://cdn.myanimelist.net/images/anime/1812/134736l.jpg",
+      file: "https://gogohd.net/download?id=MjAzMDkw&token=y8cdSIM54ot6w1ma4BD8IA&expires=1695470145",
+      sources: [
+        {
+  file: "https://www051.vipanicdn.net/streamhls/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.m3u8",
+  label: "default",
+  default: true}, 
+{
+  file: "https://www051.anifastcdn.info/videos/hls/u9mhdFVssMvyXShFz2BOsA/1695477346/203090/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.m3u8",
+  label: "backup",
+  default: false}, 
+{
+  file: "https://www051.vipanicdn.net/streamhls/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.720.m3u8",
+  label: "720p",
+  default: false}, 
+{
+  file: "https://www051.vipanicdn.net/streamhls/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.480.m3u8",
+  label: "480p",
+  default: false}, 
+{
+  file: "https://www051.vipanicdn.net/streamhls/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.360.m3u8",
+  label: "360p",
+  default: false}, 
+{
+  file: "https://www051.vipanicdn.net/streamhls/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.1080.m3u8",
+  label: "1080p",
+  default: false}, 
+      ],
+    }
+  ],
+  advertising: {
+    client: "vast",
+    schedule: [
+      {
+        offset: "pre",
+        tag:
+          ""
+      }
+    ]
+  }
+});
+
+playerInstance.on("ready", function () {
+  const buttonId = "download-video-button";
+  const iconPath =
+    "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZD0iTTMgMTloMTh2Mkgzdi0yem0xMC01LjgyOEwxOS4wNzEgNy4xbDEuNDE0IDEuNDE0TDEyIDE3IDMuNTE1IDguNTE1IDQuOTI5IDcuMSAxMSAxMy4xN1YyaDJ2MTEuMTcyeiIgZmlsbD0icmdiYSgyNDcsMjQ3LDI0NywxKSIvPjwvc3ZnPg==";
+  const tooltipText = "Download Video";
+
+  // Call the player's `addButton` API method to add the custom button
+  playerInstance.addButton(iconPath, tooltipText, buttonClickAction, buttonId);
+
+  // This function is executed when the button is clicked
+  function buttonClickAction() {
+    const playlistItem = playerInstance.getPlaylistItem();
+    const anchor = document.createElement("a");
+    const fileUrl = playlistItem.file;
+    anchor.setAttribute("href", 'https://gogohd.net/download?id=MjAzMDkw&token=y8cdSIM54ot6w1ma4BD8IA&expires=1695470145');
+    anchor.setAttribute("target", "_blank");
+    const downloadName = playlistItem.file.split("/").pop();
+    anchor.setAttribute("download", downloadName);
+    anchor.style.display = "none";
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+  }
+
+  // Move the timeslider in-line with other controls
+  const playerContainer = playerInstance.getContainer();
+  const buttonContainer = playerContainer.querySelector(".jw-button-container");
+  const spacer = buttonContainer.querySelector(".jw-spacer");
+  const timeSlider = playerContainer.querySelector(".jw-slider-time");
+  buttonContainer.replaceChild(timeSlider, spacer);
+
+  // Forward 10 seconds
+  const rewindContainer = playerContainer.querySelector(
+    ".jw-display-icon-rewind"
+  );
+  const forwardContainer = rewindContainer.cloneNode(true);
+  const forwardDisplayButton = forwardContainer.querySelector(
+    ".jw-icon-rewind"
+  );
+  forwardDisplayButton.style.transform = "scaleX(-1)";
+  forwardDisplayButton.ariaLabel = "Forward 10 Seconds";
+  const nextContainer = playerContainer.querySelector(".jw-display-icon-next");
+  nextContainer.parentNode.insertBefore(forwardContainer, nextContainer);
+
+  // control bar icon
+  playerContainer.querySelector(".jw-display-icon-next").style.display = "none"; // hide next button
+  const rewindControlBarButton = buttonContainer.querySelector(
+    ".jw-icon-rewind"
+  );
+  const forwardControlBarButton = rewindControlBarButton.cloneNode(true);
+  forwardControlBarButton.style.transform = "scaleX(-1)";
+  forwardControlBarButton.ariaLabel = "Forward 10 Seconds";
+  rewindControlBarButton.parentNode.insertBefore(
+    forwardControlBarButton,
+    rewindControlBarButton.nextElementSibling
+  );
+
+  // add onclick handlers
+  [forwardDisplayButton, forwardControlBarButton].forEach((button) => {
+    button.onclick = () => {
+      playerInstance.seek(playerInstance.getPosition() + 10);
+    };
+  });
+});
+</script>
+
+<!-- DEBUG-VIEW ENDED 1 APPPATH\Views\anime\getepisode\player\video.php -->

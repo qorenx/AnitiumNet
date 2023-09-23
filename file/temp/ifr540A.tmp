@@ -1,10 +1,11 @@
+<!-- DEBUG-VIEW START 1 APPPATH\Views\anime\getepisode\player\video.php -->
 <head>
   <!-- JS Files -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script type="text/javascript" src="<?php echo base_url('assest/player/hls.light.min.js'); ?>"></script>
-  <script type="text/javascript" src="<?php echo base_url('assest/player/provider.hlsjs.js'); ?>"></script>
+  <script type="text/javascript" src="http://localhost/assest/player/hls.light.min.js"></script>
+  <script type="text/javascript" src="http://localhost/assest/player/provider.hlsjs.js"></script>
   <script src="https://ssl.p.jwpcdn.com/player/v/8.23.1/jwplayer.js"></script>
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assest/player/anitium_skin.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="http://localhost/assest/player/anitium_skin.css">
   <script type="text/javascript">
     jwplayer.key = "64HPbvSQorQcd52B8XFuhMtEoitbvY/EXJmMBfKcXZQU2Rnn";
   </script>
@@ -32,16 +33,16 @@
     sharing: true,
     displaytitle: true,
     displaydescription: true,
-    abouttext: "<?php echo $getAdminSettings['Advanced'][0]['value']; ?>",
-    aboutlink: "<?php echo $getAdminSettings['License'][0]['value']; ?>",
+    abouttext: "Anitium",
+    aboutlink: "https://localhost/",
 
     skin: {
       name: "netflix"
     },
 
     logo: {
-      file: "<?php echo $getAdminSettings['Advanced'][3]['value']; ?>",
-      link: "<?php echo $getAdminSettings['Donation'][0]['value']; ?>"
+      file: "/assest/images/logo.png",
+      link: "https://www.patreon.com/anitium"
     },
 
     captions: {
@@ -52,24 +53,36 @@
     },
 
     playlist: [{
-      title: "<?php echo $episode['ep_name'] ?? $episode['ep_jname'] ?? $episode['ep_romaji']; ?>",
-      description: "<?php echo htmlspecialchars($anime['ani_name'], ENT_QUOTES, 'UTF-8'); ?>",
-      image: "<?php echo $anime['ani_poster']; ?>",
-      file: "<?php echo $play->download; ?>",
+      title: "Third Option",
+      description: "&quot;Oshi no Ko&quot;",
+      image: "https://cdn.myanimelist.net/images/anime/1812/134736l.jpg",
+      file: "https://gogohd.net/download?id=MjAzMDkw&token=y8cdSIM54ot6w1ma4BD8IA&expires=1695470145",
       sources: [
-        <?php
-        usort($play->sources, function ($a, $b) {
-          return $b->quality <=> $a->quality;
-        });
-
-        foreach ($play->sources as $source) :
-        ?> {
-            file: "<?php echo $source->url ?>",
-            label: "<?php echo $source->quality ?>",
-            default: <?php echo ($source->quality == 'default') ? 'true' : 'false'; ?>
-          },
-        <?php endforeach; ?>
-      ],
+         {
+            file: "https://www051.vipanicdn.net/streamhls/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.m3u8",
+            label: "default",
+            default: true          },
+         {
+            file: "https://www051.anifastcdn.info/videos/hls/u9mhdFVssMvyXShFz2BOsA/1695477346/203090/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.m3u8",
+            label: "backup",
+            default: false          },
+         {
+            file: "https://www051.vipanicdn.net/streamhls/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.720.m3u8",
+            label: "720p",
+            default: false          },
+         {
+            file: "https://www051.vipanicdn.net/streamhls/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.480.m3u8",
+            label: "480p",
+            default: false          },
+         {
+            file: "https://www051.vipanicdn.net/streamhls/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.360.m3u8",
+            label: "360p",
+            default: false          },
+         {
+            file: "https://www051.vipanicdn.net/streamhls/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.1080.m3u8",
+            label: "1080p",
+            default: false          },
+              ],
     }],
     advertising: {
       client: "vast",
@@ -94,7 +107,7 @@
       const playlistItem = playerInstance.getPlaylistItem();
       const anchor = document.createElement("a");
       const fileUrl = playlistItem.file;
-      anchor.setAttribute("href", '<?php echo $play->download; ?>');
+      anchor.setAttribute("href", 'https://gogohd.net/download?id=MjAzMDkw&token=y8cdSIM54ot6w1ma4BD8IA&expires=1695470145');
       anchor.setAttribute("target", "_blank");
       const downloadName = playlistItem.file.split("/").pop();
       anchor.setAttribute("download", downloadName);
@@ -145,3 +158,4 @@
     });
   });
 </script>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\Views\anime\getepisode\player\video.php -->
