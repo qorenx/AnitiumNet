@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>files/css/profile.css">
 
 <body data-page="page_profile" style="max-width:100%!important;width:100%!important;">
+<div id="sidebar_menu_bg"></div>
     <div id="wrapper" data-page="page_home">
         <div class="clearfix"></div>
         <?= $this->include('anime/extend/templates/head') ?>

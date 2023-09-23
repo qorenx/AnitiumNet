@@ -2,6 +2,7 @@
 <?= $this->include('anime/extend/templates/head') ?>
 
 <body data-page="page_anime">
+    <div id="sidebar_menu_bg"></div>
     <div id="wrapper" data-page="page_home">
         <div class="clearfix"></div>
         <div id="main-wrapper">
