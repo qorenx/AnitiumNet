@@ -12,19 +12,12 @@
     }
 </style>
 
-
-
-<media-player title="<?php echo $episode['ep_name'] ?? $episode['ep_jname'] ?? $episode['ep_romaji']; ?>" preload="none" src="<?php
-                                                                                                                                usort($play->sources, function ($a, $b) {
-                                                                                                                                    return $b->quality <=> $a->quality;
-                                                                                                                                });
-
-                                                                                                                                foreach ($play->sources as $source) :
-                                                                                                                                    if ($source->quality == 'default') {
-                                                                                                                                        echo $source->url;
-                                                                                                                                    }
-                                                                                                                                endforeach;
-                                                                                                                                ?>" poster="<?php echo $anime['ani_poster']; ?>" aspect-ratio="16/9" crossorigin>
+<media-player 
+title="<?php echo $episode['ep_name'] ?? $episode['ep_jname'] ?? $episode['ep_romaji']; ?>" 
+preload="none" 
+src="<?php usort($play->sources, function ($a, $b) { return $b->quality <=> $a->quality; }); foreach ($play->sources as $source) : if ($source->quality == 'default') { echo $source->url; } endforeach; ?>" 
+poster="<?php echo $anime['ani_poster']; ?>" 
+aspect-ratio="16/9" crossorigin>
     <media-outlet>
         <media-poster data-loading></media-poster>
     </media-outlet>

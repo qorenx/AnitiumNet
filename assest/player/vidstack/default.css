@@ -222,18 +222,18 @@ media-player:focus-visible {
     display: block;
     contain: content;
     position: absolute;
-    top: 0;
-    left: 0;
     opacity: 0;
     width: 100%;
+    height: 100%;
     pointer-events: none;
     object-fit: cover;
     box-sizing: border-box;
-    transition: opacity .2s ease-out
+    transition: opacity .2s ease-out;
 }
 
 :where(media-poster [part=img]) {
     width: 100%;
+    height: 100%;
     object-fit: inherit;
     object-position: inherit;
     pointer-events: none;

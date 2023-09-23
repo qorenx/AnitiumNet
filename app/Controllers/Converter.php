@@ -237,8 +237,9 @@ class Converter extends BaseController
                     unlink($file); 
             }
         }
+        $playerVersion = rand(1, 2) == 1 ? 'vidstack' : 'jwplayer';
         $temp_file = tempnam($temp_dir, 'iframe');
-        file_put_contents($temp_file, view('anime/getepisode/player/vidstack', [
+        file_put_contents($temp_file, view('anime/getepisode/player/' . $playerVersion, [
             'getAdminSettings' => $modelsettings->getAdminSettings(),
             'play' => $play,
             'anime' => $anime,
