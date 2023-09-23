@@ -3,7 +3,7 @@
         'name' => 'codeigniter4/framework',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '0196f64c02416633f333d45ae3f442196fb0ba52',
+        'reference' => 'c13b0306bb7a74ce284dca1a35c24b42882c4640',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -28,7 +28,7 @@
         'codeigniter4/framework' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '0196f64c02416633f333d45ae3f442196fb0ba52',
+            'reference' => 'c13b0306bb7a74ce284dca1a35c24b42882c4640',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -46,7 +46,7 @@
         'codeigniter4/shield' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => 'a44a98580dfe9af1895fd79a045504ef668e5ec8',
+            'reference' => '8c4276b50c786b1e000ba6e488040f17c2d700db',
             'type' => 'library',
             'install_path' => __DIR__ . '/../codeigniter4/shield',
             'aliases' => array(
@@ -151,7 +151,7 @@
         'laminas/laminas-escaper' => array(
             'pretty_version' => '2.13.x-dev',
             'version' => '2.13.9999999.9999999-dev',
-            'reference' => 'c47b7ff681f097160c6370b02a336a61b2ef59ea',
+            'reference' => '1c2d774b596c31ec013f160233c98735a95f6900',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laminas/laminas-escaper',
             'aliases' => array(),
@@ -216,7 +216,7 @@
         'phpunit/php-code-coverage' => array(
             'pretty_version' => '9.2.x-dev',
             'version' => '9.2.9999999.9999999-dev',
-            'reference' => '78ba57219cc90cab324a5bf049d8c220d39ab828',
+            'reference' => '6a3a87ac2bbe33b25042753df8195ba4aa534c76',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/php-code-coverage',
             'aliases' => array(),
@@ -261,7 +261,7 @@
         'phpunit/phpunit' => array(
             'pretty_version' => '9.6.x-dev',
             'version' => '9.6.9999999.9999999-dev',
-            'reference' => '63d13467248f9c0d99243694a7796b5aafefa79f',
+            'reference' => 'f3d767f7f9e191eab4189abe41ab37797e30b1be',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
@@ -270,7 +270,7 @@
         'predis/predis' => array(
             'pretty_version' => 'v2.x-dev',
             'version' => '2.9999999.9999999.9999999-dev',
-            'reference' => '16bdd83d23b84a2182e129c63b1683a02c076556',
+            'reference' => '577bd398727a6fc953658563b1271e498f059098',
             'type' => 'library',
             'install_path' => __DIR__ . '/../predis/predis',
             'aliases' => array(),
@@ -290,7 +290,7 @@
         'psr/container' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '90db7b9ac2a2c5b849fcb69dde58f3ae182c68f5',
+            'reference' => '707984727bd5b2b670e59559d3ed2500240cf875',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/container',
             'aliases' => array(
@@ -301,7 +301,7 @@
         'psr/event-dispatcher' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'e275e2d67d53964a3f13e056886ecd769edee021',
+            'reference' => '977ffcf551e3bfb73d90aac3e8e1583fd8d2f89a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/event-dispatcher',
             'aliases' => array(
@@ -606,7 +606,7 @@
         'symfony/process' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '2adbb7830ab51e7cc28781c7fa25fbaae6e78c24',
+            'reference' => '83264b6a59a114522e4107cc249172aaa78b9720',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/process',
             'aliases' => array(),
@@ -635,7 +635,7 @@
         'symfony/string' => array(
             'pretty_version' => '7.0.x-dev',
             'version' => '7.0.9999999.9999999-dev',
-            'reference' => '95ff83d5a8a9f4b831cdd139e2ec10b931aa734f',
+            'reference' => '9d433d99aa9b5a72fffe2bfc6564f00456434033',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/string',
             'aliases' => array(),
