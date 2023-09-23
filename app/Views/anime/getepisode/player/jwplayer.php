@@ -1,10 +1,10 @@
 <head>
   <!-- JS Files -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script type="text/javascript" src="<?php echo base_url('assest/player/hls.light.min.js'); ?>"></script>
-  <script type="text/javascript" src="<?php echo base_url('assest/player/provider.hlsjs.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assest/player/jwplayer/hls.light.min.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assest/player/jwplayer/provider.hlsjs.js'); ?>"></script>
   <script src="https://ssl.p.jwpcdn.com/player/v/8.23.1/jwplayer.js"></script>
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assest/player/anitium_skin.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assest/player/jwplayer/anitium_skin.css'); ?>">
   <script type="text/javascript">
     jwplayer.key = "64HPbvSQorQcd52B8XFuhMtEoitbvY/EXJmMBfKcXZQU2Rnn";
   </script>

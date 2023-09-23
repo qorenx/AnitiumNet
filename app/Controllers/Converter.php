@@ -210,13 +210,13 @@ class Converter extends BaseController
 
     public function get_embed_gogoanime($uid, $eps, $url)
     {
-    
+        
         $modelsettings = new Settings();
         $animemodel = new AnimeModel();
         $episodemodel = new EpisodeModel();
         $path = parse_url($url, PHP_URL_PATH);
         $api_base = "https://api.consumet.org/anime/gogoanime";
-
+    
         $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
         $multiembed = json_decode(file_get_contents("{$api_base}/servers{$path}{$eps}"));
         [$anime] = $animemodel->where('uid', $uid)->select('ani_name, ani_poster')->find();
@@ -244,7 +244,7 @@ class Converter extends BaseController
             'anime' => $anime,
             'episode' => $episode,
         ]));
-        $temp_url = base_url().str_replace(FCPATH, '', $temp_file);
+        $temp_url = base_url().str_replace('\\', '/', str_replace(FCPATH, '', $temp_file));
     
         array_unshift($iframe_codes, '<iframe src="' . $temp_url . '" width="100%" height="100%" marginwidth="100%" marginheight="100%" style="box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;"></iframe>');
     
