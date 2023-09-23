@@ -134,3 +134,4 @@ nb-configuration.xml
 anitium
 /app/Views/license
 /app/Views/admin/anime/grabber.php
+/file/temp/*.temp
