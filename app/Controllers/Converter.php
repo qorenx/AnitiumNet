@@ -238,7 +238,7 @@ class Converter extends BaseController
             }
         }
         $temp_file = tempnam($temp_dir, 'iframe');
-        file_put_contents($temp_file, view('anime/getepisode/player/video', [
+        file_put_contents($temp_file, view('anime/getepisode/player/jwplayer', [
             'getAdminSettings' => $modelsettings->getAdminSettings(),
             'play' => $play,
             'anime' => $anime,

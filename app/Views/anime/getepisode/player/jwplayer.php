@@ -36,7 +36,7 @@
     aboutlink: "<?php echo $getAdminSettings['License'][0]['value']; ?>",
 
     skin: {
-      name: "netflix"
+      name: "anitium"
     },
 
     logo: {

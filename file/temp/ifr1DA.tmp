@@ -1,4 +1,4 @@
-<!-- DEBUG-VIEW START 1 APPPATH\Views\anime\getepisode\player\video.php -->
+<!-- DEBUG-VIEW START 1 APPPATH\Views\anime\getepisode\player\jwplayer.php -->
 <head>
   <!-- JS Files -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -37,7 +37,7 @@
     aboutlink: "https://localhost/",
 
     skin: {
-      name: "netflix"
+      name: "anitium"
     },
 
     logo: {
@@ -56,14 +56,14 @@
       title: "Third Option",
       description: "&quot;Oshi no Ko&quot;",
       image: "https://cdn.myanimelist.net/images/anime/1812/134736l.jpg",
-      file: "https://gogohd.net/download?id=MjAzMDkw&token=y8cdSIM54ot6w1ma4BD8IA&expires=1695470145",
+      file: "https://gogohd.net/download?id=MjAzMDkw&token=8EP8MoOTeC2gZHcOkWBP1Q&expires=1695470684",
       sources: [
          {
             file: "https://www051.vipanicdn.net/streamhls/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.m3u8",
             label: "default",
             default: true          },
          {
-            file: "https://www051.anifastcdn.info/videos/hls/u9mhdFVssMvyXShFz2BOsA/1695477346/203090/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.m3u8",
+            file: "https://www051.anifastcdn.info/videos/hls/2tSErk1EIdtTE9N-FCXGfA/1695477885/203090/f134bc36b9bb59de2ef28a48a7cef6bf/ep.2.1681918907.m3u8",
             label: "backup",
             default: false          },
          {
@@ -107,7 +107,7 @@
       const playlistItem = playerInstance.getPlaylistItem();
       const anchor = document.createElement("a");
       const fileUrl = playlistItem.file;
-      anchor.setAttribute("href", 'https://gogohd.net/download?id=MjAzMDkw&token=y8cdSIM54ot6w1ma4BD8IA&expires=1695470145');
+      anchor.setAttribute("href", 'https://gogohd.net/download?id=MjAzMDkw&token=8EP8MoOTeC2gZHcOkWBP1Q&expires=1695470684');
       anchor.setAttribute("target", "_blank");
       const downloadName = playlistItem.file.split("/").pop();
       anchor.setAttribute("download", downloadName);
@@ -158,4 +158,4 @@
     });
   });
 </script>
-<!-- DEBUG-VIEW ENDED 1 APPPATH\Views\anime\getepisode\player\video.php -->
+<!-- DEBUG-VIEW ENDED 1 APPPATH\Views\anime\getepisode\player\jwplayer.php -->

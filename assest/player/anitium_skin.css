@@ -130,8 +130,8 @@ html {
   font-size: 1.7rem;
 }
 
-/* Skin Netflix CSS */
-.jwplayer.jw-skin-netflix .jw-title-primary {
+/* Skin anitium CSS */
+.jwplayer.jw-skin-anitium .jw-title-primary {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -149,7 +149,7 @@ html {
   text-transform: uppercase;
 }
 
-.jwplayer.jw-skin-netflix .jw-title-secondary {
+.jwplayer.jw-skin-anitium .jw-title-secondary {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -166,8 +166,8 @@ html {
   font-weight: 500;
 }
 
-.jwplayer.jw-skin-netflix.jw-breakpoint-1 .jw-title-primary,
-.jwplayer.jw-skin-netflix.jw-breakpoint-0 .jw-title-primary {
+.jwplayer.jw-skin-anitium.jw-breakpoint-1 .jw-title-primary,
+.jwplayer.jw-skin-anitium.jw-breakpoint-0 .jw-title-primary {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -178,8 +178,8 @@ html {
   font-size: 1.2rem;
 }
 
-.jwplayer.jw-skin-netflix.jw-breakpoint-1 .jw-title-secondary,
-.jwplayer.jw-skin-netflix.jw-breakpoint-0 .jw-title-secondary {
+.jwplayer.jw-skin-anitium.jw-breakpoint-1 .jw-title-secondary,
+.jwplayer.jw-skin-anitium.jw-breakpoint-0 .jw-title-secondary {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -190,8 +190,8 @@ html {
   font-size: 0.8rem;
 }
 
-.jwplayer.jw-skin-netflix.jw-breakpoint-3 .jw-title-primary,
-.jwplayer.jw-skin-netflix.jw-breakpoint-2 .jw-title-primary {
+.jwplayer.jw-skin-anitium.jw-breakpoint-3 .jw-title-primary,
+.jwplayer.jw-skin-anitium.jw-breakpoint-2 .jw-title-primary {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -202,8 +202,8 @@ html {
   font-size: 2rem;
 }
 
-.jwplayer.jw-skin-netflix.jw-breakpoint-3 .jw-title-secondary,
-.jwplayer.jw-skin-netflix.jw-breakpoint-2 .jw-title-secondary {
+.jwplayer.jw-skin-anitium.jw-breakpoint-3 .jw-title-secondary,
+.jwplayer.jw-skin-anitium.jw-breakpoint-2 .jw-title-secondary {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -214,8 +214,8 @@ html {
   font-size: 1.5rem;
 }
 
-.jwplayer.jw-skin-netflix.jw-breakpoint-5 .jw-title-primary,
-.jwplayer.jw-skin-netflix.jw-breakpoint-4 .jw-title-primary {
+.jwplayer.jw-skin-anitium.jw-breakpoint-5 .jw-title-primary,
+.jwplayer.jw-skin-anitium.jw-breakpoint-4 .jw-title-primary {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -226,8 +226,8 @@ html {
   font-size: 2.5rem;
 }
 
-.jwplayer.jw-skin-netflix.jw-breakpoint-5 .jw-title-secondary,
-.jwplayer.jw-skin-netflix.jw-breakpoint-4 .jw-title-secondary {
+.jwplayer.jw-skin-anitium.jw-breakpoint-5 .jw-title-secondary,
+.jwplayer.jw-skin-anitium.jw-breakpoint-4 .jw-title-secondary {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -238,8 +238,8 @@ html {
   font-size: 1.5rem;
 }
 
-.jwplayer.jw-skin-netflix.jw-breakpoint-7 .jw-title-primary,
-.jwplayer.jw-skin-netflix.jw-breakpoint-6 .jw-title-primary {
+.jwplayer.jw-skin-anitium.jw-breakpoint-7 .jw-title-primary,
+.jwplayer.jw-skin-anitium.jw-breakpoint-6 .jw-title-primary {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -250,8 +250,8 @@ html {
   font-size: 3rem;
 }
 
-.jwplayer.jw-skin-netflix.jw-breakpoint-7 .jw-title-secondary,
-.jwplayer.jw-skin-netflix.jw-breakpoint-6 .jw-title-secondary {
+.jwplayer.jw-skin-anitium.jw-breakpoint-7 .jw-title-secondary,
+.jwplayer.jw-skin-anitium.jw-breakpoint-6 .jw-title-secondary {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -262,14 +262,14 @@ html {
   font-size: 2rem;
 }
 
-.jwplayer.jw-skin-netflix.jw-state-idle
+.jwplayer.jw-skin-anitium.jw-state-idle
   .jw-display-icon-container
   .jw-svg-icon-play
   path {
   display: none;
 }
 
-.jwplayer.jw-skin-netflix.jw-state-idle
+.jwplayer.jw-skin-anitium.jw-state-idle
   .jw-display-icon-container
   .jw-svg-icon-play {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZD0iTTE5LjM3NiAxMi40MTZMOC43NzcgMTkuNDgyQS41LjUgMCAwIDEgOCAxOS4wNjZWNC45MzRhLjUuNSAwIDAgMSAuNzc3LS40MTZsMTAuNTk5IDcuMDY2YS41LjUgMCAwIDEgMCAuODMyeiIgZmlsbD0icmdiYSgyNDcsMjQ2LDI0NywxKSIvPjwvc3ZnPg==");
@@ -279,7 +279,7 @@ html {
   transition: 0.2s;
 }
 
-.jwplayer.jw-skin-netflix.jw-state-idle
+.jwplayer.jw-skin-anitium.jw-state-idle
   .jw-display-icon-container:hover
   .jw-svg-icon-play {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZD0iTTE5LjM3NiAxMi40MTZMOC43NzcgMTkuNDgyQS41LjUgMCAwIDEgOCAxOS4wNjZWNC45MzRhLjUuNSAwIDAgMSAuNzc3LS40MTZsMTAuNTk5IDcuMDY2YS41LjUgMCAwIDEgMCAuODMyeiIgZmlsbD0icmdiYSgyMjksOSwyMCwxKSIvPjwvc3ZnPg==");
@@ -289,14 +289,14 @@ html {
   transition: 0.2s;
 }
 
-.jwplayer.jw-skin-netflix.jw-state-idle
+.jwplayer.jw-skin-anitium.jw-state-idle
   .jw-display-icon-container
   .jw-svg-icon-play {
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 100%;
 }
 
-.jwplayer.jw-skin-netflix.jw-state-idle
+.jwplayer.jw-skin-anitium.jw-state-idle
   .jw-display-controls
   .jw-display-icon-container
   .jw-icon {
@@ -305,8 +305,8 @@ html {
   align-items: center;
 }
 
-.jwplayer.jw-skin-netflix.jw-state-idle .jw-preview,
-.jwplayer.jw-skin-netflix.jw-state-complete .jw-preview {
+.jwplayer.jw-skin-anitium.jw-state-idle .jw-preview,
+.jwplayer.jw-skin-anitium.jw-state-complete .jw-preview {
   width: calc(100% + 5rem);
   background-size: calc(100% + 6rem);
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
@@ -319,13 +319,13 @@ html {
   background-size: cover;
 }
 
-.jwplayer.jw-skin-netflix.jw-state-idle:hover .jw-preview,
-.jwplayer.jw-skin-netflix.jw-state-complete:hover .jw-preview {
+.jwplayer.jw-skin-anitium.jw-state-idle:hover .jw-preview,
+.jwplayer.jw-skin-anitium.jw-state-complete:hover .jw-preview {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
-.jwplayer.jw-skin-netflix.jw-state-paused .jw-title {
+.jwplayer.jw-skin-anitium.jw-state-paused .jw-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -338,9 +338,9 @@ html {
   flex-direction: column;
 }
 
-.jwplayer.jw-skin-netflix.jw-state-paused .jw-controls,
-.jwplayer.jw-skin-netflix.jw-state-complete .jw-controls,
-.jwplayer.jw-skin-netflix.jw-state-buffering .jw-controls {
+.jwplayer.jw-skin-anitium.jw-state-paused .jw-controls,
+.jwplayer.jw-skin-anitium.jw-state-complete .jw-controls,
+.jwplayer.jw-skin-anitium.jw-state-buffering .jw-controls {
   background-color: rgba(0, 0, 0, 0.35);
   transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
@@ -348,7 +348,7 @@ html {
   -webkit-transition: all 0.2s linear;
 }
 
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-display-controls
   .jw-display-icon-container
   .jw-icon:hover {
@@ -358,47 +358,47 @@ html {
 /*
 Amplia a imagem e adiciona transições.
 */
-.jwplayer.jw-skin-netflix .jw-preview {
+.jwplayer.jw-skin-anitium .jw-preview {
   width: calc(100% + 5rem);
   background-size: calc(100% + 6rem);
   transition: opacity 0.35s, transform 0.35s;
   transform: translate3d(-4rem, 0, 0);
 }
 
-.jwplayer.jw-skin-netflix:hover .jw-preview {
+.jwplayer.jw-skin-anitium:hover .jw-preview {
   transform: translate3d(0, 0, 0);
 }
 
 /*
 Deslizar a imagem em -4rem.
 */
-.jwplayer.jw-skin-netflix.jw-state-complete:hover .jw-preview {
+.jwplayer.jw-skin-anitium.jw-state-complete:hover .jw-preview {
   transform: translate3d(-4rem, 0, 0);
 }
 
 /*
 Mudar a cor da barra de controle e alterar a cor do ícone em idle.
 */
-.jwplayer.jw-skin-netflix .jw-display {
+.jwplayer.jw-skin-anitium .jw-display {
   padding-bottom: 4.5rem;
 }
 
-.jwplayer.jw-skin-netflix .jw-controls::after {
+.jwplayer.jw-skin-anitium .jw-controls::after {
   background: none;
 }
 
-.jwplayer.jw-skin-netflix .jw-controlbar .jw-button-container .jw-button-color {
+.jwplayer.jw-skin-anitium .jw-controlbar .jw-button-container .jw-button-color {
   color: var(--bg-white);
 }
 
-.jwplayer.jw-skin-netflix.jw-state-paused
+.jwplayer.jw-skin-anitium.jw-state-paused
   .jw-controlbar
   .jw-button-container
   .jw-button-color {
   color: var(--bg-white);
 }
 
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-controlbar
   .jw-button-container
   .jw-button-color:hover {
@@ -408,86 +408,86 @@ Mudar a cor da barra de controle e alterar a cor do ícone em idle.
 /*
 Toltips mais perto da barra, alterar cores e remover sombras.
 */
-.jwplayer.jw-skin-netflix .jw-controlbar .jw-tooltip {
+.jwplayer.jw-skin-anitium .jw-controlbar .jw-tooltip {
   box-shadow: none;
 }
 
-.jwplayer.jw-skin-netflix .jw-controlbar .jw-tooltip.jw-open {
+.jwplayer.jw-skin-anitium .jw-controlbar .jw-tooltip.jw-open {
   border-radius: 0.3rem;
   color: var(--bg-black);
 }
 
-.jwplayer.jw-skin-netflix .jw-controlbar .jw-tooltip .jw-text {
+.jwplayer.jw-skin-anitium .jw-controlbar .jw-tooltip .jw-text {
   background-color: var(--bg-black);
   border-radius: 0.3rem;
 }
 
-.jwplayer.jw-skin-netflix .jw-controlbar .jw-text {
+.jwplayer.jw-skin-anitium .jw-controlbar .jw-text {
   color: var(--bg-white);
 }
 
-.jwplayer.jw-skin-netflix .jw-time-tip .jw-text {
+.jwplayer.jw-skin-anitium .jw-time-tip .jw-text {
   color: var(--bg-black);
 }
 
-.jwplayer.jw-skin-netflix .jw-volume-tip {
+.jwplayer.jw-skin-anitium .jw-volume-tip {
   margin-bottom: -4rem;
 }
 
 /*
 Tooltip timeslider e botões de qualidade e legenda.
 */
-.jwplayer.jw-skin-netflix .jw-settings-topbar-buttons .jw-tooltip-captions,
-.jwplayer.jw-skin-netflix .jw-settings-topbar-buttons .jw-tooltip-quality,
-.jwplayer.jw-skin-netflix .jw-settings-topbar-buttons .jw-tooltip-audioTracks,
-.jwplayer.jw-skin-netflix .jw-settings-topbar-buttons .jw-tooltip-sharing {
+.jwplayer.jw-skin-anitium .jw-settings-topbar-buttons .jw-tooltip-captions,
+.jwplayer.jw-skin-anitium .jw-settings-topbar-buttons .jw-tooltip-quality,
+.jwplayer.jw-skin-anitium .jw-settings-topbar-buttons .jw-tooltip-audioTracks,
+.jwplayer.jw-skin-anitium .jw-settings-topbar-buttons .jw-tooltip-sharing {
   color: var(--bg-black);
 }
 
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-settings-topbar-buttons
   .jw-tooltip-captions
   .jw-text,
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-settings-topbar-buttons
   .jw-tooltip-quality
   .jw-text,
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-settings-topbar-buttons
   .jw-tooltip-audioTracks
   .jw-text,
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-settings-topbar-buttons
   .jw-tooltip-sharing
   .jw-text
-/* .jwplayer.jw-skin-netflix .jw-time-tip .jw-reset */ {
+/* .jwplayer.jw-skin-anitium .jw-time-tip .jw-reset */ {
   border-radius: 0.3rem;
   background-color: var(--bg-black);
   color: var(--bg-white);
 }
 
-.jwplayer.jw-skin-netflix .jw-time-thumb {
+.jwplayer.jw-skin-anitium .jw-time-thumb {
   border-radius: 0.3rem 0.3rem 0 0 !important;
 }
 
-.jwplayer.jw-skin-netflix .jw-time-tip .jw-reset {
+.jwplayer.jw-skin-anitium .jw-time-tip .jw-reset {
   border-radius: 0 0 0.3rem 0.3rem;
   background-color: var(--bg-black);
   color: var(--bg-white);
 }
 
-.jwplayer.jw-skin-netflix .jw-time-tip {
+.jwplayer.jw-skin-anitium .jw-time-tip {
   color: var(--bg-black);
 }
 
 /* 
 Tooltip copia
 */
-.jwplayer.jw-skin-netflix .jw-settings-submenu-items .jw-tooltip-sharing-Link {
+.jwplayer.jw-skin-anitium .jw-settings-submenu-items .jw-tooltip-sharing-Link {
   color: var(--bg-black);
 }
 
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-settings-submenu-items
   .jw-tooltip-sharing-Link
   .jw-text {
@@ -498,7 +498,7 @@ Tooltip copia
 /*
 Controle de volume.
 */
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-overlay
   .jw-slider-volume
   .jw-slider-container
@@ -506,12 +506,12 @@ Controle de volume.
   background-color: var(--bg-red);
 }
 
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-overlay
   .jw-slider-volume
   .jw-slider-container
   .jw-buffer,
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-overlay
   .jw-slider-volume
   .jw-slider-container
@@ -520,7 +520,7 @@ Controle de volume.
   width: 0.2rem;
 }
 
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-overlay
   .jw-slider-volume
   .jw-slider-container
@@ -532,14 +532,14 @@ Controle de volume.
 /*
 Tamanho e cor da slider.
 */
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-controlbar
   .jw-slider-time
   .jw-slider-container
   .jw-rail {
   background-color: var(--bg-black);
 }
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-controlbar
   .jw-slider-time
   .jw-slider-container
@@ -547,12 +547,12 @@ Tamanho e cor da slider.
   background-color: #222323;
 }
 
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-controlbar
   .jw-slider-time
   .jw-slider-container
   .jw-knob,
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-controlbar
   .jw-slider-time
   .jw-slider-container
@@ -560,46 +560,46 @@ Tamanho e cor da slider.
   background-color: var(--bg-red);
 }
 
-.jw-skin-netflix .jw-slider-horizontal .jw-rail,
-.jw-skin-netflix .jw-slider-horizontal .jw-buffer,
-.jw-skin-netflix .jw-slider-horizontal .jw-progress {
+.jw-skin-anitium .jw-slider-horizontal .jw-rail,
+.jw-skin-anitium .jw-slider-horizontal .jw-buffer,
+.jw-skin-anitium .jw-slider-horizontal .jw-progress {
   height: 0.3rem;
 }
 
 /*
 Cor do menu de configurações.
 */
-.jwplayer.jw-skin-netflix .jw-settings-menu {
+.jwplayer.jw-skin-anitium .jw-settings-menu {
   background-color: var(--bg-black);
   border-radius: 0.3rem;
   width: 23rem;
 }
 
-.jwplayer.jw-skin-netflix .jw-settings-topbar {
+.jwplayer.jw-skin-anitium .jw-settings-topbar {
   border-radius: 0.3rem 0.3rem 0 0;
 }
 
-.jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
   .jw-settings-menu
   .jw-settings-topbar:not(.jw-nested-menu-open)
   .jw-icon-inline {
   height: 5rem;
 }
 
-.jwplayer.jw-skin-netflix.jw-breakpoint-7 .jw-settings-menu {
+.jwplayer.jw-skin-anitium.jw-breakpoint-7 .jw-settings-menu {
   margin: 0 -4.4rem -4.7rem 0;
 }
 
-.jwplayer.jw-skin-netflix.jw-breakpoint-6 .jw-settings-menu,
-.jwplayer.jw-skin-netflix.jw-breakpoint-5 .jw-settings-menu,
-.jwplayer.jw-skin-netflix.jw-breakpoint-4 .jw-settings-menu,
-.jwplayer.jw-skin-netflix.jw-breakpoint-3 .jw-settings-menu,
-.jwplayer.jw-skin-netflix.jw-breakpoint-2 .jw-settings-menu {
+.jwplayer.jw-skin-anitium.jw-breakpoint-6 .jw-settings-menu,
+.jwplayer.jw-skin-anitium.jw-breakpoint-5 .jw-settings-menu,
+.jwplayer.jw-skin-anitium.jw-breakpoint-4 .jw-settings-menu,
+.jwplayer.jw-skin-anitium.jw-breakpoint-3 .jw-settings-menu,
+.jwplayer.jw-skin-anitium.jw-breakpoint-2 .jw-settings-menu {
   margin: 0 0.4rem 0.8rem 0;
 }
 
-.jwplayer.jw-skin-netflix.jw-breakpoint-1 .jw-settings-menu,
-.jwplayer.jw-skin-netflix.jw-breakpoint-0 .jw-settings-menu {
+.jwplayer.jw-skin-anitium.jw-breakpoint-1 .jw-settings-menu,
+.jwplayer.jw-skin-anitium.jw-breakpoint-0 .jw-settings-menu {
   width: 100%;
   border-radius: 0;
 }
@@ -612,20 +612,20 @@ Cor do menu de configurações.
   color: var(--bg-white);
 }
 
-.jwplayer.jw-skin-netflix .jw-settings-menu .jw-submenu-topbar {
+.jwplayer.jw-skin-anitium .jw-settings-menu .jw-submenu-topbar {
   display: none;
 }
 
 /*
 Player responsivo jw8.
 */
-.jwplayer.jw-skin-netflix.jw-breakpoint-6 .jw-volume-tip,
-.jwplayer.jw-skin-netflix.jw-breakpoint-5 .jw-volume-tip,
-.jwplayer.jw-skin-netflix.jw-breakpoint-4 .jw-volume-tip,
-.jwplayer.jw-skin-netflix.jw-breakpoint-3 .jw-volume-tip,
-.jwplayer.jw-skin-netflix.jw-breakpoint-2 .jw-volume-tip,
-.jwplayer.jw-skin-netflix.jw-breakpoint-1 .jw-volume-tip,
-.jwplayer.jw-skin-netflix.jw-breakpoint-0 .jw-volume-tip {
+.jwplayer.jw-skin-anitium.jw-breakpoint-6 .jw-volume-tip,
+.jwplayer.jw-skin-anitium.jw-breakpoint-5 .jw-volume-tip,
+.jwplayer.jw-skin-anitium.jw-breakpoint-4 .jw-volume-tip,
+.jwplayer.jw-skin-anitium.jw-breakpoint-3 .jw-volume-tip,
+.jwplayer.jw-skin-anitium.jw-breakpoint-2 .jw-volume-tip,
+.jwplayer.jw-skin-anitium.jw-breakpoint-1 .jw-volume-tip,
+.jwplayer.jw-skin-anitium.jw-breakpoint-0 .jw-volume-tip {
   margin-bottom: -2rem;
 }
 
@@ -712,7 +712,7 @@ Animações do botão.
   background-repeat: no-repeat;
 }
 
-.jwplayer.jw-skin-netflix .jw-submenu-quality:hover .jw-svg-icon-quality-100 {
+.jwplayer.jw-skin-anitium .jw-submenu-quality:hover .jw-svg-icon-quality-100 {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZD0iTTYuMTcgMThhMy4wMDEgMy4wMDEgMCAwIDEgNS42NiAwSDIydjJIMTEuODNhMy4wMDEgMy4wMDEgMCAwIDEtNS42NiAwSDJ2LTJoNC4xN3ptNi03YTMuMDAxIDMuMDAxIDAgMCAxIDUuNjYgMEgyMnYyaC00LjE3YTMuMDAxIDMuMDAxIDAgMCAxLTUuNjYgMEgydi0yaDEwLjE3em0tNi03YTMuMDAxIDMuMDAxIDAgMCAxIDUuNjYgMEgyMnYySDExLjgzYTMuMDAxIDMuMDAxIDAgMCAxLTUuNjYgMEgyVjRoNC4xN3pNOSA2YTEgMSAwIDEgMCAwLTIgMSAxIDAgMCAwIDAgMnptNiA3YTEgMSAwIDEgMCAwLTIgMSAxIDAgMCAwIDAgMnptLTYgN2ExIDEgMCAxIDAgMC0yIDEgMSAwIDAgMCAwIDJ6IiBmaWxsPSJyZ2JhKDIyOSw5LDIwLDEpIi8+PC9zdmc+");
 }
 
@@ -746,7 +746,7 @@ Animações do botão.
   background-repeat: no-repeat;
 }
 
-.jwplayer.jw-skin-netflix .jw-submenu-captions:hover .jw-svg-icon-cc-off {
+.jwplayer.jw-skin-anitium .jw-submenu-captions:hover .jw-svg-icon-cc-off {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwSDI0VjI0SDB6Ii8+PHBhdGggZD0iTTIxIDNjLjU1MiAwIDEgLjQ0OCAxIDF2MTZjMCAuNTUyLS40NDggMS0xIDFIM2MtLjU1MiAwLTEtLjQ0OC0xLTFWNGMwLS41NTIuNDQ4LTEgMS0xaDE4em0tMSAySDR2MTRoMTZWNXpNOSA4YzEuMTA1IDAgMi4xMDUuNDQ4IDIuODI5IDEuMTczbC0xLjQxNCAxLjQxNEMxMC4wNTMgMTAuMjI0IDkuNTUzIDEwIDkgMTBjLTEuMTA1IDAtMiAuODk1LTIgMnMuODk1IDIgMiAyYy41NTMgMCAxLjA1My0uMjI0IDEuNDE0LS41ODZsMS40MTQgMS40MTRDMTEuMTA0IDE1LjU1MiAxMC4xMDQgMTYgOSAxNmMtMi4yMDggMC00LTEuNzkyLTQtNHMxLjc5Mi00IDQtNHptNyAwYzEuMTA1IDAgMi4xMDUuNDQ4IDIuODI5IDEuMTczbC0xLjQxNCAxLjQxNEMxNy4wNTMgMTAuMjI0IDE2LjU1MyAxMCAxNiAxMGMtMS4xMDUgMC0yIC44OTUtMiAycy44OTUgMiAyIDJjLjU1MiAwIDEuMDUyLS4yMjQgMS40MTQtLjU4NmwxLjQxNCAxLjQxNEMxOC4xMDQgMTUuNTUyIDE3LjEwNCAxNiAxNiAxNmMtMi4yMDggMC00LTEuNzkyLTQtNHMxLjc5Mi00IDQtNHoiIGZpbGw9InJnYmEoMjI5LDksMjAsMSkiLz48L3N2Zz4=");
 }
 
@@ -859,11 +859,11 @@ Animações do botão.
 /* 
 Icone de Share.
 */
-.jwplayer.jw-skin-netflix .jw-settings-sharing .jw-svg-icon-sharing path {
+.jwplayer.jw-skin-anitium .jw-settings-sharing .jw-svg-icon-sharing path {
   display: none;
 }
 
-.jwplayer.jw-skin-netflix .jw-settings-sharing .jw-svg-icon-sharing {
+.jwplayer.jw-skin-anitium .jw-settings-sharing .jw-svg-icon-sharing {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZD0iTTEzLjEyIDE3LjAyM2wtNC4xOTktMi4yOWE0IDQgMCAxIDEgMC01LjQ2NWw0LjItMi4yOWE0IDQgMCAxIDEgLjk1OSAxLjc1NWwtNC4yIDIuMjlhNC4wMDggNC4wMDggMCAwIDEgMCAxLjk1NGw0LjE5OSAyLjI5YTQgNCAwIDEgMS0uOTU5IDEuNzU1ek02IDE0YTIgMiAwIDEgMCAwLTQgMiAyIDAgMCAwIDAgNHptMTEtNmEyIDIgMCAxIDAgMC00IDIgMiAwIDAgMCAwIDR6bTAgMTJhMiAyIDAgMSAwIDAtNCAyIDIgMCAwIDAgMCA0eiIgZmlsbD0icmdiYSgyNDcsMjQ2LDI0NywxKSIvPjwvc3ZnPg==");
   background-repeat: no-repeat;
   background-position: center;
@@ -872,7 +872,7 @@ Icone de Share.
   background-size: 100%;
 }
 
-.jwplayer.jw-skin-netflix .jw-settings-sharing:hover .jw-svg-icon-sharing {
+.jwplayer.jw-skin-anitium .jw-settings-sharing:hover .jw-svg-icon-sharing {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZD0iTTEzLjEyIDE3LjAyM2wtNC4xOTktMi4yOWE0IDQgMCAxIDEgMC01LjQ2NWw0LjItMi4yOWE0IDQgMCAxIDEgLjk1OSAxLjc1NWwtNC4yIDIuMjlhNC4wMDggNC4wMDggMCAwIDEgMCAxLjk1NGw0LjE5OSAyLjI5YTQgNCAwIDEgMS0uOTU5IDEuNzU1ek02IDE0YTIgMiAwIDEgMCAwLTQgMiAyIDAgMCAwIDAgNHptMTEtNmEyIDIgMCAxIDAgMC00IDIgMiAwIDAgMCAwIDR6bTAgMTJhMiAyIDAgMSAwIDAtNCAyIDIgMCAwIDAgMCA0eiIgZmlsbD0icmdiYSgyMjksOSwyMCwxKSIvPjwvc3ZnPg==");
   background-repeat: no-repeat;
   background-position: center;
@@ -884,18 +884,18 @@ Icone de Share.
 /* 
 ícone de áudio.
 */
-.jwplayer.jw-skin-netflix .jw-svg-icon-audio-tracks path {
+.jwplayer.jw-skin-anitium .jw-svg-icon-audio-tracks path {
   display: none;
 }
 
-.jwplayer.jw-skin-netflix .jw-svg-icon-audio-tracks {
+.jwplayer.jw-skin-anitium .jw-svg-icon-audio-tracks {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZD0iTTIgMThoMTB2Mkgydi0yem0wLTdoMTR2Mkgydi0yem0wLTdoMjB2MkgyVjR6bTE3IDExLjE3VjloNXYyaC0zdjdhMyAzIDAgMSAxLTItMi44M3pNMTggMTlhMSAxIDAgMSAwIDAtMiAxIDEgMCAwIDAgMCAyeiIgZmlsbD0icmdiYSgyNDcsMjQ3LDI0NywxKSIvPjwvc3ZnPg==");
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.jwplayer.jw-skin-netflix
-  .jwplayer.jw-skin-netflix
+.jwplayer.jw-skin-anitium
+  .jwplayer.jw-skin-anitium
   .jw-submenu-audioTracks:hover
   .jw-svg-icon-audio-tracks {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZD0iTTIgMThoMTB2Mkgydi0yem0wLTdoMTR2Mkgydi0yem0wLTdoMjB2MkgyVjR6bTE3IDExLjE3VjloNXYyaC0zdjdhMyAzIDAgMSAxLTItMi44M3pNMTggMTlhMSAxIDAgMSAwIDAtMiAxIDEgMCAwIDAgMCAyeiIgZmlsbD0icmdiYSgyMjksOSwyMCwxKSIvPjwvc3ZnPg==");
@@ -908,36 +908,36 @@ Icone de Share.
   display: none;
 }
 
-.jwplayer.jw-skin-netflix .jw-svg-icon-pip-on {
+.jwplayer.jw-skin-anitium .jw-svg-icon-pip-on {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZD0iTTIxIDNhMSAxIDAgMCAxIDEgMXY3aC0yVjVINHYxNGg2djJIM2ExIDEgMCAwIDEtMS0xVjRhMSAxIDAgMCAxIDEtMWgxOHptMCAxMGExIDEgMCAwIDEgMSAxdjZhMSAxIDAgMCAxLTEgMWgtOGExIDEgMCAwIDEtMS0xdi02YTEgMSAwIDAgMSAxLTFoOHptLTEgMmgtNnY0aDZ2LTR6TTYuNzA3IDYuMjkzbDIuMjUgMi4yNUwxMSA2LjVWMTJINS41bDIuMDQzLTIuMDQzLTIuMjUtMi4yNSAxLjQxNC0xLjQxNHoiIGZpbGw9InJnYmEoMjQ3LDI0NywyNDcsMSkiLz48L3N2Zz4=");
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.jwplayer.jw-skin-netflix .jw-icon-pip:hover .jw-svg-icon-pip-on {
+.jwplayer.jw-skin-anitium .jw-icon-pip:hover .jw-svg-icon-pip-on {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZD0iTTIxIDNhMSAxIDAgMCAxIDEgMXY3aC0yVjVINHYxNGg2djJIM2ExIDEgMCAwIDEtMS0xVjRhMSAxIDAgMCAxIDEtMWgxOHptMCAxMGExIDEgMCAwIDEgMSAxdjZhMSAxIDAgMCAxLTEgMWgtOGExIDEgMCAwIDEtMS0xdi02YTEgMSAwIDAgMSAxLTFoOHptLTEgMmgtNnY0aDZ2LTR6TTYuNzA3IDYuMjkzbDIuMjUgMi4yNUwxMSA2LjVWMTJINS41bDIuMDQzLTIuMDQzLTIuMjUtMi4yNSAxLjQxNC0xLjQxNHoiIGZpbGw9InJnYmEoMjI5LDksMjAsMSkiLz48L3N2Zz4=");
 }
 
-.jwplayer.jw-skin-netflix .jw-svg-icon-pip-off path {
+.jwplayer.jw-skin-anitium .jw-svg-icon-pip-off path {
   display: none;
 }
 
-.jwplayer.jw-skin-netflix .jw-svg-icon-pip-off {
+.jwplayer.jw-skin-anitium .jw-svg-icon-pip-off {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZD0iTTIxIDNhMSAxIDAgMCAxIDEgMXY3aC0yVjVINHYxNGg2djJIM2ExIDEgMCAwIDEtMS0xVjRhMSAxIDAgMCAxIDEtMWgxOHptMCAxMGExIDEgMCAwIDEgMSAxdjZhMSAxIDAgMCAxLTEgMWgtOGExIDEgMCAwIDEtMS0xdi02YTEgMSAwIDAgMSAxLTFoOHptLTEgMmgtNnY0aDZ2LTR6bS04LjUtOEw5LjQ1NyA5LjA0M2wyLjI1IDIuMjUtMS40MTQgMS40MTQtMi4yNS0yLjI1TDYgMTIuNVY3aDUuNXoiIGZpbGw9InJnYmEoMjQ3LDI0NywyNDcsMSkiLz48L3N2Zz4=");
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.jwplayer.jw-skin-netflix .jw-icon-pip:hover .jw-svg-icon-pip-off {
+.jwplayer.jw-skin-anitium .jw-icon-pip:hover .jw-svg-icon-pip-off {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZD0iTTIxIDNhMSAxIDAgMCAxIDEgMXY3aC0yVjVINHYxNGg2djJIM2ExIDEgMCAwIDEtMS0xVjRhMSAxIDAgMCAxIDEtMWgxOHptMCAxMGExIDEgMCAwIDEgMSAxdjZhMSAxIDAgMCAxLTEgMWgtOGExIDEgMCAwIDEtMS0xdi02YTEgMSAwIDAgMSAxLTFoOHptLTEgMmgtNnY0aDZ2LTR6bS04LjUtOEw5LjQ1NyA5LjA0M2wyLjI1IDIuMjUtMS40MTQgMS40MTQtMi4yNS0yLjI1TDYgMTIuNVY3aDUuNXoiIGZpbGw9InJnYmEoMjI5LDksMjAsMSkiLz48L3N2Zz4=");
 }
 
-/* Buffer Netflix */
-.jwplayer.jw-skin-netflix .jw-svg-icon-buffer path {
+/* Buffer anitium */
+.jwplayer.jw-skin-anitium .jw-svg-icon-buffer path {
   display: none;
 }
 
-.jwplayer.jw-skin-netflix .jw-svg-icon-buffer {
+.jwplayer.jw-skin-anitium .jw-svg-icon-buffer {
   background-image: url("data:image/png;base64,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");
   background-size: contain;
   background-repeat: no-repeat;
