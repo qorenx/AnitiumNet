@@ -25,7 +25,7 @@
             }
 
             if (Array.isArray(data)) {
-                data.slice(0).forEach((url, index) => {
+                data.slice(1).forEach((url, index) => {
                     const li = document.createElement("span");
                     li.className = "toggle-basic";
                     li.style.margin = '10px';

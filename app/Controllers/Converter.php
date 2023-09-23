@@ -4,7 +4,8 @@ namespace App\Controllers;
 
 use App\Models\{
     EpisodeEmbedModel,
-    AnimeModel
+    AnimeModel,
+    EpisodeModel
 };
 
 use CodeIgniter\API\ResponseTrait;
@@ -202,7 +203,52 @@ class Converter extends BaseController
     }
 
 
+
+
+
+
     public function get_embed_gogoanime($uid, $eps, $url)
+    {
+
+        $animemodel = new AnimeModel();
+        $episodemodel = new EpisodeModel();
+
+       // return $this->response->setJSON($episode);
+
+        $path = parse_url($url, PHP_URL_PATH);
+        $api_base = "https://api.consumet.org/anime/gogoanime";
+    
+        $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
+        $multiembed = json_decode(file_get_contents("{$api_base}/servers{$path}{$eps}"));
+        [$anime] = $animemodel->where('uid', $uid)->select('ani_name, ani_poster')->find();
+        [$episode] = $episodemodel->where('uid', $uid)->where('ep_id_name', $eps)->select('ep_name, ep_jname, ep_romaji')->find();
+
+        $iframe_codes = array_map(function ($embed) {
+            return '<iframe src="' . $embed->url . '" width="100%" height="100%" marginwidth="100%" marginheight="100%" style="box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;"></iframe>';
+        }, $multiembed);
+    
+        $temp_dir = FCPATH . 'file/temp/';
+        if (!file_exists($temp_dir)) {
+            mkdir($temp_dir, 0777, true);
+        }
+        $files = glob($temp_dir . '*'); 
+        if (count($files) > 5) { 
+            foreach ($files as $file) {
+                if (is_file($file))
+                    unlink($file); 
+            }
+        }
+        $temp_file = tempnam($temp_dir, 'iframe');
+        file_put_contents($temp_file, view('anime/getepisode/player/video', compact('play', 'anime', 'episode')));
+        $temp_url = base_url().str_replace(FCPATH, '', $temp_file);
+    
+        array_unshift($iframe_codes, '<iframe src="' . $temp_url . '" width="100%" height="100%" marginwidth="100%" marginheight="100%" style="box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;"></iframe>');
+    
+        return $this->response->setJSON($iframe_codes);
+    }
+
+
+    public function get_embed_gogoanime2($uid, $eps, $url)
     {
         $ch = curl_init($url . $eps);
         curl_setopt_array($ch, [
