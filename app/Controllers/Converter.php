@@ -33,7 +33,6 @@ class Converter extends BaseController
             'dood.wf'                   => 'get_embed_doodwf',
             'sbone.pro'                 => 'get_embed_sbone',
             'mp4upload.com'             => 'get_embed_mp4upload',
-            'playtaku.net'              => 'get_embed_playtaku',
             'animein.fun'               => 'get_embed_animein',
             'oneupload.to'              => 'get_embed_oneupload',
             '2embed.cc'                 => 'get_embed_2embed',
@@ -226,7 +225,7 @@ class Converter extends BaseController
             return '<iframe src="' . $embed->url . '" width="100%" height="100%" marginwidth="100%" marginheight="100%" style="box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;"></iframe>';
         }, $multiembed);
     
-        $temp_dir = FCPATH . 'file/temp/';
+        $temp_dir = FCPATH . 'file/gogoanime/';
         if (!file_exists($temp_dir)) {
             mkdir($temp_dir, 0777, true);
         }
@@ -252,90 +251,10 @@ class Converter extends BaseController
         return $this->response->setJSON($iframe_codes);
     }
 
+
     public function video()
     {
        return view('anime/getepisode/player/vidstack');
     }
-
-    public function get_embed_gogoanime2($uid, $eps, $url)
-    {
-        $ch = curl_init($url . $eps);
-        curl_setopt_array($ch, [
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_CONNECTTIMEOUT => 5,
-            CURLOPT_USERAGENT => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36',
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_SSL_VERIFYPEER => false,
-        ]);
-        $html = curl_exec($ch);
-        curl_close($ch);
-
-        libxml_use_internal_errors(true);
-        $doc = new \DOMDocument();
-        @$doc->loadHTML($html);
-        libxml_clear_errors();
-
-        $xpath = new \DOMXPath($doc);
-
-        $datasrc = $xpath->query('//div[contains(@class, "anime_muti_link")]//a/@data-video');
-
-        $width = "100%";
-        $height = "100%";
-
-        $embed_codes = [];
-
-        foreach ($datasrc as $datasrcdoc) {
-            $element = $doc->createElement('iframe');
-            $element->setAttribute('src', $datasrcdoc->nodeValue);
-            $element->setAttribute('width', $width);
-            $element->setAttribute('height', $height);
-            $element->setAttribute('marginwidth', $width);
-            $element->setAttribute('marginheight', $height);
-            $element->setAttribute('style', 'box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;');
-            $embed_codes[] = $doc->saveHTML($element);
-        }
-
-        $json = json_encode($embed_codes);
-        return $this->response->setJSON($json);
-    }
-
-    public function get_embed_playtaku($uid, $eps, $url)
-    {
-
-        $ch = curl_init($url . $eps);
-        curl_setopt_array($ch, [
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_CONNECTTIMEOUT => 5,
-            CURLOPT_USERAGENT => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36',
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_SSL_VERIFYPEER => false,
-        ]);
-
-        $html = curl_exec($ch);
-        curl_close($ch);
-
-        libxml_use_internal_errors(true);
-        $doc = new \DOMDocument();
-        @$doc->loadHTML($html);
-        libxml_clear_errors();
-
-        $xpath = new \DOMXPath($doc);
-        $width = "100%";
-        $height = "100%";
-        $embed_code = '';
-        foreach ($xpath->query("/html/body/div[1]/section/div[1]/div[5]/div/div[1]/div[1]/div[1]/iframe") as $element) {
-            $element->setAttribute('width', $width);
-            $element->setAttribute('height', $height);
-            $element->setAttribute('marginwidth', $width);
-            $element->setAttribute('marginheight', $height);
-            $embed_code = $doc->saveHTML($element);
-        }
-        $json = json_encode($embed_code);
-        return $this->response->setJSON($json);
-    }
-
-    // $json = json_encode($embed_code);
-    // return $this->respond(json_decode($json, true));
-    // return $this->respond();
 
 }
