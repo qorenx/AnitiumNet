@@ -251,6 +251,10 @@ class Converter extends BaseController
         return $this->response->setJSON($iframe_codes);
     }
 
+    public function video()
+    {
+       return view('anime/getepisode/player/plyr');
+    }
 
     public function get_embed_gogoanime2($uid, $eps, $url)
     {
