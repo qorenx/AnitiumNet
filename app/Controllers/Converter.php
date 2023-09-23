@@ -238,7 +238,7 @@ class Converter extends BaseController
             }
         }
         $temp_file = tempnam($temp_dir, 'iframe');
-        file_put_contents($temp_file, view('anime/getepisode/player/jwplayer', [
+        file_put_contents($temp_file, view('anime/getepisode/player/vidstack', [
             'getAdminSettings' => $modelsettings->getAdminSettings(),
             'play' => $play,
             'anime' => $anime,
@@ -253,7 +253,7 @@ class Converter extends BaseController
 
     public function video()
     {
-       return view('anime/getepisode/player/plyr');
+       return view('anime/getepisode/player/vidstack');
     }
 
     public function get_embed_gogoanime2($uid, $eps, $url)
