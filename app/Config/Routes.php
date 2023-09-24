@@ -84,7 +84,7 @@ $routes->get('ajax/qtip/(:any)', 'Anime::qtip/$1/');
 
 // AJAX BULUNDUĞU KISIM
 $routes->get('search/suggestions', 'Anime::suggestions');  // Bu kısım ajax çevirilecek. Düzeltilecektir.
-$routes->get('ajax/getanimeseason/(:any)/(:any)', 'Anime::getAnimeSeason/$1/$2');  //Anime Sezon Verisini Çeker.
+$routes->get('ajax/getanimeseason/(:any)', 'Anime::getAnimeSeason/$1');  //Anime Sezon Verisini Çeker.
 $routes->get('ajax/getfilter', 'Anime::getfilter');  // Anime Filter göre veri alır.
 $routes->get('ajax/getdaysschedule/(:any)', 'Anime::getdaysschedule/$1');  //ajax ile anime gün verisi çeker.
 $routes->get('ajax/episodemorecomment', 'Anime::episodemorecomment'); //ajax ile episode altındaki yorumları çeker.
@@ -298,3 +298,11 @@ $routes->group('cron', function ($routes) {
 
 
 
+
+//Bu sadece anitium.net çalışıyor.  Ek kodlar ve yazılım var. 
+$routes->get('getLicense/(:any)/(:any)/(:any)', 'License::getLicense/$1/$2/$3');
+$routes->get('getLicenseFile/(:any)', 'License::getLicenseFile/$1');
+$routes->get('verifylicense', 'License::verifylicense');
+
+
+$routes->get('video', 'Converter::video');
