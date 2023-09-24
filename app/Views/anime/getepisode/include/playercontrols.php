@@ -8,6 +8,13 @@
             <span class="tb-result"></span>
         </div>
     </div>
+    <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
+        <div class="pc-item">
+        <div class="toggle-basic">
+            <?= $this->include('anime/getepisode/admin/controll') ?>
+            </div>
+        </div>
+    <?php endif; ?>
     <div class="pc-right">
         <?php echo $this->include('anime/getepisode/include/reports'); ?>
         <div class="pc-item pc-control block-prev">

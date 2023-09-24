@@ -23,9 +23,6 @@
                                     <?= $this->include('anime/getepisode/include/playercontrols') ?>
                                 </div>
                                 <div class="player-servers">
-                                    <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
-                                        <?= $this->include('anime/getepisode/admin/controll') ?>
-                                    <?php endif; ?>
                                     <?= $this->include('anime/getepisode/watch/server') ?>
                                 </div>
                                 <?= $this->include('anime/getepisode/include/schedule') ?>
