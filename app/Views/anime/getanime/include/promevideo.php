@@ -40,7 +40,7 @@
     function playVideo() {
         const container = document.getElementById("promo-container");
         const video = document.getElementById("promo-video");
-        const videoUrl = `https://lic.anitium.net/convert.php?url=<?= htmlspecialchars($AnimeData['ani_pv']) ?>?autoplay=1&autohide=1`;
+        const videoUrl = `<?= htmlspecialchars($AnimeData['ani_pv']) ?>`;
 
         video.src = videoUrl;
         container.style.display = "flex"; // show the container
