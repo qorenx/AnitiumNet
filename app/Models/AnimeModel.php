@@ -339,41 +339,63 @@ class AnimeModel extends Model
 
     public function animeseason($uid)
     {
-        $result = $this
-            ->select('uid, relations')
-            ->where('uid', $uid)
+        $related = $this->fetchRelated([$uid], [], true);
+        usort($related, function($a, $b) {
+            return strcmp($a['ani_aired'], $b['ani_aired']);
+        });
+        return $related;
+    }
+    
+    private function fetchRelated($mal_ids, $already_fetched_mal_ids = [], $is_initial_call = false)
+    {
+        $related = $this
+            ->select('uid, ani_name, ani_poster, relations, IF(ani_aired IS NULL or ani_aired = "", "9999-12-31", ani_aired) as ani_aired')
+            ->whereIn('uid', $mal_ids)
             ->get()
             ->getResultArray();
-
-        if (empty($result)) return [];
-
-        $mal_ids = [$uid];
-        foreach ($result as $value) {
-            if (array_key_exists('relations', $value)) {
-                $relations = json_decode($value['relations'], true);
+    
+        foreach ($related as $key => $related_anime) {
+            if ($is_initial_call) {
+                $related[$key]['active'] = 1;
+            } else {
+                unset($related[$key]['active']);
+            }
+        }
+    
+        $new_mal_ids = [];
+        foreach ($related as &$rel) {
+            $relations = json_decode($rel['relations'], true);
+            if ($relations) {
                 if (isset($relations['Sequel'])) {
                     foreach ($relations['Sequel'] as $sequel) {
-                        $mal_ids[] = $sequel['mal_id'];
+                        if (!in_array($sequel['mal_id'], $mal_ids) && !in_array($sequel['mal_id'], $already_fetched_mal_ids)) {
+                            $new_mal_ids[] = $sequel['mal_id'];
+                            $already_fetched_mal_ids[] = $sequel['mal_id'];
+                        }
                     }
                 }
                 if (isset($relations['Prequel'])) {
                     foreach ($relations['Prequel'] as $prequel) {
-                        $mal_ids[] = $prequel['mal_id'];
+                        if (!in_array($prequel['mal_id'], $mal_ids) && !in_array($prequel['mal_id'], $already_fetched_mal_ids)) {
+                            $new_mal_ids[] = $prequel['mal_id'];
+                            $already_fetched_mal_ids[] = $prequel['mal_id'];
+                        }
                     }
                 }
             }
         }
-
-        $related = $this
-            ->select('uid, ani_name, ani_poster, IF(ani_aired IS NULL or ani_aired = "", "9999-12-31", ani_aired) as ani_aired')
-            ->whereIn('uid', $mal_ids)
-            ->orderBy('ani_aired', 'ASC')
-            ->get()
-            ->getResultArray();
-
-        foreach ($related as &$related_anime) {
-            $related_anime['active'] = ($related_anime['uid'] == $uid) ? 1 : 0;
+        if (!empty($new_mal_ids)) {
+            $related = array_merge($related, $this->fetchRelated($new_mal_ids, $already_fetched_mal_ids));
         }
+
+        // Add array_reduce to keep array with unique uid only.
+        $related = array_reduce($related, function ($carry, $item) {
+            if (!isset($carry[$item['uid']])) {
+                $carry[$item['uid']] = $item;
+            }
+
+            return $carry;
+        }, []);
 
         return $related;
     }
