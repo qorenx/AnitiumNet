@@ -27,6 +27,17 @@
 
     <div class="film-stats">
         <div class="tick">
+            <?php
+            $quality = $animeData['ani_quality'];
+            if ($quality != 0) {
+            ?>
+                <div class="tick-item tick-quality">
+                    <?= $quality == 1 ? 'HD' : ($quality == 2 ? 'SD' : ($quality == 3 ? 'BD' : 'BD')) ?>
+                    <div></div>
+                </div>
+            <?php
+            }
+            ?>
             <div class="tick-item tick-pg"><?php
                                             switch ($animeData['ani_rate']) {
                                                 case 1:
@@ -49,17 +60,7 @@
                                                     break;
                                             }
                                             ?></div>
-            <?php
-            $quality = $animeData['ani_quality'];
-            if ($quality != 0) {
-            ?>
-                <div class="tick-item tick-quality">
-                    <?= $quality == 1 ? 'HD' : ($quality == 2 ? 'SD' : ($quality == 3 ? 'BD' : 'BD')) ?>
-                    <div></div>
-                </div>
-            <?php
-            }
-            ?>
+
             <span class="dot"></span>
             <span class="item"><?php
                                 if ($animeData['ani_type'] == 1) {
