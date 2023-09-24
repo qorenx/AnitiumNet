@@ -110,12 +110,12 @@
                                                 <label for="ani_rate" class="col-sm-4 col-form-label">Anime Rate: </label>
                                                 <div class="col-sm-8">
                                                     <select name="ani_rate" id="ani_rate" class="form-control">
-                                                        <option value="1" <?php if ($item['rating'] === 'G - All Ages') echo 'selected'; ?>>G</option>
-                                                        <option value="2" <?php if ($item['rating'] === 'PG - Children') echo 'selected'; ?>>PG</option>
-                                                        <option value="3" <?php if ($item['rating'] === 'PG-13 - Teens 13 or older') echo 'selected'; ?>>PG-13</option>
-                                                        <option value="4" <?php if ($item['rating'] === 'R - 17+ (violence & profanity)') echo 'selected'; ?>>R</option>
-                                                        <option value="5" <?php if ($item['rating'] === 'R+ - Mild Nudity') echo 'selected'; ?>>Rx</option>
-                                                        <option value="6" <?php if ($item['rating'] === 'Rx - Hentai') echo 'selected'; ?>>H</option>
+                                                        <option value="1" <?php if ($item['rating'] === 'G - All Ages') echo 'selected'; ?>>G - All Ages</option>
+                                                        <option value="2" <?php if ($item['rating'] === 'PG - Children') echo 'selected'; ?>>PG - Children</option>
+                                                        <option value="3" <?php if ($item['rating'] === 'PG-13 - Teens 13 or older') echo 'selected'; ?>>PG-13 - Teens 13 or older</option>
+                                                        <option value="4" <?php if ($item['rating'] === 'R - 17+ (violence & profanity)') echo 'selected'; ?>>R - 17+ (violence & profanity)</option>
+                                                        <option value="5" <?php if ($item['rating'] === 'R+ - Mild Nudity') echo 'selected'; ?>>R+ - Mild Nudity</option>
+                                                        <option value="6" <?php if ($item['rating'] === 'Rx - Hentai') echo 'selected'; ?>>Rx - Hentai</option>
                                                     </select>
                                                 </div>
                                             </div></br>
@@ -228,7 +228,7 @@
                                                 <div class="col-sm-8">
                                                     <div class="card">
                                                         <div class="card-body p-0">
-                                                            <textarea class="form-control border-0" id="ani_synopsis" name="ani_synopsis" rows="6"><?= $item['synopsis']; ?></textarea>
+                                                            <textarea class="form-control border-0" id="ani_synopsis" name="ani_synopsis" rows="6"><?= str_replace('[Written by MAL Rewrite]', '', $item['synopsis']); ?></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -266,13 +266,13 @@
                                                     <input type="text" name="ani_pv" id="ani_pv" value="<?= $item['trailer']['youtube_id']; ?>" class="form-control">
                                                 </div>
                                             </div><br>
-                                            <input type="text" name="external" id="external" value="<?php $external = array();
+                                            <input type="hidden" name="external" id="external" value="<?php $external = array();
                                                                                                     foreach ($item['external'] as $externals) {
                                                                                                         array_push($external, array('name' => $externals['name'], 'url' => $externals['url']));
                                                                                                     }
                                                                                                     $result = json_encode($external);
                                                                                                     echo htmlspecialchars($result, ENT_QUOTES); ?>" class="form-control" readonly>
-                                            <input type="text" name="relations" id="relations" value="<?php
+                                            <input type="hidden" name="relations" id="relations" value="<?php
                                                                                                         $relations = array();
                                                                                                         foreach ($item['relations'] as $relation) {
                                                                                                             $relationKey = $relation['relation'];  // Set relation as main key.
