@@ -9,9 +9,11 @@
             <?= $this->include('anime/getanime/include/details') ?>
             <div class="container" style="max-width:100%!important;width:100%!important;">
                 <div id="main-content">
-                    <?php if ($AnimeData['sid'] != 0 && !empty($AnimeData['sid'])) {
+                    <?php
+                    if ($AnimeData['mal_season'] == 1) {
                         echo $this->include('anime/getanime/include/season');
-                    } ?>
+                    }
+                    ?>
                     <?= $this->include('anime/getanime/include/recommended') ?>
                     <div class="clearfix"></div>
                 </div>

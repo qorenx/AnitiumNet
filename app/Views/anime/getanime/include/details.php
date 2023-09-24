@@ -195,7 +195,7 @@
                             <?php if (!empty($AnimeData['ani_producers'])) : ?>
                                 <?= $this->include('anime/getanime/include/producers') ?>
                             <?php endif; ?>
-                            <?php if (!empty($AnimeData['ani_offical_site'])) : ?>
+                            <?php if (!empty($AnimeData['external'])) : ?>
                                 <?= $this->include('anime/getanime/include/resources') ?>
                             <?php endif; ?>
                         </div>

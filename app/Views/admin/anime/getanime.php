@@ -110,7 +110,7 @@
                                                 <label for="ani_rate" class="col-sm-4 col-form-label">Anime Rate: </label>
                                                 <div class="col-sm-8">
                                                     <select name="ani_rate" id="ani_rate" class="form-control">
-                                                    <option value="1" <?php if ($item['rating'] === 'G - All Ages') echo 'selected'; ?>>G</option>
+                                                        <option value="1" <?php if ($item['rating'] === 'G - All Ages') echo 'selected'; ?>>G</option>
                                                         <option value="2" <?php if ($item['rating'] === 'PG - Children') echo 'selected'; ?>>PG</option>
                                                         <option value="3" <?php if ($item['rating'] === 'PG-13 - Teens 13 or older') echo 'selected'; ?>>PG-13</option>
                                                         <option value="4" <?php if ($item['rating'] === 'R - 17+ (violence & profanity)') echo 'selected'; ?>>R</option>
@@ -261,23 +261,30 @@
                                                 </div>
                                             </div><br>
                                             <div class="form-group row">
-                                                <label for="sid" class="col-sm-4 col-form-label">Season Pack ID:</label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="sid" id="sid" value="" class="form-control">
-                                                </div>
-                                            </div><br>
-                                            <div class="form-group row">
                                                 <label for="ani_pv" class="col-sm-4 col-form-label">Youtube PV:</label>
                                                 <div class="col-sm-8">
                                                     <input type="text" name="ani_pv" id="ani_pv" value="<?= $item['trailer']['youtube_id']; ?>" class="form-control">
                                                 </div>
                                             </div><br>
-                                            <input type="hidden" name="ani_offical_site" id="ani_offical_site" value="<?php $external = array();
-                                                                                                                        foreach ($item['external'] as $externals) {
-                                                                                                                            array_push($external, array('name' => $externals['name'], 'url' => $externals['url']));
-                                                                                                                        }
-                                                                                                                        $result = json_encode($external);
-                                                                                                                        echo htmlspecialchars($result, ENT_QUOTES); ?>" class="form-control" readonly>
+                                            <input type="text" name="external" id="external" value="<?php $external = array();
+                                                                                                    foreach ($item['external'] as $externals) {
+                                                                                                        array_push($external, array('name' => $externals['name'], 'url' => $externals['url']));
+                                                                                                    }
+                                                                                                    $result = json_encode($external);
+                                                                                                    echo htmlspecialchars($result, ENT_QUOTES); ?>" class="form-control" readonly>
+                                            <input type="text" name="relations" id="relations" value="<?php
+                                                                                                        $relations = array();
+                                                                                                        foreach ($item['relations'] as $relation) {
+                                                                                                            $relationKey = $relation['relation'];  // Set relation as main key.
+                                                                                                            foreach ($relation['entry'] as &$entry) {
+                                                                                                                unset($entry['url']);
+                                                                                                                unset($entry['name']);
+                                                                                                            }
+                                                                                                            $relations[$relationKey] = $relation['entry'];  // Add entries as subkey to the relation key.
+                                                                                                        }
+                                                                                                        $result = json_encode($relations);
+                                                                                                        echo htmlspecialchars($result, ENT_QUOTES);
+                                                                                                        ?>" class="form-control" readonly>
 
                                             <br>
                                             <div class="form-group row">

@@ -17,7 +17,6 @@ class AnimeModel extends Model
     protected $allowedFields = [
         'id',
         'uid',
-        'sid',
         'ani_name',
         'ani_jname',
         'ani_synonyms',
@@ -43,7 +42,8 @@ class AnimeModel extends Model
         'ani_studio',
         'ani_producers',
         'ani_manga_url',
-        'ani_offical_site',
+        'external',
+        'relations',
         'view_count',
         'view_count_month',
         'view_count_years'
@@ -51,12 +51,27 @@ class AnimeModel extends Model
 
     public function getAnimeByUid($uid)
     {
-        return $this->db
+        $result = $this
             ->table('anime')
             ->select('anime.*')
-            ->where('anime.uid', $uid)
+            ->where('uid', $uid)
             ->get()
             ->getRowArray();
+
+        $foundMalId = false;
+
+        $relations = isset($result['relations']) ? json_decode($result['relations'], true) : [];
+
+        if (isset($relations['Sequel'])) {
+            $foundMalId = true;
+        }
+        if (isset($relations['Prequel'])) {
+            $foundMalId = true;
+        }
+
+        $result['mal_season'] = $foundMalId ? 1 : 0;
+
+        return $result;
     }
 
 
@@ -322,23 +337,47 @@ class AnimeModel extends Model
         return $result[0];
     }
 
-
-    public function animeseason($uid, $sid)
+    public function animeseason($uid)
     {
         $result = $this
-            ->select('uid, ani_name, ani_poster, ani_aired')
-            ->where('sid', $sid)
+            ->select('uid, relations')
+            ->where('uid', $uid)
+            ->get()
+            ->getResultArray();
+
+        if (empty($result)) return [];
+
+        $mal_ids = [$uid];
+        foreach ($result as $value) {
+            if (array_key_exists('relations', $value)) {
+                $relations = json_decode($value['relations'], true);
+                if (isset($relations['Sequel'])) {
+                    foreach ($relations['Sequel'] as $sequel) {
+                        $mal_ids[] = $sequel['mal_id'];
+                    }
+                }
+                if (isset($relations['Prequel'])) {
+                    foreach ($relations['Prequel'] as $prequel) {
+                        $mal_ids[] = $prequel['mal_id'];
+                    }
+                }
+            }
+        }
+
+        $related = $this
+            ->select('uid, ani_name, ani_poster, IF(ani_aired IS NULL or ani_aired = "", "9999-12-31", ani_aired) as ani_aired')
+            ->whereIn('uid', $mal_ids)
             ->orderBy('ani_aired', 'ASC')
             ->get()
             ->getResultArray();
 
-        foreach ($result as &$value) {
-            if ($value['uid'] == $uid) {
-                $value['active'] = 1;
-            }
+        foreach ($related as &$related_anime) {
+            $related_anime['active'] = ($related_anime['uid'] == $uid) ? 1 : 0;
         }
-        return $result;
+
+        return $related;
     }
+
     public function genreget($genre)
     {
         return $this->like('ani_genre', $genre);

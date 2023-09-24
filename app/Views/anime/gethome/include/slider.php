@@ -64,8 +64,12 @@
                     </div>
                     <div class="desi-description"></div>
                     <div class="desi-buttons">
-                        <a href="/watch?anime=<?= urlencode($slider_data['ani_name']) ?>&eps=1" class="btn btn-primary btn-radius mr-2">
-                            <i class="fas fa-play-circle mr-2"></i>Watch Now</a>
+                        <?php
+                        if ($slider_data['type']['RAW'] > 0 || $slider_data['type']['SUB'] > 0 || $slider_data['type']['DUB'] > 0 || $slider_data['type']['TURK'] > 0) {
+                            echo '<a href="/watch?anime=' . urlencode($slider_data['ani_name']) . '&eps=1" class="btn btn-primary btn-radius mr-2">';
+                            echo '<i class="fas fa-play-circle mr-2"></i>Watch Now</a>';
+                        }
+                        ?>
                         <a class="btn btn-secondary btn-radius" href="/anime/<?= $slider_data['uid'] ?>/<?= urlencode($slider_data['ani_name']) ?>"><i class="fas fa-info-circle mr-2"></i> Detail<i class="fas fa-angle-right ml-2"></i></a>
                     </div>
                 </div>
