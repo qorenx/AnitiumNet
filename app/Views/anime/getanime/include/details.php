@@ -8,10 +8,30 @@
             <div class="anis-content">
                 <div class="anisc-poster">
                     <div class="film-poster">
-                        <?php if (!empty($AnimeData['ani_rate'])) : ?>
-                            <div class="tick tick-rate"><?php $ratings = [1 => 'G', 2 => 'PG', 3 => 'PG-13', 4 => 'R', 5 => 'Rx'];
-                                                        echo $ratings[$AnimeData['ani_rate']] ?? ''; ?></div>
-                        <?php endif; ?>
+                        <div class="tick tick-rate">
+                            <?php
+                            switch ($AnimeData['ani_rate']) {
+                                case 1:
+                                    echo "G";
+                                    break;
+                                case 2:
+                                    echo "PG";
+                                    break;
+                                case 3:
+                                    echo "PG-13";
+                                    break;
+                                case 4:
+                                    echo "R-17+";
+                                    break;
+                                case 5:
+                                    echo "R+";
+                                    break;
+                                case 6:
+                                    echo "Rx";
+                                    break;
+                            }
+                            ?>
+                        </div>
                         <img src="<?= $AnimeData['ani_poster'] ?>" class="film-poster-img">
                     </div>
                     <?php if (!empty($AnimeData['ani_pv'])) : ?>
@@ -25,7 +45,17 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/home">Home</a></li>
-                                <li class="breadcrumb-item"><a href="/type/<?= strtolower($AnimeData['ani_type']) ?>"><?php if ($AnimeData['ani_type'] == 1) {
+                                <li class="breadcrumb-item"><a href="/type/<?php if ($AnimeData['ani_type'] == 1) {
+                                                                                                                            echo "tv";
+                                                                                                                        } elseif ($AnimeData['ani_type'] == 2) {
+                                                                                                                            echo "movie";
+                                                                                                                        } elseif ($AnimeData['ani_type'] == 3) {
+                                                                                                                            echo "ova";
+                                                                                                                        } elseif ($AnimeData['ani_type'] == 4) {
+                                                                                                                            echo "ona";
+                                                                                                                        } elseif ($AnimeData['ani_type'] == 5) {
+                                                                                                                            echo "special";
+                                                                                                                        } ?>"><?php if ($AnimeData['ani_type'] == 1) {
                                                                                                                             echo "TV";
                                                                                                                         } elseif ($AnimeData['ani_type'] == 2) {
                                                                                                                             echo "Movie";
@@ -36,8 +66,7 @@
                                                                                                                         } elseif ($AnimeData['ani_type'] == 5) {
                                                                                                                             echo "Special";
                                                                                                                         } ?></a></li>
-                                <li class="breadcrumb-item dynamic-name active"><?= $AnimeData['ani_name'] ?></li>
-                            </ol>
+<li class="breadcrumb-item dynamic-name active" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 80%; display: inline-block;"><?= $AnimeData['ani_name'] ?></li>                            </ol>
                         </nav>
                     </div>
                     <h2 class="film-name dynamic-name"><?= $AnimeData['ani_name'] ?></h2>
@@ -67,8 +96,13 @@
                                                                     echo "Special";
                                                                 }
                                                                 ?></div>
-
-
+                            <?php if (!empty($AnimeData['ani_source'])) : ?>
+                                <div class="tick-item tick-source"><?= ($AnimeData['ani_source'] == 1) ? "Manga" : (($AnimeData['ani_source'] == 2) ? "LightNovel" : "Other") ?></div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="tick">
+                        <div class="film-stats">
                             <?php
                             $user = auth()->user();
                             $animeEmbedCounts = $animeEpisodeData['embed_type_counts'];
@@ -85,10 +119,6 @@
                                 }
                             }
                             ?>
-
-                            <?php if (!empty($AnimeData['ani_source'])) : ?>
-                                <div class="tick-item tick-source"><?= ($AnimeData['ani_source'] == 1) ? "Manga" : (($AnimeData['ani_source'] == 2) ? "LightNovel" : "Other") ?></div>
-                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="film-buttons">

@@ -2,7 +2,7 @@
 <?= $this->include('anime/extend/templates/head') ?>
 
 <body data-page="page_anime">
-<div id="sidebar_menu_bg"></div>
+    <div id="sidebar_menu_bg"></div>
     <div id="wrapper">
         <div class="clearfix"></div>
         <div id="main-wrapper" class="layout-page page-az page-filter">
@@ -76,9 +76,9 @@
                                                         <option value="1">G</option>
                                                         <option value="2">PG</option>
                                                         <option value="3">PG-13</option>
-                                                        <option value="4">R</option>
-                                                        <option value="5">Rx</option>
-
+                                                        <option value="4">R-17+</option>
+                                                        <option value="5">R+</option>
+                                                        <option value="6">Rx</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -92,7 +92,7 @@
                                                         <option value="">All</option>
                                                         <option value="1">LightNovel</option>
                                                         <option value="2">Manga</option>
-                                                        <option value="3">Other</option>
+                                                        <option value="3">Original</option>
                                                     </select>
                                                 </div>
                                             </div>

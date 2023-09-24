@@ -27,7 +27,28 @@
 
     <div class="film-stats">
         <div class="tick">
-            <div class="tick-item tick-pg">PG-13</div>
+            <div class="tick-item tick-pg"><?php
+                                            switch ($animeData['ani_rate']) {
+                                                case 1:
+                                                    echo "G";
+                                                    break;
+                                                case 2:
+                                                    echo "PG";
+                                                    break;
+                                                case 3:
+                                                    echo "PG-13";
+                                                    break;
+                                                case 4:
+                                                    echo "R-17+";
+                                                    break;
+                                                case 5:
+                                                    echo "R+";
+                                                    break;
+                                                case 6:
+                                                    echo "Rx";
+                                                    break;
+                                            }
+                                            ?></div>
             <?php
             $quality = $animeData['ani_quality'];
             if ($quality != 0) {
@@ -39,23 +60,6 @@
             <?php
             }
             ?>
-            <?php
-            $user = auth()->user();
-            $animeEmbedCounts = $animeEpisodeData['embed_type_counts'];
-            $statusToEmbedMap = [
-                "raw_status" => ["tick-raw", "fa-language", "1"],
-                "sub_status" => ["tick-sub", "fa-closed-captioning", "2"],
-                "dub_status" => ["tick-dub", "fa-microphone", "3"],
-                "turk_status" => ["tick-turk", "fa-globe-asia", "4"]
-            ];
-
-            foreach ($statusToEmbedMap as $status => $embed) {
-                if (($user->$status ?? 1) == 1 && !empty($animeEmbedCounts[$embed[2]])) {
-                    echo "<div class='tick-item {$embed[0]}'><i class='fas {$embed[1]} mr-1'></i>{$animeEmbedCounts[$embed[2]]}</div>";
-                }
-            }
-            ?>
-            <div class="tick-item tick-eps"><?= $animeEpisodeData['episode_count'] ?></div>
             <span class="dot"></span>
             <span class="item"><?php
                                 if ($animeData['ani_type'] == 1) {
@@ -75,7 +79,27 @@
             <div class="clearfix"></div>
         </div>
     </div>
+    <div class="film-stats">
+        <div class="tick">
+            <?php
+            $user = auth()->user();
+            $animeEmbedCounts = $animeEpisodeData['embed_type_counts'];
+            $statusToEmbedMap = [
+                "raw_status" => ["tick-raw", "fa-language", "1"],
+                "sub_status" => ["tick-sub", "fa-closed-captioning", "2"],
+                "dub_status" => ["tick-dub", "fa-microphone", "3"],
+                "turk_status" => ["tick-turk", "fa-globe-asia", "4"]
+            ];
 
+            foreach ($statusToEmbedMap as $status => $embed) {
+                if (($user->$status ?? 1) == 1 && !empty($animeEmbedCounts[$embed[2]])) {
+                    echo "<div class='tick-item {$embed[0]}'><i class='fas {$embed[1]} mr-1'></i>{$animeEmbedCounts[$embed[2]]}</div>";
+                }
+            }
+            ?>
+            <div class="tick-item tick-eps"><?= $animeEpisodeData['episode_count'] ?></div>
+        </div>
+    </div>
     <div class="clearfix"></div>
     <div class="film-description m-hide">
         <div class="text">

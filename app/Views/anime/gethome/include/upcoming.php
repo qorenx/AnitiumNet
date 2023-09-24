@@ -13,9 +13,9 @@
                         <div class="film-poster">
                             <?php
                             $ratings = [
-                                3 => 'PG-13',
-                                4 => 'R-16',
-                                5 => 'Rx-18'
+                                4 => 'R-17+',
+                                5 => 'R+',
+                                6 => 'Rx'
                             ];
 
                             if (isset($ratings[$topcoming['ani_rate']])) {

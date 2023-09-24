@@ -3299,7 +3299,7 @@ ul.color-list li:nth-of-type(7n+6) a {
 }
 
 .anis-content .anisc-detail .film-stats {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     font-size: 13px;
     display: flex;
     align-items: center;
@@ -3544,7 +3544,7 @@ ul.color-list li:nth-of-type(7n+6) a {
 }
 
 .anis-watch-detail .anis-content .anisc-detail .film-stats {
-    margin-bottom: 20px
+    margin-bottom: 5px
 }
 
 .anis-watch {
@@ -13708,7 +13708,7 @@ span#AddMalDiv #AddMal {
     }
 
     .anis-watch-detail .anis-content .anisc-detail .film-stats {
-        margin-bottom: 10px
+        margin-bottom: 5px
     }
 
     .anis-watch-detail .dt-rate {
@@ -16182,7 +16182,7 @@ span#AddMalDiv #AddMal {
 
     .anis-watch-detail .anis-content .anisc-detail .film-stats {
         text-align: left;
-        margin-bottom: 10px
+        margin-bottom: 5px
     }
 
     .anis-watch-detail .anis-content .anisc-detail .anisc-keyword {
