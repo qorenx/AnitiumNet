@@ -269,7 +269,7 @@
                                             <div class="form-group row">
                                                 <label for="ani_pv" class="col-sm-4 col-form-label">Youtube PV:</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="ani_pv" id="ani_pv" value="<?= $item['trailer']['embed_url']; ?>" class="form-control">
+                                                    <input type="text" name="ani_pv" id="ani_pv" value="<?= $item['trailer']['youtube_id']; ?>" class="form-control">
                                                 </div>
                                             </div><br>
                                             <input type="hidden" name="ani_offical_site" id="ani_offical_site" value="<?php $external = array();

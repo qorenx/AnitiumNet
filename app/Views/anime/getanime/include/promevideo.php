@@ -40,7 +40,7 @@
     function playVideo() {
         const container = document.getElementById("promo-container");
         const video = document.getElementById("promo-video");
-        const videoUrl = `<?= htmlspecialchars($AnimeData['ani_pv']) ?>`;
+        const videoUrl = `https://www.youtube.com/embed/<?= htmlspecialchars($AnimeData['ani_pv']) ?>?enablejsapi=1&wmode=opaque&autoplay=1`;
 
         video.src = videoUrl;
         container.style.display = "flex"; // show the container
