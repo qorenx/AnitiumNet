@@ -59,16 +59,25 @@ class AnimeModel extends Model
             ->getRowArray();
 
         $foundMalId = false;
+        $restricted_ids = array(21); // (21,24,332 etc...)Animes with a lot of side stories, such as One Piece, are written here. It may be prevented from being displayed.
 
         $relations = isset($result['relations']) ? json_decode($result['relations'], true) : [];
 
         if (isset($relations['Sequel'])) {
             $foundMalId = true;
         }
+        
         if (isset($relations['Prequel'])) {
             $foundMalId = true;
         }
-
+        
+        if (isset($relations['Side story']) && !in_array($uid, $restricted_ids)) {
+            $foundMalId = true;
+        }
+        
+        if (isset($relations['Parent story']) && !in_array($uid, $restricted_ids)) {
+            $foundMalId = true;
+        }
         $result['mal_season'] = $foundMalId ? 1 : 0;
 
         return $result;
@@ -379,6 +388,22 @@ class AnimeModel extends Model
                         if (!in_array($prequel['mal_id'], $mal_ids) && !in_array($prequel['mal_id'], $already_fetched_mal_ids)) {
                             $new_mal_ids[] = $prequel['mal_id'];
                             $already_fetched_mal_ids[] = $prequel['mal_id'];
+                        }
+                    }
+                }
+                if (isset($relations['Side story'])) {
+                    foreach ($relations['Side story'] as $sidestory) {
+                        if (!in_array($sidestory['mal_id'], $mal_ids) && !in_array($sidestory['mal_id'], $already_fetched_mal_ids)) {
+                            $new_mal_ids[] = $sidestory['mal_id'];
+                            $already_fetched_mal_ids[] = $sidestory['mal_id'];
+                        }
+                    }
+                }
+                if (isset($relations['Parent story'])) {
+                    foreach ($relations['Parent story'] as $parentstory) {
+                        if (!in_array($parentstory['mal_id'], $mal_ids) && !in_array($parentstory['mal_id'], $already_fetched_mal_ids)) {
+                            $new_mal_ids[] = $parentstory['mal_id'];
+                            $already_fetched_mal_ids[] = $parentstory['mal_id'];
                         }
                     }
                 }
