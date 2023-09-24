@@ -27,7 +27,10 @@
     <div id="wrapper">
         <div id="xheader">
             <div class="container">
-                <div id="xheader_menu">
+                <div id="xheader_browser" class="">
+                    <div class="header-btn"><i class="fas fa-bars mr-2"></i>Menu</div>
+                </div>
+                <div id="xheader_menu" class="">
                     <ul class="nav header_menu-list">
                         <li class="nav-item"><a href="<?php echo base_url(); ?>home" title="Home">Home</a></li>
                         <li class="nav-item"><a href="<?php echo base_url(); ?>type/tv" title="TV Series">TV Series</a></li>
@@ -40,29 +43,33 @@
             </div>
         </div>
         <div id="xmain-wrapper">
-        <?php 
-        $randomTime = mt_rand(10, 25);
-    ?>
 
-    <style>
-        #mw-top {
-            background-image: url('<?php echo $settings['İndex'][1]['value']; ?>');
-            background-repeat: no-repeat;
-            background-size: cover;
-            animation: updown <?php echo $randomTime; ?>s ease-in-out infinite;
-            background-position: center bottom;
-        }
 
-        @keyframes updown {
-            0%, 100% {
-                background-position: center bottom;
-            }
+            <?php
+            $randomTime = mt_rand(10, 25);
+            ?>
 
-            50% {
-                background-position: center top;
-            }
-        }
-    </style>
+            <style>
+                #mw-top {
+                    background-image: url('<?php echo $settings['İndex'][1]['value']; ?>');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    animation: updown <?php echo $randomTime; ?>s ease-in-out infinite;
+                    background-position: center bottom;
+                }
+
+                @keyframes updown {
+
+                    0%,
+                    100% {
+                        background-position: center bottom;
+                    }
+
+                    50% {
+                        background-position: center top;
+                    }
+                }
+            </style>
             <div id="mw-top">
                 <div class="container">
                     <div class="mwt-content">
