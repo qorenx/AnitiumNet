@@ -22,38 +22,38 @@
                         <div id="top-viewed-today" class="anif-block-ul anif-block-chart tab-pane active">
                             <ul class="ulclear">
                                 <?php $key = 1;
-                                foreach ($todayepisode as $todayview) : ?>
+                                foreach ($episodeviews['today'] as $today) : ?>
                                     <li class="item-top">
                                         <div class="film-number"><span><?= $key ?></span></div>
                                         <div class="film-poster item-qtip loaded">
-                                            <img class="film-poster-img ls-is-cached lazyloaded" src="<?= $todayview['ani_poster'] ?>">
+                                            <img class="film-poster-img ls-is-cached lazyloaded" src="<?= $today['ani_poster'] ?>">
                                         </div>
                                         <div class="film-detail">
                                             <div class="film-name">
                                                 <h7>
-                                                    <a href="anime/<?= $todayview['uid'] ?>/<?= urlencode($todayview['ani_name']) ?>" class="dynamic-name"><?= $todayview['ani_name'] ?></a>
+                                                    <a href="anime/<?= $today['ep_uid'] ?>/<?= urlencode($today['ani_name']) ?>" class="dynamic-name"><?= $today['ani_name'] ?></a>
                                                 </h7>
                                             </div>
                                             <div class="film-name">
-                                                <a href="watch?anime=<?= urlencode($todayview['ani_name']) ?>&uid=<?= $todayview['uid'] ?>&eps=<?= $todayview['ep_id_name'] ?>" class="dynamic-name">Episode-<?= $todayview['ep_id_name'] ?></a>
+                                                <a href="watch?anime=<?= urlencode($today['ani_name']) ?>&uid=<?= $today['ep_uid'] ?>&eps=<?= $today['ep_id'] ?>" class="dynamic-name">Episode-<?= $today['ep_id'] ?></a>
                                             </div>
                                             <div class="fd-infor">
                                                 <div class="tick">
                                                     <div class="tick-item tick-type"><?php
-                                                                                        if ($todayview['ani_type'] == 1) {
+                                                                                        if ($today['ani_type'] == 1) {
                                                                                             echo "TV";
-                                                                                        } elseif ($todayview['ani_type'] == 2) {
+                                                                                        } elseif ($today['ani_type'] == 2) {
                                                                                             echo "Movie";
-                                                                                        } elseif ($todayview['ani_type'] == 3) {
+                                                                                        } elseif ($today['ani_type'] == 3) {
                                                                                             echo "Ova";
-                                                                                        } elseif ($todayview['ani_type'] == 4) {
+                                                                                        } elseif ($today['ani_type'] == 4) {
                                                                                             echo "Ona";
-                                                                                        } elseif ($todayview['ani_type'] == 5) {
+                                                                                        } elseif ($today['ani_type'] == 5) {
                                                                                             echo "Special";
                                                                                         }
                                                                                         ?></div>
-                                                    <div class="tick-item tick-score"><?= $todayview['ani_score'] ?></div>
-                                                    <span class="fdi-item ml-2"><i class="fas fa-eye mr-2"></i><?= $todayview['ep_view'] ?></span>
+                                                    <div class="tick-item tick-score"><?= $today['ani_score'] ?></div>
+                                                    <span class="fdi-item ml-2"><i class="fas fa-eye mr-2"></i><?= $today['ep_today'] ?></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,38 +66,38 @@
                         <div id="top-viewed-week" class="anif-block-ul anif-block-chart tab-pane">
                             <ul class="ulclear">
                                 <?php $key = 1;
-                                foreach ($weekepisode as $weekview) : ?>
+                                foreach ($episodeviews['weeky']  as $weeky) : ?>
                                     <li class="item-top">
                                         <div class="film-number"><span><?= $key ?></span></div>
                                         <div class="film-poster item-qtip loaded">
-                                            <img class="film-poster-img ls-is-cached lazyloaded" src="<?= $weekview['ani_poster'] ?>">
+                                            <img class="film-poster-img ls-is-cached lazyloaded" src="<?= $weeky['ani_poster'] ?>">
                                         </div>
                                         <div class="film-detail">
                                             <div class="film-name">
                                                 <h7>
-                                                    <a href="anime/<?= $weekview['uid'] ?>/<?= urlencode($weekview['ani_name']) ?>" class="dynamic-name"><?= $weekview['ani_name'] ?></a>
+                                                    <a href="anime/<?= $weeky['ep_uid'] ?>/<?= urlencode($weeky['ani_name']) ?>" class="dynamic-name"><?= $weeky['ani_name'] ?></a>
                                                 </h7>
                                             </div>
                                             <div class="film-name">
-                                                <a href="watch?anime=<?= urlencode($weekview['ani_name']) ?>&uid=<?= $weekview['uid'] ?>&eps=<?= $weekview['ep_id_name'] ?>" class="dynamic-name">Episode-<?= $weekview['ep_id_name'] ?></a>
+                                                <a href="watch?anime=<?= urlencode($weeky['ani_name']) ?>&uid=<?= $weeky['ep_uid'] ?>&eps=<?= $weeky['ep_id'] ?>" class="dynamic-name">Episode-<?= $weeky['ep_id'] ?></a>
                                             </div>
                                             <div class="fd-infor">
                                                 <div class="tick">
                                                     <div class="tick-item tick-type"><?php
-                                                                                        if ($weekview['ani_type'] == 1) {
+                                                                                        if ($weeky['ani_type'] == 1) {
                                                                                             echo "TV";
-                                                                                        } elseif ($weekview['ani_type'] == 2) {
+                                                                                        } elseif ($weeky['ani_type'] == 2) {
                                                                                             echo "Movie";
-                                                                                        } elseif ($weekview['ani_type'] == 3) {
+                                                                                        } elseif ($weeky['ani_type'] == 3) {
                                                                                             echo "Ova";
-                                                                                        } elseif ($weekview['ani_type'] == 4) {
+                                                                                        } elseif ($weeky['ani_type'] == 4) {
                                                                                             echo "Ona";
-                                                                                        } elseif ($weekview['ani_type'] == 5) {
+                                                                                        } elseif ($weeky['ani_type'] == 5) {
                                                                                             echo "Special";
                                                                                         }
                                                                                         ?></div>
-                                                    <div class="tick-item tick-score"><?= $weekview['ani_score'] ?></div>
-                                                    <span class="fdi-item ml-2"><i class="fas fa-eye mr-2"></i><?= $weekview['ep_view_month'] ?></span>
+                                                    <div class="tick-item tick-score"><?= $weeky['ani_score'] ?></div>
+                                                    <span class="fdi-item ml-2"><i class="fas fa-eye mr-2"></i><?= $weeky['ep_weeky'] ?></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -110,38 +110,38 @@
                         <div id="top-viewed-month" class="anif-block-ul anif-block-chart tab-pane">
                             <ul class="ulclear">
                                 <?php $key = 1;
-                                foreach ($yearsepisode as $yearsview) : ?>
+                                foreach ($episodeviews['month'] as $month) : ?>
                                     <li class="item-top">
                                         <div class="film-number"><span><?= $key ?></span></div>
                                         <div class="film-poster item-qtip loaded">
-                                            <img class="film-poster-img ls-is-cached lazyloaded" src="<?= $yearsview['ani_poster'] ?>">
+                                            <img class="film-poster-img ls-is-cached lazyloaded" src="<?= $month['ani_poster'] ?>">
                                         </div>
                                         <div class="film-detail">
                                             <div class="film-name">
                                                 <h7>
-                                                    <a href="anime/<?= $yearsview['uid'] ?>/<?= urlencode($yearsview['ani_name']) ?>" class="dynamic-name"><?= $yearsview['ani_name'] ?></a>
+                                                    <a href="anime/<?= $month['ep_uid'] ?>/<?= urlencode($month['ani_name']) ?>" class="dynamic-name"><?= $month['ani_name'] ?></a>
                                                 </h7>
                                             </div>
                                             <div class="film-name">
-                                                <a href="watch?anime=<?= urlencode($yearsview['ani_name']) ?>&uid=<?= $yearsview['uid'] ?>&eps=<?= $yearsview['ep_id_name'] ?>" class="dynamic-name">Episode-<?= $yearsview['ep_id_name'] ?></a>
+                                                <a href="watch?anime=<?= urlencode($month['ani_name']) ?>&uid=<?= $month['ep_uid'] ?>&eps=<?= $month['ep_id'] ?>" class="dynamic-name">Episode-<?= $month['ep_id'] ?></a>
                                             </div>
                                             <div class="fd-infor">
                                                 <div class="tick">
                                                     <div class="tick-item tick-type"><?php
-                                                                                        if ($yearsview['ani_type'] == 1) {
+                                                                                        if ($month['ani_type'] == 1) {
                                                                                             echo "TV";
-                                                                                        } elseif ($yearsview['ani_type'] == 2) {
+                                                                                        } elseif ($month['ani_type'] == 2) {
                                                                                             echo "Movie";
-                                                                                        } elseif ($yearsview['ani_type'] == 3) {
+                                                                                        } elseif ($month['ani_type'] == 3) {
                                                                                             echo "Ova";
-                                                                                        } elseif ($yearsview['ani_type'] == 4) {
+                                                                                        } elseif ($month['ani_type'] == 4) {
                                                                                             echo "Ona";
-                                                                                        } elseif ($yearsview['ani_type'] == 5) {
+                                                                                        } elseif ($month['ani_type'] == 5) {
                                                                                             echo "Special";
                                                                                         }
                                                                                         ?></div>
-                                                    <div class="tick-item tick-score"><?= $yearsview['ani_score'] ?></div>
-                                                    <span class="fdi-item ml-2"><i class="fas fa-eye mr-2"></i><?= $yearsview['ep_view_years'] ?></span>
+                                                    <div class="tick-item tick-score"><?= $month['ani_score'] ?></div>
+                                                    <span class="fdi-item ml-2"><i class="fas fa-eye mr-2"></i><?= $month['ep_month'] ?></span>
                                                 </div>
                                             </div>
                                         </div>

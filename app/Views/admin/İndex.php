@@ -120,7 +120,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                     </div>
-                    <input type="text" class="form-control" style="background-color: white;" value="<?php echo $getEpisodeViewsMonth; ?>" readonly>
+                    <input type="text" class="form-control" style="background-color: white;" value="<?php echo $getEpisodeViewsWeeky; ?>" readonly>
                     <div class="input-group-append">
                       <span class="input-group-text">Month</span>
                     </div>
@@ -129,7 +129,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-calendar-alt"></i></span>
                     </div>
-                    <input type="text" class="form-control" style="background-color: white;" value="<?php echo $getEpisodeViewsYears; ?>" readonly>
+                    <input type="text" class="form-control" style="background-color: white;" value="<?php echo $getEpisodeViewsMonth; ?>" readonly>
                     <div class="input-group-append">
                       <span class="input-group-text">Year</span>
                     </div>

@@ -22,9 +22,6 @@ class EpisodeModel extends Model
         'ep_romaji',
         'ep_aired',
         'ep_name',
-        'ep_view',
-        'ep_view_month',
-        'ep_view_years',
         'created_at',
         'updated_at',
         'deleted_at'
@@ -122,39 +119,6 @@ class EpisodeModel extends Model
         return $query ?? [];
     }
 
-    public function todayepisode()
-    {
-        return $this->getEpisodes('ep_view');
-    }
-
-    public function weekepisode()
-    {
-        return $this->getEpisodes('ep_view_month');
-    }
-
-    public function yearsepisode()
-    {
-        return $this->getEpisodes('ep_view_years');
-    }
-
-    public function getEpisodes(string $viewColumnName)
-    {
-        $types = $this->getTypeDetails();
-        $db = $this->getDbConnection();
-
-        $query = $db->table('episode')
-            ->select("episode.uid, episode.$viewColumnName, episode.ep_id_name, anime.ani_name, anime.ani_score, anime.ani_type, anime.ani_poster")
-            ->join('anime', 'episode.uid = anime.uid', 'left')
-            ->join('episode_embed', 'episode.uid = episode_embed.embed_uid AND episode.ep_id_name = episode_embed.embed_id', 'left')
-            ->whereIn('episode_embed.embed_type', $types)
-            ->orderBy("episode.$viewColumnName", 'DESC')
-            ->limit(10)
-            ->get()
-            ->getResultArray();
-        $db->close();
-        return $query;
-    }
-
 
     public function updateEpisode($uid, $data, $epuid)
     {
@@ -172,17 +136,6 @@ class EpisodeModel extends Model
     }
 
 
-
-    public function episodeviewupdate($uid, $ep_id_name)
-    {
-        return $this->db
-            ->table('episode')
-            ->where(['uid' => $uid, 'ep_id_name' => $ep_id_name])
-            ->set('ep_view', 'ep_view+1', FALSE)
-            ->set('ep_view_month', 'ep_view_month+1', FALSE)
-            ->set('ep_view_years', 'ep_view_years+1', FALSE)
-            ->update();
-    }
 
     public function episodedata($uid)
     {
@@ -264,22 +217,4 @@ class EpisodeModel extends Model
         return $result->count;
     }
 
-    public function getTodayViewCount()
-    {
-        $query = $this->db->query('SELECT SUM(ep_view) as total FROM episode');
-        $result = $query->getRow();
-        return $result->total;
-    }
-    public function getMonthViewCount()
-    {
-        $query = $this->db->query('SELECT SUM(ep_view_month) as total FROM episode');
-        $result = $query->getRow();
-        return $result->total;
-    }
-    public function getYearsViewCount()
-    {
-        $query = $this->db->query('SELECT SUM(ep_view_years) as total FROM episode');
-        $result = $query->getRow();
-        return $result->total;
-    }
 }
