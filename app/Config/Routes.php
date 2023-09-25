@@ -228,9 +228,6 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         //Çoklu episode myanimelist veri olarak çekiyor.
         $routes->get('getepisode', 'Admin::getEpisode');
         $routes->post('getepisode', 'Admin::getEpisodesave');
-        //Tek bir episode için myanimelist veri çekiyor.
-        $routes->get('getoneepisode', 'Admin::getoneEpisode');
-        $routes->post('getoneepisode', 'Admin::getoneEpisodesave');
         //episode embed ekleme kısmıdır.
         $routes->get('embed', 'Admin::episodeembedadd');
         $routes->post('embed', 'Admin::episodeembedaddsave');
@@ -297,5 +294,12 @@ $routes->group('cron', function ($routes) {
 //Haftalık  Url= https://anitium.net/cron/clearEpisodeViewCountMonth
 //Aylık Url= https://anitium.net/cron/clearEpisodeViewCountYear
 
+
+
+
+//Bu sadece anitium.net çalışıyor.  Ek kodlar ve yazılım var. 
+$routes->get('getLicense/(:any)/(:any)/(:any)', 'License::getLicense/$1/$2/$3');
+$routes->get('getLicenseFile/(:any)', 'License::getLicenseFile/$1');
+$routes->get('verifylicense', 'License::verifylicense');
 
 

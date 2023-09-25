@@ -25,9 +25,6 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#getallepisode-modal">
                             Get All Episode Modal
                         </button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#getepisode-modal">
-                            Get Episode Modal
-                        </button>
                         <form action="<?php echo base_url('admin/episode/adding'); ?>" method="post">
                             <div class="card-body">
                                 <div class="form-group row">
@@ -39,7 +36,7 @@
                                 <div class="form-group row">
                                     <label for="ep_id_name" class="col-sm-4 col-form-label">Anime EpisodeID(1, 1.5, etc):</label>
                                     <div class="col-sm-8">
-                                        <input type="number" name="ep_id_name" id="ep_id_name" class="form-control" required>
+                                        <input type="text" name="ep_id_name" id="ep_id_name" class="form-control" required>
                                     </div>
                                 </div></br>
                                 <div class="form-group row">

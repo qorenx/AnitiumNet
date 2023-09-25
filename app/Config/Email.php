@@ -28,17 +28,17 @@ class Email extends BaseConfig
     /**
      * SMTP Server Address
      */
-    public string $SMTPHost = 'mail.anitium.net ';
+    public string $SMTPHost = 'smtp.googlemail.com';
 
     /**
      * SMTP Username
      */
-    public string $SMTPUser = 'anime@anitium.net';
+    public string $SMTPUser = 'anitiumnet@gmail.com';
 
     /**
      * SMTP Password
      */
-    public string $SMTPPass = '27RVKvT2]yD=';
+    public string $SMTPPass = 'AnitiumWatch09';
 
     /**
      * SMTP Port
@@ -62,7 +62,7 @@ class Email extends BaseConfig
      *             to the server. 'ssl' means implicit SSL. Connection on port
      *             465 should set this to ''.
      */
-    public string $SMTPCrypto = 'tls';
+    public string $SMTPCrypto = 'ssl';
 
     /**
      * Enable word-wrap
