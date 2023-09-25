@@ -47,28 +47,20 @@ class EpisodeModel extends Model
         return $types;
     }
 
-    public function getDbConnection()
-    {
-        return \Config\Database::connect();
-    }
-
     public function lastepisodehome()
     {
         $types = $this->getTypeDetails();
-        $db = $this->getDbConnection();
-        $query = $db
-            ->table('episode')
-            ->select('episode.uid, episode.ep_name, anime.ani_name, anime.ani_type, anime.ani_rate, anime.ani_poster,
-                anime.ani_ep, episode.ep_id_name, anime.ani_time, episode_embed.embed_uid, GROUP_CONCAT(episode_embed.embed_type) as embed_types')
+        $query = $this
+            ->select('episode.uid, episode.ep_name, anime.ani_name, anime.ani_type, anime.ani_rate, anime.ani_poster, anime.ani_ep, episode.ep_id_name, anime.ani_time, episode_embed.embed_uid, GROUP_CONCAT(episode_embed.embed_type) as embed_types')
             ->join('anime', 'episode.uid = anime.uid', 'left')
-            ->join('episode_embed',    'episode.uid = episode_embed.embed_uid AND episode.ep_id_name = episode_embed.embed_id', 'left')
+            ->join('episode_embed', 'episode.uid = episode_embed.embed_uid AND episode.ep_id_name = episode_embed.embed_id', 'left')
             ->whereIn('episode_embed.embed_type', $types)
             ->groupBy('episode.uid, episode.ep_id_name')
             ->orderBy('episode.created_at', 'DESC')
             ->limit(12)
             ->get()
             ->getResultArray();
-
+            
         if (!empty($query)) {
             $data = ['RAW' => 1, 'SUB' => 2, 'DUB' => 3, 'TURK' => 4];
             foreach ($query as $key => $episode) {
@@ -80,17 +72,15 @@ class EpisodeModel extends Model
                 }
             }
         }
-        $db->close();
+        $this->close();
         return $query ?? [];
     }
 
     public function lastestepisode()
     {
         $types = $this->getTypeDetails();
-        $db = $this->getDbConnection();
 
-        $query = $db
-            ->table('episode')
+        $query = $this
             ->select('episode.uid, episode.ep_name, anime.ani_name,
                 anime.ani_score, anime.ani_type, anime.ani_rate, anime.ani_poster,
                 anime.ani_ep, episode.ep_id_name, anime.ani_time, episode_embed.embed_uid, GROUP_CONCAT(episode_embed.embed_type) as embed_types')
@@ -115,7 +105,7 @@ class EpisodeModel extends Model
             }
         }
 
-        $db->close();
+        $this->close();
         return $query ?? [];
     }
 
@@ -134,7 +124,6 @@ class EpisodeModel extends Model
         $builder = $this->db->table('episode');
         $builder->where('uid', $uid)->where('id', $epuid)->delete();
     }
-
 
 
     public function episodedata($uid)
@@ -212,7 +201,7 @@ class EpisodeModel extends Model
 
     public function getEpisodeCount()
     {
-        $query = $this->db->query('SELECT COUNT(*) as count FROM episode');
+        $query = $this->query('SELECT COUNT(*) as count FROM episode');
         $result = $query->getRow();
         return $result->count;
     }
