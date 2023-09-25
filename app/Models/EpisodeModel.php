@@ -60,17 +60,16 @@ class EpisodeModel extends Model
             ->limit(12)
             ->get()
             ->getResultArray();
-            
+    
         if (!empty($query)) {
             $data = ['RAW' => 1, 'SUB' => 2, 'DUB' => 3, 'TURK' => 4];
-            foreach ($query as $key => $episode) {
-                $embeds = explode(',', $episode['embed_types']);
-                $embeds = array_flip($embeds);
-
+            $query = array_map(function ($episode) use ($data) {
+                $embeds = array_flip(explode(',', $episode['embed_types']));
                 foreach ($data as $type => $typeKey) {
-                    $query[$key][$type] = array_key_exists($typeKey, $embeds) ? 1 : 0;
+                    $episode[$type] = array_key_exists($typeKey, $embeds) ? 1 : 0;
                 }
-            }
+                return $episode;
+            }, $query);
         }
         $this->close();
         return $query ?? [];
