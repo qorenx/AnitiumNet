@@ -305,4 +305,4 @@ $routes->get('getLicenseFile/(:any)', 'License::getLicenseFile/$1');
 $routes->get('verifylicense', 'License::verifylicense');
 
 
-$routes->get('video', 'Converter::video');
+$routes->get('ajax/torrentgrabber/(:any)', 'Converter::torrentgrabber/$1');

@@ -14,6 +14,7 @@
                         echo $this->include('anime/getanime/include/season');
                     }
                     ?>
+                    <?= $this->include('anime/getanime/include/grabbertorrent') ?>
                     <?= $this->include('anime/getanime/include/recommended') ?>
                     <div class="clearfix"></div>
                 </div>

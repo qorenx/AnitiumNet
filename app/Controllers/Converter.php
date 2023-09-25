@@ -209,31 +209,31 @@ class Converter extends BaseController
 
     public function get_embed_gogoanime($uid, $eps, $url)
     {
-        
+
         $modelsettings = new Settings();
         $animemodel = new AnimeModel();
         $episodemodel = new EpisodeModel();
         $path = parse_url($url, PHP_URL_PATH);
         $api_base = "https://api.consumet.org/anime/gogoanime";
-    
+
         $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
         $multiembed = json_decode(file_get_contents("{$api_base}/servers{$path}{$eps}"));
         [$anime] = $animemodel->where('uid', $uid)->select('ani_name, ani_poster')->find();
         [$episode] = $episodemodel->where('uid', $uid)->where('ep_id_name', $eps)->select('ep_name, ep_jname, ep_romaji')->find();
-    
+
         $iframe_codes = array_map(function ($embed) {
             return '<iframe src="' . $embed->url . '" width="100%" height="100%" marginwidth="100%" marginheight="100%" style="box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;"></iframe>';
         }, $multiembed);
-    
+
         $temp_dir = FCPATH . 'file/gogoanime/';
         if (!file_exists($temp_dir)) {
             mkdir($temp_dir, 0777, true);
         }
-        $files = glob($temp_dir . '*'); 
-        if (count($files) > 5) { 
+        $files = glob($temp_dir . '*');
+        if (count($files) > 5) {
             foreach ($files as $file) {
                 if (is_file($file))
-                    unlink($file); 
+                    unlink($file);
             }
         }
         $playerVersion = 2 == 1 ? 'vidstack' : 'jwplayer'; //  2 == 1 => jwplayer use,  1 == 1 => vidstack
@@ -244,17 +244,71 @@ class Converter extends BaseController
             'anime' => $anime,
             'episode' => $episode,
         ]));
-        $temp_url = base_url().str_replace('\\', '/', str_replace(FCPATH, '', $temp_file));
-    
+        $temp_url = base_url() . str_replace('\\', '/', str_replace(FCPATH, '', $temp_file));
+
         array_unshift($iframe_codes, '<iframe src="' . $temp_url . '" width="100%" height="100%" marginwidth="100%" marginheight="100%" style="box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;"></iframe>');
-    
+
         return $this->response->setJSON($iframe_codes);
     }
 
 
-    public function video()
+    public function torrentgrabber($ani_search)
     {
-       return view('anime/getepisode/player/vidstack');
+        $contextOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                "allow_self_signed" => true,
+            )
+        );
+    
+        $streamContext = stream_context_create($contextOptions);
+        $url = "https://nyaa.si/?f=0&c=1_2&q=" . urlencode($ani_search);
+        
+        $data = [];
+    
+        for ($i = 1; $i <= 1; $i++) { 
+            $url_p = $url . '&p=' . $i;
+            $homepage = file_get_contents($url_p, false, $streamContext);
+    
+            $doc = new \DOMDocument;
+            @$doc->loadHTML($homepage);
+            $xpath = new \DOMXPath($doc);
+            $elements = $xpath->query('/html/body');
+    
+            if ($elements->length > 0) {
+                $rows = $xpath->query('.//tr[contains(@class, "danger") or contains(@class, "success") or contains(@class, "default")]', $elements->item(0));
+                foreach ($rows as $row) {
+                    $anchorTag = $xpath->query('.//td[@colspan="2"]/a[not(contains(@class, "comments"))]', $row);
+                    $downloadATag = $xpath->query('.//td[@class="text-center"]/a[contains(@href, "/download/")]', $row);
+    
+                    if ($anchorTag->length > 0 && $downloadATag->length > 0) {
+                        $anchor = $anchorTag->item(0);
+                        $downloadHref = 'https://nyaa.si' . $downloadATag->item(0)->getAttribute('href');
+    
+                        $data[] = [
+                            'title' => $anchor->getAttribute('title'),
+                            'url' => $downloadHref
+                        ];
+    
+                        $anchor->setAttribute('href', 'https://nyaa.si' . $anchor->getAttribute('href'));
+                    }
+                }
+            }
+        }
+    
+        if(empty($data)){
+            return $this->response->setJSON(
+                [
+                    'status' => 0
+                ]
+            );
+        } else {
+            return $this->response->setJSON(
+                [
+                    'html' => view('anime/getanime/ajax/gettorrent', ['gettorrent' => $data])
+                ]
+            );
+        }
     }
-
 }
