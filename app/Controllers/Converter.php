@@ -267,7 +267,7 @@ class Converter extends BaseController
         
         $data = [];
     
-        for ($i = 1; $i <= 1; $i++) { 
+        for ($i = 1; $i <= 2; $i++) { 
             $url_p = $url . '&p=' . $i;
             $homepage = file_get_contents($url_p, false, $streamContext);
     
