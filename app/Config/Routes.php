@@ -94,6 +94,7 @@ $routes->get('ajax/getboardlastpost', 'Anime::getboardlastpost'); //board.php i�
 $routes->get('ajax/getboardmypost', 'Anime::getboardmypost'); //mypost.php içindeki ajax çalıştırıyor.
 $routes->get('ajax/getboardtagpost', 'Anime::getboardtagpost'); //boardtag.php içindeki ajax çalıştıyor.
 $routes->get('ajax/getcommentlasttop/(:any)', 'Anime::getcommentlasttop/$1'); //boardtag.php içindeki ajax çalıştıyor.
+$routes->get('ajax/torrentgrabber/(:any)', 'Converter::torrentgrabber/$1'); // anime bilgileri kısmındaki torrent grabber
 
 
 
@@ -298,11 +299,3 @@ $routes->group('cron', function ($routes) {
 
 
 
-
-//Bu sadece anitium.net çalışıyor.  Ek kodlar ve yazılım var. 
-$routes->get('getLicense/(:any)/(:any)/(:any)', 'License::getLicense/$1/$2/$3');
-$routes->get('getLicenseFile/(:any)', 'License::getLicenseFile/$1');
-$routes->get('verifylicense', 'License::verifylicense');
-
-
-$routes->get('ajax/torrentgrabber/(:any)', 'Converter::torrentgrabber/$1');
