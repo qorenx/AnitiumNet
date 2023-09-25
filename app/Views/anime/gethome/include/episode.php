@@ -11,7 +11,7 @@
     <div class="tab-content">
         <div class="block_area-content block_area-list film_list film_list-grid">
             <div class="film_list-wrap">
-                <?php foreach (array_slice($lastep, 0, 18) as $anime) : ?>
+                <?php foreach ($lastep as $anime) :?>
                     <div class="flw-item">
                         <div class="film-poster">
                             <?php

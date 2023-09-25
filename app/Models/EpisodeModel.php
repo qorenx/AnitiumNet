@@ -30,7 +30,7 @@ class EpisodeModel extends Model
         'deleted_at'
     ];
 
-    public function lastestepisode()
+    public function getTypeDetails()
     {
         $typedefault = [1, 2, 3, 4];
         if (auth()->user()) {
@@ -47,13 +47,56 @@ class EpisodeModel extends Model
         if (empty($types)) {
             $types = [0];
         }
+        return $types;
+    }
 
-        $db = \Config\Database::connect();
+    public function getDbConnection()
+    {
+        return \Config\Database::connect();
+    }
+
+    public function lastepisodehome()
+    {
+        $types = $this->getTypeDetails();
+        $db = $this->getDbConnection();
+        $query = $db
+            ->table('episode')
+            ->select('episode.uid, episode.ep_name, anime.ani_name, anime.ani_type, anime.ani_rate, anime.ani_poster,
+                anime.ani_ep, episode.ep_id_name, anime.ani_time, episode_embed.embed_uid, GROUP_CONCAT(episode_embed.embed_type) as embed_types')
+            ->join('anime', 'episode.uid = anime.uid', 'left')
+            ->join('episode_embed',    'episode.uid = episode_embed.embed_uid AND episode.ep_id_name = episode_embed.embed_id', 'left')
+            ->whereIn('episode_embed.embed_type', $types)
+            ->groupBy('episode.uid, episode.ep_id_name')
+            ->orderBy('episode.created_at', 'DESC')
+            ->limit(12)
+            ->get()
+            ->getResultArray();
+
+        if (!empty($query)) {
+            $data = ['RAW' => 1, 'SUB' => 2, 'DUB' => 3, 'TURK' => 4];
+            foreach ($query as $key => $episode) {
+                $embeds = explode(',', $episode['embed_types']);
+                $embeds = array_flip($embeds);
+
+                foreach ($data as $type => $typeKey) {
+                    $query[$key][$type] = array_key_exists($typeKey, $embeds) ? 1 : 0;
+                }
+            }
+        }
+        $db->close();
+        return $query ?? [];
+    }
+
+    public function lastestepisode()
+    {
+        $types = $this->getTypeDetails();
+        $db = $this->getDbConnection();
+
         $query = $db
             ->table('episode')
             ->select('episode.uid, episode.ep_name, anime.ani_name,
-            anime.ani_score, anime.ani_type, anime.ani_rate, anime.ani_poster,
-            anime.ani_ep, episode.ep_id_name, anime.ani_time, episode_embed.embed_uid, GROUP_CONCAT(episode_embed.embed_type) as embed_types')
+                anime.ani_score, anime.ani_type, anime.ani_rate, anime.ani_poster,
+                anime.ani_ep, episode.ep_id_name, anime.ani_time, episode_embed.embed_uid, GROUP_CONCAT(episode_embed.embed_type) as embed_types')
             ->join('anime', 'episode.uid = anime.uid', 'left')
             ->join('episode_embed',    'episode.uid = episode_embed.embed_uid AND episode.ep_id_name = episode_embed.embed_id', 'left')
             ->whereIn('episode_embed.embed_type', $types)
@@ -63,119 +106,55 @@ class EpisodeModel extends Model
             ->get()
             ->getResultArray();
 
-        if (empty($query)) {
-            return [];
-        }
+        if (!empty($query)) {
+            $data = ['RAW' => 1, 'SUB' => 2, 'DUB' => 3, 'TURK' => 4];
+            foreach ($query as $key => $episode) {
+                $embeds = explode(',', $episode['embed_types']);
+                $embeds = array_flip($embeds);
 
-        foreach ($query as $key => $episode) {
-            $embeds = explode(',', $episode['embed_types']);
-
-            $query[$key]['RAW'] = in_array(1, $embeds) ? 1 : 0;
-            $query[$key]['SUB'] = in_array(2, $embeds) ? 1 : 0;
-            $query[$key]['DUB'] = in_array(3, $embeds) ? 1 : 0;
-            $query[$key]['TURK'] = in_array(4, $embeds) ? 1 : 0;
+                foreach ($data as $type => $typeKey) {
+                    $query[$key][$type] = array_key_exists($typeKey, $embeds) ? 1 : 0;
+                }
+            }
         }
 
         $db->close();
-        return $query;
+        return $query ?? [];
     }
-
 
     public function todayepisode()
     {
-        $typedefault = [1, 2, 3, 4];
-        if (auth()->user()) {
-            $typeraw = auth()->user()->raw_status ? 1 : 0;
-            $typesub = auth()->user()->sub_status ? 2 : 0;
-            $typedub = auth()->user()->dub_status ? 3 : 0;
-            $typeturk = auth()->user()->turk_status ? 4 : 0;
-
-            $types = array_filter([$typeraw, $typesub, $typedub, $typeturk]);
-        } else {
-            $types = $typedefault;
-        }
-
-        if (empty($types)) {
-            $types = [0];
-        }
-
-        $db = \Config\Database::connect();
-        $query = $db->table('episode')
-            ->select('episode.uid, episode.ep_view, episode.ep_id_name, anime.ani_name,anime.ani_score, anime.ani_type, anime.ani_poster')
-            ->join('anime', 'episode.uid = anime.uid', 'left')
-            ->join('episode_embed',    'episode.uid = episode_embed.embed_uid AND episode.ep_id_name = episode_embed.embed_id', 'left')
-            ->whereIn('episode_embed.embed_type', $types)
-            ->orderBy('episode.ep_view', 'DESC')
-            ->limit(10)
-            ->get()
-            ->getResultArray();
-        $db->close();
-        return $query;
+        return $this->getEpisodes('ep_view');
     }
 
     public function weekepisode()
     {
-        $typedefault = [1, 2, 3, 4];
-        if (auth()->user()) {
-            $typeraw = auth()->user()->raw_status ? 1 : 0;
-            $typesub = auth()->user()->sub_status ? 2 : 0;
-            $typedub = auth()->user()->dub_status ? 3 : 0;
-            $typeturk = auth()->user()->turk_status ? 4 : 0;
-
-            $types = array_filter([$typeraw, $typesub, $typedub, $typeturk]);
-        } else {
-            $types = $typedefault;
-        }
-
-        if (empty($types)) {
-            $types = [0];
-        }
-
-        $db = \Config\Database::connect();
-        $query = $db->table('episode')
-            ->select('episode.uid, episode.ep_view_month, episode.ep_id_name, anime.ani_name,anime.ani_score, anime.ani_type, anime.ani_poster')
-            ->join('anime', 'episode.uid = anime.uid', 'left')
-            ->join('episode_embed',    'episode.uid = episode_embed.embed_uid AND episode.ep_id_name = episode_embed.embed_id', 'left')
-            ->whereIn('episode_embed.embed_type', $types)
-            ->orderBy('episode.ep_view_month', 'DESC')
-            ->limit(10)
-            ->get()
-            ->getResultArray();
-        $db->close();
-        return $query;
+        return $this->getEpisodes('ep_view_month');
     }
 
     public function yearsepisode()
     {
-        $typedefault = [1, 2, 3, 4];
-        if (auth()->user()) {
-            $typeraw = auth()->user()->raw_status ? 1 : 0;
-            $typesub = auth()->user()->sub_status ? 2 : 0;
-            $typedub = auth()->user()->dub_status ? 3 : 0;
-            $typeturk = auth()->user()->turk_status ? 4 : 0;
+        return $this->getEpisodes('ep_view_years');
+    }
 
-            $types = array_filter([$typeraw, $typesub, $typedub, $typeturk]);
-        } else {
-            $types = $typedefault;
-        }
+    public function getEpisodes(string $viewColumnName)
+    {
+        $types = $this->getTypeDetails();
+        $db = $this->getDbConnection();
 
-        if (empty($types)) {
-            $types = [0];
-        }
-
-        $db = \Config\Database::connect();
         $query = $db->table('episode')
-            ->select('episode.uid, episode.ep_view_years, episode.ep_id_name, anime.ani_name,anime.ani_score, anime.ani_type, anime.ani_poster')
+            ->select("episode.uid, episode.$viewColumnName, episode.ep_id_name, anime.ani_name, anime.ani_score, anime.ani_type, anime.ani_poster")
             ->join('anime', 'episode.uid = anime.uid', 'left')
-            ->join('episode_embed',    'episode.uid = episode_embed.embed_uid AND episode.ep_id_name = episode_embed.embed_id', 'left')
+            ->join('episode_embed', 'episode.uid = episode_embed.embed_uid AND episode.ep_id_name = episode_embed.embed_id', 'left')
             ->whereIn('episode_embed.embed_type', $types)
-            ->orderBy('episode.ep_view_years', 'DESC')
+            ->orderBy("episode.$viewColumnName", 'DESC')
             ->limit(10)
             ->get()
             ->getResultArray();
         $db->close();
         return $query;
     }
+
 
     public function updateEpisode($uid, $data, $epuid)
     {
@@ -222,10 +201,10 @@ class EpisodeModel extends Model
         }
 
         $episodes = $this->db->table('episode')
-        ->where('uid', $uid)
-        ->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')
-        ->get()
-        ->getResult();
+            ->where('uid', $uid)
+            ->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')
+            ->get()
+            ->getResult();
 
 
         $filteredEpisodes = [];
