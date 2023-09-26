@@ -218,7 +218,7 @@ class Converter extends BaseController
         $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
         $multiembed = json_decode(file_get_contents("{$api_base}/servers{$path}{$eps}"));
         [$anime] = $animemodel->where('uid', $uid)->select('ani_name, ani_poster')->find();
-        [$episode] = $episodemodel->where('uid', $uid)->where('ep_id_name', $eps)->select('ep_name, ep_jname, ep_romaji')->find();
+        [$episode] = $episodemodel->where('uid', $uid)->where('ep_id_name', $eps)->select('ep_name')->find();
     
         $iframe_codes = array_map(function ($embed) {
             return '<iframe src="' . $embed->url . '" width="100%" height="100%" marginwidth="100%" marginheight="100%" style="box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;"></iframe>';

@@ -36,7 +36,7 @@
        edgeStyle: "raised"
      },
      playlist: [{
-       title: "<?php echo $episode['ep_name'] ?? $episode['ep_jname'] ?? $episode['ep_romaji']; ?>",
+       title: "<?php echo $episode['ep_name']; ?>",
        description: "<?php echo htmlspecialchars($anime['ani_name'], ENT_QUOTES, 'UTF-8'); ?>",
        image: "<?php echo $anime['ani_poster']; ?>",
        file: "<?php echo $play->download; ?>",

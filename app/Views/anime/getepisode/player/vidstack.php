@@ -13,7 +13,7 @@
 </style>
 
 <media-player 
-title="<?php echo $episode['ep_name'] ?? $episode['ep_jname'] ?? $episode['ep_romaji']; ?>" 
+title="<?php echo $episode['ep_name']; ?>" 
 preload="none" 
 src="<?php usort($play->sources, function ($a, $b) { return $b->quality <=> $a->quality; }); foreach ($play->sources as $source) : if ($source->quality == 'default') { echo $source->url; } endforeach; ?>" 
 poster="<?php echo $anime['ani_poster']; ?>" 

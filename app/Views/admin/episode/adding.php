@@ -45,24 +45,6 @@
                                         <input type="text" name="ep_name" id="ep_name" class="form-control">
                                     </div>
                                 </div></br>
-                                <div class="form-group row">
-                                    <label for="ep_jname" class="col-sm-4 col-form-label">Episode JName:</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" name="ep_jname" id="ep_jname" value="" class="form-control">
-                                    </div>
-                                </div><br>
-                                <div class="form-group row">
-                                    <label for="ep_romaji" class="col-sm-4 col-form-label">Episode Romaji:</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" name="ep_romaji" id="ep_romaji" class="form-control">
-                                    </div>
-                                </div><br>
-                                <div class="form-group row">
-                                    <label for="ep_aired" class="col-sm-4 col-form-label">Episode Aired:</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" name="ep_aired" id="ep_aired" class="form-control">
-                                    </div>
-                                </div><br>
                                 <div class="card-footer">
                                     <input class="btn btn-primary" type="submit" value="Episode Adding">
                                 </div>

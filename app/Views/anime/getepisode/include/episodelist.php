@@ -31,7 +31,7 @@
                     <a title="<?= $episode->ep_name ?>" class="ssl-item ep-item<?= $isActive ?>" href="/watch?anime=<?= urlencode($animeData['ani_name']) ?>&uid=<?= $episode->uid ?>&eps=<?= $episode->ep_id_name ?>" onclick="event.preventDefault(); this.classList.add('active'); window.location.href=this.href;">
                             <div class="ssli-order"><?= $extractEpisodeNumber($episode->ep_id_name) ?></div>
                             <div class="ssli-detail">
-                                <div class="ep-name" data-jname="<?= $episode->ep_jname ?>" title="<?= $episode->ep_romaji ?>"><?= $epname ?></div>
+                                <div class="ep-name"><?= $epname ?></div>
                             </div>
                             <div class="ssli-btn">
                                 <div class="btn btn-circle"><i class="fas fa-play"></i></div>

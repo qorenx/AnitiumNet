@@ -38,24 +38,7 @@
                                             <input type="text" name="ep_name[]" id="ep_name" value="<?= $item['title']; ?>" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="ep_jname" class="col-sm-4 col-form-label">Episode JName:</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="ep_jname[]" id="ep_jname" value="<?= $item['title_japanese']; ?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="ep_romaji" class="col-sm-4 col-form-label">Episode Romaji:</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="ep_romaji[]" id="ep_romaji" value="<?= $item['title_romanji']; ?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="ep_aired" class="col-sm-4 col-form-label">Episode Aired:</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="ep_aired[]" id="ep_aired" value="<?= substr($item['aired'], 0, 10); ?>" class="form-control">
-                                        </div>
-                                    </div></br></br></br>
+                                </br></br>
                                 <?php } ?>
                                 <div class="card-footer">
                                     <input class="btn btn-primary" type="submit" value="Episode Adding">
