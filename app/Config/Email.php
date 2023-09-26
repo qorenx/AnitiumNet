@@ -6,8 +6,8 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
-    public string $fromEmail  = '';
-    public string $fromName   = '';
+    public string $fromEmail  = 'anitiumsmtp@outlook.com';
+    public string $fromName   = 'Anitium Anime Watch';
     public string $recipients = '';
 
     /**
@@ -28,12 +28,12 @@ class Email extends BaseConfig
     /**
      * SMTP Server Address
      */
-    public string $SMTPHost = 'smtp.googlemail.com';
+    public string $SMTPHost = 'smtp-mail.outlook.com';
 
     /**
      * SMTP Username
      */
-    public string $SMTPUser = 'anitiumnet@gmail.com';
+    public string $SMTPUser = 'anitiumsmtp@outlook.com';
 
     /**
      * SMTP Password
@@ -43,7 +43,7 @@ class Email extends BaseConfig
     /**
      * SMTP Port
      */
-    public int $SMTPPort = 465;
+    public int $SMTPPort = 587;
 
     /**
      * SMTP Timeout (in seconds)
@@ -62,7 +62,7 @@ class Email extends BaseConfig
      *             to the server. 'ssl' means implicit SSL. Connection on port
      *             465 should set this to ''.
      */
-    public string $SMTPCrypto = 'ssl';
+    public string $SMTPCrypto = 'tls';
 
     /**
      * Enable word-wrap
