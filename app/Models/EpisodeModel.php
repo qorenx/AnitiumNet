@@ -173,44 +173,45 @@ class EpisodeModel extends Model
     public function episodedata($uid, $ep_id_name)
     {
         $types = $this->getTypeDetails();
-    
-        $allEpisodesData = $this
+        
+        $episodeIndex = $this
             ->select('uid, ep_id_name, ep_name')
             ->where('uid', $uid)
             ->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')
             ->get()
             ->getResult();
     
-        $filteredEpisodes = [];
-
-        foreach ($allEpisodesData as $episode) {
-            $embedData = $this->db
-            ->table('episode_embed')
-            ->where('embed_uid', $episode->uid)
-            ->where('embed_id', $episode->ep_id_name)
-            ->whereIn('embed_type', $types)
-            ->get()
-            ->getResult();
+        $episodeIndexFinder = array_search($ep_id_name, array_column($episodeIndex, 'ep_id_name'));
     
-            if ($embedData) {
-                $embedTypesAvailable = array_fill_keys($types, 0);
-                foreach ($embedData as $embed) {
-                    $embedTypesAvailable[$embed->embed_type] = 1;
+        $episode_keys = [$episodeIndexFinder - 1, $episodeIndexFinder, $episodeIndexFinder + 1];
+        $filteredEpisodes = [];
+    
+        foreach ($episode_keys as $key) {
+            if (isset($episodeIndex[$key])) {
+                $episode = $episodeIndex[$key];
+                $embedData = $this->db
+                ->table('episode_embed')
+                ->where('embed_uid', $episode->uid)
+                ->where('embed_id', $episode->ep_id_name)
+                ->whereIn('embed_type', $types)
+                ->get()
+                ->getResult();
+    
+                if ($embedData) {
+                    $embedTypesAvailable = array_fill_keys($types, 0);
+                    foreach ($embedData as $embed) {
+                        $embedTypesAvailable[$embed->embed_type] = 1;
+                    }
+                    $episode->type = $embedTypesAvailable;
+                    $filteredEpisodes[] = $episode;
                 }
-                $episode->type = $embedTypesAvailable;
-                $filteredEpisodes[] = $episode;
             }
         }
     
-        $conEpisodesData = $filteredEpisodes;
-        $episodeIndex = array_search($ep_id_name, array_column($conEpisodesData, 'ep_id_name'));
-        $episodeIndex = $episodeIndex !== false ? $episodeIndex : 0;
-        if ($episodeIndex !== false) {
-            $previousEpisode = $episodeIndex > 0 ? $conEpisodesData[$episodeIndex - 1] : null;
-            $currentEpisode = $conEpisodesData[$episodeIndex];
-            $nextEpisode = $episodeIndex < count($conEpisodesData) - 1 ? $conEpisodesData[$episodeIndex + 1] : null;
-        }
-     
+        $previousEpisode = isset($filteredEpisodes[0]) ? $filteredEpisodes[0] : null;
+        $currentEpisode = isset($filteredEpisodes[1]) ? $filteredEpisodes[1] : null;
+        $nextEpisode = isset($filteredEpisodes[2]) ? $filteredEpisodes[2] : null;
+    
         return array(
             "Previous" => $previousEpisode,
             "Current" => $currentEpisode,

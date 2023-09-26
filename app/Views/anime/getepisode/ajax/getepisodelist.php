@@ -9,7 +9,7 @@
             </div>
             <div id="episodes-load" class="ss-list" style="display:block;">
                 <?php foreach ($EpisodeList as $episode) : ?>
-                    <a title="<?= $episode->ep_name ?>" class="ssl-item ep-item<?= $episode->ep_id_name == $Current ? ' active' : '' ?>" href="/watch?anime=<?= urlencode($AnimeName) ?>&uid=<?= $episode->uid ?>&eps=<?= $episode->ep_id_name ?>">
+                    <a  class="ssl-item ep-item<?= $episode->ep_id_name == $Current ? ' active' : '' ?>" title="<?= $episode->ep_name ?>" data-number="<?= $episode->ep_id_name ?>" data-id="<?= $episode->uid ?>" onclick="getEmbedServer(<?= $episode->uid ?>,<?= $episode->ep_id_name ?>)" href="/watch?anime=<?= urlencode($AnimeName) ?>&uid=<?= $episode->uid ?>&eps=<?= $episode->ep_id_name ?>">
                         <div class="ssli-order"><?= $episode->ep_id_name ?></div>
                         <div class="ssli-detail">
                             <div class="ep-name"><?= empty($episode->ep_name) ? "Episode-" . $episode->ep_id_name : $episode->ep_name ?></div>

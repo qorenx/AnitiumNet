@@ -22,8 +22,7 @@
                                     <?= $this->include('anime/getepisode/include/playeriframe') ?>
                                     <?= $this->include('anime/getepisode/include/playercontrols') ?>
                                 </div>
-                                <div class="player-servers">
-                                    <?= $this->include('anime/getepisode/watch/server') ?>
+                                <div id="player-servers" class="player-servers">
                                 </div>
                                 <?= $this->include('anime/getepisode/include/schedule') ?>
                                 <?= $this->include('anime/getepisode/include/episodelist') ?>

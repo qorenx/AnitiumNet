@@ -18,7 +18,7 @@
             const videoUrl = data[0];
 
             document.getElementById('iframe-embed').innerHTML = videoUrl;
-            
+
             const ulContainer = document.getElementById("embed-list");
             while (ulContainer.firstChild) {
                 ulContainer.removeChild(ulContainer.firstChild);
@@ -67,9 +67,8 @@
             console.error('Error:', error);
         }
     }
-
-    document.addEventListener('DOMContentLoaded', () => getEmbed(<?php echo $episodeFirstEmbed; ?>));
 </script>
+
 
 
 <script>
@@ -80,29 +79,43 @@
             const episodelist = data.html; // Sounds like you tried to get the HTML from the JSON response.
 
             document.getElementById('episodes-content').innerHTML = episodelist;
-            
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    document.addEventListener('DOMContentLoaded', getAnimeList);
+
+    const getEmbedServer = async (uid, eps) => {
+        try {
+            const response = await fetch(`/ajax/embedserver/${uid}/${eps}`);
+            const data = await response.json();
+            document.getElementById('player-servers').innerHTML = data.html;
+            if (data.embedFirst) {
+                getEmbed(data.embedFirst);
+            }
         } catch (error) {
             console.error('Error:', error);
         }
     }
 
-    document.addEventListener('DOMContentLoaded', getAnimeList); // It should be without parentheses.
-    
+    document.addEventListener('DOMContentLoaded', getEmbedServer(<?php echo $_GET['uid']; ?>, <?php echo $_GET['eps']; ?>));
+
 </script>
 
 
 <script>
-$(document).on("click", ".ep-page-item", function () {
-    $(".ep-page-item").removeClass("active"),
-        $(".ep-page-item .ic-active").hide(),
-        $(this).addClass("active"),
-        $(this).find(".ic-active").show(),
-        $(".ss-list-min").hide(),
-        $(".ss-list-min").removeClass("active"),
-        $("#episodes-page-" + $(this).data("page")).show(),
-        $("#episodes-page-" + $(this).data("page")).addClass("active"),
-        $("#current-page").text($(this).text().trim())
-});
+    $(document).on("click", ".ep-page-item", function() {
+        $(".ep-page-item").removeClass("active"),
+            $(".ep-page-item .ic-active").hide(),
+            $(this).addClass("active"),
+            $(this).find(".ic-active").show(),
+            $(".ss-list-min").hide(),
+            $(".ss-list-min").removeClass("active"),
+            $("#episodes-page-" + $(this).data("page")).show(),
+            $("#episodes-page-" + $(this).data("page")).addClass("active"),
+            $("#current-page").text($(this).text().trim())
+    });
 </script>
 <script>
     function postVote(voteValue) {

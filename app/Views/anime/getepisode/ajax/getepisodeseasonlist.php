@@ -46,7 +46,7 @@
                     echo '<div id="episodes-page-' . $page . '" class="ss-list ss-list-min" data-page="' . $page . '" style="display: ' . $display_style . ';">'; // modify this line
                 }
             ?>
-                <a class="ssl-item  ep-item" data-number="<?= $i + 1 ?>" data-id="<?= $EpisodeList[$i]->uid ?>" href="/watch?anime=<?= urlencode($AnimeName) ?>&uid=<?= $EpisodeList[$i]->uid ?>&eps=<?= $EpisodeList[$i]->ep_id_name ?>">
+                <a id="getembed" class="ssl-item ep-item" data-number="<?= $i + 1 ?>" data-id="<?= $EpisodeList[$i]->uid ?>" title="<?= $EpisodeList[$i]->ep_name ?>" href="/watch?anime=<?= urlencode($AnimeName) ?>&uid=<?= $EpisodeList[$i]->uid ?>&eps=<?= $EpisodeList[$i]->ep_id_name ?>">
                     <div class="ssli-order"><?= $EpisodeList[$i]->ep_id_name ?></div>
                     <div class="ssli-detail">
                         <div class="ep-name e-dynamic-name"><?= $EpisodeList[$i]->ep_name ?></div>
