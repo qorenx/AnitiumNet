@@ -48,6 +48,9 @@
                             </form>
                         </div>
                         <div class="modal-footer text-center">
+                            Forgot your password? <a class="link-highlight emaillogin-tab-link" title="Email login">Login Link</a>
+                        </div>
+                        <div class="modal-footer text-center">
                             Don't have an account? <a class="link-highlight register-tab-link" title="Register">Register</a>
                         </div>
                     </div>
@@ -79,7 +82,32 @@
                             </form>
                         </div>
                         <div class="modal-footer text-center">
+                            Forgot your password? <a class="link-highlight emaillogin-tab-link" title="Email login">Login Link</a>
+                        </div>
+                        <div class="modal-footer text-center">
                             Have an account? <a class="link-highlight login-tab-link" title="Login">Login</a>
+                        </div>
+                    </div>
+                    <div id="modal-tab-emaillogin" class="tab-pane fade">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modallogintitle2">Email Login Link</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?= url_to('magic-link') ?>" method="post">
+                                <?= csrf_field() ?>
+                                <div class="form-floating mb-2">
+                                    <input type="email" class="form-control" id="floatingEmailInput" name="email" autocomplete="email" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email', auth()->user()->email ?? null) ?>" required />
+                                </div>
+                                <div class="d-grid col-12 col-md-8 mx-auto m-3">
+                                    <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.send') ?></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer text-center">
+                            Don't have an account? <a class="link-highlight register-tab-link" title="Register">Register</a>
                         </div>
                     </div>
                 </div>

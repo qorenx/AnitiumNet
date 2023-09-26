@@ -5050,13 +5050,22 @@ $(".btn-server").click(function () {
 $(document).ready(function () {
 	$('.register-tab-link').click(function () {
 		$('#modal-tab-login').removeClass('active');
+		$('#modal-tab-emaillogin').removeClass('active').removeClass('show');
 		$('#modal-tab-register').addClass('active').addClass('show');
 	});
 
 	$('.login-tab-link').click(function () {
 		$('#modal-tab-register').removeClass('active').removeClass('show');
+		$('#modal-tab-emaillogin').removeClass('active').removeClass('show');
 		$('#modal-tab-login').addClass('active').addClass('show');
 	});
+
+	$('.emaillogin-tab-link').click(function () {
+		$('#modal-tab-register').removeClass('active').removeClass('show');
+		$('#modal-tab-login').removeClass('active').removeClass('show');
+		$('#modal-tab-emaillogin').addClass('active').addClass('show');
+	});
+
 });
 
 $(document).ready(function () {
