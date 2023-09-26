@@ -13,7 +13,7 @@
                 activeBtn.className += ' active';
             }
 
-            const response = await fetch(`/embed/<?= $animeData['uid'] ?>/<?= $episodesData[0]['ep_id_name'] ?>/${embedId}`);
+            const response = await fetch(`/embed/<?= $allEpisodesData['Current']->uid ?>/<?= $allEpisodesData['Current']->ep_id_name ?>/${embedId}`);
             const data = await response.json();
             const videoUrl = data[0];
 

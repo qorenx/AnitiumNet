@@ -2,7 +2,7 @@
 <html prefix="og: http://ogp.me/ns#" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-    <title><?= $animeData['ani_name'] ?> Episode-<?= $episodesData[0]['ep_id_name'] ?> -<?php echo $settings['Advanced'][0]['value']; ?></title>
+    <title><?= $animeData['ani_name'] ?> Episode-<?= $allEpisodesData['Current']->ep_id_name ?> -<?php echo $settings['Advanced'][0]['value']; ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="charset" content="UTF-8" />
     <meta name="robots" content="index,follow" />

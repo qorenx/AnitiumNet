@@ -3,7 +3,7 @@
         <div id="content-comments" class="comments-wrap">
             <div class="sc-header">
                 <div class="sc-h-from">
-                    <a class="btn btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Episode <?= $currentData->ep_id_name ?></a>
+                    <a class="btn btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Episode <?= $allEpisodesData['Current']->ep_id_name ?></a>
                 </div>
                 <div class="sc-h-title"><i class="far fa-comment-alt mr-2"></i><?php foreach ($epcommentcount as $post) : ?><?= $post['post_count'] ?><?php endforeach ?><span> Comments</span></div>
                 <div class="clearfix"></div>
@@ -18,8 +18,8 @@
                             Comment as <span class="link-highlight ml-1"><?= htmlspecialchars(auth()->user()->username) ?></span>
                         </div>
                         <form method="post" action="/watch/epcommentinsert" class="preform preform-dark comment-form">
-                            <input type="hidden" name="post_ani" value="<?= htmlspecialchars($currentData->uid) ?>">
-                            <input type="hidden" name="post_ep" value="<?= htmlspecialchars($currentData->ep_id_name) ?>">                         
+                            <input type="hidden" name="post_ani" value="<?= $allEpisodesData['Current']->uid ?>">
+                            <input type="hidden" name="post_ep" value="<?= $allEpisodesData['Current']->ep_id_name ?>">                         
                             <textarea id="df-cm-content" class="form-control form-control-textarea comment-subject" name="post_content" maxlength="3000" placeholder="Leave a comment" required></textarea>
                             <div class="ci-buttons" id="df-cm-buttons">
                                 <div class="ci-b-left">

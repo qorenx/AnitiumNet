@@ -23,5 +23,5 @@
         100% {transform: rotate(360deg);}
     }
 </style>
-<span><a class="animated-link" href="<?=base_url('admin/episode/editing?uid='.$currentData->uid.'&eps='.$currentData->ep_id_name) ?>">EPİSODE<i class="fa fa-cog fa-spin custom-icon"></i></a></span>
-<span><a class="animated-link" href="<?=base_url('admin/episode/embed-editing?uid='.$currentData->uid.'&eps='.$currentData->ep_id_name) ?>">EMBED<i class="fa fa-cog fa-spin custom-icon"></i></a></span>
+<span><a class="animated-link" href="<?=base_url('admin/episode/editing?uid='.$allEpisodesData['Current']->uid.'&eps='.$allEpisodesData['Current']->ep_id_name) ?>">EPİSODE<i class="fa fa-cog fa-spin custom-icon"></i></a></span>
+<span><a class="animated-link" href="<?=base_url('admin/episode/embed-editing?uid='.$allEpisodesData['Current']->uid.'&eps='.$allEpisodesData['Current']->ep_id_name) ?>">EMBED<i class="fa fa-cog fa-spin custom-icon"></i></a></span>

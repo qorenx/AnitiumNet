@@ -18,13 +18,13 @@
     <div class="pc-right">
         <?php echo $this->include('anime/getepisode/include/reports'); ?>
         <div class="pc-item pc-control block-prev">
-            <?php if (!empty($previousData)) : ?>
-                <a class="btn btn-sm btn-prev" href="<?= base_url('watch') ?>?anime=<?= urlencode($animeData['ani_name']) ?>&uid=<?= $episodesData[0]['uid'] ?>&eps=<?= $previousData->ep_id_name ?>" onclick="prevEpisode()"><i class="fas fa-backward mr-2"></i>Prev</a>
+            <?php if (!empty($allEpisodesData['Previous'])) : ?>
+                <a class="btn btn-sm btn-prev" href="<?= base_url('watch') ?>?anime=<?= urlencode($_GET['anime']) ?>&uid=<?= $allEpisodesData['Current']->uid ?>&eps=<?= $allEpisodesData['Previous']->ep_id_name ?>" onclick="prevEpisode()"><i class="fas fa-backward mr-2"></i>Prev</a>
             <?php endif; ?>
         </div>
         <div class="pc-item pc-control block-next">
-            <?php if (!empty($nextData)) : ?>
-                <a class="btn btn-sm btn-next" href="<?= base_url('watch') ?>?anime=<?= urlencode($animeData['ani_name']) ?>&uid=<?= $episodesData[0]['uid'] ?>&eps=<?= $nextData->ep_id_name ?>" onclick="nextEpisode()">Next<i class="fas fa-forward ml-2"></i></a>
+            <?php if (!empty($allEpisodesData['Next'])) : ?>
+                <a class="btn btn-sm btn-next" href="<?= base_url('watch') ?>?anime=<?= urlencode($_GET['anime']) ?>&uid=<?= $allEpisodesData['Current']->uid ?>&eps=<?= $allEpisodesData['Next']->ep_id_name ?>" onclick="nextEpisode()"><i class="fas fa-forward ml-2"></i>Next</a>
             <?php endif; ?>
         </div>
     </div>

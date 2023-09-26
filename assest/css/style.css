@@ -3788,9 +3788,10 @@ ul.color-list li:nth-of-type(7n+6) a {
 
 .ssc-list {
     position: absolute;
-    left: 15px;
     top: 50%;
-    transform: translateY(-50%)
+    transform: translateY(-50%);
+    width: 95%;
+    left: 5px;
 }
 
 .ssc-servers {

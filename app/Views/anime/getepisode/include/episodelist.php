@@ -17,19 +17,13 @@
                 </div>
                 <div id="episodes-load" class="ss-list" style="display:block;">
                     <?php 
-                    $extractEpisodeNumber = function ($episodeIdName) {
-                        return (float)preg_replace('/[^0-9\.]/', '', $episodeIdName);
-                    };
-                    usort($allEpisodesData, function ($a, $b) use ($extractEpisodeNumber) {
-                        return $extractEpisodeNumber($a->ep_id_name) <=> $extractEpisodeNumber($b->ep_id_name);
-                    });
                     $requestURL = "/watch?anime=" . urlencode($animeData['ani_name']);
-                    foreach ($allEpisodesData as $episode) :
+                    foreach ($allEpisodesData['Episode'] as $episode) :
                         $isActive = $_SERVER['REQUEST_URI'] == "{$requestURL}&uid={$episode->uid}&eps={$episode->ep_id_name}" ? ' active' : '';
                         $epname = isset($episode->ep_name) && !empty($episode->ep_name) ? $episode->ep_name : "Episode-$episode->ep_id_name";
                     ?>
                     <a title="<?= $episode->ep_name ?>" class="ssl-item ep-item<?= $isActive ?>" href="/watch?anime=<?= urlencode($animeData['ani_name']) ?>&uid=<?= $episode->uid ?>&eps=<?= $episode->ep_id_name ?>" onclick="event.preventDefault(); this.classList.add('active'); window.location.href=this.href;">
-                            <div class="ssli-order"><?= $extractEpisodeNumber($episode->ep_id_name) ?></div>
+                            <div class="ssli-order"><?= ($episode->ep_id_name) ?></div>
                             <div class="ssli-detail">
                                 <div class="ep-name"><?= $epname ?></div>
                             </div>
@@ -39,7 +33,6 @@
                             <div class="clearfix"></div>
                         </a>
                     <?php endforeach; ?>
-
                 </div>
                 <script type="text/javascript">
                     let activeItem = null;

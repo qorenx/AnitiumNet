@@ -2,7 +2,7 @@
     <div class="ps_-status">
         <div class="content">
             <div class="server-notice">
-                <strong>You are watching <b>Episode <?= $episodesData[0]['ep_id_name'] ?></b></strong>
+                <strong>You are watching <b>Episode <?= $allEpisodesData['Current']->ep_id_name ?></b></strong>
                 If current server doesn't work please try other servers beside.
             </div>
         </div>
