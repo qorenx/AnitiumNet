@@ -5,16 +5,32 @@
             <meta itemprop="position" content="1">
         </li>
         <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumb-item">
-            <a itemprop="item" href="<?= base_url('anime/' . $allEpisodesData['Current']->uid . "/" . urlencode(urlencode($animeData['ani_name']))) ?>"><span itemprop="name">Anime</span></a>
+            <a itemprop="item" <?php
+                                $aniTypes = [
+                                    1 => "tv",
+                                    2 => "movie",
+                                    3 => "ova",
+                                    4 => "ona",
+                                    5 => "special",
+                                ];
+                                ?> href="<?= base_url('type/' . $aniTypes[$animeData['ani_type']]) ?>"><span itemprop="name"><?php
+                                                                                                if ($animeData['ani_type'] == 1) {
+                                                                                                    echo "TV";
+                                                                                                } elseif ($animeData['ani_type'] == 2) {
+                                                                                                    echo "Movie";
+                                                                                                } elseif ($animeData['ani_type'] == 3) {
+                                                                                                    echo "Ova";
+                                                                                                } elseif ($animeData['ani_type'] == 4) {
+                                                                                                    echo "Ona";
+                                                                                                } elseif ($animeData['ani_type'] == 5) {
+                                                                                                    echo "Special";
+                                                                                                }
+                                                                                                ?></span></a>
             <meta itemprop="position" content="2">
         </li>
         <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumb-item" aria-current="page">
-            <a itemprop="item"><span itemprop="name">Episode-<?= $allEpisodesData['Current']->ep_id_name ?></span></a>
+            <a itemprop="item"><span itemprop="name"><?= $animeData['ani_name'] ?></span></a>
             <meta itemprop="position" content="3">
-        </li>
-        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumb-item" aria-current="page">
-            <a itemprop="item" href="<?= current_url() ?>"><span itemprop="name"><?= !empty($allEpisodesData['Current']->ep_name) ?  $allEpisodesData['Current']->ep_name : "Unknown" ?> </span></a>
-            <meta itemprop="position" content="4">
         </li>
     </ol>
 </nav>

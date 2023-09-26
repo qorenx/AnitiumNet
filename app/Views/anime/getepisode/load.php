@@ -103,6 +103,25 @@
 
 </script>
 
+<script type="text/javascript">
+    function handleClick(event, uid, epIdName) {
+        event.preventDefault();
+
+        // Add the 'active' class to the clicked element
+        var allItems = document.querySelectorAll('.ssl-item');
+        allItems.forEach(function(item) {
+            item.classList.remove('active');
+        });
+        event.currentTarget.classList.add('active');
+
+        // Create and assign the new URL
+        var newUrl = '/watch?anime=<?= urlencode($_GET['anime']) ?>&uid=' + uid + '&eps=' + epIdName;
+        history.pushState({ path: newUrl }, '', newUrl);
+
+        // Call the original function here with necessary arguments
+        getEmbedServer(uid, epIdName);
+    }
+</script>
 
 <script>
     $(document).on("click", ".ep-page-item", function() {
