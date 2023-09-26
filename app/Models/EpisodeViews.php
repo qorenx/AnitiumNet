@@ -82,36 +82,36 @@ class EpisodeViews extends Model
         $types = $this->getTypeDetails();
         $db = $this->getDbConnection();
 
-        //$date = date('Y-m-d');
+        $date = date('Y-m-d', strtotime('-2 days'));
         $today = $db->table('episode_views')
             ->select("episode_views.ep_uid, episode_views.ep_today, episode_views.ep_id, anime.ani_name, anime.ani_score, anime.ani_type, anime.ani_poster")
             ->join('anime', 'episode_views.ep_uid = anime.uid', 'left')
             ->join('episode_embed', 'episode_views.ep_uid = episode_embed.embed_uid AND episode_views.ep_id = episode_embed.embed_id', 'left')
-            //->where('episode_views.created_at >=', $date)
+            ->where('episode_views.created_at >=', $date)
             ->whereIn('episode_embed.embed_type', $types)
             ->orderBy("episode_views.ep_today", 'DESC')
             ->limit(10)
             ->get()
             ->getResultArray();
 
-        // $date_a_week_ago = date('Y-m-d', strtotime('-1 week'));
+        $date_a_week_ago = date('Y-m-d', strtotime('-2 week'));
         $weeky = $db->table('episode_views')
             ->select("episode_views.ep_uid, episode_views.ep_weeky, episode_views.ep_id, anime.ani_name, anime.ani_score, anime.ani_type, anime.ani_poster")
             ->join('anime', 'episode_views.ep_uid = anime.uid', 'left')
             ->join('episode_embed', 'episode_views.ep_uid = episode_embed.embed_uid AND episode_views.ep_id = episode_embed.embed_id', 'left')
-        //    ->where('episode_views.created_at >=', $date_a_week_ago)
+            ->where('episode_views.created_at >=', $date_a_week_ago)
             ->whereIn('episode_embed.embed_type', $types)
             ->orderBy("episode_views.ep_weeky", 'DESC')
             ->limit(10)
             ->get()
             ->getResultArray();
 
-        // $date = date('Y-m-d', strtotime('-1 month'));
+        $date = date('Y-m-d', strtotime('-3 month'));
         $month = $db->table('episode_views')
             ->select("episode_views.ep_uid, episode_views.ep_month, episode_views.ep_id, anime.ani_name, anime.ani_score, anime.ani_type, anime.ani_poster")
             ->join('anime', 'episode_views.ep_uid = anime.uid', 'left')
             ->join('episode_embed', 'episode_views.ep_uid = episode_embed.embed_uid AND episode_views.ep_id = episode_embed.embed_id', 'left')
-           // ->where('episode_views.created_at >=', $date)
+            ->where('episode_views.created_at >=', $date)
             ->whereIn('episode_embed.embed_type', $types)
             ->orderBy("episode_views.ep_month", 'DESC')
             ->limit(10)
