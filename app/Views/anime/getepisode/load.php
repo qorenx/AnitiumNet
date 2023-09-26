@@ -71,6 +71,39 @@
     document.addEventListener('DOMContentLoaded', () => getEmbed(<?php echo $episodeFirstEmbed; ?>));
 </script>
 
+
+<script>
+    const getAnimeList = async () => {
+        try {
+            const response = await fetch(`/ajax/episodelist/<?php echo $_GET['uid']; ?>/<?php echo $_GET['eps']; ?>`);
+            const data = await response.json();
+            const episodelist = data.html; // Sounds like you tried to get the HTML from the JSON response.
+
+            document.getElementById('episodes-content').innerHTML = episodelist;
+            
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', getAnimeList); // It should be without parentheses.
+    
+</script>
+
+
+<script>
+$(document).on("click", ".ep-page-item", function () {
+    $(".ep-page-item").removeClass("active"),
+        $(".ep-page-item .ic-active").hide(),
+        $(this).addClass("active"),
+        $(this).find(".ic-active").show(),
+        $(".ss-list-min").hide(),
+        $(".ss-list-min").removeClass("active"),
+        $("#episodes-page-" + $(this).data("page")).show(),
+        $("#episodes-page-" + $(this).data("page")).addClass("active"),
+        $("#current-page").text($(this).text().trim())
+});
+</script>
 <script>
     function postVote(voteValue) {
         var xhr = new XMLHttpRequest();

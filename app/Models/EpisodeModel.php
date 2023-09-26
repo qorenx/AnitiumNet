@@ -121,6 +121,54 @@ class EpisodeModel extends Model
         $builder->where('uid', $uid)->where('id', $epuid)->delete();
     }
 
+    public function episodedata2($uid, $ep_id_name) //Disable Kapalıdır. Çalışmıyr.
+    {
+        $types = $this->getTypeDetails();
+    
+        $allEpisodesData = $this
+            ->select('uid, ep_id_name, ep_name')
+            ->where('uid', $uid)
+            ->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')
+            ->get()
+            ->getResult();
+    
+        $filteredEpisodes = [];
+
+        foreach ($allEpisodesData as $episode) {
+            $embedData = $this->db
+            ->table('episode_embed')
+            ->where('embed_uid', $episode->uid)
+            ->where('embed_id', $episode->ep_id_name)
+            ->whereIn('embed_type', $types)
+            ->get()
+            ->getResult();
+    
+            if ($embedData) {
+                $embedTypesAvailable = array_fill_keys($types, 0);
+                foreach ($embedData as $embed) {
+                    $embedTypesAvailable[$embed->embed_type] = 1;
+                }
+                $episode->type = $embedTypesAvailable;
+                $filteredEpisodes[] = $episode;
+            }
+        }
+    
+        $conEpisodesData = $filteredEpisodes;
+        $episodeIndex = array_search($ep_id_name, array_column($conEpisodesData, 'ep_id_name'));
+        $episodeIndex = $episodeIndex !== false ? $episodeIndex : 0;
+        if ($episodeIndex !== false) {
+            $previousEpisode = $episodeIndex > 0 ? $conEpisodesData[$episodeIndex - 1] : null;
+            $currentEpisode = $conEpisodesData[$episodeIndex];
+            $nextEpisode = $episodeIndex < count($conEpisodesData) - 1 ? $conEpisodesData[$episodeIndex + 1] : null;
+        }
+     
+        return array(
+            "Current" => $currentEpisode,
+            "Previous" => $previousEpisode,
+            "Next" => $nextEpisode,
+            "Episode" => $filteredEpisodes
+        );
+    }
 
     public function episodedata($uid, $ep_id_name)
     {
@@ -154,7 +202,6 @@ class EpisodeModel extends Model
             }
         }
     
-        // Added code segment starts here
         $conEpisodesData = $filteredEpisodes;
         $episodeIndex = array_search($ep_id_name, array_column($conEpisodesData, 'ep_id_name'));
         $episodeIndex = $episodeIndex !== false ? $episodeIndex : 0;
@@ -165,15 +212,47 @@ class EpisodeModel extends Model
         }
      
         return array(
-            "Current" => $currentEpisode,
             "Previous" => $previousEpisode,
+            "Current" => $currentEpisode,
             "Next" => $nextEpisode,
-            "Episode" => $filteredEpisodes
         );
     }
 
 
+    public function episodelist($uid)
+    {
+        $types = $this->getTypeDetails();
+    
+        $allEpisodesData = $this
+            ->select('uid, ep_id_name, ep_name')
+            ->where('uid', $uid)
+            ->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')
+            ->get()
+            ->getResult();
+    
+        $filteredEpisodes = [];
 
+        foreach ($allEpisodesData as $episode) {
+            $embedData = $this->db
+            ->table('episode_embed')
+            ->where('embed_uid', $episode->uid)
+            ->where('embed_id', $episode->ep_id_name)
+            ->whereIn('embed_type', $types)
+            ->get()
+            ->getResult();
+    
+            if ($embedData) {
+                $embedTypesAvailable = array_fill_keys($types, 0);
+                foreach ($embedData as $embed) {
+                    $embedTypesAvailable[$embed->embed_type] = 1;
+                }
+                $episode->type = $embedTypesAvailable;
+                $filteredEpisodes[] = $episode;
+            }
+        }
+
+        return $filteredEpisodes;
+    }
     
 
 

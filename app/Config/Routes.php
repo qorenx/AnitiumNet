@@ -75,7 +75,7 @@ $routes->post('status/(:any)/(:any)/(:any)', 'Anime::statusupdate/$1/$2/$3/');
 
 //Anime Converter Sistemidir
 $routes->get('embed/(:any)/(:any)/(:any)', 'Converter::get_embed/$1/$2/$3');
-
+$routes->get('ajax/episodelist/(:any)/(:any)', 'Anime::get_episodelist/$1/$2');
 
 
 //qtip test
