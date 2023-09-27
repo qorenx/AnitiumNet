@@ -213,6 +213,8 @@ class Converter extends BaseController
         $animemodel = new AnimeModel();
         $episodemodel = new EpisodeModel();
         $path = parse_url($url, PHP_URL_PATH);
+        $path = preg_replace('/\d+$/', '', $path);
+
         $api_base = "https://api.consumet.org/anime/gogoanime";
     
         $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
