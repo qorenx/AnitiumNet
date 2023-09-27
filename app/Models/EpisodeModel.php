@@ -19,6 +19,7 @@ class EpisodeModel extends Model
         'uid',
         'ep_id_name',
         'ep_name',
+        'ep_jname',
         'created_at',
         'updated_at',
         'deleted_at'

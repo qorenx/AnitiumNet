@@ -45,6 +45,12 @@
                                         <input type="text" name="ep_name" id="ep_name" class="form-control">
                                     </div>
                                 </div></br>
+                                <div class="form-group row">
+                                    <label for="ep_jname" class="col-sm-4 col-form-label">Episode Japanese Name:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ep_jname" id="ep_jname" class="form-control">
+                                    </div>
+                                </div></br>
                                 <div class="card-footer">
                                     <input class="btn btn-primary" type="submit" value="Episode Adding">
                                 </div>
