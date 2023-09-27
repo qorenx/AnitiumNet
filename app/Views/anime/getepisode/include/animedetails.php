@@ -114,5 +114,10 @@
     </div>
 </div>
 <div class="dt-rate">
-    <div id="vote-info"></div>
+    <div class="block-rating ">
+        <div id="vote-info">
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
 </div>

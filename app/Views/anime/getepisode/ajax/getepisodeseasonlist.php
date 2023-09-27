@@ -46,7 +46,7 @@
                     echo '<div id="episodes-page-' . $page . '" class="ss-list ss-list-min" data-page="' . $page . '" style="display: ' . $display_style . ';">'; // modify this line
                 }
             ?>
-                <a id="getembed" class="ssl-item ep-item" onclick="handleClick(event, <?= $EpisodeList[$i]->uid ?>, '<?= $EpisodeList[$i]->ep_id_name ?>')" title="<?= $EpisodeList[$i]->ep_name ?>" href="/watch?anime=<?php
+                <a id="getembed" class="ssl-item ep-item" onclick="handleClick(event,<?= $EpisodeList[$i]->uid ?>,<?= $EpisodeList[$i]->ep_id_name ?>)" title="<?= $EpisodeList[$i]->ep_name ?>" href="/watch?anime=<?php
                                                                                                                                                                                                                         $nameParts = explode(',', $AnimeName, 2);
                                                                                                                                                                                                                         if (count($nameParts) > 1) {
                                                                                                                                                                                                                             $name = trim($nameParts[1]);

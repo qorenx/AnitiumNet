@@ -3,15 +3,16 @@
     const apiFetch = async (url) => await (await fetch(url)).json();
 
     const replaceActiveBtn = (embedId) => {
-        if(activeBtn) activeBtn.className = activeBtn.className.replace(' active', '');
+        if (activeBtn) activeBtn.className = activeBtn.className.replace(' active', '');
         activeBtn = document.getElementById('embed-' + embedId);
-        if(activeBtn) activeBtn.className += ' active';
+        if (activeBtn) activeBtn.className += ' active';
     }
 
     const extractIframeUrl = (url) => {
         let iframeSrcRegExp = /<iframe[^>]*src="([^"]*)"[^>]*><\/iframe>/i;
-        let srcName = '', iframeMatch = url.match(iframeSrcRegExp);
-        if(iframeMatch) {
+        let srcName = '',
+            iframeMatch = url.match(iframeSrcRegExp);
+        if (iframeMatch) {
             let hostname_parts = new URL(iframeMatch[1]).hostname.split('.');
             srcName = hostname_parts.length >= 2 ? hostname_parts[hostname_parts.length - 2] : hostname_parts[0];
         }
@@ -20,6 +21,14 @@
 
     const getEmbed = async (uid, eps, embedId) => {
         try {
+            document.getElementById('iframe-embed').innerHTML =
+                    '<div class=\"loading-relative loading-box\" id=\"embed-loading\">' +
+                    '<div class=\"loading\">' +
+                    '<div class=\"span1\"></div>' +
+                    '<div class=\"span2\"></div>' +
+                    '<div class=\"span3\"></div>' +
+                    '</div>' +
+                    '</div>';
             replaceActiveBtn(embedId);
             let data = await apiFetch(`/embed/${uid}/${eps}/${embedId}`);
             document.getElementById('iframe-embed').innerHTML = data[0];
@@ -54,7 +63,7 @@
     const getAnimeList = async () => {
         try {
             let data = await apiFetch(`/ajax/episodelist/<?php echo $_GET['uid']; ?>/<?php echo $_GET['eps']; ?>`);
-            document.getElementById('episodes-content').innerHTML = data.html; 
+            document.getElementById('episodes-content').innerHTML = data.html;
         } catch (error) {
             console.error('Error:', error);
         }
@@ -66,12 +75,27 @@
         try {
             let data = await apiFetch(`/ajax/embedserver/${uid}/${eps}`);
             document.getElementById('player-servers').innerHTML = data.html;
-            if (data.embedFirst) { 
+            if (data.embedFirst) {
+                document.getElementById('iframe-embed').innerHTML =
+                    '<div class=\"loading-relative loading-box\" id=\"embed-loading\">' +
+                    '<div class=\"loading\">' +
+                    '<div class=\"span1\"></div>' +
+                    '<div class=\"span2\"></div>' +
+                    '<div class=\"span3\"></div>' +
+                    '</div>' +
+                    '</div>';
                 getEmbed(uid, eps, data.embedFirst);
                 getRating(uid, eps);
+            } else {
+                document.getElementById('embed-loading').innerHTML = '<img src="https://i.hizliresim.com/6bfh4ym.gif" style="width:100%; height:100%;position: absolute;">';
+                document.getElementById('player-servers').innerHTML = '';
             }
-        } catch (error) { console.error('Error:', error); }
+        } catch (error) {
+            console.error('Error:', error);
+        }
     }
+
+
 
     document.addEventListener('DOMContentLoaded', getEmbedServer(<?php echo $_GET['uid']; ?>, <?php echo $_GET['eps']; ?>));
 
@@ -80,7 +104,9 @@
         document.querySelectorAll('.ssl-item').forEach(item => item.classList.remove('active'));
         event.currentTarget.classList.add('active');
         let newUrl = '/watch?anime=<?= urlencode($_GET['anime']) ?>&uid=' + uid + '&eps=' + epIdName;
-        history.pushState({ path: newUrl }, '', newUrl);
+        history.pushState({
+            path: newUrl
+        }, '', newUrl);
         getEmbedServer(uid, epIdName);
         getRating(uid, epIdName);
     }
@@ -90,9 +116,11 @@
         xhr.open("GET", '/ajax/episodevote/' + voteValue + '/' + epUID + '/' + epID, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.setRequestHeader("Accept", "application/json");
-        xhr.onerror = function() { console.error('Request failed.'); }
+        xhr.onerror = function() {
+            console.error('Request failed.');
+        }
         xhr.onload = function() {
-            if (this.readyState === 4 && this.status === 200) getRating(epUID,epID);
+            if (this.readyState === 4 && this.status === 200) getRating(epUID, epID);
             else console.error('Error:', xhr.status, xhr.statusText);
         };
         xhr.send();
