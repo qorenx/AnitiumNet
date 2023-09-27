@@ -37,7 +37,7 @@
      },
      playlist: [{
        title: "<?php echo $episode['ep_name']; ?>",
-       description: "<?php echo htmlspecialchars($anime['ani_name'], ENT_QUOTES, 'UTF-8'); ?>",
+       description: "<?php $anime_name = htmlspecialchars($anime['ani_name'], ENT_QUOTES, 'UTF-8'); echo (strlen($anime_name) > 50) ? substr($anime_name, 0, 50) . '...' : $anime_name; ?>",
        image: "<?php echo $anime['ani_poster']; ?>",
        file: "<?php echo $play->download; ?>",
        sources: [

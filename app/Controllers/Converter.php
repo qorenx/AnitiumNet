@@ -235,6 +235,7 @@ class Converter extends BaseController
                     unlink($file);
             }
         }
+
         $playerVersion = 2 == 1 ? 'vidstack' : 'jwplayer';
         $temp_file = tempnam($temp_dir, 'iframe');
         chmod($temp_file, 0777); // added this line to make sure the file permission is 0777

@@ -1,7 +1,7 @@
 <script>
     let activeBtn;
 
-    const getEmbed = async (embedId) => {
+    const getEmbed = async (uid, eps, embedId) => {
         try {
             if (activeBtn) {
                 activeBtn.className = activeBtn.className.replace(' active', '');
@@ -13,7 +13,7 @@
                 activeBtn.className += ' active';
             }
 
-            const response = await fetch(`/embed/<?= $allEpisodesData['Current']->uid ?>/<?= $allEpisodesData['Current']->ep_id_name ?>/${embedId}`);
+            const response = await fetch(`/embed/${uid}/${eps}/${embedId}`);
             const data = await response.json();
             const videoUrl = data[0];
 
@@ -92,7 +92,7 @@
             const data = await response.json();
             document.getElementById('player-servers').innerHTML = data.html;
             if (data.embedFirst) {
-                getEmbed(data.embedFirst);
+                getEmbed(uid, eps, data.embedFirst);
             }
         } catch (error) {
             console.error('Error:', error);
@@ -100,25 +100,20 @@
     }
 
     document.addEventListener('DOMContentLoaded', getEmbedServer(<?php echo $_GET['uid']; ?>, <?php echo $_GET['eps']; ?>));
-
 </script>
 
 <script type="text/javascript">
     function handleClick(event, uid, epIdName) {
         event.preventDefault();
-
-        // Add the 'active' class to the clicked element
         var allItems = document.querySelectorAll('.ssl-item');
         allItems.forEach(function(item) {
             item.classList.remove('active');
         });
         event.currentTarget.classList.add('active');
-
-        // Create and assign the new URL
         var newUrl = '/watch?anime=<?= urlencode($_GET['anime']) ?>&uid=' + uid + '&eps=' + epIdName;
-        history.pushState({ path: newUrl }, '', newUrl);
-
-        // Call the original function here with necessary arguments
+        history.pushState({
+            path: newUrl
+        }, '', newUrl);
         getEmbedServer(uid, epIdName);
     }
 </script>
