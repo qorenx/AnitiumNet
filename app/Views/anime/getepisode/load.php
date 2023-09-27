@@ -144,15 +144,13 @@
         try {
             let data = await apiFetch(`/ajax/episodecommentsystem/${uid}/${eps}`);
             document.getElementById('anitium-comment-system').innerHTML = data.html;
-            getEpisodeCommentSystem(uid, eps);
-
+            getEpisodeMoreComment(uid, eps, nextPage = 1);
         } catch (error) {
             console.error('Error:', error);
         }
     }
 
 
-var nextPage = 1;
 function getEpisodeMoreComment(uid,eps) {
     var xhr = new XMLHttpRequest();
     var url = "/ajax/episodemorecomment/" + uid + "/" + eps + "?page=" + nextPage;

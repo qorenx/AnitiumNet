@@ -100,6 +100,9 @@ $routes->get('ajax/torrentgrabber/(:any)', 'Converter::torrentgrabber/$1'); // a
 //Ajax Episode Comment Çağırma Yeri
 $routes->get('ajax/episodecommentsystem/(:any)/(:any)', 'Anime::get_episodecommentsystem/$1/$2');
 $routes->get('ajax/episodemorecomment/(:any)/(:any)', 'Anime::get_episodemorecomment/$1/$2'); //ajax ile episode altındaki yorumları çeker.
+//Episode Altındaki Ana Yorumu Gönderir
+$routes->post('ajax/episodemaincommentinsert', 'Anime::episodecommentinsert');
+
 
 
 //Episode Like GET Kısmıdır.
@@ -113,7 +116,6 @@ $routes->get('ajax/getcommunityrepylike/(:any)', 'Anime::getcommunityrepylike/$1
 
 
 //Episode altındaki yorum ve yoruma yapılan cevap gönderen kısım.
-$routes->post('/watch/epcommentinsert', 'Anime::episodecommentinsert');
 $routes->post('/watch/epcommentrepyinsert', 'Anime::episodecommentrepyinsert');
 
 
