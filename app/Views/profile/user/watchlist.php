@@ -62,30 +62,24 @@
                                                     <div class="tick-item tick-eps"><?= $value['ani_ep'] ?></div>
                                                 </div>
                                                 <img class="film-poster-img lazyloaded" src="<?= $value['ani_poster'] ?>">
-                                                <a class="film-poster-ahref" data-id="<?php echo $value['uid'] ?>" href="<?= base_url('anime/' . $value['uid'] . '/') ?>
-<?php
-                                        $nameParts = explode(',', $value['ani_name'], 2);
-                                        if (count($nameParts) > 1) {
-                                            $name = trim($nameParts[1]);
-                                        } else {
-                                            $name = $value['ani_name'];
-                                        }
-                                        $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
-                                        echo $slug;
-?>"><i class="fas fa-play"></i></a>
+                                                <a class="film-poster-ahref" data-id="<?php echo $value['uid'] ?>" href="<?= base_url('anime/' . $value['uid'] . '/') ?><?php
+                                                                                                                                                                        $slug = trim(preg_replace("/[^\w\s\-]+/", "", $value['ani_name']), " ");
+                                                                                                                                                                        $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                                                                                                                        $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                                                                                                                        $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                                                                                                                        $slug = ucfirst($slug);
+                                                                                                                                                                        echo $slug;
+                                                                                                                                                                        ?>"><i class="fas fa-play"></i></a>
                                             </div>
                                             <div class="film-detail">
-                                                <h3 class="film-name"><a href="<?= base_url('anime/' . $value['uid'] . '/') ?>
-<?php
-                                        $nameParts = explode(',', $value['ani_name'], 2);
-                                        if (count($nameParts) > 1) {
-                                            $name = trim($nameParts[1]);
-                                        } else {
-                                            $name = $value['ani_name'];
-                                        }
-                                        $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
-                                        echo $slug;
-?>" class="dynamic-name"><?= $value['ani_name'] ?></a></h3>
+                                                <h3 class="film-name"><a href="<?= base_url('anime/' . $value['uid'] . '/') ?><?php
+                                                                                                                                $slug = trim(preg_replace("/[^\w\s\-]+/", "", $value['ani_name']), " ");
+                                                                                                                                $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                                                                                $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                                                                                $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                                                                                $slug = ucfirst($slug);
+                                                                                                                                echo $slug;
+                                                                                                                                ?>" class="dynamic-name"><?= $value['ani_name'] ?></a></h3>
                                                 <div class="fd-infor">
                                                     <span class="fdi-item"><?php
                                                                             if ($value['ani_type'] == 1) {

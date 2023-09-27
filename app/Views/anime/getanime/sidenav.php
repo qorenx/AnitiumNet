@@ -29,17 +29,14 @@
                                         </div>
                                         <div class="film-detail">
                                             <h3 class="film-name">
-                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/') ?>
-<?php
-                                    $nameParts = explode(',', $topani['ani_name'], 2);
-                                    if (count($nameParts) > 1) {
-                                        $name = trim($nameParts[1]);
-                                    } else {
-                                        $name = $topani['ani_name'];
-                                    }
-                                    $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
-                                    echo $slug;
-?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
+                                                <a href="<?= base_url('anime/' . $topani['uid']) ?>/<?php
+                                                                                                    $slug = trim(preg_replace("/[^\w\s\-]+/", "", $topani['ani_name']), " ");
+                                                                                                    $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                                                    $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                                                    $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                                                    $slug = ucfirst($slug);
+                                                                                                    echo $slug;
+                                                                                                    ?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
                                             </h3>
                                             <div class="fd-infor">
                                                 <div class="tick">
@@ -78,17 +75,14 @@
                                         </div>
                                         <div class="film-detail">
                                             <h3 class="film-name">
-                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/') ?>
-<?php
-                                    $nameParts = explode(',', $topani['ani_name'], 2);
-                                    if (count($nameParts) > 1) {
-                                        $name = trim($nameParts[1]);
-                                    } else {
-                                        $name = $topani['ani_name'];
-                                    }
-                                    $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
-                                    echo $slug;
-?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
+                                                <a href="<?= base_url('anime/' . $topani['uid']) ?>/<?php
+                                                                                                    $slug = trim(preg_replace("/[^\w\s\-]+/", "", $topani['ani_name']), " ");
+                                                                                                    $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                                                    $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                                                    $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                                                    $slug = ucfirst($slug);
+                                                                                                    echo $slug;
+                                                                                                    ?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
                                             </h3>
                                             <div class="fd-infor">
                                                 <div class="tick">
@@ -127,17 +121,14 @@
                                         </div>
                                         <div class="film-detail">
                                             <h3 class="film-name">
-                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/') ?>
-<?php
-                                    $nameParts = explode(',', $topani['ani_name'], 2);
-                                    if (count($nameParts) > 1) {
-                                        $name = trim($nameParts[1]);
-                                    } else {
-                                        $name = $topani['ani_name'];
-                                    }
-                                    $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
-                                    echo $slug;
-?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
+                                                <a href="<?= base_url('anime/' . $topani['uid']) ?>/<?php
+                                                                                                    $slug = trim(preg_replace("/[^\w\s\-]+/", "", $topani['ani_name']), " ");
+                                                                                                    $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                                                    $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                                                    $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                                                    $slug = ucfirst($slug);
+                                                                                                    echo $slug;
+                                                                                                    ?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
                                             </h3>
                                             <div class="fd-infor">
                                                 <div class="tick">

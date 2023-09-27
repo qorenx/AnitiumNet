@@ -2,8 +2,8 @@
     <li>
         <a href="<?=
                     isset($item['sc_ep']) && !empty($item['sc_ep'])
-                        ? base_url('watch?anime=') . str_replace(" ", "+", $item['ani_name']) . "&uid=" . $item['sc_id'] . "&eps=" . $item['sc_ep']
-                        : base_url('anime/') . $item['sc_id'] . "/" . str_replace(" ", "-", $item['ani_name'])
+                        ? base_url('watch?anime=') . preg_replace("/[^\w\-]+/", "-", $item['ani_name']) . "&uid=" . $item['sc_id'] . "&eps=" . $item['sc_ep']
+                        : base_url('anime/') . $item['sc_id'] . "/" . preg_replace("/[^\w\-]+/", "-", $item['ani_name'])
                     ?>" class="tsl-link">
             <div class="time">
                 <?= $item['sc_time'] ?>

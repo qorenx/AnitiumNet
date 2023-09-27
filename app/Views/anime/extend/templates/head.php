@@ -31,7 +31,6 @@
             <img src="<?php echo $settings['Advanced'][3]['value']; ?>" width="100%" height="auto" alt="">
             <div class="clearfix"></div>
         </a>
-
         <div id="search" class="">
             <div class="search-content">
                 <form id="searchForm" action="/search" autocomplete="off">
@@ -47,7 +46,6 @@
                 </div>
             </div>
         </div>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
         <script>
             let inputField = document.getElementById('input-field');
@@ -57,44 +55,35 @@
             let suggestedItems = document.getElementById('suggestedItems');
 
             inputField.addEventListener('input', _.debounce(() => {
-
                 if (inputField.value.length !== 0) {
                     showResult(inputField.value);
                 }
-
                 let navBottom = document.querySelector('.nav-item.nav-bottom');
                 navBottom.href = "/search?keyword=" + inputField.value;
             }, 1000));
-
             inputField.addEventListener('keydown', function(event) {
                 if (event.key === "Enter" || event.which === 13) {
                     event.preventDefault();
                     searchForm.submit();
                 }
             });
-
-
             document.querySelector('.search-icon').addEventListener('click', function(event) {
                 event.preventDefault();
                 if (inputField.value !== '') {
                     searchForm.submit();
                 }
             });
-
-
             body.addEventListener('click', (event) => {
                 if (!event.target.closest('#search-suggest') && !event.target.matches('#input-field')) {
                     searchSuggest.style.display = 'none';
                     inputField.value = '';
                 }
             });
-
             function showResult(str) {
                 if (str.length === 0) {
                     searchSuggest.style.display = 'none';
                     return;
                 }
-
                 fetch("<?= site_url('search/suggestions?keyword=') ?>" + str)
                     .then(response => response.json())
                     .then(data => {
@@ -104,8 +93,6 @@
                     .catch(error => console.error('Error:', error));
             }
         </script>
-
-
         <div class="header-group">
             <div class="anw-group">
                 <div class="zrg-list">

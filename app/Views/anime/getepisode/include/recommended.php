@@ -29,10 +29,24 @@
                                                 ?>
                                                 <div class="tick tick-eps">(<?php echo $anime['ani_ep'] ?> EPS)</div>
                                                 <img class="film-poster-img ls-is-cached lazyloaded" src="<?php echo $anime['ani_poster'] ?>">
-                                                <a href="/anime/<?php echo $anime['uid'] ?>/<?php echo str_replace(' ', '-', $anime['ani_name']); ?>" class="film-poster-ahref" data-id="<?php echo $anime['uid'] ?>"><i class="fas fa-play"></i></a>
+                                                <a href="/anime/<?php echo $anime['uid'] ?>/<?php
+                                                                                            $slug = trim(preg_replace("/[^\w\s\-]+/", "", $anime['ani_name']), " ");
+                                                                                            $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                                            $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                                            $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                                            $slug = ucfirst($slug);
+                                                                                            echo $slug;
+                                                                                            ?>" class="film-poster-ahref" data-id="<?php echo $anime['uid'] ?>"><i class="fas fa-play"></i></a>
                                             </div>
                                             <div class="film-detail">
-                                                <h3 class="film-name"><a href="/anime/<?php echo $anime['uid'] ?>/<?php echo str_replace(' ', '-', $anime['ani_name']); ?>" class="dynamic-name">
+                                                <h3 class="film-name"><a href="/anime/<?php echo $anime['uid'] ?>/<?php
+                                                                                                                    $slug = trim(preg_replace("/[^\w\s\-]+/", "", $anime['ani_name']), " ");
+                                                                                                                    $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                                                                    $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                                                                    $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                                                                    $slug = ucfirst($slug);
+                                                                                                                    echo $slug;
+                                                                                                                    ?>" class="dynamic-name">
                                                         <?php echo $anime['ani_name'] ?>
                                                     </a></h3>
                                                 <div class="fd-infor">

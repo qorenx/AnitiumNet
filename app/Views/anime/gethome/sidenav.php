@@ -32,13 +32,11 @@
                                             <div class="film-name">
                                                 <h7>
                                                     <a href="anime/<?= $today['ep_uid'] ?>/<?php
-                                                                                            $nameParts = explode(',', $today['ani_name'], 2);
-                                                                                            if (count($nameParts) > 1) {
-                                                                                                $name = trim($nameParts[1]);
-                                                                                            } else {
-                                                                                                $name = $today['ani_name'];
-                                                                                            }
-                                                                                            $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                                            $slug = trim(preg_replace("/[^\w\s\-]+/", "", $today['ani_name']), " ");
+                                                                                            $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                                            $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                                            $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                                            $slug = ucfirst($slug);
                                                                                             echo $slug;
                                                                                             ?>" class="dynamic-name"><?= $today['ani_name'] ?></a>
                                                 </h7>
@@ -94,13 +92,11 @@
                                             <div class="film-name">
                                                 <h7>
                                                     <a href="anime/<?= $weeky['ep_uid'] ?>/<?php
-                                                                                            $nameParts = explode(',', $weeky['ani_name'], 2);
-                                                                                            if (count($nameParts) > 1) {
-                                                                                                $name = trim($nameParts[1]);
-                                                                                            } else {
-                                                                                                $name = $weeky['ani_name'];
-                                                                                            }
-                                                                                            $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                                            $slug = trim(preg_replace("/[^\w\s\-]+/", "", $weeky['ani_name']), " ");
+                                                                                            $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                                            $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                                            $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                                            $slug = ucfirst($slug);
                                                                                             echo $slug;
                                                                                             ?>" class="dynamic-name"><?= $weeky['ani_name'] ?></a>
                                                 </h7>
@@ -156,13 +152,11 @@
                                             <div class="film-name">
                                                 <h7>
                                                     <a href="anime/<?= $month['ep_uid'] ?>/<?php
-                                                                                            $nameParts = explode(',', $month['ani_name'], 2);
-                                                                                            if (count($nameParts) > 1) {
-                                                                                                $name = trim($nameParts[1]);
-                                                                                            } else {
-                                                                                                $name = $month['ani_name'];
-                                                                                            }
-                                                                                            $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                                            $slug = trim(preg_replace("/[^\w\s\-]+/", "", $month['ani_name']), " ");
+                                                                                            $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                                            $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                                            $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                                            $slug = ucfirst($slug);
                                                                                             echo $slug;
                                                                                             ?>" class="dynamic-name"><?= $month['ani_name'] ?></a>
                                                 </h7>

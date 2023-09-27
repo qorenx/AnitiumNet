@@ -2,13 +2,11 @@
 <?php foreach ($data as $anime) : ?>
     <?php if ($count++ === 5) break; ?>
     <a href="/anime/<?php echo $anime['uid'] ?>/<?php
-                                                $nameParts = explode(',', $anime['ani_name'], 2);
-                                                if (count($nameParts) > 1) {
-                                                    $name = trim($nameParts[1]);
-                                                } else {
-                                                    $name = $anime['ani_name'];
-                                                }
-                                                $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                $slug = trim(preg_replace("/[^\w\s\-]+/", "", $anime['ani_name']), " ");
+                                                $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                $slug = ucfirst($slug);
                                                 echo $slug;
                                                 ?>" class="nav-item">
         <div class="film-poster">

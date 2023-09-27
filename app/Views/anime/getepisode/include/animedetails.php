@@ -16,15 +16,19 @@
     <?php } ?>
 </div>
 <div class="anisc-detail">
-    <h2 class="film-name">
-        <a href="/anime/<?= $animeData['uid'] ?>/<?= urlencode($animeData['ani_name']) ?>" class="text-white dynamic-name" title="" style="opacity: 1;">
-            <?= $animeData['ani_name'] ?>
-        </a><br />
-        <a href="/anime/<?= $animeData['uid'] ?>/<?= str_replace(' ', '_', $animeData['ani_jname']) ?>" class="text-white dynamic-name" title="" style="opacity: 1; font-size: 0.6em;">
-            <?= $animeData['ani_jname'] ?>
-        </a>
-    </h2>
-
+    <div class="film-name">
+        <h6><a href="/anime/<?= $animeData['uid'] ?>/<?php
+                                                        $slug = trim(preg_replace("/[^\w\s\-]+/", "", $animeData['ani_name']), " ");
+                                                        $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                        $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                        $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                        $slug = ucfirst($slug);
+                                                        echo $slug;
+                                                        ?>" class="text-white dynamic-name" title="" style="opacity: 1;"><?= $animeData['ani_name'] ?></a></h6>
+    </div>
+    <div class="film-name">
+        <h6><?= $animeData['ani_jname'] ?></h6>
+    </div>
     <div class="film-stats">
         <div class="tick">
             <?php
@@ -108,7 +112,14 @@
         </div>
     </div>
     <div class="block">
-        <a href="/anime/<?= $animeData['uid'] ?>/<?= urlencode($animeData['ani_name']) ?>" class="btn btn-xs btn-light">
+        <a href="/anime/<?= $animeData['uid'] ?>/<?php
+                                                    $slug = trim(preg_replace("/[^\w\s\-]+/", "", $animeData['ani_name']), " ");
+                                                    $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                    $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                    $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                    $slug = ucfirst($slug);
+                                                    echo $slug;
+                                                    ?>" class="btn btn-xs btn-light">
             <i class="fas fa-book-open mr-2"></i> View Details
         </a>
     </div>

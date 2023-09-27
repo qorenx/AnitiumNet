@@ -8,14 +8,8 @@
         <div class="clearfix"></div>
     </div>
     <div class="container">
-        <div class="nav-button-container">
-            <button class="nav-button active" data-content="#content1">
-                <?php echo $settings['Advanced'][0]['value']; ?>
-            </button>
-            <button class="nav-button" data-content="#content2">Disqus</button>
-        </div>
         <div class="content-container">
-            <div class="content" id="content1">
+            <div class="content">
                 <section class="block_area block_area-comment" id="comment-block">
                     <div class="show-comments">
                         <div id="content-comments" class="comments-wrap">
@@ -35,45 +29,25 @@
                                         <div class="user-name">
                                             Comment as <span class="link-highlight ml-1"><?= htmlspecialchars(auth()->user()->username) ?></span>
                                         </div>
-
-
-<script>
-$(document).ready(function(){
-    $(".preform").on('submit', function(e){
-        e.preventDefault();
-        $.ajax({
-            url: 'ajax/episodemaincommentinsert',
-            type: 'post',
-            data: $(this).serialize(),
-            success: function(response){
-                // Whatever you want to do with the server's response
-            }
-        });
-    });
-});
-</script>
-
-<form method="post" class="preform preform-dark comment-form">
-    <input type="hidden" name="post_ani" value="<?= $epUID ?>">
-    <input type="hidden" name="post_ep" value="<?= $epID ?>">
-    <textarea id="df-cm-content" class="form-control form-control-textarea comment-subject" name="post_content" maxlength="3000" placeholder="Leave a comment" required></textarea>
-    <div class="ci-buttons" id="df-cm-buttons">
-        <div class="ci-b-left">
-            <div class="cb-li">
-                <input type="hidden" name="post_spo" value="0" />
-                <input type="checkbox" name="post_spo" value="1" <?= (isset($_POST['post_spo']) && $_POST['post_spo'] == 1) ? 'checked="checked"' : ''; ?> /> Spoil?
-            </div>
-        </div>
-        <div class="ci-b-right">
-            <div class="cb-li"><a class="btn btn-sm btn-secondary" id="df-cm-close">Close</a></div>
-            <div class="cb-li">
-                <button type="submit" class="btn btn-sm btn-primary ml-2">Comment</button>
-            </div>
-        </div>
-    </div>
-</form>
-
-
+                                        <form method="post" action="ajax/episodemaincommentinsert" class="preform preform-dark comment-form">
+                                            <input type="hidden" name="post_ani" value="<?= $epUID ?>">
+                                            <input type="hidden" name="post_ep" value="<?= $epID ?>">
+                                            <textarea id="df-cm-content" class="form-control form-control-textarea comment-subject" name="post_content" maxlength="3000" placeholder="Leave a comment" required></textarea>
+                                            <div class="ci-buttons" id="df-cm-buttons">
+                                                <div class="ci-b-left">
+                                                    <div class="cb-li">
+                                                        <input type="hidden" name="post_spo" value="0" />
+                                                        <input type="checkbox" name="post_spo" value="1" <?= (isset($_POST['post_spo']) && $_POST['post_spo'] == 1) ? 'checked="checked"' : ''; ?> /> Spoil?
+                                                    </div>
+                                                </div>
+                                                <div class="ci-b-right">
+                                                    <div class="cb-li"><a class="btn btn-sm btn-secondary" id="df-cm-close">Close</a></div>
+                                                    <div class="cb-li">
+                                                        <button type="submit" class="btn btn-sm btn-primary ml-2">Comment</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             <?php else : ?>
@@ -108,9 +82,6 @@ $(document).ready(function(){
                         </div>
                     </div>
                 </section>
-            </div>
-            <div class="content" id="content2" style="display:none;">
-                <?= $this->include('anime/getepisode/comment/disqus') ?>
             </div>
         </div>
     </div>

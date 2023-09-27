@@ -96,10 +96,10 @@
                             <img class="user-avatar-img" src="<?= auth()->user()->avatar ?>">
                         </div>
                         <div class="ci-form">
-                            <form method="post" action="/watch/epcommentrepyinsert" class="preform preform-dark comment-form">
+                            <form method="post" action="ajax/episoderepycommentinsert" class="preform preform-dark comment-form">
                                 <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
-                                <input type="hidden" name="uid" value="<?php $uid; ?>">
-                                <input type="hidden" name="eps" value="<?php $ep_id_name; ?>">
+                                <input type="hidden" name="uid" value="<?= $uid ?>">
+                                <input type="hidden" name="eps" value="<?= $ep_id_name ?>">
                                 <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
                                 <div class="ci-buttons">
                                     <div class="ci-b-right">
@@ -234,10 +234,10 @@
                                         <img class="user-avatar-img" src="<?= auth()->user()->avatar ?>">
                                     </div>
                                     <div class="ci-form">
-                                        <form method="post" action="/watch/epcommentrepyinsert" class="preform preform-dark comment-form">
+                                        <form method="post" action="ajax/episoderepycommentinsert" class="preform preform-dark comment-form">
                                             <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
-                                            <input type="hidden" name="uid" value="<?php $uid; ?>">
-                                            <input type="hidden" name="eps" value="<?php $ep_id_name; ?>">
+                                            <input type="hidden" name="uid" value="<?= $uid; ?>">
+                                            <input type="hidden" name="eps" value="<?= $ep_id_name; ?>">
                                             <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
                                             <div class="ci-buttons">
                                                 <div class="ci-b-right">

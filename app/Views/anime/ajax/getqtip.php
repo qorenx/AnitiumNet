@@ -64,13 +64,11 @@
             <?php endif; ?>
             <div class="pre-qtip-button">
                 <a href="/anime/<?php echo $data['uid'] ?>/<?php
-                                                            $nameParts = explode(',', $data['ani_name'], 2);
-                                                            if (count($nameParts) > 1) {
-                                                                $name = trim($nameParts[1]);
-                                                            } else {
-                                                                $name = $data['ani_name'];
-                                                            }
-                                                            $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                            $slug = trim(preg_replace("/[^\w\s\-]+/", "", $data['ani_name']), " ");
+                                                            $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                            $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                            $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                            $slug = ucfirst($slug);
                                                             echo $slug;
                                                             ?>" class="btn btn-block btn-play"><i class="fa fa-play mr-2"></i>Watch
                     now</a>

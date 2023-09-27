@@ -56,16 +56,16 @@
                                                                             } elseif ($AnimeData['ani_type'] == 5) {
                                                                                 echo "special";
                                                                             } ?>"><?php if ($AnimeData['ani_type'] == 1) {
-                                                                                                                                    echo "TV";
-                                                                                                                                } elseif ($AnimeData['ani_type'] == 2) {
-                                                                                                                                    echo "Movie";
-                                                                                                                                } elseif ($AnimeData['ani_type'] == 3) {
-                                                                                                                                    echo "Ova";
-                                                                                                                                } elseif ($AnimeData['ani_type'] == 4) {
-                                                                                                                                    echo "Ona";
-                                                                                                                                } elseif ($AnimeData['ani_type'] == 5) {
-                                                                                                                                    echo "Special";
-                                                                                                                                } ?></a></li>
+                                                                                        echo "TV";
+                                                                                    } elseif ($AnimeData['ani_type'] == 2) {
+                                                                                        echo "Movie";
+                                                                                    } elseif ($AnimeData['ani_type'] == 3) {
+                                                                                        echo "Ova";
+                                                                                    } elseif ($AnimeData['ani_type'] == 4) {
+                                                                                        echo "Ona";
+                                                                                    } elseif ($AnimeData['ani_type'] == 5) {
+                                                                                        echo "Special";
+                                                                                    } ?></a></li>
                                 <li class="breadcrumb-item dynamic-name active" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 80%; display: inline-block;"><?= $AnimeData['ani_name'] ?></li>
                             </ol>
                         </nav>
@@ -125,13 +125,11 @@
                     <div class="film-buttons">
                         <?php if (!empty($episodesData)) : ?>
                             <a href="/watch?anime=<?php
-                                                    $nameParts = explode(',', $AnimeData['ani_name'], 2);
-                                                    if (count($nameParts) > 1) {
-                                                        $name = trim($nameParts[1]);
-                                                    } else {
-                                                        $name = $AnimeData['ani_name'];
-                                                    }
-                                                    $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                    $slug = trim(preg_replace("/[^\w\s\-]+/", "", $AnimeData['ani_name']), " ");
+                                                    $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                    $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                    $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                    $slug = ucfirst($slug);
                                                     echo $slug;
                                                     ?>&uid=<?= $AnimeData['uid'] ?>&eps=<?= $episodesData ?>" class="btn btn-radius btn-primary btn-play"><i class="fas fa-play mr-2"></i>Watch now</a>
                         <?php endif; ?>

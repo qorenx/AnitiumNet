@@ -1,7 +1,6 @@
 <button class="btn btn-primary play-btn">
     Promo Video
 </button>
-
 <style>
     .play-btn {
         margin: 10px auto;
@@ -16,7 +15,6 @@
         right: 0%;
         bottom: 0%;
         display: none;
-        /* initially hidden */
         justify-content: center;
         align-items: center;
         z-index: 999;
@@ -43,17 +41,17 @@
         const videoUrl = `https://www.youtube.com/embed/<?= htmlspecialchars($AnimeData['ani_pv']) ?>?enablejsapi=1&wmode=opaque&autoplay=1`;
 
         video.src = videoUrl;
-        container.style.display = "flex"; // show the container
+        container.style.display = "flex";
         video.webkitRequestFullScreen();
     }
 
     function stopVideo(event) {
-        if (event.target !== event.currentTarget) return; // Stop the click event if it's not on the container itself
+        if (event.target !== event.currentTarget) return;
 
         const container = document.getElementById("promo-container");
         const video = document.getElementById("promo-video");
 
         video.src = "";
-        container.style.display = "none"; // hide the container
+        container.style.display = "none";
     }
 </script>

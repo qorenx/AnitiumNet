@@ -9,8 +9,13 @@
         foreach ($getlastpost as $lastcom) :
             $lastcomclass = $roleToClass[$lastcom['group']] ?? 'user-name';
             $content = strlen($lastcom['post_content']) > 200 ? substr($lastcom['post_content'], 0, 200) . "..." : $lastcom['post_content'];
-            $animeURL = "/watch?anime=" . urlencode($lastcom['ani_name']) . "&uid=" . $lastcom['post_ani'] . "&eps=" . $lastcom['post_ep'];
-            $nameURL = "anime/" . $lastcom['post_ani'] . "/" . preg_replace("/[\s\/]+/", "-", $lastcom['ani_name']);
+            $slug = trim(preg_replace("/[^\w\s\-]+/", "", $lastcom['ani_name']), " ");
+            $slug = preg_replace("/\s+|--/", "_", $slug);
+            $slug = preg_replace("/\bii\b/", "II", $slug);
+            $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+            $slug = ucfirst($slug);
+            $animeURL = "/watch?anime=" . $slug . "&uid=" . $lastcom['post_ani'] . "&eps=" . $lastcom['post_ep'];
+            $nameURL = "anime/" . $lastcom['post_ani'] . "/" . $slug;
             $name = strlen($lastcom['ani_name']) > 65 ? substr($lastcom['ani_name'], 0, 65) . "..." : $lastcom['ani_name'];
         ?>
             <div class="swiper-slide swiper-slide-active" style="width: 281.5px; margin-right: 20px;">
