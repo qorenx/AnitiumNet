@@ -2,7 +2,7 @@ Anime Watching Site Project
 ---
 Preview: [anitium.net](https://anitium.net)
 
-Our preview site version: 1.4
+Our preview site version: 1.4.1
 
 Our current version:  1.4
 
