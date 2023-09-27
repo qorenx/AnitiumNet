@@ -22,13 +22,13 @@
     const getEmbed = async (uid, eps, embedId) => {
         try {
             document.getElementById('iframe-embed').innerHTML =
-                    '<div class=\"loading-relative loading-box\" id=\"embed-loading\">' +
-                    '<div class=\"loading\">' +
-                    '<div class=\"span1\"></div>' +
-                    '<div class=\"span2\"></div>' +
-                    '<div class=\"span3\"></div>' +
-                    '</div>' +
-                    '</div>';
+                '<div class=\"loading-relative loading-box\" id=\"embed-loading\">' +
+                '<div class=\"loading\">' +
+                '<div class=\"span1\"></div>' +
+                '<div class=\"span2\"></div>' +
+                '<div class=\"span3\"></div>' +
+                '</div>' +
+                '</div>';
             replaceActiveBtn(embedId);
             let data = await apiFetch(`/embed/${uid}/${eps}/${embedId}`);
             document.getElementById('iframe-embed').innerHTML = data[0];
@@ -71,26 +71,33 @@
 
     document.addEventListener('DOMContentLoaded', getAnimeList);
 
+    let currentRequest = null;
     const getEmbedServer = async (uid, eps) => {
         try {
+            const thisRequest = {};
+            currentRequest = thisRequest;
+
             let data = await apiFetch(`/ajax/embedserver/${uid}/${eps}`);
-            document.getElementById('player-servers').innerHTML = data.html;
-            if (data.embedFirst) {
-                document.getElementById('iframe-embed').innerHTML =
-                    '<div class=\"loading-relative loading-box\" id=\"embed-loading\">' +
-                    '<div class=\"loading\">' +
-                    '<div class=\"span1\"></div>' +
-                    '<div class=\"span2\"></div>' +
-                    '<div class=\"span3\"></div>' +
-                    '</div>' +
-                    '</div>';
-                getEmbed(uid, eps, data.embedFirst);
-                getRating(uid, eps);
-                getEpisodeCommentSystem(uid, eps);
-                getEpisodePrevNext(uid, eps);
-            } else {
-                document.getElementById('embed-loading').innerHTML = '<img src="https://i.hizliresim.com/6bfh4ym.gif" style="width:100%; height:100%;position: absolute;">';
-                document.getElementById('player-servers').innerHTML = '';
+
+            if (thisRequest === currentRequest) {
+                document.getElementById('player-servers').innerHTML = data.html;
+                if (data.embedFirst) {
+                    document.getElementById('iframe-embed').innerHTML =
+                        '<div class="loading-relative loading-box" id="embed-loading">' +
+                        '<div class="loading">' +
+                        '<div class="span1"></div>' +
+                        '<div class="span2"></div>' +
+                        '<div class="span3"></div>' +
+                        '</div>' +
+                        '</div>';
+                    getEmbed(uid, eps, data.embedFirst);
+                    getRating(uid, eps);
+                    getEpisodeCommentSystem(uid, eps);
+                    getEpisodePrevNext(uid, eps);
+                } else {
+                    document.getElementById('embed-loading').innerHTML = '<img src="https://i.hizliresim.com/6bfh4ym.gif" style="width:100%; height:100%;position: absolute;">';
+                    document.getElementById('player-servers').innerHTML = '';
+                }
             }
         } catch (error) {
             console.error('Error:', error);
@@ -101,7 +108,7 @@
         try {
             let data = await apiFetch(`/ajax/episodeprevnext/${uid}/${eps}`);
             document.getElementById('episode-prev-next').innerHTML = data.html;
-            
+
         } catch (error) {
             console.error('Error:', error);
         }
@@ -160,30 +167,30 @@
     }
 
 
-function getEpisodeMoreComment(uid,eps) {
-    var xhr = new XMLHttpRequest();
-    var url = "/ajax/episodemorecomment/" + uid + "/" + eps + "?page=" + nextPage;
-    xhr.open("GET", url, true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var data = JSON.parse(xhr.responseText);
-            var htmlData = data['html'];
-            var htmlData2 = data['page']['status'];
-            var resultElements = document.getElementsByClassName("cw_list");
-            for (let element of resultElements) {
-                element.innerHTML += htmlData;
-            }
+    function getEpisodeMoreComment(uid, eps) {
+        var xhr = new XMLHttpRequest();
+        var url = "/ajax/episodemorecomment/" + uid + "/" + eps + "?page=" + nextPage;
+        xhr.open("GET", url, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+                var htmlData = data['html'];
+                var htmlData2 = data['page']['status'];
+                var resultElements = document.getElementsByClassName("cw_list");
+                for (let element of resultElements) {
+                    element.innerHTML += htmlData;
+                }
 
-            nextPage++;
+                nextPage++;
 
-            if (htmlData2 === false) {
-                var buttonElement = document.getElementById("cm-view-more");
-                buttonElement.style.display = "none";
+                if (htmlData2 === false) {
+                    var buttonElement = document.getElementById("cm-view-more");
+                    buttonElement.style.display = "none";
+                }
             }
-        }
-    };
-    xhr.send();
-}
+        };
+        xhr.send();
+    }
 </script>
 
 <script>
@@ -199,13 +206,13 @@ function getEpisodeMoreComment(uid,eps) {
             $("#current-page").text($(this).text().trim())
     });
     $(document).ready(function() {
-            $('.nav-button').click(function() {
-                $('.nav-button.active').removeClass('active');
-                $(this).addClass('active');
-                $('.content').hide();
-                $($(this).data('content')).show();
-            });
+        $('.nav-button').click(function() {
+            $('.nav-button.active').removeClass('active');
+            $(this).addClass('active');
+            $('.content').hide();
+            $($(this).data('content')).show();
         });
+    });
 </script>
 
 <script>
