@@ -6,17 +6,8 @@
         <span class="close">&times;</span>
         <h2 style="color: black;">Report an Issue</h2>
         <form action="<?= base_url('report/episode-report') ?>" method="post" style="max-width:100%;max-height:100%;overflow:auto;">
-            <?php
-            $anime = $_GET['anime'];
-            $uid = $_GET['uid'];
-            $eps = $_GET['eps'];
-
-            $anime = str_replace(" ", "+", $anime);
-            $uid = preg_replace("/[^0-9,.]/", "", $uid);
-            $eps = preg_replace("/[^0-9,.]/", "", $eps);
-            ?>
-            <input type="hidden" value="<?= current_url() . '?anime=' . $anime . '&uid=' .  $uid . '&eps=' . $eps ?>" id="report_url" name="report_url">
-
+            <label for="report_url" style="width: 100%; color: black; font-size: larger;">Report Episode URL</label>
+            <input type="text" id="report_url" name="report_url">
             <label for="report_type" style="width: 100%; color: black; font-size: larger;">Report Type:</label>
             <select id="report_type" name="report_type" style="width: 100%; display:block; margin-bottom: 10px; font-size: larger;">
                 <option value="" selected disabled>Select a report type</option>
@@ -24,13 +15,10 @@
                 <option value="2" style="color: black;">Broken Embed</option>
                 <option value="3" style="color: black;">Broken Sound</option>
             </select>
-
             <label for="report_head" style="width: 100%; color: black; font-size: larger;">Input Head:</label>
             <input type="text" id="report_head" name="report_head" style="width: 100%; color: black; display:block; margin-bottom: 10px; font-size: larger;">
-
             <label for="report_content" style="width: 100%; color: black; font-size: larger;">Input Text:</label>
             <textarea id="report_content" name="report_content" style="width: 100%; color: black; display:block; margin-bottom: 10px; font-size: larger;"></textarea>
-
             <input type="submit" value="Submit" style="color: black; font-size: larger;">
         </form>
     </div>

@@ -77,6 +77,7 @@ $routes->post('status/(:any)/(:any)/(:any)', 'Anime::statusupdate/$1/$2/$3/');
 $routes->get('embed/(:any)/(:any)/(:any)', 'Converter::get_embed/$1/$2/$3');
 $routes->get('ajax/episodelist/(:any)/(:any)', 'Anime::get_episodelist/$1/$2');
 $routes->get('ajax/embedserver/(:any)/(:any)', 'Anime::get_embedserver/$1/$2');
+$routes->get('ajax/episodeprevnext/(:any)/(:any)', 'Anime::get_episodeprevnext/$1/$2');
 
 
 //qtip test

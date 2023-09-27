@@ -8,18 +8,13 @@
             <span class="tb-result"></span>
         </div>
     </div>
-    <div class="pc-right">
+    <div class="pc-report" style="float: right;">
         <?php echo $this->include('anime/getepisode/include/reports'); ?>
-        <div class="pc-item pc-control block-prev">
-            <?php if (!empty($allEpisodesData['Previous'])) : ?>
-                <a class="btn btn-sm btn-prev" href="<?= base_url('watch') ?>?anime=<?= urlencode($_GET['anime']) ?>&uid=<?= $allEpisodesData['Current']->uid ?>&eps=<?= $allEpisodesData['Previous']->ep_id_name ?>" onclick="prevEpisode()"><i class="fas fa-backward mr-2"></i>Prev</a>
-            <?php endif; ?>
-        </div>
-        <div class="pc-item pc-control block-next">
-            <?php if (!empty($allEpisodesData['Next'])) : ?>
-                <a class="btn btn-sm btn-next" href="<?= base_url('watch') ?>?anime=<?= urlencode($_GET['anime']) ?>&uid=<?= $allEpisodesData['Current']->uid ?>&eps=<?= $allEpisodesData['Next']->ep_id_name ?>" onclick="nextEpisode()"><i class="fas fa-forward ml-2"></i>Next</a>
-            <?php endif; ?>
-        </div>
     </div>
+
+    <div class="pc-right">
+        <div id="episode-prev-next"></div>
+    </div>
+
     <div class="clearfix"></div>
 </div>

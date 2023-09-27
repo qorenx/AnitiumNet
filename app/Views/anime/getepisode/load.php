@@ -87,6 +87,7 @@
                 getEmbed(uid, eps, data.embedFirst);
                 getRating(uid, eps);
                 getEpisodeCommentSystem(uid, eps);
+                getEpisodePrevNext(uid, eps);
             } else {
                 document.getElementById('embed-loading').innerHTML = '<img src="https://i.hizliresim.com/6bfh4ym.gif" style="width:100%; height:100%;position: absolute;">';
                 document.getElementById('player-servers').innerHTML = '';
@@ -96,7 +97,15 @@
         }
     }
 
-
+    const getEpisodePrevNext = async (uid, eps) => {
+        try {
+            let data = await apiFetch(`/ajax/episodeprevnext/${uid}/${eps}`);
+            document.getElementById('episode-prev-next').innerHTML = data.html;
+            
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
 
     document.addEventListener('DOMContentLoaded', getEmbedServer(<?php echo $_GET['uid']; ?>, <?php echo $_GET['eps']; ?>));
 
