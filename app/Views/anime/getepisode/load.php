@@ -67,16 +67,12 @@
             console.error('Error:', error);
         }
     }
-</script>
 
-
-
-<script>
     const getAnimeList = async () => {
         try {
             const response = await fetch(`/ajax/episodelist/<?php echo $_GET['uid']; ?>/<?php echo $_GET['eps']; ?>`);
             const data = await response.json();
-            const episodelist = data.html; // Sounds like you tried to get the HTML from the JSON response.
+            const episodelist = data.html; 
 
             document.getElementById('episodes-content').innerHTML = episodelist;
 
@@ -92,7 +88,8 @@
             const data = await response.json();
             document.getElementById('player-servers').innerHTML = data.html;
             if (data.embedFirst) {
-                getEmbed(uid, eps, data.embedFirst);
+                getEmbed(uid, eps, data.embedFirst);        
+                getRating(uid, eps);
             }
         } catch (error) {
             console.error('Error:', error);
@@ -100,9 +97,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', getEmbedServer(<?php echo $_GET['uid']; ?>, <?php echo $_GET['eps']; ?>));
-</script>
 
-<script type="text/javascript">
     function handleClick(event, uid, epIdName) {
         event.preventDefault();
         var allItems = document.querySelectorAll('.ssl-item');
@@ -115,8 +110,44 @@
             path: newUrl
         }, '', newUrl);
         getEmbedServer(uid, epIdName);
+        getRating(uid, epIdName);
+
+    }
+    function postVote(voteValue, epUID, epID) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", '/ajax/episodevote/' + voteValue + '/' + epUID + '/' + epID, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.onerror = function() {
+            console.error('Request failed.');
+        }
+        xhr.onload = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                getRating(epUID,epID);
+            } else {
+                console.error('Error:', xhr.status, xhr.statusText);
+            }
+        };
+        xhr.send();
+    }
+
+    function getRating(uid, epIdName) {
+        var fn = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                var data = JSON.parse(this.responseText);
+                var htmlData = data['html'];
+                var resultElement = document.getElementById("vote-info");
+                resultElement.innerHTML = htmlData;
+            }
+        };
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = fn;
+        xhr.open("GET", "/ajax/episodegetvote/" + uid + "/" + epIdName, true);
+        xhr.send();
     }
 </script>
+
 
 <script>
     $(document).on("click", ".ep-page-item", function() {
@@ -131,44 +162,6 @@
             $("#current-page").text($(this).text().trim())
     });
 </script>
-<script>
-    function postVote(voteValue) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", '/ajax/episodevote/' + voteValue + '/<?php echo urlencode($_GET['uid']); ?>/<?php echo urlencode($_GET['eps']); ?>/', true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.setRequestHeader("Accept", "application/json");
-        xhr.onerror = function() {
-            console.error('Request failed.');
-        }
-        xhr.onload = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                getRating();
-            } else {
-                console.error('Error:', xhr.status, xhr.statusText);
-            }
-        };
-        xhr.send();
-    }
-
-    function getRating() {
-        var fn = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                var data = JSON.parse(this.responseText);
-                var htmlData = data['html'];
-                var resultElement = document.getElementById("vote-info");
-                resultElement.innerHTML = htmlData;
-            }
-        };
-
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = fn;
-        xhr.open("GET", "/ajax/episodegetvote/" + <?php echo urlencode($_GET['uid']); ?> + "/" + <?php echo urlencode($_GET['eps']); ?>, true);
-        xhr.send();
-    }
-
-    document.addEventListener("DOMContentLoaded", getRating);
-</script>
-
 <script>
     var nextPage = 1;
     var xhr = new XMLHttpRequest();

@@ -77,3 +77,6 @@
         <?php endif; ?>
     <?php endif; ?>
 </div>
+<?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
+    <?= $this->include('anime/getepisode/admin/controll') ?>
+<?php endif; ?>
