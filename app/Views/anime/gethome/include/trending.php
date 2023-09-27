@@ -19,13 +19,11 @@
                                     </div>
                                 </div>
                                 <a href="/anime/<?= $anitrend['uid'] ?>/<?php
-                                                                        $nameParts = explode(',', $anitrend['ani_name'], 2);
-                                                                        if (count($nameParts) > 1) {
-                                                                            $name = trim($nameParts[1]);
-                                                                        } else {
-                                                                            $name = $anitrend['ani_name'];
-                                                                        }
-                                                                        $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                        $slug = trim(preg_replace("/[^\w\s\-]+/", "", $anitrend['ani_name']), " ");
+                                                                        $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                        $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                        $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                        $slug = ucfirst($slug);
                                                                         echo $slug;
                                                                         ?>" class="film-poster">
                                     <img class="film-poster-ahref" data-id="<?php echo $anitrend['uid'] ?>" src="<?= $anitrend['ani_poster'] ?>" class="film-poster-img lazyload">

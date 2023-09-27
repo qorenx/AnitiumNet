@@ -43,13 +43,11 @@
                                             </div>
                                             <div class="film-name">
                                                 <a href="watch?anime=<?php
-                                                                        $nameParts = explode(',', $today['ani_name'], 2);
-                                                                        if (count($nameParts) > 1) {
-                                                                            $name = trim($nameParts[1]);
-                                                                        } else {
-                                                                            $name = $today['ani_name'];
-                                                                        }
-                                                                        $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                        $slug = trim(preg_replace("/[^\w\s\-]+/", "", $today['ani_name']), " ");
+                                                                        $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                        $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                        $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                        $slug = ucfirst($slug);
                                                                         echo $slug;
                                                                         ?>&uid=<?= $today['ep_uid'] ?>&eps=<?= $today['ep_id'] ?>" class="dynamic-name">Episode-<?= $today['ep_id'] ?></a>
                                             </div>
@@ -103,13 +101,11 @@
                                             </div>
                                             <div class="film-name">
                                                 <a href="watch?anime=<?php
-                                                                        $nameParts = explode(',', $weeky['ani_name'], 2);
-                                                                        if (count($nameParts) > 1) {
-                                                                            $name = trim($nameParts[1]);
-                                                                        } else {
-                                                                            $name = $weeky['ani_name'];
-                                                                        }
-                                                                        $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                        $slug = trim(preg_replace("/[^\w\s\-]+/", "", $weeky['ani_name']), " ");
+                                                                        $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                        $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                        $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                        $slug = ucfirst($slug);
                                                                         echo $slug;
                                                                         ?>&uid=<?= $weeky['ep_uid'] ?>&eps=<?= $weeky['ep_id'] ?>" class="dynamic-name">Episode-<?= $weeky['ep_id'] ?></a>
                                             </div>
@@ -163,13 +159,11 @@
                                             </div>
                                             <div class="film-name">
                                                 <a href="watch?anime=<?php
-                                                                        $nameParts = explode(',', $month['ani_name'], 2);
-                                                                        if (count($nameParts) > 1) {
-                                                                            $name = trim($nameParts[1]);
-                                                                        } else {
-                                                                            $name = $month['ani_name'];
-                                                                        }
-                                                                        $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                        $slug = trim(preg_replace("/[^\w\s\-]+/", "", $month['ani_name']), " ");
+                                                                        $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                        $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                        $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                        $slug = ucfirst($slug);
                                                                         echo $slug;
                                                                         ?>&uid=<?= $month['ep_uid'] ?>&eps=<?= $month['ep_id'] ?>" class="dynamic-name">Episode-<?= $month['ep_id'] ?></a>
                                             </div>
