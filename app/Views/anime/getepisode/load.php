@@ -1,68 +1,51 @@
 <script>
     let activeBtn;
+    const apiFetch = async (url) => await (await fetch(url)).json();
+
+    const replaceActiveBtn = (embedId) => {
+        if(activeBtn) activeBtn.className = activeBtn.className.replace(' active', '');
+        activeBtn = document.getElementById('embed-' + embedId);
+        if(activeBtn) activeBtn.className += ' active';
+    }
+
+    const extractIframeUrl = (url) => {
+        let iframeSrcRegExp = /<iframe[^>]*src="([^"]*)"[^>]*><\/iframe>/i;
+        let srcName = '', iframeMatch = url.match(iframeSrcRegExp);
+        if(iframeMatch) {
+            let hostname_parts = new URL(iframeMatch[1]).hostname.split('.');
+            srcName = hostname_parts.length >= 2 ? hostname_parts[hostname_parts.length - 2] : hostname_parts[0];
+        }
+        return srcName.charAt(0).toUpperCase() + srcName.slice(1);
+    }
 
     const getEmbed = async (uid, eps, embedId) => {
         try {
-            if (activeBtn) {
-                activeBtn.className = activeBtn.className.replace(' active', '');
-            }
-
-            activeBtn = document.getElementById('embed-' + embedId);
-
-            if (activeBtn) {
-                activeBtn.className += ' active';
-            }
-
-            const response = await fetch(`/embed/${uid}/${eps}/${embedId}`);
-            const data = await response.json();
-            const videoUrl = data[0];
-
-            document.getElementById('iframe-embed').innerHTML = videoUrl;
-
-            const ulContainer = document.getElementById("embed-list");
-            while (ulContainer.firstChild) {
-                ulContainer.removeChild(ulContainer.firstChild);
-            }
-
+            replaceActiveBtn(embedId);
+            let data = await apiFetch(`/embed/${uid}/${eps}/${embedId}`);
+            document.getElementById('iframe-embed').innerHTML = data[0];
+            let ulContainer = document.getElementById("embed-list");
+            ulContainer.innerHTML = '';
             if (Array.isArray(data)) {
-                data.slice(0).forEach((url, index) => {
-                    const li = document.createElement("span");
+                data.forEach((url) => {
+                    let li = document.createElement("span");
                     li.className = "toggle-basic";
                     li.style.margin = '10px';
                     li.style.border = '1px solid #000';
-
-                    const icon = document.createElement("i");
+                    let icon = document.createElement("i");
                     icon.className = "fa-solid fa-circle-play";
                     icon.style.color = "lightgrey";
-
-                    const link = document.createElement("a");
+                    let link = document.createElement("a");
                     link.href = "#";
-
-                    let iframeSrcRegExp = /<iframe[^>]*src="([^"]*)"[^>]*><\/iframe>/i;
-                    let iframeMatch = url.match(iframeSrcRegExp);
-                    let url_src = '';
-                    if (iframeMatch) {
-                        let hostname_parts = new URL(iframeMatch[1]).hostname.split('.');
-                        if (hostname_parts.length >= 2) {
-                            url_src = hostname_parts[hostname_parts.length - 2];
-                        } else {
-                            url_src = hostname_parts[0];
-                        }
-                    }
-                    url_src = url_src.charAt(0).toUpperCase() + url_src.slice(1);
-                    link.innerText = url_src;
+                    link.innerText = extractIframeUrl(url);
                     link.onclick = function(e) {
                         e.preventDefault();
                         document.getElementById('iframe-embed').innerHTML = url;
                     };
-
                     link.appendChild(icon);
                     li.appendChild(link);
-
                     ulContainer.appendChild(li);
                 });
             }
-
         } catch (error) {
             console.error('Error:', error);
         }
@@ -70,78 +53,59 @@
 
     const getAnimeList = async () => {
         try {
-            const response = await fetch(`/ajax/episodelist/<?php echo $_GET['uid']; ?>/<?php echo $_GET['eps']; ?>`);
-            const data = await response.json();
-            const episodelist = data.html; 
-
-            document.getElementById('episodes-content').innerHTML = episodelist;
-
+            let data = await apiFetch(`/ajax/episodelist/<?php echo $_GET['uid']; ?>/<?php echo $_GET['eps']; ?>`);
+            document.getElementById('episodes-content').innerHTML = data.html; 
         } catch (error) {
             console.error('Error:', error);
         }
     }
+
     document.addEventListener('DOMContentLoaded', getAnimeList);
 
     const getEmbedServer = async (uid, eps) => {
         try {
-            const response = await fetch(`/ajax/embedserver/${uid}/${eps}`);
-            const data = await response.json();
+            let data = await apiFetch(`/ajax/embedserver/${uid}/${eps}`);
             document.getElementById('player-servers').innerHTML = data.html;
-            if (data.embedFirst) {
-                getEmbed(uid, eps, data.embedFirst);        
+            if (data.embedFirst) { 
+                getEmbed(uid, eps, data.embedFirst);
                 getRating(uid, eps);
             }
-        } catch (error) {
-            console.error('Error:', error);
-        }
+        } catch (error) { console.error('Error:', error); }
     }
 
     document.addEventListener('DOMContentLoaded', getEmbedServer(<?php echo $_GET['uid']; ?>, <?php echo $_GET['eps']; ?>));
 
-    function handleClick(event, uid, epIdName) {
+    const handleClick = (event, uid, epIdName) => {
         event.preventDefault();
-        var allItems = document.querySelectorAll('.ssl-item');
-        allItems.forEach(function(item) {
-            item.classList.remove('active');
-        });
+        document.querySelectorAll('.ssl-item').forEach(item => item.classList.remove('active'));
         event.currentTarget.classList.add('active');
-        var newUrl = '/watch?anime=<?= urlencode($_GET['anime']) ?>&uid=' + uid + '&eps=' + epIdName;
-        history.pushState({
-            path: newUrl
-        }, '', newUrl);
+        let newUrl = '/watch?anime=<?= urlencode($_GET['anime']) ?>&uid=' + uid + '&eps=' + epIdName;
+        history.pushState({ path: newUrl }, '', newUrl);
         getEmbedServer(uid, epIdName);
         getRating(uid, epIdName);
-
     }
-    function postVote(voteValue, epUID, epID) {
-        var xhr = new XMLHttpRequest();
+
+    const postVote = (voteValue, epUID, epID) => {
+        let xhr = new XMLHttpRequest();
         xhr.open("GET", '/ajax/episodevote/' + voteValue + '/' + epUID + '/' + epID, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.setRequestHeader("Accept", "application/json");
-        xhr.onerror = function() {
-            console.error('Request failed.');
-        }
+        xhr.onerror = function() { console.error('Request failed.'); }
         xhr.onload = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                getRating(epUID,epID);
-            } else {
-                console.error('Error:', xhr.status, xhr.statusText);
-            }
+            if (this.readyState === 4 && this.status === 200) getRating(epUID,epID);
+            else console.error('Error:', xhr.status, xhr.statusText);
         };
         xhr.send();
     }
 
-    function getRating(uid, epIdName) {
-        var fn = function() {
+    const getRating = (uid, epIdName) => {
+        let fn = function() {
             if (this.readyState === 4 && this.status === 200) {
-                var data = JSON.parse(this.responseText);
-                var htmlData = data['html'];
-                var resultElement = document.getElementById("vote-info");
-                resultElement.innerHTML = htmlData;
+                let data = JSON.parse(this.responseText);
+                document.getElementById("vote-info").innerHTML = data['html'];
             }
         };
-
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = fn;
         xhr.open("GET", "/ajax/episodegetvote/" + uid + "/" + epIdName, true);
         xhr.send();
