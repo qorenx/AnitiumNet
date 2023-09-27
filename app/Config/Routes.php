@@ -88,7 +88,6 @@ $routes->get('search/suggestions', 'Anime::suggestions');  // Bu kısım ajax ç
 $routes->get('ajax/getanimeseason/(:any)', 'Anime::getAnimeSeason/$1');  //Anime Sezon Verisini Çeker.
 $routes->get('ajax/getfilter', 'Anime::getfilter');  // Anime Filter göre veri alır.
 $routes->get('ajax/getdaysschedule/(:any)', 'Anime::getdaysschedule/$1');  //ajax ile anime gün verisi çeker.
-$routes->get('ajax/episodemorecomment', 'Anime::episodemorecomment'); //ajax ile episode altındaki yorumları çeker.
 $routes->get('ajax/episodevote/(:any)/(:any)/(:any)', 'Anime::episodevote/$1/$2/$3'); //Episode User Vote Verir
 $routes->get('ajax/episodegetvote/(:any)/(:any)', 'Anime::episodegetvote/$1/$2'); //Episode User GetVote alır.
 $routes->get('ajax/getboardlastpost', 'Anime::getboardlastpost'); //board.php içindeki ajax çalıştırıyor.
@@ -97,6 +96,10 @@ $routes->get('ajax/getboardtagpost', 'Anime::getboardtagpost'); //boardtag.php i
 $routes->get('ajax/getcommentlasttop/(:any)', 'Anime::getcommentlasttop/$1'); //boardtag.php içindeki ajax çalıştıyor.
 $routes->get('ajax/torrentgrabber/(:any)', 'Converter::torrentgrabber/$1'); // anime bilgileri kısmındaki torrent grabber
 
+
+//Ajax Episode Comment Çağırma Yeri
+$routes->get('ajax/episodecommentsystem/(:any)/(:any)', 'Anime::get_episodecommentsystem/$1/$2');
+$routes->get('ajax/episodemorecomment/(:any)/(:any)', 'Anime::get_episodemorecomment/$1/$2'); //ajax ile episode altındaki yorumları çeker.
 
 
 //Episode Like GET Kısmıdır.

@@ -38,7 +38,7 @@
             </div>
             <div class="container">
                 <div id="main-content">
-                    <?= $this->include('anime/getepisode/comment/loadtabs') ?>
+                    <div id="anitium-comment-system"></div>
                     <?= $this->include('anime/getepisode/include/recommended') ?>
                     <div class="clearfix"></div>
                 </div>

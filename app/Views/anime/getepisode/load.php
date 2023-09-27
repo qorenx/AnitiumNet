@@ -86,6 +86,7 @@
                     '</div>';
                 getEmbed(uid, eps, data.embedFirst);
                 getRating(uid, eps);
+                getEpisodeCommentSystem(uid, eps);
             } else {
                 document.getElementById('embed-loading').innerHTML = '<img src="https://i.hizliresim.com/6bfh4ym.gif" style="width:100%; height:100%;position: absolute;">';
                 document.getElementById('player-servers').innerHTML = '';
@@ -138,8 +139,45 @@
         xhr.open("GET", "/ajax/episodegetvote/" + uid + "/" + epIdName, true);
         xhr.send();
     }
-</script>
 
+    const getEpisodeCommentSystem = async (uid, eps) => {
+        try {
+            let data = await apiFetch(`/ajax/episodecommentsystem/${uid}/${eps}`);
+            document.getElementById('anitium-comment-system').innerHTML = data.html;
+            getEpisodeCommentSystem(uid, eps);
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+
+var nextPage = 1;
+function getEpisodeMoreComment(uid,eps) {
+    var xhr = new XMLHttpRequest();
+    var url = "/ajax/episodemorecomment/" + uid + "/" + eps + "?page=" + nextPage;
+    xhr.open("GET", url, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            var htmlData = data['html'];
+            var htmlData2 = data['page']['status'];
+            var resultElements = document.getElementsByClassName("cw_list");
+            for (let element of resultElements) {
+                element.innerHTML += htmlData;
+            }
+
+            nextPage++;
+
+            if (htmlData2 === false) {
+                var buttonElement = document.getElementById("cm-view-more");
+                buttonElement.style.display = "none";
+            }
+        }
+    };
+    xhr.send();
+}
+</script>
 
 <script>
     $(document).on("click", ".ep-page-item", function() {
@@ -153,38 +191,14 @@
             $("#episodes-page-" + $(this).data("page")).addClass("active"),
             $("#current-page").text($(this).text().trim())
     });
-</script>
-<script>
-    var nextPage = 1;
-    var xhr = new XMLHttpRequest();
-    var uid = "<?php echo $_GET['uid']; ?>";
-    var eps = "<?php echo $_GET['eps']; ?>";
-
-    function episodemorecomment() {
-        var url = "/ajax/episodemorecomment?uid=" + uid + "&eps=" + eps + "&page=" + nextPage;
-        xhr.open("GET", url, true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var data = JSON.parse(xhr.responseText);
-                var htmlData = data['html'];
-                var htmlData2 = data['page']['status'];
-                var resultElements = document.getElementsByClassName("cw_list");
-                for (let element of resultElements) {
-                    element.innerHTML += htmlData;
-                }
-
-                nextPage++;
-
-                if (htmlData2 === false) {
-                    var buttonElement = document.getElementById("cm-view-more");
-                    buttonElement.style.display = "none";
-                }
-            }
-        };
-        xhr.send();
-    }
-
-    document.addEventListener("DOMContentLoaded", episodemorecomment);
+    $(document).ready(function() {
+            $('.nav-button').click(function() {
+                $('.nav-button.active').removeClass('active');
+                $(this).addClass('active');
+                $('.content').hide();
+                $($(this).data('content')).show();
+            });
+        });
 </script>
 
 <script>

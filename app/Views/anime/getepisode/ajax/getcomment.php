@@ -1,4 +1,4 @@
-<?php foreach ($pageData  as $post) : ?>
+<?php foreach ($CommentData  as $post) : ?>
     <div class="cw_l-line">
         <a href="/community/user/<?= $post['username'] ?>" class="user-avatar">
             <img class="user-avatar-img" src="<?= $post['avatar'] ?>">
@@ -98,10 +98,8 @@
                         <div class="ci-form">
                             <form method="post" action="/watch/epcommentrepyinsert" class="preform preform-dark comment-form">
                                 <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
-                                <?php $animeUID = $_GET['uid'];
-                                $animeEPID = $_GET['eps']; ?>
-                                <input type="hidden" name="uid" value="<?php echo $animeUID; ?>">
-                                <input type="hidden" name="eps" value="<?php echo $animeEPID; ?>">
+                                <input type="hidden" name="uid" value="<?php $uid; ?>">
+                                <input type="hidden" name="eps" value="<?php $ep_id_name; ?>">
                                 <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
                                 <div class="ci-buttons">
                                     <div class="ci-b-right">
@@ -238,10 +236,8 @@
                                     <div class="ci-form">
                                         <form method="post" action="/watch/epcommentrepyinsert" class="preform preform-dark comment-form">
                                             <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
-                                            <?php $animeUID = $_GET['uid'];
-                                            $animeEPID = $_GET['eps']; ?>
-                                            <input type="hidden" name="uid" value="<?php echo $animeUID; ?>">
-                                            <input type="hidden" name="eps" value="<?php echo $animeEPID; ?>">
+                                            <input type="hidden" name="uid" value="<?php $uid; ?>">
+                                            <input type="hidden" name="eps" value="<?php $ep_id_name; ?>">
                                             <textarea class="form-control form-control-textarea comment-subject emo-on cm-input" name="post_content" maxlength="3000" placeholder="Add a reply"></textarea>
                                             <div class="ci-buttons">
                                                 <div class="ci-b-right">
