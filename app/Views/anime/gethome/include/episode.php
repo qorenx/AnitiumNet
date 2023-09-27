@@ -11,7 +11,7 @@
     <div class="tab-content">
         <div class="block_area-content block_area-list film_list film_list-grid">
             <div class="film_list-wrap">
-                <?php foreach ($lastep as $anime) :?>
+                <?php foreach ($lastep as $anime) : ?>
                     <div class="flw-item">
                         <div class="film-poster">
                             <?php
@@ -71,10 +71,28 @@
                                 <?php endif; ?>
                             </div>
                             <img data-src="<?php echo $anime['ani_poster'] ?>" class="film-poster-img ls-is-cached lazyloaded" src="<?php echo $anime['ani_poster'] ?>">
-                            <a href="/watch?anime=<?= urlencode($anime['ani_name']) ?>&uid=<?= $anime['uid'] ?>&eps=<?= $anime['ep_id_name'] ?>" class="film-poster-ahref" data-id="<?php echo $anime['uid'] ?>"><i class="fas fa-play"></i></a>
+                            <a href="/watch?anime=<?php
+                                                    $nameParts = explode(',', $anime['ani_name'], 2);
+                                                    if (count($nameParts) > 1) {
+                                                        $name = trim($nameParts[1]);
+                                                    } else {
+                                                        $name = $anime['ani_name'];
+                                                    }
+                                                    $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                    echo $slug;
+                                                    ?>&uid=<?= $anime['uid'] ?>&eps=<?= $anime['ep_id_name'] ?>" class="film-poster-ahref" data-id="<?php echo $anime['uid'] ?>"><i class="fas fa-play"></i></a>
                         </div>
                         <div class="film-detail">
-                            <h3 class="film-name"><a href="/anime/<?php echo $anime['uid'] ?>/<?= urlencode($anime['ani_name']) ?>" class="dynamic-name"><?php echo $anime['ani_name'] ?></a></h3>
+                            <h3 class="film-name"><a href="/anime/<?php echo $anime['uid'] ?>/<?php
+                                                                                                $nameParts = explode(',', $anime['ani_name'], 2);
+                                                                                                if (count($nameParts) > 1) {
+                                                                                                    $name = trim($nameParts[1]);
+                                                                                                } else {
+                                                                                                    $name = $anime['ani_name'];
+                                                                                                }
+                                                                                                $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                                                echo $slug;
+                                                                                                ?>" class="dynamic-name"><?php echo $anime['ani_name'] ?></a></h3>
                             <div class="fd-infor">
                                 <span class="fdi-item"><?php $aniType = [1 => 'TV', 2 => 'Movie', 3 => 'Ova', 4 => 'Ona', 5 => 'Special'];
                                                         echo $aniType[$anime['ani_type']] ?? ''; ?></span>

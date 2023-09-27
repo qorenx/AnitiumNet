@@ -29,7 +29,17 @@
                                         </div>
                                         <div class="film-detail">
                                             <h3 class="film-name">
-                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/' . urlencode($topani['ani_name'])) ?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
+                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/') ?>
+<?php
+                                    $nameParts = explode(',', $topani['ani_name'], 2);
+                                    if (count($nameParts) > 1) {
+                                        $name = trim($nameParts[1]);
+                                    } else {
+                                        $name = $topani['ani_name'];
+                                    }
+                                    $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                    echo $slug;
+?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
                                             </h3>
                                             <div class="fd-infor">
                                                 <div class="tick">
@@ -68,7 +78,17 @@
                                         </div>
                                         <div class="film-detail">
                                             <h3 class="film-name">
-                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/' . urlencode($topani['ani_name'])) ?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
+                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/') ?>
+<?php
+                                    $nameParts = explode(',', $topani['ani_name'], 2);
+                                    if (count($nameParts) > 1) {
+                                        $name = trim($nameParts[1]);
+                                    } else {
+                                        $name = $topani['ani_name'];
+                                    }
+                                    $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                    echo $slug;
+?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
                                             </h3>
                                             <div class="fd-infor">
                                                 <div class="tick">
@@ -107,7 +127,17 @@
                                         </div>
                                         <div class="film-detail">
                                             <h3 class="film-name">
-                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/' . urlencode($topani['ani_name'])) ?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
+                                                <a href="<?= base_url('anime/' . $topani['uid'] . '/') ?>
+<?php
+                                    $nameParts = explode(',', $topani['ani_name'], 2);
+                                    if (count($nameParts) > 1) {
+                                        $name = trim($nameParts[1]);
+                                    } else {
+                                        $name = $topani['ani_name'];
+                                    }
+                                    $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                    echo $slug;
+?>" class="dynamic-name"><?= $topani['ani_name'] ?></a>
                                             </h3>
                                             <div class="fd-infor">
                                                 <div class="tick">

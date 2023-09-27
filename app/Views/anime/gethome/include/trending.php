@@ -18,7 +18,16 @@
                                     <div class="film-title dynamic-name"><?= $anitrend['ani_name'] ?>
                                     </div>
                                 </div>
-                                <a href="/anime/<?= $anitrend['uid'] ?>/<?= urlencode($anitrend['ani_name']) ?>" class="film-poster">
+                                <a href="/anime/<?= $anitrend['uid'] ?>/<?php
+                                                                        $nameParts = explode(',', $anitrend['ani_name'], 2);
+                                                                        if (count($nameParts) > 1) {
+                                                                            $name = trim($nameParts[1]);
+                                                                        } else {
+                                                                            $name = $anitrend['ani_name'];
+                                                                        }
+                                                                        $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                        echo $slug;
+                                                                        ?>" class="film-poster">
                                     <img class="film-poster-ahref" data-id="<?php echo $anitrend['uid'] ?>" src="<?= $anitrend['ani_poster'] ?>" class="film-poster-img lazyload">
                                 </a>
                                 <div class="clearfix"></div>

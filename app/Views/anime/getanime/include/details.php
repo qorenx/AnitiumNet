@@ -46,27 +46,28 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/home">Home</a></li>
                                 <li class="breadcrumb-item"><a href="/type/<?php if ($AnimeData['ani_type'] == 1) {
-                                                                                                                            echo "tv";
-                                                                                                                        } elseif ($AnimeData['ani_type'] == 2) {
-                                                                                                                            echo "movie";
-                                                                                                                        } elseif ($AnimeData['ani_type'] == 3) {
-                                                                                                                            echo "ova";
-                                                                                                                        } elseif ($AnimeData['ani_type'] == 4) {
-                                                                                                                            echo "ona";
-                                                                                                                        } elseif ($AnimeData['ani_type'] == 5) {
-                                                                                                                            echo "special";
-                                                                                                                        } ?>"><?php if ($AnimeData['ani_type'] == 1) {
-                                                                                                                            echo "TV";
-                                                                                                                        } elseif ($AnimeData['ani_type'] == 2) {
-                                                                                                                            echo "Movie";
-                                                                                                                        } elseif ($AnimeData['ani_type'] == 3) {
-                                                                                                                            echo "Ova";
-                                                                                                                        } elseif ($AnimeData['ani_type'] == 4) {
-                                                                                                                            echo "Ona";
-                                                                                                                        } elseif ($AnimeData['ani_type'] == 5) {
-                                                                                                                            echo "Special";
-                                                                                                                        } ?></a></li>
-<li class="breadcrumb-item dynamic-name active" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 80%; display: inline-block;"><?= $AnimeData['ani_name'] ?></li>                            </ol>
+                                                                                echo "tv";
+                                                                            } elseif ($AnimeData['ani_type'] == 2) {
+                                                                                echo "movie";
+                                                                            } elseif ($AnimeData['ani_type'] == 3) {
+                                                                                echo "ova";
+                                                                            } elseif ($AnimeData['ani_type'] == 4) {
+                                                                                echo "ona";
+                                                                            } elseif ($AnimeData['ani_type'] == 5) {
+                                                                                echo "special";
+                                                                            } ?>"><?php if ($AnimeData['ani_type'] == 1) {
+                                                                                                                                    echo "TV";
+                                                                                                                                } elseif ($AnimeData['ani_type'] == 2) {
+                                                                                                                                    echo "Movie";
+                                                                                                                                } elseif ($AnimeData['ani_type'] == 3) {
+                                                                                                                                    echo "Ova";
+                                                                                                                                } elseif ($AnimeData['ani_type'] == 4) {
+                                                                                                                                    echo "Ona";
+                                                                                                                                } elseif ($AnimeData['ani_type'] == 5) {
+                                                                                                                                    echo "Special";
+                                                                                                                                } ?></a></li>
+                                <li class="breadcrumb-item dynamic-name active" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 80%; display: inline-block;"><?= $AnimeData['ani_name'] ?></li>
+                            </ol>
                         </nav>
                     </div>
                     <h2 class="film-name dynamic-name"><?= $AnimeData['ani_name'] ?></h2>
@@ -123,7 +124,16 @@
                     </div>
                     <div class="film-buttons">
                         <?php if (!empty($episodesData)) : ?>
-                            <a href="/watch?anime=<?= urlencode($AnimeData['ani_name']) ?>&uid=<?= $AnimeData['uid'] ?>&eps=<?= $episodesData ?>" class="btn btn-radius btn-primary btn-play"><i class="fas fa-play mr-2"></i>Watch now</a>
+                            <a href="/watch?anime=<?php
+                                                    $nameParts = explode(',', $AnimeData['ani_name'], 2);
+                                                    if (count($nameParts) > 1) {
+                                                        $name = trim($nameParts[1]);
+                                                    } else {
+                                                        $name = $AnimeData['ani_name'];
+                                                    }
+                                                    $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                    echo $slug;
+                                                    ?>&uid=<?= $AnimeData['uid'] ?>&eps=<?= $episodesData ?>" class="btn btn-radius btn-primary btn-play"><i class="fas fa-play mr-2"></i>Watch now</a>
                         <?php endif; ?>
                         <?php if (auth()->loggedIn()) : ?>
                             <?= $this->include('anime/getanime/admin/watchadd') ?>

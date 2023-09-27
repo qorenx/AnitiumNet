@@ -2,7 +2,7 @@
 <?= $this->include('anime/extend/templates/head') ?>
 
 <body data-page="page_anime">
-<div id="sidebar_menu_bg"></div>
+    <div id="sidebar_menu_bg"></div>
     <div id="wrapper" data-page="page_home">
         <div class="clearfix"></div>
         <div id="main-wrapper">
@@ -40,10 +40,28 @@
                                                     </div>
                                                 <?php endif; ?>
                                                 <img class="film-poster-img lazyload" src="<?= $anime['ani_poster'] ?>">
-                                                <a class="film-poster-ahref" data-id="<?php echo $anime['uid'] ?>" href="/anime/<?= $anime['uid'] ?>/<?= urlencode($anime['ani_name']) ?>"><i class="fas fa-play"></i></a>
+                                                <a class="film-poster-ahref" data-id="<?php echo $anime['uid'] ?>" href="/anime/<?= $anime['uid'] ?>/<?php
+                                                                                                                                                        $nameParts = explode(',', $anime['ani_name'], 2);
+                                                                                                                                                        if (count($nameParts) > 1) {
+                                                                                                                                                            $name = trim($nameParts[1]);
+                                                                                                                                                        } else {
+                                                                                                                                                            $name = $anime['ani_name'];
+                                                                                                                                                        }
+                                                                                                                                                        $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                                                                                                        echo $slug;
+                                                                                                                                                        ?>"><i class="fas fa-play"></i></a>
                                             </div>
                                             <div class="film-detail">
-                                                <h3 class="film-name"><a href="/anime/<?= $anime['uid'] ?>/<?= urlencode($anime['ani_name']) ?>" class="dynamic-name"><?= $anime['ani_name'] ?></a></h3>
+                                                <h3 class="film-name"><a href="/anime/<?= $anime['uid'] ?>/<?php
+                                                                                                            $nameParts = explode(',', $anime['ani_name'], 2);
+                                                                                                            if (count($nameParts) > 1) {
+                                                                                                                $name = trim($nameParts[1]);
+                                                                                                            } else {
+                                                                                                                $name = $anime['ani_name'];
+                                                                                                            }
+                                                                                                            $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                                                            echo $slug;
+                                                                                                            ?>" class="dynamic-name"><?= $anime['ani_name'] ?></a></h3>
                                                 <div class="description">
                                                     <?= $anime['ani_synopsis'] ?>
                                                 </div>
@@ -103,10 +121,28 @@
                                                     <?php endif; ?>
                                                 </div>
                                                 <img class="film-poster-img ls-is-cached lazyloaded" src="<?php echo $anime['ani_poster'] ?>">
-                                                <a href="anime/<?php echo $anime['uid'] ?>/<?= urlencode($anime['ani_name']) ?>" class="film-poster-ahref" data-id="<?php echo $anime['uid'] ?>"><i class="fas fa-play"></i></a>
+                                                <a href="anime/<?php echo $anime['uid'] ?>/<?php
+                                                                                            $nameParts = explode(',', $anime['ani_name'], 2);
+                                                                                            if (count($nameParts) > 1) {
+                                                                                                $name = trim($nameParts[1]);
+                                                                                            } else {
+                                                                                                $name = $anime['ani_name'];
+                                                                                            }
+                                                                                            $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                                            echo $slug;
+                                                                                            ?>" class="film-poster-ahref" data-id="<?php echo $anime['uid'] ?>"><i class="fas fa-play"></i></a>
                                             </div>
                                             <div class="film-detail">
-                                                <h3 class="film-name"><a href="anime/<?php echo $anime['uid'] ?>/<?= urlencode($anime['ani_name']) ?>" class="dynamic-name">
+                                                <h3 class="film-name"><a href="anime/<?php echo $anime['uid'] ?>/<?php
+                                                                                                                    $nameParts = explode(',', $anime['ani_name'], 2);
+                                                                                                                    if (count($nameParts) > 1) {
+                                                                                                                        $name = trim($nameParts[1]);
+                                                                                                                    } else {
+                                                                                                                        $name = $anime['ani_name'];
+                                                                                                                    }
+                                                                                                                    $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                                                                    echo $slug;
+                                                                                                                    ?>" class="dynamic-name">
                                                         <?php echo $anime['ani_name'] ?>
                                                     </a></h3>
                                                 <div class="fd-infor">

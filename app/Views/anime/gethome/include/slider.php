@@ -65,12 +65,30 @@
                     <div class="desi-description"></div>
                     <div class="desi-buttons">
                         <?php
-                        if ($slider_data['type']['RAW'] > 0 || $slider_data['type']['SUB'] > 0 || $slider_data['type']['DUB'] > 0 || $slider_data['type']['TURK'] > 0) {
-                            echo '<a href="/watch?anime=' . urlencode($slider_data['ani_name']) . '&uid='. $slider_data['uid'] . '&eps=1" class="btn btn-primary btn-radius mr-2">';
-                            echo '<i class="fas fa-play-circle mr-2"></i>Watch Now</a>';
-                        }
-                        ?>
-                        <a class="btn btn-secondary btn-radius" href="/anime/<?= $slider_data['uid'] ?>/<?= urlencode($slider_data['ani_name']) ?>"><i class="fas fa-info-circle mr-2"></i> Detail<i class="fas fa-angle-right ml-2"></i></a>
+                        if ($slider_data['type']['RAW'] > 0 || $slider_data['type']['SUB'] > 0 || $slider_data['type']['DUB'] > 0 || $slider_data['type']['TURK'] > 0) : ?>
+                            <a href="/watch?anime=<?php
+                                                    $nameParts = explode(',', $slider_data['ani_name'], 2);
+                                                    if (count($nameParts) > 1) {
+                                                        $name = trim($nameParts[1]);
+                                                    } else {
+                                                        $name = $slider_data['ani_name'];
+                                                    }
+                                                    $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                    echo $slug;
+                                                    ?>&uid=<?= $slider_data['uid']; ?>&eps=1" class="btn btn-primary btn-radius mr-2">
+                                <i class="fas fa-play-circle mr-2"></i>Watch Now
+                            </a>
+                        <?php endif; ?>
+                        <a class="btn btn-secondary btn-radius" href="/anime/<?= $slider_data['uid'] ?>/<?php
+                                                                                                        $nameParts = explode(',', $slider_data['ani_name'], 2);
+                                                                                                        if (count($nameParts) > 1) {
+                                                                                                            $name = trim($nameParts[1]);
+                                                                                                        } else {
+                                                                                                            $name = $slider_data['ani_name'];
+                                                                                                        }
+                                                                                                        $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                                                        echo $slug;
+                                                                                                        ?>"><i class="fas fa-info-circle mr-2"></i> Detail<i class="fas fa-angle-right ml-2"></i></a>
                     </div>
                 </div>
                 <div class="clearfix"></div>

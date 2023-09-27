@@ -17,7 +17,7 @@
                     $dataArray = json_decode(json_encode($embedData[1]), false);
                     foreach ($dataArray as $Data) : ?>
                         <div class="item server-item">
-                            <a href="#" id="embed-<?= $Data->id ?>" class="btn" onclick="getEmbed('<?= $Data->id ?>')"> <?= $Data->embed_name ?></a>
+                            <a href="#" id="embed-<?= $Data->id ?>" class="btn" onclick="getEmbed(<?= $embedUID ?>, <?= $embedID ?>,'<?= $Data->id ?>')"> <?= $Data->embed_name ?></a>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -34,7 +34,7 @@
                     $dataArray = json_decode(json_encode($embedData[2]), false);
                     foreach ($dataArray as $Data) : ?>
                         <div class="item server-item">
-                            <a href="#" id="embed-<?= $Data->id ?>" class="btn" onclick="getEmbed('<?= $Data->id ?>')"> <?= $Data->embed_name ?></a>
+                            <a href="#" id="embed-<?= $Data->id ?>" class="btn" onclick="getEmbed(<?= $embedUID ?>, <?= $embedID ?>,'<?= $Data->id ?>')"> <?= $Data->embed_name ?></a>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -51,7 +51,7 @@
                     $dataArray = json_decode(json_encode($embedData[3]), false);
                     foreach ($dataArray as $Data) : ?>
                         <div class="item server-item">
-                            <a href="#" id="embed-<?= $Data->id ?>" class="btn" onclick="getEmbed('<?= $Data->id ?>')"> <?= $Data->embed_name ?></a>
+                            <a href="#" id="embed-<?= $Data->id ?>" class="btn" onclick="getEmbed(<?= $embedUID ?>, <?= $embedID ?>,'<?= $Data->id ?>')"> <?= $Data->embed_name ?></a>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -68,7 +68,7 @@
                     $dataArray = json_decode(json_encode($embedData[4]), false);
                     foreach ($dataArray as $Data) : ?>
                         <div class="item server-item">
-                            <a href="#" id="embed-<?= $Data->id ?>" class="btn" onclick="getEmbed('<?= $Data->id ?>')"> <?= $Data->embed_name ?></a>
+                            <a href="#" id="embed-<?= $Data->id ?>" class="btn" onclick="getEmbed(<?= $embedUID ?>, <?= $embedID ?>,'<?= $Data->id ?>')"> <?= $Data->embed_name ?></a>
                         </div>
                     <?php endforeach; ?>
                 </div>

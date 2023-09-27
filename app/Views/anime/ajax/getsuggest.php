@@ -1,7 +1,16 @@
 <?php $count = 0; ?>
 <?php foreach ($data as $anime) : ?>
     <?php if ($count++ === 5) break; ?>
-    <a href="/anime/<?php echo $anime['uid'] ?>/<?= urlencode($anime['ani_name']) ?>" class="nav-item">
+    <a href="/anime/<?php echo $anime['uid'] ?>/<?php
+                                                $nameParts = explode(',', $anime['ani_name'], 2);
+                                                if (count($nameParts) > 1) {
+                                                    $name = trim($nameParts[1]);
+                                                } else {
+                                                    $name = $anime['ani_name'];
+                                                }
+                                                $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                echo $slug;
+                                                ?>" class="nav-item">
         <div class="film-poster">
             <img class="film-poster-img ls-is-cached lazyloaded" src="<?php echo $anime['ani_poster'] ?>">
         </div>

@@ -9,7 +9,17 @@
             </div>
             <div id="episodes-load" class="ss-list" style="display:block;">
                 <?php foreach ($EpisodeList as $episode) : ?>
-                    <a class="ssl-item ep-item<?= $episode->ep_id_name == $Current ? ' active' : '' ?>" title="<?= $episode->ep_name ?>" data-number="<?= $episode->ep_id_name ?>" data-id="<?= $episode->uid ?>" onclick="handleClick(event, <?= $episode->uid ?>, '<?= $episode->ep_id_name ?>')" href="/watch?anime=<?= urlencode($AnimeName) ?>&uid=<?= $episode->uid ?>&eps=<?= $episode->ep_id_name ?>">                        <div class="ssli-order"><?= $episode->ep_id_name ?></div>
+                    <a class="ssl-item ep-item<?= $episode->ep_id_name == $Current ? ' active' : '' ?>" title="<?= $episode->ep_name ?>" data-number="<?= $episode->ep_id_name ?>" data-id="<?= $episode->uid ?>" onclick="handleClick(event, <?= $episode->uid ?>, '<?= $episode->ep_id_name ?>')" href="/watch?anime=<?php
+                                                                                                                                                                                                                                                                                                                        $nameParts = explode(',', $AnimeName, 2);
+                                                                                                                                                                                                                                                                                                                        if (count($nameParts) > 1) {
+                                                                                                                                                                                                                                                                                                                            $name = trim($nameParts[1]);
+                                                                                                                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                                                                                                                            $name = $AnimeName;
+                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                        $slug = strtolower(str_replace(' ', '-', implode(' ', array_slice(explode(' ', preg_replace('/[\/*!\^%&\/()=?.:",]/', '', $name)), 0, 10))));
+                                                                                                                                                                                                                                                                                                                        echo $slug;
+                                                                                                                                                                                                                                                                                                                        ?>&uid=<?= $episode->uid ?>&eps=<?= $episode->ep_id_name ?>">
+                        <div class="ssli-order"><?= $episode->ep_id_name ?></div>
                         <div class="ssli-detail">
                             <div class="ep-name"><?= empty($episode->ep_name) ? "Episode-" . $episode->ep_id_name : $episode->ep_name ?></div>
                         </div>
@@ -25,4 +35,3 @@
 </div>
 <div class="clearfix"></div>
 </div>
-
