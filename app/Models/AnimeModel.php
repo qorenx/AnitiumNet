@@ -230,7 +230,8 @@ class AnimeModel extends Model
             ->getResultArray();
     }
 
-    public function gettopupComing()
+    //Aşağıdaki Function Düzenlendi.
+    public function get_AnimeUpComing()
     {
         return $this->db
             ->table('anime')
@@ -425,16 +426,19 @@ class AnimeModel extends Model
         return $related;
     }
 
-    public function genreget($genre)
+    //Aşağıdakifunction düzenlendi.
+    public function get_Genre($Genre)
     {
-        return $this->like('ani_genre', $genre);
+        return $this->like('ani_genre', $Genre);
     }
-    public function studioget($studio)
+    //Aşağıdakifunction düzenlendi.
+    public function get_Studio($Studio)
     {
-        return $this->like('ani_studio', $studio);
+        return $this->like('ani_studio', $Studio);
     }
-    public function producersget($producers)
+    //Aşağıdakifunction düzenlendi.
+    public function get_Producers($Producers)
     {
-        return $this->like('ani_producers', $producers);
+        return $this->like('ani_producers', $Producers);
     }
 }

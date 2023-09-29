@@ -77,7 +77,8 @@ class EpisodeViews extends Model
         return \Config\Database::connect();
     }
 
-    public function episodeviews()
+    //Aşağıdaki Function Düzenlendi.
+    public function get_EpisodeViewSideBar()
     {
         $types = $this->getTypeDetails();
         $db = $this->getDbConnection();
@@ -120,7 +121,7 @@ class EpisodeViews extends Model
 
         $db->close();
 
-        return ['today' => $today, 'weeky' => $weeky, 'month' => $month];
+        return ['TodayData' => $today, 'WeekyData' => $weeky, 'MonthData' => $month];
     }
 
 

@@ -28,6 +28,34 @@ class EpisodeCommentModel extends Model
     ];
 
 
+    //Aşağıdaki Function Düzenlendi.
+    public function get_CommentHome($get_status)
+    {
+        $db = \Config\Database::connect();
+        $query = $db
+            ->table('episode_comment')
+            ->select('anime.ani_name, episode_comment.post_ani, users.username, users.avatar, auth_groups_users.group, episode_comment.id, episode_comment.user_id, episode_comment.post_ep, episode_comment.post_content, episode_comment.created_at')
+            ->join('anime', 'anime.uid = episode_comment.post_ani', 'left outer')
+            ->join('users', 'users.id = episode_comment.user_id', 'left outer')
+            ->join('auth_groups_users', 'auth_groups_users.id = episode_comment.user_id', 'left outer')
+            ->orderBy('created_at', 'DESC');
+
+        if ($get_status == 'Top') {
+            $limit = 100;
+            $data = $query->limit($limit)->get()->getResultArray();
+            shuffle($data);
+            $data = array_slice($data, 0, 15);
+        } elseif ($get_status == 'New') {
+            $limit = 15;
+            $data = $query->limit($limit)->get()->getResultArray();
+        }
+
+        $db->close();
+        return $data;
+    }
+
+
+
     public function postlist($uid, $ep_id_name)
     {
         $result = $this->db
@@ -158,30 +186,6 @@ class EpisodeCommentModel extends Model
             ->getResultArray();
     }
 
-    public function commenttoplast($gets)
-    {
-        $db = \Config\Database::connect();
-        $query = $db
-            ->table('episode_comment')
-            ->select('anime.ani_name, episode_comment.post_ani, users.username, users.avatar, auth_groups_users.group, episode_comment.id, episode_comment.user_id, episode_comment.post_ep, episode_comment.post_content, episode_comment.created_at')
-            ->join('anime', 'anime.uid = episode_comment.post_ani', 'left outer')
-            ->join('users', 'users.id = episode_comment.user_id', 'left outer')
-            ->join('auth_groups_users', 'auth_groups_users.id = episode_comment.user_id', 'left outer')
-            ->orderBy('created_at', 'DESC');
-
-        if ($gets == 2) {
-            $query = $query->limit(100);
-            $data = $query->get()->getResultArray();
-            shuffle($data);
-            $data = array_slice($data, 0, 15);
-        } else {
-            $query = $query->limit(15);
-            $data = $query->get()->getResultArray();
-        }
-
-        $db->close();
-        return $data;
-    }
 
     public function boardusercomment($userid)
     {

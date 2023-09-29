@@ -180,8 +180,8 @@ class CommunityModel extends Model
             ->getResultArray();
     }
 
-
-    public function lastboard()
+    //Aşağıdaki function düzenlendi.
+    public function get_LastBoardCommunityHome()
     {
         return $this->db
             ->table('community')

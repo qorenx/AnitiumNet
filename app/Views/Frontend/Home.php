@@ -1,13 +1,13 @@
-<?= $this->include('anime/gethome/header') ?>
+<?= $this->include('Frontend/İnclude/Header') ?>
 
 <body data-page="page_home">
     <div id="sidebar_menu_bg"></div>
     <div id="wrapper" data-page="page_home">
-        <?= $this->include('anime/extend/templates/head') ?>
+        <?= $this->include('Frontend/İnclude/Head') ?>
         <div class="clearfix"></div>
         <div class="deslide-wrap">
             <div id="slider" class="swiper-container-initialized swiper-container-horizontal">
-                <?= $this->include('anime/gethome/include/slider') ?>
+                <?= $this->include('Frontend/Home/Slider') ?>
                 <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
                 <div class="swiper-navigation">
                     <div class="swiper-button swiper-button-next" tabindex="0" role="button" aria-label="Next slide"><i class="fas fa-angle-right"></i></div>
@@ -19,35 +19,35 @@
         </div>
         <div id="anime-trending">
             <div class="container">
-                <?= $this->include('anime/gethome/include/trending') ?>
+                <?= $this->include('Frontend/Home/Trending') ?>
             </div>
         </div>
         <div id="discussion">
             <div class="container">
-                <?= $this->include('anime/gethome/include/comment') ?>
+            <?= $this->include('Frontend/Home/Comment') ?>
             </div>
         </div>
         <div id="main-wrapper">
             <div class="container">
                 <div id="main-content">
                     <div id="widget-continue-watching"></div>
-                    <?= $this->include('anime/gethome/include/episode') ?>
+                    <?= $this->include('Frontend/Home/LastEpisode') ?>
                     <?php if (auth()->user()->schedule_status ?? 1 == 1) : ?>
                         <div id="schedule-block">
-                            <?= $this->include('anime/gethome/include/schedule') ?>
+                        <?= $this->include('Frontend/Home/Schedule') ?>
                         </div>
                     <?php endif; ?>
-                    <?= $this->include('anime/gethome/include/upcoming') ?>
+                    <?= $this->include('Frontend/Home/UpComing') ?>
                     <div class="clearfix"></div>
                 </div>
-                <?= $this->include('anime/gethome/sidenav') ?>
+                <?= $this->include('Frontend/Home/SideBar') ?>
                 <div class="clearfix"></div>
             </div>
         </div>
 
-        <?= $this->include('anime/extend/templates/footer') ?>
+        <?= $this->include('Frontend/İnclude/Footer') ?>
         <div id="mask-overlay"></div>
-        <?= $this->include('anime/loadscript') ?>
+        <?= $this->include('Frontend/İnclude/LoadScript') ?>
     </div>
 </body>
 

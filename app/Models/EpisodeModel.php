@@ -45,7 +45,8 @@ class EpisodeModel extends Model
         return $types;
     }
 
-    public function lastepisodehome()
+    //Aşağıdaki Function Düzenlendi.
+    public function get_LastEpisodeHome()
     {
         $types = $this->getTypeDetails();
         $query = $this
@@ -73,7 +74,7 @@ class EpisodeModel extends Model
         return $query ?? [];
     }
 
-    public function lastestepisode()
+    public function get_RecentlyUpdated()
     {
         $types = $this->getTypeDetails();
 

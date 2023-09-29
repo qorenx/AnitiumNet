@@ -11,6 +11,24 @@ class AnimeSchedule extends Model
 
     protected $allowedFields = ['id', 'sc_days', 'sc_id', 'sc_ep', 'sc_time'];
 
+    //Aşağıdaki Function Düzenlendi.
+    public function get_ScheduleDays($Days) {
+        return  $this->db
+              ->table('ani_schedule')
+              ->join('anime', 'ani_schedule.sc_id = anime.uid')
+              ->where('sc_days', $Days)
+              ->select('sc_days, sc_ep, sc_time, ani_schedule.sc_id, anime.ani_name')
+              ->orderBy('sc_time')
+              ->get()
+              ->getResultArray();
+          
+    }
+
+
+
+
+
+
 
     public function schedulenext($uid){
         return $this->db
@@ -24,16 +42,6 @@ class AnimeSchedule extends Model
             ->getResultArray();
     }
     
-    public function schedule($days) {
-        return  $this->db
-              ->table('ani_schedule')
-              ->join('anime', 'ani_schedule.sc_id = anime.uid')
-              ->where('sc_days', $days)
-              ->select('sc_days, sc_ep, sc_time, ani_schedule.sc_id, anime.ani_name')
-              ->orderBy('sc_time')
-              ->get()
-              ->getResultArray();
-          
-    }
+
 
 }

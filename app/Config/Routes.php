@@ -38,29 +38,52 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-// localhost  girildiğinde çıkan kısım.
-$routes->get('/', 'Anime::index');
-// localhost/home sayfası oluşturan kısım.
-$routes->get('/home', 'Anime::home');
-// localhost/dmca page / contact
-$routes->get('dmca', 'Anime::dmca');
-$routes->get('contact', 'Anime::contact');
+// CONTROLLER ANİTİUM.PHP ReMAKE
+
+
+// http://localhost/  girdiğinde çıkan sayfa.
+$routes->get('/', 'Anitium::İndex');
+
+
+
+// HOME SAYFASI ROUTERS
+$routes->get('/home', 'Anitium::Home');// localhost/home girdiğimde çıkan sayfa.
+$routes->get('ajax/getCommentHome/(:any)', 'Anitium::get_CommentHome/$1');// Home/Comment.php  içindeki Script!
+$routes->get('ajax/getScheduleDays/(:num)', 'Anitium::get_ScheduleDays/$1');// Home/Schedule.php içindeki Script!
+
+
+
+$routes->get('type/(:any)', 'Anitium::Anime_Type/$1/'); // localhost/type/VERİ olduğu kısımdır.
+$routes->get('az-list/(:any)', 'Anitium::AZ_List/$1/'); // localhost/az-list/VERİ olduğu kısımdır.
+$routes->get('genre/(:any)', 'Anitium::Genre_Search/$1/'); // localhost/genre/VERİ olduğu kısımdır.
+$routes->get('studio/(:any)', 'Anitium::Studio_Search/$1/'); // localhost/studio/VERİ olduğu kısımdır.
+$routes->get('producers/(:any)', 'Anitium::Producers_Search/$1/');// localhost/producers/VERİ olduğu kısımdır.
+
+
+// localhost/recently-updated  son eklenen animeler daha fazla.
+$routes->get('recently-updated', 'Anitium::Recently_Updated');
+
+
+
+
+
+
+
+$routes->get('dmca', function () {
+    return redirect('/');
+});
+$routes->get('contact', function () {
+    return redirect('/');
+});
 $routes->get('tos', function () {
     return redirect('/');
 });
 
-// localhost/type/ (TV/OVA,Movie etc)
-$routes->get('type/(:any)', 'Anime::anime_type/$1/');
-// localhost/az-list/  (ABCD etc)
-$routes->get('az-list/(:any)', 'Anime::az_search/$1/');
-// localhost/genre/  (Anime türleri oluşur.)
-$routes->get('genre/(:any)', 'Anime::genre_search/$1/');
-// localhost/studio/  (Anime türleri oluşur.)
-$routes->get('studio/(:any)', 'Anime::studio_search/$1/');
-// localhost/producers/  (Anime türleri oluşur.)
-$routes->get('producers/(:any)', 'Anime::producers_search/$1/');
-// localhost/latest-episode  son eklenen animeler daha fazla.
-$routes->get('latest-episode', 'Anime::latest_episode');
+
+
+
+
+
 //Anime Sayfasındaki Animeleri Çeker
 $routes->get('anime/(:any)', 'Anime::anime_details/$1/');
 //anime random
@@ -88,13 +111,11 @@ $routes->get('ajax/qtip/(:any)', 'Anime::qtip/$1/');
 $routes->get('search/suggestions', 'Anime::suggestions');  // Bu kısım ajax çevirilecek. Düzeltilecektir.
 $routes->get('ajax/getanimeseason/(:any)', 'Anime::getAnimeSeason/$1');  //Anime Sezon Verisini Çeker.
 $routes->get('ajax/getfilter', 'Anime::getfilter');  // Anime Filter göre veri alır.
-$routes->get('ajax/getdaysschedule/(:any)', 'Anime::getdaysschedule/$1');  //ajax ile anime gün verisi çeker.
 $routes->get('ajax/episodevote/(:any)/(:any)/(:any)', 'Anime::episodevote/$1/$2/$3'); //Episode User Vote Verir
 $routes->get('ajax/episodegetvote/(:any)/(:any)', 'Anime::episodegetvote/$1/$2'); //Episode User GetVote alır.
 $routes->get('ajax/getboardlastpost', 'Anime::getboardlastpost'); //board.php içindeki ajax çalıştırıyor.
 $routes->get('ajax/getboardmypost', 'Anime::getboardmypost'); //mypost.php içindeki ajax çalıştırıyor.
 $routes->get('ajax/getboardtagpost', 'Anime::getboardtagpost'); //boardtag.php içindeki ajax çalıştıyor.
-$routes->get('ajax/getcommentlasttop/(:any)', 'Anime::getcommentlasttop/$1'); //boardtag.php içindeki ajax çalıştıyor.
 $routes->get('ajax/torrentgrabber/(:any)', 'Converter::torrentgrabber/$1'); // anime bilgileri kısmındaki torrent grabber
 
 
@@ -299,6 +320,9 @@ $routes->group('cron', function ($routes) {
 //Günlük  Url= https://anitium.net/cron/clearEpisodeViewCount
 //Haftalık  Url= https://anitium.net/cron/clearEpisodeViewCountMonth
 //Aylık Url= https://anitium.net/cron/clearEpisodeViewCountYear
+
+
+
 
 
 
