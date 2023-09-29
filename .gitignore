@@ -126,6 +126,7 @@ nb-configuration.xml
 
 
 # Anitium Safe Code
+/app/Controllers/Anitium.php
 /app/Controllers/Admin.php
 /app/Controllers/Anime.php
 /app/Controllers/License.php
