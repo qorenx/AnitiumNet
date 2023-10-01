@@ -1,11 +1,31 @@
 <script>
+    //Anime Listesini Çekmektedir. Bekleme süresi 1 saniyedir.
+    const getAnimeList = async (uid) => {
+        try {
+            let data = await apiFetch(`ajax/episodelist/` + uid);
+            document.getElementById('episodes-content').innerHTML = data.html;
+            getEmbedServer(null, <?php echo $_GET['uid']; ?>, <?php echo $_GET['eps']; ?>);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    document.addEventListener('DOMContentLoaded', () => setTimeout(() => getAnimeList(<?php echo $_GET['uid']; ?>), 2000));
+</script>
+<script>
+    // Embed Server Listesini Alıyor. Ve Embed, Yorumlar, Rating ve Prev-Next Button çekmektedir.
     let currentRequest = null;
+    let activeEps = null;
+
     const getEmbedServer = async (event, uid, eps) => {
+
+        if (activeEps !== null) {
+            document.querySelectorAll(`.ep-item-${activeEps}`).forEach(item => item.classList.remove('active'));
+        }
 
         if (event) {
             event.preventDefault();
-            document.querySelectorAll('.ssl-item').forEach(item => item.classList.remove('active'));
-            event.currentTarget.classList.add('active');
+            document.querySelectorAll(`.ep-item-${eps}`).forEach(item => item.classList.add('active'));
+            activeEps = eps;
         }
 
         let newUrl = '/watch?anime=<?= urlencode($_GET['anime']) ?>&uid=' + uid + '&eps=' + eps;
@@ -17,11 +37,12 @@
             const thisRequest = {};
             currentRequest = thisRequest;
 
-            let data = await apiFetch(`/ajax/embedserver/${uid}/${eps}`);
+            let data = await apiFetch(`ajax/embedserver/${uid}/${eps}`);
 
             if (thisRequest === currentRequest) {
-                if (document.querySelectorAll('.ssl-item').length > 0 && !event) {
-                    document.querySelector('.ssl-item').classList.add('active');
+                if (document.querySelectorAll(`.ep-item-${eps}`).length > 0 && !event) {
+                    document.querySelector(`.ep-item-${eps}`).classList.add('active');
+                    activeEps = eps;
                 }
 
                 document.getElementById('player-servers').innerHTML = data.html;
@@ -47,22 +68,9 @@
             console.error('Error:', error);
         }
     }
-
-    document.addEventListener('DOMContentLoaded', () => getEmbedServer(null, <?php echo $_GET['uid']; ?>, <?php echo $_GET['eps']; ?>));
 </script>
 <script>
-    const getAnimeList = async () => {
-        try {
-            let data = await apiFetch(`/ajax/episodelist/<?php echo $_GET['uid']; ?>`);
-            document.getElementById('episodes-content').innerHTML = data.html;
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', getAnimeList);
-</script>
-<script>
+    //Episode Sezon Listesi olduğu zaman "Select" içindeki "1-100 veya 401-500 gibi yerleri seçiyor."
     document.addEventListener('click', function(event) {
         if (event.target.matches('.ep-page-item')) {
             let clickedElement = event.target;
@@ -89,9 +97,8 @@
     });
 </script>
 
-
-
 <script>
+    // Embed ve MultiEmbed Çeker.
     let activeBtn;
     const apiFetch = async (url) => await (await fetch(url)).json();
 
@@ -152,21 +159,19 @@
             console.error('Error:', error);
         }
     }
-
-
-
+</script>
+<script>
     const getEpisodePrevNext = async (uid, eps) => {
         try {
-            let data = await apiFetch(`/ajax/episodeprevnext/${uid}/${eps}`);
+            let data = await apiFetch(`ajax/episodeprevnext/${uid}/${eps}`);
             document.getElementById('episode-prev-next').innerHTML = data.html;
 
         } catch (error) {
             console.error('Error:', error);
         }
     }
-
-
-
+    </script>
+<script>
 
     const postVote = (voteValue, epUID, epID) => {
         let xhr = new XMLHttpRequest();
@@ -195,6 +200,10 @@
         xhr.open("GET", "/ajax/episodegetvote/" + uid + "/" + epIdName, true);
         xhr.send();
     }
+    </script>
+
+    
+    <script>
 
     const getEpisodeCommentSystem = async (uid, eps) => {
         try {

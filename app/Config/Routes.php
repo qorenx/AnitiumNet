@@ -74,12 +74,12 @@ $routes->get('watch', 'Anitium::Anime_Watch');
 
 // Anime Watch Embed, Liste, Server, PREV+NEXT kısmıdır.
 $routes->get('ajax/embed/(:num)/(:num)/(:num)', 'Converter::get_embed/$1/$2/$3');//Embed iframe Converter
-$routes->get('ajax/embedserver/(:num)/(:num)', 'Anitium::get_embedserver/$1/$2'); // İlgili Bölüm Embed Server Çağırır
-$routes->get('ajax/episodelist/(:num)', 'Anitium::Get_EpisodeList/$1');
+$routes->get('ajax/embedserver/(:num)/(:num)', 'Anitium::Get_EpisodeServer/$1/$2'); // İlgili Bölüm Embed Server Çağırır
+$routes->get('ajax/episodelist/(:num)', 'Anitium::Get_EpisodeList/$1'); // Episode Listesi çeker.
+$routes->get('ajax/episodeprevnext/(:num)/(:num)', 'Anitium::Get_EpisodePrevNext/$1/$2'); // Mevcut Episode Prev-Next çağırır.
 
-$routes->get('ajax/episodeprevnext/(:num)/(:num)', 'Anitium::get_episodeprevnext/$1/$2');
-
-
+$routes->get('ajax/episodevote/(:any)/(:any)/(:any)', 'Anime::episodevote/$1/$2/$3'); //Episode User Vote Verir
+$routes->get('ajax/episodegetvote/(:any)/(:any)', 'Anime::episodegetvote/$1/$2'); //Episode User GetVote alır.
 
 
 
@@ -125,8 +125,7 @@ $routes->get('ajax/qtip/(:any)', 'Anime::qtip/$1/');
 // AJAX BULUNDUĞU KISIM
 $routes->get('search/suggestions', 'Anime::suggestions');  // Bu kısım ajax çevirilecek. Düzeltilecektir.
 $routes->get('ajax/getfilter', 'Anime::getfilter');  // Anime Filter göre veri alır.
-$routes->get('ajax/episodevote/(:any)/(:any)/(:any)', 'Anime::episodevote/$1/$2/$3'); //Episode User Vote Verir
-$routes->get('ajax/episodegetvote/(:any)/(:any)', 'Anime::episodegetvote/$1/$2'); //Episode User GetVote alır.
+
 $routes->get('ajax/getboardlastpost', 'Anime::getboardlastpost'); //board.php içindeki ajax çalıştırıyor.
 $routes->get('ajax/getboardmypost', 'Anime::getboardmypost'); //mypost.php içindeki ajax çalıştırıyor.
 $routes->get('ajax/getboardtagpost', 'Anime::getboardtagpost'); //boardtag.php içindeki ajax çalıştıyor.
