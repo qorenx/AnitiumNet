@@ -3,7 +3,7 @@
 
 <body data-page="movie_info">
     <div id="sidebar_menu_bg"></div>
-    <div id="wrapper" data-page="page_home">
+    <div id="wrapper">
         <?= $this->include('Frontend/İnclude/Head') ?>
 
         <div class="clearfix"></div>

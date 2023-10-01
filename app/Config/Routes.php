@@ -69,6 +69,27 @@ $routes->get('ajax/gettorrentgrabber/(:any)', 'Converter::torrentgrabber/$1'); /
 
 
 
+//Anime Watch Kısmıdır.
+
+//Anime İzleme. " ?anime= / uid=  / eps= " gibi ayrım yapılmaktadır.
+
+$routes->get('watch', 'Anitium::Anime_Watch');
+
+
+//$routes->get('watch', 'Anime::ani_watch');
+
+
+
+
+
+
+
+
+
+
+
+
+
 $routes->get('dmca', function () {
     return redirect('/');
 });
@@ -90,8 +111,7 @@ $routes->get('random', 'Anime::random');
 //Anime Search ve Filter kısmıdır.
 $routes->get('search', 'Anime::search');
 $routes->get('filter', 'Anime::filter');
-//Anime İzleme. " ?anime= / uid=  / eps= " gibi ayrım yapılmaktadır.
-$routes->get('watch', 'Anime::ani_watch');
+
 
 
 //Anime Converter Sistemidir

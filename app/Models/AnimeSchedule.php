@@ -13,8 +13,7 @@ class AnimeSchedule extends Model
 
     //Aşağıdaki Function Düzenlendi.
     public function get_ScheduleDays($Days) {
-        return  $this->db
-              ->table('ani_schedule')
+        return  $this
               ->join('anime', 'ani_schedule.sc_id = anime.uid')
               ->where('sc_days', $Days)
               ->select('sc_days, sc_ep, sc_time, ani_schedule.sc_id, anime.ani_name')
@@ -24,24 +23,16 @@ class AnimeSchedule extends Model
           
     }
 
-
-
-
-
-
-
-    public function schedulenext($uid){
-        return $this->db
-            ->table('ani_schedule')
+    //Aşağıdaki Function Düzenlendi.
+    public function get_EpisodeSchedule($Uid){
+        return $this
             ->select('sc_days, sc_ep, sc_time')
             ->where('sc_days >', date('d'))
-            ->where('sc_id', $uid)
+            ->where('sc_id', $Uid)
             ->orderBy('sc_days')
             ->limit(1)
             ->get()
             ->getResultArray();
     }
     
-
-
 }
