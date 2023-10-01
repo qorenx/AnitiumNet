@@ -52,19 +52,17 @@ $routes->get('ajax/getCommentHome/(:any)', 'Anitium::get_CommentHome/$1');// Hom
 $routes->get('ajax/getScheduleDays/(:num)', 'Anitium::get_ScheduleDays/$1');// Home/Schedule.php içindeki Script!
 
 
-
+// AYRI SAYFALAR
 $routes->get('type/(:any)', 'Anitium::Anime_Type/$1/'); // localhost/type/VERİ olduğu kısımdır.
 $routes->get('az-list/(:any)', 'Anitium::AZ_List/$1/'); // localhost/az-list/VERİ olduğu kısımdır.
 $routes->get('genre/(:any)', 'Anitium::Genre_Search/$1/'); // localhost/genre/VERİ olduğu kısımdır.
 $routes->get('studio/(:any)', 'Anitium::Studio_Search/$1/'); // localhost/studio/VERİ olduğu kısımdır.
 $routes->get('producers/(:any)', 'Anitium::Producers_Search/$1/');// localhost/producers/VERİ olduğu kısımdır.
 
-
-// localhost/recently-updated  son eklenen animeler daha fazla.
-$routes->get('recently-updated', 'Anitium::Recently_Updated');
-
-
-
+$routes->get('recently-updated', 'Anitium::Recently_Updated');// localhost/recently-updated  son eklenen animeler daha fazla.
+ 
+// ANİME SAYFASIYLA İLGİLİ
+$routes->get('anime/(:any)', 'Anitium::Anime_Details/$1/'); // localhost/anime/VERİ olduğu kısmı çeker.
 
 
 
@@ -84,8 +82,7 @@ $routes->get('tos', function () {
 
 
 
-//Anime Sayfasındaki Animeleri Çeker
-$routes->get('anime/(:any)', 'Anime::anime_details/$1/');
+
 //anime random
 $routes->get('random', 'Anime::random');
 //Anime Search ve Filter kısmıdır.
@@ -324,5 +321,9 @@ $routes->group('cron', function ($routes) {
 
 
 
+//Bu sadece anitium.net çalışıyor.  Ek kodlar ve yazılım var. 
+$routes->get('getLicense/(:any)/(:any)/(:any)', 'License::getLicense/$1/$2/$3');
+$routes->get('getLicenseFile/(:any)', 'License::getLicenseFile/$1');
+$routes->get('verifylicense', 'License::verifylicense');
 
 
