@@ -43,7 +43,7 @@
                 echo "Completed";
                 break;
             default:
-                echo ($userstatus === 0) ? "Add to List" : "Add to List";
+                echo ($UserAnimeStatus === 0) ? "Add to List" : "Add to List";
         } ?>
     </a>
     <div class="dropdown-menu dropdown-menu-model" aria-labelledby="ssc-list">
