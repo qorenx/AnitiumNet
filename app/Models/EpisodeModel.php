@@ -171,19 +171,19 @@ class EpisodeModel extends Model
             "Episode" => $filteredEpisodes
         );
     }
-
-    public function episodedata($uid, $ep_id_name)
+    //Aşağıdaki Function Düzenlendi.
+    public function get_EpisodePrevandNext($Uid, $EpİD)
     {
         $types = $this->getTypeDetails();
         
         $episodeIndex = $this
             ->select('uid, ep_id_name, ep_name, ep_jname')
-            ->where('uid', $uid)
+            ->where('uid', $Uid)
             ->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')
             ->get()
             ->getResult();
     
-        $episodeIndexFinder = array_search($ep_id_name, array_column($episodeIndex, 'ep_id_name'));
+        $episodeIndexFinder = array_search($EpİD, array_column($episodeIndex, 'ep_id_name'));
     
         $episode_keys = [$episodeIndexFinder - 1, $episodeIndexFinder, $episodeIndexFinder + 1];
         $filteredEpisodes = [];
