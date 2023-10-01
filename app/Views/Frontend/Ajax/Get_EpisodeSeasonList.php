@@ -37,23 +37,22 @@
             $page = 0;
             $page_size = 100;
             $count_episodes = count($EpisodeListData);
-            $current_episode = $Current;
 
             for ($i = 0; $i < $count_episodes; $i++) {
                 if ($i % $page_size == 0) {
                     $page++;
-                    $display_style = ($page == 1) ? 'block' : 'none'; // add this line
-                    echo '<div id="episodes-page-' . $page . '" class="ss-list ss-list-min" data-page="' . $page . '" style="display: ' . $display_style . ';">'; // modify this line
+                    $display_style = ($page == 1) ? 'block' : 'none';
+                    echo '<div id="episodes-page-' . $page . '" class="ss-list ss-list-min" data-page="' . $page . '" style="display: ' . $display_style . ';">';
                 }
             ?>
-                <a id="getembed" class="ssl-item ep-item" title="<?= $EpisodeListData[$i]->ep_name ?>" data-jname="<?= $EpisodeListData[$i]->ep_jname ?>" onclick="handleClick(event,<?= $EpisodeListData[$i]->uid ?>,<?= $EpisodeListData[$i]->ep_id_name ?>)" href="/watch?anime=<?php
-                                                                                                                                                                                                                                                                                    $slug = trim(preg_replace("/[^\w\s\-]+/", "", $AnimeName), " ");
-                                                                                                                                                                                                                                                                                    $slug = preg_replace("/\s+|--/", "_", $slug);
-                                                                                                                                                                                                                                                                                    $slug = preg_replace("/\bii\b/", "II", $slug);
-                                                                                                                                                                                                                                                                                    $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
-                                                                                                                                                                                                                                                                                    $slug = ucfirst($slug);
-                                                                                                                                                                                                                                                                                    echo $slug;
-                                                                                                                                                                                                                                                                                    ?>&uid=<?= $EpisodeListData[$i]->uid ?>&eps=<?= $EpisodeListData[$i]->ep_id_name ?>">
+                <a id="getembed" class="ssl-item ep-item" title="<?= $EpisodeListData[$i]->ep_name ?>" data-jname="<?= $EpisodeListData[$i]->ep_jname ?>" onclick="getEmbedServer(event,<?= $EpisodeListData[$i]->uid ?>,<?= $EpisodeListData[$i]->ep_id_name ?>)" href="/watch?anime=<?php
+                                                                                                                                                                                                                                                                                        $slug = trim(preg_replace("/[^\w\s\-]+/", "", $AnimeName), " ");
+                                                                                                                                                                                                                                                                                        $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                                                                                                                                                                                                                                        $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                                                                                                                                                                                                                                        $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                                                                                                                                                                                                                                        $slug = ucfirst($slug);
+                                                                                                                                                                                                                                                                                        echo $slug;
+                                                                                                                                                                                                                                                                                        ?>&uid=<?= $EpisodeListData[$i]->uid ?>&eps=<?= $EpisodeListData[$i]->ep_id_name ?>">
                     <div class="ssli-order"><?= $EpisodeListData[$i]->ep_id_name ?></div>
                     <div class="ssli-detail">
                         <div class="ep-name e-dynamic-name"><?= $EpisodeListData[$i]->ep_name ?></div>

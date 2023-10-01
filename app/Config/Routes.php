@@ -73,10 +73,11 @@ $routes->get('ajax/gettorrentgrabber/(:any)', 'Converter::torrentgrabber/$1'); /
 $routes->get('watch', 'Anitium::Anime_Watch');
 
 // Anime Watch Embed, Liste, Server, PREV+NEXT kısmıdır.
-$routes->get('ajax/embed/(:any)/(:any)/(:any)', 'Converter::get_embed/$1/$2/$3');//Embed iframe Converter
-$routes->get('ajax/episodelist/(:any)/(:any)', 'Anitium::Get_EpisodeList/$1/$2');
-$routes->get('ajax/embedserver/(:any)/(:any)', 'Anitium::get_embedserver/$1/$2');
-$routes->get('ajax/episodeprevnext/(:any)/(:any)', 'Anitium::get_episodeprevnext/$1/$2');
+$routes->get('ajax/embed/(:num)/(:num)/(:num)', 'Converter::get_embed/$1/$2/$3');//Embed iframe Converter
+$routes->get('ajax/embedserver/(:num)/(:num)', 'Anitium::get_embedserver/$1/$2'); // İlgili Bölüm Embed Server Çağırır
+$routes->get('ajax/episodelist/(:num)', 'Anitium::Get_EpisodeList/$1');
+
+$routes->get('ajax/episodeprevnext/(:num)/(:num)', 'Anitium::get_episodeprevnext/$1/$2');
 
 
 

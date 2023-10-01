@@ -1,19 +1,18 @@
 <script>
-    const handleClick = (event, uid, epIdName) => {
-        event.preventDefault();
-        document.querySelectorAll('.ssl-item').forEach(item => item.classList.remove('active'));
-        event.currentTarget.classList.add('active');
-        let newUrl = '/watch?anime=<?= urlencode($_GET['anime']) ?>&uid=' + uid + '&eps=' + epIdName;
+    let currentRequest = null;
+    const getEmbedServer = async (event, uid, eps) => {
+
+        if (event) {
+            event.preventDefault();
+            document.querySelectorAll('.ssl-item').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+
+        let newUrl = '/watch?anime=<?= urlencode($_GET['anime']) ?>&uid=' + uid + '&eps=' + eps;
         history.pushState({
             path: newUrl
         }, '', newUrl);
-        getEmbedServer(uid, epIdName);
-        getRating(uid, epIdName);
-    }
 
-
-    let currentRequest = null;
-    const getEmbedServer = async (uid, eps) => {
         try {
             const thisRequest = {};
             currentRequest = thisRequest;
@@ -21,6 +20,10 @@
             let data = await apiFetch(`/ajax/embedserver/${uid}/${eps}`);
 
             if (thisRequest === currentRequest) {
+                if (document.querySelectorAll('.ssl-item').length > 0 && !event) {
+                    document.querySelector('.ssl-item').classList.add('active');
+                }
+
                 document.getElementById('player-servers').innerHTML = data.html;
                 if (data.embedFirst) {
                     document.getElementById('iframe-embed').innerHTML =
@@ -37,7 +40,7 @@
                     getEpisodePrevNext(uid, eps);
                 } else {
                     document.getElementById('embed-loading').innerHTML = '<img src="https://i.hizliresim.com/6bfh4ym.gif" style="width:100%; height:100%;position: absolute;">';
-                    document.getElementById('player-servers').innerHTML = '';
+                    document.getElementById('actor-lists').innerHTML = '';
                 }
             }
         } catch (error) {
@@ -45,8 +48,50 @@
         }
     }
 
+    document.addEventListener('DOMContentLoaded', () => getEmbedServer(null, <?php echo $_GET['uid']; ?>, <?php echo $_GET['eps']; ?>));
+</script>
+<script>
+    const getAnimeList = async () => {
+        try {
+            let data = await apiFetch(`/ajax/episodelist/<?php echo $_GET['uid']; ?>`);
+            document.getElementById('episodes-content').innerHTML = data.html;
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', getAnimeList);
+</script>
+<script>
+    document.addEventListener('click', function(event) {
+        if (event.target.matches('.ep-page-item')) {
+            let clickedElement = event.target;
+
+            document.querySelectorAll('.ep-page-item').forEach((element) => {
+                element.classList.remove('active');
+            });
+            document.querySelectorAll('.ep-page-item .ic-active').forEach((element) => {
+                element.style.display = 'none';
+            });
+            clickedElement.classList.add('active');
+            clickedElement.querySelector('.ic-active').style.display = 'block';
+            document.querySelectorAll('.ss-list-min').forEach((element) => {
+                element.style.display = 'none';
+            });
+            document.querySelectorAll('.ss-list-min').forEach((element) => {
+                element.classList.remove('active');
+            });
+            let pageId = `episodes-page-${clickedElement.dataset.page}`;
+            document.getElementById(pageId).style.display = 'block';
+            document.getElementById(pageId).classList.add('active');
+            document.getElementById('current-page').textContent = clickedElement.textContent.trim();
+        }
+    });
+</script>
 
 
+
+<script>
     let activeBtn;
     const apiFetch = async (url) => await (await fetch(url)).json();
 
@@ -108,16 +153,6 @@
         }
     }
 
-    const getAnimeList = async () => {
-        try {
-            let data = await apiFetch(`/ajax/episodelist/<?php echo $_GET['uid']; ?>/<?php echo $_GET['eps']; ?>`);
-            document.getElementById('episodes-content').innerHTML = data.html;
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', getAnimeList);
 
 
     const getEpisodePrevNext = async (uid, eps) => {
@@ -130,7 +165,6 @@
         }
     }
 
-    document.addEventListener('DOMContentLoaded', getEmbedServer(<?php echo $_GET['uid']; ?>, <?php echo $_GET['eps']; ?>));
 
 
 
@@ -198,19 +232,7 @@
         xhr.send();
     }
 </script>
-
 <script>
-    $(document).on("click", ".ep-page-item", function() {
-        $(".ep-page-item").removeClass("active"),
-            $(".ep-page-item .ic-active").hide(),
-            $(this).addClass("active"),
-            $(this).find(".ic-active").show(),
-            $(".ss-list-min").hide(),
-            $(".ss-list-min").removeClass("active"),
-            $("#episodes-page-" + $(this).data("page")).show(),
-            $("#episodes-page-" + $(this).data("page")).addClass("active"),
-            $("#current-page").text($(this).text().trim())
-    });
     $(document).ready(function() {
         $('.nav-button').click(function() {
             $('.nav-button.active').removeClass('active');
