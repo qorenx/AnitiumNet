@@ -222,13 +222,13 @@ class EpisodeModel extends Model
     }
 
 
-    public function episodelist($uid)
+    public function get_EpisodeList($Uid)
     {
         $types = $this->getTypeDetails();
     
         $allEpisodesData = $this
             ->select('uid, ep_id_name, ep_name, ep_jname')
-            ->where('uid', $uid)
+            ->where('uid', $Uid)
             ->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')
             ->get()
             ->getResult();

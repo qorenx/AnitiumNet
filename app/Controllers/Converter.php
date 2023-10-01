@@ -240,7 +240,7 @@ class Converter extends BaseController
 
         $playerVersion = 2 == 1 ? 'vidstack' : 'jwplayer';
         $temp_file = tempnam($temp_dir, 'iframe');
-        chmod($temp_file, 0777); // added this line to make sure the file permission is 0777
+        chmod($temp_file, 0777); 
         file_put_contents($temp_file, view('anime/getepisode/player/' . $playerVersion, [
             'getAdminSettings' => $modelsettings->getAdminSettings(),
             'play' => $play,

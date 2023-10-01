@@ -70,13 +70,13 @@ $routes->get('ajax/gettorrentgrabber/(:any)', 'Converter::torrentgrabber/$1'); /
 
 
 //Anime Watch Kısmıdır.
-
-//Anime İzleme. " ?anime= / uid=  / eps= " gibi ayrım yapılmaktadır.
-
 $routes->get('watch', 'Anitium::Anime_Watch');
 
-
-//$routes->get('watch', 'Anime::ani_watch');
+// Anime Watch Embed, Liste, Server, PREV+NEXT kısmıdır.
+$routes->get('ajax/embed/(:any)/(:any)/(:any)', 'Converter::get_embed/$1/$2/$3');//Embed iframe Converter
+$routes->get('ajax/episodelist/(:any)/(:any)', 'Anitium::Get_EpisodeList/$1/$2');
+$routes->get('ajax/embedserver/(:any)/(:any)', 'Anitium::get_embedserver/$1/$2');
+$routes->get('ajax/episodeprevnext/(:any)/(:any)', 'Anitium::get_episodeprevnext/$1/$2');
 
 
 
@@ -114,11 +114,7 @@ $routes->get('filter', 'Anime::filter');
 
 
 
-//Anime Converter Sistemidir
-$routes->get('embed/(:any)/(:any)/(:any)', 'Converter::get_embed/$1/$2/$3');
-$routes->get('ajax/episodelist/(:any)/(:any)', 'Anime::get_episodelist/$1/$2');
-$routes->get('ajax/embedserver/(:any)/(:any)', 'Anime::get_embedserver/$1/$2');
-$routes->get('ajax/episodeprevnext/(:any)/(:any)', 'Anime::get_episodeprevnext/$1/$2');
+
 
 
 //qtip test

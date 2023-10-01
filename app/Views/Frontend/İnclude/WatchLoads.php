@@ -1,4 +1,52 @@
 <script>
+    const handleClick = (event, uid, epIdName) => {
+        event.preventDefault();
+        document.querySelectorAll('.ssl-item').forEach(item => item.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        let newUrl = '/watch?anime=<?= urlencode($_GET['anime']) ?>&uid=' + uid + '&eps=' + epIdName;
+        history.pushState({
+            path: newUrl
+        }, '', newUrl);
+        getEmbedServer(uid, epIdName);
+        getRating(uid, epIdName);
+    }
+
+
+    let currentRequest = null;
+    const getEmbedServer = async (uid, eps) => {
+        try {
+            const thisRequest = {};
+            currentRequest = thisRequest;
+
+            let data = await apiFetch(`/ajax/embedserver/${uid}/${eps}`);
+
+            if (thisRequest === currentRequest) {
+                document.getElementById('player-servers').innerHTML = data.html;
+                if (data.embedFirst) {
+                    document.getElementById('iframe-embed').innerHTML =
+                        '<div class="loading-relative loading-box" id="embed-loading">' +
+                        '<div class="loading">' +
+                        '<div class="span1"></div>' +
+                        '<div class="span2"></div>' +
+                        '<div class="span3"></div>' +
+                        '</div>' +
+                        '</div>';
+                    getEmbed(uid, eps, data.embedFirst);
+                    getRating(uid, eps);
+                    getEpisodeCommentSystem(uid, eps);
+                    getEpisodePrevNext(uid, eps);
+                } else {
+                    document.getElementById('embed-loading').innerHTML = '<img src="https://i.hizliresim.com/6bfh4ym.gif" style="width:100%; height:100%;position: absolute;">';
+                    document.getElementById('player-servers').innerHTML = '';
+                }
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+
+
     let activeBtn;
     const apiFetch = async (url) => await (await fetch(url)).json();
 
@@ -30,7 +78,7 @@
                 '</div>' +
                 '</div>';
             replaceActiveBtn(embedId);
-            let data = await apiFetch(`/embed/${uid}/${eps}/${embedId}`);
+            let data = await apiFetch(`ajax/embed/${uid}/${eps}/${embedId}`);
             document.getElementById('iframe-embed').innerHTML = data[0];
             let ulContainer = document.getElementById("embed-list");
             ulContainer.innerHTML = '';
@@ -71,38 +119,6 @@
 
     document.addEventListener('DOMContentLoaded', getAnimeList);
 
-    let currentRequest = null;
-    const getEmbedServer = async (uid, eps) => {
-        try {
-            const thisRequest = {};
-            currentRequest = thisRequest;
-
-            let data = await apiFetch(`/ajax/embedserver/${uid}/${eps}`);
-
-            if (thisRequest === currentRequest) {
-                document.getElementById('player-servers').innerHTML = data.html;
-                if (data.embedFirst) {
-                    document.getElementById('iframe-embed').innerHTML =
-                        '<div class="loading-relative loading-box" id="embed-loading">' +
-                        '<div class="loading">' +
-                        '<div class="span1"></div>' +
-                        '<div class="span2"></div>' +
-                        '<div class="span3"></div>' +
-                        '</div>' +
-                        '</div>';
-                    getEmbed(uid, eps, data.embedFirst);
-                    getRating(uid, eps);
-                    getEpisodeCommentSystem(uid, eps);
-                    getEpisodePrevNext(uid, eps);
-                } else {
-                    document.getElementById('embed-loading').innerHTML = '<img src="https://i.hizliresim.com/6bfh4ym.gif" style="width:100%; height:100%;position: absolute;">';
-                    document.getElementById('player-servers').innerHTML = '';
-                }
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
 
     const getEpisodePrevNext = async (uid, eps) => {
         try {
@@ -116,17 +132,7 @@
 
     document.addEventListener('DOMContentLoaded', getEmbedServer(<?php echo $_GET['uid']; ?>, <?php echo $_GET['eps']; ?>));
 
-    const handleClick = (event, uid, epIdName) => {
-        event.preventDefault();
-        document.querySelectorAll('.ssl-item').forEach(item => item.classList.remove('active'));
-        event.currentTarget.classList.add('active');
-        let newUrl = '/watch?anime=<?= urlencode($_GET['anime']) ?>&uid=' + uid + '&eps=' + epIdName;
-        history.pushState({
-            path: newUrl
-        }, '', newUrl);
-        getEmbedServer(uid, epIdName);
-        getRating(uid, epIdName);
-    }
+
 
     const postVote = (voteValue, epUID, epID) => {
         let xhr = new XMLHttpRequest();
