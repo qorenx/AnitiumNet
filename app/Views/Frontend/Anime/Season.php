@@ -1,5 +1,4 @@
 <section id="block_area-seasons" class="block_area block_area-seasons"></section>
-
 <script>
     document.addEventListener("DOMContentLoaded", async () => {
         try {

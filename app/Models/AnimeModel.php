@@ -49,7 +49,8 @@ class AnimeModel extends Model
         'view_count_years'
     ];
 
-    public function getAnimeByUid($uid)
+    //Aşağıdaki function düzenlendi.
+    public function get_AnimeData($uid)
     {
         $result = $this
             ->table('anime')
@@ -83,8 +84,8 @@ class AnimeModel extends Model
         return $result;
     }
 
-
-    public function getEpisodeAndEmbedData($uid)
+    //Aşağıdaki function düzenlendi.
+    public function get_EpisodeAndEmbedData($uid)
     {
         $db = \Config\Database::connect();
         $episodeCountQuery = $db->table('episode')
@@ -243,9 +244,10 @@ class AnimeModel extends Model
             ->getResultArray();
     }
 
-    public function anirecommended()
+    //Aşağıdaki Function Düzenlendi.
+    public function AnimeRecommended()
     {
-        $query = $this->db->table('anime')
+        $query = $this
             ->whereIn('ani_stats', [1, 2])
             ->select('uid, ani_poster, ani_name, ani_type, ani_ep, ani_rate, ani_aired')
             ->orderBy('RAND()')
@@ -347,16 +349,17 @@ class AnimeModel extends Model
         return $result[0];
     }
 
-    public function animeseason($uid)
+    //Aşağıdaki Function Düzenlendi.
+    public function AnimeSeasonReleated($uid)
     {
-        $related = $this->fetchRelated([$uid], [], true);
+        $related = $this->fetchAnimeSeasonRelated([$uid], [], true);
         usort($related, function($a, $b) {
             return strcmp($a['ani_aired'], $b['ani_aired']);
         });
         return $related;
     }
     
-    private function fetchRelated($mal_ids, $already_fetched_mal_ids = [], $is_initial_call = false)
+    private function fetchAnimeSeasonRelated($mal_ids, $already_fetched_mal_ids = [], $is_initial_call = false)
     {
         $related = $this
             ->select('uid, ani_name, ani_poster, relations, IF(ani_aired IS NULL or ani_aired = "", "9999-12-31", ani_aired) as ani_aired')
@@ -411,10 +414,9 @@ class AnimeModel extends Model
             }
         }
         if (!empty($new_mal_ids)) {
-            $related = array_merge($related, $this->fetchRelated($new_mal_ids, $already_fetched_mal_ids));
+            $related = array_merge($related, $this->fetchAnimeSeasonRelated($new_mal_ids, $already_fetched_mal_ids));
         }
 
-        // Add array_reduce to keep array with unique uid only.
         $related = array_reduce($related, function ($carry, $item) {
             if (!isset($carry[$item['uid']])) {
                 $carry[$item['uid']] = $item;

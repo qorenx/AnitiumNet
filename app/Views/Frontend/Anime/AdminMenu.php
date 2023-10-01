@@ -6,7 +6,7 @@
         <a class="wl-item dropdown-item" href="<?= base_url('admin/anime/getanimeupdate?uid=') ?><?= $AnimeData['uid'] ?>">Anime Edit
         </a>
         <form method="post" action="<?= base_url('admin/anime/delete') ?>" onsubmit="return confirm('Delete?')">
-            <input type="hidden" name="animedelete" value="<?= $AnimeData['id'] ?>">
+            <input type="hidden" name="Anime_ID" value="<?= $AnimeData['id'] ?>">
             <button type="submit" class="wl-item dropdown-item">Anime Delete</button>
         </form>
     </div>

@@ -1,7 +1,7 @@
 <div id="vote-info"></div>
 <div id="ani_detail">
     <div class="ani_detail-stage">
-        <div class="container" style="max-width:100%!important;width:100%!important;">
+        <div class="container">
             <div class="anis-cover-wrap">
                 <div class="anis-cover" style="background-image: url(<?= $AnimeData['ani_poster'] ?>)"></div>
             </div>
@@ -106,7 +106,7 @@
                         <div class="film-stats">
                             <?php
                             $user = auth()->user();
-                            $animeEmbedCounts = $animeEpisodeData['embed_type_counts'];
+                            $animeEmbedCounts = $AnimeTypeandEpisodeCountData['embed_type_counts'];
                             $statusToEmbedMap = [
                                 "raw_status" => ["tick-raw", "fa-language", "1"],
                                 "sub_status" => ["tick-sub", "fa-closed-captioning", "2"],
@@ -123,7 +123,7 @@
                         </div>
                     </div>
                     <div class="film-buttons">
-                        <?php if (!empty($episodesData)) : ?>
+                        <?php if (!empty($EpisodeFirstData)) : ?>
                             <a href="/watch?anime=<?php
                                                     $slug = trim(preg_replace("/[^\w\s\-]+/", "", $AnimeData['ani_name']), " ");
                                                     $slug = preg_replace("/\s+|--/", "_", $slug);
@@ -131,7 +131,7 @@
                                                     $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
                                                     $slug = ucfirst($slug);
                                                     echo $slug;
-                                                    ?>&uid=<?= $AnimeData['uid'] ?>&eps=<?= $episodesData ?>" class="btn btn-radius btn-primary btn-play"><i class="fas fa-play mr-2"></i>Watch now</a>
+                                                    ?>&uid=<?= $AnimeData['uid'] ?>&eps=<?= $EpisodeFirstData ?>" class="btn btn-radius btn-primary btn-play"><i class="fas fa-play mr-2"></i>Watch now</a>
                         <?php endif; ?>
                         <?php if (auth()->loggedIn()) : ?>
                             <?= $this->include('Frontend/Anime/WatchStatus') ?>

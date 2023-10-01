@@ -259,7 +259,7 @@ class EpisodeModel extends Model
     
 
 
-    public function episodefirstdata($uid)
+    public function get_EpisodeFirstData($uid)
     {
         $defaultTypes = [1, 2, 3, 4];
         $user = auth()->user();
@@ -284,7 +284,7 @@ class EpisodeModel extends Model
                 }
                 $episode->type = $embedTypesAvailable;
                 $filteredEpisodes[] = $episode;
-                break; // Break after the first successful match
+                break;
             }
         }
         return isset($filteredEpisodes[0]) ? $filteredEpisodes[0]->ep_id_name : 0;

@@ -308,7 +308,7 @@ class Converter extends BaseController
         } else {
             return $this->response->setJSON(
                 [
-                    'html' => view('anime/getanime/ajax/gettorrent', ['gettorrent' => $data])
+                    'html' => view('Frontend/Ajax/Get_Torrent', ['gettorrent' => $data])
                 ]
             );
         }

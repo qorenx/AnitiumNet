@@ -9,7 +9,7 @@
         <div class="block_area-content block_area-list film_list film_list-grid film_list-wfeature">
             <div class="film_list-wrap">
 
-                <?php foreach (array_slice($animerecommended, 0, 24) as $anime) : ?>
+                <?php foreach ($AnimeRecommendedData as $AnimeData) : ?>
                     <div class="flw-item">
                         <div class="film-poster">
                             <?php
@@ -19,54 +19,54 @@
                                 6 => 'Rx'
                             ];
 
-                            if (isset($ratings[$anime['ani_rate']])) {
+                            if (isset($ratings[$AnimeData['ani_rate']])) {
                             ?>
                                 <div class="tick tick-rate">
-                                    <?php echo $ratings[$anime['ani_rate']]; ?>
+                                    <?php echo $ratings[$AnimeData['ani_rate']]; ?>
                                 </div>
                             <?php
                             }
                             ?>
-                            <div class="tick tick-eps">(<?php echo $anime['ani_ep'] ?> EPS)</div>
-                            <img class="film-poster-img ls-is-cached lazyloaded" src="<?php echo $anime['ani_poster'] ?>">
-                            <a href="/anime/<?php echo $anime['uid'] ?>/<?php
-                                                                        $slug = trim(preg_replace("/[^\w\s\-]+/", "", $anime['ani_name']), " ");
-                                                                        $slug = preg_replace("/\s+|--/", "_", $slug);
-                                                                        $slug = preg_replace("/\bii\b/", "II", $slug);
-                                                                        $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
-                                                                        $slug = ucfirst($slug);
-                                                                        echo $slug;
-                                                                        ?>>" class="film-poster-ahref" data-id="<?php echo $anime['uid'] ?>"><i class="fas fa-play"></i></a>
+                            <div class="tick tick-eps">(<?php echo $AnimeData['ani_ep'] ?> EPS)</div>
+                            <img class="film-poster-img ls-is-cached lazyloaded" src="<?php echo $AnimeData['ani_poster'] ?>">
+                            <a href="/anime/<?php echo $AnimeData['uid'] ?>/<?php
+                                                                            $slug = trim(preg_replace("/[^\w\s\-]+/", "", $AnimeData['ani_name']), " ");
+                                                                            $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                            $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                            $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                            $slug = ucfirst($slug);
+                                                                            echo $slug;
+                                                                            ?>>" class="film-poster-ahref" data-id="<?php echo $AnimeData['uid'] ?>"><i class="fas fa-play"></i></a>
                         </div>
                         <div class="film-detail">
-                            <h3 class="film-name"><a href="/anime/<?php echo $anime['uid'] ?>/<?php
-                                                                                                $slug = trim(preg_replace("/[^\w\s\-]+/", "", $anime['ani_name']), " ");
-                                                                                                $slug = preg_replace("/\s+|--/", "_", $slug);
-                                                                                                $slug = preg_replace("/\bii\b/", "II", $slug);
-                                                                                                $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
-                                                                                                $slug = ucfirst($slug);
-                                                                                                echo $slug;
-                                                                                                ?>" class="dynamic-name">
-                                    <?php echo $anime['ani_name'] ?>
+                            <h3 class="film-name"><a href="/anime/<?php echo $AnimeData['uid'] ?>/<?php
+                                                                                                    $slug = trim(preg_replace("/[^\w\s\-]+/", "", $AnimeData['ani_name']), " ");
+                                                                                                    $slug = preg_replace("/\s+|--/", "_", $slug);
+                                                                                                    $slug = preg_replace("/\bii\b/", "II", $slug);
+                                                                                                    $slug = preg_replace('/_-_|_{2,}/', '_', $slug);
+                                                                                                    $slug = ucfirst($slug);
+                                                                                                    echo $slug;
+                                                                                                    ?>" class="dynamic-name">
+                                    <?php echo $AnimeData['ani_name'] ?>
                                 </a></h3>
                             <div class="fd-infor">
                                 <span class="fdi-item">
                                     <?php
-                                    if ($anime['ani_type'] == 1) {
+                                    if ($AnimeData['ani_type'] == 1) {
                                         echo "TV";
-                                    } elseif ($anime['ani_type'] == 2) {
+                                    } elseif ($AnimeData['ani_type'] == 2) {
                                         echo "Movie";
-                                    } elseif ($anime['ani_type'] == 3) {
+                                    } elseif ($AnimeData['ani_type'] == 3) {
                                         echo "Ova";
-                                    } elseif ($anime['ani_type'] == 4) {
+                                    } elseif ($AnimeData['ani_type'] == 4) {
                                         echo "Ona";
-                                    } elseif ($anime['ani_type'] == 5) {
+                                    } elseif ($AnimeData['ani_type'] == 5) {
                                         echo "Special";
                                     }
                                     ?>
                                 </span>
                                 <?php
-                                $date = DateTime::createFromFormat("Y-m-d", $anime['ani_aired']);
+                                $date = DateTime::createFromFormat("Y-m-d", $AnimeData['ani_aired']);
                                 if (!empty($date)) {
                                     $formattedDate = $date->format("M j, Y");
                                 ?>

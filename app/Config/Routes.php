@@ -63,7 +63,9 @@ $routes->get('recently-updated', 'Anitium::Recently_Updated');// localhost/recen
  
 // ANİME SAYFASIYLA İLGİLİ
 $routes->get('anime/(:any)', 'Anitium::Anime_Details/$1/'); // localhost/anime/VERİ olduğu kısmı çeker.
-
+$routes->post('ajax/useranimestatus/(:num)/(:num)', 'Anitium::UserAnimeStatus/$1/$2/'); /// User Anime Status Günceller
+$routes->get('ajax/getanimeseason/(:any)', 'Anitium::get_AnimeSeason/$1');  //Anime Sezon Verisini Çeker.
+$routes->get('ajax/gettorrentgrabber/(:any)', 'Converter::torrentgrabber/$1'); // anime bilgileri kısmındaki torrent grabber
 
 
 
@@ -90,8 +92,7 @@ $routes->get('search', 'Anime::search');
 $routes->get('filter', 'Anime::filter');
 //Anime İzleme. " ?anime= / uid=  / eps= " gibi ayrım yapılmaktadır.
 $routes->get('watch', 'Anime::ani_watch');
-//Anime Status Ekleme yeridir.  Favori,Watching,Drop etc
-$routes->post('status/(:any)/(:any)/(:any)', 'Anime::statusupdate/$1/$2/$3/');
+
 
 //Anime Converter Sistemidir
 $routes->get('embed/(:any)/(:any)/(:any)', 'Converter::get_embed/$1/$2/$3');
@@ -106,14 +107,12 @@ $routes->get('ajax/qtip/(:any)', 'Anime::qtip/$1/');
 
 // AJAX BULUNDUĞU KISIM
 $routes->get('search/suggestions', 'Anime::suggestions');  // Bu kısım ajax çevirilecek. Düzeltilecektir.
-$routes->get('ajax/getanimeseason/(:any)', 'Anime::getAnimeSeason/$1');  //Anime Sezon Verisini Çeker.
 $routes->get('ajax/getfilter', 'Anime::getfilter');  // Anime Filter göre veri alır.
 $routes->get('ajax/episodevote/(:any)/(:any)/(:any)', 'Anime::episodevote/$1/$2/$3'); //Episode User Vote Verir
 $routes->get('ajax/episodegetvote/(:any)/(:any)', 'Anime::episodegetvote/$1/$2'); //Episode User GetVote alır.
 $routes->get('ajax/getboardlastpost', 'Anime::getboardlastpost'); //board.php içindeki ajax çalıştırıyor.
 $routes->get('ajax/getboardmypost', 'Anime::getboardmypost'); //mypost.php içindeki ajax çalıştırıyor.
 $routes->get('ajax/getboardtagpost', 'Anime::getboardtagpost'); //boardtag.php içindeki ajax çalıştıyor.
-$routes->get('ajax/torrentgrabber/(:any)', 'Converter::torrentgrabber/$1'); // anime bilgileri kısmındaki torrent grabber
 
 
 //Ajax Episode Comment Çağırma Yeri
@@ -232,8 +231,9 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         // anime getanimeupdate komutu ile myanimelist olan animeyi günceller.
         $routes->get('getanimeupdate', 'Admin::getAnimeupdate');
         $routes->post('getanimeupdate', 'Admin::getAnimeupdatesave');
-        // anime delete 
-        $routes->post('delete', 'Admin::animedelete');
+
+
+        $routes->post('delete', 'Anitium::AnimeDeleteID'); //Anime Deleted Function
     });
     $routes->group('anime', function ($routes) {
         //Anime slider günceller

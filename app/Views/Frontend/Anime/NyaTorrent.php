@@ -1,33 +1,12 @@
 <section id="torrent-grabbers" class="block_area block_area-torrent-grabbers">
     <script>
-        function myTorrentSearchFunction() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("torrentSearchİnput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("torrentSearch");
-            tr = table.getElementsByTagName("tr");
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
-
-    <script>
         const animeData = <?php echo json_encode($AnimeData); ?>;
         var attemptCount = 0;
 
-        async function fetchData() {
+        async function GetTorrentGrabber() {
             try {
                 const term = generateWordList(animeData);
-                const response = await fetch(`/ajax/torrentgrabber/${term.trim()}`);
+                const response = await fetch(`/ajax/gettorrentgrabber/${term.trim()}`);
                 const data = await response.json();
                 if (data['status'] === 0) {
                     attemptCount++;
@@ -37,7 +16,7 @@
                             elementToBeRemoved.parentNode.removeChild(elementToBeRemoved);
                         }
                     } else {
-                        fetchData();
+                        GetTorrentGrabber();
                     }
                 } else {
                     document.getElementById("torrent-grabbers").innerHTML = data['html'];
@@ -47,7 +26,7 @@
             }
         }
 
-        document.addEventListener("DOMContentLoaded", fetchData);
+        document.addEventListener("DOMContentLoaded", GetTorrentGrabber);
 
         function generateWordList(animeData) {
             const animeName = animeData.ani_name;
