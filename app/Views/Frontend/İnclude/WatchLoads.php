@@ -202,11 +202,42 @@
         };
         xhr.send();
     }
-    </script>
+</script>
+<script>
+    $(document).ready(function() {
+        $('.nav-button').click(function() {
+            $('.nav-button.active').removeClass('active');
+            $(this).addClass('active');
+            $('.content').hide();
+            $($(this).data('content')).show();
+        });
+    });
+</script>
+<script>
+    const textarea = document.getElementById('df-cm-content');
+    const buttonClose = document.getElementById('df-cm-close');
+    const divCiRight = document.querySelector('.ci-b-right');
+    textarea.addEventListener('click', () => {
+        divCiRight.style.display = 'block';
+    });
+    buttonClose.addEventListener('click', () => {
+        divCiRight.style.display = 'none';
+    });
+</script>
+<script>
+    function toggleReplies(postId) {
+        var replies = document.getElementById("replies-" + postId);
+        if (replies.style.display === "none") {
+            replies.style.display = "block";
+        } else {
+            replies.style.display = "none";
+        }
+    }
+</script>
 
 
-    <script>
 
+<script>
     const getEpisodeCommentSystem = async (uid, eps) => {
         try {
             let data = await apiFetch(`/ajax/episodecommentsystem/${uid}/${eps}`);
@@ -216,7 +247,6 @@
             console.error('Error:', error);
         }
     }
-
 
     function getEpisodeMoreComment(uid, eps) {
         var xhr = new XMLHttpRequest();
@@ -243,27 +273,9 @@
         xhr.send();
     }
 </script>
-<script>
-    $(document).ready(function() {
-        $('.nav-button').click(function() {
-            $('.nav-button.active').removeClass('active');
-            $(this).addClass('active');
-            $('.content').hide();
-            $($(this).data('content')).show();
-        });
-    });
-</script>
 
-<script>
-    function toggleReplies(postId) {
-        var replies = document.getElementById("replies-" + postId);
-        if (replies.style.display === "none") {
-            replies.style.display = "block";
-        } else {
-            replies.style.display = "none";
-        }
-    }
-</script>
+
+
 
 <script>
     function sendRequest(postid, url, callback) {
@@ -285,19 +297,19 @@
     }
 
     function addRepyLike(postid) {
-        sendRequest(postid, '/post/epmainlike/', getMainLike);
+        sendRequest(postid, 'ajax/epmainlike/', getMainLike);
     }
 
     function addRepyDislike(postid) {
-        sendRequest(postid, '/post/epmaindislike/', getMainLike);
+        sendRequest(postid, 'ajax/epmaindislike/', getMainLike);
     }
 
     function addRepycLike(postid) {
-        sendRequest(postid, '/post/eprepylike/', getRepyLike);
+        sendRequest(postid, 'ajax/eprepylike/', getRepyLike);
     }
 
     function addRepycDislike(postid) {
-        sendRequest(postid, '/post/eprepydislike/', getRepyLike);
+        sendRequest(postid, 'ajax/eprepydislike/', getRepyLike);
     }
 
     function fetchData(postid, url) {
@@ -317,21 +329,10 @@
     }
 
     function getMainLike(postid) {
-        fetchData(postid, "/ajax/getepmainlike/");
+        fetchData(postid, "ajax/getepmainlike/");
     }
 
     function getRepyLike(postid) {
-        fetchData(postid, "/ajax/geteprepylike/");
+        fetchData(postid, "ajax/geteprepylike/");
     }
-</script>
-<script>
-    const textarea = document.getElementById('df-cm-content');
-    const buttonClose = document.getElementById('df-cm-close');
-    const divCiRight = document.querySelector('.ci-b-right');
-    textarea.addEventListener('click', () => {
-        divCiRight.style.display = 'block';
-    });
-    buttonClose.addEventListener('click', () => {
-        divCiRight.style.display = 'none';
-    });
 </script>

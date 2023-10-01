@@ -44,6 +44,8 @@ $routes->set404Override();
 // http://localhost/  girdiğinde çıkan sayfa.
 $routes->get('/', 'Anitium::İndex');
 
+//Anime QTİP FUNCTİON
+$routes->get('ajax/qtip/(:any)', 'Anitium::Qtip/$1/');
 
 
 // HOME SAYFASI ROUTERS
@@ -58,6 +60,7 @@ $routes->get('az-list/(:any)', 'Anitium::AZ_List/$1/'); // localhost/az-list/VER
 $routes->get('genre/(:any)', 'Anitium::Genre_Search/$1/'); // localhost/genre/VERİ olduğu kısımdır.
 $routes->get('studio/(:any)', 'Anitium::Studio_Search/$1/'); // localhost/studio/VERİ olduğu kısımdır.
 $routes->get('producers/(:any)', 'Anitium::Producers_Search/$1/');// localhost/producers/VERİ olduğu kısımdır.
+$routes->get('random', 'Anitium::RandomAnime'); //Rastgele bir anime açar.
 
 $routes->get('recently-updated', 'Anitium::Recently_Updated');// localhost/recently-updated  son eklenen animeler daha fazla.
  
@@ -78,9 +81,26 @@ $routes->get('ajax/embedserver/(:num)/(:num)', 'Anitium::Get_EpisodeServer/$1/$2
 $routes->get('ajax/episodelist/(:num)', 'Anitium::Get_EpisodeList/$1'); // Episode Listesi çeker.
 $routes->get('ajax/episodeprevnext/(:num)/(:num)', 'Anitium::Get_EpisodePrevNext/$1/$2'); // Mevcut Episode Prev-Next çağırır.
 
-$routes->post('ajax/episodevote/(:any)/(:any)/(:any)', 'Anitium::Post_EpisodeVote/$1/$2/$3'); //Episode User Vote Verir
-$routes->get('ajax/episodegetvote/(:any)/(:any)', 'Anitium::Get_EpisodeVote/$1/$2'); //Episode User GetVote alır.
+$routes->post('ajax/episodevote/(:num)/(:num)/(:num)', 'Anitium::Post_EpisodeVote/$1/$2/$3'); //Episode User Vote Verir
+$routes->get('ajax/episodegetvote/(:num)/(:num)', 'Anitium::Get_EpisodeVote/$1/$2'); //Episode User GetVote alır.
 
+//Episode Watch olduğu yerde yorum sistemi
+$routes->get('ajax/episodecommentsystem/(:num)/(:num)', 'Anitium::Get_EpisodeCommentSystem/$1/$2'); //Yorum Sistemi Çağırır.
+$routes->get('ajax/episodemorecomment/(:num)/(:num)', 'Anitium::Get_EpisodeCommentSystemMore/$1/$2'); //Yorum daha çok çağırır.
+
+//Episode yorum sisteminde yorum gönderme yeridir.
+$routes->post('ajax/ep_main_insert', 'Anitium::EpisodeCommentİnsert');
+$routes->post('ajax/ep_reply_insert', 'Anitium::EpisodeCommentReplyİnsert');
+
+//Episode Like GET Kısmıdır.
+$routes->get('ajax/getepmainlike/(:num)', 'Anitium::getepmainlike/$1/');
+$routes->get('ajax/geteprepylike/(:num)', 'Anitium::geteprepylike/$1/');
+///Episode Main Like and Dislike
+$routes->post('ajax/epmainlike/(:num)', 'Anitium::episodemainlike/$1/');
+$routes->post('ajax/epmaindislike/(:num)', 'Anitium::episodemaindislike/$1/');
+///Episode Repy Like and Dislike
+$routes->post('ajax/eprepylike/(:num)', 'Anitium::episoderepylike/$1/');
+$routes->post('ajax/eprepydislike/(:num)', 'Anitium::episoderepydislike/$1/');
 
 
 
@@ -107,19 +127,10 @@ $routes->get('tos', function () {
 
 
 
-//anime random
-$routes->get('random', 'Anime::random');
 //Anime Search ve Filter kısmıdır.
 $routes->get('search', 'Anime::search');
 $routes->get('filter', 'Anime::filter');
 
-
-
-
-
-
-//qtip test
-$routes->get('ajax/qtip/(:any)', 'Anime::qtip/$1/');
 
 
 // AJAX BULUNDUĞU KISIM
@@ -131,18 +142,7 @@ $routes->get('ajax/getboardmypost', 'Anime::getboardmypost'); //mypost.php için
 $routes->get('ajax/getboardtagpost', 'Anime::getboardtagpost'); //boardtag.php içindeki ajax çalıştıyor.
 
 
-//Ajax Episode Comment Çağırma Yeri
-$routes->get('ajax/episodecommentsystem/(:any)/(:any)', 'Anime::get_episodecommentsystem/$1/$2');
-$routes->get('ajax/episodemorecomment/(:any)/(:any)', 'Anime::get_episodemorecomment/$1/$2'); //ajax ile episode altındaki yorumları çeker.
-//Episode Altındaki Ana Yorumu Gönderir
-$routes->post('ajax/episodemaincommentinsert', 'Anime::episodecommentinsert');
-$routes->post('ajax/episoderepycommentinsert', 'Anime::episodecommentrepyinsert');
 
-
-
-//Episode Like GET Kısmıdır.
-$routes->get('ajax/getepmainlike/(:any)', 'Anime::getepmainlike/$1/');
-$routes->get('ajax/geteprepylike/(:any)', 'Anime::geteprepylike/$1/');
 
 //Community Like GET Kısmıdır.
 $routes->get('ajax/getcommunityvote/(:any)', 'Anime::getcommunityvote/$1/');
@@ -152,12 +152,7 @@ $routes->get('ajax/getcommunityrepylike/(:any)', 'Anime::getcommunityrepylike/$1
 
 
 
-///Episode Main Like and Dislike
-$routes->post('post/epmainlike/(:any)', 'Anime::episodemainlike/$1/');
-$routes->post('post/epmaindislike/(:any)', 'Anime::episodemaindislike/$1/');
-///Episode Repy Like and Dislike
-$routes->post('post/eprepylike/(:any)', 'Anime::episoderepylike/$1/');
-$routes->post('post/eprepydislike/(:any)', 'Anime::episoderepydislike/$1/');
+
 
 
 
@@ -314,26 +309,6 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->get('(:any)', 'Admin::settings/$1');
     });
 });
-
-
-
-// Anime View ve Episode View Sayısı silme için.
-$routes->group('cron', function ($routes) {
-    $routes->get('clearAnimeViewCount', 'Cron::clearAnimeViewCount');
-    $routes->get('clearAnimeViewCountMonth', 'Cron::clearAnimeViewCountMonth');
-    $routes->get('clearAnimeViewCountYear', 'Cron::clearAnimeViewCountYear');
-    $routes->get('clearEpisodeViewCount', 'Cron::clearEpisodeViewCount');
-    $routes->get('clearEpisodeViewCountMonth', 'Cron::clearEpisodeViewCountMonth');
-    $routes->get('clearEpisodeViewCountYear', 'Cron::clearEpisodeViewCountYear');
-});
-//Günlük Url= https://anitium.net/cron/clearAnimeViewCount
-//Haftalık Url= https://anitium.net/cron/clearAnimeViewCountMonth
-//Yıllık Url= https://anitium.net/cron/clearAnimeViewCountYear
-
-//Günlük  Url= https://anitium.net/cron/clearEpisodeViewCount
-//Haftalık  Url= https://anitium.net/cron/clearEpisodeViewCountMonth
-//Aylık Url= https://anitium.net/cron/clearEpisodeViewCountYear
-
 
 
 
