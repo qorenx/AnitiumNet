@@ -205,14 +205,14 @@ class EpisodeModel extends Model
                         $embedTypesAvailable[$embed->embed_type] = 1;
                     }
                     $episode->type = $embedTypesAvailable;
-                    $filteredEpisodes[] = $episode;
+                    $filteredEpisodes[$key] = $episode;
                 }
             }
         }
     
-        $previousEpisode = isset($filteredEpisodes[0]) ? $filteredEpisodes[0] : null;
-        $currentEpisode = isset($filteredEpisodes[1]) ? $filteredEpisodes[1] : null;
-        $nextEpisode = isset($filteredEpisodes[2]) ? $filteredEpisodes[2] : null;
+        $previousEpisode = isset($filteredEpisodes[$episodeIndexFinder - 1]) ? $filteredEpisodes[$episodeIndexFinder - 1] : null;
+        $currentEpisode = isset($filteredEpisodes[$episodeIndexFinder]) ? $filteredEpisodes[$episodeIndexFinder] : null;
+        $nextEpisode = isset($filteredEpisodes[$episodeIndexFinder + 1]) ? $filteredEpisodes[$episodeIndexFinder + 1] : null;
     
         return array(
             "Previous" => $previousEpisode,
