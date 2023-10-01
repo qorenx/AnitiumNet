@@ -78,8 +78,8 @@ $routes->get('ajax/embedserver/(:num)/(:num)', 'Anitium::Get_EpisodeServer/$1/$2
 $routes->get('ajax/episodelist/(:num)', 'Anitium::Get_EpisodeList/$1'); // Episode Listesi çeker.
 $routes->get('ajax/episodeprevnext/(:num)/(:num)', 'Anitium::Get_EpisodePrevNext/$1/$2'); // Mevcut Episode Prev-Next çağırır.
 
-$routes->get('ajax/episodevote/(:any)/(:any)/(:any)', 'Anime::episodevote/$1/$2/$3'); //Episode User Vote Verir
-$routes->get('ajax/episodegetvote/(:any)/(:any)', 'Anime::episodegetvote/$1/$2'); //Episode User GetVote alır.
+$routes->post('ajax/episodevote/(:any)/(:any)/(:any)', 'Anitium::Post_EpisodeVote/$1/$2/$3'); //Episode User Vote Verir
+$routes->get('ajax/episodegetvote/(:any)/(:any)', 'Anitium::Get_EpisodeVote/$1/$2'); //Episode User GetVote alır.
 
 
 

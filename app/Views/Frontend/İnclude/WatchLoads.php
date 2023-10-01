@@ -68,35 +68,17 @@
             console.error('Error:', error);
         }
     }
-</script>
-<script>
-    //Episode Sezon Listesi olduğu zaman "Select" içindeki "1-100 veya 401-500 gibi yerleri seçiyor."
-    document.addEventListener('click', function(event) {
-        if (event.target.matches('.ep-page-item')) {
-            let clickedElement = event.target;
 
-            document.querySelectorAll('.ep-page-item').forEach((element) => {
-                element.classList.remove('active');
-            });
-            document.querySelectorAll('.ep-page-item .ic-active').forEach((element) => {
-                element.style.display = 'none';
-            });
-            clickedElement.classList.add('active');
-            clickedElement.querySelector('.ic-active').style.display = 'block';
-            document.querySelectorAll('.ss-list-min').forEach((element) => {
-                element.style.display = 'none';
-            });
-            document.querySelectorAll('.ss-list-min').forEach((element) => {
-                element.classList.remove('active');
-            });
-            let pageId = `episodes-page-${clickedElement.dataset.page}`;
-            document.getElementById(pageId).style.display = 'block';
-            document.getElementById(pageId).classList.add('active');
-            document.getElementById('current-page').textContent = clickedElement.textContent.trim();
+    const getEpisodePrevNext = async (uid, eps) => {
+        try {
+            let data = await apiFetch(`ajax/episodeprevnext/${uid}/${eps}`);
+            document.getElementById('episode-prev-next').innerHTML = data.html;
+
+        } catch (error) {
+            console.error('Error:', error);
         }
-    });
+    }
 </script>
-
 <script>
     // Embed ve MultiEmbed Çeker.
     let activeBtn;
@@ -135,7 +117,11 @@
             let ulContainer = document.getElementById("embed-list");
             ulContainer.innerHTML = '';
             if (Array.isArray(data)) {
-                data.forEach((url) => {
+                data.forEach((url, index) => {
+                    if (index === 1) {
+                        let firstElement = ulContainer.getElementsByTagName('span')[0];
+                        if (firstElement) firstElement.remove();
+                    }
                     let li = document.createElement("span");
                     li.className = "toggle-basic";
                     li.style.margin = '10px';
@@ -161,33 +147,34 @@
     }
 </script>
 <script>
-    const getEpisodePrevNext = async (uid, eps) => {
-        try {
-            let data = await apiFetch(`ajax/episodeprevnext/${uid}/${eps}`);
-            document.getElementById('episode-prev-next').innerHTML = data.html;
+    //Episode Sezon Listesi olduğu zaman "Select" içindeki "1-100 veya 401-500 gibi yerleri seçiyor."
+    document.addEventListener('click', function(event) {
+        if (event.target.matches('.ep-page-item')) {
+            let clickedElement = event.target;
 
-        } catch (error) {
-            console.error('Error:', error);
+            document.querySelectorAll('.ep-page-item').forEach((element) => {
+                element.classList.remove('active');
+            });
+            document.querySelectorAll('.ep-page-item .ic-active').forEach((element) => {
+                element.style.display = 'none';
+            });
+            clickedElement.classList.add('active');
+            clickedElement.querySelector('.ic-active').style.display = 'block';
+            document.querySelectorAll('.ss-list-min').forEach((element) => {
+                element.style.display = 'none';
+            });
+            document.querySelectorAll('.ss-list-min').forEach((element) => {
+                element.classList.remove('active');
+            });
+            let pageId = `episodes-page-${clickedElement.dataset.page}`;
+            document.getElementById(pageId).style.display = 'block';
+            document.getElementById(pageId).classList.add('active');
+            document.getElementById('current-page').textContent = clickedElement.textContent.trim();
         }
-    }
-    </script>
+    });
+</script>
 <script>
-
-    const postVote = (voteValue, epUID, epID) => {
-        let xhr = new XMLHttpRequest();
-        xhr.open("GET", '/ajax/episodevote/' + voteValue + '/' + epUID + '/' + epID, true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.setRequestHeader("Accept", "application/json");
-        xhr.onerror = function() {
-            console.error('Request failed.');
-        }
-        xhr.onload = function() {
-            if (this.readyState === 4 && this.status === 200) getRating(epUID, epID);
-            else console.error('Error:', xhr.status, xhr.statusText);
-        };
-        xhr.send();
-    }
-
+    //Episode Rating çekiyor ayrıca POST yaparak oy verebiliyor.
     const getRating = (uid, epIdName) => {
         let fn = function() {
             if (this.readyState === 4 && this.status === 200) {
@@ -200,9 +187,24 @@
         xhr.open("GET", "/ajax/episodegetvote/" + uid + "/" + epIdName, true);
         xhr.send();
     }
+
+    const EpisodeVote = (voteValue, epUID, epID) => {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", '/ajax/episodevote/' + voteValue + '/' + epUID + '/' + epID, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.onerror = function() {
+            console.error('Request failed.');
+        }
+        xhr.onload = function() {
+            if (this.readyState === 4 && this.status === 200) getRating(epUID, epID);
+            else console.error('Error:', xhr.status, xhr.statusText);
+        };
+        xhr.send();
+    }
     </script>
 
-    
+
     <script>
 
     const getEpisodeCommentSystem = async (uid, eps) => {

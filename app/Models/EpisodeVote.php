@@ -17,17 +17,18 @@ class EpisodeVote extends Model
         'anime_ep_score'
     ];
 
-    public function episodevote($vote, $uid, $epid, $userid)
+    public function Post_EpisodeVote($Vote, $Uıd, $EpID)
     {
+        $UserID = auth()->id();
         $table = $this->db->table('episode_vote');
         $conditions = [
-            'user_id' => $userid,
-            'anime_id' => $uid,
-            'anime_ep_id' => $epid,
+            'user_id' => $UserID,
+            'anime_id' => $Uıd,
+            'anime_ep_id' => $EpID,
         ];
         $exists = $table->where($conditions)->countAllResults();
     
-        $data = ['anime_ep_score' => $vote];
+        $data = ['anime_ep_score' => $Vote];
     
         if ($exists > 0) {
             $table->where($conditions)->update($data);
