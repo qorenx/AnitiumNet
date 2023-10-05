@@ -112,6 +112,17 @@ $routes->post('ajax/eprepydislike/(:num)', 'Anitium::episoderepydislike/$1/');
 
 
 
+//ÜYE PROFİL KISMI
+$routes->group('user', ['filter' => 'group:user,admin,superadmin'], function ($routes) {
+    $routes->get('(:any)/(:any)', 'Anitium::User_Profile/$1/$2');
+    $routes->get('(:any)', 'Anitium::User_Profile/$1');
+});
+$routes->post('post/usersettingsupdate', 'Anitium::UserSettingsUpdate');
+
+
+
+
+$routes->get('users/logout', 'Anitium::userlogout');
 
 
 
@@ -145,8 +156,6 @@ $routes->get('ajax/getboardmypost', 'Anime::getboardmypost'); //mypost.php için
 $routes->get('ajax/getboardtagpost', 'Anime::getboardtagpost'); //boardtag.php içindeki ajax çalıştıyor.
 
 
-
-
 //Community Like GET Kısmıdır.
 $routes->get('ajax/getcommunityvote/(:any)', 'Anime::getcommunityvote/$1/');
 $routes->get('ajax/getcommunitymainlike/(:any)', 'Anime::getcommunitymainlike/$1/');
@@ -157,15 +166,6 @@ $routes->get('ajax/getcommunityrepylike/(:any)', 'Anime::getcommunityrepylike/$1
 
 
 
-
-
-///ÜYELERLE ALAKALI BİRKAÇ AYAR
-$routes->group('user', ['filter' => 'group:user,admin,superadmin'], function ($routes) {
-    $routes->get('(:any)/(:any)', 'Anime::userprofile/$1/$2');
-    $routes->get('(:any)', 'Anime::userprofile/$1');
-});
-$routes->post('profil/update', 'Anime::settingsupdate');
-$routes->get('users/logout', 'Anime::userlogout');
 
 
 
