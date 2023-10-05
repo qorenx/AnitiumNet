@@ -63,7 +63,13 @@ $routes->get('producers/(:any)', 'Anitium::Producers_Search/$1/');// localhost/p
 $routes->get('random', 'Anitium::RandomAnime'); //Rastgele bir anime açar.
 
 $routes->get('recently-updated', 'Anitium::Recently_Updated');// localhost/recently-updated  son eklenen animeler daha fazla.
- 
+
+$routes->get('search', 'Anitium::Anime_Search'); //Anime Arama Çubuğu Yazdığın Veri Bulunur.
+$routes->get('filter', 'Anitium::Anime_Filter'); //Anime Filter
+$routes->get('ajax/getfilter', 'Anitium::Anime_GetFilter');  // Anime Filter Ajax Get
+$routes->get('search/suggestions', 'Anitium::Anime_Suggestions');  // Arama Yapılırken Öneri Veren Kısım.
+
+
 // ANİME SAYFASIYLA İLGİLİ
 $routes->get('anime/(:any)', 'Anitium::Anime_Details/$1/'); // localhost/anime/VERİ olduğu kısmı çeker.
 $routes->post('ajax/useranimestatus/(:num)/(:num)', 'Anitium::UserAnimeStatus/$1/$2/'); /// User Anime Status Günceller
@@ -111,6 +117,7 @@ $routes->post('ajax/eprepydislike/(:num)', 'Anitium::episoderepydislike/$1/');
 
 
 
+
 $routes->get('dmca', function () {
     return redirect('/');
 });
@@ -127,15 +134,11 @@ $routes->get('tos', function () {
 
 
 
-//Anime Search ve Filter kısmıdır.
-$routes->get('search', 'Anime::search');
-$routes->get('filter', 'Anime::filter');
+
 
 
 
 // AJAX BULUNDUĞU KISIM
-$routes->get('search/suggestions', 'Anime::suggestions');  // Bu kısım ajax çevirilecek. Düzeltilecektir.
-$routes->get('ajax/getfilter', 'Anime::getfilter');  // Anime Filter göre veri alır.
 
 $routes->get('ajax/getboardlastpost', 'Anime::getboardlastpost'); //board.php içindeki ajax çalıştırıyor.
 $routes->get('ajax/getboardmypost', 'Anime::getboardmypost'); //mypost.php içindeki ajax çalıştırıyor.
