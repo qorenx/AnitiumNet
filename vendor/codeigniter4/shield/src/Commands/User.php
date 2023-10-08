@@ -4,33 +4,22 @@ declare(strict_types=1);
 
 namespace CodeIgniter\Shield\Commands;
 
-use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\Shield\Authentication\Authenticators\Session;
 use CodeIgniter\Shield\Commands\Exceptions\BadInputException;
 use CodeIgniter\Shield\Commands\Exceptions\CancelException;
-use CodeIgniter\Shield\Commands\Utils\InputOutput;
 use CodeIgniter\Shield\Config\Auth;
 use CodeIgniter\Shield\Entities\User as UserEntity;
 use CodeIgniter\Shield\Exceptions\UserNotFoundException;
 use CodeIgniter\Shield\Models\UserModel;
-use CodeIgniter\Shield\Validation\RegistrationValidationRules;
+use CodeIgniter\Shield\Validation\ValidationRules;
 use Config\Services;
 
 class User extends BaseCommand
 {
-    private static ?InputOutput $io = null;
-    private array $validActions     = [
+    private array $validActions = [
         'create', 'activate', 'deactivate', 'changename', 'changeemail',
         'delete', 'password', 'list', 'addgroup', 'removegroup',
     ];
-
-    /**
-     * The group the command is lumped under
-     * when listing commands.
-     *
-     * @var string
-     */
-    protected $group = 'Shield';
 
     /**
      * Command's name
@@ -137,7 +126,6 @@ class User extends BaseCommand
      */
     public function run(array $params): int
     {
-        $this->ensureInputOutput();
         $this->setTables();
         $this->setValidationRules();
 
@@ -219,9 +207,9 @@ class User extends BaseCommand
 
     private function setValidationRules(): void
     {
-        $validationRules = new RegistrationValidationRules();
+        $validationRules = new ValidationRules();
 
-        $rules = $validationRules->get();
+        $rules = $validationRules->getRegistrationRules();
 
         // Remove `strong_password` because it only supports use cases
         // to check the user's own password.
@@ -230,6 +218,9 @@ class User extends BaseCommand
             $passwordRules = explode('|', $passwordRules);
         }
         if (($key = array_search('strong_password[]', $passwordRules, true)) !== false) {
+            unset($passwordRules[$key]);
+        }
+        if (($key = array_search('strong_password', $passwordRules, true)) !== false) {
             unset($passwordRules[$key]);
         }
 
@@ -246,31 +237,6 @@ class User extends BaseCommand
             'email'    => $rules['email'],
             'password' => $rules['password'],
         ];
-    }
-
-    /**
-     * Asks the user for input.
-     *
-     * @param string       $field      Output "field" question
-     * @param array|string $options    String to a default value, array to a list of options (the first option will be the default value)
-     * @param array|string $validation Validation rules
-     *
-     * @return string The user input
-     */
-    private function prompt(string $field, $options = null, $validation = null): string
-    {
-        return self::$io->prompt($field, $options, $validation);
-    }
-
-    /**
-     * Outputs a string to the cli on its own line.
-     */
-    private function write(
-        string $text = '',
-        ?string $foreground = null,
-        ?string $background = null
-    ): void {
-        self::$io->write($text, $foreground, $background);
     }
 
     /**
@@ -688,28 +654,5 @@ class User extends BaseCommand
         $this->checkUserExists($user);
 
         return $userModel->findById($user['id']);
-    }
-
-    private function ensureInputOutput(): void
-    {
-        if (self::$io === null) {
-            self::$io = new InputOutput();
-        }
-    }
-
-    /**
-     * @internal Testing purpose only
-     */
-    public static function setInputOutput(InputOutput $io): void
-    {
-        self::$io = $io;
-    }
-
-    /**
-     * @internal Testing purpose only
-     */
-    public static function resetInputOutput(): void
-    {
-        self::$io = null;
     }
 }

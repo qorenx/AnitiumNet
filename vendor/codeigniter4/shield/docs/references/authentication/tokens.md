@@ -56,6 +56,12 @@ Typically, the plain text token is retrieved from the request's headers as part 
 process. If you need to revoke the token for another user as an admin, and don't have access to the
 token, you would need to get the user's access tokens and delete them manually.
 
+If you don't have the raw token usable to remove the token there is the possibility to remove it using the tokens secret thats stored in the database. It's possible to get a list of all tokens with there secret using the `accessTokens()` function.
+
+```php
+$user->revokeAccessTokenBySecret($secret);
+```
+
 You can revoke all access tokens with the `revokeAllAccessTokens()` method.
 
 ```php
@@ -81,7 +87,7 @@ $tokens = $user->accessTokens();
 
 Tokens will expire after a specified amount of time has passed since they have been used.
 By default, this is set to 1 year. You can change this value by setting the `$unusedTokenLifetime`
-value in the `Auth` config file. This is in seconds so that you can use the
+value in the **app/Config/AuthToken.php** config file. This is in seconds so that you can use the
 [time constants](https://codeigniter.com/user_guide/general/common_functions.html#time-constants)
 that CodeIgniter provides.
 

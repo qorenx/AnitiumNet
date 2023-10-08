@@ -5,7 +5,7 @@ These instructions assume that you have already [installed the CodeIgniter 4 app
 ## Requirements
 
 - [Composer](https://getcomposer.org)
-- Codeigniter **v4.2.7** or later
+- Codeigniter **v4.3.5** or later
 - A created database that you can access via the Spark CLI script
   - InnoDB (not MyISAM) is required if MySQL is used.
 
@@ -54,48 +54,23 @@ Require it with an explicit version constraint allowing its desired stability.
 
 ## Initial Setup
 
+There are a few setup items to do before you can start using Shield in
+your project.
+
 ### Command Setup
 
-1. Run the following command. This command handles steps 1-5 of *Manual Setup* and runs the migrations.
+1. Run the following command. This command handles steps 1-6 of *Manual Setup*.
 
     ```console
     php spark shield:setup
     ```
 
-    > **Note**
-    > If you want to customize table names, you must change the table names
-    > before running database migrations.
-    > See [Customizing Table Names](../customization/table_names.md).
+    !!! note
 
-2. Configure **app/Config/Email.php** to allow Shield to send emails with the [Email Class](https://codeigniter.com/user_guide/libraries/email.html).
-
-    ```php
-    <?php
-
-    namespace Config;
-
-    use CodeIgniter\Config\BaseConfig;
-
-    class Email extends BaseConfig
-    {
-        /**
-         * @var string
-         */
-        public $fromEmail = 'your_mail@example.com';
-
-        /**
-         * @var string
-         */
-        public $fromName = 'your name';
-
-        // ...
-    }
-    ```
+        If you want to customize table names, you must change the table names before running database migrations.
+        See [Customizing Table Names](../customization/table_names.md).
 
 ### Manual Setup
-
-There are a few setup items to do before you can start using Shield in
-your project.
 
 1. Copy the **Auth.php**, **AuthGroups.php**, and **AuthToken.php** from **vendor/codeigniter4/shield/src/Config/** into your project's config folder and update the namespace to `Config`. You will also need to have these classes extend the original classes. See the example below. These files contain all the settings, group, and permission information for your application and will need to be modified to meet the needs of your site.
 
@@ -136,14 +111,31 @@ your project.
     service('auth')->routes($routes);
     ```
 
-4. **Security Setup** Set `Config\Security::$csrfProtection` to `'session'` (or set `security.csrfProtection = session` in your **.env** file) for security reasons, if you use Session Authenticator.
+4. **Security Setup** Set `Config\Security::$csrfProtection` to `'session'` for security reasons, if you use Session Authenticator.
 
-5. **Migration** Run the migrations.
+5. Configure **app/Config/Email.php** to allow Shield to send emails with the [Email Class](https://codeigniter.com/user_guide/libraries/email.html).
 
-    > **Note**
-    > If you want to customize table names, you must change the table names
-    > before running database migrations.
-    > See [Customizing Table Names](../customization/table_names.md).
+    ```php
+    <?php
+
+    namespace Config;
+
+    use CodeIgniter\Config\BaseConfig;
+
+    class Email extends BaseConfig
+    {
+        public string $fromEmail  = 'your_mail@example.com';
+        public string $fromName   = 'your name';
+        // ...
+    }
+    ```
+
+6. **Migration** Run the migrations.
+
+    !!! note
+
+        If you want to customize table names, you must change the table names before running database migrations.
+        See [Customizing Table Names](../customization/table_names.md).
 
     ```console
     php spark migrate --all
@@ -155,28 +147,3 @@ your project.
 
     1. Remove sample migration files in **tests/_support/Database/Migrations/**
     2. Or install `sqlite3` php extension
-
-6. Configure **app/Config/Email.php** to allow Shield to send emails.
-
-    ```php
-    <?php
-
-    namespace Config;
-
-    use CodeIgniter\Config\BaseConfig;
-
-    class Email extends BaseConfig
-    {
-        /**
-         * @var string
-         */
-        public $fromEmail = 'your_mail@example.com';
-
-        /**
-         * @var string
-         */
-        public $fromName = 'your name';
-
-        // ...
-    }
-    ```

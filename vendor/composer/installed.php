@@ -3,7 +3,7 @@
         'name' => 'codeigniter4/framework',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'c13b0306bb7a74ce284dca1a35c24b42882c4640',
+        'reference' => '2ba743ba2b5c5c28778bad00c94178a382c059fb',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -28,7 +28,7 @@
         'codeigniter4/framework' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'c13b0306bb7a74ce284dca1a35c24b42882c4640',
+            'reference' => '2ba743ba2b5c5c28778bad00c94178a382c059fb',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -46,7 +46,7 @@
         'codeigniter4/shield' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '8c4276b50c786b1e000ba6e488040f17c2d700db',
+            'reference' => '112ba2a15734b59255186eb7f65f8f727a3885f6',
             'type' => 'library',
             'install_path' => __DIR__ . '/../codeigniter4/shield',
             'aliases' => array(
@@ -97,7 +97,7 @@
         'doctrine/deprecations' => array(
             'pretty_version' => '1.1.x-dev',
             'version' => '1.1.9999999.9999999-dev',
-            'reference' => 'bdaa697ed9c7f5ee2f7d3b5f9c2a6f2519523cd9',
+            'reference' => '4f2d4f2836e7ec4e7a8625e75c6aa916004db931',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/deprecations',
             'aliases' => array(),
@@ -124,7 +124,7 @@
         'fakerphp/faker' => array(
             'pretty_version' => '1.23.x-dev',
             'version' => '1.23.9999999.9999999-dev',
-            'reference' => '2040bda6540c29e8989bce4729d05bdaffb4c729',
+            'reference' => '8d32135e606bcc0af4b55db030b672966182ea08',
             'type' => 'library',
             'install_path' => __DIR__ . '/../fakerphp/faker',
             'aliases' => array(),
@@ -151,7 +151,7 @@
         'laminas/laminas-escaper' => array(
             'pretty_version' => '2.13.x-dev',
             'version' => '2.13.9999999.9999999-dev',
-            'reference' => '1c2d774b596c31ec013f160233c98735a95f6900',
+            'reference' => '1cd26bc8e1da257a0dbc512ea0cc577f7c3ec1ed',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laminas/laminas-escaper',
             'aliases' => array(),
@@ -187,7 +187,7 @@
         'nikic/php-parser' => array(
             'pretty_version' => '4.x-dev',
             'version' => '4.9999999.9999999.9999999-dev',
-            'reference' => 'a6303e50c90c355c7eeee2c4a8b27fe8dc8fef1d',
+            'reference' => '54103d838734be0499172026525e38cbf6af2711',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nikic/php-parser',
             'aliases' => array(),
@@ -216,7 +216,7 @@
         'phpunit/php-code-coverage' => array(
             'pretty_version' => '9.2.x-dev',
             'version' => '9.2.9999999.9999999-dev',
-            'reference' => '6a3a87ac2bbe33b25042753df8195ba4aa534c76',
+            'reference' => '0b6cb84a359426d34e439ce6d1173b41e07cb672',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/php-code-coverage',
             'aliases' => array(),
@@ -261,7 +261,7 @@
         'phpunit/phpunit' => array(
             'pretty_version' => '9.6.x-dev',
             'version' => '9.6.9999999.9999999-dev',
-            'reference' => 'f3d767f7f9e191eab4189abe41ab37797e30b1be',
+            'reference' => '18a76cf7293527f275342720eeb063dff346c97e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
@@ -270,7 +270,7 @@
         'predis/predis' => array(
             'pretty_version' => 'v2.x-dev',
             'version' => '2.9999999.9999999.9999999-dev',
-            'reference' => '577bd398727a6fc953658563b1271e498f059098',
+            'reference' => '5c8b19ebaa9a5c56e80dc728b077f6a7f37dbce0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../predis/predis',
             'aliases' => array(),
@@ -479,7 +479,7 @@
         'symfony/console' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => 'f542ffc1dc4b42eb57b67f07d31b91ae9d501419',
+            'reference' => 'b65b268ad3a15706d28b8de217bcceb8fa4da0dc',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/console',
             'aliases' => array(),
@@ -534,7 +534,7 @@
         'symfony/finder' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => 'b947e427bb15d4eff8d0f68fe0196d9e33b825f7',
+            'reference' => '1591b45a5706b3a262e907365757db5383f8176e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/finder',
             'aliases' => array(),
@@ -606,7 +606,7 @@
         'symfony/process' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '83264b6a59a114522e4107cc249172aaa78b9720',
+            'reference' => '7a98cdf5045b5b98ef2589b7d074f0c27eea4948',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/process',
             'aliases' => array(),
