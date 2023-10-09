@@ -73,9 +73,9 @@
                                                             ?>" class="btn btn-block btn-play"><i class="fa fa-play mr-2"></i>Watch
                     now</a>
                 <?php if (auth()->loggedIn()) : ?>
-                    <?= $this->include('anime/extend/templates/qtipwatchadd') ?>
+                    <?= $this->include('Frontend/İnclude/QtipWatchList.php') ?>
                 <?php else : ?>
-                    <?= $this->include('anime/extend/templates/qtipwatchnouseradd') ?>
+                    <?= $this->include('Frontend/İnclude/QtipWatchUserList') ?>
                 <?php endif; ?>
             </div>
         </div>

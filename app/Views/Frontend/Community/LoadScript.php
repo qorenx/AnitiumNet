@@ -16,8 +16,8 @@
     var xhr = new XMLHttpRequest();
     var pid = "<?php echo $_GET['pid']; ?>";
 
-    function runCommand() {
-        var url = "/community/bpviewlist?pid=" + pid + "&page=" + nextPage;
+    function Get_BoardViewPostMore() {
+        var url = "/ajax/get-boardviews?pid=" + pid + "&page=" + nextPage;
         xhr.open("GET", url, true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
@@ -38,7 +38,7 @@
         xhr.send();
     }
 
-    document.addEventListener("DOMContentLoaded", runCommand);
+    document.addEventListener("DOMContentLoaded", Get_BoardViewPostMore);
 </script>
 
 <script>

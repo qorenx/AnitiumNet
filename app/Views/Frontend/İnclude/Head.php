@@ -154,4 +154,4 @@
     </div>
 </div>
 <?= $this->include('profile/user/loginnotconfig') ?>
-<?= $this->include('anime/extend/templates/qtip') ?>
+<?= $this->include('Frontend/İnclude/Qtip') ?>

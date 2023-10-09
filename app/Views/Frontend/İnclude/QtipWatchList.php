@@ -21,7 +21,7 @@
     </div>
     <script type="text/javascript">
         function postStatus(status, uid) {
-            var url = "<?php echo site_url('status/' . auth()->user()->id . '/') ?>" + uid + '/' + status;
+            var url = "<?php echo site_url('ajax/useranimestatus/') ?>" + uid + '/' + status;
             fetch(url, {
                     method: 'POST',
                 })

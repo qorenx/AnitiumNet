@@ -60,9 +60,9 @@ $routes->get('ajax/qtip/(:any)', 'Anitium::Qtip/$1/');
 
 
 // HOME SAYFASI ROUTERS
-$routes->get('/home', 'Anitium::Home');// localhost/home girdiğimde çıkan sayfa.
-$routes->get('ajax/getCommentHome/(:any)', 'Anitium::get_CommentHome/$1');// Home/Comment.php  içindeki Script!
-$routes->get('ajax/getScheduleDays/(:num)', 'Anitium::get_ScheduleDays/$1');// Home/Schedule.php içindeki Script!
+$routes->get('/home', 'Anitium::Home'); // localhost/home girdiğimde çıkan sayfa.
+$routes->get('ajax/getCommentHome/(:any)', 'Anitium::get_CommentHome/$1'); // Home/Comment.php  içindeki Script!
+$routes->get('ajax/getScheduleDays/(:num)', 'Anitium::get_ScheduleDays/$1'); // Home/Schedule.php içindeki Script!
 
 
 // AYRI SAYFALAR
@@ -70,10 +70,10 @@ $routes->get('type/(:any)', 'Anitium::Anime_Type/$1/'); // localhost/type/VERİ 
 $routes->get('az-list/(:any)', 'Anitium::AZ_List/$1/'); // localhost/az-list/VERİ olduğu kısımdır.
 $routes->get('genre/(:any)', 'Anitium::Genre_Search/$1/'); // localhost/genre/VERİ olduğu kısımdır.
 $routes->get('studio/(:any)', 'Anitium::Studio_Search/$1/'); // localhost/studio/VERİ olduğu kısımdır.
-$routes->get('producers/(:any)', 'Anitium::Producers_Search/$1/');// localhost/producers/VERİ olduğu kısımdır.
+$routes->get('producers/(:any)', 'Anitium::Producers_Search/$1/'); // localhost/producers/VERİ olduğu kısımdır.
 $routes->get('random', 'Anitium::RandomAnime'); //Rastgele bir anime açar.
 
-$routes->get('recently-updated', 'Anitium::Recently_Updated');// localhost/recently-updated  son eklenen animeler daha fazla.
+$routes->get('recently-updated', 'Anitium::Recently_Updated'); // localhost/recently-updated  son eklenen animeler daha fazla.
 
 $routes->get('search', 'Anitium::Anime_Search'); //Anime Arama Çubuğu Yazdığın Veri Bulunur.
 $routes->get('filter', 'Anitium::Anime_Filter'); //Anime Filter
@@ -93,7 +93,7 @@ $routes->get('ajax/gettorrentgrabber/(:any)', 'Converter::torrentgrabber/$1'); /
 $routes->get('watch', 'Anitium::Anime_Watch');
 
 // Anime Watch Embed, Liste, Server, PREV+NEXT kısmıdır.
-$routes->get('ajax/embed/(:num)/(:num)/(:num)', 'Converter::get_embed/$1/$2/$3');//Embed iframe Converter
+$routes->get('ajax/embed/(:num)/(:num)/(:num)', 'Converter::get_embed/$1/$2/$3'); //Embed iframe Converter
 $routes->get('ajax/embedserver/(:num)/(:num)', 'Anitium::Get_EpisodeServer/$1/$2'); // İlgili Bölüm Embed Server Çağırır
 $routes->get('ajax/episodelist/(:num)', 'Anitium::Get_EpisodeList/$1'); // Episode Listesi çeker.
 $routes->get('ajax/episodeprevnext/(:num)/(:num)', 'Anitium::Get_EpisodePrevNext/$1/$2'); // Mevcut Episode Prev-Next çağırır.
@@ -140,7 +140,7 @@ $routes->post('post/usersettingsupdate', 'Anitium::UserSettingsUpdate');
 
 
 
-$routes->get('users/logout', 'Anitium::userlogout');
+$routes->get('users/logout', 'Anitium::User_LogOUT');
 
 
 
@@ -154,106 +154,47 @@ $routes->group('community', function ($routes) {
 
 
 
-$routes->get('ajax/get-boardpost', 'Anitium::Get_BoardPost'); //board.php içindeki ajax çalıştırıyor.
-$routes->get('ajax/get-boardmypost', 'Anitium::Get_BoardMyPost'); //mypost.php içindeki ajax çalıştırıyor.
-$routes->get('ajax/get-boardtagpost', 'Anitium::Get_BoardTagPost'); //boardtag.php içindeki ajax çalıştıyor.
-$routes->post('post/board-new-post', 'Anitium::Post_CommunityNewPost'); //new-post bord içindedir. Post eder.
 
 $routes->group('community', function ($routes) {
     $routes->get('board', 'Anitium::Community_Board');
     $routes->get('my-post', 'Anitium::Community_MyBoard');
     $routes->get('board/tag', 'Anitium::Community_Tag');
     $routes->get('new-post', 'Anitium::Community_NewPost');
-
-
-
-    //Board gösterilen yazıların içeriği gösterilir.
-    $routes->get('post', 'Anime::boardviewpost');
-    //Board konulara yazılan yorumlar için daha fazla post göster kısmı
-    $routes->get('bpviewlist', 'Anime::boardviewpostmore');
-    //Board konulara yazılan yorumlar ve yorumlara yazılan cevapların mysql eklendiği kısım.
-    $routes->post('post/viewpost', 'Anime::boardviewpostinsert');
-    $routes->post('post/viewrepypost', 'Anime::boardviewrepypostinsert');
+    $routes->get('post', 'Anitium::Community_BoardViewPost');
 });
+$routes->get('ajax/get-boardpost', 'Anitium::Get_BoardPost'); //board.php içindeki ajax çalıştırıyor.
+$routes->get('ajax/get-boardmypost', 'Anitium::Get_BoardMyPost'); //mypost.php içindeki ajax çalıştırıyor.
+$routes->get('ajax/get-boardtagpost', 'Anitium::Get_BoardTagPost'); //boardtag.php içindeki ajax çalıştıyor.
+$routes->get('ajax/get-boardviews', 'Anitium::Get_BoardViewPostMore'); //Boardviewspost comment more alıyor.
+
+$routes->post('post/board-new-post', 'Anitium::Post_CommunityNewPost'); //new-post bord içindedir. Post eder.
+$routes->post('post/viewpost', 'Anitium::Post_CommunityMainİnsert'); //View Post Main Yorumları Gönderir
+$routes->post('post/viewrepypost', 'Anitium::Post_CommunityReplyİnsert'); //Vew Post Reply Yorumları Gönderir
+
+//Community Vote LİKE KISMI
+$routes->post('post/communityvotelike/(:num)', 'Anitium::Post_CommunityVoteLike/$1/');
+$routes->post('post/communityvotedislike/(:num)', 'Anitium::Post_CommunityVoteDisLike/$1/');
+$routes->get('ajax/getcommunityvote/(:num)', 'Anitium::Get_CommunityVote/$1/');
 
 
+//Community Main Like Kısmı
+$routes->post('post/communitymainlike/(:num)', 'Anitium::Post_CommunityMainLike/$1/');
+$routes->post('post/communitymaindislike/(:num)', 'Anitium::Post_CommunityMainDisLike/$1/');
+$routes->get('ajax/getcommunitymainlike/(:num)', 'Anitium::Get_CommunityMainLike/$1/');
+
+//Comment Repy Like Kısmı
+$routes->post('post/communityrepylike/(:num)', 'Anitium::Post_CommunityReplyLike/$1/');
+$routes->post('post/communityrepydislike/(:num)', 'Anitium::Post_CommunityReplyDisLike/$1/');
+$routes->get('ajax/getcommunityrepylike/(:num)', 'Anitium::Get_CommunityReplyLike/$1/');
 
 
-///Community Post, Main, Repy Like Dislike System
-//Main Post
-$routes->post('post/communityvotelike/(:any)', 'Anime::communityvotelike/$1/');
-$routes->post('post/communityvotedislike/(:any)', 'Anime::communityvotedislike/$1/');
-//Comment Main
-$routes->post('post/communitymainlike/(:any)', 'Anime::communitymainlike/$1/');
-$routes->post('post/communitymaindislike/(:any)', 'Anime::communitymaindislike/$1/');
-//Comment Repy
-$routes->post('post/communityrepylike/(:any)', 'Anime::communityrepylike/$1/');
-$routes->post('post/communityrepydislike/(:any)', 'Anime::communityrepydislike/$1/');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// AJAX BULUNDUĞU KISIM
-
-
-
-//Community Like GET Kısmıdır.
-$routes->get('ajax/getcommunityvote/(:any)', 'Anime::getcommunityvote/$1/');
-$routes->get('ajax/getcommunitymainlike/(:any)', 'Anime::getcommunitymainlike/$1/');
-$routes->get('ajax/getcommunityrepylike/(:any)', 'Anime::getcommunityrepylike/$1/');
-
-
-
-// Herkes erişebildiği üyelerin report gönderdiği yer.
+//Herkesin Eriştiği Report Kısmıdır.
 $routes->group('report', function ($routes) {
-    $routes->post('board-comment-main', 'Anime::boardcommentmain');
-    $routes->post('board-comment-repy', 'Anime::boardcommentrepy');
-    //Board Main Report ve Delete(yorumlar ve cevaplarıda siler.)
-    $routes->post('board-main', 'Anime::boardmain');
+    $routes->post('board-comment-main', 'Anitium::Post_BoardMainComment');
+    $routes->post('board-comment-repy', 'Anitium::Post_BoardReplyComment');
+    $routes->post('board-report', 'Anitium::Post_BoardReport');
 });
 
-
-
-
-
-
-
-
-
-
-
-
-//Sadece admin kullandığı tamamen silme yeri.  Düzenlenmesi gerekiyor***
-$routes->group('report', ['filter' => 'group:admin,superadmin'], function ($routes) {
-    //Episode Comment Silme Kısmıdır.
-    $routes->post('episode-comment-main-delete', 'Anime::episodecommentmaindelete');
-    $routes->post('episode-comment-repy-delete', 'Anime::episodecommentrepydelete');
-    //Board Comment Silme Kısmıdır.
-    $routes->post('board-comment-main-delete', 'Anime::boardcommentmaindelete');
-    $routes->post('board-comment-repy-delete', 'Anime::boardcommentrepydelete');
-    //Board Main Report ve Delete(yorumlar ve cevaplarıda siler.)
-    $routes->post('board-delete', 'Anime::boarddelete');
-});
 
 
 
@@ -343,5 +284,3 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
 $routes->get('getLicense/(:any)/(:any)/(:any)', 'License::getLicense/$1/$2/$3');
 $routes->get('getLicenseFile/(:any)', 'License::getLicenseFile/$1');
 $routes->get('verifylicense', 'License::verifylicense');
-
-

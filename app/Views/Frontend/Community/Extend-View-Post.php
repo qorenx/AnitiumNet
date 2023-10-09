@@ -141,18 +141,10 @@
             <div class="ib-li show">
                 <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
                 <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 20px, 0px);">
-                    <form method="post" action="/report/board-main">
+                    <form method="post" action="/report/board-report">
                         <input type="hidden" name="report_main_id" value="<?= $post['post_id'] ?>">
                         <button type="submit" class="dropdown-item cm-report" onclick="return confirm('Are you sure you want to report?')">Report Spam</button>
                     </form>
-                    <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
-                        <form method="post" action="/report/board-delete">
-                            <input type="hidden" name="post_delete_id" value="<?= $post['id'] ?>">
-                            <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
-
-                            <button type="submit" class="dropdown-item cm-delete" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                        </form>
-                    <?php endif; ?>
                 </div>
             </div>
 
@@ -176,7 +168,7 @@
                 <div class="user-name">
                     Comment as <span class="link-highlight ml-1"><?= auth()->user()->username ?></span>
                 </div>
-                <form method="post" action="/community/post/viewpost" class="preform preform-dark comment-form">
+                <form method="post" action="/post/viewpost" class="preform preform-dark comment-form">
                     <input type="hidden" name="user_id" value="<?= auth()->user()->id ?>">
                     <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
                     <input type="hidden" name="post_c_id" value="<?php echo rand(00000000, 999999999); ?>">

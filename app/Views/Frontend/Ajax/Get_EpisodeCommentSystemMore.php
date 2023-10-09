@@ -79,12 +79,6 @@
                                 <input type="hidden" name="report_main_id" value="<?= $post['post_id'] ?>">
                                 <button type="submit" class="dropdown-item cm-report" onclick="return confirm('Are you sure you want to report?')">Report Spam</button>
                             </form>
-                            <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
-                                <form method="post" action="/report/episode-comment-main-delete">
-                                    <input type="hidden" name="post_delete_id" value="<?= $post['id'] ?>">
-                                    <button type="submit" class="dropdown-item cm-delete" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                                </form>
-                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -214,12 +208,6 @@
                                                     <input type="hidden" name="report_repy_id" value="<?= $reply['post_u_id'] ?>">
                                                     <button type="submit" class="dropdown-item cm-report" onclick="return confirm('Are you sure you want to report?')">Report Spam</button>
                                                 </form>
-                                                <?php if (isset(auth()->user()->groups[0]) && in_array(auth()->user()->groups[0], ['superadmin', 'admin'])) : ?>
-                                                    <form method="post" action="/report/episode-comment-repy-delete">
-                                                        <input type="hidden" name="post_delete_id" value="<?= $reply['id'] ?>">
-                                                        <button type="submit" class="dropdown-item cm-delete" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                                                    </form>
-                                                <?php endif; ?>
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>
