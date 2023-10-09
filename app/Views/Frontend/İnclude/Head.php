@@ -148,10 +148,10 @@
                 </ul>
             </div>
         </div>
-        <?= $this->include('profile/user/loginconfig') ?>
+        <?= $this->include('Backend/User/Loginİn') ?>
         <div id="mobile_search" class=""><i class="fa fa-search"></i></div>
         <div class="clearfix"></div>
     </div>
 </div>
-<?= $this->include('profile/user/loginnotconfig') ?>
+<?= $this->include('Backend/User/LoginNotİn') ?>
 <?= $this->include('Frontend/İnclude/Qtip') ?>
