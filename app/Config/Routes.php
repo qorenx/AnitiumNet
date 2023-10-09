@@ -109,6 +109,14 @@ $routes->post('ajax/eprepylike/(:num)', 'Anitium::episoderepylike/$1/');
 $routes->post('ajax/eprepydislike/(:num)', 'Anitium::episoderepydislike/$1/');
 
 
+// Herkes erişebildiği episode report ve comment main/reply report yeridir.
+$routes->group('report', function ($routes) {
+    //Episode Report Yapıp MYSQL kaydeden kısımdır.
+    $routes->post('episode-report', 'Anitium::Post_EpisodeReport');
+    //Episode Comment Report Main ve Repy kısmıdır.
+    $routes->post('episode-comment-main', 'Anitium::Post_CommentMainReport');
+    $routes->post('episode-comment-repy', 'Anitium::Post_CommentReplyReport');
+});
 
 
 
@@ -163,6 +171,13 @@ $routes->get('ajax/getcommunityrepylike/(:any)', 'Anime::getcommunityrepylike/$1
 
 
 
+// Herkes erişebildiği üyelerin report gönderdiği yer.
+$routes->group('report', function ($routes) {
+    $routes->post('board-comment-main', 'Anime::boardcommentmain');
+    $routes->post('board-comment-repy', 'Anime::boardcommentrepy');
+    //Board Main Report ve Delete(yorumlar ve cevaplarıda siler.)
+    $routes->post('board-main', 'Anime::boardmain');
+});
 
 
 
@@ -219,19 +234,7 @@ $routes->group('report', ['filter' => 'group:admin,superadmin'], function ($rout
     $routes->post('board-delete', 'Anime::boarddelete');
 });
 
-// Herkes erişebildiği üyelerin report gönderdiği yer.
-$routes->group('report', function ($routes) {
-    //Episode Report Yapıp MYSQL kaydeden kısımdır.
-    $routes->post('episode-report', 'Anime::episodereport');
-    //Episode Comment Report Main ve Repy kısmıdır.
-    $routes->post('episode-comment-main', 'Anime::episodecommentmain');
-    $routes->post('episode-comment-repy', 'Anime::episodecommentrepy');
-    //Board Comment Report Main ve Repy kısmıdır. 
-    $routes->post('board-comment-main', 'Anime::boardcommentmain');
-    $routes->post('board-comment-repy', 'Anime::boardcommentrepy');
-    //Board Main Report ve Delete(yorumlar ve cevaplarıda siler.)
-    $routes->post('board-main', 'Anime::boardmain');
-});
+
 
 
 

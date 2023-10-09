@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="pc-report" style="float: right;">
-            <?php echo $this->include('anime/getepisode/include/reports'); ?>
+            <?php echo $this->include('Frontend/İnclude/EpisodeReports'); ?>
         </div>
 
         <div class="pc-right">
