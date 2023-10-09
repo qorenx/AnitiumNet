@@ -5,4 +5,4 @@
 <script src="<?php echo base_url(); ?>assest/js/comman.js"></script>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assest/css/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
