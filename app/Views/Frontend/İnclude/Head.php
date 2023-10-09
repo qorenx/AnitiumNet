@@ -79,6 +79,7 @@
                     inputField.value = '';
                 }
             });
+
             function showResult(str) {
                 if (str.length === 0) {
                     searchSuggest.style.display = 'none';
