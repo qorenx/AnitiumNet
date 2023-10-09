@@ -40,6 +40,17 @@ $routes->set404Override();
 
 // CONTROLLER ANİTİUM.PHP ReMAKE
 
+$routes->get('dmca', function () {
+    return redirect('/');
+});
+$routes->get('contact', function () {
+    return redirect('/');
+});
+$routes->get('tos', function () {
+    return redirect('/');
+});
+
+
 
 // http://localhost/  girdiğinde çıkan sayfa.
 $routes->get('/', 'Anitium::İndex');
@@ -119,7 +130,6 @@ $routes->group('report', function ($routes) {
 });
 
 
-
 //ÜYE PROFİL KISMI
 $routes->group('user', ['filter' => 'group:user,admin,superadmin'], function ($routes) {
     $routes->get('(:any)/(:any)', 'Anitium::User_Profile/$1/$2');
@@ -134,18 +144,64 @@ $routes->get('users/logout', 'Anitium::userlogout');
 
 
 
+///COMUNİTY BAŞLANGIÇ
+
+//Board USER ve WATCHLİST
+$routes->group('community', function ($routes) {
+    $routes->get('user/(:any)/(:any)', 'Anitium::Community_User/$1/$2');
+    $routes->get('user/(:any)', 'Anitium::Community_User/$1');
+});
 
 
 
-$routes->get('dmca', function () {
-    return redirect('/');
+$routes->get('ajax/get-boardpost', 'Anitium::Get_BoardPost'); //board.php içindeki ajax çalıştırıyor.
+$routes->get('ajax/get-boardmypost', 'Anitium::Get_BoardMyPost'); //mypost.php içindeki ajax çalıştırıyor.
+$routes->get('ajax/get-boardtagpost', 'Anitium::Get_BoardTagPost'); //boardtag.php içindeki ajax çalıştıyor.
+$routes->post('post/board-new-post', 'Anitium::Post_CommunityNewPost'); //new-post bord içindedir. Post eder.
+
+$routes->group('community', function ($routes) {
+    $routes->get('board', 'Anitium::Community_Board');
+    $routes->get('my-post', 'Anitium::Community_MyBoard');
+    $routes->get('board/tag', 'Anitium::Community_Tag');
+    $routes->get('new-post', 'Anitium::Community_NewPost');
+
+
+
+    //Board gösterilen yazıların içeriği gösterilir.
+    $routes->get('post', 'Anime::boardviewpost');
+    //Board konulara yazılan yorumlar için daha fazla post göster kısmı
+    $routes->get('bpviewlist', 'Anime::boardviewpostmore');
+    //Board konulara yazılan yorumlar ve yorumlara yazılan cevapların mysql eklendiği kısım.
+    $routes->post('post/viewpost', 'Anime::boardviewpostinsert');
+    $routes->post('post/viewrepypost', 'Anime::boardviewrepypostinsert');
 });
-$routes->get('contact', function () {
-    return redirect('/');
-});
-$routes->get('tos', function () {
-    return redirect('/');
-});
+
+
+
+
+///Community Post, Main, Repy Like Dislike System
+//Main Post
+$routes->post('post/communityvotelike/(:any)', 'Anime::communityvotelike/$1/');
+$routes->post('post/communityvotedislike/(:any)', 'Anime::communityvotedislike/$1/');
+//Comment Main
+$routes->post('post/communitymainlike/(:any)', 'Anime::communitymainlike/$1/');
+$routes->post('post/communitymaindislike/(:any)', 'Anime::communitymaindislike/$1/');
+//Comment Repy
+$routes->post('post/communityrepylike/(:any)', 'Anime::communityrepylike/$1/');
+$routes->post('post/communityrepydislike/(:any)', 'Anime::communityrepydislike/$1/');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -159,9 +215,6 @@ $routes->get('tos', function () {
 
 // AJAX BULUNDUĞU KISIM
 
-$routes->get('ajax/getboardlastpost', 'Anime::getboardlastpost'); //board.php içindeki ajax çalıştırıyor.
-$routes->get('ajax/getboardmypost', 'Anime::getboardmypost'); //mypost.php içindeki ajax çalıştırıyor.
-$routes->get('ajax/getboardtagpost', 'Anime::getboardtagpost'); //boardtag.php içindeki ajax çalıştıyor.
 
 
 //Community Like GET Kısmıdır.
@@ -184,38 +237,6 @@ $routes->group('report', function ($routes) {
 
 
 
-
-$routes->group('community', function ($routes) {
-    //community user kısmıdır.
-    $routes->get('user/(:any)/(:any)', 'Anime::boarduser/$1/$2');
-    $routes->get('user/(:any)', 'Anime::boarduser/$1');
-    ///  post?   pid=  &   pcon=   olarak community/board ve community/my-post olarak veri alıyor.
-    $routes->get('board', 'Anime::board');
-    $routes->get('my-post', 'Anime::boardmypost');
-    // board/tag    burada taglar alıp kullanıyor. Ve boardtag function birleştiriyor. Gösteriyor.
-    $routes->get('board/tag', 'Anime::boardtag');
-    //board/new-post sayfası gösterme ve ekleme yeridir.
-    $routes->get('new-post', 'Anime::boardnewpost');
-    $routes->post('new-post', 'Anime::boardnewpostinsert');
-    //Board gösterilen yazıların içeriği gösterilir.
-    $routes->get('post', 'Anime::boardviewpost');
-    //Board konulara yazılan yorumlar için daha fazla post göster kısmı
-    $routes->get('bpviewlist', 'Anime::boardviewpostmore');
-    //Board konulara yazılan yorumlar ve yorumlara yazılan cevapların mysql eklendiği kısım.
-    $routes->post('post/viewpost', 'Anime::boardviewpostinsert');
-    $routes->post('post/viewrepypost', 'Anime::boardviewrepypostinsert');
-});
-
-///Community Post, Main, Repy Like Dislike System
-//Main Post
-$routes->post('post/communityvotelike/(:any)', 'Anime::communityvotelike/$1/');
-$routes->post('post/communityvotedislike/(:any)', 'Anime::communityvotedislike/$1/');
-//Comment Main
-$routes->post('post/communitymainlike/(:any)', 'Anime::communitymainlike/$1/');
-$routes->post('post/communitymaindislike/(:any)', 'Anime::communitymaindislike/$1/');
-//Comment Repy
-$routes->post('post/communityrepylike/(:any)', 'Anime::communityrepylike/$1/');
-$routes->post('post/communityrepydislike/(:any)', 'Anime::communityrepydislike/$1/');
 
 
 
