@@ -202,18 +202,22 @@ $routes->group('report', function ($routes) {
 
 //// ADMİN PANEL OLDUĞU KISIMDIR
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
-    $routes->get('', 'Admin::İndex');
+    $routes->get('', 'Anitium::Admin_İndex');
     $routes->group('anime', function ($routes) {
-        // anime getanime yapılarak myanimelist veri çeker ve kaydeder.
+
         $routes->get('getanime', 'Admin::getAnime');
         $routes->post('getanime', 'Admin::getAnimesave');
-        // anime getanimeupdate komutu ile myanimelist olan animeyi günceller.
+
         $routes->get('getanimeupdate', 'Admin::getAnimeupdate');
         $routes->post('getanimeupdate', 'Admin::getAnimeupdatesave');
 
 
         $routes->post('delete', 'Anitium::AnimeDeleteID'); //Anime Deleted Function
     });
+
+
+
+
     $routes->group('anime', function ($routes) {
         //Anime slider günceller
         $routes->get('slider', 'Admin::anislider');
