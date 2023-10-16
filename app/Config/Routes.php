@@ -85,7 +85,6 @@ $routes->get('search/suggestions', 'Anitium::Anime_Suggestions');  // Arama Yap�
 $routes->get('anime/(:any)', 'Anitium::Anime_Details/$1/'); // localhost/anime/VERİ olduğu kısmı çeker.
 $routes->post('ajax/useranimestatus/(:num)/(:num)', 'Anitium::UserAnimeStatus/$1/$2/'); /// User Anime Status Günceller
 $routes->get('ajax/getanimeseason/(:any)', 'Anitium::get_AnimeSeason/$1');  //Anime Sezon Verisini Çeker.
-$routes->get('ajax/gettorrentgrabber/(:any)', 'Converter::torrentgrabber/$1'); // anime bilgileri kısmındaki torrent grabber
 
 
 

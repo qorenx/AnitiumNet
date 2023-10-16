@@ -16,7 +16,6 @@
                         echo $this->include('Frontend/Anime/Season');
                     }
                     ?>
-                    <?= $this->include('Frontend/Anime/NyaTorrent') ?>
                     <?= $this->include('Frontend/Anime/Recommended') ?>
                     <div class="clearfix"></div>
                 </div>

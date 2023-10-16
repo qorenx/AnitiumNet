@@ -254,65 +254,6 @@ class Converter extends BaseController
         return $this->response->setJSON($iframe_codes);
     }
 
-    public function torrentgrabber($ani_search)
-    {
-        $contextOptions = array(
-            'ssl' => array(
-                'verify_peer' => false,
-                'verify_peer_name' => false,
-                "allow_self_signed" => true,
-            )
-        );
-    
-        $streamContext = stream_context_create($contextOptions);
-        $url = "https://nyaa.si/?f=0&c=1_2&q=" . urlencode($ani_search);
-        
-        $data = [];
-    
-        for ($i = 1; $i <= 2; $i++) { 
-            $url_p = $url . '&p=' . $i;
-            $homepage = file_get_contents($url_p, false, $streamContext);
-    
-            $doc = new \DOMDocument;
-            @$doc->loadHTML($homepage);
-            $xpath = new \DOMXPath($doc);
-            $elements = $xpath->query('/html/body');
-    
-            if ($elements->length > 0) {
-                $rows = $xpath->query('.//tr[contains(@class, "danger") or contains(@class, "success") or contains(@class, "default")]', $elements->item(0));
-                foreach ($rows as $row) {
-                    $anchorTag = $xpath->query('.//td[@colspan="2"]/a[not(contains(@class, "comments"))]', $row);
-                    $downloadATag = $xpath->query('.//td[@class="text-center"]/a[contains(@href, "/download/")]', $row);
-    
-                    if ($anchorTag->length > 0 && $downloadATag->length > 0) {
-                        $anchor = $anchorTag->item(0);
-                        $downloadHref = 'https://nyaa.si' . $downloadATag->item(0)->getAttribute('href');
-    
-                        $data[] = [
-                            'title' => $anchor->getAttribute('title'),
-                            'url' => $downloadHref
-                        ];
-    
-                        $anchor->setAttribute('href', 'https://nyaa.si' . $anchor->getAttribute('href'));
-                    }
-                }
-            }
-        }
-    
-        if(empty($data)){
-            return $this->response->setJSON(
-                [
-                    'status' => 0
-                ]
-            );
-        } else {
-            return $this->response->setJSON(
-                [
-                    'html' => view('Frontend/Ajax/Get_Torrent', ['gettorrent' => $data])
-                ]
-            );
-        }
-    }
 
     
 }
