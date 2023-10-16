@@ -189,7 +189,8 @@ class Admin extends BaseController
     //Anime Jikan Get/Update Function Finished
 
     ///Episode Adding/Editing/Embed Adding, Embed Editing, GetAllEpisode Function Start
-    public function episodeadd()
+    //Menuel Episode Add/Save
+    public function Episode_Add()
     {
         $modelsettings = new Settings();
 
@@ -197,8 +198,7 @@ class Admin extends BaseController
             'getAdminSettings' => $modelsettings->getAdminSettings(),
         ]);
     }
-
-    public function episodeaddsave()
+    public function Episode_AddSave()
     {
         $model = new EpisodeModel();
         $data = [
@@ -211,7 +211,40 @@ class Admin extends BaseController
         return redirect()->to(base_url('/admin/episode/adding'));
     }
 
+    //Auto Episode Add/Save Jikan Use
+    public function getEpisode() 
+    {
+        $modelsettings = new Settings();
+        $animeUID = $_GET['uid'];
+        $getPage = $_GET['page'];
+        $url = "https://api.jikan.moe/v4/anime/{$animeUID}/episodes?page={$getPage}";
+        $response = file_get_contents($url);
+        $data = json_decode($response, true)['data'];
+        return view($this->ThemesConfig . 'Anime/Episode/getepisode', [
+            'getAdminSettings' => $modelsettings->getAdminSettings(),
+            'data' => $data,
+        ]);
+    }
+    public function getEpisodeSave()
+    {
+        $model = new EpisodeModel();
 
+        $uid = $this->request->getPost('uid');
+        $ep_ids = $this->request->getPost('ep_id_name');
+        $ep_names = $this->request->getPost('ep_name');
+        $ep_jnames = $this->request->getPost('ep_jname');
+
+        foreach ($ep_ids as $key => $ep_id) {
+            $data = array(
+                'uid' => $uid,
+                'ep_id_name' => $ep_id,
+                'ep_name' => $ep_names[$key],
+                'ep_jname' => $ep_jnames[$key],
+            );
+            $model->insert($data);
+        }
+        return redirect()->to(base_url() . 'admin');
+    }
 
 
     //Episode Edit, Save ve Delete yapılan kısım.
@@ -238,8 +271,6 @@ class Admin extends BaseController
 
         return redirect()->back();
     }
-
-
     public function episodeeditdelete()
     {
         $animeUID = $_GET['uid'];
@@ -253,42 +284,7 @@ class Admin extends BaseController
 
 
 
-    //GET EPİSODE JİKAN
-    public function getEpisode()  //jikan üzerinden birden çok bölüm çeker.
-    {
-        $modelsettings = new Settings();
-        $animeUID = $_GET['uid'];
-        $getPage = $_GET['page'];
-        $url = "https://api.jikan.moe/v4/anime/{$animeUID}/episodes?page={$getPage}";
-        $response = file_get_contents($url);
-        $data = json_decode($response, true)['data'];
-        return view($this->ThemesConfig . 'Anime/Episode/getepisode', [
-            'getAdminSettings' => $modelsettings->getAdminSettings(),
-            'data' => $data,
-        ]);
-    }
 
-
-    public function getEpisodeSave()  //jikan birden çok bölüm kaydeder.
-    {
-        $model = new EpisodeModel();
-
-        $uid = $this->request->getPost('uid');
-        $ep_ids = $this->request->getPost('ep_id_name');
-        $ep_names = $this->request->getPost('ep_name');
-        $ep_jnames = $this->request->getPost('ep_jname');
-
-        foreach ($ep_ids as $key => $ep_id) {
-            $data = array(
-                'uid' => $uid,
-                'ep_id_name' => $ep_id,
-                'ep_name' => $ep_names[$key],
-                'ep_jname' => $ep_jnames[$key],
-            );
-            $model->insert($data);
-        }
-        return redirect()->to(base_url() . 'admin');
-    }
 
     // Episode Embed Ekleme Yeri
     public function episodeembedadd()

@@ -3,7 +3,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title><?php echo $getAdminSettings['Advanced'][0]['value']; ?> Admin Panel</title>
-    <?= $this->include('Backend/Default/İnclude/StyleLoad') ?>
+    <?= $this->include('Backend/Default/Anime/İnclude/StyleLoad') ?>
 </head>
 <body class="bg-theme bg-theme1">
     <div id="wrapper">

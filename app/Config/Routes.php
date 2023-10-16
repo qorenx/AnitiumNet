@@ -213,9 +213,9 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
 
     $routes->group('episode', function ($routes) {
         //Episode Ekleme ve DateBase Kayıt yeri
-        $routes->get('adding', 'Admin::episodeadd');
-        $routes->post('adding', 'Admin::episodeaddsave');
-        
+        $routes->get('adding', 'Admin::Episode_Add');
+        $routes->post('adding', 'Admin::Episode_AddSave');
+
         //Çoklu episode myanimelist veri olarak çekiyor.
         $routes->get('getepisode', 'Admin::getEpisode');
         $routes->post('getepisode', 'Admin::getEpisodesave');
