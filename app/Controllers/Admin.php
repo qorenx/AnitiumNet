@@ -6,7 +6,6 @@ use App\Models\{
     AnimeModel,
     AnimeSlider,
     EpisodeModel,
-    EpisodeViews,
     EpisodeEmbedModel,
     AnimeSchedule,
     Settings,
@@ -19,7 +18,6 @@ use App\Models\{
     BoardCommentReport,
     BoardReport,
     CommunityModel,
-    UserModelUP,
 };
 
 use CodeIgniter\API\ResponseTrait;
@@ -30,6 +28,34 @@ class Admin extends BaseController
 
 
     // return $this->response->setJSON($test);
+
+
+
+    ///ADMİN PANEL BAŞLADIĞI KISIM 
+    public function Admin_İndex()
+    {
+        $modelsettings = new Settings();
+        $modelanime = new AnimeModel();
+        $modelepisode = new EpisodeModel();
+        $modelepisodeviews = new EpisodeViews();
+        $modelembed = new EpisodeEmbedModel();
+        $modeluser = new UserModelUP();
+
+        return view('Backend/İndex', [
+            'getAdminSettings' => $modelsettings->getAdminSettings(),
+            'getAnimeCount' => $modelanime->getAnimeCount(),
+            'getAnimeViewsToday' => $modelanime->getTodayViewCount(),
+            'getAnimeViewsMonth' => $modelanime->getMonthViewCount(),
+            'getAnimeViewsYears' => $modelanime->getYearsViewCount(),
+            'getEpisodeCount' => $modelepisode->getEpisodeCount(),
+            'getEpisodeViewsToday' => $modelepisodeviews->getTodayViewCount(),
+            'getEpisodeViewsWeeky' => $modelepisodeviews->getWeekyViewCount(),
+            'getEpisodeViewsMonth' => $modelepisodeviews->getMonthViewCount(),
+            'getEmbedCount' => $modelembed->getEmbedCount(),
+            'getUserCount' => $modeluser->getUserCount(),
+
+        ]);
+    }
 
 
 

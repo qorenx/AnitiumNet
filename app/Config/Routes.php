@@ -201,7 +201,7 @@ $routes->group('report', function ($routes) {
 
 //// ADMİN PANEL OLDUĞU KISIMDIR
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
-    $routes->get('', 'Anitium::Admin_İndex');
+    $routes->get('', 'Admin::Admin_İndex');
     $routes->group('anime', function ($routes) {
 
         $routes->get('getanime', 'Admin::getAnime');
