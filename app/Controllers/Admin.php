@@ -65,12 +65,12 @@ class Admin extends BaseController
     //Anime Jikan Get/Update Function
     public function getAnime() 
     {
-        $modelsettings = new Settings();
+        $ModelSettings = new Settings();
         $animeUID = $_GET['uid'];
         $url = "https://api.jikan.moe/v4/anime/" . $animeUID . "/full";
         $data = json_decode(file_get_contents($url), true);
         return view($this->ThemesConfig . 'Anime/getanime',[
-                'getAdminSettings' => $modelsettings->getAdminSettings(),
+                'getAdminSettings' => $ModelSettings->getAdminSettings(),
                 'data' => $data,
             ]
         );
@@ -123,7 +123,7 @@ class Admin extends BaseController
     }
     public function getAnimeupdate() 
     {
-        $modelsettings = new Settings();
+        $ModelSettings = new Settings();
         $animemodel = new AnimeModel();
         $animeUID = $_GET['uid'];
         $animeup = $animemodel->where('uid', $animeUID)->find();
@@ -131,7 +131,7 @@ class Admin extends BaseController
         $data = json_decode(file_get_contents($url), true);
         return view($this->ThemesConfig . 'Anime/getanimeupdate',
             [
-                'getAdminSettings' => $modelsettings->getAdminSettings(),
+                'getAdminSettings' => $ModelSettings->getAdminSettings(),
                 'manuel' => $animeup,
                 'data' => $data,
             ]

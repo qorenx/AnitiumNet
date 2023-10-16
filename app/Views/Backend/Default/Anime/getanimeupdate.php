@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
     <title><?php echo $getAdminSettings['Advanced'][0]['value']; ?> Admin Panel</title>
-    <?= $this->include('Backend/Default/İnclude/css') ?>
+    <?= $this->include('Backend/Default/İnclude/StyleLoad') ?>
 </head>
-
 <body class="bg-theme bg-theme1">
     <div id="wrapper">
-        <?= $this->include('Backend/Default/Anime/İnclude/sidebar') ?>
-        <?= $this->include('Backend/Default/Anime/İnclude/header') ?>
+        <?= $this->include('Backend/Default/Anime/İnclude/SideBar') ?>
+        <?= $this->include('Backend/Default/Anime/İnclude/Header') ?>
         <div class="clearfix"></div>
         <div class="content-wrapper">
             <div class="container-fluid">
@@ -256,11 +250,11 @@
                                                 </div>
                                             </div><br>
                                             <input type="hidden" name="external" id="external" value="<?php $external = array();
-                                                                                                    foreach ($item['external'] as $externals) {
-                                                                                                        array_push($external, array('name' => $externals['name'], 'url' => $externals['url']));
-                                                                                                    }
-                                                                                                    $result = json_encode($external);
-                                                                                                    echo htmlspecialchars($result, ENT_QUOTES); ?>" class="form-control" readonly>
+                                                                                                        foreach ($item['external'] as $externals) {
+                                                                                                            array_push($external, array('name' => $externals['name'], 'url' => $externals['url']));
+                                                                                                        }
+                                                                                                        $result = json_encode($external);
+                                                                                                        echo htmlspecialchars($result, ENT_QUOTES); ?>" class="form-control" readonly>
                                             <input type="hidden" name="relations" id="relations" value="<?php
                                                                                                         $relations = array();
                                                                                                         foreach ($item['relations'] as $relation) {
@@ -397,9 +391,7 @@
                 <div class="overlay toggle-menu"></div>
             </div>
         </div>
-        <?= $this->include('Backend/Default/Anime/İnclude/footer') ?>
+        <?= $this->include('Backend/Default/Anime/İnclude/Footer') ?>
     </div>
-    <?= $this->include('Backend/Default/Anime/İnclude/script') ?>
+    <?= $this->include('Backend/Default/Anime/İnclude/ScriptLoad') ?>
 </body>
-
-</html>

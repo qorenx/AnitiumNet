@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
   <title><?php echo $getAdminSettings['Advanced'][0]['value']; ?> Admin Panel</title>
-  <?= $this->include('Backend/Default/İnclude/css') ?>
+  <?= $this->include('Backend/Default/Anime/İnclude/StyleLoad') ?>
 </head>
 
 <body class="bg-theme1">
   <div id="wrapper">
-    <?= $this->include('Backend/Default/Anime/İnclude/sidebar') ?>
-    <?= $this->include('Backend/Default/Anime/İnclude/header') ?>
+    <?= $this->include('Backend/Default/Anime/İnclude/SideBar') ?>
+    <?= $this->include('Backend/Default/Anime/İnclude/Header') ?>
 
     <div class="clearfix"></div>
 
@@ -147,9 +142,7 @@
       </div>
     </div>
     <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
-    <?= $this->include('Backend/Default/Anime/İnclude/footer') ?>
+    <?= $this->include('Backend/Default/Anime/İnclude/Footer') ?>
   </div>
-  <?= $this->include('Backend/Default/Anime/İnclude/script') ?>
+  <?= $this->include('Backend/Default/Anime/İnclude/ScriptLoad') ?>
 </body>
-
-</html>
