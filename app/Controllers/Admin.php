@@ -188,13 +188,12 @@ class Admin extends BaseController
     }
     //Anime Jikan Get/Update Function Finished
 
-
-
+    ///Episode Adding/Editing/Embed Adding, Embed Editing, GetAllEpisode Function Start
     public function episodeadd()
     {
         $modelsettings = new Settings();
 
-        return view('/admin/episode/adding', [
+        return view($this->ThemesConfig . 'Anime/Episode/adding', [
             'getAdminSettings' => $modelsettings->getAdminSettings(),
         ]);
     }
@@ -223,7 +222,7 @@ class Admin extends BaseController
         $animeEPID = $_GET['eps'];
         $episodemodel = new EpisodeModel();
         $episodeedit = $episodemodel->where('uid', $animeUID)->where('ep_id_name', $animeEPID)->first();
-        return view('admin/episode/editing', [
+        return view($this->ThemesConfig . 'Anime/Episode/editing', [
             'getAdminSettings' => $modelsettings->getAdminSettings(),
             'epeedit' => $episodeedit,
         ]);
@@ -263,7 +262,7 @@ class Admin extends BaseController
         $url = "https://api.jikan.moe/v4/anime/{$animeUID}/episodes?page={$getPage}";
         $response = file_get_contents($url);
         $data = json_decode($response, true)['data'];
-        return view('admin/episode/getepisode', [
+        return view($this->ThemesConfig . 'Anime/Episode/getepisode', [
             'getAdminSettings' => $modelsettings->getAdminSettings(),
             'data' => $data,
         ]);
@@ -295,7 +294,7 @@ class Admin extends BaseController
     public function episodeembedadd()
     {
         $modelsettings = new Settings();
-        return view('admin/episode/embed', [
+        return view($this->ThemesConfig . 'Anime/Episode/embed', [
             'getAdminSettings' => $modelsettings->getAdminSettings(),
         ]);
     }
@@ -345,7 +344,7 @@ class Admin extends BaseController
         $animeEPID = $_GET['eps'];
         $embedmodel = new EpisodeEmbedModel();
         $episodeembed = $embedmodel->where('embed_uid', $animeUID)->where('embed_id', $animeEPID)->findAll();
-        return view('admin/episode/embedediting', [
+        return view($this->ThemesConfig . 'Anime/Episode/embedediting', [
             'getAdminSettings' => $modelsettings->getAdminSettings(),
             'embededitresult' => $episodeembed,
         ]);
@@ -359,6 +358,25 @@ class Admin extends BaseController
         $embedmodel->deleteEmbed($id);
         return redirect()->to(previous_url());
     }
+
+    ///Episode Adding/Editing/Embed Adding, Embed Editing, GetAllEpisode Finish
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // ADMİN REPORT YÖNETİM YERİDİR

@@ -10,9 +10,7 @@
   <div id="wrapper">
     <?= $this->include('Backend/Default/Anime/İnclude/SideBar') ?>
     <?= $this->include('Backend/Default/Anime/İnclude/Header') ?>
-
     <div class="clearfix"></div>
-
     <div class="content-wrapper">
       <div class="container-fluid">
 
@@ -135,8 +133,6 @@
           </div>
         </div>
         <!--End Dashboard Content-->
-
-
 
         <div class="overlay toggle-menu"></div>
       </div>

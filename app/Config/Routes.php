@@ -211,21 +211,11 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('delete', 'Anitium::AnimeDeleteID'); //Anime Deleted Function
     });
 
-
-    $routes->group('anime', function ($routes) {
-        //Anime slider günceller
-        $routes->get('slider', 'Admin::anislider');
-        $routes->post('slider', 'Admin::anislidersave');
-        //Anime Takvim Ekleme silme alanı.
-        $routes->get('schedule', 'Admin::schedule');
-        $routes->post('schedule', 'Admin::scheduleadd');
-        $routes->post('schedule-delete', 'Admin::scheduledelete');
-        $routes->post('schedule-delete-all', 'Admin::scheduledeleteall');
-    });
     $routes->group('episode', function ($routes) {
         //Episode Ekleme ve DateBase Kayıt yeri
         $routes->get('adding', 'Admin::episodeadd');
         $routes->post('adding', 'Admin::episodeaddsave');
+        
         //Çoklu episode myanimelist veri olarak çekiyor.
         $routes->get('getepisode', 'Admin::getEpisode');
         $routes->post('getepisode', 'Admin::getEpisodesave');
@@ -240,6 +230,24 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->get('embed-editing', 'Admin::embededit');
         $routes->post('embed-delete', 'Admin::embeddelete');
     });
+
+
+
+    $routes->group('anime', function ($routes) {
+        //Anime slider günceller
+        $routes->get('slider', 'Admin::anislider');
+        $routes->post('slider', 'Admin::anislidersave');
+        //Anime Takvim Ekleme silme alanı.
+        $routes->get('schedule', 'Admin::schedule');
+        $routes->post('schedule', 'Admin::scheduleadd');
+        $routes->post('schedule-delete', 'Admin::scheduledelete');
+        $routes->post('schedule-delete-all', 'Admin::scheduledeleteall');
+    });
+
+
+
+
+
     $routes->group('report', function ($routes) {
         //Report episode ile alakalıdır.
         $routes->get('episode', 'Admin::getepisodereport');

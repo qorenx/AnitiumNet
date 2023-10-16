@@ -1,23 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+
     <title><?php echo $getAdminSettings['Advanced'][0]['value']; ?> Admin Panel</title>
-    <?= $this->include('admin/assets/css') ?>
+    <?= $this->include('Backend/Default/Anime/İnclude/StyleLoad') ?>
 </head>
 
 <body class="bg-theme bg-theme1">
     <div id="wrapper">
-        <?= $this->include('admin/extra/sidebar') ?>
-        <?= $this->include('admin/extra/header') ?>
+        <?= $this->include('Backend/Default/Anime/İnclude/SideBar') ?>
+        <?= $this->include('Backend/Default/Anime/İnclude/Header') ?>
         <div class="clearfix"></div>
         <div class="content-wrapper">
             <div class="container-fluid">
+
                 <!--Start Dashboard Content-->
                 <div class="row">
                     <div class="col-12 col-lg-12">
@@ -39,12 +36,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                    <label for="ep_jname" class="col-sm-4 col-form-label">Episode Japanese Name:</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" name="ep_jname" id="ep_jname" value="<?= isset($item['title_japanese']) ? $item['title_japanese'] : $item['title_romanji']; ?>" class="form-control">
-                                    </div>
-                                </div></br>
-                                </br></br>
+                                        <label for="ep_jname" class="col-sm-4 col-form-label">Episode Japanese Name:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="ep_jname" id="ep_jname" value="<?= isset($item['title_japanese']) ? $item['title_japanese'] : $item['title_romanji']; ?>" class="form-control">
+                                        </div>
+                                    </div></br>
+                                    </br></br>
                                 <?php } ?>
                                 <div class="card-footer">
                                     <input class="btn btn-primary" type="submit" value="Episode Adding">
@@ -58,9 +55,7 @@
                 <div class="overlay toggle-menu"></div>
             </div>
         </div>
-        <?= $this->include('admin/extra/footer') ?>
+        <?= $this->include('Backend/Default/Anime/İnclude/Footer') ?>
     </div>
-    <?= $this->include('admin/assets/script') ?>
+    <?= $this->include('Backend/Default/Anime/İnclude/ScriptLoad') ?>
 </body>
-
-</html>
