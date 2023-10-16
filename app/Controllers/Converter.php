@@ -15,6 +15,12 @@ class Converter extends BaseController
 {
     use ResponseTrait;
 
+
+    public function __construct()
+    {
+        $this->ConsumetAPİ = 'anitium.repl.co';
+    }
+
     // Video embed get yapar.   Bu sayede id göre episode embed çekmiş olur.
     public function get_embed($uid, $eps, $embedid)
     {
@@ -215,7 +221,7 @@ class Converter extends BaseController
         $path = parse_url($url, PHP_URL_PATH);
         $path = preg_replace('/\d+$/', '', $path);
 
-        $api_base = "https://api.consumet.org/anime/gogoanime";
+        $api_base = "https://anitium.repl.co/anime/gogoanime";
     
         $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
         $multiembed = json_decode(file_get_contents("{$api_base}/servers{$path}{$eps}"));
