@@ -6,6 +6,7 @@ use App\Models\{
     AnimeModel,
     AnimeSlider,
     EpisodeModel,
+    EpisodeViews,
     EpisodeEmbedModel,
     AnimeSchedule,
     Settings,
@@ -18,6 +19,7 @@ use App\Models\{
     BoardCommentReport,
     BoardReport,
     CommunityModel,
+    UserModelUP,
 };
 
 use CodeIgniter\API\ResponseTrait;
@@ -26,12 +28,14 @@ class Admin extends BaseController
 {
     use ResponseTrait;
 
-
     // return $this->response->setJSON($test);
 
+    public function __construct()
+    {
+        $this->ThemesConfig = 'Backend/Default/';
+    }
 
-
-    ///ADMİN PANEL BAŞLADIĞI KISIM 
+    //Admin İndex PAGE
     public function Admin_İndex()
     {
         $modelsettings = new Settings();
@@ -41,7 +45,7 @@ class Admin extends BaseController
         $modelembed = new EpisodeEmbedModel();
         $modeluser = new UserModelUP();
 
-        return view('Backend/İndex', [
+        return view($this->ThemesConfig . 'İndex', [
             'getAdminSettings' => $modelsettings->getAdminSettings(),
             'getAnimeCount' => $modelanime->getAnimeCount(),
             'getAnimeViewsToday' => $modelanime->getTodayViewCount(),
@@ -58,23 +62,19 @@ class Admin extends BaseController
     }
 
 
-
-    // JİKAN APİ Üzerinden Anime Verisini Çeken Komutlar
+    //Anime Jikan Get/Update Function
     public function getAnime() 
     {
         $modelsettings = new Settings();
         $animeUID = $_GET['uid'];
         $url = "https://api.jikan.moe/v4/anime/" . $animeUID . "/full";
         $data = json_decode(file_get_contents($url), true);
-        return view(
-            'admin/anime/getanime',
-            [
+        return view($this->ThemesConfig . 'Anime/getanime',[
                 'getAdminSettings' => $modelsettings->getAdminSettings(),
                 'data' => $data,
             ]
         );
     }
-
     public function getAnimesave()
     {
         $animeModel = new AnimeModel();
@@ -121,19 +121,15 @@ class Admin extends BaseController
         $animeModel->insert($data);
         return redirect()->to(base_url() . 'admin');
     }
-
-
-    public function getAnimeupdate()  //jikan anime verisini güncelleme
+    public function getAnimeupdate() 
     {
         $modelsettings = new Settings();
         $animemodel = new AnimeModel();
         $animeUID = $_GET['uid'];
         $animeup = $animemodel->where('uid', $animeUID)->find();
-        // return $this->response->setJSON($animeup);
         $url = "https://api.jikan.moe/v4/anime/" . $animeUID . "/full";
         $data = json_decode(file_get_contents($url), true);
-        return view(
-            'admin/anime/getanimeupdate',
+        return view($this->ThemesConfig . 'Anime/getanimeupdate',
             [
                 'getAdminSettings' => $modelsettings->getAdminSettings(),
                 'manuel' => $animeup,
@@ -141,9 +137,7 @@ class Admin extends BaseController
             ]
         );
     }
-
-
-    public function getAnimeupdatesave()  //jikan anime verisini günceller ve kaydeder.
+    public function getAnimeupdatesave() 
     {
         $animeModel = new AnimeModel();
         $uid = $this->request->getPost('uid');
@@ -192,9 +186,10 @@ class Admin extends BaseController
         $animeModel->updateAnime($uid, $data);
         return redirect()->to(base_url() . 'admin');
     }
+    //Anime Jikan Get/Update Function Finished
 
 
-    //Episode Bölüm Eklendiği Kısım.
+
     public function episodeadd()
     {
         $modelsettings = new Settings();

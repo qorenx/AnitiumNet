@@ -8,13 +8,13 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title><?php echo $getAdminSettings['Advanced'][0]['value']; ?> Admin Panel</title>
-    <?= $this->include('admin/assets/css') ?>
+    <?= $this->include('Backend/Default/İnclude/css') ?>
 </head>
 
 <body class="bg-theme bg-theme1">
     <div id="wrapper">
-        <?= $this->include('admin/extra/sidebar') ?>
-        <?= $this->include('admin/extra/header') ?>
+        <?= $this->include('Backend/Default/Anime/İnclude/sidebar') ?>
+        <?= $this->include('Backend/Default/Anime/İnclude/header') ?>
         <div class="clearfix"></div>
         <div class="content-wrapper">
             <div class="container-fluid">
@@ -397,9 +397,9 @@
                 <div class="overlay toggle-menu"></div>
             </div>
         </div>
-        <?= $this->include('admin/extra/footer') ?>
+        <?= $this->include('Backend/Default/Anime/İnclude/footer') ?>
     </div>
-    <?= $this->include('admin/assets/script') ?>
+    <?= $this->include('Backend/Default/Anime/İnclude/script') ?>
 </body>
 
 </html>

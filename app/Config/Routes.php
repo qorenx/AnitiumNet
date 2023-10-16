@@ -203,18 +203,13 @@ $routes->group('report', function ($routes) {
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($routes) {
     $routes->get('', 'Admin::Admin_İndex');
     $routes->group('anime', function ($routes) {
-
-        $routes->get('getanime', 'Admin::getAnime');
-        $routes->post('getanime', 'Admin::getAnimesave');
-
-        $routes->get('getanimeupdate', 'Admin::getAnimeupdate');
-        $routes->post('getanimeupdate', 'Admin::getAnimeupdatesave');
-
+        $routes->get('getanime', 'Admin::getAnime'); //Anime GET JİKAN
+        $routes->post('getanime', 'Admin::getAnimesave'); //Anime GET Jikan Save
+        $routes->get('getanimeupdate', 'Admin::getAnimeupdate'); //Anime GET JİKAN UPDATE
+        $routes->post('getanimeupdate', 'Admin::getAnimeupdatesave'); // ANime Get JİKAN UPDATE SAV
 
         $routes->post('delete', 'Anitium::AnimeDeleteID'); //Anime Deleted Function
     });
-
-
 
 
     $routes->group('anime', function ($routes) {
