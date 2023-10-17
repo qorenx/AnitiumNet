@@ -207,10 +207,9 @@ class Converter extends BaseController
 
 
     //The cache here is systematic. If the consumet API you installed is closed or cannot be accessed, it can cache close to 150 thousand files on your site. And it shows the file from there.
-    public function __construct()
-    {
-        $this->ConsumetApi = "http://localhost:3000/anime/gogoanime";
-    }
+
+    public const CONSUME_API = "http://localhost:3000/anime/gogoanime/";
+
     public function get_embed_gogoanime_filesystem($uid, $eps, $url)
     {
         $modelsettings = new Settings();
@@ -219,7 +218,7 @@ class Converter extends BaseController
         $path = parse_url($url, PHP_URL_PATH);
         $path = preg_replace('/\d+$/', '', $path);
 
-        $api_base = $this->ConsumetApi;
+        $api_base = '"' . self::CONSUME_API . '"';
 
         $temp_dir = FCPATH . 'file/gogoanime_filesystem/';
 
@@ -269,7 +268,7 @@ class Converter extends BaseController
         $path = parse_url($url, PHP_URL_PATH);
         $path = preg_replace('/\d+$/', '', $path);
 
-        $api_base = $this->ConsumetApi . "anime/gogoanime";
+        $api_base = '"' . self::CONSUME_API . '"';
 
         $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
         $multiembed = json_decode(file_get_contents("{$api_base}/servers{$path}{$eps}"));
