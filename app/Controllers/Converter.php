@@ -20,15 +20,11 @@ class Converter extends BaseController
 
     //CONSUMET SETTİNGS
     //Write the ConsumetAPI you will use here. If you don't type it, gogoanime won't work.
-    public const ConsumeAPİ = "http://localhost:3000/anime/gogoanime";
-    // Use 0 VidStack, Use 1 JWPlayer
-    public const GogoAnimePlayer = 1;
-    // If you select 0, ConsumetAPI caches. Set the number of cache files. 
-    //If you choose 1, the number of caches will be low. However, ConsumetAPI pressure may increase.
-    public const GogoAnimeMulti = 0;  
-    //It works when "0" is entered in the GogoAnime Multi setting. It uses the number of files on its server.
-    //Too much can close too many files. When the peak is reached, it deletes them all.
-    public const GogoAnimeCacheFiles = 25000;  //Be careful of the include field on your server.
+    private const ConsumeAPİ = "http://localhost:3000/anime/gogoanime";
+    private const GogoAnimePlayer = 1; // Use 0 VidStack, Use 1 JWPlayer
+    private const GogoAnimeMulti = 0; //If you set it to 0, Consume will show Cache data even if the API crashes. The limit can be adjusted. 1 If you set. It works based on ConsumetAPI. If it crashes, videos won't work.
+    private const GogoAnimeCacheFiles = 25000;  //Be careful of the include field on your server.
+    private const GogoAnimeCleanerFile = 1000;  //It deletes the oldest 1,000 files when you reach the limit.
 
 
     
@@ -242,9 +238,16 @@ class Converter extends BaseController
         $files = glob($temp_dir . '*');
 
         if (count($files) > self::GogoAnimeCacheFiles) {
-            foreach ($files as $file) {
-                if (is_file($file))
-                    unlink($file);
+            // Sort files by creation time ascending, oldest files first
+            usort($files, function($a, $b) {
+                return filemtime($a) - filemtime($b);
+            });
+        
+            // There are more than 1,000 files, so we'll go ahead and remove the oldest one.
+            for($i = 0; $i < min(self::GogoAnimeCleanerFile, count($files)); $i++) {
+                if(is_file($files[$i])) {
+                    unlink($files[$i]);
+                }
             }
         }
 
