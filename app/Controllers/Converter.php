@@ -16,10 +16,7 @@ class Converter extends BaseController
     use ResponseTrait;
 
 
-    public function __construct()
-    {
-        $this->ConsumetAPİ = 'anitium.repl.co';
-    }
+
 
     // Video embed get yapar.   Bu sayede id göre episode embed çekmiş olur.
     public function get_embed($uid, $eps, $embedid)
@@ -210,52 +207,56 @@ class Converter extends BaseController
 
 
     //The cache here is systematic. If the consumet API you installed is closed or cannot be accessed, it can cache close to 150 thousand files on your site. And it shows the file from there.
-    public function get_embed_gogoanime_filesystem($uid, $eps, $url) {
+    public function __construct()
+    {
+        $this->ConsumetApi = "http://localhost:3000/anime/gogoanime";
+    }
+    public function get_embed_gogoanime_filesystem($uid, $eps, $url)
+    {
         $modelsettings = new Settings();
         $animemodel = new AnimeModel();
         $episodemodel = new EpisodeModel();
         $path = parse_url($url, PHP_URL_PATH);
         $path = preg_replace('/\d+$/', '', $path);
-    
-        $api_base = "http://localhost:3000/anime/gogoanime";
-        
-        $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
-        [$anime] = $animemodel->where('uid', $uid)->select('ani_name, ani_poster')->find();
-        [$episode] = $episodemodel->where('uid', $uid)->where('ep_id_name', $eps)->select('ep_name')->find();
-    
+
+        $api_base = $this->ConsumetApi;
+
         $temp_dir = FCPATH . 'file/gogoanime_filesystem/';
-        
+
         if (!file_exists($temp_dir)) {
             mkdir($temp_dir, 0777, true);
         }
         $files = glob($temp_dir . '*');
-        
+
         if (count($files) > 150000) {
             foreach ($files as $file) {
                 if (is_file($file))
                     unlink($file);
             }
         }
-    
+
         $playerVersion = 2 == 1 ? 'vidstack' : 'jwplayer';
-        
-        $temp_file_name = $uid . "_" . $eps; 
+
+        $temp_file_name = $uid . "_" . $eps;
         $temp_file = $temp_dir . $temp_file_name;
-       
+
         if (!file_exists($temp_file)) {
+            $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
+            [$anime] = $animemodel->where('uid', $uid)->select('ani_name, ani_poster')->find();
+            [$episode] = $episodemodel->where('uid', $uid)->where('ep_id_name', $eps)->select('ep_name')->find();
             file_put_contents($temp_file, view('Frontend/Include/Player/' . $playerVersion, [
-                 'getAdminSettings' => $modelsettings->getAdminSettings(),
-                 'play' => $play,
-                 'anime' => $anime,
-                 'episode' => $episode,
+                'getAdminSettings' => $modelsettings->getAdminSettings(),
+                'play' => $play,
+                'anime' => $anime,
+                'episode' => $episode,
             ]));
         }
-      
+
         chmod($temp_file, 0777);
         $temp_url = base_url() . str_replace('\\', '/', str_replace(FCPATH, '', $temp_file));
-    
+
         $iframe_code = '<iframe src="' . $temp_url . '" width="100%" height="100%" marginwidth="100%" marginheight="100%" style="box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;"></iframe>';
-    
+
         return $this->response->setJSON(array($iframe_code));
     }
 
@@ -267,54 +268,51 @@ class Converter extends BaseController
         $episodemodel = new EpisodeModel();
         $path = parse_url($url, PHP_URL_PATH);
         $path = preg_replace('/\d+$/', '', $path);
-    
-        $api_base = "http://localhost:3000/anime/gogoanime";
-        
+
+        $api_base = $this->ConsumetApi . "anime/gogoanime";
+
         $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
         $multiembed = json_decode(file_get_contents("{$api_base}/servers{$path}{$eps}"));
         [$anime] = $animemodel->where('uid', $uid)->select('ani_name, ani_poster')->find();
         [$episode] = $episodemodel->where('uid', $uid)->where('ep_id_name', $eps)->select('ep_name')->find();
-    
+
         $iframe_codes = array_map(function ($embed) {
             return '<iframe src="' . $embed->url . '" width="100%" height="100%" marginwidth="100%" marginheight="100%" style="box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;"></iframe>';
         }, $multiembed);
-    
+
         $temp_dir = FCPATH . 'file/gogoanime_multiembed/';
-        
+
         if (!file_exists($temp_dir)) {
             mkdir($temp_dir, 0777, true);
         }
         $files = glob($temp_dir . '*');
-        
+
         if (count($files) > 200) {
             foreach ($files as $file) {
                 if (is_file($file))
                     unlink($file);
             }
         }
-    
+
         $playerVersion = 2 == 1 ? 'vidstack' : 'jwplayer';
-        
-        $temp_file_name = $uid . "_" . $eps; 
+
+        $temp_file_name = $uid . "_" . $eps;
         $temp_file = $temp_dir . $temp_file_name;
-       
+
         if (!file_exists($temp_file)) {
             file_put_contents($temp_file, view('Frontend/İnclude/Player/' . $playerVersion, [
-                 'getAdminSettings' => $modelsettings->getAdminSettings(),
-                 'play' => $play,
-                 'anime' => $anime,
-                 'episode' => $episode,
+                'getAdminSettings' => $modelsettings->getAdminSettings(),
+                'play' => $play,
+                'anime' => $anime,
+                'episode' => $episode,
             ]));
         }
-      
+
         chmod($temp_file, 0777);
         $temp_url = base_url() . str_replace('\\', '/', str_replace(FCPATH, '', $temp_file));
-      
+
         array_unshift($iframe_codes, '<iframe src="' . $temp_url . '" width="100%" height="100%" marginwidth="100%" marginheight="100%" style="box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;"></iframe>');
-    
+
         return $this->response->setJSON($iframe_codes);
     }
-
-
-    
 }
