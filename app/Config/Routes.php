@@ -290,3 +290,6 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
 $routes->get('getLicense/(:any)/(:any)/(:any)', 'License::getLicense/$1/$2/$3');
 $routes->get('getLicenseFile/(:any)', 'License::getLicenseFile/$1');
 $routes->get('verifylicense', 'License::verifylicense');
+
+
+$routes->get('thm', 'Anitium::AnitiumThemes');

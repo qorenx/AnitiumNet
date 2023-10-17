@@ -277,7 +277,7 @@ class Converter extends BaseController
             $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
             [$anime] = $animemodel->where('uid', $uid)->select('ani_name, ani_poster')->find();
             [$episode] = $episodemodel->where('uid', $uid)->where('ep_id_name', $eps)->select('ep_name')->find();
-            file_put_contents($temp_file, view('Frontend/İnclude/Player/' . $playerVersion, [
+            file_put_contents($temp_file, view('Backend/Player/' . $playerVersion, [
                 'getAdminSettings' => $modelsettings->getAdminSettings(),
                 'play' => $play,
                 'anime' => $anime,
@@ -350,7 +350,7 @@ class Converter extends BaseController
         $temp_file = $temp_dir . $temp_file_name;
 
         if (!file_exists($temp_file)) {
-            file_put_contents($temp_file, view('Frontend/İnclude/Player/' . $playerVersion, [
+            file_put_contents($temp_file, view('Backend/Player/' . $playerVersion, [
                 'getAdminSettings' => $modelsettings->getAdminSettings(),
                 'play' => $play,
                 'anime' => $anime,

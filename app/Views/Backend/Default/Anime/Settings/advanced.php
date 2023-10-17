@@ -23,7 +23,10 @@
                             <div class="form-group row border-bottom">
                                 <label for="value" class="col-sm-4 col-form-label"><?php echo $settings['License'][0]['class']; ?>:</label>
                                 <div class="col-sm-7">
-                                    <input type="text" name="value" id="value" value="<?php echo $settings['License'][0]['value']; ?>" class="form-control">
+                                    <select name="value" id="value" class="form-control">
+                                        <option value="AniWatch" <?php echo ($settings['License'][0]['value'] == 'AniWatch') ? 'selected' : ''; ?>>AniWatch</option>
+                                        <option value="KickAss" <?php echo ($settings['License'][0]['value'] == 'KickAss') ? 'selected' : ''; ?>>KickAss</option>
+                                    </select>
                                 </div>
                                 <div class="col-sl-1">
                                     <input class="btn btn-primary" type="submit" value="Update">
