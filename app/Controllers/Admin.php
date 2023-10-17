@@ -63,13 +63,15 @@ class Admin extends BaseController
 
 
     //Anime Jikan Get/Update Function
-    public function getAnime() 
+    public function getAnime()
     {
         $ModelSettings = new Settings();
         $animeUID = $_GET['uid'];
         $url = "https://api.jikan.moe/v4/anime/" . $animeUID . "/full";
         $data = json_decode(file_get_contents($url), true);
-        return view($this->ThemesConfig . 'Anime/getanime',[
+        return view(
+            $this->ThemesConfig . 'Anime/getanime',
+            [
                 'getAdminSettings' => $ModelSettings->getAdminSettings(),
                 'data' => $data,
             ]
@@ -121,7 +123,7 @@ class Admin extends BaseController
         $animeModel->insert($data);
         return redirect()->to(base_url() . 'admin');
     }
-    public function getAnimeupdate() 
+    public function getAnimeupdate()
     {
         $ModelSettings = new Settings();
         $animemodel = new AnimeModel();
@@ -129,7 +131,8 @@ class Admin extends BaseController
         $animeup = $animemodel->where('uid', $animeUID)->find();
         $url = "https://api.jikan.moe/v4/anime/" . $animeUID . "/full";
         $data = json_decode(file_get_contents($url), true);
-        return view($this->ThemesConfig . 'Anime/getanimeupdate',
+        return view(
+            $this->ThemesConfig . 'Anime/getanimeupdate',
             [
                 'getAdminSettings' => $ModelSettings->getAdminSettings(),
                 'manuel' => $animeup,
@@ -137,7 +140,7 @@ class Admin extends BaseController
             ]
         );
     }
-    public function getAnimeupdatesave() 
+    public function getAnimeupdatesave()
     {
         $animeModel = new AnimeModel();
         $uid = $this->request->getPost('uid');
@@ -212,7 +215,7 @@ class Admin extends BaseController
     }
 
     //Auto Episode Add/Save Jikan Use
-    public function getEpisode() 
+    public function getEpisode()
     {
         $modelsettings = new Settings();
         $animeUID = $_GET['uid'];
@@ -358,120 +361,9 @@ class Admin extends BaseController
     ///Episode Adding/Editing/Embed Adding, Embed Editing, GetAllEpisode Finish
 
 
+    //Board Report Edildiği Kısımdır,  BoardReport, BoardCommentReport ve BoardReplyReport buradadır.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // ADMİN REPORT YÖNETİM YERİDİR
-
-
-    //episode report ve delete kısmı
-    public function getepisodereport()
-    {
-        $modelsettings = new Settings();
-        $episodereportmodel = new EpisodeReport();
-        $data = [
-            'getAdminSettings' => $modelsettings->getAdminSettings(),
-            'episodereport' => $episodereportmodel->paginate(10),
-            'pager' => $episodereportmodel->pager,
-        ];
-        return view('admin/report/episode/episode', $data);
-    }
-
-    public function episodereportdelete()
-    {
-        $episodereportmodel = new EpisodeReport();
-        if ($this->request->getMethod() === 'post') {
-            $postId = $this->request->getPost('post_delete_id');
-            $episodereportmodel->delete($postId);
-        }
-
-        return redirect()->back();
-    }
-
-    // Admin Main Comment Report List
-    public function getcommentmainreport()
-    {
-        $modelsettings = new Settings();
-        $commentreportmodel = new EpisodeCommentReport();
-        $data = [
-            'getAdminSettings' => $modelsettings->getAdminSettings(),
-            'commentreport' => $commentreportmodel->getcomment(),
-        ];
-        return view('admin/report/episode/main', $data);
-    }
-    public function commentreportdelete()
-    {
-        $commentreportmodel = new EpisodeCommentReport();
-        $postId = $this->request->getPost('report_id');
-        $commentreportmodel->delete($postId);
-
-        return redirect()->back();
-    }
-    public function commentandreportdelete()
-    {
-        $commentreportmodel = new EpisodeCommentReport();
-        $postId = $this->request->getPost('report_id');
-        $commentreportmodel->delete($postId);
-        $commentcreportmodel = new EpisodeCommentModel();
-        $postdId = $this->request->getPost('comment_id');
-        $commentcreportmodel->delete($postdId);
-        $commentrepynmodel = new EpisodeCommentRepyModel();
-        $postrepy = $this->request->getPost('repy_id');
-        $itemsToDelete = $commentrepynmodel->where('post_id', $postrepy)->findAll();
-        foreach ($itemsToDelete as $item) {
-            $commentrepynmodel->delete($item['id']);
-        }
-        return redirect()->back();
-    }
-    // Admin Repy Comment Report List
-    public function getcommentrepyreport()
-    {
-        $modelsettings = new Settings();
-        $commentreportmodel = new EpisodeCommentReport();
-        $data = [
-            'getAdminSettings' => $modelsettings->getAdminSettings(),
-            'commentreport' => $commentreportmodel->getrepycomment(),
-        ];
-        return view('admin/report/episode/repy', $data);
-    }
-    public function commentrepyreportdelete()
-    {
-
-        $commentreportmodel = new EpisodeCommentReport();
-        $postId = $this->request->getPost('report_id');
-        $commentreportmodel->delete($postId);
-
-        return redirect()->back();
-    }
-    public function commentrepyandreportdelete()
-    {
-
-        $commentreportmodel = new EpisodeCommentReport();
-        $postId = $this->request->getPost('report_id');
-        $commentreportmodel->delete($postId);
-
-        $commentcreportmodel = new EpisodeCommentRepyModel();
-        $postdId = $this->request->getPost('comment_id');
-        $commentcreportmodel->delete($postdId);
-
-        return redirect()->back();
-    }
-
-    // Admin Board Report List Kısmıdır
+    //Board Paylaştığım Konu Report Gösterme, Silme yeridir.
     public function getboardreport()
     {
         $modelsettings = new Settings();
@@ -480,7 +372,7 @@ class Admin extends BaseController
             'getAdminSettings' => $modelsettings->getAdminSettings(),
             'boardreport' => $boardreportmodel->boardreport(),
         ];
-        return view('admin/report/board/board', $data);
+        return view($this->ThemesConfig . 'Anime/Report/Board/board', $data);
     }
     public function boardreportdelete()
     {
@@ -505,7 +397,7 @@ class Admin extends BaseController
         return redirect()->back();
     }
 
-    //Board Main Report List
+    //Board Konuların altına yazılan yorum report ve silme yeri.
     public function getboardmainreport()
     {
         $modelsettings = new Settings();
@@ -514,7 +406,7 @@ class Admin extends BaseController
             'getAdminSettings' => $modelsettings->getAdminSettings(),
             'boardreport' => $boardreportmodel->getcomment(),
         ];
-        return view('admin/report/board/main', $data);
+        return view($this->ThemesConfig . 'Anime/Report/Board/main', $data);
     }
     public function boardmreportdelete()
     {
@@ -546,7 +438,7 @@ class Admin extends BaseController
 
         return redirect()->back();
     }
-    //Admin Board Repy Report Kısmıdır
+    //Board Konuların altına yazılan yorumların cevaplarını report ve silme yeri.
     public function getboardrepyreport()
     {
         $modelsettings = new Settings();
@@ -555,7 +447,7 @@ class Admin extends BaseController
             'getAdminSettings' => $modelsettings->getAdminSettings(),
             'boardreport' => $boardreportmodel->getrepy(),
         ];
-        return view('admin/report/board/repy', $data);
+        return view($this->ThemesConfig . 'Anime/Report/Board/repy', $data);
     }
     public function boardrreportdelete()
     {
@@ -579,6 +471,104 @@ class Admin extends BaseController
 
         return redirect()->back();
     }
+
+
+
+    //Episode Report Göründüğü ve Silindiği Kısımdır.
+    public function getepisodereport()
+    {
+        $modelsettings = new Settings();
+        $episodereportmodel = new EpisodeReport();
+        $data = [
+            'getAdminSettings' => $modelsettings->getAdminSettings(),
+            'episodereport' => $episodereportmodel->paginate(10),
+            'pager' => $episodereportmodel->pager,
+        ];
+        return view($this->ThemesConfig . 'Anime/Report/Episode/episode', $data);
+    }
+    public function episodereportdelete()
+    {
+        $episodereportmodel = new EpisodeReport();
+        if ($this->request->getMethod() === 'post') {
+            $postId = $this->request->getPost('post_delete_id');
+            $episodereportmodel->delete($postId);
+        }
+
+        return redirect()->back();
+    }
+
+    // Episode Altına Yapılan Yorumların Report ve Silindiği yer.
+    public function getcommentmainreport()
+    {
+        $modelsettings = new Settings();
+        $commentreportmodel = new EpisodeCommentReport();
+        $data = [
+            'getAdminSettings' => $modelsettings->getAdminSettings(),
+            'commentreport' => $commentreportmodel->getcomment(),
+        ];
+        return view($this->ThemesConfig . 'Anime/Report/Episode/main', $data);
+    }
+    public function commentreportdelete()
+    {
+        $commentreportmodel = new EpisodeCommentReport();
+        $postId = $this->request->getPost('report_id');
+        $commentreportmodel->delete($postId);
+
+        return redirect()->back();
+    }
+    public function commentandreportdelete()
+    {
+        $commentreportmodel = new EpisodeCommentReport();
+        $postId = $this->request->getPost('report_id');
+        $commentreportmodel->delete($postId);
+        $commentcreportmodel = new EpisodeCommentModel();
+        $postdId = $this->request->getPost('comment_id');
+        $commentcreportmodel->delete($postdId);
+        $commentrepynmodel = new EpisodeCommentRepyModel();
+        $postrepy = $this->request->getPost('repy_id');
+        $itemsToDelete = $commentrepynmodel->where('post_id', $postrepy)->findAll();
+        foreach ($itemsToDelete as $item) {
+            $commentrepynmodel->delete($item['id']);
+        }
+        return redirect()->back();
+    }
+    // Episode Altına Yapılan yorumların yorumu report ve silindiği yer.
+    public function getcommentrepyreport()
+    {
+        $modelsettings = new Settings();
+        $commentreportmodel = new EpisodeCommentReport();
+        $data = [
+            'getAdminSettings' => $modelsettings->getAdminSettings(),
+            'commentreport' => $commentreportmodel->getrepycomment(),
+        ];
+        return view($this->ThemesConfig . 'Anime/Report/Episode/repy', $data);
+    }
+    public function commentrepyreportdelete()
+    {
+
+        $commentreportmodel = new EpisodeCommentReport();
+        $postId = $this->request->getPost('report_id');
+        $commentreportmodel->delete($postId);
+
+        return redirect()->back();
+    }
+    public function commentrepyandreportdelete()
+    {
+
+        $commentreportmodel = new EpisodeCommentReport();
+        $postId = $this->request->getPost('report_id');
+        $commentreportmodel->delete($postId);
+
+        $commentcreportmodel = new EpisodeCommentRepyModel();
+        $postdId = $this->request->getPost('comment_id');
+        $commentcreportmodel->delete($postdId);
+
+        return redirect()->back();
+    }
+
+
+
+
 
 
     // Anime Slider Kısmıdır. Basit bir kısım.
