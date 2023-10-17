@@ -133,4 +133,5 @@ nb-configuration.xml
 /lisans/*.json
 anitium
 /app/Views/license
-/file/gogoanime/*.tmp
+/file/gogoanime_filesystem/
+/file/gogoanime_multiembed/
