@@ -16,6 +16,24 @@ class Converter extends BaseController
     use ResponseTrait;
 
 
+    //CONVERTER CONFİG 
+
+    //CONSUMET SETTİNGS
+    //Write the ConsumetAPI you will use here. If you don't type it, gogoanime won't work.
+    public const ConsumeAPİ = "http://localhost:3000/anime/gogoanime";
+    // Use 0 VidStack, Use 1 JWPlayer
+    public const GogoAnimePlayer = 1;
+    // If you select 0, ConsumetAPI caches. Set the number of cache files. 
+    //If you choose 1, the number of caches will be low. However, ConsumetAPI pressure may increase.
+    public const GogoAnimeMulti = 0;  
+    //It works when "0" is entered in the GogoAnime Multi setting. It uses the number of files on its server.
+    //Too much can close too many files. When the peak is reached, it deletes them all.
+    public const GogoAnimeCacheFiles = 25000;  //Be careful of the include field on your server.
+
+
+    
+
+
 
 
     // Video embed get yapar.   Bu sayede id göre episode embed çekmiş olur.
@@ -44,13 +62,12 @@ class Converter extends BaseController
             'dmmitltd.com'              => 'get_embed_2embed',
             'superstream.monster'       => 'get_embed_2embed',
             '2embed.to'                 => 'get_embed_2embed',
-            'gogoanimehd.to'            => 'get_embed_gogoanime_filesystem',
-            'gogoanimehd.io'            => 'get_embed_gogoanime_filesystem',
-            'gogoanime.gr'              => 'get_embed_gogoanime_filesystem',
-            'gogoanime.ee'              => 'get_embed_gogoanime_filesystem',
-            'gogoanime.hu'              => 'get_embed_gogoanime_filesystem',
-            'gogoanime.me'              => 'get_embed_gogoanime_filesystem'
-
+            'gogoanimehd.to'            => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
+            'gogoanimehd.io'            => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
+            'gogoanime.gr'              => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
+            'gogoanime.ee'              => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
+            'gogoanime.hu'              => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
+            'gogoanime.me'              => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed'
         ];
 
         foreach ($embedProviders as $domain => $providerMethod) {
@@ -207,9 +224,6 @@ class Converter extends BaseController
 
 
     //The cache here is systematic. If the consumet API you installed is closed or cannot be accessed, it can cache close to 150 thousand files on your site. And it shows the file from there.
-
-    public const CONSUME_API = "http://localhost:3000/anime/gogoanime/";
-
     public function get_embed_gogoanime_filesystem($uid, $eps, $url)
     {
         $modelsettings = new Settings();
@@ -218,7 +232,7 @@ class Converter extends BaseController
         $path = parse_url($url, PHP_URL_PATH);
         $path = preg_replace('/\d+$/', '', $path);
 
-        $api_base = '"' . self::CONSUME_API . '"';
+        $api_base = self::ConsumeAPİ;
 
         $temp_dir = FCPATH . 'file/gogoanime_filesystem/';
 
@@ -227,14 +241,14 @@ class Converter extends BaseController
         }
         $files = glob($temp_dir . '*');
 
-        if (count($files) > 150000) {
+        if (count($files) > self::GogoAnimeCacheFiles) {
             foreach ($files as $file) {
                 if (is_file($file))
                     unlink($file);
             }
         }
 
-        $playerVersion = 2 == 1 ? 'vidstack' : 'jwplayer';
+        $playerVersion = self::GogoAnimePlayer == 0 ? 'vidstack' : 'jwplayer';
 
         $temp_file_name = $uid . "_" . $eps;
         $temp_file = $temp_dir . $temp_file_name;
@@ -243,7 +257,7 @@ class Converter extends BaseController
             $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
             [$anime] = $animemodel->where('uid', $uid)->select('ani_name, ani_poster')->find();
             [$episode] = $episodemodel->where('uid', $uid)->where('ep_id_name', $eps)->select('ep_name')->find();
-            file_put_contents($temp_file, view('Frontend/Include/Player/' . $playerVersion, [
+            file_put_contents($temp_file, view('Frontend/İnclude/Player/' . $playerVersion, [
                 'getAdminSettings' => $modelsettings->getAdminSettings(),
                 'play' => $play,
                 'anime' => $anime,
@@ -268,7 +282,7 @@ class Converter extends BaseController
         $path = parse_url($url, PHP_URL_PATH);
         $path = preg_replace('/\d+$/', '', $path);
 
-        $api_base = '"' . self::CONSUME_API . '"';
+        $api_base = self::ConsumeAPİ;
 
         $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
         $multiembed = json_decode(file_get_contents("{$api_base}/servers{$path}{$eps}"));
@@ -293,7 +307,7 @@ class Converter extends BaseController
             }
         }
 
-        $playerVersion = 2 == 1 ? 'vidstack' : 'jwplayer';
+        $playerVersion = self::GogoAnimePlayer == 0 ? 'vidstack' : 'jwplayer';
 
         $temp_file_name = $uid . "_" . $eps;
         $temp_file = $temp_dir . $temp_file_name;
