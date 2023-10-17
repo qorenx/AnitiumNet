@@ -18,16 +18,14 @@ class Converter extends BaseController
 
     //CONVERTER CONFİG 
 
-    //CONSUMET SETTİNGS
-    //Write the ConsumetAPI you will use here. If you don't type it, gogoanime won't work.
+    //Consumet APİ
     private const ConsumeAPİ = "http://localhost:3000/anime/gogoanime";
+    //Consumet GogoAnime Player Settings
     private const GogoAnimePlayer = 1; // Use 0 VidStack, Use 1 JWPlayer
-    private const GogoAnimeMulti = 0; //If you set it to 0, Consume will show Cache data even if the API crashes. The limit can be adjusted. 1 If you set. It works based on ConsumetAPI. If it crashes, videos won't work.
-    private const GogoAnimeCacheFiles = 25000;  //Be careful of the include field on your server.
+    //Consumet GogoAnime Cache Settings
+    private const GogoAnimeMulti = 0; //If you type 0, it uses the Cache system. If you type 1, it uses Live Consumer. It is not stored. The pressure becomes great.
+    private const GogoAnimeCacheFiles = 100000;  //Be careful of the include field on your server. This is calculated as 2 files. If you type 10000, it caches 5000 videos.
     private const GogoAnimeCleanerFile = 1000;  //It deletes the oldest 1,000 files when you reach the limit.
-
-
-    
 
 
 
@@ -227,16 +225,16 @@ class Converter extends BaseController
         $episodemodel = new EpisodeModel();
         $path = parse_url($url, PHP_URL_PATH);
         $path = preg_replace('/\d+$/', '', $path);
-
+    
         $api_base = self::ConsumeAPİ;
-
+    
         $temp_dir = FCPATH . 'file/gogoanime_filesystem/';
-
+    
         if (!file_exists($temp_dir)) {
             mkdir($temp_dir, 0777, true);
         }
         $files = glob($temp_dir . '*');
-
+    
         if (count($files) > self::GogoAnimeCacheFiles) {
             usort($files, function($a, $b) {
                 return filemtime($a) - filemtime($b);
@@ -247,12 +245,12 @@ class Converter extends BaseController
                 }
             }
         }
-
+    
         $playerVersion = self::GogoAnimePlayer == 0 ? 'vidstack' : 'jwplayer';
-
+    
         $temp_file_name = $uid . "_" . $eps;
         $temp_file = $temp_dir . $temp_file_name;
-
+    
         if (!file_exists($temp_file)) {
             $play = json_decode(file_get_contents("{$api_base}/watch{$path}{$eps}"));
             [$anime] = $animemodel->where('uid', $uid)->select('ani_name, ani_poster')->find();
@@ -264,13 +262,31 @@ class Converter extends BaseController
                 'episode' => $episode,
             ]));
         }
-
+        $temp_file_name_multiembed = $uid . "_" . $eps . "_multi.json";
+        $temp_file_multiembed = $temp_dir . $temp_file_name_multiembed;
+        if (!file_exists($temp_file_multiembed)) {
+            $multiembed = json_decode(file_get_contents("{$api_base}/servers{$path}{$eps}"));
+            $iframe_multiembed = array_map(function ($embed) {
+               return '<iframe src="' . $embed->url . '" width="100%" height="100%" marginwidth="100%" marginheight="100%" style="box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;"></iframe>';
+            }, $multiembed);
+            file_put_contents($temp_file_multiembed, json_encode($iframe_multiembed));
+        }
+    
         chmod($temp_file, 0777);
         $temp_url = base_url() . str_replace('\\', '/', str_replace(FCPATH, '', $temp_file));
+        chmod($temp_file_multiembed, 0777);
+        $temp_url_multi = base_url() . str_replace('\\', '/', str_replace(FCPATH, '', $temp_file_multiembed));
 
         $iframe_code = '<iframe src="' . $temp_url . '" width="100%" height="100%" marginwidth="100%" marginheight="100%" style="box-sizing: border-box; max-width: 100%; border: 0px solid black; overflow: hidden;"></iframe>';
 
-        return $this->response->setJSON(array($iframe_code));
+
+        $jsonData = file_get_contents($temp_url_multi);
+        $dataArray = json_decode($jsonData, true);
+        
+        // combine $iframe_code and each of the $dataArray items into a new array
+        $mergedData = array_merge([$iframe_code], $dataArray);
+
+        return $this->response->setJSON($mergedData);
     }
 
     //If you have installed your own consumet_api, write the url and use it.
