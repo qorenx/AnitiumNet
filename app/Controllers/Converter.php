@@ -18,15 +18,31 @@ class Converter extends BaseController
 
     //CONVERTER CONFİG 
 
-    //Consumet APİ
+    //CONSUMET APİ CONFİG
+
     private const ConsumeAPİ = "http://localhost:3000/anime/gogoanime";
     //Consumet GogoAnime Player Settings
-    private const GogoAnimePlayer = 1; // Use 0 VidStack, Use 1 JWPlayer
-    //Consumet GogoAnime Cache Settings
-    private const GogoAnimeMulti = 0; //If you type 0, it uses the Cache system. If you type 1, it uses Live Consumer. It is not stored. The pressure becomes great.
-    private const GogoAnimeCacheFiles = 100000;  //Be careful of the include field on your server. This is calculated as 2 files. If you type 10000, it caches 5000 videos.
-    private const GogoAnimeCleanerFile = 1000;  //It deletes the oldest 1,000 files when you reach the limit.
 
+    //Use 0 VidStack, Use 1 JWPlayer
+    private const GogoAnimePlayer = 1;
+
+    //If you set 0. Cache data starts to be kept. It keeps 2 data for each video on the server, 
+    //that is, 4 data in gogoanime Sub/Dub. Consumet API is the best way to use it.
+    //If you set 1. It keeps 1 file data on the server. So Consumet API uses it constantly.
+    //Collapse etc. may occur. It is not fast.
+    private const GogoAnimeMulti = 0; 
+
+    //Cache files is number. Every gogoanime broadcasts as SUB/DUB. 
+    //So let's give OnePiece an example. There are 1,000 episodes. 
+    //It contains 4,000 files as SUB/DUB. So if 100,000 is written. 
+    //It can hold 25,000 partitions. It is recommended to write according to the number of inodes on your server.
+    private const GogoAnimeCacheFiles = 200000;  
+
+    //Cache deletion interval. When the above limit is reached, it deletes the oldest created files. 
+    //"The number you write must be divided by 4." If you write 1,000. It deletes 250 partitions cache.
+    private const GogoAnimeCleanerFile = 10000; 
+
+    //CONSUMET APİ CONFİG FİNİSH
 
 
 
@@ -225,7 +241,13 @@ class Converter extends BaseController
         $episodemodel = new EpisodeModel();
         $path = parse_url($url, PHP_URL_PATH);
         $path = preg_replace('/\d+$/', '', $path);
-    
+        $subordub = preg_replace('/\d+$/', '', $path);
+        if (strpos($subordub, '-dub') !== false) {
+            $cachetype = 'dub';
+        } else {
+            $cachetype = 'sub';
+        }
+
         $api_base = self::ConsumeAPİ;
     
         $temp_dir = FCPATH . 'file/gogoanime_filesystem/';
@@ -248,7 +270,7 @@ class Converter extends BaseController
     
         $playerVersion = self::GogoAnimePlayer == 0 ? 'vidstack' : 'jwplayer';
     
-        $temp_file_name = $uid . "_" . $eps;
+        $temp_file_name = $uid . "_" . $eps . "_$cachetype";
         $temp_file = $temp_dir . $temp_file_name;
     
         if (!file_exists($temp_file)) {
@@ -262,7 +284,7 @@ class Converter extends BaseController
                 'episode' => $episode,
             ]));
         }
-        $temp_file_name_multiembed = $uid . "_" . $eps . "_multi.json";
+        $temp_file_name_multiembed = $uid . "_" . $eps . "_$cachetype" . "_multi.json";
         $temp_file_multiembed = $temp_dir . $temp_file_name_multiembed;
         if (!file_exists($temp_file_multiembed)) {
             $multiembed = json_decode(file_get_contents("{$api_base}/servers{$path}{$eps}"));
@@ -283,7 +305,6 @@ class Converter extends BaseController
         $jsonData = file_get_contents($temp_url_multi);
         $dataArray = json_decode($jsonData, true);
         
-        // combine $iframe_code and each of the $dataArray items into a new array
         $mergedData = array_merge([$iframe_code], $dataArray);
 
         return $this->response->setJSON($mergedData);
@@ -316,7 +337,7 @@ class Converter extends BaseController
         }
         $files = glob($temp_dir . '*');
 
-        if (count($files) > 100) {
+        if (count($files) > 0) {
             foreach ($files as $file) {
                 if (is_file($file))
                     unlink($file);
