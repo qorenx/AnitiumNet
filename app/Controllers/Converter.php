@@ -20,7 +20,7 @@ class Converter extends BaseController
 
     //CONSUMET APİ CONFİG
 
-    private const ConsumeAPİ = "http://localhost:3000/anime/gogoanime";
+    private const ConsumeAPİ = "http://api.consumet.org/anime/gogoanime";
     //Consumet GogoAnime Player Settings
 
     //Use 0 VidStack, Use 1 JWPlayer
