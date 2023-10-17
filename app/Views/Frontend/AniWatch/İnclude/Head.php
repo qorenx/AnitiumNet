@@ -149,10 +149,10 @@
                 </ul>
             </div>
         </div>
-        <?= $this->include('Backend/User/Loginİn') ?>
+        <?= $this->include('Frontend/AniWatch/User/Loginİn') ?>
         <div id="mobile_search" class=""><i class="fa fa-search"></i></div>
         <div class="clearfix"></div>
     </div>
 </div>
-<?= $this->include('Backend/User/LoginNotİn') ?>
+<?= $this->include('Frontend/AniWatch/User/LoginNotİn') ?>
 <?= $this->include('Frontend/AniWatch/İnclude/Qtip') ?>

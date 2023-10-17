@@ -1,9 +1,9 @@
-<?= $this->include('Frontend/İnclude/Header') ?>
+<?= $this->include('Frontend/AniWatch/İnclude/Header') ?>
 
 <body data-page="page_home">
     <div id="sidebar_menu_bg"></div>
     <div id="wrapper" data-page="page_home">
-        <?= $this->include('Frontend/İnclude/Head') ?>
+        <?= $this->include('Frontend/AniWatch/İnclude/Head') ?>
         <div class="clearfix"></div>
         <div id="main-wrapper" class="layout-page layout-award">
             <div class="award-bg" style="z-index: -9999;">
@@ -198,9 +198,9 @@
                 </div>
             </div>
         </div>
-        <?= $this->include('Frontend/İnclude/Footer') ?>
+        <?= $this->include('Frontend/AniWatch/İnclude/Footer') ?>
         <div id="mask-overlay"></div>
-        <?= $this->include('Frontend/İnclude/LoadScript') ?>
+        <?= $this->include('Frontend/AniWatch/İnclude/LoadScript') ?>
     </div>
     </div>
 </body>
