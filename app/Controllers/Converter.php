@@ -238,12 +238,9 @@ class Converter extends BaseController
         $files = glob($temp_dir . '*');
 
         if (count($files) > self::GogoAnimeCacheFiles) {
-            // Sort files by creation time ascending, oldest files first
             usort($files, function($a, $b) {
                 return filemtime($a) - filemtime($b);
             });
-        
-            // There are more than 1,000 files, so we'll go ahead and remove the oldest one.
             for($i = 0; $i < min(self::GogoAnimeCleanerFile, count($files)); $i++) {
                 if(is_file($files[$i])) {
                     unlink($files[$i]);
@@ -303,7 +300,7 @@ class Converter extends BaseController
         }
         $files = glob($temp_dir . '*');
 
-        if (count($files) > 200) {
+        if (count($files) > 100) {
             foreach ($files as $file) {
                 if (is_file($file))
                     unlink($file);
