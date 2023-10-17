@@ -239,7 +239,7 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
         $routes->post('slider', 'Admin::anislidersave');
         //Anime Takvim Ekleme silme alanı.
         $routes->get('schedule', 'Admin::schedule');
-        $routes->post('schedule', 'Admin::scheduleadd');
+        $routes->post('schedule', 'Admin::schedulesave');
         $routes->post('schedule-delete', 'Admin::scheduledelete');
         $routes->post('schedule-delete-all', 'Admin::scheduledeleteall');
     });

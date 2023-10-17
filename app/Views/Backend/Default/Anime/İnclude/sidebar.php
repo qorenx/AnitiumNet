@@ -158,5 +158,4 @@
     </ul>
 
 </div>
-
-<?= $this->include('admin/extra/loadmodal') ?>
+<?= $this->include('Backend/Default/Anime/İnclude/LoadModal') ?>

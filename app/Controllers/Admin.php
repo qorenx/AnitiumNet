@@ -567,12 +567,8 @@ class Admin extends BaseController
     }
 
 
-
-
-
-
-    // Anime Slider Kısmıdır. Basit bir kısım.
-    public function anislider()   ///anime slider kısmı.  Sadece anime uid giriliyor. Yani fazla önemli değil.
+    //Anime Slider Değiştirme Yeridir.
+    public function anislider() 
     {
         $modelsettings = new Settings();
         $slidermodel = new AnimeSlider();
@@ -582,10 +578,8 @@ class Admin extends BaseController
             'slider' => $alldata,
         ];
 
-        return view('admin/settings/slider', $data);
+        return view($this->ThemesConfig . 'Anime/Settings/slider', $data);
     }
-
-
     public function anislidersave()
     {
         $slidermodel = new AnimeSlider();
@@ -603,9 +597,8 @@ class Admin extends BaseController
         return redirect('admin/anime/slider');
     }
 
-
-    //Anime Schedule Kısmıdır. Takvim buradadır. 
-    public function schedule()   //anime takvimi yani schedule kısmıdır.  baya karmasık  birşey olursa düzeltilecektir.
+    //Anime Takvim Değiştirme Yeridir.
+    public function schedule() 
     {
         $schedulemodel = new AnimeSchedule();
         $modelsettings = new Settings();
@@ -613,10 +606,9 @@ class Admin extends BaseController
             'getAdminSettings' => $modelsettings->getAdminSettings(),
             'schedulelist' => $schedulemodel->orderBy('sc_days')->findAll(),
         ];
-        return view('admin/settings/schedule', $data);
+        return view($this->ThemesConfig . 'Anime/Settings/schedule', $data);
     }
-
-    public function scheduleadd()
+    public function schedulesave()
     {
         $schedulemodel = new AnimeSchedule();
         $sc_days = explode(",", $this->request->getPost('sc_days'));
@@ -631,7 +623,6 @@ class Admin extends BaseController
         }
         return redirect()->to(base_url() . '/admin/anime/schedule');
     }
-
     public function scheduledelete()
     {
         $schedulemodel = new AnimeSchedule();
@@ -646,7 +637,6 @@ class Admin extends BaseController
         }
         return redirect()->to(base_url() . '/admin/anime/schedule');
     }
-
     public function scheduledeleteall()
     {
         $schedulemodel = new AnimeSchedule();
@@ -654,6 +644,9 @@ class Admin extends BaseController
         return redirect()->to(base_url() . '/admin/anime/schedule');
     }
 
+
+
+    //Anime Ayarlarının Yapıldığı Kısım.
     public function settings($type)
     {
         $modelsettings = new Settings();
@@ -662,10 +655,8 @@ class Admin extends BaseController
             'settings' => $modelsettings->getSettings(),
         ];
 
-        return view('admin/settings/' . $type, $data);
+        return view($this->ThemesConfig . 'Anime/Settings/' . $type, $data);
     }
-
-
     public function settingupdate()
     {
         $data = array_filter($this->request->getPost([
@@ -683,4 +674,6 @@ class Admin extends BaseController
 
         return redirect()->back();
     }
+
+
 }
