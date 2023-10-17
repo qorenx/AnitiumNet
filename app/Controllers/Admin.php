@@ -27,6 +27,7 @@ use CodeIgniter\API\ResponseTrait;
 class Admin extends BaseController
 {
     use ResponseTrait;
+    public $ThemesConfig;
 
     // return $this->response->setJSON($test);
 
@@ -568,7 +569,7 @@ class Admin extends BaseController
 
 
     //Anime Slider Değiştirme Yeridir.
-    public function anislider() 
+    public function anislider()
     {
         $modelsettings = new Settings();
         $slidermodel = new AnimeSlider();
@@ -598,7 +599,7 @@ class Admin extends BaseController
     }
 
     //Anime Takvim Değiştirme Yeridir.
-    public function schedule() 
+    public function schedule()
     {
         $schedulemodel = new AnimeSchedule();
         $modelsettings = new Settings();
@@ -674,6 +675,4 @@ class Admin extends BaseController
 
         return redirect()->back();
     }
-
-
 }

@@ -286,7 +286,21 @@ $routes->group('admin', ['filter' => 'group:admin,superadmin'], function ($route
 
 
 
+//Anitium APİ Project
+$routes->group('api', function ($routes) {
+    $routes->get('/', 'Api::index');
+
+
+
+});
+
+
+
+
+
 //Bu sadece anitium.net çalışıyor.  Ek kodlar ve yazılım var. 
 $routes->get('getLicense/(:any)/(:any)/(:any)', 'License::getLicense/$1/$2/$3');
 $routes->get('getLicenseFile/(:any)', 'License::getLicenseFile/$1');
 $routes->get('verifylicense', 'License::verifylicense');
+
+
