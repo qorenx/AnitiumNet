@@ -15,7 +15,9 @@ class EpisodeEmbedModel extends Model
         'embed_uid',
         'embed_id',
         'embed_name',
-        'embed_frame'
+        'embed_frame',
+        'fansub_name',
+        'fansub_translator'
     ];
 
 
@@ -35,7 +37,22 @@ class EpisodeEmbedModel extends Model
         return $groupedByEmbedType;
     }
 
-    
+    public function getGroupedByEmbedType2($uid, $ep_id_name)
+    {
+        $episodeEmbedModel = new self();
+        $embedData = $episodeEmbedModel->where(['embed_uid' => $uid, 'embed_id' => $ep_id_name])->orderBy('embed_order', 'ASC')->findAll();
+        $groupedByEmbedType = [];
+
+        foreach ($embedData as $data) {
+            $groupedByEmbedType[$data['embed_type']][] = [
+                'id' => $data['id'],
+                'embed_name' => $data['embed_name']
+            ];
+        }
+
+        return $groupedByEmbedType;
+    }
+
     public function getByEmbedFirst($uid, $ep_id_name)
     {
         $typeraw = 1;
