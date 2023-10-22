@@ -26,14 +26,17 @@ class EpisodeEmbedModel extends Model
         $episodeEmbedModel = new self();
         $embedData = $episodeEmbedModel->where(['embed_uid' => $uid, 'embed_id' => $ep_id_name])->orderBy('embed_order', 'ASC')->findAll();
         $groupedByEmbedType = [];
-
+    
         foreach ($embedData as $data) {
-            $groupedByEmbedType[$data['embed_type']][] = [
+            $embedType = $data['embed_type'];
+            $fansubName = $data['fansub_name'];
+    
+            $groupedByEmbedType[$embedType][$fansubName][] = [
                 'id' => $data['id'],
                 'embed_name' => $data['embed_name']
             ];
         }
-
+    
         return $groupedByEmbedType;
     }
 

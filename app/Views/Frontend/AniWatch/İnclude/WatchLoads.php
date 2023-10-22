@@ -1,3 +1,6 @@
+
+
+
 <script>
     //Anime Listesini Çekmektedir. Bekleme süresi 1 saniyedir.
     const getAnimeList = async (uid) => {
