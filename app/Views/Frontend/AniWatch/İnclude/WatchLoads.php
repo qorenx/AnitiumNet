@@ -1,5 +1,27 @@
+<script>
+    function showHideItems(event, type, categoryId) {
+        event.preventDefault();
 
+        var items = document.querySelectorAll('[id^="items-category-' + type + '-"]');
+        items.forEach(function(item) {
+            var children = item.querySelectorAll('.item');
+            children.forEach(function(child) {
+                if (item.id === 'items-category-' + type + '-' + categoryId) {
+                    child.style.display = child.style.display === "none" ? "block" : "none";
+                } else {
+                    child.style.display = "none";
+                }
+            });
+        });
 
+        var categories = document.querySelectorAll('[id^="category-' + type + '-"]');
+        categories.forEach(function(category) {
+            if (category.id !== 'category-' + type + '-' + categoryId) {
+                category.style.display = category.style.display === "none" ? "block" : "none";
+            }
+        });
+    }
+</script>
 
 <script>
     //Anime Listesini Çekmektedir. Bekleme süresi 1 saniyedir.
@@ -104,8 +126,20 @@
         return srcName.charAt(0).toUpperCase() + srcName.slice(1);
     }
 
-    const getEmbed = async (uid, eps, embedId) => {
+    const getEmbed = async (uid, eps, embedId, translator) => {
         try {
+            if (translator) {
+                let html = translator.trim() === "" ? "" :
+                    `<div class="alert alert-primary" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    <span aria-hidden="true">${translator}</span>
+                    </div>`;
+                document.getElementById('fansub_translator').innerHTML = html;
+            } else {
+                document.getElementById('fansub_translator').innerHTML = '';
+            }
             document.getElementById('iframe-embed').innerHTML =
                 '<div class=\"loading-relative loading-box\" id=\"embed-loading\">' +
                 '<div class=\"loading\">' +

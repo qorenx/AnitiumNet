@@ -19,6 +19,7 @@
                             </div>
                             <div class="anis-watch anis-watch-tv">
                                 <?= $this->include('Frontend/AniWatch/Watch/Player') ?>
+                                <div id="fansub_translator"></div>
                                 <div id="player-servers" class="player-servers"></div>
                                 <?= $this->include('Frontend/AniWatch/Watch/EpisodeSchedule') ?>
                                 <div id="episodes-content">

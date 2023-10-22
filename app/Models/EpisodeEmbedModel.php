@@ -33,7 +33,8 @@ class EpisodeEmbedModel extends Model
     
             $groupedByEmbedType[$embedType][$fansubName][] = [
                 'id' => $data['id'],
-                'embed_name' => $data['embed_name']
+                'embed_name' => $data['embed_name'],
+                'fansub_translator' => $data['fansub_translator']
             ];
         }
     
