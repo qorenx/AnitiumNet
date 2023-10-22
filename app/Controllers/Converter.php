@@ -19,29 +19,12 @@ class Converter extends BaseController
     //CONVERTER CONFİG 
 
     //CONSUMET APİ CONFİG
-
-    private const ConsumeAPİ = "http://api.consumet.org/anime/gogoanime";
     //Consumet GogoAnime Player Settings
-
-    //Use 0 VidStack, Use 1 JWPlayer
-    private const GogoAnimePlayer = 1;
-
-    //If you set 0. Cache data starts to be kept. It keeps 2 data for each video on the server, 
-    //that is, 4 data in gogoanime Sub/Dub. Consumet API is the best way to use it.
-    //If you set 1. It keeps 1 file data on the server. So Consumet API uses it constantly.
-    //Collapse etc. may occur. It is not fast.
-    private const GogoAnimeMulti = 0; 
-
-    //Cache files is number. Every gogoanime broadcasts as SUB/DUB. 
-    //So let's give OnePiece an example. There are 1,000 episodes. 
-    //It contains 4,000 files as SUB/DUB. So if 100,000 is written. 
-    //It can hold 25,000 partitions. It is recommended to write according to the number of inodes on your server.
-    private const GogoAnimeCacheFiles = 200000;  
-
-    //Cache deletion interval. When the above limit is reached, it deletes the oldest created files. 
-    //"The number you write must be divided by 4." If you write 1,000. It deletes 250 partitions cache.
-    private const GogoAnimeCleanerFile = 10000; 
-
+    private const ConsumeAPİ = "http://api.consumet.org/anime/gogoanime";
+    private const GogoAnimePlayer = 1; //Use 0 VidStack, Use 1 JWPlayer
+    private const GogoAnimeMulti = 0; // Use 0 Cache System, Use 1 No Cache Live APİ
+    private const GogoAnimeCacheFiles = 200000; // You Use Cache 1 Episode 4 Cache File
+    private const GogoAnimeCleanerFile = 10000;  // You Cache Files Limit, Last Deleted İtem
     //CONSUMET APİ CONFİG FİNİSH
 
 
