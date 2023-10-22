@@ -7,9 +7,9 @@
         <div class="clearfix"></div>
         <div id="main-wrapper" class="layout-page layout-profile">
             <div class="profile-header">
-                <div class="profile-header-cover"></div>
+            <div class="profile-header-cover" style="background-image: url(<?= auth()->user()->avatar ?>);"></div>
                 <div class="container">
-                    <div class="profile-header-cover" style="background-image: url(<?= auth()->user()->avatar ?>);"></div>
+                    <div class="ph-title">Hi, <?= auth()->user()->username ?></div>
                     <div class="ph-tabs">
                         <div class="bah-tabs">
                             <ul class="nav nav-tabs pre-tabs">

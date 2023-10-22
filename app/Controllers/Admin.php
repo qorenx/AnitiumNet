@@ -327,6 +327,8 @@ class Admin extends BaseController
                     'embed_id' => $embed_id,
                     'embed_type' => $this->request->getPost('embed_type'),
                     'embed_name' => $embed_name,
+                    'fansub_name' =>  $this->request->getPost('fansub_name'),
+                    'fansub_translator' =>  $this->request->getPost('fansub_translator'),
                     'embed_order' => $embed_order[$key],
                     'embed_frame' => $embed_frames[$key],
                 ];

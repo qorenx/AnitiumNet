@@ -33,6 +33,30 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label for="fansub_name" class="col-sm-4 col-form-label">Fansub Name:</label>
+                                    <div class="col-sm-8">
+                                        <select name="fansub_name" id="fansub_name" class="form-control" onchange="toggleTranslator(this)">
+                                            <option value="Default">Default</option>
+                                            <!--Your add fansub name here-->
+                                            <option value="Anitium">Anitium</option>
+                                        </select>
+                                        <input placeholder="Translator?" style="color:black; background-color:rgb(8, 79, 132);" type="text" name="fansub_translator" id="fansub_translator" class="form-control">
+                                    </div>
+                                </div>
+                                <script>
+                                    function toggleTranslator(select) {
+                                        var translatorRow = document.getElementById('fansub_translator');
+                                        if (select.value == 'Default') {
+                                            translatorRow.style.display = 'none';
+                                        } else {
+                                            translatorRow.style.display = 'block';
+                                        }
+                                    }
+                                    window.onload = function() {
+                                        toggleTranslator(document.getElementById('fansub_name'));
+                                    }
+                                </script>
+                                <div class="form-group row">
                                     <label for="embed_type" class="col-sm-4 col-form-label">Episode Type:</label>
                                     <div class="col-sm-8">
                                         <select name="embed_type" id="embed_type" class="form-control">

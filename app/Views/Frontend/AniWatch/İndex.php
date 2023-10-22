@@ -14,8 +14,7 @@
     <link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assest/css/home.css">
-    <link rel="manifest" href="./manifest.json">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assest/aniwatch/css/home.css">
     <link rel="icon" sizes="192x192" href="<?php echo $Settings['Advanced'][3]['value']; ?>">
     <noscript>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
