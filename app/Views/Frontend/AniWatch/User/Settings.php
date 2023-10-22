@@ -22,136 +22,74 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <div id="profilecontainer" class="profilecontainer">
-                <style>
-                    @media only screen and (max-width: 600px) {
-                        .profilecontainer {
-                            width: 100%;
-                        }
 
-                        #profile-form {
-                            flex-direction: column;
-                            padding: 10px;
-                        }
 
-                        .avatar-upload,
-                        .mb-4 {
-                            min-width: auto;
-                        }
-                    }
+            <div class="profile-content">
+                <div class="container">
+                    <div class="profile-box profile-box-account profile-settings" style="max-width: 1100px;">
+                        <h2 class="h2-heading mb-4"><i class="fas fa-cog mr-3"></i>Settings</h2>
+                        <div class="block_area-content">
+                            <form class="preform pr-settings" action="<?= base_url('post/usersettingsupdate') ?>" method="post" id="settings-form">
 
-                    .profilecontainer {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 20px;
-                        background-color: whitesmoke;
-                        width: 80%;
-                        margin: auto;
-                    }
-
-                    #profile-form {
-                        color: black;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: start;
-                        gap: 1em;
-                        padding: 20px;
-                    }
-
-                    .form-control,
-                    .form-control-file,
-                    .avatar-upload {
-                        border: 1px solid #ced4da;
-                        position: relative;
-                        display: inline-block;
-                        cursor: pointer;
-                    }
-
-                    .avatar-upload::before {
-                        content: '';
-                    }
-
-                    .avatar-image,
-                    .mb-4 {
-                        max-width: 150px;
-                        max-height: 150px;
-                        object-fit: cover;
-                        min-width: 200px;
-                        position: relative;
-                    }
-                </style>
-                <form method="post" id="profile-form" action="<?= base_url('post/usersettingsupdate') ?>" enctype="multipart/form-data" class="needs-validation bg-light p-4 rounded shadow-lg" novalidate>
-                    <input type="hidden" name="id" value="<?= auth()->user()->id ?>">
-                    <div class="mb-4 avatar-upload" onclick="document.getElementById('avatar').click()">
-                        <img src="<?= $avatar = auth()->user()->avatar; ?>" class="avatar-image img-thumbnail mb-2">
-                        <input type="file" id="avatar" value="<?= auth()->user()->avatar ?>" name="avatar" class="form-control-file" hidden>
-                        <div class="vertical-line"></div>
-                    </div>
-                    <div class="mb-4">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" id="username" name="username" class="form-control" value="<?= auth()->user()->username ?>">
-                        <div class="vertical-line"></div>
-                    </div>
-                    <div class="mb-4">
-                        <select id="schedule_status" name="schedule_status" onchange="toggleValue(this)">
-                            <option value="0" <?= (auth()->user()->schedule_status == 0) ? 'selected' : '' ?>>Inactive</option>
-                            <option value="1" <?= (auth()->user()->schedule_status == 1) ? 'selected' : '' ?>>Active</option>
-                        </select>
-                        <label for="schedule_status">Schedule</label>
-                        <select id="watchlist_status" name="watchlist_status" onchange="toggleValue(this)">
-                            <option value="0" <?= (auth()->user()->watchlist_status == 0) ? 'selected' : '' ?>>Inactive</option>
-                            <option value="1" <?= (auth()->user()->watchlist_status == 1) ? 'selected' : '' ?>>Active</option>
-                        </select>
-                        <label for="watchlist_status">WatchList</label>
-                        <div class="vertical-line"></div>
-                    </div>
-                    <div class="mb-4">
-                        <div class="d-flex flex-column">
-                            <?php foreach (['raw', 'sub', 'dub', 'turk'] as $status) : ?>
-                                <div class="d-flex align-items-start">
-                                    <select id="<?= $status ?>_status" name="<?= $status ?>_status" onchange="toggleValue(this)">
-                                        <option value="0" <?= (auth()->user()->{$status . '_status'} == 0) ? 'selected' : '' ?>>Inactive</option>
-                                        <option value="1" <?= (auth()->user()->{$status . '_status'} == 1) ? 'selected' : '' ?>>Active</option>
-                                    </select>
-                                    <label for="<?= $status ?>_status" class="me-2"><?= ucfirst($status) ?></label>
+                                <div class="row mb-4">
+                                    <div class="col-4">
+                                        <label for="schedule_status">Schedule</label>
+                                    </div>
+                                    <div class="col-xl-3 col-md-6 col-sm-6 col-6">
+                                        <select id="schedule_status" name="schedule_status" onchange="toggleValue(this)">
+                                            <option value="0" <?= (auth()->user()->schedule_status == 0) ? 'selected' : '' ?>>Inactive</option>
+                                            <option value="1" <?= (auth()->user()->schedule_status == 1) ? 'selected' : '' ?>>Active</option>
+                                        </select>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                            <?php endforeach; ?>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-4">
+                                        <label for="watchlist_status">WatchList</label>
+                                    </div>
+                                    <div class="col-xl-3 col-md-6 col-sm-6 col-6">
+                                        <select id="watchlist_status" name="watchlist_status" onchange="toggleValue(this)">
+                                            <option value="0" <?= (auth()->user()->watchlist_status == 0) ? 'selected' : '' ?>>Inactive</option>
+                                            <option value="1" <?= (auth()->user()->watchlist_status == 1) ? 'selected' : '' ?>>Active</option>
+                                        </select>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <?php foreach (['raw', 'sub', 'dub', 'turk'] as $status) : ?>
+                                    <div class="row mb-4">
+                                        <div class="col-4">
+                                            <label for="<?= $status ?>_status" class="me-2"><?= ucfirst($status) ?></label>
+                                        </div>
+                                        <div class="col-xl-3 col-md-6 col-sm-6 col-6">
+                                            <select id="<?= $status ?>_status" name="<?= $status ?>_status" onchange="toggleValue(this)">
+                                                <option value="0" <?= (auth()->user()->{$status . '_status'} == 0) ? 'selected' : '' ?>>Inactive</option>
+                                                <option value="1" <?= (auth()->user()->{$status . '_status'} == 1) ? 'selected' : '' ?>>Active</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+
+                                <div class="row mt-5">
+                                    <div class="col-xl-12 col-md-12 col-sm-12">
+                                        <button class="btn btn-block btn-primary">Save Settings</button>
+                                        <div class="loading-relative" id="settings-loading" style="display:none">
+                                            <div class="loading">
+                                                <div class="span1"></div>
+                                                <div class="span2"></div>
+                                                <div class="span3"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-
-                    <script type="module">
-                        function toggleValue(select) {
-                            const hiddenInput = document.querySelector(`input[id="${select.id}_status_hidden"]`);
-                            hiddenInput.value = select.value;
-                        }
-                    </script>
-
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-dark">Save</button>
-                    </div>
-                </form>
-
-                <style>
-                    @media only screen and (max-width: 600px) {
-                        .vertical-line {
-                            border-right: 0;
-                            border-bottom: 1px solid grey;
-                            bottom: -10px;
-                            right: auto;
-                        }
-                    }
-
-                    .vertical-line {
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        border-right: 1px solid grey;
-                        content: "";
-                    }
-                </style>
+                </div>
+                <div class="clearfix"></div>
             </div>
+
         </div>
         <?= $this->include('Frontend/AniWatch/İnclude/Footer') ?>
         <div id="mask-overlay"></div>
