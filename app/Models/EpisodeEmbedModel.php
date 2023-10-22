@@ -34,6 +34,8 @@ class EpisodeEmbedModel extends Model
 
         return $groupedByEmbedType;
     }
+
+    
     public function getByEmbedFirst($uid, $ep_id_name)
     {
         $typeraw = 1;
