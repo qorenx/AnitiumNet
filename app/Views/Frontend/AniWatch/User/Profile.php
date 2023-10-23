@@ -35,60 +35,43 @@
                                         <div class="pa-edit" onclick="document.getElementById('avatar').click()"><i class="fas fa-pen"></i></div>
                                         <input type="file" id="avatar" value="<?= auth()->user()->avatar ?>" name="avatar" class="form-control-file" hidden>
                                     </div>
-                                    <button class="btn btn-block btn-primary">Save</button>
+                                    <button class="btn btn-block btn-primary">Save Avatar</button>
 
                                 </div>
                             </form>
-                                <div class="row">
-                                    <div class="col-xl-12 col-lg-12 col-md-12">
-                                        <div class="form-group">
-                                            <label class="prelabel">Username</label>
-                                            <input type="text" class="form-control" value="<?= auth()->user()->username ?>" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12 col-lg-12 col-md-12">
-                                        <div class="form-group">
-                                            <label class="prelabel">Joined</label>
-                                            <input type="text" class="form-control" value="<?= auth()->user()->created_at ?>" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12 col-lg-12 col-md-12">
-                                        <div class="block">
-                                            <a class="btn btn-sm btn-clear" data-toggle="collapse" href="#show-changepass"><i class="fas fa-key mr-2"></i>Change password</a>
-                                        </div>
-                                        <div id="show-changepass" class="collapse mt-3">
-                                            <form action="<?= url_to('change-password') ?>" method="post">
-                                                <?= csrf_field() ?>
-
-                                                <!-- Password -->
-                                                <div class="mb-2">
-                                                    <input type="password" class="form-control" name="password" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.password') ?>" required />
-                                                </div>
-
-                                                <!-- Password Confirm -->
-                                                <div class="mb-2">
-                                                    <input type="password" class="form-control" name="password_confirm" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.passwordConfirm') ?>" required />
-                                                </div>
-                                                <!-- Old Password -->
-                                                <div class="mb-2">
-                                                    <input type="password" class="form-control" name="old_password" inputmode="text" autocomplete="current-password" placeholder="<?= lang('Auth.OldPassword') ?>" required />
-                                                </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12 col-lg-12 col-md-12">
-                                        <div class="form-group">
-                                            <div class="mt-4"></div>
-                                            <button class="btn btn-block btn-primary">Save</button>
-                                            <div class="loading-relative" id="profile-loading" style="display:none">
-                                                <div class="loading">
-                                                    <div class="span1"></div>
-                                                    <div class="span2"></div>
-                                                    <div class="span3"></div>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <label class="prelabel">Username</label>
+                                        <input type="text" class="form-control" value="<?= auth()->user()->username ?>" readonly>
                                     </div>
                                 </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <label class="prelabel">Joined</label>
+                                        <input type="text" class="form-control" value="<?= auth()->user()->created_at ?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12">
+                                    <div class="block">
+                                        <a class="btn btn-sm btn-clear" data-toggle="collapse" href="#show-changepass"><i class="fas fa-key mr-2"></i>Change password</a>
+                                    </div>
+                                    <div id="show-changepass" class="collapse mt-3">
+                                        <form action="<?= url_to('change-password') ?>" method="post">
+                                            <?= csrf_field() ?>
+                                            <div class="mb-2">
+                                                <input type="password" class="form-control" name="password" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.password') ?>" required />
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="password" class="form-control" name="password_confirm" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.passwordConfirm') ?>" required />
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="password" class="form-control" name="old_password" inputmode="text" autocomplete="current-password" placeholder="<?= lang('Auth.OldPassword') ?>" required />
+                                            </div>
+                                            <button class="btn btn-block btn-primary">Update Password</button>
+                                    </div>
+                                </div>
+                            </div>
                             </form>
                         </div>
                     </div>
