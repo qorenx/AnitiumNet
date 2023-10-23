@@ -135,6 +135,7 @@ $routes->group('user', ['filter' => 'group:user,admin,superadmin'], function ($r
     $routes->get('(:any)', 'Anitium::User_Profile/$1');
 });
 $routes->post('post/usersettingsupdate', 'Anitium::UserSettingsUpdate');
+$routes->post('post/userprofileupdate', 'Anitium::UserProfileUpdate');
 
 
 

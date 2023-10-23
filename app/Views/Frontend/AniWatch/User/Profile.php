@@ -27,7 +27,7 @@
                     <div class="profile-box profile-box-account makeup">
                         <h2 class="h2-heading mb-4"><i class="fas fa-user mr-3"></i>Profile</h2>
                         <div class="block_area-content">
-                            <form class="preform" method="post" action="<?= base_url('post/usersettingsupdate') ?>" enctype="multipart/form-data" id="profile-form">
+                            <form class="preform" method="post" action="<?= base_url('post/userprofileupdate') ?>" enctype="multipart/form-data" id="profile-form">
                                 <input type="hidden" name="id" value="<?= auth()->user()->id ?>">
                                 <div class="show-profile-avatar text-center mb-3">
                                     <div class="profile-avatar d-inline-block">
