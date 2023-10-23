@@ -35,7 +35,10 @@
                                         <div class="pa-edit" onclick="document.getElementById('avatar').click()"><i class="fas fa-pen"></i></div>
                                         <input type="file" id="avatar" value="<?= auth()->user()->avatar ?>" name="avatar" class="form-control-file" hidden>
                                     </div>
+                                    <button class="btn btn-block btn-primary">Save</button>
+
                                 </div>
+                            </form>
                                 <div class="row">
                                     <div class="col-xl-12 col-lg-12 col-md-12">
                                         <div class="form-group">
@@ -54,18 +57,22 @@
                                             <a class="btn btn-sm btn-clear" data-toggle="collapse" href="#show-changepass"><i class="fas fa-key mr-2"></i>Change password</a>
                                         </div>
                                         <div id="show-changepass" class="collapse mt-3">
-                                            <div class="form-group">
-                                                <label class="prelabel" for="pro5-currentpass">Current Password</label>
-                                                <input type="password" class="form-control" id="pro5-currentpass" name="current_password">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="prelabel" for="pro5-pass">New Password</label>
-                                                <input type="password" class="form-control" id="pro5-pass" name="new_password">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="prelabel" for="pro5-confirm">Confirm New Password</label>
-                                                <input type="password" class="form-control" id="pro5-confirm" name="confirm_new_password">
-                                            </div>
+                                            <form action="<?= url_to('change-password') ?>" method="post">
+                                                <?= csrf_field() ?>
+
+                                                <!-- Password -->
+                                                <div class="mb-2">
+                                                    <input type="password" class="form-control" name="password" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.password') ?>" required />
+                                                </div>
+
+                                                <!-- Password Confirm -->
+                                                <div class="mb-2">
+                                                    <input type="password" class="form-control" name="password_confirm" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.passwordConfirm') ?>" required />
+                                                </div>
+                                                <!-- Old Password -->
+                                                <div class="mb-2">
+                                                    <input type="password" class="form-control" name="old_password" inputmode="text" autocomplete="current-password" placeholder="<?= lang('Auth.OldPassword') ?>" required />
+                                                </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12">

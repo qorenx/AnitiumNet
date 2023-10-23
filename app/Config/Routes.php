@@ -136,11 +136,12 @@ $routes->group('user', ['filter' => 'group:user,admin,superadmin'], function ($r
 });
 $routes->post('post/usersettingsupdate', 'Anitium::UserSettingsUpdate');
 $routes->post('post/userprofileupdate', 'Anitium::UserProfileUpdate');
-
-
-
-
 $routes->get('users/logout', 'Anitium::User_LogOUT');
+
+// add forcing password reset routes
+$routes->post('change-password', 'PasswordReset::index');
+
+
 
 
 
