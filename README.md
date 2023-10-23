@@ -2,7 +2,7 @@
 **---**
 **Preview: [anitium.net](https://anitium.net)**
 
-**Preview site version: 1.4.1**
+**Preview site version: 2.0 
 
 **Patreon: https://www.patreon.com/anitium/membership**
 
