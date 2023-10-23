@@ -19,7 +19,6 @@ class EpisodeModel extends Model
         'uid',
         'ep_id_name',
         'ep_name',
-        'ep_jname',
         'created_at',
         'updated_at',
         'deleted_at'
@@ -177,7 +176,7 @@ class EpisodeModel extends Model
         $types = $this->getTypeDetails();
         
         $episodeIndex = $this
-            ->select('uid, ep_id_name, ep_name, ep_jname')
+            ->select('uid, ep_id_name, ep_name')
             ->where('uid', $Uid)
             ->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')
             ->get()
@@ -227,7 +226,7 @@ class EpisodeModel extends Model
         $types = $this->getTypeDetails();
     
         $allEpisodesData = $this
-            ->select('uid, ep_id_name, ep_name, ep_jname')
+            ->select('uid, ep_id_name, ep_name')
             ->where('uid', $Uid)
             ->orderBy('CAST(ep_id_name AS UNSIGNED)', 'asc')
             ->get()

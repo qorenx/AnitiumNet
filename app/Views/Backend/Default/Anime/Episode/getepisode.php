@@ -35,12 +35,6 @@
                                             <input type="text" name="ep_name[]" id="ep_name" value="<?= $item['title']; ?>" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="ep_jname" class="col-sm-4 col-form-label">Episode Japanese Name:</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="ep_jname" id="ep_jname" value="<?= isset($item['title_japanese']) ? $item['title_japanese'] : $item['title_romanji']; ?>" class="form-control">
-                                        </div>
-                                    </div></br>
                                     </br></br>
                                 <?php } ?>
                                 <div class="card-footer">

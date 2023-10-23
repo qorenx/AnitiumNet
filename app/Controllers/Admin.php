@@ -236,14 +236,12 @@ class Admin extends BaseController
         $uid = $this->request->getPost('uid');
         $ep_ids = $this->request->getPost('ep_id_name');
         $ep_names = $this->request->getPost('ep_name');
-        $ep_jnames = $this->request->getPost('ep_jname');
 
         foreach ($ep_ids as $key => $ep_id) {
             $data = array(
                 'uid' => $uid,
                 'ep_id_name' => $ep_id,
                 'ep_name' => $ep_names[$key],
-                'ep_jname' => $ep_jnames[$key],
             );
             $model->insert($data);
         }
@@ -270,7 +268,6 @@ class Admin extends BaseController
         $epuid = $this->request->getPost('ep_id_name');
         $episodemodel = new EpisodeModel();
         $data = $this->request->getPost(['ep_name']);
-        $data = $this->request->getPost(['ep_jname']);
         $episodemodel->updateEpisode($uid, $data, $epuid);
 
         return redirect()->back();
