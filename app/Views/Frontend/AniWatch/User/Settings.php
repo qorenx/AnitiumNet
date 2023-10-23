@@ -30,7 +30,16 @@
                         <h2 class="h2-heading mb-4"><i class="fas fa-cog mr-3"></i>Settings</h2>
                         <div class="block_area-content">
                             <form class="preform pr-settings" action="<?= base_url('post/usersettingsupdate') ?>" method="post" id="settings-form">
-
+                                <input type="hidden" name="id" value="<?= auth()->user()->id ?>">
+                                <div class="row mb-4">
+                                    <div class="col-4">
+                                        <label for="schedule_status">Username</label>
+                                    </div>
+                                    <div class="col-xl-3 col-md-6 col-sm-6 col-6">
+                                        <input type="text" id="username" name="username" class="form-control" value="<?= auth()->user()->username ?>">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
                                 <div class="row mb-4">
                                     <div class="col-4">
                                         <label for="schedule_status">Schedule</label>
@@ -43,7 +52,7 @@
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-                                
+
                                 <div class="row mb-4">
                                     <div class="col-4">
                                         <label for="watchlist_status">WatchList</label>

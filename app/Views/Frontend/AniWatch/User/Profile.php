@@ -27,12 +27,15 @@
                     <div class="profile-box profile-box-account makeup">
                         <h2 class="h2-heading mb-4"><i class="fas fa-user mr-3"></i>Profile</h2>
                         <div class="block_area-content">
-                            <div class="show-profile-avatar text-center mb-3">
-                                <div class="profile-avatar d-inline-block">
-                                    <img id="preview-avatar" src="<?= auth()->user()->avatar ?>">
+                            <form class="preform" method="post" action="<?= base_url('post/usersettingsupdate') ?>" enctype="multipart/form-data" id="profile-form">
+                                <input type="hidden" name="id" value="<?= auth()->user()->id ?>">
+                                <div class="show-profile-avatar text-center mb-3">
+                                    <div class="profile-avatar d-inline-block">
+                                        <img id="preview-avatar" src="<?= auth()->user()->avatar ?>">
+                                        <div class="pa-edit" onclick="document.getElementById('avatar').click()"><i class="fas fa-pen"></i></div>
+                                        <input type="file" id="avatar" value="<?= auth()->user()->avatar ?>" name="avatar" class="form-control-file" hidden>
+                                    </div>
                                 </div>
-                            </div>
-                            <form class="preform" method="post" id="profile-form">
                                 <div class="row">
                                     <div class="col-xl-12 col-lg-12 col-md-12">
                                         <div class="form-group">
@@ -44,6 +47,38 @@
                                         <div class="form-group">
                                             <label class="prelabel">Joined</label>
                                             <input type="text" class="form-control" value="<?= auth()->user()->created_at ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                        <div class="block">
+                                            <a class="btn btn-sm btn-clear" data-toggle="collapse" href="#show-changepass"><i class="fas fa-key mr-2"></i>Change password</a>
+                                        </div>
+                                        <div id="show-changepass" class="collapse mt-3">
+                                            <div class="form-group">
+                                                <label class="prelabel" for="pro5-currentpass">Current Password</label>
+                                                <input type="password" class="form-control" id="pro5-currentpass" name="current_password">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="prelabel" for="pro5-pass">New Password</label>
+                                                <input type="password" class="form-control" id="pro5-pass" name="new_password">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="prelabel" for="pro5-confirm">Confirm New Password</label>
+                                                <input type="password" class="form-control" id="pro5-confirm" name="confirm_new_password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                        <div class="form-group">
+                                            <div class="mt-4"></div>
+                                            <button class="btn btn-block btn-primary">Save</button>
+                                            <div class="loading-relative" id="profile-loading" style="display:none">
+                                                <div class="loading">
+                                                    <div class="span1"></div>
+                                                    <div class="span2"></div>
+                                                    <div class="span3"></div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
