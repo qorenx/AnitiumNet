@@ -1,8 +1,8 @@
 **Anime Watching Site Project**
 **---**
-**Preview: [anitium.net](https://anitium.net)**
+**Preview: [aniwatch.anitium.net](https://aniwatch.anitium.net)**
 
-**Preview site version: 2.0 
+**Preview site version: 2.5
 
 **Patreon: https://www.patreon.com/anitium/membership**
 
