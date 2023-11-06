@@ -126,13 +126,8 @@ nb-configuration.xml
 
 
 # Anitium Safe Code
-/app/Controllers/Anitium.php
-/app/Controllers/Anime.php
-/app/Controllers/License.php
-/app/Models/LicenseModel.php
 /lisans/*.json
 anitium
-/app/Views/license
 /file/gogoanime_filesystem/
 /file/gogoanime_multiembed/
 www.7z

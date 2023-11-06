@@ -67,15 +67,15 @@ class AnimeModel extends Model
         if (isset($relations['Sequel'])) {
             $foundMalId = true;
         }
-        
+
         if (isset($relations['Prequel'])) {
             $foundMalId = true;
         }
-        
+
         if (isset($relations['Side story']) && !in_array($uid, $restricted_ids)) {
             $foundMalId = true;
         }
-        
+
         if (isset($relations['Parent story']) && !in_array($uid, $restricted_ids)) {
             $foundMalId = true;
         }
@@ -337,6 +337,7 @@ class AnimeModel extends Model
     {
         return $this->like('ani_name', $keyword)
             ->orLike('uid', $keyword)
+            ->orLike('ani_synonyms', $keyword)
             ->findAll();
     }
 
@@ -353,12 +354,12 @@ class AnimeModel extends Model
     public function AnimeSeasonReleated($uid)
     {
         $related = $this->fetchAnimeSeasonRelated([$uid], [], true);
-        usort($related, function($a, $b) {
+        usort($related, function ($a, $b) {
             return strcmp($a['ani_aired'], $b['ani_aired']);
         });
         return $related;
     }
-    
+
     private function fetchAnimeSeasonRelated($mal_ids, $already_fetched_mal_ids = [], $is_initial_call = false)
     {
         $related = $this
@@ -366,7 +367,7 @@ class AnimeModel extends Model
             ->whereIn('uid', $mal_ids)
             ->get()
             ->getResultArray();
-    
+
         foreach ($related as $key => $related_anime) {
             if ($is_initial_call) {
                 $related[$key]['active'] = 1;
@@ -374,7 +375,7 @@ class AnimeModel extends Model
                 unset($related[$key]['active']);
             }
         }
-    
+
         $new_mal_ids = [];
         foreach ($related as &$rel) {
             $relations = json_decode($rel['relations'], true);
