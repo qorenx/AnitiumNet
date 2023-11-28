@@ -55,6 +55,7 @@ class Converter extends BaseController
             'dmmitltd.com'              => 'get_embed_2embed',
             'superstream.monster'       => 'get_embed_2embed',
             '2embed.to'                 => 'get_embed_2embed',
+            'anitaku.to'                => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
             'gogoanimehd.to'            => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
             'gogoanimehd.io'            => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
             'gogoanime.gr'              => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
