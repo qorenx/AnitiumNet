@@ -1,3 +1,5 @@
+Anitium Discord: https://discord.com/invite/YmDHnQGxCn
+
 This project has been cancelled. It is currently working. There are minor errors.
 
 1: There is a big bug in the comment system. Post/get position returns after sending/deleting.
