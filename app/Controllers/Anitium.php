@@ -82,24 +82,73 @@ class Anitium extends BaseController
     // localhost/home olarak girildiğinde çıkan sayfa.
     public function Home()
     {
-        $Modelsettings = new Settings();
-        $ModelEpisode = new EpisodeModel();
-        $ModelAnime = new AnimeModel();
-        $ModelEpisodeViews = new EpisodeViews();
-        $ModelCommunity = new CommunityModel();
-        $ModelSlider = new AnimeSlider();
+    // Initialize models
+    $Modelsettings = new Settings();
+    $ModelEpisode = new EpisodeModel();
+    $ModelAnime = new AnimeModel();
+    $ModelEpisodeViews = new EpisodeViews();
+    $ModelCommunity = new CommunityModel();
+    $ModelSlider = new AnimeSlider();
 
+    // Cache service
+    $cache = \Config\Services::cache();
 
-        $Data = [
-            'Settings' => $Modelsettings->getHome(),
-            'SliderData' => $ModelSlider->getSlider(),
-            'TrendingData' => $ModelAnime->getTrending(),
-            'LastEpisodeData' => $ModelEpisode->get_LastEpisodeHome(),
-            'UpCommingData' => $ModelAnime->get_AnimeUpComing(),
-            'EpisodeViewSideBarData' => $ModelEpisodeViews->get_EpisodeViewSideBar(),
-            'LastBoardCommunityData' => $ModelCommunity->get_LastBoardCommunityHome(),
-        ];
-        return view('Frontend/' . $this->anitiumthemes . '/Home', $Data);
+    // Fetch data asynchronously (simulated in PHP)
+    $settingsPromise = function() use ($cache, $Modelsettings) {
+        return $cache->remember('home_settings', 7200, function() use ($Modelsettings) {
+            return $Modelsettings->getHome();
+        });
+    };
+
+    $sliderDataPromise = function() use ($cache, $ModelSlider) {
+        return $cache->remember('home_slider_data', 7200, function() use ($ModelSlider) {
+            return $ModelSlider->getSlider();
+        });
+    };
+
+    $trendingDataPromise = function() use ($cache, $ModelAnime) {
+        return $cache->remember('home_trending_data', 7200, function() use ($ModelAnime) {
+            return $ModelAnime->getTrending();
+        });
+    };
+
+    $lastEpisodeDataPromise = function() use ($cache, $ModelEpisode) {
+        return $cache->remember('home_last_episode_data', 7200, function() use ($ModelEpisode) {
+            return $ModelEpisode->get_LastEpisodeHome();
+        });
+    };
+
+    $upcomingDataPromise = function() use ($cache, $ModelAnime) {
+        return $cache->remember('home_upcoming_data', 7200, function() use ($ModelAnime) {
+            return $ModelAnime->get_AnimeUpComing();
+        });
+    };
+
+    $episodeViewSideBarDataPromise = function() use ($cache, $ModelEpisodeViews) {
+        return $cache->remember('home_episode_sidebar_data', 7200, function() use ($ModelEpisodeViews) {
+            return $ModelEpisodeViews->get_EpisodeViewSideBar();
+        });
+    };
+
+    $lastBoardCommunityDataPromise = function() use ($cache, $ModelCommunity) {
+        return $cache->remember('home_last_board_community_data', 7200, function() use ($ModelCommunity) {
+            return $ModelCommunity->get_LastBoardCommunityHome();
+        });
+    };
+
+    // Execute all promises
+    $Data = [
+        'Settings' => $settingsPromise(),
+        'SliderData' => $sliderDataPromise(),
+        'TrendingData' => $trendingDataPromise(),
+        'LastEpisodeData' => $lastEpisodeDataPromise(),
+        'UpCommingData' => $upcomingDataPromise(),
+        'EpisodeViewSideBarData' => $episodeViewSideBarDataPromise(),
+        'LastBoardCommunityData' => $lastBoardCommunityDataPromise(),
+    ];
+
+    // Render the view with the collected data
+    return view('Frontend/' . $this->anitiumthemes . '/Home', $Data);
     }
 
     //Animelerin üstüne gelince çıkan yazı qtip
