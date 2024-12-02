@@ -57,9 +57,10 @@ class Converter extends BaseController
             '2embed.to'                 => 'get_embed_2embed',
             'filemoon.sx'               => 'get_embed_filemoon',
             'swishsrv.com'              => 'get_embed_streamwish',
-			'vidhide'           	    => 'get_embed_vidhide',
-			'boosterx'                  => 'get_embed_playerx',
-			's3taku'					=> 'get_embed_s3taku',
+	    'vidhide'           	=> 'get_embed_vidhide',
+	    'boosterx'                  => 'get_embed_playerx',
+	    's3taku'			=> 'get_embed_s3taku',
+	    'rubystm'			=> 'get_embed_rubystm',
             'anitaku.to'                => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
             'gogoanimehd.to'            => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
             'gogoanimehd.io'            => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
@@ -279,6 +280,19 @@ class Converter extends BaseController
         //$path_components = explode('/', parse_url($url, PHP_URL_PATH));
         //$video_id = end($path_components);
         $embed_code = '<iframe width="100%" height="480px" src="' . $url . '" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>';
+        $json = json_encode([$embed_code]);
+
+        return $this->response->setJSON($json);
+    }
+
+
+	public function get_embed_rubystm($uid, $eps, $url)
+    {
+        $domains = array('rubystm.com');
+        $domain = $domains[array_rand($domains)];
+        //$path_components = explode('/', parse_url($url, PHP_URL_PATH));
+        //$video_id = end($path_components);
+        $embed_code = '<iframe width="100%" height="100%" src="' . $url . '" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>';
         $json = json_encode([$embed_code]);
 
         return $this->response->setJSON($json);
