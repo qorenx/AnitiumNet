@@ -55,6 +55,11 @@ class Converter extends BaseController
             'dmmitltd.com'              => 'get_embed_2embed',
             'superstream.monster'       => 'get_embed_2embed',
             '2embed.to'                 => 'get_embed_2embed',
+            'filemoon.sx'               => 'get_embed_filemoon',
+            'swishsrv.com'              => 'get_embed_streamwish',
+			'vidhide'           	    => 'get_embed_vidhide',
+			'boosterx'                  => 'get_embed_playerx',
+			's3taku'					=> 'get_embed_s3taku',
             'anitaku.to'                => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
             'gogoanimehd.to'            => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
             'gogoanimehd.io'            => self::GogoAnimeMulti == 0 ? 'get_embed_gogoanime_filesystem' : 'get_embed_gogoanime_multiembed',
@@ -212,6 +217,69 @@ class Converter extends BaseController
         $embed_code = '<iframe src="https://' . $domain . '/embedanime/' . $video_id . $eps . '" width="100%" height="100%" frameborder="0" scrolling="no" allowfullscreen></iframe>';
 
         $json = json_encode($embed_code);
+
+        return $this->response->setJSON($json);
+    }
+
+
+	public function get_embed_filemoon($uid, $eps, $url)
+    {
+        $domains = array('filemoon.sx');
+        $domain = $domains[array_rand($domains)];
+        //$path_components = explode('/', parse_url($url, PHP_URL_PATH));
+        //$video_id = end($path_components);
+        $embed_code = '<iframe width="100%" height="100%" src="' . $url . '" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>';
+        $json = json_encode([$embed_code]);
+
+        return $this->response->setJSON($json);
+    }
+
+
+    public function get_embed_streamwish($uid, $eps, $url)
+    {
+        $domains = array('swhoi.com', 'streamwish.com', 'streamwish.to', 'swishsrv.com');
+        $domain = $domains[array_rand($domains)];
+        $path_components = explode('/', parse_url($url, PHP_URL_PATH));
+        $video_id = end($path_components);
+        $embed_code = '<iframe width="100%" height="100%" src="https://' . $domain . '/e/' . $video_id . '" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>';
+        $json = json_encode([$embed_code]);
+
+        return $this->response->setJSON($json);
+    }
+	
+	
+	public function get_embed_vidhide($uid, $eps, $url)
+    {
+        $domains = array('vidhidevip.com', 'vidhidepre.com');
+        $domain = $domains[array_rand($domains)];
+        //$path_components = explode('/', parse_url($url, PHP_URL_PATH));
+        //$video_id = end($path_components);
+        $embed_code = '<iframe width="100%" height="100%" src="' . $url . '" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>';
+        $json = json_encode([$embed_code]);
+
+        return $this->response->setJSON($json);
+    }
+	
+	public function get_embed_playerx($uid, $eps, $url)
+    {
+        $domains = array('boosterx.stream');
+        $domain = $domains[array_rand($domains)];
+        //$path_components = explode('/', parse_url($url, PHP_URL_PATH));
+        //$video_id = end($path_components);
+        $embed_code = '<iframe width="100%" height="100%" src="' . $url . '" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>';
+        $json = json_encode([$embed_code]);
+
+        return $this->response->setJSON($json);
+    }
+	
+	public function get_embed_s3taku($uid, $eps, $url)
+    {
+        $domains = array('s3taku.com');
+        $domain = $domains[array_rand($domains)];
+        //$path_components = explode('/', parse_url($url, PHP_URL_PATH));
+        //$video_id = end($path_components);
+        $embed_code = '<iframe width="100%" height="480px" src="' . $url . '" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>';
+        $json = json_encode([$embed_code]);
 
         return $this->response->setJSON($json);
     }
