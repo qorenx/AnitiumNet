@@ -19,6 +19,7 @@ class AnimeModel extends Model
         'uid',
         'ani_name',
         'ani_jname',
+		'ani_ename',
         'ani_synonyms',
         'ani_genre',
         'ani_type',
@@ -85,28 +86,51 @@ class AnimeModel extends Model
     }
 
     //Aşağıdaki function düzenlendi.
-    public function get_EpisodeAndEmbedData($uid)
-    {
-        $db = \Config\Database::connect();
-        $episodeCountQuery = $db->table('episode')
-            ->where('uid', $uid)
-            ->countAllResults();
-        $embedDataQuery = $db->table('episode_embed')
-            ->where('embed_uid', $uid)
-            ->get()
-            ->getResultArray();
-        $embedTypeCounts = ['1' => 0, '2' => 0, '3' => 0, '4' => 0];
-        foreach ($embedDataQuery as $data) {
-            $embedTypeCounts[$data['embed_type']]++;
+public function get_EpisodeAndEmbedData($uid)
+{
+    $db = \Config\Database::connect();
+
+    // Count the total number of episodes available for the given UID
+    $episodeCountQuery = $db->table('episode')
+        ->where('uid', $uid)
+        ->countAllResults();
+
+    // Query to get all embed data related to the given UID and join with episode table
+    $embedDataQuery = $db->table('episode_embed')
+        ->select('episode_embed.embed_type, episode.ep_id_name as episode_id') // Select the embed type and episode id
+        ->join('episode', 'episode.uid = episode_embed.embed_uid AND episode.ep_id_name = episode_embed.embed_id') // Join based on the MAL ID and episode number
+        ->where('episode.uid', $uid)
+        ->get()
+        ->getResultArray();
+
+    // Initialize arrays to keep track of unique episodes that have at least one embed for each type
+    $embedTypeEpisodes = ['1' => [], '2' => [], '3' => [], '4' => []];
+
+    // Iterate over each embed and collect unique episode IDs for each type
+    foreach ($embedDataQuery as $data) {
+        $embedType = $data['embed_type'];
+        $episodeId = $data['episode_id']; // Get the episode identifier from the joined data
+
+        // Add unique episodes to the list for each embed type
+        if (!in_array($episodeId, $embedTypeEpisodes[$embedType])) {
+            $embedTypeEpisodes[$embedType][] = $episodeId;
         }
-
-        $db->close();
-
-        return [
-            'episode_count' => $episodeCountQuery,
-            'embed_type_counts' => $embedTypeCounts
-        ];
     }
+
+    // Convert the arrays of unique episode numbers into counts
+    $embedTypeCounts = [];
+    foreach ($embedTypeEpisodes as $type => $episodes) {
+        $embedTypeCounts[$type] = count($episodes);
+    }
+
+    $db->close();
+
+    return [
+        'episode_count' => $episodeCountQuery,
+        'embed_type_counts' => $embedTypeCounts
+    ];
+}
+
 
 
     public function search($data)
