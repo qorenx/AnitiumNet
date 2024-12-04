@@ -8,12 +8,12 @@
                     </div>
                 </div>
                 <div class="deslide-item-content">
-                    <div class="desi-sub-text" style="font-size: 0.8rem"><?= $AnimeData['ani_jname'] ?></div>
-                    <div class="desi-head-title dynamic-name"><?php
+                    <div class="desi-sub-text" style="position:relative; left:70px; font-size: 0.8rem"><?= $AnimeData['ani_jname'] ?></div>
+                    <div class="desi-head-title dynamic-name" style="position:relative; left:70px;"><?php
                                                                 $ani_name = $AnimeData['ani_name'];
                                                                 echo htmlspecialchars($ani_name, ENT_QUOTES, 'UTF-8');
                                                                 ?></div>
-                    <div class="sc-detail">
+                    <div class="sc-detail" style="position:relative; left:70px;">
                         <div class="scd-item">
                             <i class="fas fa-play-circle mr-1"></i><?php
                                                                     if ($AnimeData['ani_type'] == 1) {
@@ -49,7 +49,7 @@
                         }
                         ?>
                         <?php
-                        $types = ['raw' => 'RAW', 'sub' => 'SUB', 'dub' => 'DUB', 'turk' => 'TURK'];
+                        $types = ['raw' => 'RAW', 'sub' => 'SUB', 'dub' => 'DUB', 'SUB&DUB' => 'SUB&DUB'];
                         foreach ($types as $type => $display) :
                             if ((auth()->user()->{$type . '_status'} ?? 1) == 1 && !empty($AnimeData['type'][$display])) : ?>
                                 <div class="scd-item mr-1">
@@ -63,9 +63,9 @@
                         <div class="desi-description"><?= $AnimeData['ani_synopsis'] ?></div>
                     </div>
                     <div class="desi-description"></div>
-                    <div class="desi-buttons">
+                    <div class="desi-buttons" style="position:relative; left:70px;">
                         <?php
-                        if ($AnimeData['type']['RAW'] > 0 || $AnimeData['type']['SUB'] > 0 || $AnimeData['type']['DUB'] > 0 || $AnimeData['type']['TURK'] > 0) : ?>
+                        if ($AnimeData['type']['RAW'] > 0 || $AnimeData['type']['SUB'] > 0 || $AnimeData['type']['DUB'] > 0 || $AnimeData['type']['SUB&DUB'] > 0) : ?>
                             <a href="/watch?anime=<?php
                                                     $slug = trim(preg_replace("/[^\w\s\-]+/", "", $AnimeData['ani_name']), " ");
                                                     $slug = preg_replace("/\s+|--/", "_", $slug);
