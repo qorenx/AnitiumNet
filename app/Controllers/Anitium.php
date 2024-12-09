@@ -854,12 +854,18 @@ class Anitium extends BaseController
         $ModelSettings = new Settings();
 
         $getuserdata = auth()->id();
-        $status = $ModelUserStatus->where('user_id', $getuserdata)->where('user_status', $mystatus)->paginate(25);
+
+        // Retrieve all items for the given status
+        $status = $ModelUserStatus
+            ->where('user_id', $getuserdata)
+            ->whereIn('user_status', $mystatus)
+            ->findAll();
+
         $visited = [];
 
         foreach ($status as $anime) {
             $animetv = $ModelAnime->where('uid', $anime['anime_uid'])->first();
-            if (!in_array($animetv['uid'], $visited)) {
+            if (!in_array($animetv['uid'], array_column($visited, 'uid'))) {
                 $visited[] = [
                     'ani_name' => $animetv['ani_name'],
                     'uid' => $animetv['uid'],
@@ -872,6 +878,8 @@ class Anitium extends BaseController
                 ];
             }
         }
+
+        // Pagination logic
         $itemsPerPage = 25;
         $totalItems = count($visited);
         $totalPages = ceil($totalItems / $itemsPerPage);
@@ -893,6 +901,7 @@ class Anitium extends BaseController
             ],
         ]);
     }
+
 
     public function UserSettings()
     {
