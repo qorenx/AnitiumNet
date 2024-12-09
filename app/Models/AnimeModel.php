@@ -19,7 +19,6 @@ class AnimeModel extends Model
         'uid',
         'ani_name',
         'ani_jname',
-		'ani_ename',
         'ani_synonyms',
         'ani_genre',
         'ani_type',
